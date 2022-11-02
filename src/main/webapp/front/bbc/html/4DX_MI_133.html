@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" /> <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" /> <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" /> <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
+    
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script> <!--bootstarp公用-->
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_MI_131.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="page-head">
+        <div class="page-name">
+          <img src="../image/back-Button.png" class="mr24"/>
+          <span>신규계약</span>
+        </div>
+      </header>
+      <div class="content">
+      	<div class="scroll-wrap refresh-wrap">
+	        <div class="container">
+	          <div class="chart-wrap">
+	            <div class="title2">
+	              <span class="font24 bold">신규계약</span>
+	            </div>
+	            <div class="chart">
+	              <div id="chart"></div>
+	              <div class="chartTitle"></div>
+	            </div>
+	          </div>
+	          <div class="table-wrap">
+	            <div class="title1">
+	              <div>
+	                <i class="fourDPlex icon-sanjiao"></i>
+	                <span>신규계약 상세</span>
+	              </div>
+	            </div>
+	            <div class="table">
+	              <table class="drag-table noWrapTable alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+	                <tr>
+	                  <th rowspan="2">사업자</th>
+	                  <th rowspan="2">국가/지역</th>
+	                  <th colspan="4">18년 선적 달성율</th>
+	                  <th colspan="3">확도별 수량</th>
+	                </tr>
+	                <tr class="bggrey">
+	                  <th>전체</th>
+	                  <th>선적完/未오픈</th>
+	                  <th>선적完/未오픈</th>
+	                  <th>달성율</th>
+	                  <th>A</th>
+	                  <th>B</th>
+	                  <th>C</th>
+	                </tr>
+	                <tr>
+	                  <td class="center">Pathe</td>
+	                  <td class="center">유럽</td>
+	                  <td>26</td>
+	                  <td>10</td>
+	                  <td>9</td>
+	                  <td>73%</td>
+	                  <td>26</td>
+	                  <td>3</td>
+	                  <td>1</td>
+	                </tr>
+	                <tr>
+	                  <td class="center">PVR</td>
+	                  <td class="center">인도</td>
+	                  <td>5</td>
+	                  <td>3</td>
+	                  <td>1</td>
+	                  <td>80%</td>
+	                  <td>4</td>
+	                  <td>2</td>
+	                  <td>1</td>
+	                </tr>
+	                <tr>
+	                  <td class="center">CCI/Cineworld</td>
+	                  <td class="center">유럽</td>
+	                  <td>3</td>
+	                  <td>6</td>
+	                  <td>1</td>
+	                  <td>233%</td>
+	                  <td>6</td>
+	                  <td>2</td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Nordisk</td>
+	                  <td class="center">북유럽</td>
+	                  <td>4</td>
+	                  <td>2</td>
+	                  <td>0</td>
+	                  <td>50%</td>
+	                  <td>4</td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Mars</td>
+	                  <td class="center">터키</td>
+	                  <td>1</td>
+	                  <td>1</td>
+	                  <td>0</td>
+	                  <td>100%</td>
+	                  <td>1</td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Cinepolis India</td>
+	                  <td class="center">인도</td>
+	                  <td>1</td>
+	                  <td>1</td>
+	                  <td>1</td>
+	                  <td>200%</td>
+	                  <td>1</td>
+	                  <td></td>
+	                  <td>1</td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Cinema Citi(우)</td>
+	                  <td class="center">우크라이나</td>
+	                  <td>1</td>
+	                  <td>0</td>
+	                  <td>1</td>
+	                  <td>100%</td>
+	                  <td>1</td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Broadway</td>
+	                  <td class="center">홍콩</td>
+	                  <td>1</td>
+	                  <td>0</td>
+	                  <td>0</td>
+	                  <td>0%</td>
+	                  <td></td>
+	                  <td></td>
+	                  <td>1</td>
+	                </tr>
+	                <tr>
+	                  <td class="center">KNCC</td>
+	                  <td class="center">쿠웨이트</td>
+	                  <td>0</td>
+	                  <td>0</td>
+	                  <td>0</td>
+	                  <td>0%</td>
+	                  <td>1</td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr>
+	                  <td class="center">Cinemax</td>
+	                  <td class="center">앙골라</td>
+	                  <td>1</td>
+	                  <td>0</td>
+	                  <td>0</td>
+	                  <td>0%</td>
+	                  <td>1</td>
+	                  <td></td>
+	                  <td></td>
+	                </tr>
+	                <tr class="bgpink bold">
+	                  <td class="center">계</td>
+	                  <td class="center">부분계</td>
+	                  <td>43</td>
+	                  <td>23</td>
+	                  <td>13</td>
+	                  <td>84%</td>
+	                  <td>45</td>
+	                  <td>7</td>
+	                  <td>4</td>
+	                </tr>
+	                
+	              </table>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+      </div>
+     
+    </div>
+
+  </body>
+  <script type="text/javascript">
+    $(function() {
+      // 这里首先获取chart的宽度以便设置高度、chart的尺寸
+      var cw = $("#chart")[0].clientWidth;
+      var fsize = cw/592*20;
+      var data = [
+        {
+          value: 100,
+          name: '추가 RO',
+        },
+        {
+          value: 50,
+          name: '신규',
+        },
+        {
+          value: 200,
+          name: '기계약 RO',
+        },
+      ]
+      $("#chart").css('height', cw/592*430+'px')
+      var myChart = echarts.init(document.getElementById('chart'));
+      option = {
+        legend: {
+          selectedMode:true,
+          data: ['기계약 RO', '추가 RO', '신규'],
+          left: 'center'
+        },
+
+        series: [{
+          name: '',
+          type: 'pie',
+          legendHoverLink : true,
+          clickable:false,
+          center: ['50%', '55%'],
+          radius: ['40%', '69%'],
+          selectedMode: 'single',
+          selectedOffset: 0,
+          clockwise: true,
+          avoidLabelOverlap: false,
+          labelLine: {
+            length: 10,
+            length2: 10,
+          },
+          data: [{
+              value: data[0].value,
+              name: data[0].name,
+              legendHoverLink : false,
+              clickable:false,
+              itemStyle: {
+                normal: {
+                  color: '#ea8b00'
+                }
+              },
+              label: {
+                legendHoverLink : false,
+                normal: {
+                  formatter: '{b|{b}} \n  {per|{d}%}',
+                  rich: {
+                    b: {
+                      fontSize: fsize,
+                      lineHeight: 18,
+                      align: 'center',
+                      color: '#333333'
+                    },
+                    per: {
+                      align: 'center',
+                      fontWeight: "bolder"
+                    }
+                  },
+                },
+              },
+            },
+            {
+              value: data[1].value,
+              name: data[1].name,
+              itemStyle: {
+                normal: {
+                  color: '#e33143'
+                }
+              },
+              label: {
+                legendHoverLink : false,
+                normal: {
+                  formatter: '{b|{b}} \n  {per|{d}%}',
+                  rich: {
+                    b: {
+                      fontSize: 12,
+                      lineHeight: 18,
+                      align: 'center',
+                      color: '#333333'
+                    },
+                    per: {
+                      align: 'center',
+                      fontWeight: "bolder"
+                    }
+                  },
+                },
+              },
+            },
+            {
+              value: data[2].value,
+              name: data[2].name,
+              itemStyle: {
+                normal: {
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  {offset: 0, color: '#0080c6'  },
+                  {offset: 1, color: '#00427a' }
+                  ], false)
+                }
+              },
+              label: {
+                legendHoverLink : false,
+                normal: {
+                  formatter: '{b|{b}} \n  {per|{d}%}',
+                  rich: {
+                    b: {
+                      lineHeight: 18,
+                      align: 'center',
+                      color: '#333333',
+                    },
+                    per: {
+                      align: 'center',
+                      color: "#3c92cd",
+                      fontWeight: "bolder",
+                    }
+                  },
+                },
+              },
+            
+            },
+          ]
+        }]
+      };
+      myChart.setOption(option);
+      var bol = true;
+      function eConsole(param) {
+        bol = false
+        if (typeof param.seriesIndex != 'undefined') {
+          if (param.type == 'click') {     
+          var peiLenght= option.legend.data.length;
+            for(var i=0;i<peiLenght;i++){
+              if(param.seriesIndex==0&&param.dataIndex==i){
+                var html = '<p>총'+param.data.value+'건</p>'
+                $(".chartTitle").html(html)
+                if($(".chartTitle").html()) {
+                  $(".chartTitle").show()
+                } else {
+                  $(".chartTitle").hide()
+                }
+              }
+            }  
+          } 
+        }
+      }
+      myChart.on("click", eConsole);
+      $("#chart").on("click",function() {
+        if(bol) {
+          $(".chartTitle").html('') 
+          return
+        }
+        bol = true
+      })
+      $("#scrolltop").click(function(){
+      	$("scroll-wrap").animate({scrollTop:"0px"},800)
+      })
+    })
+ </script>
+</html>

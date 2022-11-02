@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Thirdparty">
+	
+	<typeAlias alias="Token" 			type="com.waremec.weixin.thirdparty.domain.Token"/>
+	
+	
+	<!-- 保存component_verify_ticket -->
+    <select id="WX_OP_VERIFY_TICKET_INSERT" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_VERIFY_TICKET_INSERT]
+ 				  @APPID					=#AppId:NVARCHAR#
+				, @CREATETIME 				=#CreateTime:CHAR#
+				, @INFOTYPE 				=#InfoType:NVARCHAR#
+				, @COMPONENTVERIFYTICKET 	=#ComponentVerifyTicket:NVARCHAR#
+				
+    	     ]]>
+	</select>  
+	  
+	<!-- 获取component_verify_ticket -->
+    <select id="WX_OP_VERIFY_TICKET_SELECT" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_VERIFY_TICKET_SELECT]
+ 				  @APPID					=#appId:NVARCHAR#
+    	     ]]>
+	</select>    
+
+	<!-- 保存Component_access_token -->
+    <select id="WX_OP_ACCESS_TOKEN_UPDATE" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_ACCESS_TOKEN_UPDATE]
+ 				  @APPID					=#AppId:NVARCHAR#
+				, @COMPONENT_ACCESS_TOKEN 	=#component_access_token:NVARCHAR#
+				, @CA_TOKEN_EXPIRES_IN 		=#expires_in:NVARCHAR#
+    	     ]]>
+	</select>
+    
+    <!-- 保存 pre_auth_code -->
+    <select id="WX_OP_PRE_AUTH_CODE_UPDATE" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_PRE_AUTH_CODE_UPDATE]
+ 				  @APPID					=#AppId:NVARCHAR#
+				, @PRE_AUTH_CODE 			=#pre_auth_code:NVARCHAR#
+				, @PA_CODE_EXPIRES_IN 		=#expires_in:NVARCHAR#
+    	     ]]>
+	</select>
+
+    <!-- 保存 AUTHORIZATION_CODE -->
+    <select id="WX_OP_AUTHORIZATION_CODE_UPDATE" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_AUTHORIZATION_CODE_UPDATE]
+ 				  @APPID								=#AppId:NVARCHAR#
+				, @AUTHORIZATION_CODE 					=#AuthorizationCode:NVARCHAR#
+				, @AUTHORIZATION_CODE_EXPIRES_IN 		=#expires_in:NVARCHAR#
+    	     ]]>
+	</select>
+
+    <!-- 保存 第三方平台所有授权码 -->
+    <select id="WX_OP_CODE_UPDATE" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	   	 <![CDATA[
+    	     	EXEC [WX_OP_CODE_UPDATE]
+ 				  @APPID								=#AppId:NVARCHAR#
+ 				,@JOP_TYPE								=#jopTpye:NVARCHAR#
+ 				
+ 				
+ 				, @COMPONENT_ACCESS_TOKEN 				=#component_access_token:NVARCHAR#
+				, @CA_TOKEN_EXPIRES_IN 					=#componentAccessTokenExpiresIn:NVARCHAR#
+ 				, @PRE_AUTH_CODE 						=#pre_auth_code:NVARCHAR#
+				, @PA_CODE_EXPIRES_IN 					=#preAuthCodeExpiresIn:NVARCHAR#
+				, @AUTHORIZATION_CODE 					=#AuthorizationCode:NVARCHAR#
+				, @AUTHORIZATION_CODE_EXPIRES_IN 		=#AuthorizationCodeExpiresIn:NVARCHAR#
+    	     ]]>
+	</select>
+	
+    <!-- 取消授权 -->
+    <select id="WX_OP_DEAUTHORIZE" parameterClass="string" remapResults="true">
+	   	 <![CDATA[
+    	     	UPDATE WX_APP_INFO
+    	     	SET IS_AUTHORIZER = 0
+    	     	WHERE APP_ID = #VALUE#
+    	     ]]>
+	</select>
+	
+    <!-- 根据回调接口authCode参数查询授权方信息 -->
+    <select id="getAuthorizationWeiXinInfoByauthCode" resultClass="java.util.HashMap" parameterClass="string" remapResults="true">
+	   	 <![CDATA[
+    	     	select *
+    	     	from WX_OP_VERIFY_TICKET
+    	     	WHERE AUTHORIZATION_CODE = #VALUE#
+    	     ]]>
+	</select>
+
+</sqlMap>

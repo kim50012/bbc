@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="front/nongshim" extends="portal-default" namespace="/front/nongshim">
+		<action name="*" method="{1}" class="entryFormAction">
+		    <result name="entryForm">/front/nongshim/entryForm.jsp</result>
+		</action>
+	</package>
+  
+	<package name="front/nongshim/newsfeed" extends="portal-default" namespace="/front/nongshim/newsfeed">
+	    <action name="*" method="{1}" class="newsFeedNongshimAction">
+			<result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/nongshim/index" extends="portal-default" namespace="/front/nongshim/index">
+		<action name="*" method="{1}" class="indexNongshimAction">
+		    <result name="indexNongshim">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/month" extends="portal-default" namespace="/front/nongshim/month">
+		<action name="*" method="{1}" class="monthLaterAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/bSSStory" extends="portal-default" namespace="/front/nongshim/bSSStory">
+		<action name="*" method="{1}" class="bSSStoryAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/expert" extends="portal-default" namespace="/front/nongshim/expert">
+		<action name="*" method="{1}" class="expertAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/fiveFeel" extends="portal-default" namespace="/front/nongshim/fiveFeel">
+		<action name="*" method="{1}" class="fiveFeelAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/introduce" extends="portal-default" namespace="/front/nongshim/introduce">
+		<action name="*" method="{1}" class="introduceAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/nongshim/publish" extends="portal-default" namespace="/front/nongshim/publish">
+		<action name="*" method="{1}" class="publishAction">
+		    <result name="{1}">/front/nongshim/{1}.jsp</result>
+		</action>
+	</package> 
+</struts>

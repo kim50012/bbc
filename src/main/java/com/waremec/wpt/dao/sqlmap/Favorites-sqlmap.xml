@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Favorites">
+    
+	<parameterMap id="getFavoritesParam" class="java.util.Map"> 
+	    <parameter property="SHOP_ID"  			javaType="java.lang.String"       jdbcType="INTEGER" mode="IN"/>
+	    <parameter property="CUST_SYS_ID" 		javaType="java.lang.String"       jdbcType="INTEGER" mode="IN"/>
+		<!-- <parameter property="GOODS_ID" 			javaType="java.lang.String"  	  jdbcType="INTEGER" mode="IN"/> 
+		<parameter property="DISPLAY_ID" 		javaType="java.lang.String"		  jdbcType="INTEGER" mode="IN"/>
+		<parameter property="PRICE_OPTION_ID" 	javaType="java.lang.String"   	  jdbcType="INTEGER" mode="IN"/> -->
+		<parameter property="PAGE_CURR" 		javaType="java.lang.Integer"   	  jdbcType="INTEGER" mode="IN"/>
+		<parameter property="PAGE_UINT" 		javaType="java.lang.Integer"   	  jdbcType="INTEGER" mode="IN"/>
+		<parameter property="ORDERBY" 			javaType="java.lang.String"   	  jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	<select id="getFavorites" parameterMap="getFavoritesParam" resultClass="java.util.HashMap" remapResults="true">
+		 {call CUST_FAVORITES_LIST_SELECT ?,?,?,?,?} 
+		
+	</select>
+	
+	<update id="num" parameterClass="java.util.HashMap">
+	    UPDATE [dbo].[CART]
+		   SET [GOODS_QTY] =#goodsQty#
+		 WHERE [PRICE_OPTION_ID] = #priceOptionId#
+	</update>
+	<delete id="delete" parameterClass="java.util.HashMap">
+	    DELETE [dbo].[FAVORITES_GOODS]
+		 WHERE SHOP_ID = #shopId#
+		 AND	CUST_SYS_ID  = #custSysId# 
+		 AND	GOODS_ID  = #goodsId# 
+		 AND	DISPLAY_ID  =#displayId#
+		 AND	FAV_ID  = #priceOptionId#
+
+	</delete>
+</sqlMap>

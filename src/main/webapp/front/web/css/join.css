@@ -1,0 +1,248 @@
+@charset "utf-8";
+/*
+	2015.09.22
+	 회원가입 용 css입니다 
+*/
+
+/* text-color */
+.txt-blue { color:#005ce7 !important;}
+.txt-red { color:#d41818 !important;}
+.txt-green { color:#3aba1c !important;}
+
+/* ico */
+i[class] { overflow:hidden; display:inline-block; text-indent:-999px; vertical-align:middle;}
+i.ico-warning { width:22px; height:19px; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-warning.png') no-repeat; background-size:100%;}
+i.ico-warning2 { width:20px; height:20px; margin:-3px 2px 0 0; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-warning2.png') no-repeat; background-size:100%;}
+i.ico-check-ok { width:14.5px; height:14.5px; margin:-2px 2px 0 0; background:url('http://image.ssgdfs.com/images/shop/cn/mobile_new/content/ico-check2.png') no-repeat; background-size:100%;}
+i.ico-receive { display:block; width:156px; height:156px; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-receive.png') no-repeat; background-size:100%;}
+i.ico-sms { display:block; width:156px; height:156px; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-sms.png') no-repeat; background-size:100%;}
+i.ico-email-certify01 { display:block; width:98px; height:72px; margin:0 auto; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-email-certify01.gif') no-repeat; background-size:100%;}
+i.ico-email-certify02 { display:block; width:98px; height:72px; margin:0 auto; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-email-certify02.gif') no-repeat; background-size:100%;}
+i.ico-email-success { display:block; width:176px; height:177px; margin:0 auto; background:url('http://image.ssgdfs.com/images/shop/cn/mobile_new/content/ico-email-success.png') no-repeat; background-size:100%;}
+i.ico-email-error { display:block; width:176px; height:177px; margin:0 auto; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-email-error.png') no-repeat; background-size:100%;}
+i.ico-overlap { width:20px; height:20px; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-overlap.png') no-repeat; background-size:100%;}
+
+/* button */
+.btn-group { margin:20px 0px 100px;}
+.btn-group a,
+.btn-group button { display:block; width:290px; height:55px; margin:0px auto; padding:0px; border:0px; line-height:55px; border-radius:4px; box-sizing:content-box; text-align:center; font-size:22px; color:#fff; background:#808080;}
+
+.btn-group.type2 { overflow:hidden; margin-left:-10px;}
+.btn-group.type2 > * { float:left; display:block; width:50%;}
+.btn-group.type2 > * > * { width:auto; margin-left:10px;}
+
+.btn-group .btn-gray { color:#fff; background:#808080;}
+.btn-group .btn-red { color:#fff; background:#d41818;}
+.btn-group .btn-black { color:#fff; background:#333;}
+
+/* 컨텐츠 */
+#body {}
+.join-welcomebox { margin-bottom:70px; font-family:'微软雅黑',"Helvetica Neue",Helvetica,Arial;}
+
+.stepbox + div { margin-top:50px;}
+
+.join-welcomebox .stepbox { border-bottom:1px solid #d6d6d6; background:#f7f7f7;}
+.join-welcomebox .stepbox p { border-bottom:0px;}
+.join-welcomebox .stepbox p.step01 { width:340px; padding-top:17px;}
+.join-welcomebox .stepbox p.step02 { width:337px; padding-top:17px;}
+.join-welcomebox .stepbox p.step03 { width:233px; padding-top:17px;}
+
+.join-welcomebox .stepbox.detail p.step01 { width:100%; text-align:center;}
+
+.clause-box { position:relative; width:760px; height:79px; padding:0 30px; margin:10px auto 0; border-bottom:1px solid #d9d9d9; background:#f2f2f2;}
+.clause-box h1 { font-size:18px; color:#333; line-height:79px;}
+.clause-box h1 a { display:block; height:100%; color:#333; font-weight:400;}
+.clause-box .input-radio {position:absolute; top:50%; right:30px; margin-top:-15px; font-size:15px;}
+
+.clause-box .input-agree { position:absolute; top:50%; right:30px; margin-top:-13px; font-size:15px;}
+.clause-box .input-agree label {}
+.clause-box .input-agree i {overflow:hidden; display:inline-block; width:26px; height:26px; margin:0 auto; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-checkbox.png') no-repeat;}
+.clause-box .input-agree .check i { background-position:-26px 0px;}
+.clause-box .input-agree input { position:absolute; top:0px; right:0px; opacity:0;}
+
+.clause-view { width:760px; margin:0 auto; padding:10px 30px; border-bottom:1px solid #d9d9d9; background:#f9f9f9;}
+.clause-view.scroll { overflow-y:scroll; height:310px;}
+.clause-view h2 { margin-bottom:10px; font-size:13px; color:#333333;}
+.clause-view h3 { margin-bottom:5px; border:0px; font-size:13px; color:#333; line-height:1.5; background:none;}
+.clause-view p { margin-bottom:10px; color:#888;}
+.clause-view p.txt-black { color:#333;}
+.clause-view .info-table { margin:14px 0px;}
+.clause-view .info-table table { width:100%; border-top:1px solid #d3d3d3;  border-right:1px solid #d3d3d3;}
+.clause-view .info-table th { padding:10px; border-left:1px solid #d3d3d3; border-bottom:0px; text-align:center; font-weight:normal; color:#333; background:#efefef;}
+.clause-view .info-table td { padding:10px 10px; border-bottom:1px solid #d3d3d3; border-left:1px solid #d3d3d3;  color:#666; background:#fff;}
+.clause-view .info-table td.left {text-align:left;}
+.clause-view .info-table .input-radio { margin-bottom:0px; font-size:15px; text-align:left;}
+.clause-view .info-table .input-radio label { display:block; margin:5px 0px;}
+
+
+/* 입력 요소 */
+.join-box { overflow:hidden; position:relative; width:820px; margin:50px auto 0px; font-size:16px;}
+.join-box > div > h2 { margin-bottom:15px; font-size:20px; color:#d62b21; line-height:1.5;}
+
+/* step01, step02 */
+.input-box {}
+.input-box input[type="text"],
+.input-box input[type="password"],
+.input-box input[type="number"],
+.input-box input[type="email"] { width:100%; height:auto; border:0px; padding:5px; margin:0px; box-sizing:border-box; font-size:21px; line-height:17px; color:#333;}
+.input-box > div { margin-bottom:15px;}
+.input-box .first-name { float:left; width:40%;}
+.input-box .first-name > div { margin-right:10px;}
+.input-box .second-name { float:left; width:60%;}
+.input-box .pwd { position:relative;}
+.input-box .pwd input { padding-right:110px;}
+.input-box .pwd .pwd-check { position:absolute; top:5px; right:0px; margin:0px;}
+.input-box .pwd .pwd-check i { display:inline-block; width:51px; height:3px; vertical-align:middle;}
+.input-box .pwd .pwd-check.ok { color:#3aba1c;}
+.input-box .pwd .pwd-check.ok i { background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-pwd-ok.gif') no-repeat; background-size:100%;}
+.input-box .pwd .pwd-check.normal { color:#1569c8;}
+.input-box .pwd .pwd-check.normal i { background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-pwd-normal.gif') no-repeat; background-size:100%;}
+.input-box .pwd .pwd-check.bad { color:#d62b21;}
+.input-box .pwd .pwd-check.bad i { background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-pwd-bad.gif') no-repeat; background-size:100%;}
+.input-box .email { overflow:hidden; clear:both;}
+.input-box .email label { display:block; margin-top:5px; color:#666666;}
+.input-box .email input[type=checkbox] { margin:0px; margin-top:-3px; margin-right:4px;}
+.input-box .email .warning { float:left;}
+.input-box .email .input-checkbox { float:right; margin-top:5px;}
+.input-box .select-box {}
+.input-box .select-box select { width:100%; padding:5px; border:0px; box-sizing:border-box; font-size:17px; /* background:none; background:url('http://image.ssgdfs.com/images/shop/cn/member/ico-arrow-down2.png') no-repeat 99% center; */}
+
+.input-box > div { margin-bottom:30px;}
+.input-box > div > div { padding:5px 0px; border-bottom:1px solid #bdbdbd; position: relative;}
+.input-box > div > .input-checkbox { border-bottom:0px; text-align:left;}
+.input-box .line-ok { border-bottom:1px solid #3aba1c;}
+.input-box .line-error { border-bottom:1px solid #d41818;}
+.input-box p { margin-top:10px; color:#999;}
+.input-box .warning { color:#d41818;}
+.input-box .warning i { margin-top:-2px;}
+
+/* step03 */
+.join-welcomebox [class*='join-'] .step03 { padding:30px; border:1px solid #ededed; background:#f7f7f7;}
+.join-welcomebox [class*='join-'] .step03 h2 { color:#333;}
+.join-welcomebox [class*='join-'] .step03 h2 span { position:relative; margin-left:18px; padding-left:17px; font-weight:normal;}
+.join-welcomebox [class*='join-'] .step03 h2 span:before { content:''; display:block; position:absolute; top:50%; left:0px; width:1px; height:20px; margin-top:-10px; background:#cbcbcb;}
+.email-receive { overflow:hidden; position:relative; min-height:156px; padding-left:190px; margin:40px 0 10px;}
+.email-receive > i { position:absolute; top:50%; left:0px; margin-top:-78px;}
+.email-receive .text { margin-top:20px; font-size:18px; color:#666;}
+.email-receive .text span { display:block; margin-top:5px; font-size:16px; color:#d41818;}
+.email-receive h3 { margin-top:8px; text-align:center; font-size:15px; color:#333; font-weight:normal;}
+.email-receive .input-radio { margin-top:20px; text-align:left;}
+.step03 .btn-group { margin-bottom:20px;}
+
+.input-checkbox { overflow:hidden; position:relative; text-align:center;}
+.input-checkbox label { display:inline-block; cursor:pointer;}
+.input-checkbox i { overflow:hidden; display:inline-block; width:24px; height:24px; margin-top:-2px; margin-left:5px; background:url('http://image.ssgdfs.com/images/shop/cn/member/img-checkbox2.png') no-repeat;}
+.input-checkbox .check i { background-position:-24px 0px;}
+.input-checkbox p { color:#888888; font-size:12px;}
+.input-checkbox input { position:absolute; top:0px; right:0px; opacity:0;}
+
+.input-radio { overflow:hidden; position:relative; text-align:center; font-size:15px; color:#333;}
+.input-radio label { display:inline-block; cursor:pointer;}
+.input-radio i { overflow:hidden; display:inline-block; width:30px; height:30px; margin-right:5px; background:url('http://image.ssgdfs.com/images/shop/cn/member/img-radio2.png') no-repeat;}
+.input-radio .check i { background-position:-30px 0px;}
+.input-radio p { color:#888888; font-size:15px;}
+.input-radio input { position:absolute; top:0px; right:0px; opacity:0;}
+
+
+/* 회원가입 추가 입력 */
+.join-choice { position:relative; width:820px; margin:50px auto 0px; font-size:16px;}
+.join-choice > div { position:relative; padding:15px 10px; box-sizing:border-box;}
+.join-choice h2 { margin-bottom:10px; font-size:20px; color:#333; line-height:1.5;}
+.join-choice .agree-passport { overflow:hidden; margin-bottom:15px;}
+.join-choice .agree-passport > * { float:left; width:50%;}
+.join-choice .agree-passport > .input-radio { float:right; width:180px;}
+.join-choice .text { position:relative; margin:15px 0;}
+.join-choice .input-box { position:relative;}
+.join-choice .input-box input { width:100%; border:0px; padding:5px; box-sizing:border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; font-size:17px; background:#fff; -webkit-appearance: none;}
+.join-choice .birthday-form { margin-right:430px;}
+.join-choice .gender-box { position:absolute; top:0px; right:0px;}
+.join-choice .gender-box label { display:inline-block; width:170px; height:32px; border:2px solid #e2e2e2; border-radius:3px; line-height:32px; text-align:center; font-size:20px; color:#e2e2e2;}
+.join-choice .gender-box label.check { border:2px solid #3aba1c; color:#333;}
+.join-choice .gender-box input[type=radio] { position:absolute; top:0px; left:0px; opacity:0;}
+.join-choice .phone-box { clear:both;}
+.join-choice .phone-box > div { overflow:hidden;}
+.join-choice .phone-box select { float:left; width:30%; border:0px; padding:2px;}
+.join-choice .phone-box input { float:right; width:65%;}
+
+.join-choice p.ico-warning2 { clear:both; padding-left:20px; margin-bottom:10px; text-align:left; font-size:10px; color:#999; background:url('http://image.ssgdfs.com/images/shop/cn/mobile_new/content/ico-warning2.png') no-repeat; background-size:14px;}
+.join-choice .btn-passport { position:absolute; top:10px; right:10px; padding:10px 25px; border-radius:30px; color:#fff; background:#c862d1;}
+/* .join-choice .popup-layout .popup-box .cont-box.popup-passport { overflow-y:scroll; height:400px;} */
+.join-choice .popup-passport h2 { margin-bottom:0px; font-size:19px; color:#333;}
+.join-choice .popup-passport h3 { position:static; margin-bottom:10px; line-height:1.5; font-size:19px; color:#d31919; border:0px; background:none;}
+.join-choice .popup-passport h4 { height:auto; font-weight:normal; font-size:19px; background:none;}
+.join-choice .popup-passport ul { margin-bottom:15px; color:#666;}
+.join-choice .popup-passport .img { margin-bottom:15px; text-align:center;}
+.join-choice .popup-passport .img img { max-width:100%;}
+
+.join-choice .input-datepicker { position:relative;}
+.join-choice .input-datepicker label { position:absolute; top:5px; right:0px;}
+
+.btn-overlap { position:absolute; top:5px; right:5px;}
+.btn-overlap i { margin-top:-3px; margin-right:5px;}
+
+/* 이메일 */
+ul.email-certify { padding:15px 10px; text-align:center;}
+ul.email-certify i { margin:10px auto 15px;}
+ul.email-certify h2 { font-size:17px;}
+ul.email-certify p { margin:10px 0 20px; color:#666; font-size:14px;}
+
+
+/* 회원 결과 */
+.join-result { position:relative; width:820px; margin:50px auto 100px; padding:50px 0px 20px; border:1px solid #ededed; font-size:16px; text-align:center; background:#f7f7f7;}
+.join-result h2 { margin-bottom:10px; font-size:20px; color:#333; line-height:1.5;}
+.join-result .result-top { width:580px; margin:0 auto;}
+.join-result > p { margin:15px 0px; color:#666;}
+.join-result .delay-time-box { padding:10px 20px; margin:30px; border-radius:30px; color:#333; background:#e3e3e3;}
+.join-result .email-certify { overflow:hidden; margin-left:-10px;}
+.join-result .email-certify li { float:left; width:50%;}
+.join-result .email-certify li + li div:before { content:''; display:block; position:absolute; top:50%; left:0px; width:1px; height:100px; margin-top:-50px; background:#dedede;}
+.join-result .email-certify li div { position:relative; height:173px; padding:20px 0 0 167px; box-sizing:border-box; text-align:left;}
+.join-result .email-certify li div i { position:absolute; top:30px; left:50px;}
+.join-result .email-certify li div p { margin-top:8px; color:#666; font-size:16px;}
+.join-result .email-certify li div a { color:#353535; font-size:22px; font-weight:bold;}
+.join-result .result-top .btn-group { margin:50px 0 40px;}
+
+.swiper-banner { overflow:hidden; position:relative; margin:10px 0px;}
+.swiper-banner .swiper-wrapper { overflow:hidden; position:relative; width:100%; height:230px;}
+.swiper-banner .swiper-slide { float:left; text-align:center;}
+.swiper-banner .swiper-slide img { width:100%}
+
+.swiper-banner .swiper-pagination3 {position:absolute; bottom:15px; left:0px; right:0px; text-align:center;}
+.swiper-banner .swiper-pagination3 a { display:inline-block; width:12px; height:12px; margin:0px 3px; border-radius:50%; background:#fff;}
+.swiper-banner .swiper-pagination3 .swiper-active-switch { background:#d61008;}
+
+/* 이메일 */
+div.email-certify { position:relative; width:940px; height:250px; margin:40px auto; border:1px solid #ededed; background:#f7f7f7;}
+div.email-certify i { position:absolute; top:50%; left:70px; margin-top:-88px;}
+div.email-certify h2 { margin-left:300px; margin-top:60px; font-size:22px; line-height:1.5;}
+div.email-certify p { margin:10px 50px 20px 300px; color:#666; font-size:18px;}
+
+#email-error {}
+#email-error .cont-box {}
+#email-error .cont-box h2 { margin:10px 0px 20px; font-size:14px; color:#333; font-weight: normal;}
+#email-error .cont-box p { font-size:12px; color:#888;}
+
+.agree-infomation { overflow:hidden; margin:10px 0px 15px; padding:10px 13px; font-size:14px; border-radius:8px; background:#dfdfdf;}
+.agree-infomation p { margin-bottom:3px;}
+.agree-infomation .input-radio { float:left; font-size:14px;}
+.agree-infomation > a { float:right; display:block; padding:2px 25px; border-radius:15px; color:#333; background:#b0b0b0;}
+
+/* 팝업 페이지 */
+.popup-layout { display:none; position:fixed; top:0px; right:0px; left:0px; bottom:0px; z-index:9999999;}
+.popup-layout .bg { display:block; width:100%; height:100%; opacity:0.5; background:#000000;}
+.popup-layout .popup-box { position:absolute; top:50%; left:50%; width:820px; margin-left:-410px; background:#fff;}
+.popup-layout .popup-box h1 { position:absolute; top:0px; left:0px; right:0px; height:44px; text-align:center; /* font-weight:normal; */ font-size:22px; line-height:44px; color:#fff; background:#2b2f34;}
+.popup-layout .popup-box .cont-box { overflow:hidden; padding:55px 15px 15px; box-sizing:border-box;}
+.popup-layout .popup-box .cont-box .email-check-box { padding:10px; margin-bottom:10px; border-radius:5px; font-size:16px; color:#666; background:#f0f0f0;}
+.popup-layout .popup-box .cont-box .email-check-box strong { color:#2b2f34;}
+.popup-layout .popup-box .cont-box .input-box { margin-bottom:20px; text-align:left;}
+.popup-layout .popup-box .cont-box .input-box input { background:#fff;}
+.popup-layout .popup-box .cont-box .text.scroll { overflow-y:scroll; height:450px;}
+.popup-layout .popup-box .cont-box .btn-group { margin-bottom:50px;}
+.popup-layout .popup-box .cont-box .info-table {margin-bottom:10px; }
+.popup-layout .popup-box .cont-box .info-table table { width:100%; box-sizing:border-box; border:1px solid #dfdfdf; border-bottom:0px solid #dfdfdf; border-right:0px solid #dfdfdf; border-top:2px solid #000;}
+.popup-layout .popup-box .cont-box .info-table th {border-right:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; font-weight:bold; text-align:center; background:#efefef;}
+.popup-layout .popup-box .cont-box .info-table td {padding:5px 3px; border-right:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; text-align:center; background:#fff;}
+.popup-layout .popup-box .cont-box .info-table td.left {text-align:left;}
+.popup-layout .popup-box .cont-box .info-table p { margin-top:5px;}
+.popup-layout .popup-box > a.btn-close { overflow:hidden; display:block; position:absolute; top:5px; right:5px; width:30px; height:30px; text-indent:-999px; background:#2b2f34 url('http://image.ssgdfs.com/images/shop/cn/member/btn-pop-close.gif') no-repeat center center; background-size:20px;}

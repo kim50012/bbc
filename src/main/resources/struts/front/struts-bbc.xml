@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+ 	<package name="front/bbc/mbr" extends="portal-default" namespace="/front/bbc/mbr">
+		<action name="*" method="{1}" class="bbcAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+ 		    <result name="timeout">/front/error/timeout.jsp</result>
+ 		    <result name="page1">/front/bbc/mbr/page1.jsp</result>
+ 		    <result name="page2">/front/bbc/mbr/page2.jsp</result>
+ 		    <result name="page3">/front/bbc/mbr/page3.jsp</result>
+ 		    <result name="page4">/front/bbc/mbr/page4.jsp</result>
+ 		    <result name="page5">/front/bbc/mbr/page5.jsp</result>
+ 		    <result name="page6">/front/bbc/mbr/page6.jsp</result>
+ 		    <result name="page7">/front/bbc/mbr/page7.jsp</result>
+ 		    <result name="page8">/front/bbc/mbr/page8.jsp</result>
+ 		    <result name="page9">/front/bbc/mbr/page9.jsp</result>
+		    <result name="{1}">/front/bbc/mbr/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/bbc/clb" extends="portal-default" namespace="/front/bbc/clb">
+		<action name="*" method="{1}" class="bbcAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+ 		    <result name="page1">/front/bbc/clb/page1.jsp</result>
+ 		    <result name="page2">/front/bbc/clb/page2.jsp</result>
+ 		    <result name="page3">/front/bbc/clb/page3.jsp</result>
+ 		    <result name="page4">/front/bbc/clb/page4.jsp</result>
+ 		    <result name="page5">/front/bbc/clb/page5.jsp</result>
+ 		    <result name="page6">/front/bbc/clb/page6.jsp</result>
+ 		    <result name="page7">/front/bbc/clb/page7.jsp</result>
+ 		    <result name="page8">/front/bbc/clb/page8.jsp</result>
+ 		    <result name="page9">/front/bbc/clb/page9.jsp</result>
+ 		    <result name="page10">/front/bbc/clb/page10.jsp</result>
+ 		    <result name="page11">/front/bbc/clb/page11.jsp</result>
+ 		    <result name="page12">/front/bbc/clb/page12.jsp</result>
+ 		    <result name="page13">/front/bbc/clb/page13.jsp</result>
+ 		    <result name="page14">/front/bbc/clb/page14.jsp</result>
+ 		    <result name="page15">/front/bbc/clb/page15.jsp</result>
+ 		    <result name="page16">/front/bbc/clb/page16.jsp</result>
+ 		    <result name="page17">/front/bbc/clb/page17.jsp</result>
+ 		    <result name="page18">/front/bbc/clb/page18.jsp</result>
+ 		    <result name="page19">/front/bbc/clb/page19.jsp</result>
+		    <result name="{1}">/front/bbc/clb/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/bbc/exc" extends="portal-default" namespace="/front/bbc/exc">
+		<action name="*" method="{1}" class="bbcAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="excGame">/front/bbc/exc/excGame.jsp</result>
+ 		    <result name="page1">/front/bbc/exc/page1.jsp</result>
+ 		    <result name="page2">/front/bbc/exc/page2.jsp</result>
+ 		    <result name="page3">/front/bbc/exc/page3.jsp</result>
+ 		    <result name="page4">/front/bbc/exc/page4.jsp</result>
+ 		    <result name="page5">/front/bbc/exc/page5.jsp</result>
+ 		    <result name="page6">/front/bbc/exc/page6.jsp</result>
+ 		    <result name="page7">/front/bbc/exc/page7.jsp</result>
+ 		    <result name="page8">/front/bbc/exc/page8.jsp</result>
+ 		    <result name="page9">/front/bbc/exc/page9.jsp</result>
+		    <result name="{1}">/front/bbc/exc/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/bbc/itd" extends="portal-default" namespace="/front/bbc/itd">
+		<action name="*" method="{1}" class="bbcAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+ 		    <result name="page1">/front/bbc/itd/page1.jsp</result>
+ 		    <result name="page2">/front/bbc/itd/page2.jsp</result>
+ 		    <result name="page3">/front/bbc/itd/page3.jsp</result>
+ 		    <result name="page4">/front/bbc/itd/page4.jsp</result>
+ 		    <result name="page5">/front/bbc/itd/page5.jsp</result>
+ 		    <result name="page6">/front/bbc/itd/page6.jsp</result>
+ 		    <result name="page7">/front/bbc/itd/page7.jsp</result>
+ 		    <result name="page8">/front/bbc/itd/page8.jsp</result>
+ 		    <result name="page9">/front/bbc/itd/page9.jsp</result>
+		    <result name="{1}">/front/bbc/itd/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/bbc/badMatch" extends="portal-default" namespace="/front/bbc/badMatch">
+		<action name="*" method="{1}" class="badMatchAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+ 		    <result name="timeout">/front/error/timeout.jsp</result>
+		    <result name="home">/front/bbc/badMatch/home.jsp</result>
+ 		    <result name="page1">/front/bbc/badMatch/page1.jsp</result>
+ 		    <result name="page2">/front/bbc/badMatch/page2.jsp</result>
+ 		    <result name="page3">/front/bbc/badMatch/page3.jsp</result>
+ 		    <result name="page4">/front/bbc/badMatch/page4.jsp</result>
+ 		    <result name="page5">/front/bbc/badMatch/page5.jsp</result>
+ 		    <result name="page6">/front/bbc/badMatch/page6.jsp</result>
+ 		    <result name="page7">/front/bbc/badMatch/page7.jsp</result>
+ 		    <result name="page8">/front/bbc/badMatch/page8.jsp</result>
+ 		    <result name="page9">/front/bbc/badMatch/page9.jsp</result>
+ 		    <result name="page10">/front/bbc/badMatch/page10.jsp</result>
+ 		    <result name="page11">/front/bbc/badMatch/page11.jsp</result>
+ 		    <result name="page12">/front/bbc/badMatch/page12.jsp</result>
+ 		    <result name="page13">/front/bbc/badMatch/page13.jsp</result>
+ 		    <result name="page14">/front/bbc/badMatch/page14.jsp</result>
+ 		    <result name="page15">/front/bbc/badMatch/page15.jsp</result>
+ 		    <result name="page16">/front/bbc/badMatch/page16.jsp</result>
+ 		    <result name="page17">/front/bbc/badMatch/page17.jsp</result>
+ 		    <result name="page18">/front/bbc/badMatch/page18.jsp</result>
+ 		    <result name="page19">/front/bbc/badMatch/page19.jsp</result>
+ 		    <result name="page20">/front/bbc/badMatch/page20.jsp</result>
+ 		    <result name="page21">/front/bbc/badMatch/page21.jsp</result>
+ 		    <result name="page22">/front/bbc/badMatch/page22.jsp</result>
+ 		    <result name="page23">/front/bbc/badMatch/page23.jsp</result>
+ 		    <result name="page24">/front/bbc/badMatch/page24.jsp</result>
+ 		    <result name="page25">/front/bbc/badMatch/page25.jsp</result>
+ 		    <result name="page26">/front/bbc/badMatch/page26.jsp</result>
+ 		    <result name="page27">/front/bbc/badMatch/page27.jsp</result>
+ 		    <result name="page28">/front/bbc/badMatch/page28.jsp</result>
+ 		    <result name="page29">/front/bbc/badMatch/page29.jsp</result>
+		    <result name="{1}">/front/bbc/badMatch/{1}.jsp</result>
+		</action>
+	</package>
+	
+</struts>

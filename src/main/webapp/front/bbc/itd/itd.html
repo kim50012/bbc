@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.waremec.framework.utilities.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="label" value="<%=LabelUtil.getLabelBbcMap(application) %>" />
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>${label.系统介绍视频}</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/Share.css"/>
+		<!--header-->
+		<link rel="stylesheet" type="text/css" href="../css/header.css"/>
+		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/footer.js" type="text/javascript" charset="utf-8"></script>
+				<style type="text/css">
+				.cell-1{
+					width:1rem;
+					text-align:left;
+				}
+				.cell-2{
+					width:1rem; 
+					text-align:center;
+					
+				}
+				.cell-3{
+					width:1rem;
+					text-align:right; 
+				}
+				
+		</style>
+	</head>
+	<body>
+		<div class="">
+			<div class="module">
+				<div class="list68">
+					<p class="title-icon">${label.系统介绍视频}</p>
+				</div>
+			</div>
+			<div class="" style="width:100%;height:3.4rem;" id="divVideo">
+				<iframe id="ifrVideo" frameborder="0" width="100%" height="atuo" 
+				  src="" 
+				  allowfullscreen> 
+				</iframe>
+				<!--
+				<video width=100%; style="width:100%;height:3.4rem;"  controls=controls;>
+					<source src="../img/pic.ogg" type="video/ogg">
+					<source src="../img/pic.mp4" type="video/mp4">
+				</video>
+				-->
+			</div>
+			<div class="" style="background:#fff;padding-bottom:0.2rem;">
+				<div class="buttons" style="background:#fff;text-align:left;margin-left:0.2rem;">
+					<button class="btn-big btn-text btn-h70" style="text-align:left;" onclick="fn_Video(1);">${label.加入方法介绍}</button>
+					<button class="btn-big btn-text btn-h70" onclick="fn_Video(2);">${label.俱乐部入驻介绍}</button>
+					<button class="btn-big btn-text btn-h70" onclick="fn_Video(3);">${label.活动介绍}</button>
+					<button class="btn-big btn-text btn-h70" onclick="fn_Video(4);">${label.排名系统介绍}</button>
+					<button class="btn-big btn-text btn-h70" onclick="fn_Video(5);">${label.Best伙伴介绍}</button>
+				</div>
+			</div>
+			<div class="modules">
+				<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
+					<div class="flex">
+							<p class="flex1 title-icon">${label.系统升级明细}</p>
+					</div>
+				</div>
+				<div class="switcharea-apply">
+					<div class="module" style="border-top:none;background:#fff;font-size:0.2rem;color:#888;">
+						<ul class="flex list68 ul-list word">
+							<li class="flex1 cell-1 cell">2017/01/02</li>
+							<li class="flex1 cell-2 cell"><div class="newtext float">最新功能升级体验</div></li>
+							<li class="flex1 cell-3 cell">6.0.3</li>
+						</ul>
+						<ul class="flex list78 ul-list word">
+							<li class="flex1 cell-1 cell">2017/01/02</li>
+							<li class="flex1 cell-2 cell"><div class="newtext float">最新功能升级体验</div></li>
+							<li class="flex1 cell-3 cell">6.0.2</li>
+						</ul>
+						<ul class="flex list78 ul-list word">
+							<li class="flex1 cell-1 cell">2017/01/02</li>
+							<li class="flex1 cell-2 cell"><div class="newtext float">最新功能升级体验</div></li>
+							<li class="flex1 cell-3 cell">6.0.1</li>
+						</ul>
+						<ul class="flex list78 ul-list word">
+							<li class="flex1 cell-1 cell">2017/01/02</li>
+							<li class="flex1 cell-2 cell"><div class="newtext float">最新功能升级体验</div></li>
+							<li class="flex1 cell-3 cell">6.0.0</li>
+						</ul>
+						<ul class="flex list78 ul-list word" style="border:none;padding-bottom:2rem;">
+							<li class="flex1 cell-1 cell">2017/01/02</li>
+							<li class="flex1 cell-2 cell"><div class="newtext float">最新功能升级体验</div></li>
+							<li class="flex1 cell-3 cell">5.0.0</li>
+						</ul>
+				</div>
+			</div>		
+
+
+			<!-- START bottom menu -->
+			<c:set var="menuTag" value="2" />
+			<%@ include file="/front/bbc/exc/menu.jsp"%> 
+			<!-- END bottom menu -->
+
+		</div>
+		<script type="text/javascript">
+			function fn_Video(videoType) {
+
+				var videoUrl = "";
+
+				if (videoType == 1) {
+					videoUrl = "http://v.qq.com/iframe/player.html?vid=p0158mj97hb&tiny=0&auto=0";
+				}
+				else if (videoType == 2) {
+					videoUrl = "http://v.qq.com/iframe/player.html?vid=p0158mj97hb&tiny=0&auto=0";
+				}
+				else if (videoType == 3) {
+					videoUrl = "http://v.qq.com/iframe/player.html?vid=p0158mj97hb&tiny=0&auto=0";
+				}
+				else if (videoType == 4) {
+					videoUrl = "http://v.qq.com/iframe/player.html?vid=p0158mj97hb&tiny=0&auto=0";
+				}
+				else if (videoType == 5) {
+					videoUrl = "http://v.qq.com/iframe/player.html?vid=p0158mj97hb&tiny=0&auto=0";
+				}
+				$("#ifrVideo").src = videoUrl;
+			}
+		</script>
+	</body>
+</html>

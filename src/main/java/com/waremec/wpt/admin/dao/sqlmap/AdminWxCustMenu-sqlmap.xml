@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AdminWxCustMenu">
+
+	<!-- 微信自定义菜单 -->
+	<typeAlias alias="adminWxCustMenu" type="com.waremec.wpt.admin.domain.AdminWxCustMenu"/>
+	
+	
+	<!-- =========================== -->
+	
+	<!-- 微信自定义菜单-主页面查询 -->
+	<select id="selectMenuById" parameterClass="adminWxCustMenu" resultClass="adminWxCustMenu">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_SELECT_ONE]
+		 	 @SHOP_ID = #SHOP_ID_IN#
+		 	,@MENU_ID = #MENU_ID_IN#
+		]]>
+	</select>
+	
+	<!-- 微信自定义菜单-添加菜单  -->
+	<select id="insertMenu" parameterClass="adminWxCustMenu" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_ADD] 
+				@SHOP_ID		= #SHOP_ID_IN#
+				,@MENU_ID		= #MENU_ID_IN#
+				,@MENU_NM		= #MENU_NM_IN#
+				,@USER_ID		= #USER_ID_IN#
+		]]>
+	</select>
+	
+	<!-- 微信自定义菜单-菜单重命名 -->
+	<procedure id="updateMenuName" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_MODIFY] 
+		 	@SHOP_ID 		= #SHOP_ID_IN#
+		 	,@MENU_ID 		= #MENU_ID_IN#
+		 	,@MENU_NM 		= #MENU_NM_IN#
+		 	,@OPTION_TYPE 	= 'NAME'
+		 	,@USER_ID 		= #USER_ID_IN#
+		]]>
+	</procedure>
+	
+	
+	<!-- 微信自定义菜单-删除 -->
+	<procedure id="delete" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_DELETE_NEW] 
+				 	@SHOP_ID 		= #SHOP_ID_IN#
+				 	,@MENU_ID 		= #MENU_ID_IN#
+				 	,@USER_ID 		= #USER_ID_IN#
+		]]>
+	</procedure>
+	
+	<!-- 微信自定义菜单-排序 -->
+	<procedure id="menuSort" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_SORT_NEW] 
+			 	@SHOP_ID 		= #SHOP_ID_IN#
+			 	,@MENU_ID 		= #MENU_ID_IN#
+			 	,@OPTION 		= #MENU_OPTION_IN#
+			 	,@USER_ID		= #USER_ID_IN#
+		]]>
+	</procedure>
+	<!-- =========================== -->
+	
+	
+	<!-- 微信自定义菜单-主页面查询 -->
+	<select id="select" parameterClass="adminWxCustMenu" resultClass="adminWxCustMenu">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_SELECT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@MENU_PARENT_ID = #MENU_PARENT_ID_IN:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</select>
+	
+	
+	
+	<!-- 微信自定义菜单-添加菜单-验证 -->
+	<select id="saveCheck" parameterClass="adminWxCustMenu" resultClass="adminWxCustMenu">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_CHECK]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@SEARCH_TYPE = #SEARCH_TYPE_IN:INT#
+		 	,@MENU_ID = #MENU_ID_IN:INT#
+		 	,@MENU_NM = #MENU_NM_IN:NVARCHAR#
+		]]>
+	</select>
+
+	<!-- 微信自定义菜单-添加菜单-保存 -->
+	<procedure id="save" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_INSERT] 
+		 	@SHOP_ID = #SHOP_ID_IN:INT#,
+		 	@MENU_ID = #MENU_ID_IN:INT#,
+		 	@MENU_NM = #MENU_NM_IN:NVARCHAR#,
+		 	@MENU_ID2 = #MENU_ID2_IN:INT#,
+		 	@MENU_NM2 = #MENU_NM2_IN:NVARCHAR#,
+		 	@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+
+	<!-- 微信自定义菜单-修改 -->
+	<procedure id="modify" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_MODIFY] 
+		 	@SHOP_ID = #SHOP_ID_IN:INT#,
+		 	@MENU_ID = #MENU_ID_IN:INT#,
+		 	@MENU_NM = #MENU_NM_IN:NVARCHAR#,
+		 	@MENU_OP_TYPE = #MENU_OP_TYPE_IN:VARCHAR#,
+		 	@MENU_OP_ID = #MENU_OP_ID_IN:INT#,
+		 	@MENU_OP_TITLE = #MENU_OP_TITLE_IN:NVARCHAR#,
+		 	@MENU_OP_COM = #MENU_OP_COM_IN:NVARCHAR#,
+		 	@OPTION_TYPE = #OPTION_TYPE_IN:VARCHAR#,
+		 	@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+
+	<!-- 微信自定义菜单-发布 -->
+	<procedure id="publish" parameterClass="adminWxCustMenu" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MENU_PUBLISH_INSERT] 
+		 	@SHOP_ID = #SHOP_ID_IN:INT#,
+		 	@MENU_ID = #MENU_ID_IN:INT#,
+		 	@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+</sqlMap>

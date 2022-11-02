@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NewsFeedNongshim">
+	
+	<select id="bbsList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_CONTENT_LIST_SELECT]
+	    	 @SHOP_ID			= #SHOP_ID#
+			,@USER_ID   		= #USER_ID#
+			,@BBS_ID		  	= #BBS_ID#   
+			,@BBS_STS			= #BBS_STS#  	
+			,@START_DT			= #START_DT#  	
+			,@END_DT		  	= #END_DT#   
+			,@TITLE		  		= #TITLE#  
+			,@PAGE_CURR			= #PAGE_CURR#   	
+			,@PAGE_UINT	  		= #PAGE_UINT#   
+			,@ORDERBY        	= #ORDERBY#
+			,@PARENT_ID			= #PARENT_ID#
+			,@BBS_PARENT_ID		= #BBS_PARENT_ID#
+			,@BBS_TYPE			= #BBS_TYPE#
+	    ]]>
+	</select>
+	
+	<select id="bbsContentInsert" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_CONTENT_INSERT]
+			      @JOB_TYPE				=#JOB_TYPE:CHAR#
+				, @USER_ID				=#USER_ID:NVARCHAR#
+				, @SHOP_ID				=#SHOP_ID:INT#	
+				, @BBS_PARENT_ID		=#BBS_PARENT_ID:INT#								
+				, @BBS_TYPE				=#BBS_TYPE:INT#							
+				, @BBS_ID				=#BBS_ID:INT#													
+				, @TITLE				=#TITLE:NVARCHAR#
+				, @BODY					=#BODY:NVARCHAR#
+				, @IMG_ID1				=#IMG_ID1:INT#					
+				, @IMG_ID2				=#IMG_ID2:INT#
+				, @IMG_ID3				=#IMG_ID3:INT#
+				, @IMG_ID4				=#IMG_ID4:INT#
+				, @IMG_ID5				=#IMG_ID5:INT#
+				, @CREATE_ID			=#CREATE_ID:INT# 				
+				, @CREATE_DT			=#CREATE_DT:SMALLDATETIME#				
+				, @BBS_STS				=#BBS_STS:INT#	
+	    ]]>
+	</select>
+	
+	<select id="bbsLikeShareInsert" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_LIKE_SHARE_INSERT] 
+	    	@SHOP_ID			= #SHOP_ID#
+			,@BBS_TYPE			= #BBS_TYPE#
+			,@BBS_ID			= #BBS_ID#
+			,@BBS_PARENT_ID		= #BBS_PARENT_ID#
+			,@CUST_SYS_ID		= #CUST_SYS_ID#
+			,@FLG				= #FLG#
+	    ]]>
+	</select>
+	
+	<select id="bbsLikeShareSelect" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_LIKE_SHARE_SELECT] 
+	    	@SHOP_ID			= #SHOP_ID#
+			,@BBS_TYPE			= #BBS_TYPE#
+			,@BBS_ID			= #BBS_ID#
+			,@BBS_PARENT_ID		= #BBS_PARENT_ID#
+			,@CUST_SYS_ID		= #CUST_SYS_ID#
+	    ]]>
+	</select>
+	
+	<select id="bbsLikeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_LIKE_LIST] 
+	    	@SHOP_ID			= #SHOP_ID#
+			,@BBS_TYPE			= #BBS_TYPE#
+			,@BBS_ID			= #BBS_ID#
+			,@BBS_PARENT_ID		= #BBS_PARENT_ID#
+			,@CUST_SYS_ID		= #CUST_SYS_ID#
+	    ]]>
+	</select>
+	
+</sqlMap>

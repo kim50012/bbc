@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+/* 
+@font-face{font-family:"vista"; src:url("../font/vista.eot")}
+@font-face{font-family:"vista"; src:url("../font/vista.woff")} 
+*/ 
+
+/* base css */
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	width: 100%;
+}
+body {
+	width: 100%;
+	font-size: 13px;
+	font-family: vista, Tahoma, Verdana, Simsun, sans-serif;
+	color: #999;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 1px;
+	font-size: 1em;
+}
+img,
+input.type-image {
+	border: none;
+}
+input[type=radio],
+input[type=checkbox] {
+	border: 0 !important;
+}
+
+fieldset, legend {
+	border: 0;
+}
+
+form, h1, h2, h3, h4, h5, h6, p, div, th, td, table, select, address {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 2em;
+	font-size:17px; color:#fff; font-weight:bold;
+}
+h2 {
+	font-size: 1.6em;
+	font-size:13px; color:#333; font-weight:bold; line-height:13px;
+}
+h3 {
+	font-size: 1.2em;
+}
+h4,
+h5,
+h6 {
+	font-size: 1em;
+}
+
+hr {
+	display: none;
+}
+
+ul, li, ol, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+select {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	background: #fff;
+	font-family: 돋움 , Dotum,  sans-serif;
+}
+textarea {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	border: 1px solid #b4b6b9;
+	background: #fff;
+	font-family: 돋움 , Dotum,  sans-serif;
+	line-height: 1.4em;
+	color: #5a5a5a;
+}
+input {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	line-height: 1.2em;
+	color: #5a5a5a;
+	font-family: 돋움 , Dotum,  sans-serif;
+}
+
+input.searchBox {font-weight:bold; font-family: vista, Tahoma, Verdana, Simsun, sans-serif !important; font-size: 14px !important;}
+ 
+input.checkbox {
+	padding: 0;
+	border: none;
+}
+a:link, a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration:none;
+}
+iframe {
+	border: 0;
+}
+button {
+	cursor: pointer;
+}
+#skip-navigation {
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+legend,
+caption {
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+.number {
+	font-family: tahoma;	
+}
+.nation-currency,
+.rate,
+.discount {
+	color: #d62b21;
+	font-family: Tahoma, Verdana, Simsun, sans-serif;
+}
+.rating {
+	color: #444;
+}
+ 
+.pager {
+	clear: both;
+	position:relative;
+	width: 100%;
+	height:30px;
+}
+.pager {text-align:center;}
+.pager a img {
+	width:21px;
+	height:19px;
+	margin:0 -4px;
+	vertical-align:middle;
+}
+.pager strong {
+	margin: 0 5px 0 0;
+	display:inline-block;
+	width:20px;
+	height:16px; 
+	font-size:11px;
+}
+.pager a {
+	margin: 0 5px 0 0;
+	display:inline-block; padding-top:4px;
+	width:19px;
+	height:15px;
+	font-size:11px;
+}
+.pager a.selected {margin: 0 5px 0 0; display:inline-block; padding-top:4px; width:19px; height:15px; font-size:11px;}
+.pager a.selected strong {margin: 0; font-size:11px;}
+.pager a.first , .pager a.prev {margin-right:0; width:19px; height:19px; padding:0; vertical-align:top;}
+.pager a.last, .pager a.next {margin-right:0; width:19px; height:19px; padding:0; vertical-align:top;}
+.pager a.prev {margin-right:10px;}
+.pager a.next {margin-left:10px;}
+
+input[type=text] {height:22px; border:1px solid #dadada; border-right:1px solid #bababa; border-bottom:1px solid #bababa;}
+
+/*hot*/
+.hot_keyword {width:320px; overflow:hidden;}
+.hot_keyword img {vertical-align:middle; padding-top:3px;}
+.hot_keyword dt {float:left; margin-right:13px;}
+.hot_keyword dd {float:left; margin-right:12px; font-size:13px;}
+.hot_keyword dd a {color:#916c52;}

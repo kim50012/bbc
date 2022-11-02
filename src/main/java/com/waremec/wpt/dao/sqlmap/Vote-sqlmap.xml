@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Vote">
+	
+    <select id="selectVoteList" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [VOTE_LIST_SELECT]
+			@SHOP_ID = #shopId:INT#
+		 	,@VOTE_TYPE = #voteType:VARCHAR#
+		 	,@PAGE_CURR = #pageCurr:INT#
+		 	,@PAGE_UINT = #pageUint:INT#
+		 	,@CUST_SYS_ID=#custSysId#
+		]]>
+    </select>
+    
+     <select id="voteSelect" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [VOTE_PROBLEMS_CUST_INSERT]
+			 @VOTE_ID    =#voteId#
+			,@Q_ID		 =#questId#
+			,@OP_ID		 =#opId#
+		 	,@CUST_SYS_ID=#custSysId#
+		]]>
+    </select>
+    <select id="selectVoteResult" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [VOTE_PROBLEMS_CUST_SELECT]
+			@VOTE_ID    =#voteId#
+		 	,@CUST_SYS_ID=#custSysId#
+		]]>
+    </select>
+    
+</sqlMap>

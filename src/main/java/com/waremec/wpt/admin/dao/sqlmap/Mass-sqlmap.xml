@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Mass">
+
+	<select id="saveMassMessage" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MESSAGE_INSERT]
+		 	@JOB_TYPE			=	#jobType#
+		 	,@MESSAGE_ID		=	#messageId#
+		 	,@SHOP_ID			=	#shopId#
+			,@MSG_TITLE			=	#msgTitle#
+			,@SEND_FILE_TYPE	=	#sendFileType#
+			,@MATERIAL_FILE_ID	=	#materialFileId#
+			,@COVER_PAGE_ID		=	#coverPageId#
+			,@SHOP_GOODS_URL	=	#shopGoodsUrl#
+			,@SEND_MSG_BODY		=	#sendMsgBody#
+			,@SEND_TYPE			=	#sendType#
+			,@SEND_TIME			=	#sendTime#
+			,@CREATED_ID		=	#createdId#
+			,@MODIFIED_ID		=	#modifiedId#
+			,@CREATED_DT		=	#createdDate#
+			,@MODIFIED_DT		=	#modifiedDate#
+			,@CUST_SYS_ID		=	#custSysId#
+			,@GRADE_ID			=	#gradeId#
+							
+		]]>
+	</select>
+	<select id="selectMassToUserList" parameterClass="java.lang.Integer" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MASS_USER_SELECT]
+		 	 @MESSAGE_ID		=	#value#
+		]]>
+	</select>
+	<select id="saveSendResult" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_NEWS_SEND_UPDATE]
+			 	 @SHOP_ID 			= #SHOP_ID#
+				, @MSG_ID 			= #MSG_ID#
+				, @WX_MSG_ID 		= #WX_MSG_ID#
+				, @WX_MSG_DATA_ID 	= #WX_MSG_DATA_ID#
+				, @SEND_STS			= #SEND_STS#
+				, @WX_MSG_ERR 		= #WX_MSG_ERR#
+		]]>
+	</select>
+	<select id="SHOP_WX_NEWS_CUST_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_NEWS_CUST_SELECT]
+		 	 @SHOP_ID	=	#SHOP_ID#
+		 	 ,@MSG_ID		=	#MSG_ID#
+		]]>
+	</select>
+	<select id="saveSendTarget" parameterClass="java.util.HashMap" >
+	    <![CDATA[
+		 	 EXEC [SHOP_WX_NEWS_CUST_INSERT]
+		 		@SHOP_ID 			= #SHOP_ID#
+				, @MSG_ID 			= #MSG_ID#
+				, @SEND_TYPE 		= #SEND_TYPE#
+				, @GRADE_ID			= #GRADE_ID#
+				, @SPL_CUST_SYS_ID  = #SPL_CUST_SYS_ID# 
+		]]>
+	</select>
+</sqlMap>

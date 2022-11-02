@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SendMsgAll">
+	<select id="selectCustMsg" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_SELECT]
+		 	  @SHOP_ID = #shopId:INT#
+		]]>
+	</select>
+	<select id="selectCustList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_SELECT]
+		 	  @SHOP_ID = #shopId:INT#
+		 	 ,@NICK_NAME = #nickName#
+			 ,@PAGE_CURR = #pageCurr#
+			 ,@PAGE_UINT = #pageUnit#
+			 ,@CUST_SYS_ID = #custSysId#
+		]]>
+	</select>
+	<select id="selectCustGrade" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			SELECT 
+					SHOP_ID
+					,GRADE_ID
+					,GRADE_NM
+					,BASE_QTY
+					,BASE_PRICE
+					,IS_USE
+			FROM	GRADE_MST
+			WHERE	SHOP_ID=#shopId:INT#
+			AND		IS_USE=1	    
+	    ]]>
+	</select>
+	<select id="saveSendMsgAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_WX_MESSAGE_INSERT]
+		 	@JOB_TYPE=#jobType:CHAR#,
+		 	@MESSAGE_ID=#messageId:INT#,
+		 	@SHOP_ID=#shopId:INT#,
+			@MSG_TITLE=#msgTitle:NVARCHAR#,
+			@SEND_FILE_TYPE=#sendFileType:INT#,
+			@MATERIAL_FILE_ID=#materialFileId:INT#,
+			@COVER_PAGE_ID=#coverPageId:INT#,
+			@SHOP_GOODS_URL=#shopGoodsUrl:NVARCHAR#,
+			@SEND_MSG_BODY=#sendMsgBody:NVARCHAR#,
+			@SEND_TYPE=#sendType:INT#,
+			@SEND_TIME=#sendTime:SMALLDATETIME#,
+			@CREATED_ID=#createdId:NVARCHAR#,
+			@MODIFIED_ID=#modifiedId:NVARCHAR#,
+			@CREATED_DT=#createdDate:SMALLDATETIME#,
+			@MODIFIED_DT=#modifiedDate:SMALLDATETIME#,
+			@CUST_SYS_ID=#custSysId:NVARCHAR#,
+			@GRADE_ID=#gradeId:INT#
+							
+		]]>
+	</select>
+</sqlMap>

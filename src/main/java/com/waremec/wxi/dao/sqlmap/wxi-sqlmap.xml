@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="wxi">
+ 	<typeAlias alias="gchUserDomain" type="com.waremec.weixin.domain.user.UserReturn" />
+	<typeAlias alias="gchDkfAcountDomain" type="com.waremec.wxi.domain.DKFAcountDomain"/>
+	<typeAlias alias="gchArsArticle" type="com.waremec.weixin.domain.msg.Article"/>
+ 	<typeAlias alias="dkfAcountDomain" type="com.waremec.wxi.domain.DKFAcountDomain" />
+	<typeAlias alias="groupDomain" type="com.waremec.wxi.domain.GroupDomain"/>
+	<resultMap class="gchDkfAcountDomain" id="kfListByKeyword">
+ 	    <result column="K100_DKF_ACCOUNT" property="account" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<resultMap class="gchDkfAcountDomain" id="akfAccount">
+ 	    <result column="K100_DKF_ACCOUNT" property="account" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<resultMap class="gchArsArticle" id="arsArticleDomain">			   
+ 	    <result column="ARS_TITLE" property="title" jdbcType="VARCHAR" />
+ 	    <result column="ARS_IMAGE" property="picurl" jdbcType="VARCHAR" />
+ 	    <result column="ARS_CONTENT" property="description" jdbcType="VARCHAR" />
+ 	    <result column="ARS_URL" property="url" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap class="gchUserDomain" id="userInfoList">
+  		<result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="VARCHAR" />
+		<result column="OPENID" property="openid" jdbcType="VARCHAR" />
+		<result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="LANGUAGE" property="language" jdbcType="VARCHAR" />
+		<result column="HEAD_IMG_URL" property="headimgurl" jdbcType="VARCHAR" />
+		<result column="SUBSCRIBE_TIME" property="subscribe_time" jdbcType="VARCHAR" />
+ 	</resultMap>
+  
+ 	<resultMap class="gchUserDomain" id="gchUserInfoDomain">
+ 		<result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+ 		<result column="OPENID" property="openid" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="VARCHAR" />
+		<result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="LANGUAGE" property="language" jdbcType="VARCHAR" />
+		<result column="HEADIMGURL" property="headimgurl" jdbcType="VARCHAR" />
+		<result column="SUBSCRIBE_TIME" property="subscribe_Time" jdbcType="VARCHAR" />
+ 		<result column="SUBSCRIBE" property="subscribe" jdbcType="VARCHAR" />
+  	</resultMap>
+  	<resultMap class="groupDomain" id="resultKeywordGroupList">
+ 	    <result column="KEYWORD_GROUP_NAME" property="groupName" jdbcType="VARCHAR" />
+ 	    <result column="KEYWORD_GROUP_CODE" property="groupCode" jdbcType="VARCHAR" />
+ 	    <result column="KEYWORD_GROUP_STATUS" property="groupStatus" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap class="dkfAcountDomain" id="resultKeywordList">
+ 	    <result column="KEYWORD" property="keyword" jdbcType="VARCHAR" />
+ 	    <result column="KEYWORDGROUP_CODE" property="groupCode" jdbcType="VARCHAR" />
+ 	    <result column="KEYWORD_TYPE" property="keywordType" jdbcType="VARCHAR" />
+	</resultMap>
+	 
+	
+	<select id="dkfAccountByDKFKeyword" parameterClass="java.util.HashMap" resultMap="akfAccount">
+ 	    <![CDATA[
+ 			SELECT /* wxi.dkfAccountByDKFKeyword */ DISTINCT DKF_ACCOUNT AS K100_DKF_ACCOUNT
+			FROM [dbo].DKF_KEYWORD_INFO A WITH(NOLOCK)
+				INNER JOIN DKF_ACCOUNT_INFO B WITH(NOLOCK)
+					 ON A.DKF_ACCOUNT = B.ACCOUNT
+					 AND A.SHOP_ID = B.SHOP_ID
+			WHERE  #content# LIKE '%' + A.[KEYWORD] + '%' 
+			AND ISNULL(A.DKF_ACCOUNT,N'') != N''
+			AND A.KEYWORD_STATUS = 1
+			AND A.KEYWORD_TYPE = N'DKF'
+			AND A.SHOP_ID = #shopId#
+       	]]>
+ 	</select> <!--1  -->
+ 	
+ 	<select id="dkfAccountByMaster" resultMap="akfAccount" parameterClass="java.util.HashMap">
+ 	    <![CDATA[
+ 			SELECT /* wxi.dkfAccountByMaster */
+			ACCOUNT AS K100_DKF_ACCOUNT 
+			FROM
+			DKF_ACCOUNT_INFO A WITH(NOLOCK)
+			WHERE A.[STATUS] = 1
+			AND IS_MASTER = 1
+			AND A.SHOP_ID = #shopId#
+			AND A.USERGROUP_CODE = (SELECT TOP 1  USERGROUP_CODE FROM DKF_ACCOUNT_INFO WHERE ACCOUNT = #account# AND SHOP_ID =#shopId# AND STATUS = 1)	
+       	]]>
+ 	</select><!--2  -->
+ 	
+ 	<select id="dkfAccountByARSKeyword" parameterClass="java.util.HashMap" resultMap="arsArticleDomain">
+ 	    <![CDATA[
+ 			SELECT /* wxi.dkfAccountByARSKeyword */ ARS_TITLE,
+				   ARS_IMAGE,
+				   ARS_CONTENT,
+				   ARS_URL
+			FROM [dbo].DKF_KEYWORD_INFO A WITH(NOLOCK)
+			WHERE A.[KEYWORD] = #content# 
+			AND ISNULL(A.DKF_ACCOUNT,N'') = N''
+			AND A.KEYWORD_STATUS = 1
+			AND A.KEYWORD_TYPE = N'ARS'
+			AND A.SHOP_ID = #shopId#
+       	]]>
+ 	</select>
+
+ <!-- 	<select id="IFInfoByShopId" parameterClass="java.util.HashMap" resultMap="appIFInfoDomain">
+ 		SELECT /* wxi.IFInfoByShopId */ HZM_IF_ID,
+			HZM_IF_PW,
+			HZM_IF_KEY,
+			A.SHOP_ID,
+			A.SYS_ID,
+		FROM WX_APP_INFO A
+		LEFT JOIN WX_USER U
+			  ON U.SYS_ID = A.SYS_ID
+		LEFT JOIN WEB_SERVICE_AUTH W
+			  ON W.SHOP_ID = A.SHOP_ID
+		WHERE A.SHOP_ID = #shopId#
+ 	</select> -->
+ 	<select id="userInfoToIF" parameterClass="java.util.HashMap" resultMap="gchUserInfoDomain">
+ 		 SELECT /* wxi.userInfoToIF */ * 
+		 FROM WX_USER
+		 WHERE SYS_ID = #sysId#
+		 	  AND OPENID = #openId#
+ 	</select>
+ 	
+ 	<select id="selectSeatAccount" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+	      	EXEC [DKF_ACCOUNT_INFO_SELECT]
+	      	@ACCOUNT	=#accountName#,
+	      	@SHOP_ID	= #shopId#
+	      	]]>
+	    
+	</select>
+	
+	<select id="saveSeatOther" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+        	EXEC [DKF_ACCOUNT_INFO_INSERT]
+		 	 @ACCOUNT	=#accountName#
+			,@HEAD		=#headImgUrl#
+			,@NICKNAME	=#nickName#
+			,@JOB_TYPE		=#jobType#
+			,@KEYWORD_ALL	=#keyWordAll#
+			,@KEYWORDGROUP_CODE_ALL =#keyWordGroupCodeAll#
+			,@PASSWORD = #passWord#
+			,@USERGROUP_CODE = #userGroupCode#
+			,@ACCOUNT_ALL = #accountAll#
+			,@NICKNAME_ALL=#nickNameAll#
+			,@HEAD_ALL  =#headAll#
+			,@SHOP_ID	= #shopId#
+       	]]>
+  	</select>
+  	<select id="selectSeatGroup" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+	      	EXEC [DKF_USERGROUP_INFO_SELECT]
+	      	 @GROUP_NAME	=#groupName#
+	      	 ,@SHOP_ID	= #shopId#
+	      	]]>
+	    
+	</select>
+	
+	<select id = "selectKeyWordGroupList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     SELECT /* wxi.selectKeyWordGroupList */ T1.KEYWORD_GROUP_NAME,
+				T1.KEYWORD_GROUP_CODE,
+				T1.KEYWORD_GROUP_STATUS,
+		        (SELECT COUNT(A.KEYWORD_INDEX) FROM DKF_KEYWORD_INFO A WHERE A.DKF_ACCOUNT = ISNULL(#accountName#,A.DKF_ACCOUNT) AND A.KEYWORD_STATUS = 1 AND A.KEYWORDGROUP_CODE = T1.KEYWORD_GROUP_CODE AND A.KEYWORD_TYPE = 'DKF') AS SELECT_FLAG,
+		       (SELECT COUNT(A.KEYWORD_INDEX) FROM DKF_KEYWORD_INFO A WHERE A.KEYWORDGROUP_CODE =T1.KEYWORD_GROUP_CODE AND A.KEYWORD_STATUS = 1 AND A.DKF_ACCOUNT = '' AND A.KEYWORD_TYPE = 'DKF') AS KEY_WORD_NUM
+		FROM DKF_KEYWORDGROUP_INFO T1
+		WHERE T1.KEYWORD_GROUP_STATUS = 1
+		AND	  T1.SHOP_ID	= #shopId#
+		ORDER BY T1.CREATED_DT DESC 
+	    
+	</select>
+	
+	<select id="saveSeatGroup" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+        	EXEC [DKF_USERGROUP_INFO_INSERT]
+		 	 @GROUP_NAME	=#groupName#
+			,@GROUP_CODE	=#groupName#
+			,@GROUP_STATUS	=#groupStatus#
+			,@JOB_TYPE		=#jobType#
+			,@KEYWORD_ALL	=#keyWordAll#
+			,@KEYWORDGROUP_CODE_ALL =#keyWordGroupCodeAll#
+			 ,@SHOP_ID	= #shopId#
+       	]]>
+	    
+	    
+	</select>
+	
+	<select id="saveSeat" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+        	EXEC [DKF_ACCOUNT_INFO_INSERT]
+		 	 @ACCOUNT	=#accountName#
+			,@HEAD		=#headImgUrl#
+			,@NICKNAME	=#nickName#
+			,@JOB_TYPE		=#jobType#
+			,@KEYWORD_ALL	=#keyWordAll#
+			,@KEYWORDGROUP_CODE_ALL =#keyWordGroupCodeAll#
+			,@PASSWORD = #passWord#
+			,@USERGROUP_CODE = #userGroupCode#
+			 ,@SHOP_ID	= #shopId#
+			
+       	]]>
+	    
+	    
+	</select>
+	<select id ="selectSeatByName" parameterClass="java.util.HashMap"  resultClass="java.lang.Integer">
+	     <![CDATA[
+        	SET NOCOUNT ON;
+			SELECT
+					COUNT(*)
+			FROM	DBO.DKF_ACCOUNT_INFO AS A
+			WHERE	A.STATUS = 1
+			AND		A.ACCOUNT = #accountName#
+			AND     A.SHOP_ID = #shopId#
+       	]]>
+	    
+	</select>
+	
+	<select id="selectKeyWordGroup" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+	      	EXEC [DKF_KEYWORDGROUP_INFO_SELECT]
+	      	 @SHOP_ID	= #shopId#
+	      	]]>
+	    
+	</select>
+	<select id="saveKeyWordGroup" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+        	EXEC [DKF_KEYWORDGROUP_INFO_INSERT]
+		 	 @KEYWORD_GROUP_NAME	=#keyWordGroupName#
+			,@KEYWORD_GROUP_CODE		=#keyWordGroupCode#
+			,@JOB_TYPE		=#jobType#
+			 ,@SHOP_ID	= #shopId#
+			
+       	]]>
+	    
+	    
+	</select>
+	<select id="getKeyWordList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+        	SELECT KEYWORD,KEYWORD_INDEX FROM DKF_KEYWORD_INFO WHERE DKF_ACCOUNT = #userGroupCode# AND KEYWORD_STATUS = 1 AND SHOP_ID = #shopId#
+       	]]>
+	    
+	    
+	</select>
+	<select id="saveKeyword" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	     <![CDATA[
+        	EXEC [DKF_KEYWORD_INFO_INSERT]
+        	 @SHOP_ID = #shopId#
+		 	,@KEYWORD_GROUP_CODE = #keywordGroup#
+			,@KEYWORD = #keyword#
+			,@KEYWORD_TYPE = #keywordType#
+			,@ARS_TYPE = #newsPicType#
+			,@ARS_TITLE = #arsTitle#
+			,@ARS_IMAGE = #arsImage#
+			,@ARS_CONTENT = #arsContent#
+			,@ARS_URL = #arsUrl#
+			
+       	]]>
+	    
+	    
+	</select>
+	<select id="updateKeyword" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	     <![CDATA[
+        	EXEC [DKF_KEYWORD_INFO_UPDATE]
+        	 @SHOP_ID = #shopId#
+		 	,@KEYWORD_GROUP_CODE = #keywordGroup#
+			,@KEYWORD = #keyword#
+			,@KEYWORD_TYPE = #keywordType#
+			,@ARS_TYPE = #newsPicType#
+			,@ARS_TITLE = #arsTitle#
+			,@ARS_IMAGE = #arsImage#
+			,@ARS_CONTENT = #arsContent#
+			,@ARS_URL = #arsUrl#
+			,@KEYWORD_BEFORE = #keyWordBefore#
+			
+       	]]>
+	    
+	    
+	</select>
+	<select id="keywordGroupList" resultMap="resultKeywordGroupList">
+	    
+	    <![CDATA[
+        	SET NOCOUNT ON;
+			SELECT KEYWORD_GROUP_NAME,
+				   KEYWORD_GROUP_CODE,
+				   KEYWORD_GROUP_STATUS
+			FROM 
+			DKF_KEYWORDGROUP_INFO
+			WHERE KEYWORD_GROUP_STATUS = 1
+			AND SHOP_ID = #shopId#
+			ORDER BY CREATED_DT DESC 
+       	]]>
+	    
+	</select>
+	
+	<select id="keywordList" resultMap="resultKeywordList">
+	    
+	    <![CDATA[
+        	SET NOCOUNT ON;
+			SELECT DISTINCT
+				   KEYWORD ,
+				   DKF_ACCOUNT,
+			       KEYWORDGROUP_CODE,
+				   CREATED_DT,
+				   KEYWORD_TYPE
+			FROM 
+			DKF_KEYWORD_INFO
+			WHERE KEYWORD_STATUS = 1
+			AND DKF_ACCOUNT = N''
+			AND SHOP_ID = #shopId#
+			ORDER BY CREATED_DT DESC 
+       	]]>
+	    
+	</select>
+	
+	<select id="removeKeyword" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	     <![CDATA[
+        	EXEC [DKF_REMOVE_KEYWORD]
+		 		 @keywordIndex = #keywordIndex#
+		 		 ,@shopId = #shopId#
+       	]]>
+	    
+	    
+	</select>
+	
+	<!-- <select id="selectIfPushUrlByShopId" parameterClass="java.lang.Integer" resultMap="ifPushUrl">
+		SELECT HZM_IF_PUSHURL 
+		FROM   WEB_SERVICE_AUTH 	   
+		WHERE SHOP_ID = #shopId#
+	</select> -->
+	<select id="selectKeywordByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT 
+				 T1.SHOP_ID
+				,T1.DKF_ACCOUNT
+				,T1.KEYWORD_INDEX
+				,T1.KEYWORD
+				,T1.KEYWORDGROUP_CODE
+				,T1.KEYWORD_STATUS
+				,T1.KEYWORD_TYPE
+				,T1.ARS_TYPE
+				,T1.ARS_TITLE
+				,T1.ARS_IMAGE
+				,T1.ARS_CONTENT
+				,T1.ARS_URL
+				,T1.CREATED_DT
+				,T1.MODIFY_DT
+		FROM	DKF_KEYWORD_INFO T1
+		WHERE	T1.KEYWORD = #keyword#
+		AND		(T1.DKF_ACCOUNT IS NULL OR T1.DKF_ACCOUNT = '')
+		AND		T1.SHOP_ID = #shopId#
+	</select>
+	
+<!-- 	<select id="getOpenIdTemp" resultClass="java.util.HashMap"> -->
+<!-- 		select * from template_temp t left join WX_USER u on t.openid = u.OPENID  -->
+<!-- 		where sys_id = 'GV6CRXGOFLDPROTAVNEB3CPTRLAWBX2B' and SUBSCRIBE = 1 -->
+<!-- 	</select> -->
+
+	<insert id="wxInterfaceError" parameterClass="java.util.HashMap">
+		 INSERT INTO [WX_INTERFACE_ERROR_HIST]
+           ( 
+            [SHOP_ID]
+           ,[SHOP_NM]
+           ,[ERROR_MSG]
+           ,[CREATE_DATE]
+           )
+     VALUES
+           ( 
+            #shopId#
+           ,#shopNm#
+           ,#errorCode#
+           ,GETDATE()
+          ) 
+	</insert>
+</sqlMap>

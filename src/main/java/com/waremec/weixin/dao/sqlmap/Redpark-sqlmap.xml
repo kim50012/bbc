@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Redpark">
+	 
+	 <typeAlias alias="redparkHist" type="com.waremec.weixin.domain.redpark.RedparkHist"/>
+	 
+	<select id="selectRedParkTargetList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		  SELECT * 
+		 FROM WX_RED_PACK_SEND_HIST
+		 WHERE SHOP_ID = #SHOP_ID#
+		 AND RED_PARK_STATUS IN (0,1)
+		 AND JOB_STATUS = 1
+	]]></select>
+	 
+	 
+	 
+
+  	<select id="insertRedparkSendHist" parameterClass="redparkHist" resultClass="java.util.HashMap" remapResults="true" >
+        <![CDATA[
+        	EXEC [WX_RED_PACK_SEND_HIST_INSERT]
+        	  @SHOP_ID 			= #shopId#
+			, @MCH_BILLNO 		= #mchBillno#
+			, @NICK_NAME 		= #nickName#
+			, @SEND_NAME 		= #sendName#
+			, @RE_OPENID 		= #reOpenid#
+			, @TOTAL_AMOUNT 	= #totalAmount#
+			, @TOTAL_NUM 		= #totalNum#
+			, @WISHING 			= #wishing#
+			, @CLIENT_IP 		= #clientIp#
+			, @ACT_NAME 		= #actName#
+			, @REMARK 			= #remark#
+			, @RED_PARK_STATUS 	= #redparkStatus# 
+			, @AD_YN 			= #adYn#
+			, @AD_FIRST 		= #adFirst#
+			, @AD_KEYWORD1 		= #adKeyword1#
+			, @AD_KEYWORD2 		= #adKeyword2#
+			, @AD_KEYWORD3 		= #adKeyword3#
+			, @AD_KEYWORD4 		= #adKeyword4#
+			, @AD_REMARK 		= #adRemark#
+       	]]>
+    </select>    
+  <select id="updateRedparkSendHist" parameterClass="redparkHist">
+        <![CDATA[
+        	EXEC [WX_RED_PACK_SEND_HIST_UPDATE_H]
+        	 @SEQID 			= #seqid#
+			, @RED_PARK_STATUS 	= #redparkStatus#
+			, @ERR_CODE 		= #errCode#
+			, @SEND_DT			= #sendDt#
+			, @SEND_LISTID		= #send_listid#
+       	]]>
+    </select>     
+  <select id="updateRedparkSendAdvice" parameterClass="redparkHist">
+        <![CDATA[
+        	EXEC [WX_RED_PACK_SEND_HIST_UPDATE_A]
+        	 @SEQID 			= #seqid#
+       	]]>
+    </select>     
+  
+</sqlMap>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <!--按钮：公用-->
+
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!--bootstarp公用-->
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div class="page1 pageBgF pop-page">
+      <header class="page-head">
+        <div class="page-name">
+          <img src="../image/back-Button.png" class="mr24" />
+          <span>정기 점검 결과 등록</span>
+        </div>
+        <i class="fourDPlex icon-close"></i>
+      </header>
+      <div class="content">
+        <div class="container f-column" style="height: 100%;">
+          <div class="tabHead pb22">
+            <div class="tabSelected" onclick="changeTab(this, 1)">기본 정보</div>
+            <div onclick="changeTab(this, 2)">정기 점검</div>
+          </div>
+          <div id="tab1" class="scroll-wrap f-col" style="padding-top: 0;">
+            <div class="tabContent">
+              <div class="table">
+                <table class="table-col2" cellspacing="0" cellpadding="0" width="100%" border="1">
+                  <colgroup>
+                    <col width="27%" />
+                    <col width="73%" />
+                  </colgroup>
+                  <tr>
+                    <th>
+                      <p>극장사</p>
+                    </th>
+                    <td>
+                      <div class="table-img">
+                        <img class="mr16" src="../image/flagCineworld.png" />
+                        <p>Cineworld</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>국가</p>
+                    </th>
+                    <td>
+                      <div class="table-img">
+                        <img class="flag mr16" src="../image/flag3.svg" />
+                        <p>Ireland</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>사이트</p>
+                    </th>
+                    <td>
+                      <p>Dublin</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>스크린 유형</p>
+                    </th>
+                    <td>
+                      <p>4DX</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>오픈일</p>
+                    </th>
+                    <td>
+                      <p>2018-07-21</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>공정 담당자</p>
+                    </th>
+                    <td>
+                      <p>김동일</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>출장기간</p>
+                    </th>
+                    <td>
+                      <p>2018-07-21 ~ 2018-07-25</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>정기점검횟차</p>
+                    </th>
+                    <td>
+                      <p>2회</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>워런티 기한</p>
+                    </th>
+                    <td>
+                      <p>2019-06-28</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <div>
+                        <p>CS 계약</p>
+                        <p style="opacity: 0;">占位</p>
+                      </div>
+                    </th>
+                    <td>
+                      <p>W/I : 1년/2회</p>
+                      <p>W/O : 1년/2회</p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+          
+          <div id="tab2" class="scroll-wrap f-col" style="display:none;padding-top: 0;">
+            <div class="tabContent">
+              <div class="table">
+                <table class="table-row noWrapTable" cellspacing="0" cellpadding="0">
+                  
+                  <tr>
+                    <th>
+                      <p>분류</p>
+                    </th>
+                    <th>
+                      <p>장비명</p>
+                    </th>
+                    <th>
+                      <p>부품 카테고리</p>
+                    </th>
+                    <th>
+                      <p>부품 종류</p>
+                    </th>
+                    <th>
+                      <p>수량</p>
+                    </th>
+                    <th>
+                      <p>장애율 (%)</p>
+                    </th>
+                  </tr>
+                  <tr onclick="edit(this)">
+                    <td>
+                      <p>운영장비</p>
+                    </td>
+                    <td>
+                      <p class="left">SCU RACK</p>
+                    </td>
+                    <td>
+                      <p>Motion PC</p>
+                    </td>
+                    <td>
+                      <p>REMOTE</p>
+                    </td>
+                    <td class="center">
+                      <p>12</p>
+                    </td>
+                    <td>
+                      <p class="center">100</p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div id="subWrap">
+                <div class="title1 pt12">
+                  <div class="f-row">
+                    <i class="fourDPlex icon-sanjiao"></i>
+                    <span>추가 등록</span>
+                  </div>
+                </div>
+                <div class="table">
+                  <table class="table-col2 noWrapTable" cellspacing="0" cellpadding="0" width="100%" border="1">
+                    <colgroup>
+                      <col width="27%" />
+                      <col width="73%" />
+                    </colgroup>
+                    <tr>
+                      <th class="textareaTh inputTd">
+                        <p>문제점 내용</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <textarea placeholder="내용을 입력해 주세요"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="textareaTh">
+                        <p>대응 내용</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <textarea placeholder="내용을 입력해 주세요"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>분류</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-1">운영 장비</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>장비명</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">SCU RACK</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>부품 카테고리</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">REMOTE PC</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>부품 종류</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">Motion PC</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>수량</p>
+                      </th>
+                      <td>
+                        <p>12</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>장애율 (%)</p>
+                      </th>
+                      <td>
+                        <p>100</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <div class="mt54">
+                    <button class="longBtn blueBtn" id="submitBtn" onclick="sub()">등록</button>
+                  </div>
+                </div>
+              
+              </div>
+              
+              <div id="editWrap" style="display: none;">
+                <div class="title1 pt12">
+                  <div class="f-row">
+                    <i class="fourDPlex icon-sanjiao"></i>
+                    <span>내용</span>
+                  </div>
+                </div>
+                <div class="table">
+                  <table class="table-col2 noWrapTable" cellspacing="0" cellpadding="0" width="100%" border="1">
+                    <colgroup>
+                      <col width="27%" />
+                      <col width="73%" />
+                    </colgroup>
+                    <tr>
+                      <th class="textareaTh">
+                        <p>문제점 내용</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <textarea placeholder="내용을 입력해 주세요"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="textareaTh">
+                        <p>대응 내용</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <textarea placeholder="내용을 입력해 주세요"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>분류</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-1">운영 장비</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>장비명</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">SCU RACK</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>부품 카테고리</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">REMOTE PC</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>부품 종류</p>
+                      </th>
+                      <td class="inputTd">
+                        <div>
+                          <button class="select-btn" id="selectA-2">Motion PC</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>수량</p>
+                      </th>
+                      <td>
+                        <p>12</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>장애율 (%)</p>
+                      </th>
+                      <td>
+                        <p>100</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <div class="mt54 f-row">
+                    <button class="longBtn orangeBtn" id="submitBtn" onclick="sub('del')">삭제</button>
+                    <button class="longBtn blueBtn ml12" id="submitBtn" onclick="sub('edit')">수정</button>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
+<script type="text/javascript">
+  function changeTab(el, index) {
+    $(".tabSelected").removeClass("tabSelected");
+    $(el).addClass("tabSelected");
+    if(index == 1) {
+      $("#tab2").hide()
+      $("#tab1").show()
+    } else if(index == 2) {
+      $("#tab1").hide()
+      $("#tab2").show()
+    }
+  }
+</script>

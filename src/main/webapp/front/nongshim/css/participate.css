@@ -1,0 +1,222 @@
+.clearfix:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+	content: ".";
+}
+
+ .page-background {
+	height: 100%;
+	background: url('/front/nongshim/images/participate/BG.jpg');
+	background-size: 5% auto;
+	background-repeat: repeat;
+}
+
+#banner-top {
+	top: 0;
+	left: 0;
+	overflow-y: auto;
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+.page-background-top {
+	position: relative;
+	/* border: 1px solid red; */
+}
+
+.day-summery {
+	margin-left: 5.5%;
+	width: 86%;
+}
+
+.day-summery .day-sum {
+	position: relative;
+	width: 100%;
+	height: 30px;
+}
+
+
+.day-summery .day-sum .number-of-day {
+	position: relative;
+	margin-bottom: 5px;
+	margin-left: 0%;  /* 0 - 68%  , 32-100% */
+	width: 100%;
+ 	/* border: 1px solid blue; */
+}
+
+.day-summery .day-sum .number-of-day .day-number {
+	position: absolute;
+	top: 0;
+	left: 10%;
+	display: inline-block;
+	width: 10%;
+	height: 25px;
+/* border: 1px solid red; */
+	color: #189dbd;
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 25px;
+}
+
+.day-summery .day-sum .number-of-day .number-of-day-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+}
+
+
+.day-summery .range-out {
+	position: relative;
+	width: 100%;
+	height: 6px;
+	border-radius: 5px;
+	background-color: #dbdbdb;
+}
+
+.day-summery .range-out .range-in {
+	height: 100%;
+	border-radius: 5px;
+	background-color: #7fc6d6;
+}
+
+.main-item {
+	position: relative;
+	margin-right: auto;
+/* 	padding-bottom: 10px; */
+	margin-left: auto;
+	padding: 5px;
+	padding-bottom: 20px;
+	width: 90%;
+	/* border: 1px solid green; */
+	border-bottom: 1px solid #cecccd;
+	background-color: #fff;
+}
+
+.main-item .headicon {
+	float: left;
+	width: 15%;
+}
+
+.main-item .upload-content-warp {
+	float: left;
+	width: 85%;
+/* background-color: red; */
+}
+
+.main-item .upload-content-warp .upload-content {
+	padding-left: 5px;
+ 	/* border: 1px solid red; */
+}
+
+.upload-date {
+	color: #1790b5;
+	font-size: 15px;
+}
+
+.upload-title {
+	padding-top:5px;
+	margin-bottom: 10px;
+	color: #313131;
+	font-size: 15px;
+}
+
+.upload-images {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.upload-images .upload-img-item {
+	float: left;
+	display: inline-block;
+	padding-left: 2px;
+	width: 30%;
+	height:78px;
+	margin-top: 5px;
+	overflow: hidden;
+}
+
+.upload-images .upload-img-item .upload-img {
+	position: relative;
+}
+
+.reply-top {
+	margin-bottom: 10px;
+}
+
+.reply-top .reply-date {
+	float: left;
+	color: #313131;
+	font-size: 13px;
+}
+
+.reply-top .reply-date span {
+	vertical-align: middle;
+}
+
+.reply-top .reply-share {
+	float: right;
+   /* height: 18px; */
+	color: #189fbf;
+	font-size: 1.1em;
+   /* line-height: 18px; */
+}
+
+.reply-top .reply-share span {
+	vertical-align: middle;
+}
+
+.reply-top .reply-share img {
+	width: auto;
+	height: 18px;
+	vertical-align: middle;
+}
+
+.reply-contentes {
+	position: relative;
+}
+
+.reply-contentes .reply-contentes-list {
+	
+/* 	padding: 10px 5px; */
+	background-color: #ececec;
+
+}
+.reply-contentes .reply-contentes-list li{
+	height: auto;
+	line-height: 22px;
+	padding-left: 5px;
+}
+
+.reply-contentes .reply-contentes-list .replay-item {
+	color: #313131;
+	font-size: 1.0em;
+}
+
+.reply-contentes .reply-contentes-list .replay-item span {
+	color: #1790b5;
+}
+
+div.arrow-up {
+	margin-left: 15px;
+	width: 0;
+	height: 0;
+	border-right: 5px solid transparent;
+ /* �녘씁旅녺쉪若�*/
+	border-bottom: 7px solid #ececec;
+ /* 訝뗨씁旅녺쉪�욕벧|遙�餓ε룋�뚧솺��*/
+	border-left: 5px solid transparent;
+ /* 藥�씁旅녺쉪若�*/
+	font-size: 0;
+	line-height: 0;
+}
+
+
+.list_main_image{
+	width: 100%;
+	background: #fff;
+}

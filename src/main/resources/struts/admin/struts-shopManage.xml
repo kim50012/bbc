@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="admin/shopManage" extends="portal-default" namespace="/admin/shopManage">
+		<action name="*" method="{1}" class="adminShopManageAction">
+		    <result name="userDefinePageView">/admin/shopManage/userDefinePageView.jsp</result>
+		    <result name="userDefinePageView2">/admin/shopManage/userDefinePageView2.jsp</result>
+		    <result name="userDefinePageView3">/admin/shopManage/userDefinePageView3.jsp</result>
+		    <result name="userDefinePageView4">/admin/shopManage/userDefinePageView4.jsp</result>
+		    <result name="userDefinePageView5">/admin/shopManage/userDefinePageView5.jsp</result>
+		    <result name="shopMainPageView">/admin/shopManage/shopMainPageView.jsp</result>
+		    <result name="shopMainPageView2">/admin/shopManage/shopMainPageView2.jsp</result>
+		    <result name="shopMainPageView3">/admin/shopManage/shopMainPageView3.jsp</result>
+		    <result name="shopMainPageView4">/admin/shopManage/shopMainPageView4.jsp</result>
+		    <result name="shopMainPageView5">/admin/shopManage/shopMainPageView5.jsp</result>
+		    <result name="{1}">/admin/shopManage/{1}.jsp</result>
+		    
+		</action>
+	</package> 
+	
+	
+</struts>

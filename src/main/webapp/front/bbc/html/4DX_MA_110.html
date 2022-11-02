@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BO실적</title>
+    <!--bootstarp：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <!--按钮：公用-->
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <!--表格改变列宽，有表格的-->
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_BO_110.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div class="app" id="app">
+      <div class="content pt10">
+        <div class="scroll-wrap refresh-wrap">
+          <div class="container" style="height: 100%;">
+            <h4 class="title">전자 결재</h4>
+            <div class="tab-header">
+              <div onclick="tab(this)"><p>전체</p></div>
+              <div onclick="tab(this)"><p>진행함</p></div>
+              <div onclick="tab(this)"><p>완료함</p></div>
+              <div onclick="tab(this)"><p>참조/수신함</p></div>
+            </div>
+            <div class="pb22">
+              <ul class="list-group">
+                <li>
+                  <div class="f-row scroll-title">
+                    <p class="font24 bold fontGrey mr6">(수신) </p>
+                    <p class="font24 bold fontColor5">미국 Atlantic Station USA 관련 설계 변경건</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="template">설계 변경 요청 검토</p>
+                      <p class="department">정보 전략팀</p>
+                      <p class="fullname">김동일</p>
+                    </div>
+                    <p class="font20">2018-09-02</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="font24 bold fontRed mr6">[진행중] </p>
+                      <p class="font24 fontColor5"></p>
+                    </div>
+                    <div>
+                      <i class="fourDPlex icon-duihua fontColor5"></i>
+                      <i class="fourDPlex icon-yeshu fontColor5 ml10"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="f-row scroll-title">
+                    <!--<p class="font24 bold fontGrey mr6"></p>-->
+                    <p class="font24 bold fontColor5">일본 CGV 도쿄 자재구매 요청건</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="template">설계 변경 요청 검토</p>
+                      <p class="department">정보 전략팀</p>
+                      <p class="fullname">김동일</p>
+                    </div>
+                    <p class="font20">2018-09-02</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="font24 bold fontBlue mr6">[승인]</p>
+                      <p class="font24 fontColor5">2018-09-10</p>
+                    </div>
+                    <div>
+                      <i class="fourDPlex icon-duihua fontColor5"></i>
+                      <i class="fourDPlex icon-yeshu fontColor5 ml10"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="f-row scroll-title">
+                    <!--<p class="font24 bold fontGrey mr6"></p>-->
+                    <p class="font24 bold fontColor5">일본 CGV 도쿄 자재구매 요청건</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="template">설계 변경 요청 검토</p>
+                      <p class="department">정보 전략팀</p>
+                      <p class="fullname">김동일</p>
+                    </div>
+                    <p class="font20">2018-09-02</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="font24 bold fontOrange mr6">[승인]</p>
+                      <p class="font24 fontColor5">2018-09-10</p>
+                    </div>
+                    <div>
+                      <i class="fourDPlex icon-duihua fontColor5"></i>
+                      <i class="fourDPlex icon-yeshu fontColor5 ml10"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="f-row scroll-title">
+                    <!--<p class="font24 bold fontGrey mr6"></p>-->
+                    <p class="font24 bold fontColor5">일본 CGV 도쿄 자재구매 요청건</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="template">설계 변경 요청 검토</p>
+                      <p class="department">정보 전략팀</p>
+                      <p class="fullname">김동일</p>
+                    </div>
+                    <p class="font20">2018-09-02</p>
+                  </div>
+                  <div class="f-row-x-s mt12">
+                    <div class="f-row">
+                      <p class="font24 bold fontBlue mr6">[승인]</p>
+                      <p class="font24 fontColor5">2018-09-10</p>
+                    </div>
+                    <div>
+                      <i class="fourDPlex icon-duihua fontColor5"></i>
+                      <i class="fourDPlex icon-yeshu fontColor5 ml10"></i>
+                    </div>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    function tab(el) {
+      $(".active").removeClass('active')
+      $(el).addClass('active')
+    }
+    $(function() {
+      $(".tab-header p").eq(0).click()
+    })
+  </script>
+
+</html>

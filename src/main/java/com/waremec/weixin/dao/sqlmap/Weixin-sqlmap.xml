@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Weixin">
+	
+	<typeAlias alias="appInfo" 			type="com.waremec.weixin.domain.AppInfo"/>
+	<typeAlias alias="mchInfo" 			type="com.waremec.weixin.domain.MchInfo"/>
+	<typeAlias alias="accessToken" 		type="com.waremec.weixin.domain.AccessToken"/>
+	<typeAlias alias="apiTicket" 		type="com.waremec.weixin.domain.ApiTicket"/>
+	<typeAlias alias="executionLog" 	type="com.waremec.weixin.domain.ExecutionLog"/>
+	<typeAlias alias="weixinSessionPageExeLog" 	type="com.waremec.weixin.domain.WeixinSessionPageExeLog"/>
+	<typeAlias alias="weixinPageExecutionLog" 	type="com.waremec.weixin.domain.WeixinPageExecutionLog"/>
+	
+    <select id="selectAllAppInfoList" resultClass="appInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_APP_INFO_LIST_SELECT] 
+       	]]>
+    </select>
+    <select id="selectAppInfoByKey" parameterClass="string" resultClass="appInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_APP_INFO_SELECT]
+        		@SYS_ID = #value#
+       	]]>
+    </select>
+    <select id="selectAppInfoByShopId" parameterClass="int" resultClass="appInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_APP_INFO_SELECT]
+        		@SHOP_ID = #value#
+       	]]>
+    </select>
+    <select id="selectAppInfoByOriginalAppId" parameterClass="string" resultClass="appInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_APP_INFO_SELECT]
+        		@ORIGINAL_APP_ID = #value#
+       	]]>
+    </select>
+    <select id="selectAppInfoByAppId" parameterClass="string" resultClass="appInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_APP_INFO_SELECT]
+        		@APP_ID = #value#
+       	]]>
+    </select>
+    <select id="selectMchInfoByKey" parameterClass="string" resultClass="mchInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_MCH_INFO_SELECT]
+        		@SYS_ID = #value#
+       	]]>
+    </select>
+    <select id="selectMchInfoByShopId" parameterClass="int" resultClass="mchInfo">
+        <![CDATA[
+        	EXEC [WEIXIN_MCH_INFO_SELECT]
+        		@SHOP_ID = #value#
+       	]]>
+    </select>
+    
+    <select id="getAccessToken" parameterClass="string" resultClass="string">
+    <![CDATA[
+		    SELECT  /* Weixin.getAccessToken */  [TOKEN]
+			  FROM WX_TOKEN
+			  WHERE [SYS_ID] = #value#
+			  AND [TOKEN_EXPIRES_DT] > GETDATE()
+    ]]>
+    </select>
+    
+    
+    <update id="saveAccessToken" parameterClass="accessToken">
+    	MERGE INTO /* Weixin.saveAccessToken */ WX_TOKEN AS A
+		  USING(
+		  	SELECT #SYS_ID#  as [SYS_ID]
+		   ) B
+		  ON A.[SYS_ID] = B.[SYS_ID]  
+		  WHEN MATCHED THEN
+		  UPDATE SET
+		   A.[TOKEN] = #ACCESS_TOKEN#
+		  ,A.[TOKEN_EXPIRES_DT] = DATEADD(mi,110,GETDATE())
+		  ,A.[UPDATE_DT] = GETDATE()
+		  when NOT
+		  MATCHED THEN
+		  INSERT (
+		  	[SYS_ID]
+           ,[TOKEN]
+           ,[TOKEN_EXPIRES_DT]
+           ,[CREATE_DT]
+           ,[UPDATE_DT]
+		  ) VALUES ( 
+		  	#SYS_ID#
+		  	,#ACCESS_TOKEN#
+		  	,DATEADD(mi,110,GETDATE())
+		  	,GETDATE()
+		  	,GETDATE()
+		  ) ;
+    </update>
+    
+       <select id="getApiTicket" parameterClass="string" resultClass="string">
+	    <![CDATA[
+			    SELECT  /* Weixin.getApiTicket */  [TICKET]
+				  FROM WX_JSAPI_TICKET
+				  WHERE [SYS_ID] = #value#
+				  AND [TICKET_EXPIRES_DT] > GETDATE()
+	    ]]>
+	    </select>
+	    
+	    <update id="saveApiTicket" parameterClass="java.util.HashMap">
+    	MERGE INTO /* Weixin.saveApiTicket */  WX_JSAPI_TICKET AS A
+		  USING(
+		  	SELECT #SYS_ID#  as [SYS_ID]
+		   ) B
+		  ON A.[SYS_ID] = B.[SYS_ID]  
+		  WHEN MATCHED THEN
+		  UPDATE SET
+		   A.[TICKET] = #TICKET#
+		  ,A.[TICKET_EXPIRES_DT] = DATEADD(mi,110,GETDATE())
+		  ,A.[UPDATE_DT] = GETDATE()
+		  when NOT
+		  MATCHED THEN
+		  INSERT (
+		  	[SYS_ID]
+           ,[TICKET]
+           ,[TICKET_EXPIRES_DT]
+           ,[CREATE_DT]
+           ,[UPDATE_DT]
+		  ) VALUES ( 
+		  	#SYS_ID#
+		  	,#TICKET#
+		  	,DATEADD(mi,110,GETDATE())
+		  	,GETDATE()
+		  	,GETDATE()
+		  ) ;
+    </update>
+    
+    <insert id="insertExecutionLog" parameterClass="executionLog">
+     <![CDATA[
+        	EXEC [WX_EXE_TIME_LOG_INSERT]
+        		  @SYS_ID 			= #sysId#
+				, @SHOP_ID 			= #shopId#
+				, @START_TIME 		= #startTime#
+				, @EXECUTE_TIME 	= #executeTime#
+				, @TO_USER_NAME 	= #toUserName#
+				, @FROM_USER_NAME 	= #fromUserName#
+				, @CREATE_TIME 		= #createTime#
+				, @MSG_TYPE 		= #msgType#
+				, @MSG_ID 			= #msgId#
+				, @EVENT 			= #event#
+				, @EVENT_KEY 		= #eventKey#
+        		
+       	]]>
+    </insert>
+   
+    
+    <insert id="insertWeixinSessionPageExeLog" parameterClass="weixinSessionPageExeLog">
+     <![CDATA[
+        	EXEC [WX_SESSION_PAGE_EXE_LOG_INSERT]
+				  @SHOP_ID 			= #shopId#
+				, @START_TIME 		= #startTime#
+				, @EXECUTE_TIME 	= #executeTime#
+				, @OPENID 			= #openid#
+				, @STATE  			= #state#
+				, @URL  			= #url#
+        		
+       	]]>
+    </insert>
+    <insert id="insertWeixinPageExecutionLog" parameterClass="weixinPageExecutionLog">
+     <![CDATA[
+        	EXEC [WX_PAGE_TIME_LOG_INSERT]
+				  @SHOP_ID 			= #shopId#
+				, @START_TIME 		= #startTime#
+				, @EXECUTE_TIME 	= #executeTime#
+				, @TYPE  			= #type#
+				, @OPENID 			= #openid#
+				, @URL  			= #url#
+        		
+       	]]>
+    </insert>
+    <insert id="insertMenuClickLogging" parameterClass="java.util.HashMap">
+     <![CDATA[
+        	EXEC [ANALYSIS_MENU_INSERT]
+				  @SHOP_ID 			= #SHOP_ID#
+				, @MENU_ID			= #MENU_ID#
+				, @OPENID 			= #OPENID#
+        		
+       	]]>
+    </insert>
+    
+    <select id="selectWechatNoByShopId" parameterClass="java.lang.Integer" resultClass="string">
+    <![CDATA[
+		    SELECT  /* Weixin.selectWechatNoByShopId */  WECHAT_NO
+			  FROM WX_APP_INFO
+			  WHERE SHOP_ID = #value#
+    ]]>
+    </select>
+    
+    
+</sqlMap>

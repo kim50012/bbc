@@ -1,0 +1,8 @@
+多客服插件
+
+ 
+客户信息
+http://{domain}/wx/kf/custplugin.htm?k={sys_id}
+  
+坐席分配
+http://{domain}/wx/kf/ivrplugin.htm?k={sys_id}

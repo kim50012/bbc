@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AdminOrdersAll">
+	<!-- 店铺商品分类 -->
+	<typeAlias alias="adminOrdersAll" type="com.waremec.wpt.admin.domain.AdminOrders" />
+
+	<!-- 主页面LIST查询 -->
+	<select id="searchList" parameterClass="adminOrdersAll" resultClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_ALL_LIST_SELECT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@STATUS_ID = #STATUS_ID_IN:INT#
+		 	,@STS_ORDER_DT_FR = #STS_ORDER_DT_FR_IN:VARCHAR#
+		 	,@STS_ORDER_DT_TO = #STS_ORDER_DT_TO_IN:VARCHAR#
+		 	,@STS_PAYMENT_DT_FR = #STS_PAYMENT_DT_FR_IN:VARCHAR#
+		 	,@STS_PAYMENT_DT_TO = #STS_PAYMENT_DT_TO_IN:VARCHAR#
+		 	,@STS_DELIVERY_DT_FR = #STS_DELIVERY_DT_FR_IN:VARCHAR#
+		 	,@STS_DELIVERY_DT_TO = #STS_DELIVERY_DT_TO_IN:VARCHAR#
+		 	,@STS_ARRIVAL_DT_FR = #STS_ARRIVAL_DT_FR_IN:VARCHAR#
+		 	,@STS_ARRIVAL_DT_TO = #STS_ARRIVAL_DT_TO_IN:VARCHAR#
+		 	,@STS_COLLECT_DT_FR = #STS_COLLECT_DT_FR_IN:VARCHAR#
+		 	,@STS_COLLECT_DT_TO = #STS_COLLECT_DT_TO_IN:VARCHAR#
+		 	,@STS_RETURN_DT_FR = #STS_RETURN_DT_FR_IN:VARCHAR#
+		 	,@STS_RETURN_DT_TO = #STS_RETURN_DT_TO_IN:VARCHAR#
+		 	,@STS_WEIQUAN_DT_FR = #STS_WEIQUAN_DT_FR_IN:VARCHAR#
+		 	,@STS_WEIQUAN_DT_TO = #STS_WEIQUAN_DT_TO_IN:VARCHAR#
+		 	,@ORDER_ID = #ORDER_ID_IN:INT#
+		 	,@ORDER_OUT_ID = #ORDER_OUT_ID_IN:NVARCHAR#
+		 	,@PAY_TYPE_ID = #PAY_TYPE_ID_IN:INT#
+		 	,@STS_WEIQUAN_ID = #STS_WEIQUAN_ID_IN:INT#
+		 	,@ADR_MOBILE = #ADR_MOBILE_IN:NVARCHAR#
+		 	,@ADR_RECEIPTOR_NM = #ADR_RECEIPTOR_NM_IN:NVARCHAR#
+		 	,@CUST_NICK_NM = #CUST_NICK_NM_IN:NVARCHAR#
+		 	,@PAGE_CURR = #pageCurr:INT#
+		 	,@PAGE_UINT = #pageUint:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		 	,@ORDERBY = #ORDERBY_IN:VARCHAR#
+		]]>
+	</select>
+	<select id="searchListCount" parameterClass="adminOrdersAll" resultClass="java.lang.Integer">
+	    <![CDATA[
+		 	EXEC [ORDER_ALL_LIST_SELECT_COUNT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@STATUS_ID = #STATUS_ID_IN:INT#
+		 	,@STS_ORDER_DT_FR = #STS_ORDER_DT_FR_IN:VARCHAR#
+		 	,@STS_ORDER_DT_TO = #STS_ORDER_DT_TO_IN:VARCHAR#
+		 	,@STS_PAYMENT_DT_FR = #STS_PAYMENT_DT_FR_IN:VARCHAR#
+		 	,@STS_PAYMENT_DT_TO = #STS_PAYMENT_DT_TO_IN:VARCHAR#
+		 	,@STS_DELIVERY_DT_FR = #STS_DELIVERY_DT_FR_IN:VARCHAR#
+		 	,@STS_DELIVERY_DT_TO = #STS_DELIVERY_DT_TO_IN:VARCHAR#
+		 	,@STS_ARRIVAL_DT_FR = #STS_ARRIVAL_DT_FR_IN:VARCHAR#
+		 	,@STS_ARRIVAL_DT_TO = #STS_ARRIVAL_DT_TO_IN:VARCHAR#
+		 	,@STS_COLLECT_DT_FR = #STS_COLLECT_DT_FR_IN:VARCHAR#
+		 	,@STS_COLLECT_DT_TO = #STS_COLLECT_DT_TO_IN:VARCHAR#
+		 	,@STS_RETURN_DT_FR = #STS_RETURN_DT_FR_IN:VARCHAR#
+		 	,@STS_RETURN_DT_TO = #STS_RETURN_DT_TO_IN:VARCHAR#
+		 	,@STS_WEIQUAN_DT_FR = #STS_WEIQUAN_DT_FR_IN:VARCHAR#
+		 	,@STS_WEIQUAN_DT_TO = #STS_WEIQUAN_DT_TO_IN:VARCHAR#
+		 	,@ORDER_ID = #ORDER_ID_IN:INT#
+		 	,@ORDER_OUT_ID = #ORDER_OUT_ID_IN:NVARCHAR#
+		 	,@PAY_TYPE_ID = #PAY_TYPE_ID_IN:INT#
+		 	,@STS_WEIQUAN_ID = #STS_WEIQUAN_ID_IN:INT#
+		 	,@ADR_MOBILE = #ADR_MOBILE_IN:NVARCHAR#
+		 	,@ADR_RECEIPTOR_NM = #ADR_RECEIPTOR_NM_IN:NVARCHAR#
+		 	,@CUST_NICK_NM = #CUST_NICK_NM_IN:NVARCHAR#
+		 	,@PAGE_CURR = #pageCurr:INT#
+		 	,@PAGE_UINT = #pageUint:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		 	,@ORDERBY = #ORDERBY_IN:VARCHAR#
+		]]>
+	</select>
+
+	<!-- 支付方式查询 -->
+	<select id="searchPayList" parameterClass="adminOrdersAll" resultClass="adminOrdersAll">
+	    <![CDATA[
+		 	EXEC [SHOP_PAYMENT_CODE_SELECT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</select>
+
+	<!-- 物流公司查询 -->
+	<select id="searchTransComp" parameterClass="adminOrdersAll" resultClass="adminOrdersAll">
+	    <![CDATA[
+		 	EXEC [CM_CODE_SELECT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</select>
+	
+	<!-- 订单状态修改 -->
+	<procedure id="statusSave" parameterClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_STATUS_MODIFY]
+		 	@ORDER_ID = #ORDER_ID_IN:INT#
+		 	,@STATUS_ID = #STATUS_ID_IN:INT#
+		 	,@TRANS_COMP = #TRANS_COMP_IN:INT#
+		 	,@TRANS_NO = #TRANS_NO_IN:NVARCHAR#
+			,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+	<!-- 订单状态修改 -->
+	<procedure id="timeDel" parameterClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_TIME_DEL]
+		 	@ORDER_ID = #ORDER_ID_IN:INT#
+			,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+	<!-- 订单备注保存 -->
+	<procedure id="sellComSave" parameterClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_REMARK_MODIFY]
+		 	@ORDER_ID = #ORDER_ID_IN:INT#
+			,@USER_ID = #USER_ID_IN:NVARCHAR#
+		 	,@INVOICE_DESC = #INVOICE_DESC_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+	
+	<!-- 
+	订单信息查询 用于微信订单支付   
+	将于20140414日废弃 - taebem
+	-->
+	<select id="getOrderInfoById" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+  			EXEC [ORDER_MY_LIST_SELECT_FOR_PG]
+			@SHOP_ID = #SHOP_ID#
+  			,@CUST_SYS_ID = #CUST_SYS_ID#
+  			,@ORDER_ID = #ORDER_ID#
+	    ]]>
+    </select>
+    <!-- 
+    	订单信息查询 用于微信订单取消申请
+    	将于20140414日废弃 - taebem
+      -->
+	<select id="selectOrderRefundInfo" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+  			EXEC [ORDER_REFUND_SELECT]
+			@ORDER_ID = #ORDER_ID#
+			, @SHOP_ID = #SHOP_ID#
+			, @CUST_SYS_ID = #CUST_SYS_ID#
+			, @USER_ID = #USER_ID#
+	    ]]>
+    </select>
+    
+	<select id="selectOrderCost" parameterClass="adminOrdersAll" resultClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+  			EXEC [ORDER_PRICE_NEGO_SELECT]
+		 	@ORDER_ID = #ORDER_ID_IN:INT#
+	    ]]>
+    </select>
+
+	<procedure id="saveCost" parameterClass="adminOrdersAll" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_PRICE_NEGO_UPDATE]
+		 	@JOB_TYPE = #JOB_TYPE_IN:CHAR#
+		 	,@ORDER_ID = #ORDER_ID_IN:INT#
+		 	,@PRICE_SUM = #PRICE_SUM_IN:MONEY#
+		 	,@TRANS_FEE = #TRANS_FEE_IN:MONEY#
+		 	,@PRICE_TT_AFTER_NEGO = #PRICE_TT_AFTER_NEGO_IN:MONEY#
+		 	,@PAY_MILEAGE_POINT = #PAY_MILEAGE_POINT_IN:INT#
+			,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+	<select id="getShopImg" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+  			SELECT
+					TOP 1 
+					ISNULL(T2.FULL_URL,'/admin/images/icon/icon-user.png') AS SHOP_LOGO_PIC
+			FROM	DBO.SHOP T1 
+					LEFT  JOIN	DBO.SHOP_FILE_MST AS T2
+							ON	T2.SHOP_ID = T1.SHOP_ID
+							AND	T2.[FILE_ID] = T1.IMG_LOGO_PIC
+			WHERE	T1.SHOP_ID = #SHOP_ID:INT#
+			  AND	T2.IS_USE = 1
+	    ]]>
+    </select>
+	
+	<select id="ORDER_ALL_STATIC" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+  			 EXEC [ORDER_ALL_STATIC]
+		 		@SHOP_ID = #SHOP_ID#
+		 		,@USER_ID = #USER_ID#
+	    ]]>
+    </select>
+
+</sqlMap>

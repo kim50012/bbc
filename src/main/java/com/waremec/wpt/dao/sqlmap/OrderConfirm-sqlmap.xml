@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="OrderConfirm">
+	<typeAlias alias="frontOrderConfirm" type="com.waremec.wpt.front.domain.FrontOrderConfirm"/>
+	<!-- 查询订单确认所需要的信息 -->
+	<select id="selectOrderConfirmGoods" parameterClass="frontOrderConfirm" resultClass="frontOrderConfirm">
+		  <![CDATA[
+	    	EXEC [ORDER_CONFIRM_PAGE_SELECT]	
+		 		@SHOP_ID			=#shop_Id:INT#
+		 		,@PRICE_OPTION_ID	=#price_Option_Id:NVARCHAR#
+		 		,@GOODS_QTY_NUM		=#goods_qty_num:NVARCHAR#
+		 		,@CUST_SYS_ID		=#cust_Sys_Id:INT#
+		 		,@CUST_ADDR_ID		=#cust_Addr_Id:INT#
+		 		,@TRANS_TYPE_ID		=#trans_Type_Id:INT#
+	    ]]>
+	</select>
+	<parameterMap id="selectCustAddressParam" class="java.util.Map"> 
+		<parameter property="CUST_SYS_ID" 	javaType="java.lang.String"  	  jdbcType="INT" mode="IN"/> 
+		<parameter property="IS_DEFAULT" 	javaType="java.lang.String"   	  jdbcType="TINYINT" mode="IN"/>
+		<parameter property="ADDRESS_ID" 	javaType="java.lang.String"   	  jdbcType="INT" mode="IN"/>
+	</parameterMap>
+	<!-- 查询该客户的地址信息 -->
+	<select id="selectCustAddress" parameterMap="selectCustAddressParam" resultClass="java.util.HashMap" remapResults="true">
+	    {call CUST_ADDRESS_SELECT ?,?,?} 
+	</select>
+	<parameterMap id="saveCustAddressParam" class="java.util.Map"> 
+	    <parameter property="JOB_TYPE" 	javaType="java.lang.String"   	  jdbcType="CHAR" mode="IN"/>
+		<parameter property="CUST_SYS_ID" 	javaType="java.lang.String"  	  jdbcType="INT" mode="IN"/> 
+		<parameter property="ADDRESS_ID" 	javaType="java.lang.String"   	  jdbcType="INT" mode="IN"/>
+		<parameter property="RECEIPTOR_NM" 	javaType="java.lang.String"  	  jdbcType="NVARCHAR" mode="IN"/> 
+		<parameter property="ADR_PROVINCE_ID" 	javaType="java.lang.String"   	  jdbcType="INT" mode="IN"/>
+		<parameter property="ADR_CITY_ID" 	javaType="java.lang.String"   	  jdbcType="INT" mode="IN"/>
+		<parameter property="ADR_DISTRICT_ID" 	javaType="java.lang.String"  	  jdbcType="INT" mode="IN"/> 
+		<parameter property="ADR_DETAIL" 	javaType="java.lang.String"   	  jdbcType="NVARCHAR" mode="IN"/>
+		<parameter property="ADR_ZIP" 	javaType="java.lang.String"   	  jdbcType="NVARCHAR" mode="IN"/>
+		<parameter property="ADR_MOBILE" 	javaType="java.lang.String"  	  jdbcType="NVARCHAR" mode="IN"/> 
+		<parameter property="ADR_TEL" 	javaType="java.lang.String"   	  jdbcType="NVARCHAR" mode="IN"/>
+		<parameter property="IS_DEFAULT" 	javaType="java.lang.String"   	  jdbcType="TINYINT" mode="IN"/>
+	</parameterMap>
+	<!-- 保存该客户新建的地址 -->
+	<select id="saveCustAddress" parameterMap="saveCustAddressParam" resultClass="java.util.HashMap" remapResults="true">
+	    {call CUST_ADDRESS_INSERT ?,?,?,?,?,?,?,?,?,?,?,?}
+	</select>
+	<!-- 修改默认地址操作 -->
+	<update id="updateDefaultAddress" parameterClass="java.util.HashMap">
+	    UPDATE	CUST_ADDRESS
+	    SET 	IS_DEFAULT=2
+	    		,MODIFIED_DT=GETDATE()
+	    WHERE 	CUST_SYS_ID=#CUST_SYS_ID:INT#
+	    AND		IS_DEFAULT=1
+	</update>
+	<!-- 修改默认地址操作 -->
+	<update id="updateAddressDefault" parameterClass="java.util.HashMap">
+	    UPDATE	CUST_ADDRESS
+	    SET 	IS_DEFAULT=1
+	    		,MODIFIED_DT=GETDATE()
+	    WHERE   ADDRESS_ID=#ADDRESS_ID:INT#
+	    AND		CUST_SYS_ID=#CUST_SYS_ID:INT#
+	    AND		IS_DEFAULT=2
+	</update>
+	<!-- 删除客户收货地址 -->
+	<delete id="deleteAddress" parameterClass="java.util.HashMap">
+	    DELETE 	FROM CUST_ADDRESS
+	    WHERE   ADDRESS_ID=#ADDRESS_ID:INT#
+	    AND		CUST_SYS_ID=#CUST_SYS_ID:INT#
+	</delete>
+	<!-- 查询物流方式。 -->
+	<select id="selectTransport" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    SELECT 		TRANS_TYPE_ID 
+	    FROM		TRANSPORT_DTL
+	    WHERE		SHOP_ID=#SHOP_ID:INT#
+	    GROUP BY 	TRANS_TYPE_ID
+	</select>
+	<typeAlias alias="frontOrder" type="com.waremec.wpt.front.domain.FrontOrder"/>
+	<select id="saveOrderConfirm" parameterClass="frontOrder" remapResults="true" resultClass="java.util.HashMap">
+	      <![CDATA[
+	    	EXEC [ORDER_INSERT]	
+		 		 @JOB_TYPE=#jobType:CHAR#
+				,@CUST_SYS_ID=#custSysId:INT#
+				,@ORDER_ID=#orderId:INT#
+				,@ORDER_OUT_ID=#orderOutId:NVARCHAR#
+				,@ORDER_TYPE_ID=#orderTypeId:TINYINT#
+				,@GOODS_QTY=#goodsQty:SMALLINT#
+				,@PRICE_SUM=#priceSum:MONEY#
+				,@TRANS_FEE=#transFee:MONEY#
+				,@PRICE_TT_BEFORE_NEGO=#priceTTBeforeNego:MONEY#
+				,@PRICE_TT_AFTER_NEGO=#priceTTAfterNego:MONEY#
+				,@ADR_RECEIPTOR_NM=#adrReceiptorName:NVARCHAR#
+				,@ADR_PROVINCE_ID=#addressProvinceId:INT#
+				,@ADR_CITY_ID=#addressCityId:INT#
+				,@ADR_DISTRICT_ID=#addressDistrictId:INT#
+				,@ADR_DETAIL=#addressDetail:NVARCHAR#
+				,@ADR_MOBILE=#adrMobile:NVARCHAR#
+				,@STATUS_ID	=#statusId:TINYINT#
+				,@STS_ORDER_DT=#stsOrderDate:SMALLDATETIME#
+				,@CUST_MSG=#custMsg:NVARCHAR#
+				,@SHOP_ID=#shopId:INT#
+				,@PRICE_OPTION_ID=#priceOptionId:NVARCHAR#
+				,@GOODS_QTY_ONE=#goodsQtyOne:NVARCHAR#
+				,@TRANS_TYPE_ID=#transTypeId:INT#	
+				,@USER_ID= #custSysId#
+				,@PAY_VOUCHER_ID=#couponId:INT#
+				,@PAY_VOUCHER_SN=#couponItemId:INT#
+	    ]]>
+	</select>
+	
+	<procedure id="getUsebleCouponList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [COUPON_SELECT_BY_CUST]
+	    	@SHOP_ID			=#SHOP_ID:INT#
+			,@CUST_SYS_ID		=#CUST_ID:INT#
+			,@JOB_TYPE			=#JOB_TYPE:VARCHAR#
+	    ]]>
+	</procedure>
+	<select id="checkStock" parameterClass="java.util.HashMap" remapResults="true" resultClass="java.util.HashMap">
+	      <![CDATA[
+			SELECT
+					ISNULL(MAX(STOCK_NOW),0) AS STOCK_NOW
+			FROM	DBO.GOODS_DISPLAY T1
+					INNER JOIN	DBO.GOODS_DISPLAY_PRICE T2
+							ON  T2.SHOP_ID = T1.SHOP_ID
+						   AND  T2.GOODS_ID = T1.GOODS_ID
+						   AND  T2.DISPLAY_ID = T1.DISPLAY_ID
+			WHERE	T1.SHOP_ID = #SHOP_ID:INT#
+			  AND	T1.GOODS_ID = #GOODS_ID:INT#
+			  AND	T1.DISPLAY_ID = #DISPLAY_ID:INT#
+			  AND	T1.END_DT > GETDATE()
+			  AND	T1.IS_DELETE = 0
+	    ]]>
+	</select>
+<!-- 			  AND	T2.PRICE_OPTION_ID = #PRICE_OPTION_ID:INT# -->
+</sqlMap>

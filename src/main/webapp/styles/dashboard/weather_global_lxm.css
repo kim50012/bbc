@@ -1,0 +1,429 @@
+
+/* ========== 河北省 办事处(位置特殊) ========= */
+.kuancheng {
+	top:  12px;left:  -13px;
+}
+.chengde {
+	top: -7px;left:  -8px;
+}
+.tongzhou{
+	 left: 20px;
+}
+.shouhou{
+	top:  10px; 
+}
+
+.fangshan{
+	top: -10px; left:  -3px;
+}
+.zhangjiakou{
+	top:  5px; left: 10px;
+}  
+/* ========== 北京 办事处(位置特殊) ========= */
+
+.tangshan {
+	top: 7px;left: 8px;
+}
+ .baoding{
+	top: 9px; 
+}
+ .cangzhou{
+	top: 9px;left: 21px;
+}
+.hengshui{
+	top: 15px;left: -8px;
+}
+.shijiazhuangp{
+	top: -7px;left: 20px;
+}
+.xingtai{
+	top: -7px; left: 15px;
+} 
+/* ========== 广东办事处(位置特殊) ========= */
+.shaoguan{
+	top: 20px; left: -5px;
+}
+.heyuan{
+	top: 15px;  
+}
+.jieyang{
+	top:  24px; left: -6px;
+}
+.shenzhen{
+	top: -7px; left: 8px;
+}
+.huizhoup{
+	top: -17px; left: -18px;
+}
+.zhuhai{
+	  left: 10px;
+}
+
+.zhaoqing{
+	 left:  8px;
+}
+.guangzhou{
+	top:  3px; left: 12px;
+}
+.maoming{
+	top:  10px; left: -5px;
+}
+.zhanjiang{
+	top:  6px; left:  -8px;
+}
+/* ========== 广西办事处(位置特殊) ========= */
+.liuzhou{
+	top:  8px; left:  13px;
+}
+.guilin{
+	top:  5px; left:  -13px;
+}
+.hezhou{
+	 left:  -14px;
+}
+.yulin{
+	top:  6px; left:  8px;
+}
+.qinzhou{
+	top:  -10px; left:  13px;
+}
+.guigang{
+	top:  -5px; left:  -1px;
+}
+.laibin{
+	top:  -4px; left:  -3px;
+}
+.chongzuo{
+	top:  8px; left:  13px;
+}
+.hechi{
+	  left:  -11px;
+}
+.nanningp{
+	 left:  10px;
+}
+.baise{
+	 top: -13px;
+}
+
+/* ========== 贵州办事处(位置特殊) ========= */
+.zunyi{
+	 top: 25px;left: 5px;
+}
+.yinjiang{
+	top:  20px; left:  15px;
+}
+.meitan{
+	top:  -15px; left:  -23px;
+}
+.meitan{
+	top:  -15px; left:  -23px;
+}
+.wengan{
+	top:  -5px; left:  10px;
+}
+.kaili{
+	top: 10px;  left:  6px;
+}
+.liupanshui{
+	top: 12px;  left:  -6px;
+}
+.weining{
+	top: 16px; left:  6px;
+}
+.anshun{
+	top: -16px; left:  -16px;
+}
+.guiyangp{
+	top: 16px; left:  6px;
+}
+.xishui{
+	  left: -16px;
+}
+/* ========== 大连斗山办事处(位置特殊) ========= */
+.dalianqu{
+	  left: 11px;
+}
+.pulan{
+	 top: 12px; left: -20px;
+}
+.wafang{
+	 top: -25px; left: 16px;
+}
+.zhuanghe{
+	 top: 10px; left: 3px;
+}
+/* ==========  包头华银办事处(位置特殊) ========= */
+.wulanhaote{
+	  left: 2px; top: 17px;
+}
+.tongliao{
+	  left: -10px; 
+}
+.chifeng{
+	  left: 20px;  top: -22px;
+}
+.huolinhe{
+	  left: 6px;  top: -5px;
+}
+.ximeng{
+	   top: -15px; left: -12px;
+}
+.jining{
+	   top: 17px; 
+}
+.hushi{
+	   top: -5px; left: 19px;
+}
+.baotou{
+	   top: 3px; left: 12px;
+}
+.linhe{
+	   top: -10px; left: 28px;
+}
+.dongsheng{
+	   top: -10px; left: 28px;
+}
+.gongjiata{
+	   top: -12px; left: -6px;
+}
+.zhunqi{
+	   top:6px; left: 3px;
+}
+.nngyulin{
+	   left: -6px;
+}
+.shenmu{
+	   left: -16px;
+}
+.daliuta{
+	   left: 16px; top:-4px; 
+}
+.wuhai{
+	   left: 11px; top:7px; 
+}
+.azuoqi{
+	   top:-4px; 
+}
+/* ==========  宁夏千里马办事处(位置特殊) ========= */
+.dawukou{
+	  left: 12px; top: -3px;
+}
+.yinchuanfuwu{
+	  top: -3px;
+}
+.zhongwei{
+	  top: 10px;left: 5px;
+}
+/* ==========  青海办事处(位置特殊) ========= */
+.xining{
+	  top: -13px; 
+}
+.geermu{
+	  left: 7px;  top: 10px;
+}
+/* ==========  西藏办事处(位置特殊) ========= */
+.lasa{
+	  top: -3px;  left: 13px; 
+} 
+/* ==========  浙江永弘办事处(位置特殊) ========= */
+.shanghai{
+	  top: 14px;  left: 7px; 
+} 
+.hangzhoup{
+	  top: -7px;  left: 8px; 
+} 
+.ningbo{
+	  top: 4px;  left: 5px; 
+} 
+.wenzhou{
+	  top: 8px;  left: 15px; 
+} 
+/* ==========  陕西办事处(位置特殊) ========= */
+.xxshenmu{
+	  top: 2px;  left:-9px; 
+} 
+.xxyulin{
+	  top: 18px;  left:10px; 
+} 
+.tongchuan{
+	  top: -16px;  left:8px; 
+} 
+.weinan{
+	  top:  4px;  left:8px; 
+} 
+.shangluo{
+	  left: -12px;   top: 6px; 
+} 
+.xxxian{
+	   top: -9px;  left: 2px; 
+} 
+.baoji{
+	   left: -10px;  top: -9px;  
+}
+.ankang{
+	   left: -14px;  top: 7px;  
+}
+/* ========== 山东办事处(位置特殊) ========= */
+.sdyantai{
+	  top: 10px; 
+} 
+.weihai{
+	  top: -15px; left: -8px;
+}
+.dezhou{
+	  top: 19px; left: -25px;
+}
+.jinan{
+	   left:  13px;
+}
+.taian{
+	  top: 9px; left:  16px;
+}
+.zibo{
+	  top: 28px; left:  -3px;
+}
+.qingdao{
+	  top: 13px; left:  9px;
+}
+.weifang{
+	  top: 15px;  
+}
+.dongying{
+	  top: 29px;   left:  3px;
+}
+.rizhao{
+	  top: 18px; left:  3px;
+}
+.linyi{
+	  top: -20px; left:  7px;
+}
+.sdjining{
+	  top: 24px; left:  10px;
+}
+/* ========== 山西办事处(位置特殊) ========= */
+.tianzhen{
+	  top: 16px; left:  -19px;
+} 
+.datong{
+	  left:  -6px;top: 9px;
+} 
+.hunyuan{
+	   top: 24px;
+} 
+.shuozhou{
+	   left: -22px;top: -3px;
+} 
+.daixian{
+	   left: -24px;   top: -3px;
+} 
+.yangquan{
+	     top: 14px; left: 4px; 
+} 
+.jinzhong{
+	     top: 20px;  left: -3px; 
+} 
+.taiyuanban{
+	     top: 25px;  left: 19px; 
+} 
+.taohongpo{
+	     top: 19px;  left: 8px; 
+} 
+.lvliang{
+	     top: -12px;  
+}
+.baode{
+	    left: 11px;   top: 10px; 
+} 
+.changzhi{
+	     top: 16px;  left: -7px;
+} 
+/* ========== 四川办事处(位置特殊) ========= */
+.guangyuan{
+	  top: -6px; left:  -9px;
+}
+.bazhong{
+	  top: 4px; left:  12px;
+}
+.dazhou{
+	  top: 20px; left:  20px;
+}
+.mianyang{
+	  top: -5px; left:  -7px;
+}
+.nanchong{
+	  top:  5px; left: 7px;
+}
+.guangan{
+	    left: 15px;
+}
+.suining{
+	    left: -13px; top: 3px;
+}
+.chengxi{
+	    left: -3px; top: 23px;
+}
+.chengbei{
+	    left: 13px; top: 33px;
+}
+.chengnan{
+	    left: 13px; 
+}
+.yaan{
+	    left: -3px; top: 6px;
+}
+.leshan{
+	    left: -5px; top: 7px;
+}
+.zigong{
+	    left: 14px; top: 17px;
+}
+.luzhou{
+	     top: -12px;left: -3px;
+}
+.panzhihua{
+	     top: 10px; left: 4px;
+}
+/* ========== 新疆办事处(位置特殊) ========= */
+.beitun{
+	  top: -20px; left:  -3px;
+}
+.hami{
+	    left:  -13px;
+}
+.kuitun{
+	   top: -18px;  left:  15px;
+}
+.changji{
+	   top: 13px;  left:  12px;
+}
+.wudong{
+	   top: -3px;  left:  6px;
+}
+.wuxi{
+	   top: -12px;  left:  6px;
+}
+.miquan{
+	   top: 6px;  left:  12px;
+}
+.qitai{
+	   left:  19px;  top: 5px;
+}
+.keshen{
+	   left:  9px;  top: 15px;
+}
+.akesu{
+	   left: 6px;  top: -3px;
+}
+.kuche{
+	   left: 8px;  
+}
+.kuerle{
+	   left: 28px;  
+}
+.xjpanzhihua{
+	   left: 6px;   top: 4px;
+}
+.yili{
+	   left: 16px;  
+}

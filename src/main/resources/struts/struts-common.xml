@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="label" extends="portal-default" namespace="/label">
+		<action name="*" method="{1}" class="labelAction">
+		    <result name="{1}">/common/label/{1}.jsp</result>
+		</action>
+	</package> 
+	
+  	 
+  	<package name="dep2" extends="portal-default" namespace="/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep3" extends="portal-default" namespace="/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep4" extends="portal-default" namespace="/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep5" extends="portal-default" namespace="/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep6" extends="portal-default" namespace="/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep7" extends="portal-default" namespace="/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep8" extends="portal-default" namespace="/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep9" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep10" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep11" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep12" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep13" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep14" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep15" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep16" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep17" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep18" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep19" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep20" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+  	<package name="dep21" extends="portal-default" namespace="/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*">
+		 <action name="notFound" class="notFoundAction" ></action> 
+	</package>  
+	
+</struts>

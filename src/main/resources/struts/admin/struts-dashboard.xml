@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="dashboard" extends="portal-default" namespace="/dashboard">
+		<action name="*" method="{1}" class="dashboardAction">
+		    <result name="{1}">/dashboard/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="screenOne" extends="portal-default" namespace="/screenOne">
+		<action name="*" method="{1}" class="screenOneAction">
+		    <result name="{1}">/dashboard/screenOne/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="screenTwo" extends="portal-default" namespace="/screenTwo">
+		<action name="*" method="{1}" class="screenTwoAction">
+		    <result name="{1}">/dashboard/screenTwo/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

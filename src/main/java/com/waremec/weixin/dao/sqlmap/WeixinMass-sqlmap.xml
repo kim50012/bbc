@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WeixinMass">
+
+   
+    <select id="selectSendMsgById" parameterClass="java.lang.Integer" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_WX_MASS_MESSAGE_SELECT]
+			  @MESSAGE_ID		= 	#value#
+    ]]>
+    </select>
+	
+	<update id="updateMediaId" parameterClass="java.util.HashMap">
+		 UPDATE [DBO].[SHOP_FILE_MST]
+		 SET 
+		 	MEDIA_ID = #mediaId#
+		 	,MEDIA_UP_DT = GETDATE()
+		 WHERE FILE_ID = #fileId#
+	</update>
+
+</sqlMap>

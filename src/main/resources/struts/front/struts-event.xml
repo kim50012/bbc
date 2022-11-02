@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+ 	<package name="front/event/00001" extends="portal-default" namespace="/front/event/00001">
+		<action name="*" method="{1}" class="event00001Action"> 
+		    <result name="{1}">/front/event/00001/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00003" extends="portal-default" namespace="/front/event/00003">
+		<action name="*" method="{1}" class="event00003Action"> 
+		    <result name="{1}">/front/event/00003/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/event/00004" extends="portal-default" namespace="/front/event/00004">
+		<action name="*" method="{1}" class="event00004Action"> 
+		    <result name="{1}">/front/event/00004/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00005" extends="portal-default" namespace="/front/event/00005">
+		<action name="*" method="{1}" class="event00005Action"> 
+		    <result name="{1}">/front/event/00005/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00006" extends="portal-default" namespace="/front/event/00006">
+		<action name="*" method="{1}" class="event00006Action"> 
+		    <result name="{1}">/front/event/00006/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00007" extends="portal-default" namespace="/front/event/00007">
+		<action name="*" method="{1}" class="event00007Action"> 
+		    <result name="participated">/front/event/00007/participated.jsp</result>
+		    <result name="{1}">/front/event/00007/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00008" extends="portal-default" namespace="/front/event/00008">
+		<action name="*" method="{1}" class="event00008Action"> 
+		    <result name="detail">/front/event/00008/detail.jsp</result>
+		    <result name="index2">/front/event/00008/index2.jsp</result>
+		    <result name="{1}">/front/event/00008/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/event/00009" extends="portal-default" namespace="/front/event/00009">
+		<action name="*" method="{1}" class="event00009Action"> 
+		    <result name="{1}">/front/event/00009/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/newCentury" extends="portal-default" namespace="/front/newCentury">
+		<action name="*" method="{1}" class="newCenturyAction"> 
+		    <result name="{1}">/front/event/00009/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/event/00010" extends="portal-default" namespace="/front/event/00010">
+		<action name="*" method="{1}" class="event00010Action"> 
+		    <result name="friend">/front/event/00010/friend.jsp</result>
+		    <result name="{1}">/front/event/00010/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/event/00011" extends="portal-default" namespace="/front/event/00011">
+	    <action name="*" method="{1}" class="event00011Action"> 
+	        <result name="{1}">/front/event/00011/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00012" extends="portal-default" namespace="/front/event/00012">
+	    <action name="*" method="{1}" class="event00012Action"> 
+		    <result name="index">/front/event/00012/index.jsp</result>
+	     	<result name="detail">/front/event/00012/detail.jsp</result>
+	        <result name="{1}">/front/event/00012/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00013" extends="portal-default" namespace="/front/event/00013">
+	    <action name="*" method="{1}" class="event00013Action"> 
+	        <result name="{1}">/front/event/00013/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00014" extends="portal-default" namespace="/front/event/00014">
+	    <action name="*" method="{1}" class="event00014Action"> 
+	        <result name="{1}">/front/event/00014/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00015" extends="portal-default" namespace="/front/event/00015">
+	    <action name="*" method="{1}" class="event00015Action"> 
+	        <result name="participated">/front/event/00015/participated.jsp</result>
+	        <result name="{1}">/front/event/00015/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00016" extends="portal-default" namespace="/front/event/00016">
+	    <action name="*" method="{1}" class="event00016Action"> 
+	    	<result name="participated">/front/event/00016/participated.jsp</result>
+	        <result name="{1}">/front/event/00016/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00017" extends="portal-default" namespace="/front/event/00017">
+	    <action name="*" method="{1}" class="event00017Action"> 
+	        <result name="{1}">/front/event/00017/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00018" extends="portal-default" namespace="/front/event/00018">
+	    <action name="*" method="{1}" class="event00018Action"> 
+	        <result name="{1}">/front/event/00018/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00019" extends="portal-default" namespace="/front/event/00019">
+	    <action name="*" method="{1}" class="event00019Action"> 
+	        <result name="{1}">/front/event/00019/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00020" extends="portal-default" namespace="/front/event/00020">
+	    <action name="*" method="{1}" class="event00020Action"> 
+	        <result name="result">/front/event/00020/result.jsp</result>
+	        <result name="index">/front/event/00020/index.jsp</result>
+	        <result name="{1}">/front/event/00020/{1}.jsp</result>
+	    </action>
+	</package>
+	<package name="front/event/00021" extends="portal-default" namespace="/front/event/00021">
+	    <action name="*" method="{1}" class="event00021Action"> 
+	        <result name="friendmain">/front/event/00021/friendmain.jsp</result>
+	        <result name="participated">/front/event/00021/participated.jsp</result>
+	        <result name="{1}">/front/event/00021/{1}.jsp</result>
+    	    <result name="secfriendmessage">/front/event/00021/friend_view.jsp</result>	  
+	    </action>
+	</package>	
+	
+	<package name="front/event/00022" extends="portal-default" namespace="/front/event/00022">
+		<action name="*" method="{1}" class="event00022Action"> 
+		    <result name="participated">/front/event/00022/participated.jsp</result>
+		    <result name="{1}">/front/event/00022/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00023" extends="portal-default" namespace="/front/event/00023">
+	    <action name="*" method="{1}" class="event00023Action"> 
+	        <result name="friendmain">/front/event/00023/friendmain.jsp</result>
+	        <result name="{1}">/front/event/00023/{1}.jsp</result>
+    	    <result name="secfriendmessage">/front/event/00023/friend_view.jsp</result>	  
+	    </action>
+	</package>	
+	
+	<package name="front/event/00024" extends="portal-default" namespace="/front/event/00024">
+	    <action name="*" method="{1}" class="event00024Action"> 
+	        <result name="friendmain">/front/event/00024/friendmain.jsp</result>
+	        <result name="{1}">/front/event/00024/{1}.jsp</result>
+    	    <result name="secfriendmessage">/front/event/00024/friend_view.jsp</result>	  
+	    </action>
+	</package>	
+	
+	<package name="front/event/00025" extends="portal-default" namespace="/front/event/00025">
+		<action name="*" method="{1}" class="event00025Action"> 
+		    <result name="friend">/front/event/00025/friend.jsp</result>
+		    <result name="{1}">/front/event/00025/{1}.jsp</result>
+		</action>
+	</package>	
+	
+	<package name="front/event/00026" extends="portal-default" namespace="/front/event/00026">
+		<action name="*" method="{1}" class="event00026Action"> 
+		    <result name="index">/front/event/00026/index.jsp</result>
+		    <result name="{1}">/front/event/00026/{1}.jsp</result>
+		</action>
+	</package>	
+	
+ 	<package name="front/event/00027" extends="portal-default" namespace="/front/event/00027">
+		<action name="*" method="{1}" class="event00027Action"> 
+		    <result name="nosession">/front/event/00027/nosession.jsp</result>
+		    <result name="{1}">/front/event/00027/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00028" extends="portal-default" namespace="/front/event/00028">
+		<action name="*" method="{1}" class="event00028Action"> 
+		    <result name="index">/front/event/00028/index.jsp</result>
+		    <result name="{1}">/front/event/00028/{1}.jsp</result>
+		</action>
+	</package>	
+	
+	<package name="front/event/00029" extends="portal-default" namespace="/front/event/00029">
+		<action name="*" method="{1}" class="event00029Action"> 
+		    <result name="friend">/front/event/00029/friend.jsp</result>
+		    <result name="{1}">/front/event/00029/{1}.jsp</result>
+		</action>
+	</package>	
+	
+	<package name="front/event/00030" extends="portal-default" namespace="/front/event/00030">
+		<action name="*" method="{1}" class="event00030Action"> 
+		    <result name="{1}">/front/event/00030/{1}.jsp</result>
+		</action>
+	</package>		
+	
+	<package name="front/event/00031" extends="portal-default" namespace="/front/event/00031">
+		<action name="*" method="{1}" class="event00031Action"> 
+	        <result name="result">/front/event/00031/result.jsp</result>
+	        <result name="index">/front/event/00031/index.jsp</result>
+		    <result name="{1}">/front/event/00031/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00033" extends="portal-default" namespace="/front/event/00033">
+	    <action name="*" method="{1}" class="event00033Action"> 
+		    <result name="index">/front/event/00033/index.jsp</result>
+	     	<result name="detail">/front/event/00033/detail.jsp</result>
+	        <result name="{1}">/front/event/00033/{1}.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="front/event/00032" extends="portal-default" namespace="/front/event/00032">
+		<action name="*" method="{1}" class="event00032Action"> 
+		    <result name="participated">/front/event/00032/participated.jsp</result>
+		    <result name="nosession">/front/event/00032/nosession.jsp</result>
+		    <result name="{1}">/front/event/00032/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00034" extends="portal-default" namespace="/front/event/00034">
+		<action name="*" method="{1}" class="event00034Action"> 
+		    <result name="participated">/front/event/00034/participated.jsp</result>
+		    <result name="nosession">/front/event/00034/nosession.jsp</result>
+		    <result name="{1}">/front/event/00034/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00035" extends="portal-default" namespace="/front/event/00035">
+	    <action name="*" method="{1}" class="event00035Action"> 
+		    <result name="index">/front/event/00035/index.jsp</result>
+	     	<result name="myInfo">/front/event/00035/myInfo.jsp</result>
+	     	<result name="friendShare">/front/event/00035/friendShare.jsp</result>
+	     	<result name="nosession">/front/event/00035/nosession.jsp</result>
+	        <result name="{1}">/front/event/00035/{1}.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="front/event/00036" extends="portal-default" namespace="/front/event/00036">
+		<action name="*" method="{1}" class="event00036Action"> 
+		    <result name="nosession">/front/event/00036/nosession.jsp</result>
+		    <result name="{1}">/front/event/00036/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00037" extends="portal-default" namespace="/front/event/00037">
+	    <action name="*" method="{1}" class="event00037Action"> 
+		    <result name="index">/front/event/00037/index.jsp</result>
+	        <result name="{1}">/front/event/00037/{1}.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="front/event/00038" extends="portal-default" namespace="/front/event/00038">
+		<action name="*" method="{1}" class="event00038Action"> 
+		    <result name="nosession">/front/event/00038/nosession.jsp</result>
+		    <result name="{1}">/front/event/00038/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00039" extends="portal-default" namespace="/front/event/00039">
+		<action name="*" method="{1}" class="event00039Action"> 
+		    <result name="participated">/front/event/00039/event.jsp</result>
+		    <result name="nosession">/front/event/00039/nosession.jsp</result>
+		    <result name="{1}">/front/event/00039/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/event/00040" extends="portal-default" namespace="/front/event/00040">
+	    <action name="*" method="{1}" class="event00040Action"> 
+		    <result name="index">/front/event/00040/index.jsp</result>
+	        <result name="{1}">/front/event/00040/{1}.jsp</result>
+	    </action>
+	</package>
+	
+</struts>

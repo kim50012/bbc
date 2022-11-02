@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_SD_112.js" type="text/javascript" charset="utf-8"></script> 
+  </head>
+  <body>
+    <div class="page1 fieldReport_page1 pop-page">
+      <header class="app-header">
+        <div class="logo">
+        	<img class= "back" src="../image/back.png"/>
+          <text class="font24 bold ml24">현장보고등록</text>
+        </div>
+      </header>
+<!--内容区域-->
+      <div class="content">
+        
+        <div class="container contentList refresh-wrap">
+          <div class="tabPointer" id="tabPointer">
+            <a class="tabList font20 mb10" href="#jump1">Site Information</a>
+            <a class="tabList font20 mb10" href="#jump2">Auditourium</a>
+            <a class="tabList font20 mb10" href="#jump3">Projection Room</a>
+            <a class="tabList font20" href="#jump4">Facility Room System Setting</a>
+            <a class="tabList font20" href="#jump5">Movie Test Trainning</a>
+            <a class="tabList font20" href="#jump6">Power Test Water Drain Test</a>
+          </div>
+          <div class="scroll-wrap scroll-wrap_fieldReport">
+  <!--第一部分-->
+            <div class="contentList2 pb16" id="jump1">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Site Information</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="table-col2 open" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%"/>
+                  </colgroup>
+                  <tr class="getWord">
+                    <th class="right noHang2 fontGrey Rword">극장사</th>
+                    <td class="left">Cineworld</td>
+                  </tr>
+                  <tr class="getWord">
+                    <th class="right noHang2 fontGrey Rword">사이트</th>
+                    <td class="left">Dublin</td>
+                  </tr>
+                  <tr class="getWord">
+                    <th class="right noHang2 fontGrey Rword">Supervisor</th>
+                    <td class="left">김동일</td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">주소</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>사이트 주소 입력</div>
+							        </div>
+                  	</td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">ZIP Code</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>ZIP CODE 입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">Project Manager</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>김두철</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">모델</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>모델 입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">환경 장비</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>환경 장비 입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInputDay intd">
+                    <th class="right noHang2 fontGrey Rword">출장기간(On Site 기준)</th>
+                    <td class="left">
+                    	<div class="input-wrap">
+							          <input class="imgContent" type="date" name="" id="calendar_1" value="" />
+							          <div></div>
+							        </div>
+                    </td>
+                  </tr>
+                  
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">장비 입고일</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>장비 입고일 (현장 확인일 기준)</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getWord">
+                    <th class="right noHang2 fontGrey Rword">장비 입고일</th>
+                    <td class="left">
+                        <div class="such mr20">
+                        	<label class="radio">
+  	                        <input class="" type="radio" name="su" value="신축"/>
+  	                        <span class="Rdefine">신축</span>
+                          </label>
+                        </div>
+                        <div class="trans">
+                        	<label class="radio">
+  	                        <input class="" type="radio" name="su" checked="checked" value="개조" id="trans"/>
+  	                        <span class="Rdefine">개조</span>
+                          </label>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr class="getInputDay intd">
+                    <th class="right noHang2 fontGrey Rword">소방 점검일</th>
+                    <td class="left">
+                    	<div class="input-wrap">
+							          <input class="imgContent" type="date" name="" id="calendar_2" value="" />
+							       
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInputDay intd">
+                    <th class="right noHang2 fontGrey Rword">시사회 및 프리오픈 예정일</th>
+                    <td class="left">
+                    	<div class="input-wrap">
+							          <input class="imgContent" type="date" name="" id="calendar_3" value="" />
+							        
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInputDay intd">
+                    <th class="right noHang2 fontGrey Rword">오픈 예정일</th>
+                    <td class="left">
+                    	<div class="input-wrap">
+							          <input class="imgContent" type="date" name="" id="calendar_4" value="" />
+							      
+							          <div></div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">오픈 예정작</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>오픈 예정작</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">ICS S/W</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>S/W 정보 기입</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">Seat Controller F/W Ver</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>F/W 정보 기입</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInput intd">
+                    <th class="right noHang2 fontGrey Rword">Cinema Server</th>
+                    <td class="left">
+                    	<div class="input-wrap inContent">
+							          <input type="text" name="" id="" value="" />
+							          <div>Cinema Server 정보 기입</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getInputThree intd">
+                    <th class="right noHang2 fontGrey Rword">운영 담당자(Operator/Code User)</th>
+                    <td class="left">
+                      <div class="three">
+                      	<div class="input-wrap inContent">
+								          <input type="text" name="" id="" value="" />
+								          <div>이름</div>
+								        </div>
+								        <div class="input-wrap inContent">
+								          <input type="text" name="" id="" value="" />
+								          <div>이메일</div>
+								        </div>
+								        <div class="input-wrap inContent">
+								          <input type="text" name="" id="" value="" />
+								          <div>전화번호</div>
+								        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="getTextarea intd">
+                    <th class="right noHang2 fontGrey Rword">Site Issue</th>
+                    <td class="left"><textarea class="inContent" rows="30" cols="30" placeholder="이슈 발생 시 내용 기입 (Doa 포함)"></textarea></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第二部分-->
+            <div class="contentList2 pb16" id="jump2">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Auditourium#1 (제품)</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="table-col2 open" id="table2" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%"/>
+                  </colgroup>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">단조성 공사</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">배관 및 배선포설 공사</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Anchor 설치공사</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">단 마감 공사 P-Title설치</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">반압 및 설치()</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">커넥터 작업 및 체결()</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">튜브 청소 및 체결()</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">부자재 설치()</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第三部分-->
+            <div class="contentList2 pb16" id="jump3">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Auditourium#1 (Batten)</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table3" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%"/>
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Cat Wlk 공사</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">배관 및 배선 포설 공사 (바텐)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">바텐설치공사</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">환경장비 설치</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">커넥터 작업  (Power, DMX)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Fog Case 제작</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">드레인 설치공사 (Batten/제품)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第四部分-->
+            <div class="contentList2 pb16" id="jump4">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Projection Room</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table4" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%" />
+                  	<col width="60%" />
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Main 전기  (UPS및 Trans 설치)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">분전반 설치 (배선 체결 포함)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">커넥터작업 (Lan, Shaker)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">SCU 설치 (Lan, Shaker, Sub Woofer)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">System 연동</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第五部分-->
+            <div class="contentList2 pb16" id="jump5">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Facility Room</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table5" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%"/>
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">분선반설치(배선 체결 포함)</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">설비 장비 입고</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">설비 장비 입고</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">압력 세팅 및 누수/누기 테스트</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第六部分-->
+            <div class="contentList2 pb16">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>System Setting(제품)</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table6" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%">
+                  	<col width="60%">
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">인터넷 설치</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">인터넷 설치</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Fan 각도 세팅</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Nozzle Assy 각도 세팅</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>  
+  <!--第七部分-->
+            <div class="contentList2 pb16" id="jump6">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Movie Test</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table7" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%" />
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">4DX Trailer Test</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Main Movie Test</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>  
+  <!--第八部分-->
+            <div class="contentList2 pb16">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Training</span>
+                </div>
+              </div>
+              <div class="table">
+                <table class="drag-table open" id="table8" cellspacing="0" cellpadding="2" width="100%" border="1">
+				 <colgroup>
+                  	<col width="40%"/>
+                  	<col width="60%" />
+                  </colgroup>
+
+                  <tr class="getInputSmallDay intd">
+                    <th class="right noHang2 fontGrey Rword">Basic Operating</br>&Maintenance</th>
+                    <td>
+                    	<div class="rightThree">
+	                    	<div class="input-wrap">
+								          <input class="smallDay imgContent" type="date" name="" id="calendar_5" value="" />							  
+								          <div></div>
+								        </div>
+	                      <div class="checkBtn ml12">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>진행중</span>
+	                      	</label>
+	                      </div>
+	                      <div class="checkBtn ml10">
+	                      	<label class="checkbox">
+	                      		<input type="checkbox" value=""/>
+	                      		<span>완료</span>
+	                      	</label>
+	                      </div>
+                    	</div>
+                    </td>
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>  
+  
+  <!--第九部分-->
+            <div class="contentList2 pb16" id="listSix">
+              <div class="title3">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Power Test</span>
+                </div>
+              </div>
+              <div class="table">
+               
+                <table class="drag-table" id="table9" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                  <tr>
+                    <th class="haveHang">주요항목 </th>
+                    <th class="haveHang">측정/세팅값</th>
+                    <th class="haveHang">측정/세팅값</th>
+                    <th class="haveHang">용량</th>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">메인 차단기 R-S 전압 체크 (380V)</td>
+                    <td class="left">
+                  
+                    	<div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                   
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                   
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">메인 차단기 R-T 전압 체크 (380V)</td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                      
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">메인 차단기 S-T 전압 체크 (380V)</td>
+                    <td class="left">
+                    
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">4D Chair개별 차단기 전압 체크 (220V)</td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                    
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">환경장비 Chair개별 차단기 전압 체크 (220V)</td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                    
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                    
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">4D Chair개별 Outlet 전압 체크 (220V)</td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">환경장비 Chair개별 차단기 전압 체크 (220V)</td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                      
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">분전반 N-G간 전위차 (1V 미만)</td>
+                    <td class="left">
+                      
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                     
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">장비별 N-G간 전위차 (1V 미만)</td>
+                    <td class="left">
+           
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+             
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+  <!--第十部分-->
+            <div class="contentList2 pb16">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>Water Drain Test</span>
+                </div>
+              </div>
+              <div class="table">
+            
+                <table class="drag-table" id="table10" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr>
+                    <th>주요항목</th>
+                    <th>설치여부</th>
+                    <th>자동/수동</th>
+                    <th>교육진행</th>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">4D Chair Drain 설치 여부</td>
+                    <td class="left">
+            
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+           
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                  
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                  <tr class="getTable intd">
+                    <td class="right noHang2 power">바텐 Drain 설치 여부</td>
+                    <td class="left">
+              
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+               
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                    <td class="left">
+                  
+                      <div class="input-wrap three">
+							          <input type="number" name="" value="" />
+							          <div>입력</div>
+							        </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            <input type="submit" value="현장보고 등록" class="loginBtn fontWhite font28"/> 
+            </div>         
+         </div>
+  		  </div>
+      
+      </div>
+    </div>
+  </body>
+</html> 

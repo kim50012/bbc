@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Menu">
+ 
+	<typeAlias alias="menu" type="com.waremec.wpt.admin.domain.Menu"/>
+	<typeAlias alias="shopMenuAuth" type="com.waremec.wpt.admin.domain.ShopMenuAuth"/>
+
+	<statement id="selectMenuListByPid" parameterClass="java.util.HashMap" resultClass="menu" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[MENU_MST_SELECT]
+			  @SHOP_ID 		= #SHOP_ID#
+			 ,@MENU_PID 	= #MENU_PID#
+			 ,@USER_ID 	 	= #USER_ID#
+    ]]>
+    </statement>   
+      
+	<statement id="selectShopMenuAuthListByPid" parameterClass="java.util.HashMap" resultClass="shopMenuAuth" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_MENU_AUTH_SELECT]
+			 @SHOP_ID 		= #SHOP_ID#
+			,@MENU_PID 		= #MENU_PID#
+			,@USER_ID 	 	= #USER_ID#
+    ]]>
+    </statement>     
+	<statement id="saveShopMenuAuth" parameterClass="java.util.HashMap" >
+    <![CDATA[
+		 EXEC [dbo].[SHOP_MENU_AUTH_SAVE]
+			 @SHOP_ID 		= #SHOP_ID#
+			,@MENU_ID_LIST 		= #MENU_ID_LIST#
+    ]]>
+    </statement>     
+</sqlMap>

@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+html,body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height:100%;
+	font-size: 12px;
+}
+*{
+	font-size: 12px;
+}
+#enumGroup{
+	position: absolute;
+	float: center;
+	width:100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+#enumGroupList{
+	position: relative;
+	top: 30px;
+	left: 0px;
+}
+#enumItemsList{
+	position: relative;
+	top: 30px;
+	right: 0px;
+}
+
+/************/
+
+.groupNotice{
+	position: relative;
+	float: left;
+	font-size: 15px;
+	top: 15px;
+}
+
+.moveRight{
+	position: relative;
+	float: left;
+	top: -1px;
+	width: 70px;
+	height: 30px;
+	left: 10px;
+}
+#codeLevelNotice{
+	/*
+	position: relative;
+	float: right;
+	top: 30px;
+	right: 150px;
+	*/
+}
+
+#selCodeLevel{
+	position: relative;
+	top: 0px;
+}
+
+
+#lblUseState{
+	position: relative;
+	float: right;
+	right: 330px;
+	font-size: 14px;
+	top: 14px;
+}
+/***************弹窗部分**********************************/
+#newEnumItem{
+	border-style: solid;
+	padding: 2px 2px 2px;
+	
+}
+
+#newEnumItem > table{
+	background-color: #FFFFFF;
+	width: 600px;
+	height: 200px;
+	font-size: 20px;
+}
+
+.popButtons {
+	height: 30px;
+	width: 60px;
+	font-size: 15px;
+}
+.popInputTxt{
+	font-size: 20px;
+	width: 163px;
+	
+}
+

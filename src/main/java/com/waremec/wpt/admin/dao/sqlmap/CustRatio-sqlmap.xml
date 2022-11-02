@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CustRatio">
+	<!-- 查询该客户性别（数量） -->
+	<select id="selectCustRatio" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_AVG_SELECT]
+		 	@SHOP_ID	=#shopId:INT#,
+		 	@USER_ID	=#userId:NVARCHAR#,	
+		 	@START_DT	=#startDate:SMALLDATETIME#,
+		 	@END_DT		=#endDate:SMALLDATETIME#,
+		 	@JOB_TYPE	=#jobType:CHAR#
+		]]>
+	</select>
+	<!-- 查询该客户性别（具体） -->
+	<select id="selectCustSexList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_SEX_SELECT]
+		 	@SHOP_ID		=#shopId:INT#,
+		 	@START_DT		=#startDate:SMALLDATETIME#,
+		 	@END_DT			=#endDate:SMALLDATETIME#,
+		 	@WX_IF_SEX_ID	=#wx_if_sex_id:INT#,
+			@JOB_TYPE 		=#jobType:VARCHAR#,
+			@PAGE_CURR		=#pageCurr:INT#,
+			@PAGE_UINT		=#pageUnit:INT#	
+		]]>
+	</select>
+	<!-- 查询该客户性别（具体） -->
+	<!-- <select id="selectCustList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_SEL]
+		 	@SHOP_ID	=#shopId:INT#,
+			@CUST_SYS_ID=#custSysId:VARCHAR#,
+			@PAGE_CURR	=#pageCurr:INT#,
+			@PAGE_UINT	=#pageUnit:INT#					
+		]]>
+	</select>  -->
+	<!-- 查询该客户等级（数量） -->
+	<!-- <select id="selectGradeSum" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_GRADE_SUM_SELECT]
+		 	@SHOP_ID	=#shopId:INT#,
+		 	@START_DT	=#startDate:SMALLDATETIME#,
+		 	@END_DT		=#endDate:SMALLDATETIME#
+		]]>
+	</select> -->
+	<!-- 查询该客户等级（具体） -->
+	<select id="selectCustGradeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [CUST_GRADE_SELECT]
+		 	@SHOP_ID	=#shopId:INT#,
+		 	@START_DT	=#startDate:DATE#,
+		 	@END_DT		=#endDate:DATE#,	
+		 	@USER_ID	=#userId:NVARCHAR#,
+			@GRADE_ID	=#gradeId:INT#,
+			@JOB_TYPE	=#jobType:VARCHAR#,
+			@PAGE_CURR	=#pageCurr:INT#,
+			@PAGE_UINT	=#pageUnit:INT#	
+		]]>
+	</select>
+</sqlMap>

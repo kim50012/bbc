@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="hzm/sample" extends="portal-default" namespace="/hzm/sample">
+		<action name="*" method="{1}" class="hzmSampleAction">
+		    <result name="{1}">/hzm/sample/{1}.jsp</result>
+		</action>
+	</package>
+	<!--  -->
+	<package name="hzm/portal" extends="portal-default" namespace="/hzm/portal">
+		<action name="*" method="{1}" class="hzmPortalAction">
+		    <result name="{1}">/hzm/portal/{1}.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

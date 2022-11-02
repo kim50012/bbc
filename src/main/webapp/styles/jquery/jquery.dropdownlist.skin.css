@@ -1,0 +1,207 @@
+.borderRadius{
+	-moz-border-radius:0 0 0 0; 
+	border-radius:0 0 0 0; 
+}
+.borderRadiusTp{-moz-border-radius:0 0 0 0; border-radius:0 0 0 0;}
+.borderRadiusBtm{-moz-border-radius:0 0 0 0 ; border-radius:0 0 0 0;}
+.borderRadiusTp ul li:last-child{-moz-border-radius:0 0 0 0 ; border-radius:0 0 0 0;border-bottom:0 none #c3c3c3; }
+.borderRadiusBtm ul li:first-child{-moz-border-radius:0 0 0 0; border-radius:0 0 0 0;border-bottom:0 none #c3c3c3; }
+
+.white {
+	border: solid 1px #a3a5a4;
+	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15)
+		rgba(0, 0, 0, 0.25);
+}
+.white .divider {
+	display: none
+}
+
+.white .arrow {
+	width:16px;height:16px; margin-top:-8px; 
+	background: url(images/dropdown_arrow_white.png) no-repeat;
+}
+
+.white .arrow:hover {
+	background-position: 0 100%;
+}
+
+.white .ddTitle {
+	color: #333;
+	background-image: none;
+	background-color: #ffffff;
+}
+
+.white .ddTitle .ddTitleText {
+	padding-left: 5px;
+	height: 20px;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.white .ddTitle .ddTitleText .ddTitleText {
+	padding: 0;
+}
+
+.white .ddTitle .description {
+	font-size: 12px;
+	color: #666
+}
+
+.white .ddTitle .ddTitleText img {
+	padding-right: 5px;
+}
+
+.white .ddChild {
+	border: 1px solid #c3c3c3;
+	background-color: #fff;
+	left: -1px;
+}
+
+.white .ddChild li {
+	padding: 5px;
+	background-color: #fff;
+}
+
+.white .ddChild li .description {
+	color: #666;
+}
+
+.white .ddChild li .ddlabel {
+	color: #333;
+}
+
+.white .ddChild li.hover {
+	color: #fff;
+	background-image: url(images/dropdown_item_background.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+	background-color: #fff;
+}
+.white .ddChild li.hover .ddlabel {
+	color: #fff;
+}
+.white .ddChild li img {
+	padding: 0 6px 0 0;
+}
+
+.white .ddChild li.optgroup {
+	padding: 0;
+}
+
+.white .ddChild li.optgroup .optgroupTitle {
+	padding: 0 5px;
+	font-weight: bold;
+	font-style: italic
+}
+
+.white .ddChild li.optgroup ul li {
+	padding: 5px 5px 5px 15px
+}
+
+.white .ddChild li.selected {
+	background-color: #0044cc;
+}
+
+.white .ddChild li.selected .ddlabel {
+	color: #fff;
+}
+
+.transparent {
+	border: none;
+	cursor: pointer;
+}
+.transparent .divider {
+	display: none
+}
+
+.transparent .arrow {
+	width:16px;
+	height:16px; 
+	margin-top:-8px; 
+	background: url(images/dropdown_arrow_transparent.png) no-repeat;
+	background-color: transparent;
+}
+
+.transparent .arrow:hover {
+	background-position: 0 100%;
+}
+
+.transparent .ddTitle {
+	color: #314982;
+	background-image: none;
+}
+
+.transparent .ddTitle .ddTitleText {
+	padding-left: 0px;
+	height: 20px;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.transparent .ddTitle .ddTitleText .ddTitleText {
+	padding: 0;
+}
+
+.transparent .ddTitle .description {
+	font-size: 12px;
+	color: #666
+}
+
+.transparent .ddTitle .ddTitleText img {
+	padding-right: 5px;
+}
+
+.transparent .ddChild {
+	border: 1px solid #c3c3c3;
+	background-color: #fff;
+	left: -1px;
+}
+
+.transparent .ddChild li {
+	padding: 5px;
+	background-color: #fff;
+}
+
+.transparent .ddChild li .description {
+	color: #666;
+}
+
+.transparent .ddChild li .ddlabel {
+	color: #333;
+}
+
+.transparent .ddChild li.hover {
+	color: #fff;
+	background-image: url(images/dropdown_item_background.png);
+	background-position: left top;
+	background-repeat: repeat-x;
+	background-color: #fff;
+}
+.transparent .ddChild li.hover .ddlabel {
+	color: #fff;
+}
+.transparent .ddChild li img {
+	padding: 0 6px 0 0;
+}
+
+.transparent .ddChild li.optgroup {
+	padding: 0;
+}
+
+.transparent .ddChild li.optgroup .optgroupTitle {
+	padding: 0 5px;
+	font-weight: bold;
+	font-style: italic
+}
+
+.transparent .ddChild li.optgroup ul li {
+	padding: 5px 5px 5px 15px
+}
+
+.transparent .ddChild li.selected {
+	background-color: #0044cc;
+}
+
+.transparent .ddChild li.selected .ddlabel {
+	color: #fff;
+}

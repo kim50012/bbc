@@ -1,0 +1,751 @@
+@charset "utf-8";
+@import url("base_cn.css");
+#wrap { width: 100%; background: url("//image.ssgdfs.com/images/shop/cn/order/bg_wrap.gif") no-repeat right 0; }
+#head { position: relative; padding: 16px 0 0 20px; height: 34px; background: #2a2a2a; }
+#head p.close { position: absolute; right: 22px; top: 16px; cursor: pointer; }
+
+.contents {padding:20px 0 0 20px;} 
+.contents .order { padding:0; width: auto;} 
+.contents .prbox_scroll {position:relative; height:580px; overflow:auto;} /* 팝업창 크기 height:650px 고정  width:contents + 55 */
+.contents .f-event-box {padding:0;}
+.contents .wedding-festival {padding:0;}
+.contents .category {padding:0;}
+.contents .review-pop {padding:0;}
+
+div.order { padding: 20px 35px 0 20px; width: 435px; }
+div.order table { width: 100%; margin-bottom:-1px; }
+div.order .tab-menu { float: left; width: 435px; height: 37px; border-bottom: 1px solid #c8c8c8; }
+div.order .tab-menu ul { float: left; margin: 0 -1px 0 0; display: inline; width: 436px; height: 34px; }
+div.order .tab-menu ul li { float: left; width: 145px; }
+div.order .tab-menu ul li a { display: block; margin: 0 -1px 0 0; padding: 10px 0 8px; text-align: center; outline: none; text-decoration: none; color: #555; border: 1px solid #c8c8c8; border-bottom: 0; background: #f4f4f3; }
+div.order .tab-menu ul li:first-child, div.order .tab-menu ul li.first-child { width: 144px; }
+div.order .tab-menu ul li.selected a { margin: -1px -1px -1px 0; padding-bottom: 9px; font-weight: bold; letter-spacing: -1px; color: #333; border-top: 2px solid #555; background: #fff; }
+p.guide { clear: both; padding: 25px 0 7px 8px; height:auto; letter-spacing: -1px; background: url("//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif") no-repeat 0 30px; }
+.coupon-table { position: relative; width: 435px; border-top: 2px solid #000; }
+.coupon-table table { width: 100%; }
+.coupon-table thead tr th { height: 35px; background: #fcfcfc; border-bottom: 1px solid #dfdfdf; }
+.inside { width: 435px; height: 230px; overflow: auto; border-bottom: 1px solid #dfdfdf; }
+.coupon-table thead tr th.first-child { width:101px; border-left:0 none; }
+.coupon-table thead tr th.re-size { width:108px; }
+.inside table tbody tr td.first-child { width:101px; border-left:0 none; }
+.inside table tbody tr td.re-size { width:108px; }
+.inside table tbody tr td { padding: 10px 0 5px; text-align: center; border: 1px solid #dfdfdf; border-right: 0; border-top: 0; }
+.inside table tbody tr td ul li { padding: 0 0 7px; }
+.inside table tbody tr td.coupon { font-weight:bold; }
+.inside table tbody tr td.coupon-price { padding-left: 15px; text-align: left; }
+
+.inside-no { width: 435px; height: auto;}
+.inside-no table tbody tr td.first-child { width:101px; border-left:0 none; }
+.inside-no table tbody tr td.re-size { width:108px; }
+.inside-no table tbody tr td { padding: 10px 0 5px; text-align: center; border: 1px solid #dfdfdf; border-right: 0; border-top: 0; }
+.inside-no table tbody tr td ul li { padding: 0 0 7px; }
+.inside-no table tbody tr td.coupon { font-weight:bold; }
+.inside-no table tbody tr td.coupon-price { padding-left: 15px; text-align: left; }
+
+
+/* 여권입력샘플보기 */
+table.join-board tbody td.sample-box span {display:inline-block; width:111px; height:18px; padding:4px 0 0 7px; margin-right:5px; border:1px solid #dadada; border-right:1px solid #b2b2b2; border-bottom:1px solid #b2b2b2;}
+table.join-board tbody td.sample-box span.sample-name {width:118px; margin:0 5px 0 30px;}
+table.join-board tbody td.sample-box span.sample-no {width:225px;}
+table.join-board tbody td.sample-box span.sample-ko {width:132px; background:url(//image.ssgdfs.com/images/shop/product/detail/bg_select.gif) no-repeat right 0;}
+table.join-board tbody td.sample-box span.sample-year {width:57px; margin-right:7px; background:url(//image.ssgdfs.com/images/shop/product/detail/bg_select.gif) no-repeat right 0;}
+table.join-board tbody td.sample-box span.sample-date {width:45px; margin:0 7px 0 12px; background:url(//image.ssgdfs.com/images/shop/product/detail/bg_select.gif) no-repeat right 0;}
+ 
+p.check-all { padding: 11px 0 0; }
+.btn-set { padding: 20px 0 20px; text-align: center; }
+.btn-set img { vertical-align: middle; }
+div.coupon-result { margin: 20px 0 0; padding: 0; border-top: 2px solid #000; }
+.coupon-result table tr { position: static; }
+div.coupon-result tbody tr td { padding: 8px 0 4px; text-align: center; border-left: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
+div.coupon-result tbody tr td.first-child { border-left: 0; }
+div.coupon-result tbody tr td.coupon { padding-left:  10px; text-align: left; }
+div.coupon-result tbody tr td ul li { padding: 0 0 6px; }
+div.coupon-result tbody tr td span { display: block; font-family: "tahoma", "타호마"; }
+div.coupon-result tbody tr td span.discount, div.coupon-result tbody tr td span.origin { font-weight: bold; }
+.order dl { margin: 10px 0 0; width: 435px; height: 44px; border-top: 2px solid #000; border-bottom: 1px solid #dfdfdf; }
+.order dl dt, .order dl dd { float: left; }
+.order dl dt { padding: 17px 0 0 20px; width: 93px; height: 27px; background: #fcfcfc; border-right: 1px solid #dfdfdf; }
+.order dl dd { padding: 10px 0 0 20px; height: 34px; width: 301px; }
+.order dl dd input { padding: 1px; width: 288px; height: 20px; border-left: 1px solid #dadada; border-top: 1px solid #dadada; border-right: 1px solid #bababa; border-bottom: 1px solid #bababa; border: 1px solid #cfcfcf; }
+/** 포인트 조회 **/
+
+p.notice-text { padding: 0 0 2px 8px; height: auto; background: url("//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif") no-repeat 0 5px; line-height:16px; color:#555;}
+p.notice-text span { font-weight:bold; }
+.point { border-top: 2px solid #000; border-bottom: 1px solid #dfdfdf; }
+.point table tr th, .point table tr td { border-top: 1px solid #dfdfdf; }
+.point table tr td { padding: 10px 0 10px 20px; }
+.point table tr td input { padding: 1px; width: 62px; height: 20px; border: 1px solid #cfcfcf; }
+.point table tr td input.btn { padding: 0; width: auto; height: auto; border: 0; }
+.point table tr td input#pass { width: 300px; }
+.notice-section {height:auto; margin: 21px 0 0; padding: 8px 20px 0; border: 1px solid #cfcfcf; background: #f8f8f8; }
+.notice-section ul li { padding: 0 0 8px 11px; font-size: 12px; letter-spacing: -1px; color: #777; background: url("//image.ssgdfs.com/images/shop/cn/order/dot_check.gif") no-repeat 0 6px; }
+.notice-section ul li a { margin-left:3px; text-decoration:underline; }
+.notice-section ul li span { display:inline-block; }
+
+
+
+
+.notice-section ul.notice li { font-size:12px; }
+.notice-section ul.notice li span { margin:0 2px; font-weight:bold; color:#c11a12; }
+
+
+
+/* 알뜰계산기 하단 */
+.cal-box { margin-bottom:30px; }
+.cal-box ul li { letter-spacing:1px; font-size:12px;}
+.cal-box ul li.red-font { color:#d62b21; }
+.btn-close { padding: 20px 0 15px; text-align: center; }
+.btn-close span { cursor:pointer; }
+/*/// 항만 선택 ///*/ 
+
+.harbor  .form-box-cn {margin:0px; padding:0px; margin-bottom:7px;}
+.harbor dl dt { width:78px; }
+input#direct { width: 390px;}
+.harbor input { vertical-align: top; }
+.passenger { overflow: hidden; background: url("//image.ssgdfs.com/images/shop/order/bg_harbor_list.gif") repeat-y 0 0; border: 1px solid #ededed; border-bottom: 2px solid #ededed; }
+.harbor-list ul { width: 444px; overflow: hidden; }
+.harbor-list li { float: left; margin: 0 1px 0 0; width: 144px; height: 35px; padding-bottom:0; }
+.harbor-list  .col-line { float: left; margin: 0 1px 0 0; width: 444px; height: 35px; padding-bottom:0;  background-color:#fff; border-top:1px solid #dfdfdf;}
+.passenger li a { display: block; padding: 11px 0 0; text-align: center; text-decoration: none; }
+/*// 항공 편 //*/
+.flight-box { width:525px;  }
+.flight-box .flight { width:525px; overflow:hidden; }
+.flight-box .flight .jspContainer { height:625px; }
+div.order-type01 { padding: 20px 35px 0 20px; width: 546px; }
+ul.notice-text li { padding: 0 0 5px 8px; letter-spacing: -1px; line-height: 18px; background: url("//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif") no-repeat 0 8px; }
+ul.notice-text2 li { padding: 0 0 5px 8px; letter-spacing: -1px; line-height: 12px; background: url("//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif") no-repeat 0 5px; color:#555;}
+ul.notice-text2 li p {   line-height: 14px;  }
+
+.flight-notice { margin: 2px 0 0; }
+.notice-section ul li span.exam { margin: 0 0 0 4px; color: #c91f15; }
+.flight dl dd input { margin: 0 5px 0 0; width: 126px; vertical-align: top; }
+.flight dl dd label { display:inline-block; margin:5px 5px 0 0; vertical-align: top; }
+.flight  .form-box-cn {height:44px; margin:0px; padding:0px; height:89px; margin-bottom:10px;  }
+.flight  .form-box-cn dd {width:525px;   border-bottom:1px solid #dfdfdf; vertical-align:middle; }
+div.order-type01 dl { margin: 10px 0 0; width: 546px; }
+.order dl dt { border-right: 1px solid #dfdfdf; }
+.order-type01 dl dd { width: 400px; }
+h2 { height: 21px; }
+.flight-list { margin: 0; width: 544px; }
+.flight-list ul { width: 544px; overflow: hidden; background: url("//image.ssgdfs.com/images/shop/order/bg_flight.gif") repeat-y 0 0; }
+.flight-list ul li { float: left; width: 181px; height: 36px; }
+.flight-list ul li a {display:inline-block; width:181px; padding:0; text-align: left; }
+.flight-list ul li a img { vertical-align: middle; text-align:center;}
+.flight-list ul li a span { margin: 0 0 0 -2px; }
+.else-flight { height: 145px; overflow: auto; }
+/*/// 여권 번호 확인 ///*/
+
+ul.text-type01 li { padding-bottom: 6px; }
+ul.text-type01 li strong.notice { color: #c91f15; font-weight:normal;}
+.passport { margin: 20px 0 0; border-top: 2px solid #000; }
+.pass-notice { color:#c11a12; }
+.passport p { padding-top:17px; font-weight:bold; text-align:center; color:#555; }
+.passport p.coupon { padding-top:0; font-weight:bold; text-align:center; color:#555; }
+.passport table { border-bottom:1px solid #dfdfdf; }
+.passport table thead tr th { height: 15px; border: 1px solid #dfdfdf; border-right: 0px solid #dfdfdf; border-top: 0; }
+.passport table thead tr th.first-child { border-left: 0; }
+.passport table tbody tr th, .passport table tbody tr td { padding: 0 0 12px; text-align: left; font-weight: normal; border-bottom:0 none; }
+.passport table tbody tr th { padding-left: 15px; font-size:12px;}
+.passport table tbody tr td { padding-left: 20px; border-left: 1px solid #dfdfdf; font-size:12px;}
+.passport table tbody tr td span { font-weight: bold; color:#c11a12; }
+.passport table tbody tr:first-child th, .passport table tbody tr.first-child th, .passport table tbody tr:first-child td, .passport table tbody tr.first-child td { padding-top: 12px; }
+/*// 출국 30일 //*/
+.leave { margin: 5px 0 0; border-top: 2px solid #000; }
+.leave table tbody td, .leave table tbody th { background: #fcfcfc; height: 20px; text-align: left; font-weight: normal; font-size:12px; }
+.leave table tbody td { padding-left: 20px; height: 20px; background: #fff; border-bottom: 1px solid #dfdfdf; color:#222; }
+.leave table tbody td a { color: #2f61c8; }
+.leave table tbody td  .tit {font-weight:bold;}
+.leave table tbody td  .txt {font-weight:normal;}
+.leave table tbody th { padding-left: 17px; border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
+.leave-notice { padding: 10px 0 5px 0; border-bottom:1px solid #dfdfdf; }
+.leave-notice li { padding: 0 0 0 27px; text-indent: -8px; line-height: 20px; color:#888; }
+.leave-notice li span { color: #c91f15; }
+p.user-agree { padding: 10px 0 0; }
+p.user-agree label { font-weight: bold; }
+.check-leave {margin:8px 0;}
+.check-leave label {color:#666; margin-left:9px;}
+/*//// jscroll pane ////*/
+.jspContainer { overflow: hidden; position: relative; }
+.jspPane { position: absolute; }
+.jspVerticalBar { position: absolute; top: 0; right: 0; width: 17px; height: 100%; background:#ececec; border: 1px solid #dfdfdf; }
+.jspVerticalBar *, .jspHorizontalBar * { margin: 0; padding: 0; }
+.jspCap { display: none; }
+.jspTrack { background: #ececec; position: relative; }
+.jspDrag { background: #fff url("//image.ssgdfs.com/images/shop/cn/order/bg_scroll_thumb.gif") no-repeat center center; ; position: relative; top: 0; left: 0; cursor: pointer; border-top: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf; }
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float: left; height: 100%; }
+.jspArrow { background: #aaa; text-indent: -20000px; display: block; cursor: pointer; }
+.jspArrow.jspDisabled { cursor: default; background: #aaa; }
+.jspVerticalBar .jspArrow { height: 13px; }
+.jspArrowUp { background: url("//image.ssgdfs.com/images/shop/cn/order/btn_scroll_up.gif") no-repeat center center !important; }
+.jspArrowDown { background: url("//image.ssgdfs.com/images/shop/cn/order/btn_scroll_down.gif") no-repeat center center !important; }
+.jspVerticalBar .jspArrow:focus { outline: none; }
+.jspCorner { background: #eeeef4; float: left; height: 100%; }
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner { margin: 0 -3px 0 0; }
+
+
+.category table { width: 100%; border-top: 1px solid #dfdfdf; }
+table td, table th { text-align: left; font-size: 12px; border-bottom: 1px solid #d4d4d4; }
+table th { padding: 8px 0 8px 10px; font-weight: normal; background: #f8f8f8; }
+table td { padding: 8px 0 8px 15px; border-left: 1px solid #dfdfdf; }
+table td.product { border: 0; border-bottom: 1px solid #dfdfdf; }
+table td.product p { text-align: center; }
+table td.product p.photo {height:140px;}
+table td p.event {height:32px; padding: 10px 0 0; font-weight: bold; color: #333; }
+table td p.link-set { height: 40px; }
+table thead tr th { padding-left: 0; font-size: 12px; font-weight: bold; color: #333; text-align: center; }
+
+/** 상품 비교 **/
+.category {margin:5px 0 0; padding:0 20px 0; width: 547px; overflow: hidden; }
+.category  p.title {padding:11px 0 0; height:23px; font-weight: bold; color: #333; text-align: center; background: #fcfcfc; border-top: 2px solid #000; }
+.category div.compare-info div.compare-wrap { float: none; width: 547px; overflow: hidden; }
+.category div.compare-info div {float:left; width: 273px; }
+.category div.compare-info div.secound-product {width:273px; float:left; border-left:1px solid #dfdfdf; }
+div.wrap-type01 { border-top: 2px solid #000; }
+.category div.compare-info .compareinfo-box {position:relative; width: 547px; margin: 0 0 20px; overflow:hidden; border-bottom:1px solid #dfdfdf; background:url("//image.ssgdfs.com/images/shop/category/bg_compareinfobox.gif") repeat-y 0 0;} 
+.category div.compare-info .compareinfo-box table td, .category div.compare-info .compareinfo-box table th { text-align: left; font-size: 11px; border-top: 1px solid #d4d4d4; border-bottom:0px solid #d4d4d4; }
+.category div.compare-info .compareinfo-box table th {padding: 8px 0 8px 0; background: #f8f8f8; }
+.category div.compare-info .compareinfo-box table th span {margin-left:10px; display:block; line-height:14px;}
+.category div.compare-info .compareinfo-box table td {padding: 8px 0 8px 0; border-left:1px solid #dfdfdf; }
+.category div.compare-info .compareinfo-box table td p {margin:0 5px 0 10px; line-height:14px;}
+.category div.compare-info .compareinfo-box table td.product { border: 0; border-bottom: 1px solid #dfdfdf; background:#fff;}
+.category div.compare-info .compareinfo-box table td.product p { text-align: center; padding:0; margin:0;}
+.category div.compare-info .compareinfo-box table td.product p.event {padding:10px;}
+.category div.compare-info .compareinfo-box div.wrap-type01 { border-top: 0px solid #000;}
+.category div.compare-info .compareinfo-box table thead th {font-weight:bold; background:#f8f8f8; border-bottom:1px solid #dfdfdf !important; text-align:center;} 
+.category div.compare-info .compareinfo-box table tbody table tr:first-child td, .category div.compare-info .compareinfo-box table tbody tr:first-child table th { text-align: left; font-size: 11px; border-top:0px solid #d4d4d4; border-bottom:0px solid #d4d4d4; }
+  
+  
+.f-event-box { width:435px; padding:0 20px; font-family:vista, Tahoma, Verdana, Simsun, sans-serif;}
+.f-event-box .family-event-banner { padding:12px 0 24px 0; }
+.f-event-box table.join-board { width:100%; margin-top:12px; }
+.f-event-box table.join-board tbody tr th { padding:17px 0 14px 0; font-weight:normal; text-align:center; font-size:12px; }
+.f-event-box table.join-board tbody tr td.my-info dl dd { font-weight:bold; }
+.f-event-box table.join-board tbody tr th span { display:block; padding-bottom:18px; font-weight:bold; }
+.f-event-box table.join-board tbody tr td { padding:17px 0 2px 26px; font-size:12px; }
+.f-event-box table.join-board tbody tr td dl { overflow: 310px; }
+.f-event-box table.join-board tbody tr.no-register td, .f-event-box table.join-board tbody tr.no-register th { background: #f6f6f6; }
+.f-event-box table.join-board tbody tr td dl dt, .f-event-box table.join-board tbody tr td dl dd { float: left; height: 26px; }
+.f-event-box table.join-board tbody tr td dl dt { width: 51px; }
+.f-event-box table.join-board tbody tr td dl dt.family-name { letter-spacing: 4px; }
+.f-event-box table.join-board tbody tr td dl dd { width: 240px; color: #333; }
+.f-event-box table.join-board tbody tr td div { width:310px; position:relative; }
+.f-event-box table.join-board tbody tr td div a { position:absolute; right:15px; top:1px; }
+.f-event-box table.join-board tbody tr td p { height:24px; margin-bottom:10px; }
+.f-event-box table.join-board tbody tr td span { margin:4px 12px 0 0; color:#777; }
+.f-event-box table.join-board tbody tr td label { margin:0; color:#777; padding: 0 15px 0 0; }
+.f-event-box table.join-board tbody tr td input[type="text"] { width:140px; padding:1px; margin-left:0px; background:#fff; }
+.f-event-box .f-event-notie { margin-top:12px; color:#666; text-align:left; font-size:11px; }
+.f-event-box h3 { padding:1px 0 2px 24px; background: url("//image.ssgdfs.com/images/shop/cn/order/bg_h3.gif") no-repeat 0 0; clear:both; }
+.f-event-box .family-search-form { padding: 28px 0 0; width: 437px; }
+.f-event-box .family-search-form dl { width: 437px; height: 44px; overflow: hidden; border-top: 2px solid #000; border-bottom: 1px solid #dfdfdf; }
+.f-event-box .family-search-form dl dt, .f-event-box .family-search-form dl dd { float: left; }
+.f-event-box .family-search-form dl dt { padding: 17px 0 0 20px; width: 83px; height: 27px; background: #fcfcfc; border-right: 1px solid #dfdfdf; }
+.family-result dl dd, .f-event-box .family-search-form dl dd { padding: 10px 0 0 20px; width: 310px; }
+.f-event-box .family-search-form dl dd {width:auto !important;}
+.f-event-box .family-search-form dl dd input[type="text"] { width: 208px; }
+.f-event-box .family-search-form dl dd input { vertical-align: middle; }
+.family-result { margin: 10px 0 0; border-top: 2px solid #000; border-bottom: 1px solid #dfdfdf;  width 437px;
+background: #fcfcfc; overflow: hidden; }
+.family-result dl dt, .family-result dl dd { float: left; }
+.family-result dl dt { padding: 17px 0 0 20px; width: 83px; }
+.family-result dl dd ul { overflow: hidden; position:relative; }
+.family-result .result { width:82px; height:47px; border-right:1px solid #dfdfdf; }
+.family-result dl dd ul li dl { float: left; width: 213px; padding: 0 0 0 20px; }
+.family-result dl dd ul li dl dt, .family-result dl dd ul li dl dd { float: left; padding: 0; height: 27px; }
+.family-result dl dd ul li dt { width: 51px; }
+.family-result dl dd ul li dt.family-name { letter-spacing: 4px; }
+.family-result dl dd ul li dd { width: 160px; color: #333; }
+.family-result dl dd ul li p { position:absolute; right:23px; top:10px; }
+/* 인도장 분리 운영 안내 */
+div.incheon-box { width:635px !important; height:800px; }
+div.incheon-box .notice-text li {color:#c11a12;}
+.incheon table { margin-bottom:30px; border-top:2px solid #000; }
+.incheon table th { text-align:center; }
+.incheon table td { text-align:center; }
+.incheon table.terminal-board {margin-bottom:25px;}
+.incheon table.terminal-board th { border-left:1px solid #dfdfdf; }
+.incheon table.terminal-board th.first-child { border-left:0px solid #dfdfdf; }
+.incheon table.terminal-board th p { margin-top:8px; }
+.incheon table.terminal-board td { font-size:12px; padding:8px 5px 8px 5px; }
+.incheon table.terminal-board td.first-child { border-left:0px solid #dfdfdf; }
+.incheon .notice-section {margin-top:10px;}
+.incheon-box h3 {margin-top:25px; padding-left:24px; background: url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 0; clear:both; }
+/* 기내반입 제한 안내 */
+.limit-box { width:435px !important; height:740px; }
+.limit-box h3 { padding:18px 0 5px 24px; border-bottom:2px solid #000; background: url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 18px; }
+.limit-box .notice-section p { padding: 0 0 8px 0; font-size: 12px; letter-spacing: -1px; color: #777; line-height:16px; }
+.limit-box .notice-section p span { font-weight:bold; color:#333; }
+.limit-box .notice-section { margin:0 0 7px 0; }
+.limit-box .notice-section .notice li { overflow:hidden; font-size:12px;}
+.limit-box .notice-section .notice li span.tit { font-weight:bold; float:left; display:block; margin-right:4px; color:#777; }
+.limit-box .notice-section .notice li p { float:left; width:250px; padding-left:0; }
+.limit-box .notice-section .notice li p span { font-weight:normal; }
+.limit-box .notice-section p.tit { padding-left:10px; background:url(//image.ssgdfs.com/images/shop/order/dot_check.gif) no-repeat 0 6px; font-weight:bold; }
+.limit-box .notice-section span.txt { display:block; width:375px; padding-left:7px; margin-bottom:3px; background:url(//image.ssgdfs.com/images/shop/cn/order/bg_bar.gif) no-repeat 0 7px; font-size:12px; line-height:16px; }
+.limit-box .notice-section .notice-board { width:391px; height:99px; margin-bottom:10px; margin-left:0; border:1px solid #d4d4d4; }
+.limit-box .notice-section .notice-board li { width:392px; height:24px; padding:0; border-bottom:1px solid #d4d4d4; background:none; }
+.limit-box .notice-section .notice-board li span { display:block; width:195px; height:21px; padding-top:3px; float:left; text-align:center; background:#fff; }
+.limit-box .notice-section .notice-board li span.departure { border-right:1px solid #d4d4d4; background:#e8e8e8; }
+.limit-box .notice-size {height:340px;}
+.limit-box .notice-size ul.notice-board li {height:21px;}
+.limit-box .top-txt { padding:5px 0 3px 0; line-height:16px; font-size:12px; color:#666; }
+.limit-box .bottom-txt { display:block; margin-top:8px; text-align:right; font-size:12px; color:#d62b21; }
+.limit-box .titpping { padding-left:9px; line-height:16px; background:url(//image.ssgdfs.com/images/shop/order/dot_gray.gif) no-repeat 0 7px; color:#999; font-size:12px; }
+
+
+/* 0611 product_detail popup */
+
+.detail-box { width:545px; padding:20px 35px 0 20px }
+.detail-pop { width:545px; }
+.detail-pop table { border-bottom:1px solid #dfdfdf; border-top:2px solid #000; }
+.detail-pop table tbody input[type="text"] { border:1px solid #dadada; border-right:1px solid #bababa; border-bottom:1px solid #bababa; }
+.detail-pop table tbody tr th { padding:9px 0 10px 20px; border-top:1px solid #dfdfdf; background:#fcfcfc; text-align:left; font-weight:normal; }
+.detail-pop table tbody tr th input[type="text"] { width:94px; height:18px; padding:2px; }
+.detail-pop table tbody tr th input[type="checkbox"] { margin-right:7px; }
+.detail-pop table tbody tr td { padding:9px 0 10px 20px; border-left:1px solid #dfdfdf; border-top:1px solid #dfdfdf; color:#666; text-align:left; vertical-align:bottom; }
+.detail-pop table tbody tr th p { padding-top:7px; color:#666; }
+.detail-pop table tbody tr th p.pop-product-name {font-weight:bold; color:#000;}
+.detail-pop table tbody tr td.final-price span.ori { display:block; color:#d62b21; font-size:20px; font-family:"tahoma", "타호마"; font-weight:bold;}
+.detail-pop table tbody tr td.final-price span { display:block; color:#444; font-size:20px; font-family:"tahoma", "타호마"; }
+.detail-pop table tbody tr td input[type="text"] { width:393px; height:18px; padding:2px; }
+.detail-pop table tbody tr td input[type="radio"] { margin-right:7px; }
+.detail-pop table tbody tr td label { margin-right:53px; color:#000; }
+.detail-pop table tbody tr td textarea { width:383px; height:88px; padding:2px; resize:none; border:1px solid #dadada; border-right:1px solid #bababa; border-bottom:1px solid #bababa; }
+.detail-pop table tbody tr td p.img { width:74px; float:left; }
+.detail-pop table tbody tr td p.txt { width:330px; padding:23px 0 0 11px; float:left; color:#000; }
+.detail-pop table tbody tr td p.txt span { display:block; font-weight:bold; line-height:21px; }
+.order p.exchange-rate { height:14px; padding:8px 0 0 8px; color:#666; background:url(//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif) no-repeat 0 14px; }
+.detail-pop table tbody tr td .savemoney-txt { height:50px; padding:7px 30px 0 0; color:#666; }
+.add-txt {height:auto; margin-bottom:20px;}
+.savemoney-txt {height:auto;}
+.txt-tipping {display:block; clear:both; height:auto; padding:3px 0 0 7px; margin:0; background:url(//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif) no-repeat 0 10px; color:#555; } /* ie7 */
+.txt-tipping a {color:#d62b21; font-weight:bold;}
+.txt-title-tipping {padding:5px 0 0 0;display:block; clear:both; height:auto; padding-left:7px; color:#d62b21;}
+a.red-link {color:#d62b21; text-decoration:underline; }
+.detail-pop table tbody tr th { padding-top:12px; vertical-align:top; }
+.detail-pop table tbody tr td .star-box { width:100px; float:left; }
+.detail-pop table tbody tr td .star-box p { padding-bottom:8px; color:#000; font-size:12px; }
+.detail-pop table tbody tr td .star-box ul li { width:100px; height:12px; }
+.detail-pop table tbody tr td .star-box ul li input[type="radio"] { margin-right:5px; }
+.detail-pop table tbody tr td .star-box ul li img { margin:0 -2px; vertical-align:middle; }
+.detail-pop table tbody tr td .star-box ul li label { margin-right:0; }
+.detail-pop table tbody tr td p.postion-type label { margin-right:31px; font-size:12px; }
+.product-pop { width:645px; padding:20px 35px 0 20px; position:relative; }
+.product-pop .detail-pop {margin-top:10px; position:relative; }
+.product-pop .detail-pop table { width:100%; }
+.product-pop .detail-pop .title { width:538px; height:58px; border:1px solid #dfdfdf; border-top:0px solid #dfdfdf; }
+.product-pop .detail-pop .title .product-tit { width:310px; padding:14px 0 0 20px; float:left; font-weight:bold; color:#000; }
+.product-pop .detail-pop .title .icon-box { width:195px; padding:13px 8px 0 0; float:right; }
+.product-pop .detail-pop .title .icon-box img { margin:0; }
+.product-pop .detail-pop .blog-box { width:538px; height:199px; border:1px solid #dfdfdf; border-top:0px solid #dfdfdf; }
+.product-pop .detail-pop .blog-box p { width:210px; height:184px; padding-top:15px; float:left; text-align:center; }
+.product-pop .detail-pop .blog-box div { width:322px; height:148px; padding-top:51px; float:right; }
+.product-pop .detail-pop .blog-box div dl { clear:both; width:295px; height:auto; overflow:hidden; }
+.product-pop .detail-pop .blog-box div dl dt { width:85px; height:22px; float:left; }
+.product-pop .detail-pop .blog-box div dl dd { width:210px; height:22px; float:left; color:#888; }
+.product-pop .detail-pop .blog-box div dl.internet-price { border-top:1px solid #dfdfdf; }
+.product-pop .detail-pop .blog-box div dl.internet-price dt { height:26px; padding-top:16px; }
+.product-pop .detail-pop .blog-box div dl.internet-price dd { height:26px; padding-top:10px; }
+.copy-txt { display:block; clear:both; height:16px; padding:3px 0 0 7px; background:url(//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif) no-repeat 0 10px; color:#555; } /* ie7 */
+.copy-info { display:block; clear:both; width:438px; margin-top:20px; color:#888; font-size:11px; } /* ie7 */
+/*.premium-pop { width:740px;padding:20px 35px 0 20px; }*/
+.premium-pop .detail-pop { margin-top:0; position:relative; }
+.premium-pop .product-review { width:740px; }
+.premium-pop .product-review .tit-box { margin-top:20px; }
+.premium-pop .product-review .product-container { width:738px; height:158px; margin-bottom:30px; border:1px solid #cfcfcf; }
+.premium-pop .product-review .product-container p.img-product { width:160px; float:left; padding:30px 0; text-align:center; }
+.product-info { width:500px; padding:32px 0 27px 0; margin-right:20px; float:left; }
+.product-info p.brand { margin-bottom:2px; font-size:12px; font-weight:bold; color:#333; }
+.product-info p.product { margin-bottom:2px; width:410px; height:auto; overflow:hidden; }
+.product-info p.product a { color:#333; }
+.product-info p.copy-right { margin-bottom:2px; color:#999; font-size:11px; }
+.product-info p.product-num { margin:5px 0 2px 0; font-size:11px; }
+.product-info p.product-num span {
+margin-top:; display:inline; color:#999; }
+.s-container .img-product { width:100px; float:left; }
+.s-container .product-info { width:400px; height:auto; padding:5px 0 0 0; margin-right:20px; }
+.premium-pop .product-review table { width:100%; clear:both; }
+.premium-pop table.review-box tr th { height:18px; text-align:left; color:#333; font-weight:normal; }
+.premium-pop table.review-box tr th.tit { padding-left:15px; font-weight:bold; color:#333; }
+.premium-pop table.review-box tr th span { margin-left:8px; color:#999; font-family:"tahoma", "타호마"; font-size:11px;}
+.premium-pop table.review-box tr th p { text-align:right; margin-right:5px; }
+.premium-pop table.review-box tr th p span.user-id { margin-right:5px; color:#666; font-size:12px; }
+.premium-pop table.review-box tr th p span.uesr-age { margin-left:5px; color:#999; font-size:12px; }
+.premium-pop table.review-box tr td { padding-left:15px; text-align:left; }
+.premium-pop table.review-box tr td div { height:40px; position:relative; }
+.premium-pop table.review-box tr td div p { float:left; color:#333; }
+.premium-pop table.review-box tr td div .star-box { width:510px; float:left; }
+.premium-pop table.review-box tr td div p.star { width:auto; color:#333; font-size:12px; margin-right:22px; }
+.premium-pop table.review-box tr td div p.star img { vertical-align:top; margin-top:2px; } /* ie7 */
+.premium-pop table.review-box tr td div p.s-star { width:auto; }
+.premium-pop table.review-box tr td div p.user-info { width:270px; height:40px; margin-left:60px; text-align:right; }
+.premium-pop table.review-box tr td div p.mobile { width:auto; color:#757575; position:absolute; right:0; top:0; font-size:12px; }
+.premium-pop table.review-box tr td div p.mobile img { margin-right:6px; vertical-align:middle; }
+.premium-pop table.review-box tr td .review-contents { width:720px; height:100%; overflow:hidden; text-align:center; }
+.premium-pop table.review-box tr td .review-contents div { padding-top:14px; text-align:left; }
+.premium-pop table.review-box tr td .review-contents div p { clear:both; color:#666; font-size:12px; line-height:18px; }
+.premium-pop .product-review table tbody td p.product-txt { width:220px; float:left; padding:19px 0 0 15px; color:#666; text-align:left; line-height:16px; }
+.product-review .top-product-txt { height:81px; }
+.product-review .top-product-txt .product-img { float:left; }
+.product-review .top-product-txt .product-txt { width:659px; padding-left:12px; float:left; line-height:21px; color:#000; }
+.product-review .top-product-txt .product-txt span { display:block; padding-top:17px; line-height:21px; font-weight:bold; }
+.detail-pop .btn-blog { position:absolute; right:0; bottom:5px; }
+/* 상품평쓰기 및 qna쓰기  */
+
+.review-pop .product-container { width:738px; height:158px; margin-bottom:30px; border:1px solid #cfcfcf; }
+.review-pop .product-container p.img-product { width:160px; float:left; padding:30px 0; text-align:center; }
+.review-pop .product-container .product-info { width:500px; padding:32px 0 27px 0; margin-right:20px; float:left; }
+.review-pop .product-container .product-info p.brand { margin-bottom:2px; font-size:12px; font-weight:bold; color:#333; }
+.review-pop .product-container .product-info p.product { margin-bottom:2px; width:410px; height:auto; overflow:hidden; }
+.review-pop .product-container .product-info p.product a { color:#333; }
+.review-pop .product-container .product-info p.copy-right { margin-bottom:2px; color:#999; font-size:11px; }
+.review-pop .product-container .product-info p.product-num { margin:5px 0 2px 0; font-size:11px; }
+.review-pop .product-container .product-info p.product-num span {margin-top:; display:inline; color:#999; }
+
+.review-pop { width:550px; }
+.review-pop .detail-pop table tbody td textarea { width:393px; height:87px; background:#fff; }
+.review-pop .detail-pop table tbody td .product-info { width:290px; }
+.review-pop .detail-pop table tbody td .product-info .product { width:100%; }
+.review-pop .detail-pop table tbody td.add-image input[type="text"] { width:237px; margin-top:-1px;}
+.review-pop .detail-pop table tbody td.add-image .add-box { width:377px; padding:10px; background:#fcfcfc; border:1px solid #dfdfdf; }
+.review-pop .detail-pop table tbody td.add-image .add-box p { height:30px; }
+.review-pop .detail-pop table tbody td.add-image .add-box .file-box { display:inline-block; width:59px; height:25px; overflow:hidden; vertical-align:middle; margin:0; padding:0; border:1px solid #fff; background:url("//image.ssgdfs.com/images/shop/cn/customer/btn_find_cn.gif") 0 0 no-repeat; }
+.review-pop .detail-pop table tbody td.add-image .add-box .file-box .file-add {filter:alpha(opacity:0); opacity:0; width:59px; height:25px; cursor: pointer; border:0px solid #fff; padding:0; margin:0;}
+.review-pop .detail-pop table tbody td.add-image .add-box .file-name { display:inline-block; width:63px; text-align:right; vertical-align:middle; color:#999; }
+.review-pop .detail-pop table tbody td.add-image .add-box .file-name a { margin-left:5px; }
+.review-pop .detail-pop table tbody td.add-image .txt-tipping { padding-right:20px; }
+.review-pop .detail-pop table tbody td.add-image .img-tipping { display:block; clear:both; height:auto; padding:3px 20px 0 7px; margin:7px 0 17px 0; background:url(//image.ssgdfs.com/images/shop/cn/order/dot_gray.gif) no-repeat 0 10px; color:#666; font-size:12px; } /* ie7 */
+.review-pop .detail-pop .review-con {width:540px;}
+.review-pop .detail-pop .review-con .product-info {width:300px;}
+.review-pop .detail-pop .review-con .product-info p.product {width:350px;}
+
+
+.file-wrap .file-box {display:inline-block; width:59px; height:25px; background:url(//image.ssgdfs.com/images/shop/cn/customer/btn_find.gif) 0 0 no-repeat; overflow:hidden;}
+.file-wrap .file-box .file-add {filter:alpha(opacity:0); opacity:0; width:59px; height:25px; cursor: pointer; border:0px solid #fff; padding:0; margin:0;}
+.order .detail-pop { width:435px; }
+.order .detail-pop table tbody tr th { background:none; }
+.order .detail-pop table tbody tr th.first-child { height:22px; border-top:0px solid #dfdfdf; background:#fcfcfc; text-align:center; color:#000; }
+.order .detail-pop table tbody tr th.first-child .copy-product { text-align:left; }
+.order .detail-pop table tbody tr th.first-child .copy-product .product-name { letter-spacing:-1px; color:#000; font-size:15px; font-weight:bold; }
+.order .detail-pop table tbody tr.final th { height:47px; background:#f4f4f4; }
+.order .detail-pop table tbody tr.final td { height:47px; background:#f4f4f4; }
+.order .detail-pop table tbody tr td { text-align:right !important; padding:9px 20px 10px 0; }
+.order .detail-pop table tbody tr span.grade {display:inline-block; width:115px; color:#d62b21; font-weight:bold; text-align:left;}
+.coupon-list-pop table thead tr th { border-right:0px solid #dfdfdf; color:#555; }
+.coupon-list-pop table thead tr th.first-child { border-right:1px solid #dfdfdf; }
+.coupon-list-pop table tbody tr th { border-top:1px solid #dfdfdf; }
+.coupon-list-pop table tbody tr td { border-top:1px solid #dfdfdf; padding:12px 0 13px 0; text-align:center; }
+.coupon-list-pop table tbody tr th p {color:#888; }
+.coupon-list-pop table tbody tr th p span.coupon-tit { margin-right:5px; color:#555; }
+.coupon-list-pop table tbody tr th p span.coupon-num { display:inline-block; padding-left:10px; background:url(//image.ssgdfs.com/images/shop/cn/order/ico_arr_down.gif) no-repeat 3px 5px; color:#5b5b5b; font-weight:bold; font-family:"tahoma", "타호마"; }
+.coupon-list-pop table tbody tr th p span.per { color:#5b5b5b; }
+.order .add-txt .savemoney-txt .txt-tipping { margin-bottom:-15px; font-size:12px; color:#666; text-align:left; }
+.order .add-txt p.txt { height:auto; padding:12px 0 12px 0; margin-bottom:5px; font-size:12px; color:#333; text-align:center; border-bottom:1px solid #dfdfdf; }
+.upload-box p input.remove { float:right; padding-right:20px; }
+.upload-box p.file-name { width:397px; height:18px; margin-top:5px; padding:3px 0 0 10px; background:url(//image.ssgdfs.com/images/shop/cn/order/bg_file_upload.gif) repeat-x 0 0; border:1px solid #b7babc; color:#000; }
+.upload-box ul { width:407px; height:63px; background:url(//image.ssgdfs.com/images/shop/cn/order/bg_file_upload_list.gif) repeat-y 0 0; border:1px solid #b7babc; border-top:0px solid #b7babc; }
+/* calculator-layerpopup */
+.coupon-pop-box { position:relative; }
+.coupon-pop-box .pop-box { width:248px; height:158px; position:absolute; left:-72px; top:25px; background:url(//image.ssgdfs.com/images/shop/cn/order/bg_coupon_list.gif) no-repeat 0 0; }
+.coupon-pop-box .pop-box .title { height:26px; padding:12px 0 0 16px; background: none; border-top: 0 none; }
+.coupon-pop-box .pop-box .title img { float:left; }
+.coupon-pop-box .pop-box .title a { display:block; width:15px; height:15px; float:right; margin-right:14px; }
+.coupon-pop-box .pop-box .scroll-pane { width:244px; height:76px; margin-top:2px; border:0 none; overflow: auto; }
+.coupon-pop-box .pop-box .coupon-list { margin:5px 0; }
+.coupon-pop-box .pop-box .coupon-list p { margin-left:14px; }
+.coupon-pop-box .pop-box .copy-product .pop-product-name {padding:0; letter-spacing:-1px; color:#000; font-size:12px; font-weight:bold;}
+.coupon-pop-box .pop-box .copy-product .pop-product-info {padding:0; letter-spacing:-1px; color:#000; font-size:12px;}
+.coupon-pop-box .pop-box .btn {width:100%; padding:0; text-align:center;}
+.coupon-pop-box ul.pa-left li { padding-left:10px; }
+.product-pop .detail-pop .scroll-pane { width:533px; height:87px; padding:2px; background:#f7f7f7; }
+.product-pop .detail-pop textarea { width: 543px; height: 87px; background:#fff; }
+.product-pop .detail-pop .scroll-pane div { height:200px; }
+
+.view-html {width:540px; padding:20px 0 0 20px;}
+.view-html .scroll-pane {width:534px; height:87px; padding:2px; background:#f7f7f7; }
+.view-html .copy-txt { display:block; clear:both; height:16px; font-weight:bold; padding:8px 0 0 7px; background:url(//image.ssgdfs.com
+/images/shop/cn/order/dot_gray.gif) no-repeat 0 13px; color:#555;}
+.view-html .copy-info { display:block; clear:both; width:530px; margin:4px 0 0 3px ; color:#888; font-size:12px; } 
+
+
+/* orderlist_Pop */
+.orderlist-table { width:435px; margin:20px; border-top:2px solid #000; }
+.orderlist-table table.orderlist { width:100%; }
+.orderlist-table table.orderlist tr th { padding:0; vertical-align:middle; font-weight:normal; font-size:12px; color:#555; }
+.orderlist-table table.orderlist tr th input[type="radio"] { margin:4px 0 0 20px; }
+.orderlist-table table.orderlist tr th span { margin:0 4px; }
+.orderlist-table table.orderlist tr th span.no { font-weight:bold; height:15px; display: block; margin-left:40px; }
+.orderlist-table table.orderlist tr td { padding:0px; text-align:left; }
+.orderlist-table table.orderlist tr td div.info { padding:10px 0 9px 10px; }
+.orderlist-table table.orderlist tr td p { margin:0; padding:0 0 3px 0; text-align:left; font-size:12px; }
+.orderlist-table table.orderlist tr td .brand { font-weight:bold; color:#333; }
+.orderlist-table table.orderlist tr td .product { padding:0 0 3px 0; color:#333; }
+.orderlist-table table.orderlist tr td .price { padding-top:5px; color:#525252; font-size:12px; }
+.orderlist-table table.orderlist tr td .price .buy-price { color:#D62B21; font-weight:bold; font-size:14px; }
+.orderlist-table table.orderlist tr td .price .nation-currency {font-size:11px; color:#525252;}
+.orderlist-table .jspVerticalBar { border-right:1px solid #dfdfdf; }
+.sh-info { padding:0 0 6px 20px; }
+.sh-info span { color:#D62B21; font-weight:bold; }
+/* 상품검색 */
+.inside02 { width:435px;  }
+.productsh-searchin { width:435px; margin:0 0 7px 0; border-top:2px solid #000; }
+.productsh-searchin table.searchin { width:100%; }
+.productsh-searchin table.searchin tr th { padding:0; height:44px; vertical-align:middle; font-weight:normal; font-size:12px; color:#555; background:#fcfcfc; }
+.productsh-searchin table.searchin tr th img { margin-left:20px; }
+.productsh-searchin table.searchin tr td {height:44px; padding:0px; text-align:left; border-left:0px solid #fff;}
+.productsh-searchin table.searchin tr td input { margin:0 5px 0 90px; width:200px; float:left; }
+.productsh-searchin table.searchin tr td a { float:left; }
+.productshlist-table { width:435px; margin:0 0 20px 0; border-top:1px solid #cfcfcf; }
+.orderlist-table table.productsh { width:100%; }
+.orderlist-table table.productsh tr th { padding:0; height:100px; vertical-align:middle; font-weight:normal; font-size:12px; color:#555; background:#fff; }
+.orderlist-table table.productsh tr th input[type="radio"] { float:left; margin:28px 0 0 18px; }
+.orderlist-table table.productsh tr th .photo { float:left; width:90px; text-align:center; }
+.orderlist-table table.productsh tr td { padding:0px; text-align:left; }
+.orderlist-table table.productsh tr td div.info { padding:10px 0 9px 20px; }
+.orderlist-table table.productsh tr td p { margin:0; padding:0 0 3px 0; text-align:left; font-size:12px; }
+.orderlist-table table.productsh tr td .brand { font-weight:bold; color:#333; }
+.orderlist-table table.productsh tr td .product { padding:0 0 3px 0; }
+.orderlist-table table.productsh tr td .price { padding-top:5px; color:#525252; font-size:11px; }
+.orderlist-table table.productsh tr td .price .buy-price { color:#D62B21; font-weight:bold; font-size:14px; }
+.orderlist-table table.productsh tr td .price span.origin { font-size:11px; color:#c4bbb2; text-decoration:line-through; }
+.orderlist-table table.productsh tr td .price .nation-currency {font-size:11px; color:#525252;}
+.orderlist-table table.productsh tr td p.product { width:180px; height:14px; padding:0; line-height:14px; overflow:hidden; color:#333; }
+.orderlist-table table.productsh tr td p.product-num { height:15px; padding-top:7px; font-size:11px; }
+.orderlist-table table.productsh tr td p.product-num span { display:inline; color:#999; }
+/* e-티켓등록 _ e-티켓 조회 */
+table.join-board { width:100%; margin:10px 0 20px 0; border-top:2px solid #000; position:relative; }
+table.join-board tbody th { height:11px; padding:17px 0 16px 20px; border-right:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; background:#fcfcfc; text-align:center; }
+.e-ticket-container { width:490px; height:200px; padding:0 0 0 0; position:relative; }
+.e-ticket-container p.btn-ticket { width:auto; position:absolute; right:0; top:25px; }
+.e-ticket-container p.et-info {padding-top:17px;}
+.e-ticket-container p.et-info strong {color:#333;}
+.e-ticket-container table tbody th { height:10px; padding:17px 0; }
+.e-ticket-container table tbody td.find-file { height:24px; padding:10px 0 10px 20px; border-left:0 none; }
+.e-ticket-container table tbody td.find-file input { width:300px; margin-right:10px; background:#fff; vertical-align:middle; }
+.e-ticket-container .infotitle {font-weight:bold; color:#333; height:20px;}
+.e-ticket-container .infoadd {margin:-10px 0 20px 0;}
+.e-ticket-container table tbody td.find-file img { vertical-align:middle; }
+.e-ticket-container table tbody td.find-file a { display:inline-block; width:59px; height:24px; margin-top:-1px; }
+.e-ticket-container .btn-set { padding:0; }
+.file-wrap .file-box { display:inline-block; width:59px; height:25px; vertical-align:middle; background:url(//image.ssgdfs.com/images/shop/cn/customer/btn_find.gif) 0 0 no-repeat; overflow:hidden;}
+.file-wrap .file-box .file-add {filter:alpha(opacity:0); opacity:0; width:59px; height:25px; cursor: pointer; border:0px solid #fff; padding:0; margin:0;}
+/* 프리미엄 상세 리뷰 */
+.product-review table tbody td p.product-txt span { display:block; font-weight:bold; text-align:left; color:#333; }
+.product-review table.cancel-txt tbody th { padding-left:20px; border:1px solid #dfdfdf; border-left: 0; background:#fcfcfc; text-align:left; vertical-align:middle; color:#666; font-weight:normal; }
+.product-review table.cancel-txt tbody td { padding:11px 0 7px 23px; border-top:1px solid #dfdfdf; text-align:left; }
+.product-review table.cancel-txt tbody td p, ul { padding:15px 0 0 20px; }
+.product-review table.cancel-txt tbody td p, ul li { text-align:left; line-height:18px; padding-bottom:5px; }
+.product-review table tbody td.answer-ok { font-weight:bold; }
+.product-review table tbody td.answer-ok a { color:#333; }
+.product-review table tbody td.board-txtbox .qna-box { padding:19px 0 0 154px; }
+.product-review table tbody td.board-txtbox .qna-box p.qna-q { clear:both; padding-bottom:14px; text-align:left; }
+.product-review table tbody td.board-txtbox .qna-box p.qna-a { clear:both; padding-bottom:14px; text-align:left; }
+.product-review table tbody td.board-txtbox .qna-box p img { display:inline-block; margin:-2px 10px 0 0; vertical-align:middle; }
+.product-review table tbody td.tit-content { padding-left:20px; }
+.product-review table tbody td p.product-img { float:left; margin-left:5px; }
+.product-review table tbody td p.product-txt { width:430px; float:left; padding:19px 10px 0 15px; color:#666; text-align:left; line-height:16px; font-size:12px; }
+.product-review table tbody td.tit-align img.secret { margin-left:92px; }
+.product-review table tbody td.tit-align a { display:inline-block; vertical-align:bottom; }
+.order .tab-menu ul.p-coupon { padding:0; }
+.notice-section ul.p-notice { padding:0; }
+.flight-con p, ul { padding:0; }
+.flight-con .flight-list ul li { padding-bottom:0; }
+.flight-con .flight-list ul li span {margin-left: 3px; letter-spacing: -1px; }
+.flight-con .flight-list {width:523px; margin-bottom:20px;  border-right:1px solid #ededed;}
+.tit-box { width:100%; height:28px; margin-top:32px; }
+.select-box { float:right; }
+.product-review { width:1000px; position:relative; }
+.product-review table { width:100%; }
+.product-review table thead th { height:30px; background:#f8f8f8; border-top:1px solid #d5d5d5; text-align:center; }
+.product-review table tbody td { padding:12px 0 11px 0; border-top:1px solid #eaeaea; border-bottom:1px solid #eaeaea; text-align:center; color:#999; font-size:11px; }
+.product-review table tbody td.tit-align { text-align:left; padding-left:3px; font-size:12px; }
+.product-review table tbody td.tit-align img { margin-left:6px; }
+.product-review table tbody td.buy-ok { color:#333; }
+.product-review table tbody td span.uesrid-name { color:#666; }
+.product-review table tbody td.board-txtbox { background:#fbfbfb; }
+.product-review table tbody td.board-txtbox .star-box { padding:20px 0 36px 149px; overflow:hidden; position:relative; }
+.product-review table tbody td.board-txtbox .star-box p { float:left; padding-right:19px; color:#757575; }
+.product-review table tbody td.board-txtbox .star-box p.star { padding-bottom:28px; }
+.product-review table tbody td.board-txtbox .star-box p.star span.tit { display:block; width:50px; float:left; margin-right:4px; text-align:right; text-indent:0; background:none; }
+.product-review table tbody td.board-txtbox p.txt { width:100%; clear:both; color:#757575; text-align:left; }
+.product-review table tbody td.board-txtbox p.mobile-top { position:absolute; right:20px; top:21px; color:#757575; }
+.product-review table tbody td.board-txtbox p.mobile-top img { margin-right:6px; }
+.product-review table tbody td img { margin-left:-2px; }
+.product-review table tbody td img.rating { margin-right:3px; vertical-align:middle; }
+/* button */
+.paginate-box { height:30px; margin-top:10px; position:relative; }
+.paginate-box .paginate { text-align:center; }
+.paginate-box .paginate a img { width:21px; height:19px; margin:0 -4px; vertical-align:middle; }
+.paginate-box .paginate a { display:inline-block; width:20px; height:16px; margin-right:10px; }
+.paginate-box .paginate a.on-page { font-weight:bold; }
+.paginate-box .paginate a.mar-right { margin-right:0; }
+.paginate-box .paginate span { margin-left:10px; }
+.paginate-box .btn-right { position:absolute; right:0; top:-5px; text-align:right; }
+/* selectbox */
+.product-review .sbHolder { width:117px; height:22px; position:relative; background-color:#fff; border: solid 1px #bababa; float:left; }
+.product-review .sbHolder:focus .sbSelector { color: #656565; }
+.product-review .sbSelector { display:block; height:22px; left:0; line-height:24px; outline:none; overflow:hidden; position:absolute; text-indent:10px; top:0; width:117px; }
+.product-review .sbSelector:link, .product-review .sbSelector:visited, .product-review .sbSelector:hover { color:#999; outline:none; text-decoration:none; }
+.product-review .sbToggle { width:22px; background:url("//image.ssgdfs.com/images/shop/cn/product/detail/bg_select.gif") no-repeat 0 0; display:block; height:22px; outline:none; position:absolute; right:0; top:0; }
+.product-review .sbToggle:hover { }
+.sbToggleOpen { }
+.sbToggleOpen:hover { }
+.sbHolderDisabled { backgroun: #fff; border:solid 1px #515151; }
+.product-review .sbOptions { background-color:#fff; border:solid 1px #bababa; left:-1px; position:absolute; top:22px; width:117px; z-index:1; overflow-y:auto; }
+.product-review .sbOptions li { padding: 0 7px; }
+.product-review .sbOptions a { border-bottom:dotted 1px #bababa; display:block; outline:none; padding:4px 0 4px 3px; }
+.product-review .sbOptions a:link, .sbOptions a:visited { color:#ddd; text-decoration:none; }
+.product-review .sbOptions a:hover, .product-review .sbOptions a:focus, .product-review .sbOptions a.sbFocus { color: #999; }
+.product-review .sbOptions li.last a { border-bottom: none; }
+.product-review .sbOptions .sbDisabled { border-bottom: dotted 1px #515151; color: #999; display: block; padding: 7px 0 7px 3px; }
+.product-review .sbOptions .sbGroup { border-bottom: dotted 1px #bababa; color: #999; display: block; font-weight: bold; padding: 7px 0 7px 3px; }
+.product-review .sbOptions .sbSub { padding-left: 17px; }
+.product-review .loca { position:absolute; right:0; top:170px; }
+/* 쿠폰 이용안내 */
+.coupon-zone { padding: 20px 20px 0; width: 604px; }
+.coupon-zone h2 { padding: 0 0 0 22px; border-bottom: 2px solid #555; background: url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_h2.gif") no-repeat 0 0; }
+.coupon-zone .use-info { margin: 0 0 20px; padding: 16px 0 0 16px; width: 588px; border-bottom: 1px solid #cfcfcf; background: #f8f8f8 }
+.coupon-zone .use-info li { padding: 0 0 8px 15px; font-size: 12px; background: url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_check.gif") no-repeat 4px 4px; }
+.coupon-zone .cupon-regist dl { padding: 10px 0 0 0; }
+.coupon-zone .cupon-regist dt { padding: 0 0 6px 9px; background: url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_point.jpg") no-repeat 0 4px; font-weight: bold; font-size: 12px; color: #333 }
+.coupon-zone .cupon-regist .ex { padding: 0 0 0 19px; font-size: 12px; text-indent: -10px; }
+.coupon-zone .cupon-regist .ex span { color:#d21b21; }
+.coupon-zone .cupon-regist .info { width: 604px; height: 104px; overflow: hidden; }
+.coupon-zone .cupon-regist .info ul { margin:0; width: 612px; height: 104px; overflow: hidden; background:url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_step.gif") no-repeat 48px 10px;}
+.coupon-zone .cupon-regist .info ul li { float: left; padding: 4px 0 0 0; width: 153px; height: 104px; overflow: hidden; background: url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_ab.gif") no-repeat 3px 48px; }
+.coupon-zone .cupon-regist .info ul li:first-child { background:none; }
+.coupon-zone .cupon-regist .info ul li p { margin: 0 0 0 10px; padding: 65px 0 0 0; width: 143px; height: 44px; text-align: center; font-size: 12px;}
+.coupon-zone .cupon-regist .step01 { background: #f8f8f8 url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_step01.jpg") no-repeat 48px 10px; }
+.coupon-zone .cupon-regist .step02 { background: #f8f8f8 url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_step02.jpg") no-repeat 48px 10px; }
+.coupon-zone .cupon-regist .step03 { background: #f8f8f8 url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_step03.jpg") no-repeat 48px 10px; }
+.coupon-zone .cupon-regist .step04 { background: #f8f8f8 url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_step04.gif") no-repeat 48px 10px; }
+.coupon-zone .regi-go { padding: 20px 0 0 0; text-align: center; }
+
+.coupon-zone .use-info-box {width:100%; height:86px; background:url("//image.ssgdfs.com/images/shop/cn/couponbox/bg_use_info.gif") no-repeat 435px 5px;}
+.coupon-zone .use-info-box .use-info-tit {margin-bottom:5px; color:#333;}
+.coupon-zone .use-info-box .use-info-txt {line-height:14px;}
+.coupon-zone .use-info-box .use-info-txt span {display:block;}
+.coupon-zone .coupon-use-box {width:100%;}
+.coupon-zone .coupon-use-box .use-info {width:272px; height:136px; padding:13px 25px 13px 0; float:left; background:#f8f8f8; border-bottom:1px solid #cfcfcf; border-top:1px solid #cfcfcf;}
+.coupon-zone .coupon-use-box .use-info p {padding:0 0 5px 15px; color:#333;}
+.coupon-zone .coupon-use-box .use-info ul {padding:0 0 0 15px; margin-left:10px;}
+.coupon-zone .coupon-use-box .use-info ul li {padding:0 0 8px 8px; background:url("//image.ssgdfs.com/images/shop/cn/couponbox/dot_gray.gif") no-repeat 4px 7px;}
+.coupon-zone .coupon-use-box .use-info02 {margin-right:10px;}
+
+/* 쿠폰 등록 */
+.coupon-regist { padding: 20px 35px 0 20px; width: 510px; }
+.coupon-regist p { padding: 0 0 10px 0; color: #666666; border-bottom: 2px solid #555; }
+.coupon-regist .coupon-regi { padding: 20px 0 20px 0; text-align: center; background: #fbfbfb; }
+.coupon-regist .coupon-regi img { padding: 0 5px 0 0; }
+.coupon-regist .coupon-regi img, .coupon-regist .coupon-regi input { vertical-align: middle; }
+.coupon-regist .coupon-regi input[type="text"] { padding: 1px; width: 263px; height: 26px; border-color: #dadada; }
+/* Wedding Festival 청첩장 등록하기 */
+
+.wedding-festival { padding: 20px 0 0 20px; width: 635px; }
+.wedding-festival .wedding-notice { margin: 0 0 20px 0; padding: 0 0 20px; width: 632px; height: 175px; font-size: 12px; border: 1px solid #cfcfcf; background: #f8f8f8 }
+.wedding-festival .wedding-notice h2 { padding: 15px 0 0 36px; background: #f8f8f8 url("//image.ssgdfs.com/images/shop/cn/wedding/bg_h2.gif") no-repeat 15px 15px; }
+.wedding-festival .wedding-notice ul li { padding: 6px 0 0 47px; color: #777777; background: url("//image.ssgdfs.com/images/shop/cn/wedding/bg_chek.gif") no-repeat 37px 12px; }
+.wedding-festival .wedding-info { border-top: 2px solid #555555; }
+.wedding-festival .wedding-info tr th { padding-left: 12px; width: 140px; background: #fcfcfc; font-size:12px; color:#333; }
+.wedding-festival .wedding-info .my-info { width: 460px; overflow: hidden; }
+.wedding-info .my-info dt { float: left; padding: 2px 0 0; width: 56px; height: 22px; color: #999999; }
+.wedding-info .my-info dd { float: left; padding: 2px 0 0; width: 380px; height: 22px; color: #666666; font-size:12px; }
+.wedding-festival .wedding-info .hus-info { width: 460px; overflow: hidden; }
+.wedding-info .hus-info dt { float: left; padding: 7px 0 0 0; width: 56px; height: 25px; color: #999999; }
+.wedding-info .hus-info dd { float: left; padding: 2px 0 0; width: 380px; height: 30px; }
+.wedding-info .hus-info dd input[type="text"] { width: 240px; height: 20px; }
+.wedding-info .hus-info dd a img { vertical-align: middle; }
+.wedding-festival .file-notice { color: #999999; }
+.wedding-festival .file-notice li { height:16px; padding-bottom:0; }
+.wedding-festival .wedding-closing { padding: 20px 0 20px 0; text-align:center; }
+.wedding-info td.file-add input[type="text"] { width:295px; }
+.wedding-info td.file-add span.bg-add {display:inline-block; width:74px; height:25px; background:url("//image.ssgdfs.com/images/shop/wedding/file_find.gif") 0 0 no-repeat;}
+.wedding-info td.file-add span.bg-add .add {filter:alpha(opacity:0); opacity:0; width:55px; height:25px; cursor: pointer; border:0px solid #fff; padding:0; margin:0;}
+
+.wedding-info td.file-add p { height:13px; padding:5px 0 5px 0; color:#333; }
+.wedding-info td.file-add p a { vertical-align:middle; margin-left:3px; }
+.wedding-info td.days img { vertical-align: middle; }
+.wedding-info td.tel .sbHolder { float: left; width: 56px; height: 22px; }
+.wedding-info td.tel .sbOptions { width: 56px; height: 120px; }
+.wedding-info td div.tel-number { float: left; padding: 0 0 0 4px; }
+.wedding-info td.tel .sbSelector { width:56px; }
+.wedding-info td.tel .sbToggle { height:22px; }
+.detail-pop table tbody tr td div.file-wrap input[type="text"] { width: 190px; }
+
+
+/* 로그인 회원가입 */
+.join-container table.join-board td span input[type="text"] {width:132px; margin-right:5px;}
+.join-container table.join-board td span input.first-name {margin-left:7px;}
+.join-container table.join-board td span.find-text input[type="text"] {width:273px;}
+.join-container .txt-tipping {color:#555;}
+.join-container .notice-txt {margin-top:7px; color:#999;}
+.join-container table.join-board tr.find-box td {height:24px; text-align:center; border-left:0 none;}
+.join-container table.join-board tr.find-box td p {margin-left:57px; font-size:12px; color:#000;}
+.join-container table.join-board tr.find-box td p label {margin:0 35px 0 3px;}
+
+/* 상품비교방법 */
+#compare .layer-body {width:auto; border:0 none;}
+#compare .layer-body p {line-height: 19px;}
+#compare .layer-body p strong {color: #333;	font-weight:bold;}
+div.sample {padding: 10px 0 29px 0;}
+
+
+.line-txt-cn {border-bottom:1px solid #dfdfdf; padding:10px 0 10px 0; text-align:center;}
+
+
+
+/* 주문가능시간조회 및 구매한도 조회 팝업 */
+
+.time-check {width:345px; height:auto;}
+.time-check .info {width:433px; height:153px; margin-bottom:20px; border:1px solid #cfcfcf; background:#f8f8f8;}
+.time-check .info .info-tit {height:44px; padding:30px 0 0 62px; text-align:center; font-size:12px; color:#333; line-height:18px; text-align:left;}
+.time-check .info .info-tit span {font-weight: bold;}
+.time-check .info .info-tit span.last {color:#666; font-weight:normal;}
+.time-check .info .info-tit strong {font-weight:normal; color:#d62b21;}
+.time-check .info .info-con1 {padding-top:18px; text-align:center; font-size:14px; color:#333; line-height:20px; font-weight:bold;}
+.time-check .info .info-con1 strong {font-size:16px; color:#d62b21;}
+.time-check .info .info-con2 {text-align:center; font-size:14px; color:#333; line-height:20px; font-weight:bold;}
+.time-check .info .info-con2 strong {font-size:16px; color:#d62b21;}
+.time-check .time-box {width:353px; heught:auto; padding:7px 0 9px 0; margin:0 0 28px 0; border:1px solid #cfcfcf; background:#f8f8f8;}
+.time-check table {width:100%; margin-bottom:7px;}
+.time-check table th {height:30px; padding:0; margin:0; border:0 none; text-align:left;}
+.time-check table th p {width:50px; margin:0 14px 0 21px;}
+.time-check table td {height:30px; padding:0; margin:0; border:0 none; text-align:left;}
+.time-check table td p {padding:3px 0;}
+.time-check table td p input[type="text"] {width:205px;}
+.time-check table td p img {vertical-align:middle; margin-left:4px;}
+.time-check table td p.name-ch input[type="text"] {width:168px;}
+.time-check table td.time p {float:left; margin-right:10px;}
+.time-check table td p.possible-p {color:#d42c21; font-size:14px; line-height:20px; font-weight:bold;}
+.time-check p.day {height:24px; margin-bottom:7px; text-align:right;}
+.time-check p.day span {display:block; margin-right:142px; font-weight:bold;}
+.time-check p.day .day {float:right;}
+.time-check .btn {text-align:center;}
+.time-check ul.check-tip {width:auto; padding:12px 0 3px 20px; margin-top:20px; border:1px solid #cfcfcf; background:#f8f8f8;}
+.time-check ul.check-tip li {padding:0 0 9px 11px; color:#777; font-size:11px; line-height:16px; background:url("//image.ssgdfs.com/images/shop/common/popup/dot_check.gif") no-repeat 0 5px;}
+.time-check ul.check-tip li span {display:block;}
+.time-check .result-box .title {height:21px; padding:1px 0 0 21px; margin-bottom:6px; border-top:0 none; text-align:left; border-bottom:2px solid #484848; background:url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 0;}
+.time-check .result-box .txt {width:100%; margin-bottom:18px; text-align:center; line-height:18px;}
+.time-check .result-box .txt strong {font-weight:bold; color:#555;}
+.time-check .result-box .txt span {color:#c91f15;}
+.time-check .result-box .txt02 {margin-bottom:18px; text-align:center; line-height:18px;}
+.time-check .result-box .txt02 span {margin:0 4px; color:#c91f15; font-weight:bold; font-size:16px;}
+.txt-tipping {display:block; clear:both; height:auto; padding-left:7px; background:url("//image.ssgdfs.com/images/shop/order/dot_gray.gif") no-repeat 0 8px; color:#555;}
+.txt-tipping span {font-weight:bold;}
+
+/* select */
+.time-check table td.place .sbHolder {width:231px; z-index: 10;}
+.time-check table td.place .sbOptions {width:231px;}
+.time-check table td.place .sbSelector {width:231px;}
+
+.time-check table td.place ul li, .order-timepop table td.time ul li {padding:0;}
+
+.time-check table td.time .sbHolder {width:73px;}
+.time-check table td.time .sbOptions {width:73px;}
+.time-check table td.time .sbSelector {width:73px;}
+
+.time-check p.day .sbHolder {width:132px; margin-top:-20px; float:right; text-align:left;}
+.time-check p.day .sbOptions {width:132px;}
+.time-check p.day .sbSelector {width:132px;}
+.sbOptions a {padding:2px 7px 2px 10px  !important;}

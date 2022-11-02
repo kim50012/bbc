@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BBS">
+
+	
+	<select id="SHOP_BBS_CONTENT_LIST_SELECT_NEW" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_CONTENT_LIST_SELECT_NEW]
+	    	 @SHOP_ID			= #SHOP_ID#
+			,@USER_ID   		= #USER_ID#
+			,@BBS_ID		  	= #BBS_ID#   
+			,@BBS_STS			= #BBS_STS#  	
+			,@START_DT			= #START_DT#  	
+			,@END_DT		  	= #END_DT#   
+			,@TITLE		  		= #TITLE#  
+			,@PAGE_CURR			= #PAGE_CURR#   	
+			,@PAGE_UINT	  		= #PAGE_UINT#   
+			,@ORDERBY        	= #ORDERBY#
+			,@PARENT_ID			= #PARENT_ID#
+			,@BBS_PARENT_ID		= #BBS_PARENT_ID#
+			,@BBS_TYPE			= #BBS_TYPE#
+	    ]]>
+	</select>
+
+	<select id="save" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BBS_CONTENT_INSERT]
+			      @JOB_TYPE				=#jobType:CHAR#
+				, @USER_ID				=#userId:NVARCHAR#
+				, @SHOP_ID				=#shopId:INT#
+				, @BBS_PARENT_ID		=#bbsParentId:INT#							
+				, @BBS_TYPE				=#bbsType:INT#							
+				, @BBS_ID				=#bbsId:INT#													
+				, @TITLE				=#title:NVARCHAR#
+				, @BODY					=#body:NVARCHAR#
+				, @IMG_ID1				=#imgId1:INT#					
+				, @IMG_ID2				=#imgId2:INT#
+				, @IMG_ID3				=#imgId3:INT#
+				, @IMG_ID4				=#imgId4:INT#
+				, @IMG_ID5				=#imgId5:INT#
+				, @IMG_ID6				=#imgId6:INT#					
+				, @IMG_ID7				=#imgId7:INT#
+				, @IMG_ID8				=#imgId8:INT#
+				, @IMG_ID9				=#imgId9:INT#
+				, @IMG_ID10				=#imgId10:INT#
+				, @IMG_ID11				=#imgId11:INT#					
+				, @IMG_ID12				=#imgId12:INT#
+				, @IMG_ID13				=#imgId13:INT#
+				, @IMG_ID14				=#imgId14:INT#
+				, @IMG_ID15				=#imgId15:INT#
+				, @IMG_ID16				=#imgId16:INT#					
+				, @IMG_ID17				=#imgId17:INT#
+				, @IMG_ID18				=#imgId18:INT#
+				, @IMG_ID19				=#imgId19:INT#
+				, @IMG_ID20				=#imgId20:INT#
+				, @CREATE_ID			=#createId:INT# 				
+				, @CREATE_DT			=#createDt:SMALLDATETIME#				
+				, @BBS_STS				=#bbsSts:INT#	
+				, @PHONE				=#phone:NVARCHAR#
+				, @QIAN_MING			=#qianMing:NVARCHAR#	
+				, @SERVICE_TYPE			=#serviceType:INT#
+				, @SERVICE_SATIS		=#serviceSatis:INT#				
+	    ]]>
+	</select>
+	<select id="imgUpload" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_FILE_MST_INSERT]
+			     @JOB_TYPE			=#jobType:CHAR#
+				,@USER_ID			=#userId:NVARCHAR#
+				,@SHOP_ID			=#shopId:INT#		
+				,@FILE_ID			=#fileId:INT#							
+				,@FILE_NM			=#fileNm:NVARCHAR#
+				,@FILE_SYS_NM		=#fileSysNm:NVARCHAR#
+				,@FILE_TYPE			=#fileType:TINYINT#						
+				,@FILE_SIZE			=#fileSize:INT#							
+				,@FULL_URL			=#fullUrl:NVARCHAR#
+				,@IS_USE			=#isUse:TINYINT#						
+				,@MODIFIED_ID		=#modifiedId:NVARCHAR#
+				,@CREATED_ID		=#createdId:NVARCHAR#				
+				,@FILE_GROUP 		=#fileGroup:TINYINT#				
+				,@MEDIA_ID			=#mediaId:NVARCHAR#
+				,@MEDIA_UP_DT		=#media_up_dt:SMALLDATETIME#	
+				,@IMG_WIDTH			=#imgWidth:INT#					
+				,@IMG_HEIGHT		=#imgHeight:INT#
+	    ]]>
+	</select>
+	<!-- 发放优惠券 -->
+	<procedure id="bbsCouponPublish"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+      EXEC  [BBS_COUPON_PUBLISH]
+ 		 @SHOP_ID=#shopId:INT#
+ 		, @USER_ID=#userId:NVARCHAR#				
+		, @CUST_SYS_ID=#custSysId:NVARCHAR#
+		, @BBS_TYPE=#bbsType:INT#
+	</procedure>
+	
+	<procedure id="couponSelect" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+        <![CDATA[
+        EXEC [COUPON_SELECT]
+	        @SHOP_ID=#shopId:INT#									
+			, @USER_ID=#userId:NVARCHAR#				
+			, @COUPON_ID=#couponId:INT#					
+			, @COUPON_NM=#couponNm:NVARCHAR#			
+			, @STATUS_ID=#statusId:INT#				
+			, @PAGE_CURR=#pageCurr:INT#						
+			, @PAGE_UINT=#pageUnit:INT#						
+       	]]>
+    </procedure>
+    
+	<procedure id="getCustDetail" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC CUST_DETAIL 
+				@SHOP_ID = #SHOP_ID#
+				,@CUST_SYS_ID = #CUST_SYS_ID#
+		 ]]>
+	</procedure>
+	<!-- 判断一个客户是否已经提交申请 -->
+	<select id="getCount" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	SELECT
+		 		COUNT(*) AS COUNT
+		 	FROM DBO.SHOP_BBS_CONTENT 
+		 	WHERE SHOP_ID=#shopId:INT#
+		 	AND BBS_TYPE=#bbsType:INT#
+		 	AND CREATE_ID=#custSysId:INT#
+		 	AND BBS_PARENT_ID = 0
+		 ]]>
+	</select>
+	
+	<procedure id="bbsCustSelect" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+	    	EXEC [BBS_CUST_SELECT]
+	    		@SHOP_ID = #SHOP_ID#
+				,@CUST_SYS_ID = #CUST_SYS_ID#
+	     ]]>
+	</procedure>
+	
+	<select id="publishedCount"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    SELECT 
+	    		COUNT(*) AS PUBLISH_COUNT
+	    FROM    SHOP_BBS_CONTENT 
+		WHERE   BBS_TYPE=#BBS_TYPE#
+		AND 	BBS_PARENT_ID=0 
+		AND 	SHOP_ID=#SHOP_ID#
+		AND 	BBS_STS = 2
+		AND 	CREATE_ID = #CUST_SYS_ID#
+		AND 	CREATE_DT BETWEEN ISNULL(#START_DATE#,CREATE_DT) AND ISNULL(#END_DATE#,CREATE_DT)
+	    
+	</select>
+	
+	<select id="SHOP_BBS_CONTENT_LIST_SELECT_REPLY" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+			SELECT
+					T1.SHOP_ID
+					, T1.BBS_TYPE
+					, T1.BBS_ID
+					, T1.BBS_PARENT_ID
+					, T1.TITLE
+					, T1.BODY
+					, (SELECT A.WX_IF_NICK_NM FROM CUST A WHERE A.CUST_SYS_ID = T1.CREATE_ID) AS CREATE_USER
+					, T1.CREATE_ID
+					, ISNULL((SELECT SUM(A.LIKE_CNT)FROM SHOP_BBS_LIKE_SHARE A WHERE A.SHOP_ID=T1.SHOP_ID AND A.BBS_ID=T1.BBS_ID AND A.CUST_SYS_ID = #CUST_SYS_ID#), 0) AS LIKE_NOT
+					, (SELECT A.WX_IF_HEADIMGURL FROM CUST A WHERE A.CUST_SYS_ID = T1.CREATE_ID) AS WX_IF_HEADIMGURL
+					, ISNULL((SELECT SUM(A.LIKE_CNT)FROM SHOP_BBS_LIKE_SHARE A WHERE A.SHOP_ID=T1.SHOP_ID AND A.BBS_ID=T1.BBS_ID), 0) AS LIKE_TOTAL
+					, (SELECT  SUBSTRING(CONVERT(VARCHAR(12) , T1.CREATE_DT, 110 ),0,6)) AS CREATE_DT_F
+			FROM	SHOP_BBS_CONTENT T1
+			WHERE	T1.SHOP_ID = #SHOP_ID#
+			AND		T1.BBS_PARENT_ID IN (SELECT A.VAL FROM DBO.FN_SPLIT_RTN_TABLE_INT(#BBS_ID_RG#) A)
+			ORDER BY T1.BBS_PARENT_ID DESC, T1.BBS_ID DESC
+	    ]]>
+	</select>
+	
+</sqlMap>

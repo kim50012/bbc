@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+ 	<package name="front/web/publish/mobile/main" extends="portal-default" namespace="/front/web/publish/mobile/main">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/main/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/brand" extends="portal-default" namespace="/front/web/publish/mobile/brand">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/brand/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/coupon" extends="portal-default" namespace="/front/web/publish/mobile/coupon">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/coupon/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/event" extends="portal-default" namespace="/front/web/publish/mobile/event">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/event/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/list" extends="portal-default" namespace="/front/web/publish/mobile/list">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/list/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/mypage" extends="portal-default" namespace="/front/web/publish/mobile/mypage">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/mypage/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/product" extends="portal-default" namespace="/front/web/publish/mobile/product">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/product/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/sms" extends="portal-default" namespace="/front/web/publish/mobile/sms">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/sms/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/login" extends="portal-default" namespace="/front/web/publish/mobile/login">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/login/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/web/publish/mobile/order" extends="portal-default" namespace="/front/web/publish/mobile/order">
+		<action name="*" method="{1}" class="shopAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+		    <result name="{1}">/front/web/publish/mobile/order/{1}.jsp</result>
+		</action>
+	</package>
+	
+</struts>

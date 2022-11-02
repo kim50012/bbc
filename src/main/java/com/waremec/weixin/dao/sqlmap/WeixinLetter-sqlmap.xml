@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WeixinLetter">
+
+   
+    <select id="selectLetterInfoById" parameterClass="java.lang.Integer" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_WX_LETTER_SELECT]
+			  @LETTER_ID		= 	#value#
+    ]]>
+    </select>
+   
+    <select id="insertLetter" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_WX_LETTER_USER_INSERT]
+			  @LETTER_ID		= 	#LETTER_ID#
+			  ,@SHOP_ID			= 	#SHOP_ID#
+			  ,@OPENID			= 	#OPENID#
+    ]]>
+    </select>
+	
+	 
+</sqlMap>

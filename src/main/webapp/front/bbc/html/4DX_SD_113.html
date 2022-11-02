@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div class="page1 fieldReport_page1 pop-page">
+      <header class="app-header app-header_fieldReport">
+        <div class="logo">
+          <img class="back" src="../image/back.png" />
+          <text class="font24 bold ml24">극장장비 입고</text>
+        </div>
+      </header>
+      <div class="content">
+        <div class="container refresh-wrap">
+          <div class="scroll-wrap scroll-wrap_fieldReport">
+            <div class="title3">
+              <div>
+                <i class="fourDPlex icon-sanjiao"></i>
+                <span>Site Information</span>
+              </div>
+            </div>
+            <div class="table">
+              <table class="table-col2 open" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+                <colgroup>
+                  <col width="40%" />
+                  <col width="60%" />
+                </colgroup>
+                <tr class="getWord">
+                  <th class="right fontGrey">국가</th>
+                  <td class="left">Ireland</td>
+                </tr>
+                <tr class="getWord">
+                  <th class="right fontGrey">극장사</th>
+                  <td class="left">Cineworld</td>
+                </tr>
+                <tr class="getWord">
+                  <th class="right fontGrey">사이트</th>
+                  <td class="left">Dublin</td>
+                </tr>
+                <tr class="getWord">
+                  <th class="right fontGrey">스크린 유형</th>
+                  <td class="left">4DX</td>
+                </tr>
+                <tr class="getWord">
+                  <th class="right fontGrey">공정 담당자</th>
+                  <td class="left">김동일</td>
+                </tr>
+                <tr class="getInputDay intd">
+                  <th class="right fontGrey">COA 체결일</th>
+                  <td class="left">
+                  	<div class="input-wrap">
+	                		<input class="warehouse imgContent" type="date" id="calendar_36" />
+	                		<div></div>
+	                	</div>
+                  </td>
+                </tr>
+                <tr class="getInputImg intd">
+                  <th class="right fontGrey">첨부 파일</th>
+                  <td class="left">
+                  	<label class="input-wrap file-input">
+	                		<input id="fileInput" class="warehouse imgContent" type="file" accept="image/*"/>
+	                		<div>촬영/이미지 선택</div>
+	                	</label>
+	                	<div id="imgWrap" class="imgWrap">
+	                	</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="table-wrap">
+              <div class="title3">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>라인별 극장입고 처리</span>
+                </div>
+              </div>
+              <div class="table waretitle">
+                <table class="drag-table noWrapTable" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr>
+                    <th>입고수량</th>
+                    <th>출하수량</th>
+                    <th>실행계획</th>
+                    <th>제품군</th>
+                    <th>품목코드</th>
+                    <th>품목명</th>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">30</td>
+                    <td>4D Chair</td>
+                    <td>SL1K</td>
+                    <td class="center">50001</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">1</td>
+                    <td>Control</td>
+                    <td>SCU</td>
+                    <td class="center">20012</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">12</td>
+                    <td>Env.Effe</td>
+                    <td>Fan</td>
+                    <td class="center">30011</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">2</td>
+                    <td>Env.Effe</td>
+                    <td>RainStorm</td>
+                    <td class="center">10022</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">2</td>
+                    <td>Env.Effe</td>
+                    <td>Scent</td>
+                    <td class="center">10033</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="intd">
+                    <td>
+                    	<div class="input-wrap">
+                    		<input class="warehouse inContent" type="text" />
+                    		<div>입력</div>
+                    	</div>
+                    </td>
+                    <td class="center">1</td>
+                    <td>Env.Effe</td>
+                    <td>Snow</td>
+                    <td class="center">10044</td>
+                    <td>-</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+            <div>
+              <button class="loginBtn fontWhite font28 mb24" id="btn" />극장장비 입고</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var imgArr = []
+    var index = 0;
+    $(function() {
+      $("#btn").click(function() {
+        alert(13)
+      })
+      $("#fileInput").change(function() {       
+        var filePath = this.files[0];//读取图片路径              
+        var reader = new FileReader();//创建new FileReader()对象     
+        var imgFile;
+        reader.readAsDataURL(filePath);
+        reader.onload = function(e) {
+          imgFile = e.target.result;
+          imgArr.push(imgFile)
+          var html = '<div index = "'+ index +'"><span class="img-close" onclick = "delImg(this)">'
+          html += '<i class="fourDPlex icon-img-close"></i>'
+          html += '</span><img src="'+imgFile+'"/></div>'
+          $("#imgWrap").append(html) 
+          $("#fileInput").val('');
+          $("#fileInput").eq(0).outerHTML = $("#fileInput").eq(0).outerHTML;
+          index += 1;
+        };
+      })
+    })
+    function delImg(el) {
+      var srcIndex = 0;
+      for(var i = 0; i < $("#imgWrap > div").length; i ++) {
+        if($(el).parent().attr("index") == $($("#imgWrap > div")[i]).attr("index")) {
+          srcIndex = i
+        }
+      }
+      imgArr.splice( srcIndex, 1);
+      $(el).parent().remove()
+      // 这里的数组是包含base64的数组
+      console.log(imgArr)
+    }
+  </script>
+
+</html>

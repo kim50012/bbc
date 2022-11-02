@@ -1,0 +1,1250 @@
+@charset "utf-8";
+
+
+img {
+	vertical-align: top;
+}
+#body {
+	margin: 0 auto; /** 삭제 예정 **/
+	width: 1000px;
+}
+
+/*/ 메인 배너 /*/
+#main-contents {
+	padding: 5px 0 0; 
+}
+div.plan-menu {
+	position: relative;
+	width: 804px;
+	height: 468px;
+	overflow: hidden;
+}
+ul.main {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 66px;
+	overflow: hidden;
+}
+ul.main li {
+	float: left;
+	width: 65px;
+	height: 57px;
+	border: 1px solid #54534f;
+	border-left: 0;
+}
+div.one-depth {
+	position: absolute;
+	left: -75px;
+	top: 0;
+	z-index: 5;
+	padding: 0 0 0 7px;
+	width: 121px; 
+	height: 468px;
+	background: url("/images/shop/main_banner/bg_onedepth.jpg") no-repeat 0 27px;
+}
+div.one-depth div.menu {
+	position: relative;
+	float: left;
+	width: 121px; 
+	height: 468px; 
+	background: #e7e7e7;
+}
+div.one-depth div.menu p.title {
+	padding: 9px 0 0 24px; 
+	color: #c62f2f;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: -2px;
+	height: 28px;
+}
+div.one-depth div.menu ul {
+	padding: 0 0 0 22px;
+}
+div.one-depth div.menu ul li {
+	padding: 0 0 5px;
+	width: auto;
+	height: auto;
+	border: 0;
+	font-size: 11px;
+}
+div.one-depth div.menu div.menu-banner {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+div.one-depth div.menu ul li div.event-product {
+	position: absolute;
+	left: -586px;
+	top: 0;
+	z-index: -1;
+	width: 586px;
+	height: 466px;
+	border: 1px solid #ddd;
+}
+div.one-depth div.menu ul li div.event-product ul {
+	padding: 0;
+	overflow: hidden;
+}
+div.one-depth div.menu ul li div.event-product ul li {
+	float: left;
+	padding: 0;
+	border-left: 1px solid #ddd;
+
+}
+div.one-depth div.menu ul li div.event-product ul li:first-child ,
+div.one-depth div.menu ul li div.event-product ul li.first-child {
+	border: 0;
+}
+div.one-depth div.menu ul li div.event-product ul li.secound-child {
+	border-bottom: 1px solid #ddd;
+}
+div.one-depth div.menu ul li div.event-product ul li img {
+	vertical-align: top;
+}
+div.new-planning {
+	position: absolute;
+	left: 66px;
+	top: 0;
+}
+div.new-planning div.plan {
+	position: relative;
+	width: 709px;
+	height: 468px;
+	overflow: hidden;
+}
+div.new-planning div.plan div.view-con {
+	position: absolute;
+	left: 16px;
+	top: 427px;
+	z-index: 100;
+	height: 670px;
+	height: 31px; 
+}
+div.new-planning div.plan div.view-con ul {
+	width: 714px;
+}
+div.new-planning div.plan div.view-con ul li {
+	position: relative;
+	float: left;
+	width: 83px;
+	height: 31px;
+}
+div.new-planning div.plan div.view-con ul li ul {
+	display: none;
+	position: absolute;
+	left: 0;
+	z-index: 100;
+	padding: 8px 7px 0;
+	width: 74px;
+	bottom: 31px;
+	border: 1px solid #000;
+	background: #c6c3bb;
+}
+div.new-planning div.plan div.view-con ul li ul li{
+	padding: 0 0 5px; 
+	float: none;
+	width: auto;
+	height: auto;
+	text-align: center;
+
+}
+div.new-planning div.plan div.view-con ul li ul li a {
+	font-size: 10px;
+	letter-spacing: -1px;
+	color: #888;
+}
+div.new-planning div.plan div.view-con ul li ul li a.on{
+	font-size: 11px;
+	color: #000;
+}
+div.new-planning div.plan div.view-con ul li span {
+	display: block;
+	padding: 10px 0 10px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #fff;
+	background: #383735;
+	/*
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	*/
+}
+div.new-planning div.plan div.view-con ul li span.selected {
+	display: block;
+	padding: 10px 0 10px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #000;
+	background: #fff;
+}
+
+div.new-planning div.plan ul.plan-list li {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+/** 상품 상세 **/
+
+/*// 간략 정보 상단 //*/
+
+div.product-pattern {
+	width: 998px;
+	overflow: hidden;
+	border: 1px solid #d9d9d9;
+}
+div.simple-info {
+	position: relative;
+	float: left;
+	width: 799px;
+	border-right: 1px solid #e0e0e0;
+}
+div.simple-info p.product-name {
+	padding: 21px 0 0 20px;
+	height: 37px;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	border-bottom: 1px solid #e0e0e0;
+}
+div.simple-info ul {
+	position: absolute;
+	left: 650px;
+	top: 13px;
+	width: 149px;
+}
+div.simple-info ul li {
+	display: inline;
+}
+div.simple-info p.serial {
+	padding: 15px 0 0 19px;
+	height: 23px;
+	color: #989898;
+}
+div.simple-info p.inquiry {
+	margin: -23px 0 0;
+	padding: 0 10px 0 0;
+	height: 23px;
+	text-align: right;
+	color: #989898;
+}
+div.brand-store {
+	float: left;
+	width: 198px;
+}
+div.brand-store p.brand {
+	padding: 13px 0 11px;
+	text-align: center;
+}
+div.brand-store p.link-brand {
+	text-align: center;
+}
+
+/*** 높이 19px button 공통 ***/
+
+span.btn ,
+span.btn span{
+	display: inline-block;
+}
+span.btn {
+	padding: 0 0 0 4px;
+	border: 1px solid #dadada;
+	overflow: hidden;
+	background: url("/images/shop/product/detail/bg_btn_left.gif") no-repeat 0 0;
+}
+span.btn span {
+	padding: 0 4px 0 0;
+	background: url("/images/shop/product/detail/bg_btn_right.gif") no-repeat right 0;
+}
+span.btn a,
+span.btn span a {
+	display: block;
+	padding: 1px 0 1px;
+	font-size: 11px;
+	text-decoration: none;
+	background: url("/images/shop/product/detail/bg_btn_repeat.gif") repeat 0 0;
+}
+
+/*** jQM PHOTO EVENT ***/
+
+div.info-product {
+	float: left;
+	padding: 20px 0 0;
+	width: 1000px;
+}
+div.photo-info {
+	position: relative;
+	float: left;
+	width: 410px;
+}
+div.photo-info ul.social-menu ,
+div.photo-info p.large-view {
+	position: absolute;
+}
+div.photo-info p.large-view {
+	left: 10px;
+	top: 11px;
+	padding-left: 14px;
+	height: 10px;
+	font-size: 10px;
+	color: #656565;
+	background: url("/images/shop/product/detail/bg_large_view.gif") no-repeat 0 0;
+}
+div.photo-info ul.social-menu {
+	right: 30px;
+	top: 10px;
+	overflow: hidden;
+}
+div.photo-info ul.social-menu li {
+	float: left;
+	padding: 0 0 0 5px;
+}
+div.zoom-product {
+	position: relative;
+	margin: 60px 0 0 56px;
+	width: 288px;
+}
+div.pattern-list {
+	clear: both;
+	padding-top: 30px;
+	overflow: hidden;
+}
+div.pattern-list ul li {
+	float: left;
+	margin: 0 5px 0 0;
+}
+div.pattern-list ul li a {
+	display: block;
+	border: 1px solid #e0dedf;
+}
+
+
+/*** 상품 상세 정보 ***/
+div.info-product fieldset {
+	float: left;
+}
+div.info-explain {
+	overflow: hidden;
+	padding: 0 20px 0 0;
+	width: 370px;
+	color: #878787;
+}
+div.info-explain a {
+	color: #aa433e;
+	text-decoration: underline;
+}
+div.info-explain strong {
+	color: #343434; 
+}
+div.option-choice {
+	width: 370px;
+	height: 383px;
+	overflow: hidden;
+}
+div.info-explain table {
+	width: 100%;
+}
+
+div.info-explain table th,
+div.info-explain table td {
+	text-align: left;
+	height: 23px;
+	vertical-align: top;
+}
+div.info-explain table th.num,
+div.info-explain table td.num,
+div.info-explain table th.member,
+div.info-explain table th.coupon,
+div.info-explain table td.member,
+div.info-explain table td.coupon {
+	border-bottom: 1px solid #dfdfdf;
+}
+div.info-explain table td.member {
+	height: 38px;
+	border-bottom: 1px solid #dfdfdf;
+}
+span.origin {
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	font-family: "타호마" , "Tahoma";
+	color: #d32b28;
+}
+div.info-explain table th.rate ,
+div.info-explain table td.rate {
+	padding: 22px 0 0;
+	height: 20px;
+}
+div.info-explain table td.card ul{
+	padding: 0 0 6px;
+} 
+div.info-explain table th.coupon,
+div.info-explain table td.coupon {
+	padding-bottom: 20px;
+}
+div.info-explain table th.color {
+	padding: 22px 0 0;
+}
+div.info-explain table td.color { 
+	padding: 20px 0 0;
+}
+div.info-explain table th.size {
+	padding: 8px 0 2px; 
+}
+div.info-explain table td.size {
+	padding: 2px 0 2px;
+}
+td.color .sbHolder,
+td.size .sbHolder {
+	width: 207px;
+	height: 22px;
+} 
+td.num div {
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+td.num ul li {
+	float: left;
+	margin-right: 2px;
+	padding: 4px 0 4px;
+	width: 22px;
+	cursor: pointer;
+	text-align: center;
+	color: #8b8b8b;
+	border: 1px solid #d9d9d9;
+}
+td.num ul li.selected {
+	color: #fff;
+	background: #656565;
+	border: 1px solid #656565;
+}
+p.number {
+	position: relative;
+	float: left;
+	margin: 0 0 0 20px;
+	display: inline;
+	width: 59px;
+	height: 22px;
+	border: 1px solid #dcdcdc;
+}
+p.number input {
+	padding: 1px 5px 1px 1px;
+	width: 31px;
+	height: 19px;
+	text-align: right;
+	border: 0;
+}
+p.number span {
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+}
+p.number span.minus {
+	bottom: 0;
+}
+div.info-explain tfoot th {
+	padding: 28px 0 0;
+} 
+div.info-explain tfoot td {
+	padding: 21px;
+}
+div.button-group {
+	padding: 6px 0 0;
+	text-align: center;
+}
+
+/*** 할인 포인트 설명 ***/
+
+div.benefit {
+	float: left;
+	width: 198px;
+	height: 442px;
+	color: #797979;
+	overflow:hidden;
+	border: 1px solid #d9d9d9;
+}
+div.benefit div.tab-menu ul {
+	float: left;
+	height: 32px;
+	border-bottom: 1px solid #dbdbdb;
+}
+div.benefit div.tab-menu ul li{
+	float: left;
+	width: 89px;
+	height: 32px;
+}
+div.benefit div.tab-menu ul li a{
+	display: block;
+	padding: 11px 0 0;
+	height: 21px;
+	text-align: center;
+	background: #f4f4f4;
+}
+div.benefit div.tab-menu ul li a.selected {
+	margin: 0 0 -1px;
+	height: 22px;
+	background: #fff;
+}
+div.benefit div.tab-menu ul li:first-child {
+	width: 108px;
+}
+div.benefit div.tab-menu ul li:first-child a{
+	border-right: 1px solid #dbdbdb;
+}
+div.benefit dl {
+	clear: both;
+	padding: 20px 9px 0;
+	
+}
+div.benefit dl dt {
+	padding: 0 0 8px;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #777;
+}
+div.benefit dl dd {
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+div.benefit dl dd p{
+	padding: 0 0 9px;
+}
+div.benefit dl dd ul {
+	overflow: hidden;
+}
+div.benefit dl dd ul li {
+	float: left;
+}
+
+/*** 상품 상세이미지 ****/
+
+div.product-detail h3 {
+	height: 26px;
+	padding: 0 0 0 22px;
+	border-bottom: 2px solid #555555;
+	background: url("/images/shop/product/detail/bg_h3.gif") no-repeat 0 0;
+}
+div.detail-view {
+	width: 998px;
+	height: 552px;
+	overflow: hidden;
+	border: 1px solid #e0e0e0;
+}
+div.detail-view div.test {
+	padding: 
+	margin: 0 auto;
+	width: 540px;
+}
+
+div.pattern-photo {
+	position: relative;
+	float: left;
+	height: 869px;
+	overflow: hidden;
+}
+div.drag-zone {
+	position: relative;
+	float: left;
+	width: 820px;
+	height: 553px;
+	overflow: hidden;
+}
+div.drag-zone div.test {
+	padding-left: 229px;
+}
+div.zoom-scroll {
+	position: relative;
+	float: left;
+	width: 50px;
+	height: 553px;
+}
+div.zoom-con span {
+	position: absolute;
+	left: 1;
+	cursor: pointer;
+}
+div.zoom-con span.expand {
+	top: 30px;
+}
+div.zoom-con span.reduction {
+	top: 503px;
+}
+div.scroll-zone {
+	position: relative;
+	margin: 58px 0 0;
+	width: 12px;
+	height: 439px;
+	background: url("/images/shop/product/detail/bg_scrollbar.png") no-repeat 0 0;
+}
+div.scroll-zone .track {
+	position: relative;
+	width: 12px;
+	height: 439px;
+}
+.thumb {
+	width: 12px;
+	height: 24px;
+	background: url("/images/shop/product/detail/scroll_con.png") no-repeat 0 0;
+}
+div.pattern-menu {
+	position: relative;
+	float: left;
+	width: 127px;
+	height: 553px;
+	border-left: 1px solid #e0e0e0;
+}
+div.pattern-menu .view-con span {
+	position: absolute;
+	left: 50px;
+	top: 11px;
+	cursor: pointer;
+}
+div.pattern-menu .view-con span.next {
+	top: 525px;
+}
+div.pattern-menu div.list {
+	position: relative;
+	margin: 40px 0 0 20px;
+	width: 87px;
+	height: 475px;
+	overflow: hidden;
+}
+div.pattern-menu div.list ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.pattern-menu ul li {
+	width: 87px;
+	height: 97px;
+}
+div.pattern-menu ul li img{
+	border: 1px solid #e8dccc;
+}
+/*** 연관 상품 ***/
+
+div.relation-product {
+	margin: 10px 0 0;
+}
+div.relation-product div.relation-tab {
+	margin: 0 -1px 0 0;
+	width: 1001px;
+	overflow: hidden;
+}
+div.relation-product div.relation-tab ul {
+	float: left;
+	height: 39px;
+	width: 1001px;
+	border-bottom: 1px solid #c8c8c8;
+}
+div.relation-product div.relation-tab ul li {
+	float: left;
+	margin: 0 -1px 0 0;
+	width: 499px;
+	height: 38px;
+	border: 1px solid #c8c8c8;
+	border-bottom: 0;
+}
+div.relation-product div.relation-tab ul li a {
+	display: block;
+	padding: 14px 0 0;
+	height: 24px;
+	text-align: center;
+	text-decoration: none;
+	background: #f4f4f4;
+}
+div.relation-product div.relation-tab ul li.selected {
+	border-top: 2px solid #555;
+}
+div.relation-product div.relation-tab ul li.selected a{
+	margin: 0 0 -1px;
+	padding-top: 13px;
+	height: 25px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #333;
+	background: #fff;
+}
+div.relation-list {
+	position: relative;
+	padding: 7px 39px 0;
+	width: 920px;
+	height: 196px;
+	overflow: hidden;
+	border: 1px solid #c8c8c8;
+	border-top: 0;
+}
+div.relation-list div.view-con span{
+	position: absolute;
+	top: 0;
+	display: block;
+	padding: 90px 0 0;
+	width: 14px;
+	height: 113px;
+	cursor: pointer;
+}
+div.relation-list div.view-con span.prev {
+	left: 12px;
+}
+div.relation-list div.view-con span.next {
+	right: 12px;
+}
+div.relation-list div.list {
+	position: relative;
+	width: 920px; 
+	height: 196px;
+	overflow: hidden;
+}
+div.relation-list div.list ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.relation-list ul li {
+	float: left;
+	width: 184px;
+	height: 196px;
+}
+div.relation-list p {
+	text-align: center;
+	font-size: 11px;
+}
+div.best-product ul li p.price span.won,
+div.relation-list p.price span.won {
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+div.best-product ul li p.price span.won span,
+div.relation-list p.price span.won span {
+	font-weight: normal;
+}
+div.best-product ul li p.price span.origin,
+div.relation-list p.price span.origin{
+	font-size: 12px;
+}
+
+/*** 베스트 브랜드 카테고리***/
+
+div.best-product {
+	margin: 10px 0 0;
+	width: 998px;
+	height: 227px;
+	overflow: hidden;
+	border: 1px solid #e0e0e0;
+	border-top: 2px solid #555;
+}
+div.best-product div.brand ,
+div.best-product div.category {
+	float: left;
+	width: 499px;
+	overflow: hidden;
+}
+div.best-product div.brand {
+	width: 498px;
+	border-right: 1px solid #e0e0e0;
+}
+div.best-product p.title {
+	padding: 15px 0 0 14px;
+	height: 24px;
+	font-weight: bold;
+}
+div.best-product div.view-con {
+	margin: -24px 0 0;
+	padding: 0 20px 0 0;
+	height: 24px;
+	text-align: right;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.best-product div.view-con a {
+	display: inline-block;
+	width: 10px;
+	height: 9px;
+	text-indent: 50000em;
+	overflow: hidden;
+	background: url("../images/shop/product/detail/bg_list_select.gif") no-repeat 0 -31px;
+}
+div.best-product div.view-con a:hover {
+	background-position: 0 0;
+}
+div.best-product ul {
+	width: 498px;
+	height: 188px;
+}
+div.best-product ul li {
+	float: left;
+	padding: 27px 0 0;
+	width: 166px;
+	height: 161px;
+}
+div.best-product ul li p {
+	font-size: 11px;
+	text-align: center;
+}
+div.best-product ul li p.photo {
+	padding: 0 0 8px;
+} 
+div.best-product ul li p.product-name {
+	padding: 0 0 6px;
+}
+
+/*** 간편 검색 ***/
+
+div.conditional-search {
+	margin: 10px 0 0;
+	position: relative;
+	height: 304px;
+	width: 200px;
+	background: #2a2a2a url("/images/shop/search/bg_temp.gif") no-repeat 0 77px;
+}
+div.conditional-search div.section-title {
+	padding: 15px 0 0 15px;
+	height: 58px;
+	background: url("/images/shop/search/bg_search_coni.gif") no-repeat 0 15px;
+}
+div.conditional-search p.title {
+	height: 58px;
+}
+div.conditional-search p.more {
+	margin: -57px 0 0;
+	padding: 0 15px 0 0; 
+	height: 57px;
+	text-align: right;
+}
+div.conditional-search p.more span {
+	cursor: pointer;
+}
+div.condition-range {
+	position: absolute;
+	left: 177px;
+	top: 85px;
+	width: 15px;
+	height: 172px;
+}
+
+
+
+.range-search input.btn {
+	padding: 0;
+	width: auto;
+	height: auto;
+	border: 0;
+}
+.range-search span {
+	color: #626262;
+}
+/*// jQuery plugin //*/
+
+/*/ jquery.jqzoom-core.js /*/
+
+.zoomPad{
+	position:relative;
+	float:left;
+	z-index:99;
+	/*cursor:crosshair;*/
+}
+.zoomPreload{
+   -moz-opacity:0.8;
+   opacity: 0.8;
+   filter: alpha(opacity = 80);
+   color: #333;
+   font-size: 12px;
+   font-family: Tahoma;
+   text-decoration: none;
+   border: 1px solid #CCC;
+   background-color: white;
+   padding: 8px;
+   text-align:center;
+   background-image: url(../images/shop/zoomloader.gif);
+   background-repeat: no-repeat;
+   background-position: 43px 30px;
+   z-index:110;
+   width:90px;
+   height:43px;
+   position:absolute;
+   top:0px;
+   left:0px;
+    * width:100px;
+    * height:49px;
+}
+.zoomPup{
+	overflow:hidden;
+	/*background-color: #FFF;*/
+	/*-moz-opacity:0.6;*/
+	/*opacity: 0.0;*/
+	/*filter: alpha(opacity = 60);*/
+	z-index:120;
+	position:absolute;
+	border:1px solid #ccc;
+    z-index:101;
+    /*cursor:crosshair;*/
+}
+.zoomOverlay{
+	position:absolute;
+	left:0px;
+	top:0px;
+	background:#FFF;
+	/*opacity:0.5;*/
+	z-index:5000;
+	width:100%;
+	height:100%;
+	display:none;
+    z-index:101;
+}
+.zoomWindow{
+  position:absolute;
+  left:300%;
+  top:0px;
+  background:#FFF;
+  z-index:6000;
+  height:auto;
+  z-index:10000;
+  z-index:110;
+}
+.zoomWrapper{
+  position:relative;
+  border:1px solid #999;
+  z-index:110;
+}
+.zoomWrapperTitle{
+  display:block;
+  background:#999;
+  color:#FFF;
+  height:18px;
+  line-height:18px;
+  width:100%;
+  overflow:hidden;
+  text-align:center;
+  font-size:10px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  z-index:120;
+  -moz-opacity:0.6;
+  opacity: 0.6;
+  filter: alpha(opacity = 60);
+}
+.zoomWrapperImage{
+  display:block;
+  position:relative;
+  overflow:hidden;
+  z-index:110;
+
+}
+.zoomWrapperImage img{
+  border:0px;
+  display:block;
+  position:absolute;
+  z-index:101;
+}
+
+.zoomIframe{
+  z-index: -1;
+  filter:alpha(opacity=0);
+  -moz-opacity: 0.80;
+  opacity: 0.80;
+  position:absolute;
+  display:block;
+}
+
+div.pattern-list ul li a.zoomThumbActive {
+	border: 1px solid red;
+}
+
+/*** jquery.selectbox-0.2.js ***/
+
+.sbHolder{
+	position: relative;
+	background-color: #fff;
+	border: solid 1px #bababa;
+}
+.sbHolder:focus .sbSelector{
+	color: #656565;
+}
+.sbSelector{
+	display: block;
+	height: 22px;
+	left: 0;
+	line-height: 24px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 10px;
+	top: 0;
+	width: 185px;
+}
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover{
+	color: #999;
+	outline: none;
+	text-decoration: none;
+}
+.sbToggle{
+	background: url("/images/shop/product/detail/bg_select.gif") no-repeat 0 0;
+	display: block;
+	height: 30px;
+	outline: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 22px;
+}
+.sbToggle:hover{
+	
+}
+.sbToggleOpen{
+	
+}
+.sbToggleOpen:hover{
+	
+}
+.sbHolderDisabled{
+	backgroun: #fff;
+	border: solid 1px #515151;
+}
+.sbHolderDisabled .sbHolder{
+	
+}
+.sbHolderDisabled .sbToggle{
+	
+}
+.sbOptions{
+	background-color: #fff;
+	border: solid 1px #bababa;
+	left: -1px;
+	position: absolute;
+	top: 22px;
+	width: 207px;
+	z-index: 1;
+	overflow-y: auto;
+}
+.sbOptions li{
+	padding: 0 7px;
+}
+.sbOptions a{
+	border-bottom: dotted 1px #bababa;
+	display: block;
+	outline: none;
+	padding: 4px 0 4px 3px;
+}
+.sbOptions a:link, .sbOptions a:visited{
+	color: #ddd;
+	text-decoration: none;
+}
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus{
+	color: #999;
+}
+.sbOptions li.last a{
+	border-bottom: none;
+}
+.sbOptions .sbDisabled{
+	border-bottom: dotted 1px #515151;
+	color: #999;
+	display: block;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup{
+	border-bottom: dotted 1px #bababa;
+	color: #999;
+	display: block;
+	font-weight: bold;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub{
+	padding-left: 17px;
+}
+
+
+
+/*** event-banner ****/
+
+div.event {
+	width: 1000px;
+	overflow: hidden;
+}
+div.event-banner {
+	position: relative;
+	width: 800px;
+	height: 300px;
+	overflow: hidden;
+	border: 1px solid #000;
+}
+div.event-banner .event-menu ,
+div.event-banner .view-con span,
+div.event-banner .play-con {
+	position: absolute;
+	z-index: 4;
+}
+.event-menu-wrap {
+	position: absolute;
+	left: 0;
+	top: 269px;
+	z-index: 4;
+	width: 800px;
+	height: 31px;
+	overflow:  hidden;
+}
+div.event-banner .event-menu{
+	left: 31px;
+	top: 0;
+	width: 739px;
+	height: 31px;
+	overflow: hidden;
+}
+div.event-banner .event-menu ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1480px;
+	overflow: hidden;
+}
+div.event-banner .event-menu ul li{
+	float: left;
+	margin: 0 1px 0 0;
+	width: 245px;
+	height: 31px;
+	overflow: hidden;
+}
+div.event-banner .event-menu ul li a {
+	display: block;
+	padding: 10px 0 0;
+	height: 21px;
+	text-align: center;
+	color: #888785;
+	background: #4a413a;
+}
+div.event-banner .event-menu ul li.selected a {
+	color: #fff;
+	background: #000;
+}
+div.event-banner .view-con span {
+	z-index: 10;
+	bordeR: 1px solid #000;
+	cursor: pointer;
+}
+div.event-banner .view-con span.prev{
+	left: 0;
+	top: 0;
+}
+div.event-banner .view-con span.next{ 
+	right: 0;
+	top :0;
+}
+div.event-banner .play-con {
+	right: 11px;
+	top: 11px; 
+}
+div.event-list ul li {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.event-list ul li:first-child {
+	z-index: 2;
+}
+
+/*** 조건 검색 ***/
+
+div.pattern-search {
+	width: 1000px;
+	overflow: hidden;
+	border-top: 2px solid #000;
+}
+div.pattern-search table {
+	width: 100%;
+}
+div.pattern-search table tr th {
+	height: 41px;
+	font-weight: normal;
+	background: #f8f8f8;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.pattern-search table tbody tr th.title p.title{
+	padding: 15px 0 0 20px;
+	height: 26px;
+	font-weight: bold;
+	text-align: left;
+	color: #333;
+}
+div.pattern-search table tbody tr th.title p.btn {
+	margin: -30px 0 0;
+	padding: 0 20px 0 0;
+	height: 30px;
+	text-align: right;
+}
+div.pattern-search table tr td {
+	padding: 12px 0 9px 10px;
+	vertical-align: top;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.pattern-search table tbody tr td ul li {
+	float: left;
+	padding: 0 0 4px;
+	width: 165px;
+}
+div.pattern-search table tbody tr td.result ul li{
+	float: left;
+	width: auto;
+	padding-right: 10px;
+}
+div.pattern-search table tbody tr td.range-search {
+	padding: 0;
+	vertical-align: top;
+	background: #2a2a2a;
+}
+div.price-slider {
+	position: relative;
+	z-index: 10;
+	left: 180px;
+	height: 100%;
+}
+.range-price{
+	position: relative;
+	padding: 20px 0 60px;
+	width: 200px;
+	height: 100%;
+}
+div.distribution {
+	position: absolute;
+	left: 174px;
+	top: 20px;
+	width: 7px !important;
+	overflow: hidden;
+	
+}
+div.distribution ul {
+	height: 100%;
+}
+div.distribution li {
+	padding: 0%;
+	width: 7px !important;
+	background: #2a2a28;
+}
+div.distribution li.on {
+	background: #7e2b27;
+}
+.range-search .input-area {
+	position: absolute;
+	left: 40px;
+	bottom: 15px;
+} 
+.range-search input {
+	padding: 1px 5px 1px 1px;
+	width: 46px;
+	height: 22px;
+	text-align: right;
+	color: #fff;
+	font-weight: bold;
+	background: #414141;
+	border: 1px solid #525252; 
+}
+div.pattern-search table tbody tr.option {
+	display: none;
+}

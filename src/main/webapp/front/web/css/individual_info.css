@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/*reset*/
+
+/*contents*/
+#wrap {width:1000px; margin:0 auto; background:url(${imageServer}/images/shop/event/etc/userModifyEvent/201410/CN/individual_bg.jpg) 0 0 no-repeat; height:1160px; position:relative;}
+#individual_wrap {width:795px; height:465px; position:absolute; top:500px; left:0; right:0; margin:0 auto;}
+#individual_wrap h2 {margin-bottom:10px;}
+#individual_wrap form { margin:0 auto; margin-bottom:16px;}
+
+#individual_wrap form table {border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1; }
+#individual_wrap form table td{height:40px; border-bottom:1px solid #e1e1e1; padding:0 14px;}
+#individual_wrap form table th {background-color:#f3f3f3; font-weight:normal; text-align:left; padding-left:18px; border-bottom:1px solid #e1e1e1; font-size:14px;}
+#individual_wrap form table .last-child {border-bottom:0;}
+#individual_wrap form table td input {height:24px;}
+#individual_wrap form table td input, #individual_wrap form table td select {cursor:pointer;}
+#individual_wrap form table td select {border:1px solid #ccc; height:26px; font-size:14px; padding-left:3px;}
+#individual_wrap form table td select option {padding:5px;}
+#individual_wrap form table td input[type="text"] {border:1px solid #ccc; height:24px; font-size:14px; padding:0 3px;}
+#individual_wrap form table td .phone_number01 {width:60px;}
+#individual_wrap form table td .address_01, #individual_wrap form table td .nationality {width:138px;}
+#individual_wrap form table td .address_02 {width:510px;}
+#individual_wrap form table td .passport_info {width:268px;}
+#individual_wrap form table td .enName_info {width:127px;}
+#individual_wrap form table td .birthday_info {width:83px;}
+
+#individual_wrap .individual_bt01 {position:absolute; top:187px; right:0;}
+#individual_wrap .revise_bt { text-align:center;}
+

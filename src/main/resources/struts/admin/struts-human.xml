@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="admin/human" extends="portal-default" namespace="/admin/human">
+		<action name="*" method="{1}" class="adminHumanAction">
+		    	<result name="{1}">/admin/human/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="admin/human/apply" extends="portal-default" namespace="/admin/human/apply">
+		<action name="*" method="{1}" class="adminHumanApplyAction">
+		    <result name="{1}">/admin/human/apply/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="admin/human/question" extends="portal-default" namespace="/admin/human/question">
+		<action name="*" method="{1}" class="adminHumanQuestionAction">
+		    <result name="{1}">/admin/human/question/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="admin/human/reply" extends="portal-default" namespace="/admin/human/reply">
+		<action name="*" method="{1}" class="adminHumanReplyAction">
+		    <result name="{1}">/admin/human/reply/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

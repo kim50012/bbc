@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>사업자별보기</title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_CI_110.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  
+  <body>
+    <div class="app riskManagement" id="app">
+<!--内容区域-->
+      <div class="content pt10 refresh-wrap">
+<!--分类标题-->
+        <div class="button-title plr24">
+          <div class="fontBlack font24 bold">전사 Issue 관리</div>
+          <div>
+            <div class="btn-white" url='4DX_CI_120.html' onclick="goAppPage(this)">일자순보기</div>
+            <div class="select-wrap ml10">
+              <div class="select" onclick="selectGo(this)"><span>진행중</span><i class="sanjiao"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-wrap f-col" style="padding-bottom: 0;">
+          <div class="tab-con">
+            <div class="tabs">
+                <!--这里的news是标识下面的tab-new是否显示，默认不显示-->
+              <div class="tab active news">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag1.svg"/>
+                  <img src="../image/cgvSmall.svg"/>
+                </div>
+                <h4 class="tab-title">CGV 한국</h4>
+                <p class="tab-info">제주 AB쇼핑몰</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/japanFlag.svg"/>
+                  <img src="../image/zeon.png"/>
+                </div>
+                <h4 class="tab-title">Aeon Entertail</h4>
+                <p class="tab-info">choufu</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/chinaFlag.svg"/>
+                  <img src="../image/cgvSmall.svg"/>
+                </div>
+                <h4 class="tab-title">CGV 중국</h4>
+                <p class="tab-info">颐堤港店</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+              <div class="tab">
+                <i class="tab-new"></i>
+                <div class="tab-img">
+                  <img src="../image/flag2.svg"/>
+                  <img src="../image/pathe.png"/>
+                </div>
+                <h4 class="tab-title">Pathe 프랑스</h4>
+                <p class="tab-info">Montpellier</p>
+              </div>
+            </div>
+            <div class="con-wrap">
+                <!--这里的已解决和未解决的在li的class有区别，以解决的添加class：resolved-->
+              <div class="scroll-wrap">
+              <ul>
+                <li>
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>기술 지원 </span>
+                        <span> (진행중) </span>
+                      </div>
+                      <span class="font20">2018-07-06</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2의 왼쪽 fan 이 손상된 채로 입고되어, 고품회수 필요한지 품질보증팀의</div>
+                </li>
+                <li>
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>품질 보증 </span>
+                        <span>(진행중)</span>
+                      </div>
+                      <span>2018-07-05</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2 회수 후 고장 분석 </div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved">
+                  <div class="title">
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업 </span>
+                        <span>(완료)</span>
+                      </div>
+                      <span>2018-07-04</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+              
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--底部导航栏-->    
+    </div>
+    <div class="pop-up-three" style="display: none;">
+			<div class="pop-up-content">
+				<div class="">
+					<div class="f-col left fList">
+		        <input class="popOne" type="radio" name="goon" value="신축" id="on1"/>
+		        <label for="on1" class="Rdefine">진행중</label>
+		      </div>
+		      <div class="f-col left fList">
+		        <input class="popOne" type="radio" name="goon" checked="checked" value="개조" id="on2"/>
+		        <label for="on2" class="Rdefine">완료건</label>
+		      </div>
+		   	</div>
+        <div class="makeSure">
+					<span class="sure font28 fontBlue bold">确认</span>
+				</div>
+			</div>
+		</div>
+  </body>
+  <script type="text/javascript">
+  	$(function() {
+  	  var a = 30;
+  	  var bol = false;
+  	  function abc() {
+  	    a = a-1
+  	    var b = 0;
+  	    if(a > 20) {
+  	      b = 20
+  	    } else {
+  	      b = a
+  	    }
+  	    console.log(b)
+  	    loadMore({
+  	      num: b,
+          size: 20,
+          callback: function() {
+            console.log(a)
+            abc()
+          }
+        })
+  	  }
+  	  abc()
+  	})
+  </script>
+</html> 

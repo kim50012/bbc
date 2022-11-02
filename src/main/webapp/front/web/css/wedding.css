@@ -1,0 +1,576 @@
+@charset "utf-8";
+
+h3 {
+	padding: 23px 0 0;
+	height: 46px;
+}
+h4 {
+	clear: both;
+	padding: 0 0 0 23px;
+	height: 26px;
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_cycle.gif") no-repeat 0 0;
+}
+h4.bg-non {padding-left:0; background:none;}
+div.page-sublocation {
+	margin: -46px 0 0;
+	height: 46px;
+	padding: 0;
+}
+div.wedding {
+	padding: 0 0 80px;
+	width: 1000px;
+	overflow: hidden;
+}
+div.main-banner {
+	position: relative;
+	width: 1000px;
+	height: 300px;
+	overflow: hidden;
+}
+div.main-banner p.btn-set {
+	position: absolute;
+	left: 52px;
+	top: 205px;
+}
+div.social-menu {
+	padding: 8px 0 0;
+	height: 49px;
+}
+p.btn-right {
+	margin: -25px 0 0;
+	height: 25px;
+	text-align: right;
+}
+div.my-info {
+	margin: 0 0 30px;
+	width: 1000px;
+	overflow: hidden;
+	border-top: 2px solid #555;
+	border-bottom: 1px solid #eaeaea;
+}
+div.my-info div.info-table {
+	float: left;
+	width: 612px;
+	border-right: 1px solid #eaeaea;
+}
+div.info-table table {
+	width: 100%;
+}
+div.info-table table tr th {
+	padding: 0 0 0 20px;
+	height: 30px;
+	text-align: left;
+	font-size: 11px;
+	font-weight: normal;
+	color: #333;
+	background: #f8f8f8;
+	border-top: 1px solid #eaeaea;
+}
+div.info-table table tr td {
+	padding: 0 0 0 20px;
+	height: 30px;
+	font-size: 11px;
+	border-top: 1px solid #eaeaea;
+}
+div.info-table table tfoot th {
+	font-weight: bold;
+	text-align: center;
+}
+div.info-table table tfoot td {
+	color: #d42c21; 
+}
+div.info-table table tr td.approve {
+	font-weight: bold;
+}
+div.record-buy {
+	float: left;
+	padding: 63px 0 0;
+	width: 387px;
+}
+div.record-buy p {
+	text-align: center;
+}
+div.record-buy p.num {
+	color: #333;
+}
+div.record-buy p.num a {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #d42c21;
+}
+div.record-buy p.notice {
+	padding: 18px 0 0;
+	font-size: 11px;
+	color: #999;
+}
+div.register ,div.login {
+	clear: both;
+	padding: 52px 0 62px;
+	width: 1000px;
+}
+div.register p, div.login p {
+	text-align: center; 
+} 
+div.register p.link, div.login p.link {
+	padding: 10px 0 0;
+} 
+
+div.benefit-list {
+	margin: 0 0 30px;
+	overflow: hidden;
+	position: relative;
+	width: 1000px;
+	height: 339px;
+	border-top: 2px solid #ca8f64;
+	border-bottom: 10px solid #faf7f6;
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_be.gif") repeat-y 500px 0;
+}
+div.benefit-list ul.listing {
+	width: 998px;
+	border: 1px solid #fbf8f7;
+	border-top: 0;
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_bg02.gif") repeat-x 0 160px;
+	float:left;
+}
+div.benefit-list ul.listing li {
+	float: left;
+	width: 499px;
+}
+div.benefit-list ul.listing ul li.step-odd {
+	height: 151px;
+}
+div.benefit-list ul.listing ul li.step-even {
+	height: 246px;
+}
+div.benefit-list ul.listing ul li p.title {
+	padding: 30px 0 0 24px;
+}
+div.benefit-list ul.listing ul li p.explain {
+	padding: 16px 0 0 24px;
+}
+div.benefit-list ul.listing ul li p.notice {
+	padding: 4px 0 0 24px;
+}
+div.benefit-list ul.listing ul.coupon-down{
+	width: 499px;
+	overflow: hidden;
+	padding:15px 0 0 15px;
+}
+div.benefit-list ul.listing ul.coupon-down li {
+	float: left;
+	padding: 10px 0 0 17px;
+	width: 73px;
+}
+div.benefit-list ul.listing ul.coupon-down p.condition {
+	padding: 0 0 4px;
+	text-align: center;
+	font-size:11px;
+}
+div.benefit-list ul.listing ul.coupon-down p.down {
+	padding: 6px 0 0;
+}
+ul.freebie {
+	width: 499px;	
+	overflow: hidden;
+}
+ul.freebie li {
+	float: left;
+	width: 217px !important;
+}
+ul.freebie li {
+	padding: 10px 0 0 12px;
+}
+div.benefit-list ul.listing li {
+	position: relative;
+}
+div.benefit-list .link{
+	position: absolute;
+	left: 874px;
+	top: 76px;
+}
+div.benefit-list .link-type01 {
+	top: 225px;
+	
+}
+/* layer */
+
+div.layer-freebie {
+	display: none;
+	position: absolute;
+	top: 270px;
+	left:560px;
+	width: 406px;
+	height:220px;
+	overflow: hidden;
+	border: 2px solid #000;
+	background: #fff;
+}
+div.layer-freebie div.freebie-head {
+	position: relative;
+	padding: 10px 0 0 18px;
+	width: 388px;
+	height: 20px;
+	font-weight: bold;
+	color: #fff;
+	background: #2a2a2a;
+}
+div.layer-freebie div.freebie-head p.close {
+	position: absolute;
+	right: 16px;
+	top: 8px;
+}
+div.freebie-body {
+	padding: 20px 20px 20px; 
+	width: 366px;
+	height:150px;
+}
+div.freebie-body p.btn {margin:20px 0;text-align:center;}
+div.freebie-body ul {
+	width: 366px;
+}
+.freebie-scroll {height:100px; border-top:2px solid #000; border-bottom:1px solid #efefef;}
+.freebie-scroll ul {height:auto;}
+div.benefit-list div.freebie-body ul li {
+	padding: 10px 0 10px;
+	overflow: hidden;
+	border-top: 1px solid #efefef;
+	width:347px;
+}
+div.benefit-list div.freebie-body ul li:first-child,
+div.benefit-list div.freebie-body ul li.first-child {
+	border: 0;
+}
+div.freebie-body ul li p.choice {
+	float: left;
+	padding: 6px 0 0 10px;
+	width: 23px;
+	height: 26px;
+}
+div.freebie-body ul li p.qualification {
+	font-weight: bold;
+	color: #000;
+}
+.freebie-txt {display:block; font-size:11px; line-height:18px; padding-left:24px;}
+div.take-on {
+	margin: 0 0 80px;
+	width: 1000px;
+	overflow: hidden;
+	border-top: 2px solid #555;
+	border-bottom: 1px solid #eaeaea;
+}
+div.section-take {
+	padding: 16px 0 0 30px;
+	width: 970px;
+	height: 76px;
+	background: #fbfbfb;
+}
+div.section-take p {
+	font-weight: bold;
+	color: #333;
+}
+div.section-take p ,
+div.section-take ul li {
+	line-height: 18px;
+}
+div.take-on ul.notice {
+	width: 1000px;
+	overflow: hidden;
+}
+div.take-on ul.notice li {
+	width: 1000px;
+	overflow: hidden;
+}
+div.take-on ul.notice li p.title {
+	float: left;
+	padding: 29px 0 28px 74px;
+	width: 91px;
+	font-weight: bold;
+	color: #333;
+}
+div.take-on ul.notice li ul {
+	float: left;
+	padding: 19px 0 0;
+	width: 835px;
+	overflow: hidden;
+}
+div.take-on ul.notice li {
+	padding: 19px 0 20px;
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_bg02.gif") repeat-x 0 0;
+}
+div.take-on ul.notice li ul li {
+	float: left;
+	padding: 0 0 0 10px;
+	width: 397px;
+	line-height: 18px;
+	text-indent: -10px;
+	background: none;
+}
+div.take-on ul.notice li.rank03 ul li {
+	float: none;
+} 
+div.take-on ul.notice li.rank01 {background:none;}
+div.take-on ul.notice li.rank01 p.title {
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_rank01.gif") no-repeat 20px 15px;
+}
+div.take-on ul.notice li.rank02 p.title {
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_rank02.gif") no-repeat 20px 15px;
+}
+div.take-on ul.notice li.rank03 p.title {
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_rank03.gif") no-repeat 20px 15px;
+}
+div.list-best {
+	position: relative;
+	width: 1000px;
+	height: 331px;
+	overflow: hidden;
+	border-top: 2px solid #555;
+	border-bottom: 1px solid #dfdfdf;
+	background: url("//image.ssgdfs.com/images/shop/wedding/bg_best_list.gif") no-repeat 0 0;
+}
+div.list-best p.title {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 42px 0 0;
+	width: 165px;
+	height: 124px;
+	text-align: center;
+	background: #3f3f3f; 
+}
+div.list-best ul {
+	float: left;
+	width: 662px;
+	overflow: hidden;
+}
+div.list-best ul li {
+	position: relative;
+	float: left;
+	width: 165px;
+	height: 166px;
+}
+div.list-best ul li p {
+	padding: 3px 3px 3px;
+}
+div.list-best ul li:first-child {
+	padding: 0 0 0 166px;
+}
+div.list-best ul li div.layer-info{ 
+	display: none;
+	position: absolute;
+	left: 1px;
+	top: 77px;
+	width: 165px;
+	height: 83px;
+}
+div.list-best ul li.first-child div.layer-info {
+	position: absolute;
+	left: 165px;
+	top: 77px;
+	width: 166px;
+	height: 83px;
+}
+div.list-best ul li div.layer-info div.bg-wrap{
+	position: relative;
+	padding: 10px 0 0;
+	width: 166px;
+	height: 73px;
+	background: #515151;
+	opacity: 0.8;
+}
+div.list-best ul li div.layer-info div.info-set {
+	position: absolute;
+	left: 0;
+	top: 10px;
+	width: 165px;
+}
+div.list-best ul li div.layer-info div.info-set p {
+	text-align: center;
+	padding:0;
+}
+div.list-best ul li div.layer-info div.info-set p.brand {height:20px; padding-bottom:8px;}
+div.list-best ul li div.layer-info div.info-set p.brand a,
+div.list-best ul li div.layer-info div.info-set p.product-name {line-height:18px;}
+div.list-best ul li div.layer-info div.info-set p.product-name a {
+	font-size: 11px;
+	color: #fff ;
+}
+div.layer-info div.info-set span.origin {
+	color: #c4bbb2; 
+}
+div.layer-info div.info-set span.us-currency {
+	color: #ff837c;
+}
+div.layer-info div.info-set span.nation-currency {
+	color: #ff837c;
+}
+.best-wedding .list-best div.wedding-roll {
+	float: left;
+	position: relative;
+	width:338px;
+	height:331px;
+	overflow: hidden;
+}
+.best-wedding .list-best ul.selected-rolling {width:338px; height:331px; overflow: hidden;}
+.best-wedding .list-best ul.selected-rolling li.roll-box:first-child {padding:0;}
+.best-wedding .list-best ul.selected-rolling li.roll-box {width:338px; height:331px; float:left;}
+.best-wedding .list-best ul.selected-rolling li.roll-box p.photo {text-align:center;}
+.best-wedding .list-best ul.selected-rolling li.roll-box p.icon {padding:5px 0 0 5px;}
+.best-wedding .list-best ul.selected-rolling li.roll-box p {padding:0;}
+
+div.selected-product {
+	float: left;
+	width: 338px;
+}
+div.selected-product p.icon {
+	padding: 5px 0 0 5px;
+	height: 17px;
+}
+div.selected-product p.photo {
+	padding: 0 0 0 86px;
+}
+div.selected-product p.brand ,
+div.selected-product p.price {	
+	text-align: center;
+}
+div.selected-product p.price span.nation-currency {
+	display: inline;
+}
+div.review {
+	margin: 10px 0 0;
+	padding: 10px 20px 0 14px;
+	height: 97px;
+	width: 304px;
+	background: #fbfbfb;
+	position:relative;
+}
+div.review p {
+	font-size: 11px;
+}
+div.review p.title-review {
+	height: 23px;
+	font-weight: bold;
+	color: #333;
+}
+div.review .review-content {height:40px; overflow:hidden;}
+div.review p.star {
+	position:absolute;right:5px;bottom:10px;
+	text-align: right;
+}
+div.review p.star img {
+	margin: 0 -3px 0 0;
+}
+div.review p.star span {
+	font-weight: bold;
+}
+div.review p.star span.star {
+	font-weight: normal;
+}
+
+div.tab-view {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+}
+div.tab-view p.title-tab {
+	padding: 12px 0 0; 
+	height: 22px;
+}
+div.best-cate p.title {
+	padding: 12px 0 0; 
+	height: 22px;
+	border-bottom: 2px solid #555;
+}
+div.best-cate p.photo {
+	padding-top: 13px;
+}
+.list-basic ul li p.best {
+	position: absolute;
+	left: 0;
+	top: -2px;
+	z-index: 5;
+	padding: 0;
+	width: auto;
+	text-align: left;
+}
+.tab-menu {
+	margin: -33px 0 0;
+	height: 33px;
+	overflow: hidden;
+	border-bottom: 2px solid #555;
+}
+.tab-menu{
+	width: 1000px;
+	height: 34px;
+	overflow: hidden;
+}
+.tab-menu li {
+	float: right;
+	margin: 0 0 0 -1px;
+	display: inline;
+	width: 88px;
+	height: 33px;
+	background: #f4f4f3;
+	border: 1px solid #c8c8c8;
+	border-bottom: 0;
+}
+.tab-menu li:first-child ,
+.tab-menu li.first-child {
+	margin: 0;
+}
+.tab-view .tab-menu li a {
+	display: block;
+	padding: 10px 0;
+	text-align: center;
+	color: #666;
+}
+.tab-view .tab-menu li.selected {
+	position: relative;
+	z-index: 2;
+	margin: 0 0 -1px 0;
+	height: 34px;
+	border: 1px solid #3e3e3e;
+	background:url(//image.ssgdfs.com/images/shop/wedding/bg_listtab.gif) repeat-x 0 0;
+}
+.tab-view .tab-menu li.selected a {
+	font-weight: bold;
+	color: #fff;
+}
+div.wedding-plan-list {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+	border-top:2px solid #000;
+}
+div.wedding-plan-list p.plan-count {
+	padding: 0 0 5px;
+	border-bottom: 2px solid #555;
+}
+div.wedding-plan-list p.plan-count strong {
+	color: #333;
+}
+div.wedding-plan-list p.plan-count span {
+	color: #d62b21;
+	font-weight: bold;
+}
+div.wedding-plan-list p.plan-count span span.count {
+	font-family: "Tahoma" , "타호마";
+	font-size: 30px;
+}
+div.wedding-plan-list p.more-view {
+	text-align: center;
+	padding-bottom:70px;
+}
+
+.wedding-plan-list .list-basic {border-top:2px solid #000;}
+.wedding-info td.tel .sbSelector {width:56px;}
+.wedding-info td.tel .sbToggle {height:22px;}
+
+div.selecting {width:1000px; padding:30px 0 0; position:relative; z-index:20;}
+div.selecting dl.total {width:998px; height:40px; float:left; margin:0 0 20px; border:1px solid #e2e2e2; border-top:0; background:#fcfcfc;}
+div.selecting dl.total dt {width:293px; height:26px; float:left; padding:12px 10px 0 0; color:#666; text-align:right; font-weight:bold;}
+div.selecting dl.total dd {float:left; padding:7px 0 0;}
+div.selecting dl.total dd .sbHolder {width:467px; height:23px;}
+
+div.selecting dl.total dd .sbSelector {width:467px;}
+div.selecting dl.total dd .sbOptions {width:467px;}
+div.search-type-top {padding:0; border-top:0;}

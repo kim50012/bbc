@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Login">
+	 
+	<select id="seleceById" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			SELECT * 
+			FROM LOGIN 
+			WHERE login_id = #loginid# 
+				AND login_pwd = #loginPassword#
+		]]>
+	</select>
+	<select id="saveUser" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			EXEC [USER_INSERT]
+			 @JOB_TYPE=#jobType:CHAR#
+			,@USER_ID=#userId:NVARCHAR#
+			,@USER_NICK_NM=#userNickName:NVARCHAR#
+			,@USER_REAL_NM=#userRealName:NVARCHAR#
+			,@WX_OPENID_U=#wxOpendIdU:NVARCHAR#
+			,@WX_ID_U=#wxIdU:NVARCHAR#
+			,@EMAIL=#email:NVARCHAR#
+			,@MOBILE_NO=#mobileNo:NVARCHAR#
+			,@QQ_ID=#qqId:NVARCHAR#
+			,@PWD=#pwd:NVARCHAR#
+			,@COMP_ID=#compId:INT#
+			,@SHOP_ID=#shopId:INT#
+			,@ACTIVE_STS=#activeSts:NVARCHAR#
+			,@SEX=#sex:INT#
+			,@SING_NM=#singName:NVARCHAR#
+			,@IMG_ID=#imgId:INT#
+			,@IMG_NM=#fileName:NVARCHAR#
+			,@IMG_SYS_NM=#fileSysName:NVARCHAR#
+			,@IMG_SIZE=#fileSize:INT#
+			,@IMG_URL=#fileUrl:NVARCHAR#
+			,@MODIFIED_DT=#modifiedDate:SMALLDATETIME#
+			,@CREATED_DT=#createdDate:SMALLDATETIME#
+			,@USER_AUTH=#userAuth:VARCHAR#
+			
+		]]>
+	</select>
+	<select id="proveUser" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			EXEC [USER_TERM_SELECT]
+			 @USER_ID=#userId:NVARCHAR#
+			,@USER_NICK_NM=#userNickName:NVARCHAR#
+			,@WX_OPENID_U=#wxOpendIdU:NVARCHAR#
+			,@EMAIL=#email:NVARCHAR#
+			,@MOBILE_NO=#mobileNo:NVARCHAR#
+		]]>
+	</select>
+</sqlMap>

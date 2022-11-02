@@ -1,0 +1,41 @@
+@charset "utf-8";
+body { background:#fff; -webkit-overflow-scrolling:touch; }
+/* common */
+#header { background:#fff; padding:0 1.718%; overflow:hidden;}
+#header > div { float:left;}
+#wrap { position:relative;}
+#contentWrap { padding:0 12px; clear:both; position:relative;}
+#contentWrap2 { padding:0 12px; clear:both; position:relative; border-top:1px solid #d5d5d5;}
+#footer { background:#ededed; border-top:1px solid #bebebe; padding:15px 15px 22px 15px; font-size:10px; font-size:0.769em; margin-top:12px;}
+#footer ul { overflow:hidden;}
+#footer ul li { float:left; color:#000;}
+#footer ul li span { color:#00bbe3; font-size:11px; font-size:0.846em; margin:0 15px 0 5px; letter-spacing:-0.019em;}
+#footer p { font-family:'GothamBook','Gotham', sans-serif; letter-spacing:0;}
+.navi-wrap { position:absolute; left:0px; top:0px; height:100%; width:100%; background:url('../../images/common/bg_navi.png'); z-index:200; 
+	display:none; overflow-y:auto;}
+.navi-wrap .navi { position:relative; width:73.437%; padding-top:25px;}
+.navi-wrap .navi ul > li { border-bottom:1px solid #7b7979; padding:15px 0 15px 30px;}
+.navi-wrap .navi ul > li > div a { color:#fff; font-size:12px; font-size:0.923em; letter-spacing:0.231em;}
+.navi-wrap .navi ul > li > ul > li { border-bottom:none; padding:0; margin-top:9px;}
+.navi-wrap .navi ul > li > ul > li:first-child { margin-top:0;}
+.navi-wrap .navi ul > li > ul > li > a { font-size:11px; font-size:0.846em; color:#cdcdcd; letter-spacing:0;}
+.navi-wrap .navi .two { margin-top:15px;}
+.navi-wrap .btn-close { position:absolute; top:0; right:0;}
+/* main */
+.hot-place, .beauty, .travel, .koreanair, .event, .notice { position:relative;}
+.txt-wrap { position:absolute; width:100%; top:50%; text-align:center;}
+.txt-wrap p { color:#fff;}
+.txt-wrap .title { font-size:11px; font-size:0.846em; font-weight:bold;}
+.txt-wrap .title-en { font-size:11px; font-size:0.846em; letter-spacing:0; font-family:'Gotham', sans-serif; text-transform:uppercase; font-weight:bold;}
+.txt-wrap .line { background:#fff; width:27px; height:1px; opacity:0.6; margin:7px auto 13px auto; display:inline-block;}
+.txt-wrap .topic { font-size:25px; font-size:1.923em; font-weight:bold;}
+.txt-wrap .summary { font-size:14px; font-size:1.077em; font-weight:200; margin-top:6px;}
+.txt-wrap .summary-en { text-transform:uppercase; font-size:12px; font-size:0.923em; font-family:'GothamBook','Gotham', sans-serif; 
+	letter-spacing:0; margin-top:6px;}
+.notice { padding-bottom:12px;}
+.notice p u { color:#2f3030; font-size:11px; font-size:0.846em; font-family:'Gotham', sans-serif; text-decoration:none; border-bottom:1px solid #2f3030; 
+	letter-spacing:-0.019em; text-transform:uppercase;}
+.notice p span { font-size:10px; color:#cccccc; font-family:'GothamBook','Gotham', sans-serif; text-transform:uppercase; 
+	background:url('../../images/main/icon_more.jpg') no-repeat right; background-size:7px 7px; padding-right:10px;}
+.notice dl dt { font-size:14px; color:#00aacf; letter-spacing:-0.019em;}
+.notice dl dd { font-size:11px; color:#898989; letter-spacing:-0.019em;}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ImgTextSituation">
+	
+	<select id="selectAllNum" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	     <![CDATA[
+	     	EXEC [SHOP_WX_NEWS_REPORT_SELECT]
+	     	@SHOP_ID	=#shopId:INT#,
+	     	@BEGIN_DATE	=#beginDate:SMALLDATETIME#,
+		 	@END_DATE 	=#endDate:SMALLDATETIME#
+	     	
+	     ]]>
+	</select>
+	<select id="WX_IF_MESSAGE_STATS_DATA_SUMMARY" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	     <![CDATA[
+	     	EXEC [WX_IF_MESSAGE_STATS_DATA_SUMMARY]
+	     	@SHOP_ID	=#shopId:INT#,
+	     	@BEGIN_DATE	=#beginDate:SMALLDATETIME#,
+		 	@END_DATE 	=#endDate:SMALLDATETIME#
+	     	
+	     ]]>
+	</select>
+	<select id="selectImgTextList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+	     	EXEC [SHOP_WX_NEWS_REPORT_LIST_SELECT]
+	     	@SHOP_ID	=#shopId:INT#,
+	     	@BEGIN_DATE	=#beginDate:SMALLDATETIME#,
+		 	@END_DATE 	=#endDate:SMALLDATETIME#
+			,@ORDER_BY	=#orderBy:INT#			
+			,@DESC_FLAG	=#descFlag:INT#
+			,@TITLE     =#title:NVARCHAR#                       
+			,@USER_ID	=#userId:NVARCHAR#
+			,@NEWS_ID	=#newsId:INT#		
+	     ]]>
+	</select>
+	<select id="WX_IF_MESSAGE_STATS_DATA_SELECT_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+	     	EXEC [WX_IF_MESSAGE_STATS_DATA_SELECT_LIST]
+	     	@SHOP_ID	=#shopId:INT#,
+	     	@BEGIN_DATE	=#beginDate:SMALLDATETIME#,
+		 	@END_DATE 	=#endDate:SMALLDATETIME#
+			,@ORDER_BY	=#orderBy:INT#			
+			,@DESC_FLAG	=#descFlag:INT#
+			,@TITLE     =#title:NVARCHAR#                       
+	     ]]>
+	</select>
+	<select id="WX_IF_MESSAGE_STATS_DATA_SELECT_DETAIL" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+	     	EXEC [WX_IF_MESSAGE_STATS_DATA_SELECT_DETAIL]
+	     	@SHOP_ID = #shopId#
+			,@MSGID	 = #msgId#		
+	     ]]>
+	</select>
+	
+	
+	<!--首页图文群发信息查询  -->
+	<select id="selectHomePageImgTextList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	     <![CDATA[
+	     	EXEC [SHOP_WX_NEWS_REPORT_HOMEPAGE_SELECT]
+	     	@SHOP_ID	=#shopId:INT#,
+	     	@BEGIN_DATE	=#beginDate:SMALLDATETIME#,
+		 	@END_DATE 	=#endDate:SMALLDATETIME#,
+		 	@USER_ID	=#userId:NVARCHAR#		
+	     ]]>
+	</select>
+</sqlMap>

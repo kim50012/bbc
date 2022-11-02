@@ -1,0 +1,124 @@
+.@charset "utf-8";
+@import url("base.css");
+@import url("layout.css");
+@import url("customer.css");
+
+
+
+.top-titlebox {width:100%; height:66px; position:relative;}
+.top-titlebox .title {position:absolute; left:0; top:25px;}
+.top-titlebox .page-sublocation {padding-top:25px;}
+div.commemt-wrap {
+	 position:absolute; right:0; top:0;
+	 width: 532px;
+	 height: 300px;
+}
+div.comment {
+	 position: relative;
+	 width: 502px;
+	 height: 300px;
+	 overflow: hidden;
+}
+.top100-main-box {
+	width:100%; height:300px; margin-bottom:30px; position:relative; overflow:hidden;
+}
+
+.top100-main-box ul.talk-box li {
+	position: relative;
+	width: 502px;
+	height: 300px;
+}
+.top100-main-box .bubble-box ul.talk-box .talk01,
+.top100-main-box .bubble-box ul.talk-box .talk02,
+.top100-main-box .bubble-box ul.talk-box .talk03 {
+	position: absolute;
+}
+.top100-main-box ul.talk-box  p span {display:block; padding-bottom:2px; color:#593d21; font-weight:bold; font-size:11px;}
+.top100-main-box ul.talk-box .talk01 {right:0; top:40px; width: 200px; height: 81px; background: url("//image.ssgdfs.com/images/shop/top100/bg_big.png") no-repeat 0 0; overflow: hidden; position: absolute;}
+.top100-main-box ul.talk-box .talk02 {right:339px; top:110px; width: 151px; height: 61px; background: url("//image.ssgdfs.com/images/shop/top100/bg_middle.png") no-repeat 0 0; overflow: hidden; position: absolute;}
+.top100-main-box ul.talk-box .talk03 {right:85px; top:195px; width: 108px; height: 37px; background: url("//image.ssgdfs.com/images/shop/top100/bg_small.png") no-repeat 0 0; overflow: hidden; position: absolute;}
+.top100-main-box ul.talk-box div.opacity-box {filter:alpha(opacity=20);opacity: 0.2;-moz-opacity:0.2; font-size: 6px;}
+.top100-main-box ul.talk-box .even .talk01 {
+	right:13px;
+	top:118px;
+	padding-right: 9px !important;
+	width: 151px;
+	height: 67px;
+	background: url("//image.ssgdfs.com/images/shop/top100/bg_even_middle.png") no-repeat 0 0;
+	overflow: hidden;
+	position: absolute;
+}
+.top100-main-box ul.talk-box .even .talk01 p {
+    width: auto;
+}
+.top100-main-box ul.talk-box .even .talk02 {
+	left:0;
+	top:66px;
+	width: 200px;
+	height: 81px;
+	background: url("//image.ssgdfs.com/images/shop/top100/bg_even_big.png") no-repeat 0 0;
+	overflow: hidden;
+	position: absolute;
+	
+}
+.top100-main-box ul.talk-box .even .talk03 {
+	left: 128px;
+	background: url("//image.ssgdfs.com/images/shop/top100/bg_even_small.png") no-repeat 0 0;
+
+}
+.top100-main-box ul.talk-box .even .talk03 p {
+	padding-left: 8px;
+}
+
+.top100-main-box ul.talk-box .talk01 p { padding: 10px 0 0 21px; height: 69px; width: 172px;}
+.top100-main-box ul.talk-box .talk02 p { padding: 9px 0 0 11px; width: 124px; height: 50px; }
+.top100-main-box ul.talk-box .talk03 p { padding: 10px 0 0 20px;}
+.top100-main-box ul.talk-box .even .talk02 p {width:175px;}
+.top100-main-box ul.talk-box p span {font-size: 11px;}
+.top100-main-box ul.talk-box p {font-size: 11px;}
+.top100-main-box ul.talk-box div.opacity-box p {font-size: 5px;}
+.top100-main-box ul.talk-box div.opacity-box p span {font-size: 5px;}
+
+.top100-list-box .tab-menu {margin-top:0;}
+
+.top100-list-box {width:100%; height:auto;}
+.top100-list-box .h3-tab {margin-bottom:0;}
+.top100-list-box .h3-tab p img {margin-top:12px;}
+.top100-list-box .h3-tit {margin-top:-20px; height:20px;}
+.category-list-tab {width:100$; height:41px; background:#f8f8f8; border-bottom:1px solid #dfdfdf;}
+.category-list-tab li {float:left; padding:12px 15px 12px 16px; }
+.category-list-tab li.first-child {background:none;}
+.category-list-tab li a {color:#999;}
+.category-list-tab li.on a {color:#333; font-weight:bold;}
+
+.top100-list {width:100%; height:auto; clear:both; padding:0 1px 70px 1px; overflow:hidden;}
+.top100-list .list-basic {height:auto; margin-bottom:70px;}
+.top100-list .list-basic ul {width:100%; height:auto;}
+.top100-list .list-basic ul li {width:200px;}
+.top100-list .list-basic ul li p.icon {left:3px;}
+.top100-list .list-basic ul li p.icon img {margin-left:-2px;}
+.top100-list .list-basic ul li p.top-best {width:40px; height:40px; padding:0; position:absolute; right:-1px; top:0; z-index:10;}
+.top100-list .list-basic ul li p.top-best-no {width:30px; height:30px; right:-1px; background:url(//image.ssgdfs.com/images/shop/top100/bg_best.gif) no-repeat 0 0; text-align:center; }
+.top100-list .list-basic ul li p.top-best-no span  {display:block; padding:5px 0 2px 0; text-align:center;}
+.top100-list .list-basic ul li div.all-info p.top-best {right:16px; top:0px; padding:0;}
+.top100-list .list-basic ul li div.all-info p.top-best-no {right:16px;}
+.top100-list .list-basic ul li div.info {width:200px;}
+.top100-list .list-basic ul li div.all-info p.icon {
+	left: 3px;
+}
+.top100-list .list-basic ul li p.review {padding-top: 2px;   width: 190px;	height: 45px;	overflow: hidden;	text-overflow: ellipsis;}
+/* .top100-list .list-basic ul li div.all-info .product-name{padding: 3px 5px 0 4px;height:auto;} */
+
+
+.all-info {
+	position: absolute;
+	z-index: 25;
+	left: 0px
+	top: 0px;
+	margin: 0 -9px 0 0;
+	padding: 0 9px 0 0;
+	height: 345px;
+	width: 373px !important;
+	background: url("//image.ssgdfs.com/images/shop/product/list/bg_list_bottom.png") no-repeat 0 0;
+}
+

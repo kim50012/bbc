@@ -1,0 +1,480 @@
+/*这是点击返回顶部的按钮*/
+.scrolltop {
+  position: absolute;
+  width: 0.82rem;
+  height: 0.82rem;
+  right: 0.3rem;
+  bottom: 1.1rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+  padding: 0.08rem;
+  box-shadow: 0.01rem 0.01rem 0.06rem #CCCCCC;
+  display: flex;
+  z-index: 100;
+}
+.scrolltop span {
+  flex: 1;
+  border-radius: 50%;
+  background: #7fbfe2;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+.scrolltop span:before {
+  display: block;
+  content: "";
+  width: 0.2rem;
+  height: 0.2rem;
+  border-left: 3px solid #FFFFFF;
+  border-top: 3px solid #FFFFFF;
+  transform: rotate(45deg);
+  margin-top: 0.1rem;
+}
+.scrolltop span:active {
+	background: #e42e43;
+}
+.button-wrap {
+  padding: 0.24rem 0.24rem 0;
+  background: #FFFFFF;
+}
+.btn-wrap {
+  padding-top: 0.12rem;
+  padding-bottom: 0.24rem;
+}
+.confirm-wrap {
+  padding-top: 0.22rem;
+  text-align: center;
+}
+/*这是类似input下拉选择的按钮
+一般用在表格里面*/
+.select-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #FFFFFF;
+  padding: 0.14rem 0.18rem 0.14rem 0.12rem;
+  font-size: 0.2rem;
+  color: #333333;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+}
+.select-btn.radius {
+  border-radius: 0.04rem;
+}
+.select-btn.noclick {
+  color: #898989;
+  pointer-events: none;
+}
+.select-btn:after {
+  content: '';
+  width: 0.1rem;
+  height: 0.1rem;
+  border-right: 2px solid #959595;
+  border-bottom: 2px solid #959595;
+  margin-left: 20px;
+  transform: rotate(45deg);
+  transition: transform .2s;
+  margin-top: -0.04rem;
+}
+.select-btn:active,
+.select-btn:active:after,
+.select-btn:hover,
+.select-btn:hover:after {
+  border-color: #0080c6;
+  transition: border-color .2s;
+}
+.select-btn.active:after {
+  transform: rotate(-135deg);
+}
+.lbtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rbtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+/*这个只需要注意input的checked属性就好*/
+.switch {
+  margin: 0;
+  /*padding: 0.02rem;*/
+}
+.switch input {
+  display: none;
+}
+.switch .switch-btn{
+  position: relative;
+  display: inline-block;
+  width: 0.66rem;
+  height: 0.32rem;
+  border-radius: 0.16rem;
+  background: #e42e43;
+}
+.switch-btn:before {
+  position: absolute;
+  display: block;
+  content: '';
+  left: -0.02rem;
+  top: -0.03rem;
+  border-radius: 50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: #FFFFFF;
+  border: 1px solid #cccccc;
+  transition: left 0.3s;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.switch-btn:after {
+  position: absolute;
+  content: "";
+  width: 0.68rem;
+  height: 0.32rem;
+  top: 0;
+  right: 0;
+  border-radius: 0.16rem;
+  background: #959595;
+  transition: width 0.3s;
+}
+input:checked + .switch-btn:before {
+  left: 0.3rem;
+}input:checked + .switch-btn:after {
+  width: 0;
+}
+
+
+.btn-white {
+  display: inline-block;
+  padding: 0.18rem 0.28rem;
+  background: #FFFFFF;
+  border: 1px solid #dddddd;
+  border-radius: 0.04rem;
+  font-size: 0.2rem;
+  font-weight: bold;
+  color: #555555;
+  vertical-align: top;
+}
+.btn-white:active {
+    color: #e33143;
+    border-color: #e33143;
+}
+/*下拉列表*/
+.selectList {
+	width: 100%;
+	background: #ffffff;
+	padding: 0.32rem 0.32rem 0.5rem;
+	display: flex;
+}
+.select-wrap {
+  flex: 1;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.select {
+  display: inline-block;
+  min-width: 2.24rem;
+  text-align: center;
+  padding: 0.23rem 0.30rem 0.23rem;
+  background: #f4f5f8;
+  border: 1px solid #dddddd;
+  border-radius: 0.04rem;
+  font-size: 0.3rem;
+  font-weight: bold;
+  color: #555555;
+}
+.sanjiao {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 0.12rem;
+  height: 0.12rem;
+  margin-left: 0.2rem;
+  margin-top: 0.05rem;
+  border-left: 1px solid #959595;
+  border-bottom: 1px solid #959595;
+  transform: rotate(-45deg);
+}
+.options {
+  position: absolute;
+  min-width: 100%;
+  top: 0.62rem;
+  display: none;
+  border: 2px solid #dddddd;
+  box-shadow: 5px 5px 5px #CCCCCC;
+  z-index: 100;
+}
+.options p {
+  line-height: 2;
+  padding-left: 0.12rem;
+  font-size: 0.24rem;
+  background: #FFFFFF;
+}
+/*橘色和蓝色同样式按钮*/
+.buttons {
+	box-sizing: border-box;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	padding: 0.24rem;
+}
+.subBtn {
+	padding: 0.29rem 0.1rem;
+	text-align: center;
+	border-radius: 0.06rem;
+	color: #ffffff;
+	margin: 0 0.1rem;
+}
+.comBtn {
+	padding: 0.29rem 0.1rem;
+	text-align: center;
+	border-radius: 0.06rem;
+	color: #ffffff;
+}
+.orangeBtn {
+  color: #FFFFFF;
+	background-color: #ec8921;
+}
+.blueBtn {
+  color: #FFFFFF;
+	background-color: #0080c6;
+}
+.loginBtn,.singleBtn {
+  width: 100%;
+  height: 1rem;
+  border-radius: 0.06rem;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  outline: none;
+}
+.loginBtn {
+	background: #959595;
+  pointer-events: none;
+  font-size: 0.36rem;
+  color:  #FFFFFF;
+  font-weight: 700;
+  margin-top: 0.32rem;
+}
+.singleBtn {
+	background: #0080c6;
+}
+.light {
+	width: 5.92rem;
+  height: 0.84rem;
+  border-radius: 0.06rem;
+  background: #0080c6;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  outline: none;
+  pointer-events: initial;
+}
+.ITPage1 .singleBtn {
+	padding: 0.29rem 0.1rem;
+}
+.fixBtn {
+	position: fixed;
+	left: 0.24rem;
+	bottom: 0.24rem;
+}
+
+input[type="submit"] {
+	height: 0.84rem;
+	width: 100%;
+}
+.makeSure {
+	margin-top: 0.24rem;
+	padding: 0.3rem 0 0;
+	line-height: 0.4rem;
+	width: 100%;
+	text-align: center;
+	border-top: 1px solid #cccccc;
+}
+/*退出*/
+.logout {
+  width: 100%;
+  position: absolute;
+  bottom: 0.32rem;
+  padding: 0 0.32rem;
+}
+.logout > button {
+  width: 100%;
+  height: 1rem;
+  border-radius: 0.06rem;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  outline: none;
+  font-size: 0.36rem;
+	font-weight: 700;
+  color: #FFFFFF;
+  background-color: #f8971d;
+}
+/*风险管理删除*/
+.delBtn {
+  padding: 0.06rem 0.14rem;
+  font-size: 0.2rem;
+  color: #FFFFFF;
+  background: #959595;
+  border-radius: 0.04rem;
+  margin-left: 0.2rem;
+  /*display: none;/*默认隐藏*/
+}
+.longBtn {
+  width: 100%;
+  font-size: 0.28rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+  border-radius: 0.04rem;
+}
+label > input[type=checkbox] {
+    display: none;
+}
+label > input[type=checkbox] + span {
+    position: relative;
+    align-items: center;
+    color: #555555; 
+    font-size: 0.2rem;
+    padding: 0.02rem 0;
+    padding-left: .34rem;
+}
+label > input[type=checkbox] + span:before {
+    position: absolute;
+    display: block;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 0.24rem;
+    height: 0.24rem;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    margin-right: .08rem;
+}
+label > input[type=checkbox]:checked + span:before {
+    background: url(../image/CheckBox_Checked.png) no-repeat center center;
+    background-size: 100% 100%;
+    border: none;
+}
+label > input[type=checkbox]:checked + span {
+    color: #0080c6;
+}
+/*页面正常radio*/
+label > input[type=radio] {
+	display: none;
+}
+label > input[type=radio] + span {
+	position: relative;
+	align-items: center;
+	color: #555555;
+	font-size: 0.2rem;
+	padding: 0.02rem 0;
+	padding-left: .34rem;
+}
+label > input[type=radio] + span:before {
+	position: absolute;
+	display: block;
+	content: "";
+	left: 0;
+	top: 0;
+	display: inline;
+	width: 0.24rem;
+	height: 0.24rem;
+	border: 1px solid #cccccc;
+	border-radius: 50%;
+	box-sizing: border-box;
+	margin-right: 0.08rem;
+}
+label > input[type=radio]:checked + span:before {
+    background: url(../image/RadioButton_Checked.png) no-repeat center center;
+    background-size: 100% 100%;
+    border: none;
+}
+label > input[type=radio]:checked + span {
+    color: #0080c6;
+}
+label > input[type=radio] + div {
+		width: 100%;
+		position: relative;
+		align-items: center;
+		display: inline-block;
+		color: #555555;
+		font-size: 0.24rem;
+		padding: 0.02rem 0;
+}	
+/*弹窗radio*/
+label > input[type=radio] + div::before {
+		content: "";
+    display: inline-block;
+    width: 0.24rem;
+    height: 0.24rem;
+    float: right;
+    vertical-align: middle;
+    margin-right: .04rem;
+    background: url(../image/RadioButton.png);
+    background-size: 100% 100%;
+}
+label > input[type=radio]:checked + div {
+		color: #0080c6;
+}
+label > input[type=radio]:checked + div::before {
+		background: url(../image/RadioButton_Checked.png) no-repeat center center;
+		background-size: 100% 100%;
+}
+.fList {
+  width: 100%;
+  padding: 0.24rem 0.24rem;
+}
+.confirmBtn {
+  /*width: 1.03rem;*/
+  display: inline-block;
+  padding: 0.17rem 0.35rem;
+  line-height: 1;
+  font-size: 0.2rem;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.04rem;
+  background: #0080c6;
+  outline: none;
+}
+.confirmBtn.noclick {
+  background: #959595;
+  pointer-events: none;
+}
+.confirmBtn.orangeBtn {
+  background: #ec8921;
+}
+
+
+
+/************** 新按钮 ***************/
+.btn-area {
+  width: 100%;
+  text-align: center;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+}
+.fourD-blue-btn {
+  width: 2.72rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #006ecd;
+  color: #FFFFFF;
+  font-size: 0.3rem;
+  font-weight: 700;
+}
+
+
+
+
+

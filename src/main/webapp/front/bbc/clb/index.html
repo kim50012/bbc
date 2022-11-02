@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/Share.css"/>
+		<!--header-->
+		<link rel="stylesheet" type="text/css" href="../css/header.css"/>
+		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/rem3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/footer.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.btn-h70{
+				width:1.94rem;
+				height:0.68rem;
+				line-height:0.7rem;
+				padding:0rem 0.1rem;
+				text-align:center;
+			}
+		</style>
+		<script type="text/javascript">
+			function login(a) {
+				window.location="/w/rl.htm?shopId=68&hl=ko-KR&custId="+a;
+			}
+			function login2(a) {
+	 			 $.ajax({
+	 					type : "POST",
+	 					url : "/admin/login/login.htm?hl="+a,
+	 					success : function(data) {
+	 						window.location="/front/bbc/exc/excDoList.htm?shopId=68&hl="+a;
+	 					},
+	 					error : function(xhr, status, e) {
+	 						window.location="/front/bbc/exc/excDoList.htm?shopId=68&hl="+a;
+	 					}
+	 				});
+			}
+			function login3(a) {
+				window.location="/label/reloadLabel.htm";
+			}
+		</script>
+	</head>
+	<body style="overflow:scroll;">
+		<div class="head-information">
+			<div class="module">
+					<div class="list-110">
+						<p  class="club-logo1 float" >
+							<img src="../img/club-photo.png"/>
+						</p>
+						<p class="word-title float" style="width:3.84rem;white-space:nowrap;overflow:ellipsis;">테스트 로그인</p>
+					</div>
+			</div>
+			<div class="modules">
+				<div class="" style="background:#fff;">
+					<p class="title-icon title-icon1" style="line-height:0.8rem;border-bottom:1px dashed #ddd;font-weight:normal;font-size:0.24rem;" >자동로그인</p>
+					<div class="buttons" style="background:#fff;text-align:left;margin-left:0.2rem;">
+						<button class="btn-big btn-text btn-h70" onclick="login(20)">김동일</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(22)">권영만</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(29)">김경무</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(28)">최경종</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(24)">김현실</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(90)">강영선</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(38)">강태성</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(217)">고제영</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(209)">白石林</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(242)">구임규</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(36)">권경은</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(42)">권구열</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(348)">권대현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(71)">권도훈</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(66)">권민지</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(76)">권오경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(74)">권용남</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(146)">권재범</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(85)">김경일</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(35)">김근</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(65)">김기용</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(336)">김대현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(529)">김도경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(527)">김도선</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(522)">김문규</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(89)">김미정</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(337)">김미정(동관)</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(347)">김봉길</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(232)">김쌍선</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(511)">김영지</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(142)">김영태</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(341)">김윤미</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(224)">김은경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(30)">김재호</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(213)">김종성</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(32)">김종우</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(237)">김진광</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(67)">김진형</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(208)">김태성</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(143)">김형규</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(214)">노문종(게스트)</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(530)">류승보</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(70)">류재건 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(82)">문정재</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(509)">민순천</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(25)">박민영</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(340)">박세환</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(104)">박영선</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(510)">박재권</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(358)">박정현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(56)">박종근</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(68)">박종찬</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(363)">박종현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(325)">박주성</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(91)">박준우</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(226)">박준혁</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(228)">박지호</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(210)">高宏</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(62)">부성순</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(181)">삭제</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(343)">서재혁</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(129)">서헌희</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(33)">송영석</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(404)">송주현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(63)">신도혁</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(503)">신상민 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(39)">신재웅</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(225)">신재진 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(295)">안수임 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(206)">안유현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(73)">안종채</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(77)">안종화</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(41)">엄창현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(479)">오소민</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(58)">오은경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(64)">오홍록</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(296)">우시형</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(43)">원장님</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(194)">유환석</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(252)">윤상호</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(516)">윤영주</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(240)">윤현식</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(126)">이남기</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(205)">이도열</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(31)">이명주</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(88)">이선경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(50)">이용걸</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(81)">이유리</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(21)">이재환</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(78)">이창회</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(87)">이평화</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(346)">임윤식</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(79)">임재숙</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(215)">장  한</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(137)">장경순</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(69)">장구경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(80)">장현진</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(72)">장혜경</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(59)">전영호</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(61)">전유준</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(83)">전종엽</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(34)">전종윤</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(324)">전진수</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(60)">정성문</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(334)">정재훈</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(114)">조동준</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(241)">조병무</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(40)">조운선</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(128)">조원희</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(86)">조유미</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(504)">조윤진</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(523)">최규민</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(362)">최규원</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(403)">최병진</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(293)">최복찬</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(349)">최성호</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(200)">최재웅</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(230)">최주희</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(345)">최현묵 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(218)">한재영</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(75)">현춘옥 </button>
+						<button class="btn-big btn-text btn-h70" onclick="login(26)">황규현</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(353)">황유연</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(201)">苏亚利</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(212)">韦振才</button>
+						<button class="btn-big btn-text btn-h70" onclick="login(211)">周强</button>
+					</div>
+				</div>
+
+				<div class="" style="background:#fff;">
+					<p class="title-icon title-icon1" style="line-height:0.8rem;border-bottom:1px dashed #ddd;font-weight:normal;font-size:0.24rem;" >다국어 오류 수정</p>
+					<div class="buttons" style="background:#fff;text-align:left;margin-left:0.2rem;">
+						<button class="btn-big btn-text btn-h70" onclick="login3()">다국어 재설정</button>
+					</div>
+				</div>
+				<div class="" style="height:2rem;background:#fff;">
+					&nbsp;
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

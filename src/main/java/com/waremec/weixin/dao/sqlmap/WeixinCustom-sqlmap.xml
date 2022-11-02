@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WeixinCustom">
+	 <statement id="syscDkfUser" parameterClass="java.util.HashMap">
+    <![CDATA[
+		 EXEC [dbo].[WX_DKF_USER_SYSC]
+			 @SHOP_ID 			 = #SHOP_ID#
+			, @KF_ACCOUNT 		 = #dkfUser.kf_account#
+			, @KF_NICK 			 = #dkfUser.kf_nick#
+			, @KF_ID 			 = #dkfUser.kf_id#
+			, @KF_HEADIMGURL 	 = #dkfUser.kf_headimgurl#
+    ]]>
+    </statement>
+	 
+	 <statement id="updateDkfUserStatus" parameterClass="java.util.HashMap">
+    <![CDATA[
+		 EXEC [dbo].[WX_DKF_USER_STATUS_UPDATE]
+			 @SHOP_ID 			 = #SHOP_ID#
+			, @KF_ACCOUNT 		 = #dkfUser.kf_account#
+			, @KF_ID 			 = #dkfUser.kf_id#
+			, @STATUS 			 = #dkfUser.status#
+			, @AUTO_ACCEPT 	 	 = #dkfUser.auto_accept#
+			, @ACCEPTED_CASE 	 = #dkfUser.accepted_case#
+    ]]>
+    </statement>
+    
+    
+    
+	 <select id="WX_DKF_USER_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[WX_DKF_USER_SELECT]
+			@SHOP_ID = #SHOP_ID#
+			,@SEQID = #SEQID#
+			,@KF_ID = #KF_ID#
+			,@KF_ACCOUNT = #KF_ACCOUNT#
+			,@KF_NICK = #KF_NICK#
+			,@PAGE_CURR = #pageCurr#
+			,@PAGE_UINT = #pageUnit#
+    ]]>
+    </select>
+	 <select id="selectDkfByKeywork" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[WX_DKF_KEYWORD_SELECT]
+			@SHOP_ID = #SHOP_ID#
+			,@KEYWORD = #KEYWORD#
+    ]]>
+    </select>
+	 
+</sqlMap>

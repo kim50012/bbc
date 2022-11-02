@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ueditor图片对话框</title>
+    <!--页面中一定要引入internal.js为了能直接使用当前打开dialog的实例变量-->
+<!--internal.js默认是放到dialogs目录下的-->
+    <script type="text/javascript" src="../internal.js"></script>
+
+    <!-- jquery -->
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+
+    <!-- webuploader -->
+    <script src="../../third-party/webuploader/webuploader.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../third-party/webuploader/webuploader.css">
+
+    <!-- image dialog -->
+    <link rel="stylesheet" href="image.css" type="text/css" />
+     <script type="text/javascript">
+   
+   var  imgUrl = ""; 
+   function getContents(){
+	   
+	  var content = editor.getContent();
+	  console.log('===content=');
+	  console.log(content);
+	  //window.close();
+   }
+   
+   
+   
+    $(function(){
+    	
+    	$('.js-btn-confirm').on('click',function(){
+    		if(!!imgUrl){
+    			var $img = $('<img>').attr('src', imgUrl);
+        		var $p = $('<p>').append($img);
+        		var $d = $('<div>').append($p);
+        		editor.setContent($d.html(), true);
+        		window.close();
+    		}
+    		
+    	});
+    });
+    </script>
+</head>
+
+<body>
+<style>
+.button {
+	display: inline-block;
+	padding: 9px 15px 9px 15px;
+	height: 12px;
+	border-radius: 2px;
+	background-color: #d0112d;
+	color: #fff;
+	line-height: 12px;
+	cursor: pointer;
+}
+
+.button.bg-red { 
+	background-color: #d0112d;
+}
+.button.bg-orange { 
+	/* background-color: #fb6e52;  */
+	background-color: #ff6650; 
+}
+
+
+.button-icon {
+	display: inline-block;
+	margin-right: 10px;
+	width: 12px;
+	height: 12px;
+}
+
+.button-icon.search {
+	background: url(/admin/images/v2-icons/ico_search.png) no-repeat center center;
+}
+
+.button-icon.skip {
+	width: 15px;
+	background: url(/admin/images/v2-icons/ico_skip.png) no-repeat center center;
+}
+
+.button-icon.conform {
+	width: 17px;
+	background: url(/admin/images/v2-icons/ico_comform.png) no-repeat center center;
+}
+.button-icon.cancel {
+	width: 12px;
+	background: url(/admin/images/v2-icons/ico_cancle.png) no-repeat center center;
+}
+</style>
+ 
+ <div class="wrapper" style="background-color: yellow;">
+ 	
+ 	<!--dom结构部分--> 
+ 	<div id="uploader-demo" style="margin-top: 10px;"> 
+ 		<!--用来存放item--> 
+ 		<div id="fileList" class="uploader-list"></div> 
+ 		<div id="filePicker">上传图片</div> 
+ 	</div>
+ 	<div class="js-img-preview" style=" background-color: green; height: 235px; margin-top: 10px;">
+ 	 <!--   <img  alt="" src=""> -->
+ 	</div>
+ 	
+ 	<div  style="background-color: red; position: absolute;bottom: 0; width: 98%;">
+ 		<div class="action-buttons" style="text-align: center;">
+		<span class="button bg-orange js-btn-confirm">
+			<span class="button-icon conform"></span>
+			<span class="button-name">确认</span>	
+		</span>
+		<span class="button bg-orange  js-btn-cancel" style="margin-left: 30px;">
+			<span class="button-icon cancel"></span>
+			<span class="button-name">关闭</span>	
+		</span>
+	</div>
+ 	</div>
+ 
+ </div>
+ 
+ 
+ 	
+ 	
+<script type="text/javascript">
+var _baseUrl = '/admin/js/ueditor/';
+
+ // 初始化Web Uploader 
+ var uploader = WebUploader.create({ 
+	 // 选完文件后，是否自动上传。
+	 auto: true, 
+	 // swf文件路径
+	 swf: _baseUrl + 'third-party/webuploader/Uploader.swf', 
+	 // 文件接收服务端。 
+	 server: '/admin/uploader/upload.htm', 
+	 // 选择文件的按钮。可选。
+	 // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	 pick: {
+		id : '#filePicker',
+		//innerHTML : 'AAAA',
+		multiple : false
+	 }, 
+	 // 只允许选择图片文件。
+	 accept: { 
+		 title: 'Images', 
+		 extensions: 'gif,jpg,jpeg,bmp,png', 
+		 mimeTypes: 'image/*' 
+	  } ,
+	  formData : {
+		  
+	  },
+	  fileVal : 'file',
+	  fileNumLimit : 2,
+	  fileSingleSizeLimit : 1024 * 1024,
+	  duplicate : true
+});
+ 
+ //监听fileQueued事件，通过uploader.makeThumb来创建图片预览图。
+//当有文件添加进来的时候 
+uploader.on( 'fileQueued', function( file ) { 
+	console.log('file:');
+	console.log(file);
+ 
+	
+	// 创建缩略图 
+	// 如果为非图片文件，可以不用调用此方法。 
+	// thumbnailWidth x thumbnailHeight 为 100 x 100 
+	/* var thumbnailWidth = thumbnailHeight = 100;
+	uploader.makeThumb(file, function( error, src ) { 
+		if (error){ 
+			$img.replaceWith('<span>不能预览</span>'); 
+			return; 
+		} 
+		
+		$img.attr( 'src', src ); 
+		}, 
+		thumbnailWidth, thumbnailHeight );  */
+	 
+});
+ 
+//然后剩下的就是上传状态提示了，当文件上传过程中, 上传成功，上传失败，
+//上传完成都分别对应uploadProgress,uploadSuccess, uploadError, uploadComplete事件。
+// 文件上传过程中创建进度条实时显示。 
+uploader.on('uploadProgress', function(file, percentage ) { 
+	console.log('=========uploadProgress============');
+	console.log('file:');
+	console.log(file);
+	console.log('percentage:');
+	console.log(percentage);
+	
+	var $li = $( '#'+file.id ), 
+	$percent = $li.find('.progress span'); 
+	
+	// 避免重复创建 
+	if (!$percent.length){ 
+		$percent = $('<p class="progress"><span></span></p>').appendTo( $li ).find('span'); 
+	} 
+	
+	$percent.css('width', percentage * 100 + '%' ); 
+}); 
+
+// 文件上传成功，给item添加成功class, 用样式标记上传成功。 
+uploader.on('uploadSuccess', function(file,response ) { 
+	console.log('=========uploadSuccess============');
+	console.log('file:');
+	console.log(file);
+	console.log('response :');
+	console.log(response );
+	//$( '#'+file.id ).addClass('upload-state-done'); 
+}); 
+
+// 文件上传失败，显示上传出错。 
+uploader.on( 'uploadError', function( file,reason  ) { 
+	console.log('=========uploadError============');
+	console.log('file:');
+	console.log(file);
+	console.log('reason:');
+	console.log(reason);
+	
+	//var $li = $( '#'+file.id ), 
+	//$error = $li.find('div.error'); 
+	// 避免重复创建 
+	//if(!$error.length){ 
+	//	$error = $('<div class="error"></div>').appendTo( $li ); 
+	//} 
+	
+	//$error.text('上传失败'); 
+}); 
+
+// 完成上传完了，成功或者失败，先删除进度条。 
+uploader.on('uploadComplete', function( file ) { 
+	console.log('=========uploadComplete============');
+	console.log('file:');
+	console.log(file);
+	//$( '#'+file.id ).find('.progress').remove(); 
+});
+
+
+
+//阻止此事件可以拒绝某些类型的文件拖入进来。目前只有 chrome 提供这样的 API，且只能通过 mime-type 验证。
+uploader.on('dndAccept', function( items ) { 
+	console.log('=========dndAccept============');
+	console.log('items:');
+	console.log(items);
+});
+
+//当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列
+uploader.on('beforeFileQueued', function( file) { 
+	console.log('=========beforeFileQueued============');
+	console.log('file:');
+	console.log(file);
+});
+ 
+//当一批文件添加进队列以后触发。
+uploader.on('filesQueued', function(files) { 
+	console.log('=========filesQueued============');
+	console.log('files:');
+	console.log(files);
+});
+//当文件被移除队列后触发
+uploader.on('fileDequeued', function(file) { 
+	console.log('=========fileDequeued============');
+	console.log('file:');
+	console.log(file);
+});
+//当文件被移除队列后触发
+uploader.on('reset', function() { 
+	console.log('=========reset============');
+});
+
+//当开始上传流程时触发
+uploader.on('startUpload', function() { 
+	console.log('=========startUpload============');
+});
+
+//当开始上传流程暂停时触发
+uploader.on('stopUpload', function() { 
+	console.log('=========stopUpload============');
+});
+//当所有文件上传结束时触发。
+uploader.on('uploadFinished', function() { 
+	console.log('=========uploadFinished============');
+});
+//某个文件开始上传前触发，一个文件只会触发一次。
+uploader.on('uploadStart', function(file ) { 
+	console.log('=========uploadStart============');
+	console.log('file:');
+	console.log(file);
+});
+//当某个文件的分块在发送前触发，主要用来询问是否要添加附带参数，大文件在开起分片上传的前提下此事件可能会触发多次。
+uploader.on('uploadBeforeSend', function(object,data ,headers  ) { 
+	console.log('=========uploadBeforeSend============');
+	console.log('object:');
+	console.log(object);
+	console.log('data:');
+	console.log(data);
+	console.log('headers:');
+	console.log(headers);
+});
+//当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为false, 则此文件将派送server类型的uploadError事件。
+uploader.on('uploadAccept', function(object,ret) { 
+	console.log('=========uploadAccept============');
+	console.log('object:');
+	console.log(object);
+	console.log('ret:');
+	console.log(ret);
+	
+	//alert(ret.success);
+	//alert(ret.url);
+	//alert(ret.err_msg);
+	if(ret.success){
+		imgUrl = ret.url;
+		var $img = $('<img>');
+		$img.attr('src', ret.url);
+		
+		//$list为容器jQuery实例 
+		var $imgWarp = $('.js-img-preview');
+		$imgWarp.html($img);
+		
+	}else{
+		console.log('上传失败\n' + ret.err_msg);
+		  // 通过return false来告诉组件，此文件上传有错。
+		return false;
+	}
+	
+});
+//当validate不通过时，会以派送错误事件的形式通知调用者
+uploader.on('error', function(type  ) { 
+	console.log('=========error============');
+	console.log(type );
+});
+</script>
+ 
+ <!-- http://my.oschina.net/baochanghong/blog/402155  -->
+<script>
+	//可以直接使用以下全局变量
+	//当前打开dialog的实例变量
+    console.log('editor: ');
+    console.log(editor);
+    //一些常用工具
+  	console.log('domUtils: ');
+  	console.log(domUtils);
+  	console.log('dialog: ');
+  	console.log(dialog);
+  	
+  	console.log('utils: ');
+  	console.log(utils);
+  	
+  	console.log('browser: ');
+  	console.log(browser);
+</script>
+</body>
+</html>

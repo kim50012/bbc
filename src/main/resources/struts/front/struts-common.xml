@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="fronterror" extends="portal-default" namespace="/fronterror">
+		<action name="*" method="{1}" class="frontErrorAction">
+		    <result name="{1}">/front/error/{1}.jsp</result>
+		</action>
+	</package> 
+	
+	<package name="front/demo" extends="portal-default" namespace="/front/demo">
+		<action name="*" method="{1}" class="demoAction">
+		    <result name="{1}">/front/demo/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/css" extends="portal-default" namespace="/front/css">
+		<action name="*" method="{1}" class="cssAction">
+		    <result name="{1}">/front/skin/demo/css/{1}.css</result>
+		</action>
+	</package>
+	 
+	<package name="portal" extends="portal-default" namespace="/portal">
+		<action name="*" method="{1}" class="portalAction">
+		    <result name="{1}">/front/portal/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/login" extends="portal-default" namespace="/front/login">
+		<action name="*" method="{1}" class="loginAction">
+ 		    <result name="login1">/front/login/login1.jsp</result> 
+ 		    <result name="{1}">/front/login/{1}.jsp</result> 
+		</action>
+	</package>
+	
+ 	<package name="front/main" extends="portal-default" namespace="/front/main">
+		<action name="*" method="{1}" class="mainAction">
+ 		    <result name="main">/front/main/main.jsp</result>
+ 		    <result name="main2">/front/main/main2.jsp</result> 
+ 		    <result name="main3">/front/main/main3.jsp</result> 
+ 		    <result name="main4">/front/main/main4.jsp</result> 
+ 		    <result name="main5">/front/main/main5.jsp</result> 
+ 		    <result name="mainSub">/front/main/mainSub.jsp</result>
+ 		    <result name="mainSub2">/front/main/mainSub2.jsp</result> 
+ 		    <result name="mainSub3">/front/main/mainSub3.jsp</result> 
+ 		    <result name="mainSub4">/front/main/mainSub4.jsp</result> 
+ 		    <result name="mainSub5">/front/main/mainSub5.jsp</result> 
+ 		    <result name="list">/front/main/list.jsp</result>
+ 		    <result name="list2">/front/main/list2.jsp</result>
+ 		    <result name="list3">/front/main/list3.jsp</result>
+ 		    <result name="list4">/front/main/list4.jsp</result>
+ 		    <result name="list5">/front/main/list5.jsp</result>
+		    <result name="{1}">/front/main/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/orderConfirm" extends="portal-default" namespace="/front/orderConfirm">
+		<action name="*" method="{1}" class="orderConfirmAction">
+		    <result name="{1}">/front/orderConfirm/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/cart" extends="portal-default" namespace="/front/cart">
+		<action name="*" method="{1}" class="cartAction">
+			<result name="cart">/front/cart/cart.jsp</result> 
+			<result name="cart2">/front/cart/cart2.jsp</result> 
+ 		    <result name="cart3">/front/cart/cart3.jsp</result> 
+ 		    <result name="cart4">/front/cart/cart4.jsp</result> 
+		    <result name="{1}">/front/cart/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/favorites" extends="portal-default" namespace="/front/favorites">
+		<action name="*" method="{1}" class="favoritesAction">
+			<!-- <result name="cart">/front/cart/cart.jsp</result> 
+			<result name="cart2">/front/cart/cart2.jsp</result> 
+ 		    <result name="cart3">/front/cart/cart3.jsp</result> 
+ 		    <result name="cart4">/front/cart/cart4.jsp</result>  -->
+		    <result name="{1}">/front/favorites/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/detail" extends="portal-default" namespace="/front/order">
+		<action name="*" method="{1}" class="orderAction">
+		    <result name="{1}">/front/order/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/order" extends="portal-default" namespace="/front/detail">
+		<action name="*" method="{1}" class="detailAction">
+ 		    <result name="detail">/front/detail/detail.jsp</result>
+ 		    <result name="detail2">/front/detail/detail2.jsp</result>
+ 		    <result name="detail3">/front/detail/detail3.jsp</result>
+ 		    <result name="detail4">/front/detail/detail4.jsp</result>
+ 		    <result name="detail5">/front/detail/detail5.jsp</result>
+		    <result name="{1}">/front/detail/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/customer" extends="portal-default" namespace="/front/customer">
+		<action name="*" method="{1}" class="customerAction">
+		    <result name="{1}">/front/customer/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/checkInHist" extends="portal-default" namespace="/front/checkInHist">
+		<action name="*" method="{1}" class="checkInHistAction">
+		    <result name="{1}">/front/checkInHist/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="front/promotion" extends="portal-default" namespace="/front/promotion">
+		<action name="*" method="{1}" class="promotionAction">
+		    <result name="{1}">/front/promotion/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/blog" extends="portal-default" namespace="/front/blog">
+		<action name="*" method="{1}" class="blogAction">
+		    <result name="{1}">/front/blog/{1}.jsp</result>
+		</action>
+	</package>
+ 	<package name="front/counter" extends="portal-default" namespace="/front/counter">
+		<action name="*" method="{1}" class="counterAction">
+		    <result name="{1}">/front/counter/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/eventRoulette" extends="portal-default" namespace="/front/eventRoulette">
+		<action name="*" method="{1}" class="eventRouletteAction">
+		    <result name="{1}">/front/eventRoulette/{1}.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/brand/pumeiduo" extends="portal-default" namespace="/front/brand/pumeiduo">
+		<action name="*" method="{1}" class="brandAction">
+		    <result name="{1}">/front/brand/pumeiduo/{1}.jsp</result>
+		</action>
+	</package>
+ 	
+ 	<package name="front/newsFeed" extends="portal-default" namespace="/front/newsFeed">
+		<action name="*" method="{1}" class="newsFeedAction">
+		    <result name="{1}">/front/newsFeed/{1}.jsp</result>
+		</action>
+	</package>
+
+ 	<package name="front/koreanair" extends="portal-default" namespace="/front/koreanair">
+		<action name="*" method="{1}" class="koreanairAction">
+		    <result name="{1}">/front/koreanair/{1}.jsp</result>
+		    <result name="indexDream">/front/koreanair/csr/indexDream.jsp</result>
+		    <result name="kaMain">/front/koreanair/main/kaMain.jsp</result>
+		    <result name="kaList">/front/koreanair/main/kaList.jsp</result>
+		    <result name="kaView">/front/koreanair/main/kaView.jsp</result>
+		    <result name="kaSpecialOfferList">/front/koreanair/main/kaSpecialOfferList.jsp</result>
+		    <result name="kaNewsNoticeList">/front/koreanair/main/kaNewsNoticeList.jsp</result>
+		    <result name="kaPromotionsList">/front/koreanair/main/kaPromotionsList.jsp</result>
+		</action>
+	</package>
+	
+ 	<package name="front/magazine" extends="portal-default" namespace="/front/magazine">
+		<action name="*" method="{1}" class="magazineAction">
+		    <result name="{1}">/front/magazine/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/luckyTable" extends="portal-default" namespace="/front/luckyTable">
+		<action name="*" method="{1}" class="luckyTableAction">
+		    <result name="{1}">/front/luckyTable/{1}.jsp</result>
+		</action>
+	</package>
+	
+	 <package name="front/vote" extends="portal-default" namespace="/front/vote">
+		<action name="*" method="{1}" class="voteAction">
+		    <result name="{1}">/front/vote/{1}.jsp</result>
+		</action>
+	</package>
+	
+	 
+	<package name="front/bbs" extends="portal-default" namespace="/front/bbs">
+		<action name="*" method="{1}" class="bbsAction">
+		    <result name="{1}">/front/bbs/{1}.jsp</result>
+		    <result name="hzm_Moments">/hzmfront/Moments/hzm_Moments.jsp</result>
+		</action>
+	</package>
+	
+</struts>

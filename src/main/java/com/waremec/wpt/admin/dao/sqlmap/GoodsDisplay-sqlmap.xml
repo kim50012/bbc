@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="GoodsDisplay">
+	<typeAlias alias="goodsDisplayInsert"
+		type="com.waremec.wpt.admin.domain.dispaly.GoodsDisplayInsert" />
+	<typeAlias alias="goodsDispalyPriceInsert"
+		type="com.waremec.wpt.admin.domain.dispaly.GoodsDispalyPriceInsert" />
+
+	<select id="insertGoodsDisplay" parameterClass="goodsDisplayInsert"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_INSERT]
+			     @SHOP_ID 			 		= #shopId#
+				, @GOODS_ID 				= #goodsId#
+				, @DISPLAY_ID				= NULL
+				, @IS_USED 					= #isUsed#
+				, @STOCK_AREA_ID 			= #stockAreaId#
+				, @TRANS_SHEET_ID 			= #transSheetId#
+				, @PRICE_RANGE_LOW 			= NULL
+				, @PRICE_RANGE_HIGH 		= NULL
+				, @START_DT 				= #startDt#
+				, @END_DT 					= #endDt#
+				, @START_DESC 				= #startDesc#
+				, @EVENT_DESC 				= #eventDesc#
+				, @GOODS_DTL_SLIDE_IMG1		= #goodsDtlSlideImg1#
+				, @GOODS_DTL_SLIDE_IMG2		= #goodsDtlSlideImg2#
+				, @GOODS_DTL_SLIDE_IMG3		= #goodsDtlSlideImg3#
+				, @GOODS_DTL_SLIDE_IMG4		= #goodsDtlSlideImg4#
+				, @GOODS_DTL_SLIDE_IMG5		= #goodsDtlSlideImg5#
+				, @GOODS_LIST_IMG 			= #goodsListImg#
+				, @PAGE_ID 					= NULL
+				, @DESC_TITLE 				= #descTitle#
+				, @DESC_DETAIL 				= #descDetail#
+				, @OFFER_MILEAGE_POINT 		= NULL
+				, @PAY_MILEAGE_LIMIT_AMT	= NULL
+				, @PAY_VOUCHER_LIMIT_AMT	= NULL
+				, @VOUCHER_USE				= #voucherUse#
+				, @DISCOUNT_ID				= #discountId#
+				, @SGC_ID_SPLIT				= #sgcIdSplit#
+				, @GC_ID					= #gcId#
+				, @TAG_ID_SPLIT				= #tagIdSplit#
+				, @JOP_TYPE					= 'I'
+				, @RESERVE					= #reserve#
+				, @RESERVE_END_DT			= #reserveEndDt#
+				, @ITEM_TYPE				= #itemType#
+				, @ITEM_URL					= #itemUrl#
+		]]>
+	</select>
+	
+	<select id="modifyGoodsDisplay" parameterClass="goodsDisplayInsert"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_INSERT]
+			     @SHOP_ID 			 		= #shopId#
+				, @GOODS_ID 				= #goodsId#
+				, @DISPLAY_ID				= #displayId#
+				, @IS_USED 					= #isUsed#
+				, @STOCK_AREA_ID 			= #stockAreaId#
+				, @TRANS_SHEET_ID 			= #transSheetId#
+				, @PRICE_RANGE_LOW 			= NULL
+				, @PRICE_RANGE_HIGH 		= NULL
+				, @START_DT 				= #startDt#
+				, @END_DT 					= #endDt#
+				, @START_DESC 				= #startDesc#
+				, @EVENT_DESC 				= #eventDesc#
+				, @GOODS_DTL_SLIDE_IMG1		= #goodsDtlSlideImg1#
+				, @GOODS_DTL_SLIDE_IMG2		= #goodsDtlSlideImg2#
+				, @GOODS_DTL_SLIDE_IMG3		= #goodsDtlSlideImg3#
+				, @GOODS_DTL_SLIDE_IMG4		= #goodsDtlSlideImg4#
+				, @GOODS_DTL_SLIDE_IMG5		= #goodsDtlSlideImg5#
+				, @GOODS_LIST_IMG 			= #goodsListImg#
+				, @PAGE_ID 					= NULL
+				, @DESC_TITLE 				= #descTitle#
+				, @DESC_DETAIL 				= #descDetail#
+				, @OFFER_MILEAGE_POINT 		= NULL
+				, @PAY_MILEAGE_LIMIT_AMT	= NULL
+				, @PAY_VOUCHER_LIMIT_AMT	= NULL
+				, @VOUCHER_USE				= #voucherUse#
+				, @DISCOUNT_ID				= #discountId#
+				, @SGC_ID_SPLIT				= #sgcIdSplit#
+				, @GC_ID					= #gcId#
+				, @TAG_ID_SPLIT				= #tagIdSplit#
+				, @JOP_TYPE					= 'U'
+				, @RESERVE					= #reserve#
+				, @RESERVE_END_DT			= #reserveEndDt#
+				, @ITEM_TYPE				= #itemType#
+				, @ITEM_URL					= #itemUrl#
+		]]>
+	</select>
+	<select id="insertGoodsDispalyPrice" parameterClass="goodsDispalyPriceInsert"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_PRICE_INSERT]
+			  @SHOP_ID 				= #shopId#
+			, @GOODS_ID 			= #goodsId#
+			, @DISPLAY_ID 			= #displayId#
+			, @PRICE_OPTION_ID 		= NULL
+			, @GC_ID 				= #gcId#
+			, @SPEC_ID_1 			= #specId1#
+			, @SPEC_VALUE_ID_1 		= #specValueId1#
+			, @SPEC_ID_2 			= #specId2#
+			, @SPEC_VALUE_ID_2 		= #specValueId2#
+			, @PRICE_ORG 			= #priceOrg#
+			, @PRICE_UNIT_SALES		= #priceUnitSales#
+			, @STOCK_IN 			= #stockIn#
+			, @SALES_QTY 			= NULL
+			, @STOCK_NOW 			= NULL
+			, @JOP_TYPE				= 'I'
+		]]>
+	</select>
+	<select id="modifyGoodsDispalyPrice" parameterClass="goodsDispalyPriceInsert"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_PRICE_INSERT]
+			  @SHOP_ID 				= #shopId#
+			, @GOODS_ID 			= #goodsId#
+			, @DISPLAY_ID 			= #displayId#
+			, @PRICE_OPTION_ID 		= #priceOptionId#
+			, @GC_ID 				= #gcId#
+			, @SPEC_ID_1 			= #specId1#
+			, @SPEC_VALUE_ID_1 		= #specValueId1#
+			, @SPEC_ID_2 			= #specId2#
+			, @SPEC_VALUE_ID_2 		= #specValueId2#
+			, @PRICE_ORG 			= #priceOrg#
+			, @PRICE_UNIT_SALES		= #priceUnitSales#
+			, @STOCK_IN 			= #stockIn#
+			, @SALES_QTY 			= NULL
+			, @STOCK_NOW 			= NULL
+			, @JOP_TYPE				= 'U'
+		]]>
+	</select>
+	
+	<select id="GOODS_DISPLAY_MODIFY_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [GOODS_DISPLAY_MODIFY_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@DISPLAY_ID = #DISPLAY_ID#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="GOODS_DISPLAY_PRICE_MODIFY_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [GOODS_DISPLAY_PRICE_MODIFY_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@DISPLAY_ID = #DISPLAY_ID#,
+				@USER_ID = #USER_ID#
+		]]></select>
+
+	<procedure id="getGoodsList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [GOODS_DISPLAY_LIST_SELECT] 
+		 	@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:VARCHAR#,
+		 	@PAGE_CURR 	= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 	= #PAGE_UINT:INT#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#
+		]]>
+	</procedure>
+	
+	<procedure id="getBeforeGoodsList" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [GOODS_DISPLAY_LIST_SELECT_REV]
+		 	@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:VARCHAR#,
+		 	@PAGE_CURR 	= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 	= #PAGE_UINT:INT#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#
+		]]>
+	</procedure>
+	
+	<typeAlias alias="adminGoodsDisplay"
+		type="com.waremec.wpt.admin.domain.AdminGoodsDisplay" />
+	<!-- 查询商品数量 -->
+	<select id="selectGoodsCount" parameterClass="adminGoodsDisplay"
+		resultClass="java.lang.Integer">
+	     <![CDATA[
+			SELECT	COUNT(T1.SHOP_ID) 
+			FROM [DBO].[GOODS_DISPLAY] T1
+			WHERE	T1.SHOP_ID=#shopId:INT#
+			AND 	T1.IS_DELETE=0
+			AND		(	SELECT  SUM(STOCK_NOW) 
+						FROM	[DBO].[GOODS_DISPLAY_PRICE] A
+						WHERE	A.SHOP_ID = T1.SHOP_ID
+						AND		A.GOODS_ID = T1.GOODS_ID
+						AND		A.DISPLAY_ID = T1.DISPLAY_ID
+						GROUP BY A.SHOP_ID
+			) >=0
+	     ]]>
+	</select>
+
+	<select id="updateMainGoods" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_UPDATE_GOODSMAIN]
+			  @SHOP_ID 				= #shopId:INT#
+			, @GOODS_ID 			= #goodsId:INT#
+			, @DISPLAY_ID 			= #displayId:INT#
+		]]>
+	</select>
+	
+	<select id="updateDisplayGoodsPosition" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[GOODS_DISPLAY_SORT]
+			@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:VARCHAR#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#,
+			@RESERVE	= #reserve:TINYINT#,			
+			@DISPLAY_ID	= #displayId:INT#,
+			@OPTION		= #option:VARCHAR#,
+			@JOB_TYPE	= #jobType:CHAR#
+		]]>
+	</select>
+</sqlMap>

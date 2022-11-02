@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+html,body{
+	width: 100%;
+	height: 98%;
+}
+
+
+/***********公共**************/
+/* 标头部分后面的按钮部分 */
+.divOptionButtons{
+	position: relative; 
+	float: right;
+	right: 5px;
+}
+
+/* 不换行的样式 */
+.divNoWrapLineStyle{
+	margin: 0px;
+	position: relative;
+	float: left;
+}
+
+/* 文本框添满父级 */
+.textFilledParent{
+	width: 100%;
+}
+
+/* 一行分为3部分 */
+.threePartInOneLine{
+	width: 33.3%;
+}
+/* 仿表格说明部分样式 */
+.sameToTdNotice{
+	background-color: #f4f6fb;
+    color: #696969;
+    border-top: dashed 1px #c8d6ec;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 12px;
+}
+/* 仿表格数据部分 */
+.divNoWrapLineStyle{
+	position: relative;
+	float: left;
+	color: #40403f;
+    border-top: dashed 1px #c8d6ec;
+}
+/* 换行显示 */
+.changeLine{
+	position: relative; 
+	float: left;
+} 
+/* 活动区域的标题栏式 */
+.changeLine [title="divTitle"]{
+	position: relative;
+	float: left;
+}
+
+/* 页面中的两个Kendo列表的样式 */
+.divListStyle{
+	min-height: 400px;
+	height: auto;
+}
+
+

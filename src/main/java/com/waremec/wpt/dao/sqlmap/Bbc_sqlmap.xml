@@ -1,0 +1,1531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Bbc">
+
+	<typeAlias alias="sessionSkin" 	type="com.waremec.wpt.front.domain.SessionSkin"/>
+	<typeAlias alias="bbcAtrClbBbd" 	type="com.waremec.wpt.front.domain.BbcAtrClbBbd"/>
+
+	<resultMap id="rltBbcAtrClbBbd" class="bbcAtrClbBbd">
+	    <result property="CLB_BBD_SQ"  		column = "CLB_BBD_SQ"		javaType="java.lang.Integer"      jdbcType="INTEGER"/>
+	    <result property="CLB_BBD_TP" 		column = "CLB_BBD_TP"		javaType="java.lang.Integer"      jdbcType="INTEGER"/>
+		<result property="RCM_CNT" 			column = "RCM_CNT"			javaType="java.lang.Integer"  	 jdbcType="INTEGER"/> 
+		<result property="CLB_SQ" 			column = "CLB_SQ"			javaType="java.lang.Integer"   	 jdbcType="INTEGER"/>
+		<result property="REG_MBR_SQ" 		column = "REG_MBR_SQ"		javaType="java.lang.Integer"   	 jdbcType="INTEGER"/>
+		<result property="ATT_SQ" 			column = "ATT_SQ"			javaType="java.lang.Integer"   	 jdbcType="INTEGER"/>
+		<result property="LST_MOD_MBR_SQ" 	column = "LST_MOD_MBR_SQ"	javaType="java.lang.Integer"   	 jdbcType="INTEGER"/>
+		<result property="CLB_BBD_ST" 		column = "CLB_BBD_ST"		javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+		<result property="LST_MOD_DT" 		column = "LST_MOD_DT"		javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+		<result property="CLB_BBD_TIT" 		column = "CLB_BBD_TIT"		javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+		<result property="REG_DT" 			column = "REG_DT"			javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+		<result property="NEW_TAG" 			column = "NEW_TAG"			javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+		<result property="RCM_CNT_TAG" 		column = "RCM_CNT_TAG"		javaType="java.lang.String"   	 jdbcType="VARCHAR"/>
+ 		<result property="CLB_BBD_CTE" 		column = "CLB_BBD_CTE"		javaType="java.lang.String"   	 jdbcType="TEXT"/>
+	</resultMap>
+	
+	 <select id="sqlACD_COM_CD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ACD_COM_CD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @COM_CD_DV = #COM_CD_DV#
+	     , @COM_CD_DV_NM = #COM_CD_DV_NM#
+	     , @COM_CD_DV_DCT = #COM_CD_DV_DCT#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlACD_COM_CD_DET_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ACD_COM_CD_DET_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @COM_CD_DV = #COM_CD_DV#
+	     , @COM_CD = #COM_CD#
+	     , @LNG_DV = #LNG_DV#
+	     , @COM_CD_NM = #COM_CD_NM#
+	     , @USE_YN = #USE_YN#
+	     , @SRT_OD = #SRT_OD#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @STD_SQ = #STD_SQ#
+	     , @CLB_NM = #CLB_NM#
+	     , @CLB_ITD = #CLB_ITD#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @PUB_CLB_YN = #PUB_CLB_YN#
+	     , @EXC_TME_DCT = #EXC_TME_DCT#
+	     , @CLB_ST = #CLB_ST#
+	     , @CLB_GD = #CLB_GD#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_MAI_IMG_PTH = #CLB_MAI_IMG_PTH#
+	     , @CLB_MAI_IMG_FNM = #CLB_MAI_IMG_FNM#
+	     , @CLB_BAK_IMG_PTH = #CLB_BAK_IMG_PTH#
+	     , @CLB_BAK_IMG_FNM = #CLB_BAK_IMG_FNM#
+	     , @MAX_MBR_CNT = #MAX_MBR_CNT#
+	     , @CTT_NM = #CTT_NM#
+	     , @CTT_PHN_NO = #CTT_PHN_NO#
+	     , @CTT_EML_ADR = #CTT_EML_ADR#
+	     , @CTT_MBR_SQ = #CTT_MBR_SQ#
+	     , @MBR_CNT = #MBR_CNT#
+	     , @COR_CNT = #COR_CNT#
+	     , @ATD_ADR = #ATD_ADR#
+	     , @ATD_ADR_CD = #ATD_ADR_CD#
+	     , @ATD_ADR_DTL = #ATD_ADR_DTL#
+	     , @CLB_NIK_NM = #CLB_NIK_NM#
+	     , @AGE_YY = #AGE_YY#
+	     , @GND_DV = #GND_DV#
+	     , @BMT_GD = #BMT_GD#
+	     , @BMTYEAR = #BMTYEAR#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_MBR_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CLB_JIN_ST = #CLB_JIN_ST#
+	     , @LST_CLB_JIN_REQ_SQ = #LST_CLB_JIN_REQ_SQ#
+	     , @CLB_JIN_DT = #CLB_JIN_DT#
+	     , @CLB_GD = #CLB_GD#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_BBC = #CLB_BBC#
+	     , @CLB_NIK_NM = #CLB_NIK_NM#
+	     , @JIN_CLB_BBC = #JIN_CLB_BBC#
+	     , @BMT_GD = #BMT_GD#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_RUL_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_RUL_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @RUL_DET_NO = #RUL_DET_NO#
+	     , @RUL_TIT = #RUL_TIT#
+	     , @RUL_DCT = #RUL_DCT#
+	     , @SRT_OD = #SRT_OD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MBR_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MBR_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @MBR_ID = #MBR_ID#
+	     , @MBR_NM = #MBR_NM#
+	     , @BTH_YMD = #BTH_YMD#
+	     , @GND_DV = #GND_DV#
+	     , @MBR_ST = #MBR_ST#
+	     , @LNK_ACT_DV = #LNK_ACT_DV#
+	     , @LNK_ACT_ID = #LNK_ACT_ID#
+	     , @NAT_CD = #NAT_CD#
+	     , @MBL_NO = #MBL_NO#
+	     , @EML_ADR = #EML_ADR#
+	     , @JIN_DT = #JIN_DT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @MBR_PW = #MBR_PW#
+	     , @MBR_MAI_IMG_PTH = #MBR_MAI_IMG_PTH#
+	     , @MBR_MAI_IMG_FNM = #MBR_MAI_IMG_FNM#
+	     , @MBR_BAK_IMG_PTH = #MBR_BAK_IMG_PTH#
+	     , @MBR_BAK_IMG_FNM = #MBR_BAK_IMG_FNM#
+	     , @MBR_GRT_TXT = #MBR_GRT_TXT#
+	  ]]>
+	 </select>
+	 
+	
+	 <select id="sqlUSER_ADD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[USER_ADD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_ID = #MBR_ID#
+	     , @MBR_NM = #MBR_NM#
+	     , @MBR_WECHAT_NM = #MBR_WECHAT_NM#
+	     , @MBR_CLB_NICK = #MBR_CLB_NICK#
+	     , @PASS = #PASS#
+	     , @PASS_ORG = #PASS_ORG#
+	     , @CMT = #CMT#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REQ_SQ = #REQ_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @MNU_LV = #MNU_LV#
+	     , @UP_MNU_ID = #UP_MNU_ID#
+	     , @SRT_OD = #SRT_OD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_CLB_GD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_CLB_GD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @CLB_GD = #CLB_GD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_NM_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_NM_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @LNG_DV = #LNG_DV#
+	     , @MNU_NM = #MNU_NM#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MSG_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MSG_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MSG_ID = #MSG_ID#
+	     , @MSG_TP = #MSG_TP#
+	     , @MSG_DCT = #MSG_DCT#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MSG_DET_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MSG_DET_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MSG_ID = #MSG_ID#
+	     , @LNG_DV = #LNG_DV#
+	     , @MSG_TXT = #MSG_TXT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_RGN_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_RGN_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @RGN_SQ = #RGN_SQ#
+	     , @RGN_DV = #RGN_DV#
+	     , @ZIP_CD = #ZIP_CD#
+	     , @UP_RGN_ID = #UP_RGN_ID#
+	     , @NAT_CD = #NAT_CD#
+	     , @USE_YN = #USE_YN#
+	     , @RGN_NM = #RGN_NM#
+	     , @RGN_LV = #RGN_LV#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_STD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_STD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @STD_SQ = #STD_SQ#
+	     , @STD_NM = #STD_NM#
+	     , @COR_CNT = #COR_CNT#
+	     , @GPS_LAT = #GPS_LAT#
+	     , @GPS_LOT = #GPS_LOT#
+	     , @DET_ADR = #DET_ADR#
+	     , @NAT_CD = #NAT_CD#
+	     , @RGN_SQ = #RGN_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlASR_CLB_MBR_RNK_YMD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ASR_CLB_MBR_RNK_YMD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @BAS_YMD = #BAS_YMD#
+	     , @WIN_CNT = #WIN_CNT#
+	     , @LOS_CNT = #LOS_CNT#
+	     , @RCV_BBC = #RCV_BBC#
+	     , @CLB_RNK = #CLB_RNK#
+	     , @YY_WIN_CNT = #YY_WIN_CNT#
+	     , @YY_LOS_CNT = #YY_LOS_CNT#
+	     , @YY_RCV_BBC = #YY_RCV_BBC#
+	     , @YY_CLB_RNK = #YY_CLB_RNK#
+	     , @ALL_WIN_CNT = #ALL_WIN_CNT#
+	     , @ALL_LOS_CNT = #ALL_LOS_CNT#
+	     , @ALL_RCV_BBC = #ALL_RCV_BBC#
+	     , @ALL_CLB_RNK = #ALL_CLB_RNK#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlASR_MBR_RNK_YMD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ASR_MBR_RNK_YMD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @BAS_YMD = #BAS_YMD#
+	     , @WIN_CNT = #WIN_CNT#
+	     , @LOS_CNT = #LOS_CNT#
+	     , @RCV_BBC = #RCV_BBC#
+	     , @CLB_RNK = #CLB_RNK#
+	     , @YY_WIN_CNT = #YY_WIN_CNT#
+	     , @YY_LOS_CNT = #YY_LOS_CNT#
+	     , @YY_RCV_BBC = #YY_RCV_BBC#
+	     , @YY_CLB_RNK = #YY_CLB_RNK#
+	     , @ALL_WIN_CNT = #ALL_WIN_CNT#
+	     , @ALL_LOS_CNT = #ALL_LOS_CNT#
+	     , @ALL_RCV_BBC = #ALL_RCV_BBC#
+	     , @ALL_CLB_RNK = #ALL_CLB_RNK#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_BBD_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_BBD_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_BBD_SQ = #CLB_BBD_SQ#
+	     , @CLB_BBD_TP = #CLB_BBD_TP#
+	     , @RCM_CNT = #RCM_CNT#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @CLB_BBD_ST = #CLB_BBD_ST#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_BBD_TIT = #CLB_BBD_TIT#
+	     , @CLB_BBD_CTE = #CLB_BBD_CTE#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_BBD_REP_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_BBD_REP_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_BBD_SQ = #CLB_BBD_SQ#
+	     , @REP_NO = #REP_NO#
+	     , @UP_REP_NO = #UP_REP_NO#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REP_CTE = #REP_CTE#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_CST_IO_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_CST_IO_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CLB_CST_IO_SQ = #CLB_CST_IO_SQ#
+	     , @CST_IO_DV = #CST_IO_DV#
+	     , @CLB_CST_CD = #CLB_CST_CD#
+	     , @AMT = #AMT#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @MMO = #MMO#
+	     , @CLB_CST_IO_ST = #CLB_CST_IO_ST#
+	     , @CST_IO_YMD = #CST_IO_YMD#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_JIN_REQ_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_JIN_REQ_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_JIN_REQ_SQ = #CLB_JIN_REQ_SQ#
+	     , @JIN_REQ_MBR_SQ = #JIN_REQ_MBR_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @CLB_JIN_REQ_ST = #CLB_JIN_REQ_ST#
+	     , @REQ_DT = #REQ_DT#
+	     , @CLB_NIK_NM = #CLB_NIK_NM#
+	     , @JIN_GRT_TXT = #JIN_GRT_TXT#
+	     , @JIN_APV_DT = #JIN_APV_DT#
+	     , @JIN_RTN_DT = #JIN_RTN_DT#
+	     , @JIN_RTN_MMO = #JIN_RTN_MMO#
+	     , @JIN_CNL_DT = #JIN_CNL_DT#
+	     , @JIN_CNL_MMO = #JIN_CNL_MMO#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @JIN_APV_MMO = #JIN_APV_MMO#
+	     , @AGE_YY = #AGE_YY#
+	     , @GND_DV = #GND_DV#
+	     , @BMT_GD = #BMT_GD#
+	     , @BMTYEAR = #BMTYEAR#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_COM_ATC_DET_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_COM_ATC_DET_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @ATT_DET_NO = #ATT_DET_NO#
+	     , @ATT_PHT = #ATT_PHT#
+	     , @ATT_FNM = #ATT_FNM#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_COM_ATT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_COM_ATT_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @ATT_TAB_NM = #ATT_TAB_NM#
+	     , @ATT_COL_NM = #ATT_COL_NM#
+	     , @ATT_TP = #ATT_TP#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EVT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EVT_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @EVT_ST = #EVT_ST#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EVT_FR_DT = #EVT_FR_DT#
+	     , @EVT_TO_DT = #EVT_TO_DT#
+	     , @PTO_ATT_SQ = #PTO_ATT_SQ#
+	     , @EVT_CTE = #EVT_CTE#
+	     , @HME_NM = #HME_NM#
+	     , @AWY_NM = #AWY_NM#
+	     , @PTO_URL = #PTO_URL#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EVT_CHE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EVT_CHE_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CHE_TEM_DV = #CHE_TEM_DV#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CHE_CTE = #CHE_CTE#
+	     , @EVT_HIT_YN = #EVT_HIT_YN#
+	     , @RCV_BBC = #RCV_BBC#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @EXC_TP = #EXC_TP#
+	     , @EXC_ATD_TP = #EXC_ATD_TP#
+	     , @EXC_FR_DT = #EXC_FR_DT#
+	     , @EXC_TO_FR = #EXC_TO_FR#
+	     , @STD_SQ = #STD_SQ#
+	     , @AWY_CLB_SQ = #AWY_CLB_SQ#
+	     , @HME_CLB_SQ = #HME_CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EXC_DCT = #EXC_DCT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @EXC_TIT = #EXC_TIT#
+	     , @ATD_CNT = #ATD_CNT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	     , @EXC_JIN_TP = #EXC_JIN_TP#
+	     , @EXC_JIN_DLY = #EXC_JIN_DLY#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_CAR_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_CAR_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @CAR_MBR_SQ = #CAR_MBR_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	     , @EXC_JIN_TP = #EXC_JIN_TP#
+	     , @EXC_JIN_DLY = #EXC_JIN_DLY#
+	     , @CAR_YN = #CAR_YN#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_INSERT]
+		@JOP_TYPE = #JOP_TYPE#
+		, @LOGIN_USER = #LOGIN_USER#
+		, @MTC_SQ = #MTC_SQ#
+		, @EXC_SQ = #EXC_SQ#
+		, @STD_SQ = #STD_SQ#
+		, @MTC_TP = #MTC_TP#
+		, @MTC_SET_CNT = #MTC_SET_CNT#
+		, @BY_SET_SCR = #BY_SET_SCR#
+		, @MTC_FR_DT = #MTC_FR_DT#
+		, @MTC_TO_DT = #MTC_TO_DT#
+		, @BLG_EXC_YN = #BLG_EXC_YN#
+		, @EVT_REG_YN = #EVT_REG_YN#
+		, @HME_CLB_SQ = #HME_CLB_SQ#
+		, @REG_MBR_SQ = #REG_MBR_SQ#
+		, @AWY_CLB_SQ = #AWY_CLB_SQ#
+		, @VTC_TEM_DV = #VTC_TEM_DV#
+		, @A_TEM_SCR = #A_TEM_SCR#
+		, @B_TEM_SCR = #B_TEM_SCR#
+		, @REG_DT = #REG_DT#
+		, @LST_MOD_DT = #LST_MOD_DT#
+		, @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+		, @MBR_SQ_A1 = #MBR_SQ_A1#
+		, @MTC_CLB_BBC_A1 = #MTC_CLB_BBC_A1#
+		, @MBR_SQ_A2 = #MBR_SQ_A2#
+		, @MTC_CLB_BBC_A2 = #MTC_CLB_BBC_A2#
+		, @MBR_SQ_B1 = #MBR_SQ_B1#
+		, @MTC_CLB_BBC_B1 = #MTC_CLB_BBC_B1#
+		, @MBR_SQ_B2 = #MBR_SQ_B2#
+		, @MTC_CLB_BBC_B2 = #MTC_CLB_BBC_B2#
+		, @A_TEAM_NM = #A_TEAM_NM#
+		, @B_TEAM_NM = #B_TEAM_NM#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_PLR_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_PLR_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MTC_TEM_DV = #MTC_TEM_DV#
+	     , @TEM_PLR_NO = #TEM_PLR_NO#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @VTR_DV = #VTR_DV#
+	     , @SCR = #SCR#
+	     , @MTC_CLB_BBC = #MTC_CLB_BBC#
+	     , @CAL_HND_CAP = #CAL_HND_CAP#
+	     , @RCV_BBC = #RCV_BBC#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_NTE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_NTE_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @NTE_SQ = #NTE_SQ#
+	     , @SND_MBR_SQ = #SND_MBR_SQ#
+	     , @NTE_CTT = #NTE_CTT#
+	     , @REG_DT = #REG_DT#
+	     , @NTE_SND_ST = #NTE_SND_ST#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_NTE_RCV_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_NTE_RCV_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @NTE_SQ = #NTE_SQ#
+	     , @RCV_MBR_SQ = #RCV_MBR_SQ#
+	     , @NTE_RCV_ST = #NTE_RCV_ST#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+
+	 <select id="sqlACD_COM_CD_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ACD_COM_CD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @COM_CD_DV = #COM_CD_DV#
+	     , @COM_CD_DV_NM = #COM_CD_DV_NM#
+	     , @COM_CD_DV_DCT = #COM_CD_DV_DCT#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlACD_COM_CD_DET_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ACD_COM_CD_DET_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @COM_CD_DV = #COM_CD_DV#
+	     , @COM_CD = #COM_CD#
+	     , @LNG_DV = #LNG_DV#
+	     , @COM_CD_NM = #COM_CD_NM#
+	     , @USE_YN = #USE_YN#
+	     , @SRT_OD = #SRT_OD#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @STD_SQ = #STD_SQ#
+	     , @CLB_NM = #CLB_NM#
+	     , @CLB_ITD = #CLB_ITD#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @PUB_CLB_YN = #PUB_CLB_YN#
+	     , @EXC_TME_DCT = #EXC_TME_DCT#
+	     , @CLB_ST = #CLB_ST#
+	     , @CLB_GD = #CLB_GD#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_MAI_IMG_PTH = #CLB_MAI_IMG_PTH#
+	     , @CLB_MAI_IMG_FNM = #CLB_MAI_IMG_FNM#
+	     , @CLB_BAK_IMG_PTH = #CLB_BAK_IMG_PTH#
+	     , @CLB_BAK_IMG_FNM = #CLB_BAK_IMG_FNM#
+	     , @MAX_MBR_CNT = #MAX_MBR_CNT#
+	     , @CTT_NM = #CTT_NM#
+	     , @CTT_PHN_NO = #CTT_PHN_NO#
+	     , @CTT_EML_ADR = #CTT_EML_ADR#
+	     , @CTT_MBR_SQ = #CTT_MBR_SQ#
+	     , @ATD_ADR = #ATD_ADR#
+	     , @LANG = #LANG#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_MBR_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CLB_JIN_ST = #CLB_JIN_ST#
+	     , @LST_CLB_JIN_REQ_SQ = #LST_CLB_JIN_REQ_SQ#
+	     , @CLB_JIN_DT = #CLB_JIN_DT#
+	     , @CLB_GD = #CLB_GD#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_BBC = #CLB_BBC#
+	     , @CLB_NIK_NM = #CLB_NIK_NM#
+	     , @JIN_CLB_BBC = #JIN_CLB_BBC#
+	     , @LANG = #LANG#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_RUL_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_RUL_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @RUL_DET_NO = #RUL_DET_NO#
+	     , @RUL_TIT = #RUL_TIT#
+	     , @RUL_DCT = #RUL_DCT#
+	     , @SRT_OD = #SRT_OD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MBR_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MBR_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @MBR_ID = #MBR_ID#
+	     , @MBR_NM = #MBR_NM#
+	     , @BTH_YMD = #BTH_YMD#
+	     , @GND_DV = #GND_DV#
+	     , @MBR_ST = #MBR_ST#
+	     , @LNK_ACT_DV = #LNK_ACT_DV#
+	     , @LNK_ACT_ID = #LNK_ACT_ID#
+	     , @NAT_CD = #NAT_CD#
+	     , @MBL_NO = #MBL_NO#
+	     , @EML_ADR = #EML_ADR#
+	     , @JIN_DT = #JIN_DT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @MBR_PW = #MBR_PW#
+	     , @MBR_MAI_IMG_PTH = #MBR_MAI_IMG_PTH#
+	     , @MBR_MAI_IMG_FNM = #MBR_MAI_IMG_FNM#
+	     , @MBR_BAK_IMG_PTH = #MBR_BAK_IMG_PTH#
+	     , @MBR_BAK_IMG_FNM = #MBR_BAK_IMG_FNM#
+	     , @MBR_GRT_TXT = #MBR_GRT_TXT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @MNU_LV = #MNU_LV#
+	     , @UP_MNU_ID = #UP_MNU_ID#
+	     , @SRT_OD = #SRT_OD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT_CARD" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT_CARD]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_CLB_GD_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_CLB_GD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @CLB_GD = #CLB_GD#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MNU_NM_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MNU_NM_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MNU_ID = #MNU_ID#
+	     , @LNG_DV = #LNG_DV#
+	     , @MNU_NM = #MNU_NM#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MSG_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MSG_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MSG_ID = #MSG_ID#
+	     , @MSG_TP = #MSG_TP#
+	     , @MSG_DCT = #MSG_DCT#
+	     , @USE_YN = #USE_YN#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_MSG_DET_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_MSG_DET_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MSG_ID = #MSG_ID#
+	     , @LNG_DV = #LNG_DV#
+	     , @MSG_TXT = #MSG_TXT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_RGN_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_RGN_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @RGN_SQ = #RGN_SQ#
+	     , @RGN_DV = #RGN_DV#
+	     , @ZIP_CD = #ZIP_CD#
+	     , @UP_RGN_ID = #UP_RGN_ID#
+	     , @NAT_CD = #NAT_CD#
+	     , @USE_YN = #USE_YN#
+	     , @RGN_NM = #RGN_NM#
+	     , @RGN_LV = #RGN_LV#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_STD_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_STD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @STD_SQ = #STD_SQ#
+	     , @STD_NM = #STD_NM#
+	     , @COR_CNT = #COR_CNT#
+	     , @GPS_LAT = #GPS_LAT#
+	     , @GPS_LOT = #GPS_LOT#
+	     , @DET_ADR = #DET_ADR#
+	     , @NAT_CD = #NAT_CD#
+	     , @RGN_SQ = #RGN_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlASR_CLB_MBR_RNK_YMD_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ASR_CLB_MBR_RNK_YMD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @BAS_YMD = #BAS_YMD#
+	     , @WIN_CNT = #WIN_CNT#
+	     , @LOS_CNT = #LOS_CNT#
+	     , @RCV_BBC = #RCV_BBC#
+	     , @CLB_RNK = #CLB_RNK#
+	     , @YY_WIN_CNT = #YY_WIN_CNT#
+	     , @YY_LOS_CNT = #YY_LOS_CNT#
+	     , @YY_RCV_BBC = #YY_RCV_BBC#
+	     , @YY_CLB_RNK = #YY_CLB_RNK#
+	     , @ALL_WIN_CNT = #ALL_WIN_CNT#
+	     , @ALL_LOS_CNT = #ALL_LOS_CNT#
+	     , @ALL_RCV_BBC = #ALL_RCV_BBC#
+	     , @ALL_CLB_RNK = #ALL_CLB_RNK#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlASR_MBR_RNK_YMD_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ASR_MBR_RNK_YMD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @BAS_YMD = #BAS_YMD#
+	     , @WIN_CNT = #WIN_CNT#
+	     , @LOS_CNT = #LOS_CNT#
+	     , @RCV_BBC = #RCV_BBC#
+	     , @CLB_RNK = #CLB_RNK#
+	     , @YY_WIN_CNT = #YY_WIN_CNT#
+	     , @YY_LOS_CNT = #YY_LOS_CNT#
+	     , @YY_RCV_BBC = #YY_RCV_BBC#
+	     , @YY_CLB_RNK = #YY_CLB_RNK#
+	     , @ALL_WIN_CNT = #ALL_WIN_CNT#
+	     , @ALL_LOS_CNT = #ALL_LOS_CNT#
+	     , @ALL_RCV_BBC = #ALL_RCV_BBC#
+	     , @ALL_CLB_RNK = #ALL_CLB_RNK#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_BBD_SELECT" parameterClass="java.util.HashMap"  resultMap="rltBbcAtrClbBbd" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_BBD_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_BBD_SQ = #CLB_BBD_SQ#
+	     , @CLB_BBD_TP = #CLB_BBD_TP#
+	     , @RCM_CNT = #RCM_CNT#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @CLB_BBD_ST = #CLB_BBD_ST#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CLB_BBD_TIT = #CLB_BBD_TIT#
+	     , @CLB_BBD_CTE = #CLB_BBD_CTE#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_BBD_REP_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_BBD_REP_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_BBD_SQ = #CLB_BBD_SQ#
+	     , @REP_NO = #REP_NO#
+	     , @UP_REP_NO = #UP_REP_NO#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REP_CTE = #REP_CTE#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_CST_IO_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_CST_IO_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CLB_CST_IO_SQ = #CLB_CST_IO_SQ#
+	     , @CST_IO_DV = #CST_IO_DV#
+	     , @CLB_CST_CD = #CLB_CST_CD#
+	     , @AMT = #AMT#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @MMO = #MMO#
+	     , @CLB_CST_IO_ST = #CLB_CST_IO_ST#
+	     , @CST_IO_YMD = #CST_IO_YMD#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_CLB_JIN_REQ_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_CLB_JIN_REQ_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_JIN_REQ_SQ = #CLB_JIN_REQ_SQ#
+	     , @JIN_REQ_MBR_SQ = #JIN_REQ_MBR_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @CLB_JIN_REQ_ST = #CLB_JIN_REQ_ST#
+	     , @REQ_DT = #REQ_DT#
+	     , @CLB_NIK_NM = #CLB_NIK_NM#
+	     , @JIN_GRT_TXT = #JIN_GRT_TXT#
+	     , @JIN_APV_DT = #JIN_APV_DT#
+	     , @JIN_RTN_DT = #JIN_RTN_DT#
+	     , @JIN_RTN_MMO = #JIN_RTN_MMO#
+	     , @JIN_CNL_DT = #JIN_CNL_DT#
+	     , @JIN_CNL_MMO = #JIN_CNL_MMO#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @JIN_APV_MMO = #JIN_APV_MMO#
+	     , @LANG = #LANG#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_COM_ATC_DET_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_COM_ATC_DET_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @ATT_DET_NO = #ATT_DET_NO#
+	     , @ATT_PHT = #ATT_PHT#
+	     , @ATT_FNM = #ATT_FNM#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_COM_ATT_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_COM_ATT_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @ATT_SQ = #ATT_SQ#
+	     , @ATT_TAB_NM = #ATT_TAB_NM#
+	     , @ATT_COL_NM = #ATT_COL_NM#
+	     , @ATT_TP = #ATT_TP#
+	     , @REG_DT = #REG_DT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EVT_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EVT_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @EVT_ST = #EVT_ST#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EVT_FR_DT = #EVT_FR_DT#
+	     , @EVT_TO_DT = #EVT_TO_DT#
+	     , @PTO_ATT_SQ = #PTO_ATT_SQ#
+	     , @EVT_CTE = #EVT_CTE#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EVT_CHE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EVT_CHE_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CHE_TEM_DV = #CHE_TEM_DV#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @CHE_CTE = #CHE_CTE#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @EVT_HIT_YN = #EVT_HIT_YN#
+	     , @RCV_BBC = #RCV_BBC#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @EXC_TP = #EXC_TP#
+	     , @EXC_ATD_TP = #EXC_ATD_TP#
+	     , @EXC_FR_DT = #EXC_FR_DT#
+	     , @EXC_TO_FR = #EXC_TO_FR#
+	     , @STD_SQ = #STD_SQ#
+	     , @AWY_CLB_SQ = #AWY_CLB_SQ#
+	     , @HME_CLB_SQ = #HME_CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EXC_DCT = #EXC_DCT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @EXC_TIT = #EXC_TIT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	  ]]>
+	 </select>
+	 
+	
+	 <select id="sqlAMS_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @PARAMA = #PARAMA#
+	     , @PARAMB = #PARAMB#
+	     , @PARAMC = #PARAMC#
+	     , @PARAMD = #PARAMD#
+	     , @PARAME = #PARAME#
+	     , @PARAMF = #PARAMF#
+	     , @PARAMG = #PARAMG#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_CAR_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_CAR_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_SELECT_GAME" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_SELECT_GAME]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_EXC_JIN_SELECT_GAME_NEW" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_EXC_JIN_SELECT_GAME_NEW]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @CORT_CNT = #CORT_CNT#
+	     , @PARTNER_BASIC_COIN = #PARTNER_BASIC_COIN#
+	     , @TEAM_BASIC_COIN = #TEAM_BASIC_COIN#
+	     , @MBR_MIN_GAME_CNT = #MBR_MIN_GAME_CNT#
+	     , @TEST_FLAG = #TEST_FLAG#
+	     , @MBR_SQ_STR = #MBR_SQ_STR#
+	     , @MBR_GROUP_STR = #MBR_GROUP_STR#
+	     , @EXC_JIN_DLY_STR = #EXC_JIN_DLY_STR#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SINGLES_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SINGLES_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+		 , @MTC_SQ = #MTC_SQ#
+		 , @STD_SQ = #STD_SQ#
+		 , @MTC_TP = #MTC_TP#
+		 , @MTC_FR_DT = #MTC_FR_DT#
+		 , @MTC_TO_DT = #MTC_TO_DT#
+		 , @CLB_SQ = #CLB_SQ#
+		 , @REG_MBR_SQ = #REG_MBR_SQ#
+		 , @VTC_TEM_DV = #VTC_TEM_DV#
+		 , @MBR_SQ_A = #MBR_SQ_A#
+		 , @SCR_A = #SCR_A#
+		 , @MBR_SQ_B = #MBR_SQ_B#
+		 , @SCR_B = #SCR_B#
+		 , @REG_DT = #REG_DT#
+		 , @LST_MOD_DT = #LST_MOD_DT#
+		 , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @STD_SQ = #STD_SQ#
+	     , @MTC_TP = #MTC_TP#
+	     , @MTC_SET_CNT = #MTC_SET_CNT#
+	     , @BY_SET_SCR = #BY_SET_SCR#
+	     , @MTC_FR_DT = #MTC_FR_DT#
+	     , @MTC_TO_DT = #MTC_TO_DT#
+	     , @BLG_EXC_YN = #BLG_EXC_YN#
+	     , @EVT_REG_YN = #EVT_REG_YN#
+	     , @HME_CLB_SQ = #HME_CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @AWY_CLB_SQ = #AWY_CLB_SQ#
+	     , @VTC_TEM_DV = #VTC_TEM_DV#
+	     , @A_TEM_SCR = #A_TEM_SCR#
+	     , @B_TEM_SCR = #B_TEM_SCR#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT_TODAY" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT_TODAY]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @FR_DT = #FR_DT#
+	     , @TO_DT = #TO_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SINGLES_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SINGLES_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @FR_DT = #FR_DT#
+	     , @TO_DT = #TO_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT_TEAM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT_TEAM]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ_A = #MBR_SQ_A1#
+	     , @MBR_SQ_B = #MBR_SQ_A2#
+	     , @MBR_SQ_C = #MBR_SQ_B1#
+	     , @MBR_SQ_D = #MBR_SQ_B2#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT_PERIOD" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT_PERIOD]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @FR_DT = #FR_DT#
+	     , @TO_DT = #TO_DT#
+	     , @ORDERBY = #ORDERBY#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_SELECT_BEST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_SELECT_BEST]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @MBR_NM = #MBR_NM#
+	     , @ORDERBY = #ORDERBY#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_MBR_SELECT_RANK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_SELECT_RANK]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @ORDERBY = #ORDERBY#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_MBR_SELECT_EX" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_SELECT_EXC]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_MBR_SELECT_RANK_SINGLES" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_SELECT_RANK_SINGLES]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @ORDERBY = #ORDERBY#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MTC_PLR_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MTC_PLR_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @MTC_SQ = #MTC_SQ#
+	     , @MTC_TEM_DV = #MTC_TEM_DV#
+	     , @TEM_PLR_NO = #TEM_PLR_NO#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @VTR_DV = #VTR_DV#
+	     , @SCR = #SCR#
+	     , @MTC_CLB_BBC = #MTC_CLB_BBC#
+	     , @CAL_HND_CAP = #CAL_HND_CAP#
+	     , @RCV_BBC = #RCV_BBC#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_NTE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_NTE_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @NTE_SQ = #NTE_SQ#
+	     , @SND_MBR_SQ = #SND_MBR_SQ#
+	     , @NTE_CTT = #NTE_CTT#
+	     , @REG_DT = #REG_DT#
+	     , @NTE_SND_ST = #NTE_SND_ST#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_NTE_RCV_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_NTE_RCV_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @NTE_SQ = #NTE_SQ#
+	     , @RCV_MBR_SQ = #RCV_MBR_SQ#
+	     , @NTE_RCV_ST = #NTE_RCV_ST#
+	     , @REG_DT = #REG_DT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_EXC_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_EXC_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @YW_DAY = #YW_DAY#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlAMS_CLB_EXC_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[AMS_CLB_EXC_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @EXC_DCT = #EXC_DCT#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EXC_TIT1 = #EXC_TIT1#
+	     , @EXC_FR_TME1 = #EXC_FR_TME1#
+	     , @EXC_TO_TME1 = #EXC_TO_TME1#
+	     , @EXC_TIT2 = #EXC_TIT2#
+	     , @EXC_FR_TME2 = #EXC_FR_TME2#
+	     , @EXC_TO_TME2 = #EXC_TO_TME2#
+	     , @EXC_TIT3 = #EXC_TIT3#
+	     , @EXC_FR_TME3 = #EXC_FR_TME3#
+	     , @EXC_TO_TME3 = #EXC_TO_TME3#
+	     , @EXC_TIT4 = #EXC_TIT4#
+	     , @EXC_FR_TME4 = #EXC_FR_TME4#
+	     , @EXC_TO_TME4 = #EXC_TO_TME4#
+	     , @EXC_TIT5 = #EXC_TIT5#
+	     , @EXC_FR_TME5 = #EXC_FR_TME5#
+	     , @EXC_TO_TME5 = #EXC_TO_TME5#
+	     , @EXC_TIT6 = #EXC_TIT6#
+	     , @EXC_FR_TME6 = #EXC_FR_TME6#
+	     , @EXC_TO_TME6 = #EXC_TO_TME6#
+	     , @EXC_TIT7 = #EXC_TIT7#
+	     , @EXC_FR_TME7 = #EXC_FR_TME7#
+	     , @EXC_TO_TME7 = #EXC_TO_TME7#
+	     , @EXC_DCT1 = #EXC_DCT1#
+	     , @EXC_DCT2 = #EXC_DCT2#
+	     , @EXC_DCT3 = #EXC_DCT3#
+	     , @EXC_DCT4 = #EXC_DCT4#
+	     , @EXC_DCT5 = #EXC_DCT5#
+	     , @EXC_DCT6 = #EXC_DCT6#
+	     , @EXC_DCT7 = #EXC_DCT7#
+	     , @EXC_TP1 = #EXC_TP1#
+	     , @EXC_TP2 = #EXC_TP2#
+	     , @EXC_TP3 = #EXC_TP3#
+	     , @EXC_TP4 = #EXC_TP4#
+	     , @EXC_TP5 = #EXC_TP5#
+	     , @EXC_TP6 = #EXC_TP6#
+	     , @EXC_TP7 = #EXC_TP7#
+	  ]]>
+	 </select>
+
+
+	 <select id="sqlATR_MSG_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MSG_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @EXC_TP = #EXC_TP#
+	     , @EXC_ATD_TP = #EXC_ATD_TP#
+	     , @EXC_FR_DT = #EXC_FR_DT#
+	     , @EXC_TO_FR = #EXC_TO_FR#
+	     , @STD_SQ = #STD_SQ#
+	     , @AWY_CLB_SQ = #AWY_CLB_SQ#
+	     , @HME_CLB_SQ = #HME_CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EXC_DCT = #EXC_DCT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @EXC_TIT = #EXC_TIT#
+	     , @ATD_CNT = #ATD_CNT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MSG_JIN_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MSG_JIN_INSERT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	     , @EXC_JIN_TP = #EXC_JIN_TP#
+	     , @EXC_JIN_DLY = #EXC_JIN_DLY#
+	     , @MSG_SQ = #MSG_SQ#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MSG_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MSG_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @EXC_TP = #EXC_TP#
+	     , @EXC_ATD_TP = #EXC_ATD_TP#
+	     , @EXC_FR_DT = #EXC_FR_DT#
+	     , @EXC_TO_FR = #EXC_TO_FR#
+	     , @STD_SQ = #STD_SQ#
+	     , @AWY_CLB_SQ = #AWY_CLB_SQ#
+	     , @HME_CLB_SQ = #HME_CLB_SQ#
+	     , @REG_MBR_SQ = #REG_MBR_SQ#
+	     , @EXC_DCT = #EXC_DCT#
+	     , @REG_DT = #REG_DT#
+	     , @LST_MOD_DT = #LST_MOD_DT#
+	     , @LST_MOD_MBR_SQ = #LST_MOD_MBR_SQ#
+	     , @EXC_TIT = #EXC_TIT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MSG_JIN_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MSG_JIN_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @REG_DT = #REG_DT#
+	     , @EXC_JIN_CMT = #EXC_JIN_CMT#
+	  ]]>
+	 </select>
+	
+	 <select id="sqlATR_MSG_JIN_SELECT_GAME" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	  EXEC [dbo].[ATR_MSG_JIN_SELECT_GAME]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @EXC_SQ = #EXC_SQ#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	  ]]>
+	 </select>
+	
+	<!-- 查询商品类型信息 -->
+	<select id="getFollowUser" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+	  EXEC [dbo].[AMS_CLB_MBR_FOLLOW_SELECT]
+	     @JOP_TYPE = #JOP_TYPE#
+	     , @LOGIN_USER = #LOGIN_USER#
+	     , @CLB_SQ = #CLB_SQ#
+	     , @MBR_SQ = #MBR_SQ#
+	     , @OPENID = #OPENID#
+	     , @MBR_SQ_F = #MBR_SQ_F#
+	     , @OPENID_F = #OPENID_F#
+	    ]]>
+	</select>
+	
+	<!-- 查询商品类型信息 -->
+	<select id="sqlAMS_COMMON_PROCEDURE" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+	  EXEC [dbo].[AMS_COMMON_PROCEDURE]
+	     @P1 = #P1#
+	     , @P2 = #P2#
+	     , @P3 = #P3#
+	     , @P4 = #P4#
+	     , @P5 = #P5#
+	     , @P6 = #P6#
+	     , @P7 = #P7#
+	     , @P8 = #P8#
+	     , @P9 = #P9#
+	    ]]>
+	</select>
+	
+	<!-- 查询商品类型信息 -->
+	<select id="sqlAMS_BADMATCH_PROCEDURE" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+	  EXEC [dbo].[AMS_BADMATCH_PROCEDURE]
+	     @P1 = #P1#
+	     , @P2 = #P2#
+	     , @P3 = #P3#
+	     , @P4 = #P4#
+	     , @P5 = #P5#
+	     , @P6 = #P6#
+	     , @P7 = #P7#
+	     , @P8 = #P8#
+	     , @P9 = #P9#
+	     , @P10 = #P10#
+	     , @P11 = #P11#
+	     , @P12 = #P12#
+	     , @P13 = #P13#
+	     , @P14 = #P14#
+	     , @P15 = #P15#
+	     , @P16 = #P16#
+	     , @P17 = #P17#
+	     , @P18 = #P18#
+	     , @P19 = #P19#
+	     , @P20 = #P20#
+	    ]]>
+	</select>
+	
+</sqlMap>

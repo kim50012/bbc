@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+html,body{
+	width:100%;
+}
+.divHasScroll{
+	overflow: auto;
+	display: inline;
+	white-space: nowrap;
+}
+
+ 
+#enumeGroupList{
+	float: left;
+	left: 0px;
+	width: 40%;
+}
+
+#enumeItemsList{
+	position: relative;
+	float: right;
+	right:0px;
+	width: 59.8%;
+}
+/*居右的下拉列表框样式*/
+.rightSelectStyle{
+	position: relative;
+	float: right;
+}
+
+#enumeGroupList table{
+	position: relative;
+}
+#enumeItemsList table{
+	position: relative;
+}
+/* 弹出修改名称的界面 */
+#updateEnumGroupName table{
+	width: 500px;
+	height: 300px;
+	border-style: solid;
+	background-color: #FFFFFF;
+}
+
+#updateEnumGroupName table tr td input{
+	width: 300px;
+	height: 20px;
+}
+.updateTitleStyle{
+	width: 30%;
+}
+.updateContentStyle{
+	width: 70%;
+}
+.updateButtonStyle{
+	position: relative;
+	right: 30px;
+}
+
+#addOrUpdateEnumItems table{
+	width: 500px;
+	height: 300px;
+	border-style: solid;
+	background-color: #FFFFFF;
+}
+#addOrUpdateEnumItems table tr td input{
+	height: 20px;
+}
+.addOrUpdateNames{
+	width: 408px;
+}
+.addOrUpdateOtherInput{
+	width: 160px;
+}
+
+/* 高度自适应 */
+#divAllAutoHeight{
+	height: auto !important;
+	height: 500px;
+	min-height: 500px;
+	overflow: hidden;
+}
+

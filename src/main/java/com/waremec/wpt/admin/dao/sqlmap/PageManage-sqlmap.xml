@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="PageManage">
+	<!-- 查询LIST信息 -->
+	<select id="list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ANALYSIS_PAGE_SELECT]
+        	@PAGE_NM			=#pageNm:VARCHAR#
+			,@PAGE_GROUP		=#pageGroup:VARCHAR#
+			,@PAGE_CURR			=#pageCurr:INT#	
+	 		,@PAGE_UINT			=#pageUnit:INT#
+		]]>
+	</select>
+	<select id="PAGE_GROUP_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	   <![CDATA[
+		SELECT 
+			DISTINCT PAGE_GROUP
+		FROM DBO.ANALYSIS_PAGE
+		WHERE IS_DELETE=0
+	   ]]>
+	 </select>
+	 <select id="save" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ANALYSIS_PAGE_INSERT]
+		 	@JOB_TYPE		=#jobType:CHAR#
+			, @PAGE_TP		=#pageTp:INT#							
+			, @PAGE_NM		=#pageNm:VARCHAR#		
+			, @PAGE_URL		=#pageUrl:VARCHAR#		
+			, @IS_DELETE	=#isDelete:TINYINT#			
+			, @CREATED_DT	=#createdDt:SMALLDATETIME#	
+			, @PAGE_GROUP	=#pageGroup:VARCHAR#	
+			, @PAGE_GROUP2	=#pageGroup2:VARCHAR#
+			, @USER_ID		=#userId:NVARCHAR#
+		]]>
+	</select>
+</sqlMap>

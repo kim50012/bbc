@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MsgManage">
+	<!-- 查询用户聊天记录 -->
+	<procedure id="getCustChats" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	 <![CDATA[
+		  Exec WX_MESSAGE_SELECT 
+			@SHOP_ID = #shopId:INT#
+			,@CUST_SYS_ID = #custSysId:INT#
+			,@USER_ID = #userId:NVARCHAR#
+			,@START_DT=#startDate:SMALLDATETIME#
+			,@END_DT=#endDate:SMALLDATETIME#
+			,@FLAG=#flag:NVARCHAR#
+			,@PAGE_CURR=#pageCurr:INT#
+			,@PAGE_UINT=#pageUnit:INT#
+		]]>
+	</procedure>
+</sqlMap>

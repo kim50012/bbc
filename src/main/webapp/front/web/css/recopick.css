@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*  recopick 탭 CSS 추가 2014.09.02 */
+div.reco_relation-list {
+	position: relative;
+	padding: 0px 39px 0;
+	width: 920px;
+	height: 280px;
+	overflow: hidden;
+	border: 1px solid #c8c8c8;
+	border-top: 0;
+}

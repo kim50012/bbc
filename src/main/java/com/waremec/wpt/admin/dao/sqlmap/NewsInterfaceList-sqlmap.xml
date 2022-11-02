@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NewsInterfaceList">
+    
+	<select id="getNewsInterfaceList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	 <![CDATA[
+		 EXEC [WX_IF_MESSAGE_STATS_DATA_SELECT]
+			@SHOP_ID 		=#shopId#
+			,@PAGE_CURR		=#pageCurr#
+			,@PAGE_UINT		=#pageUnit#
+			, @START_DT		=#beginDate#
+			, @END_DT		=#endDate#
+			, @TITLE		=#title#
+		]]>
+	</select>
+	<select id="updateNewsInterface" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	 <![CDATA[
+		 EXEC [WX_IF_MESSAGE_STATS_DATA_MODIFY_SELECT]
+			@SHOP_ID 		=#shopId#
+			,@PAGE_CURR		=#pageCurr#
+			,@PAGE_UINT		=#pageUnit#
+		]]>
+	</select>
+	<select id="updateNewsInterfaceId" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	 <![CDATA[
+		 EXEC [WX_IF_MESSAGE_STATS_DATA_MODIFY]
+			@SHOP_ID 		=#shopId#
+			,@MSG_ID		=#msgId#
+			,@WX_MSG_ID		=#wxMsgId#
+		]]>
+	</select>
+</sqlMap>

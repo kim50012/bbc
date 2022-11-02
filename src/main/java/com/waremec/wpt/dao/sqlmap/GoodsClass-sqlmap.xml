@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Config">
+
+	<!-- <typeAlias alias="claimListData" type="com.waremec.sbsc.config.domain.ClaimListData" />
+	<typeAlias alias="riskListData" type="com.waremec.sbsc.config.domain.RiskListData" />
+
+	<resultMap id="claimListDataMap" class="claimListData">
+		<result property="ID" column="ID" javaType="java.lang.String" />
+		<result property="OBJECT_ID" column="OBJECT_ID" javaType="java.lang.String" />
+		<result property="POSTING_DATE" column="POSTING_DATE" javaType="java.lang.String" />
+		<result property="PRIORITY_DESCR" column="PRIORITY_DESCR" javaType="java.lang.String" />
+		<result property="CIC_PRD" column="CIC_PRD" javaType="java.lang.String" />
+		<result property="MODEL" column="MODEL" javaType="java.lang.String" />
+		<result property="PENDING_TAT" column="PENDING_TAT" javaType="java.lang.String" />
+		<result property="REASON_DESCR" column="REASON_DESCR" javaType="java.lang.String" />
+		<result property="COMMENTS" column="COMMENTS" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="CHANGED_BY" column="CHANGED_BY" javaType="java.lang.String" />
+		<result property="NAME_FIRST" column="NAME_FIRST" javaType="java.lang.String" />
+		<result property="ASC_CODE" column="ASC_CODE" javaType="java.lang.String" />
+		<result property="ASC_NAME" column="ASC_NAME" javaType="java.lang.String" />
+		<result property="COMMENTS_EX" column="COMMENTS_EX" jdbcType="CLOB" javaType="java.lang.String" />
+	</resultMap>
+	
+	<resultMap id="riskListDataMap" class="riskListData">
+		<result property="ID" column="ID" javaType="java.lang.String" />
+		<result property="OBJECT_ID" column="OBJECT_ID" javaType="java.lang.String" />
+		<result property="SEN_DT" column="SEN_DT" javaType="java.lang.String" />
+		<result property="SVC_PRCD2" column="SVC_PRCD2" javaType="java.lang.String" />
+		<result property="MODEL" column="MODEL" javaType="java.lang.String" />
+		<result property="PENDING_TAT" column="PENDING_TAT" javaType="java.lang.String" />
+		<result property="PEND2_DESC" column="PEND2_DESC" javaType="java.lang.String" />
+		<result property="OPEN_USER_ID" column="OPEN_USER_ID" javaType="java.lang.String" />
+		<result property="OPEN_USER_NAME" column="OPEN_USER_NAME" javaType="java.lang.String" />
+		<result property="ASC_CODE" column="ASC_CODE" javaType="java.lang.String" />
+		<result property="ASC_NAME" column="ASC_NAME" javaType="java.lang.String" />
+	</resultMap>
+
+	CLAIM LIST
+	<select id="getClaimListData" parameterClass="java.util.HashMap" resultMap="claimListDataMap">
+	    <![CDATA[
+		 	EXEC [SP_CLAIM_MST_LIST]
+		 	@SEARCH_TYPE = #SEARCH_TYPE:VARCHAR#
+		]]>
+	</select>
+
+	RISK LIST
+	<select id="getRiskListData" parameterClass="java.util.HashMap" resultMap="riskListDataMap">
+	    <![CDATA[
+		 	EXEC [SP_RISK_MST_LIST]
+		 	@SEARCH_TYPE = #SEARCH_TYPE:VARCHAR#
+		]]>
+	</select>
+
+	指标设定
+	<select id="getIndWeaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_WEATHER_DATA] @WEA_TYPE = #WEA_TYPE:VARCHAR#
+		]]>
+	</select>
+	<procedure id="udpateIndWeaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_WEATHER_MODIFY] 
+		 	@ID	= #ID:INT#,
+		 	@WEA_TYPE = #WEA_TYPE:VARCHAR#,
+		 	@RATE_F = #RATE_F:INT#,
+		 	@RATE_T = #RATE_T:INT#,
+		 	@TARGET = #TARGET:DECIMAL#
+		]]>
+	</procedure>
+
+	假期设定
+	<select id="getHolidayData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_HOLIDAY_DATA] @ID = #ID:VARCHAR#
+		]]>
+	</select>
+	<procedure id="updateHolidayData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_HOLIDAY_MODIFY] 
+		 	@ID	= #ID:VARCHAR#,
+		 	@DATE_TYPE = #DATE_TYPE:VARCHAR#
+		]]>
+	</procedure>
+
+	CLAIM区域设定
+	<select id="getClaimAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_CLAIM_AREA_DATA] 
+		 	@AREA_TYPE = #AREA_TYPE:VARCHAR#,
+		 	@CUST_CITY = #CUST_CITY:VARCHAR#
+		]]>
+	</select>
+	<procedure id="updateClaimAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_CLAIM_AREA_MODIFY] 
+		 	@AREA_TYPE	= #AREA_TYPE:VARCHAR#,
+		 	@CUST_CITY = #CUST_CITY:VARCHAR#
+		]]>
+	</procedure>
+	<procedure id="addClaimAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_CLAIM_AREA_INS] 
+		 	@AREA_TYPE	= #AREA_TYPE:VARCHAR#,
+		 	@CUST_CITY = #CUST_CITY:VARCHAR#
+		]]>
+	</procedure>
+
+	RISK区域设定
+	<select id="getRiskAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_RISK_AREA_DATA] 
+		 	@AREA_TYPE = #AREA_TYPE:VARCHAR#,
+		 	@ASC_CODE = #ASC_CODE:VARCHAR#
+		]]>
+	</select>
+	<procedure id="updateRiskAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_RISK_AREA_MODIFY] 
+		 	@AREA_TYPE	= #AREA_TYPE:VARCHAR#,
+		 	@ASC_CODE = #ASC_CODE:VARCHAR#
+		]]>
+	</procedure>
+	<procedure id="addRiskAreaData" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SP_TM_RISK_AREA_INS] 
+		 	@AREA_TYPE	= #AREA_TYPE:VARCHAR#,
+		 	@ASC_CODE = #ASC_CODE:VARCHAR#
+		]]>
+	</procedure> -->
+</sqlMap>

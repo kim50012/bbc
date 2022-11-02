@@ -1,0 +1,1207 @@
+@charset "utf-8";
+
+#body {
+	position: relative;
+	z-index: 20;
+}
+h3 {
+	padding: 22px 0 0 21px;
+	float:left;
+	width:100%;
+	height:31px;
+	background:url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 22px;
+}
+
+div.page-location {
+	padding: 0;
+	margin: -44px 0 0;
+	height: 44px;
+	border-bottom: 0;
+	text-align: right;
+}
+div.page-location span {
+	margin: 0 6px;
+}
+div.page-location a {
+	font-size: 11px;
+}
+div.brand  strong {
+	color: #4b4b4b;
+}
+div.location-type02 {
+	margin: 0; 
+	padding: 22px 0 0;
+}
+div.brand {
+	float: left;
+	padding: 0 0 120px;
+	width: 1000px;
+}
+/** 브랜드 검색 배너부 **/
+
+div.search-main-banner {
+	float: left;
+	width: 1000px;
+}
+
+/** 브랜드 검색 **/
+
+div.brand-search-form {
+	float: left;
+	padding-right: 10px;
+	width: 340px; 
+	position: relative;
+    z-index: 10;
+}
+div.input-area {
+	float: left;
+	margin: 0 -660px 0 0;
+	width: 1000px;
+	height: 36px;
+}
+div.input-area span {margin-left:10px;}
+div.input-area .brand-search {color:#333; margin:0 10px 0 6px;}
+
+div.input-area input[type="text"] {
+	margin: 1px 0 0;
+	padding: 1px 1px 1px 7px;
+	width: 262px;
+	height: 22px;
+	border: 1px solid #bfbfbf;
+}
+div.input-area a img {
+	vertical-align: middle;
+}
+div.result {
+	position: relative;
+	z-index: 1;
+	float: left;
+	width: 338px;
+	height: 624px;
+	border: 1px solid #dfdfdf;
+}
+.brand .list-view-con {top:14px;}
+.brand .list-view-con .list-pattern-brand p {float:left; margin-left:13px;}
+.brand .list-view-con .list-pattern-brand p a.on {font-weight:bold; color:#333;}
+.result .all-non {display:inline-block; margin:2px 0 0 8px; text-decoration:underline; color:#d62b21; font-size:11px;}
+.result p.open {float:right;}
+div.result .list-con {
+	padding: 8px 0 0;
+	height: 22px;
+	color: #666;
+	background: #f8f8f8;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.result .char-sort .list-con {
+	position: relative;
+	z-index: 30;
+}
+div.result .list-con label {
+	margin: 0 0 0 2px;
+	vertical-align: middle;
+}
+div.result .category{
+	position: relative;
+	z-index: 100;
+	float: left;
+	width: 149px;
+	background: #f8f8f8;
+}
+div.result .char-sort {
+	position: relative;
+	z-index: 10;
+	float: left;
+	width: 188px;
+}
+div.result .char-sort .list-con {
+	padding-left: 11px;
+	width: 177px;
+	border-right: 1px solid #dfdfdf;
+}
+div.result .category .list-con {
+	padding-left: 8px;
+	width: 141px;
+	margin-left:-1px;
+}
+.category .list {
+	padding: 5px 0 0 0;
+	width: 149px;
+}
+.category .banner {
+	padding: 3px 0 0;
+	background: #fff;
+}
+.category .list li {
+	padding: 6px 5px 0 9px;
+	height: 14px;
+}
+.category .list ul.cate-list {
+	padding: 0 0 10px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.category div.banner {
+	position: relative;
+	z-index: 10;
+	padding: 4px 0 0 0; text-align:center;
+}
+.category div.banner img {
+	border: 1px solid #dfdfdf;
+}
+.category .list ul.brand-order {
+	padding: 5px 0 6px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.category .list li input {
+	vertical-align: middle;
+}
+.char-sort .char-menu{ 
+	position: relative;
+	z-index: 12;
+	float: left;
+	padding: 0 0 0 1px;
+	width: 26px;
+	height: 593px;
+	background: #e0e0e0;
+}
+.char-sort .char-menu ul {
+	float: left;
+	width: 23px;
+}
+.char-sort .char-menu ul.alpa {border-right:1px solid #e9e9e9;}
+.char-sort .char-menu ul li {
+	float: left;
+	width: 26px;
+	height: 17px;
+	border-top: 0;
+	overflow: hidden;
+	text-align: center;
+	background: #e0e0e0;
+	border-bottom:1px solid #e9e9e9;
+	line-height:15px;
+}
+.char-sort .char-menu ul li a {
+	display:block;
+	height:15px;
+	padding-top:2px;
+	line-height:13px;
+}
+.char-sort .char-menu ul li.selected {
+	background: #d62b21
+}
+.char-sort .char-menu ul li.selected a{
+	font-weight: bold;
+	color: #fff;
+}
+.result-list {
+	position: relative;
+	z-index: 5;
+	float: left;
+	width: 140px;
+	height: 570px;
+	background: #fff;
+}
+.result-list ul.result {
+	float: left;
+	/*position: relative;*/
+	z-index: 3;
+	padding: 4px 8px 0 17px;
+	width: 137px;
+	height: 567px;
+	border-bottom: 1px solid #dfdfdf;
+
+}
+.result-list ul.result li {
+	width:133px;
+	position: relative;
+	padding: 3px 0 0 4px;
+	height: 19px;
+	/*z-index:50 !important;*/
+	background:#fff;
+	letter-spacing: -1px;
+}
+
+.result-list ul.result li.result-no {font-weight:bold; font-size:12px; color:#999; margin-top:105px; text-align:center; line-height:18px;}
+.result-list ul.result li span a {
+	display: block;
+	float: left;
+	padding-right: 7px;
+	width: 110px;
+}
+.result-list ul.result li.selected {
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #333;
+	background: #e9e9e9;
+}
+.result-list ul.result li.selected  a {
+	color: #333;
+}
+.result-list p.open {
+	clear: both;
+	padding: 4px 0 0 10px;
+	height: 16px;
+}
+.result-list p.open span {
+	display:  block;
+	width: 54px;
+	padding-right: 5px;
+	color: #d62b21;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_red_arrow.gif") no-repeat right 3px;
+}
+.result-list p.open span {
+	display: block;
+	cursor: pointer;
+}
+/*** all-brand */
+div.brand-all-view {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: -1px;
+	z-index: 10;
+	padding: 31px 0 0;
+	width: 873px;
+	height: 593px;
+	background: #fff url("//image.ssgdfs.com/images/shop/brand/bg_top.gif") repeat-x 0 0;
+	border: 1px solid #dfdfdf;
+	border-left:0px solid #dfdfdf;
+}
+.brand-all-view .listing-all {
+	float: left; z-index:8;
+	padding: 0 0 0 46px;
+	width: 572px;
+	height: 571px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_all_list.gif") repeat-y 47px 0; 
+}
+.listing-all ul.main {
+	
+}
+.listing-all ul.main li {
+	float: left;
+	width: 143px;
+	height: 571px;
+}
+.listing-all ul.main ul {
+	padding: 4px 0 0 4px;
+	width: 142px;
+	height: 557px;
+}
+
+.listing-all ul.main li ul li{
+	position: relative;
+	padding: 3px 0 0 8px;
+	height: 19px;
+}
+.listing-all ul.main li span a {
+	display: block;
+	float: left;
+	padding-right: 7px;
+	width: 100px;
+}
+.listing-all ul.main li.selected {
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #333;
+	background: #e9e9e9;
+	width:130px;
+}
+.listing-all ul.main li.selected  a {
+	color: #333;
+}
+
+/*** best-brand ***/
+
+.brand-all-view .best-brand {
+	float: left; z-index:6;
+	width: 254px;
+	height: 571px;
+	background: #f3f3f3;
+	border-left: 1px solid #dfdfdf;
+}
+.brand-all-view .best-brand p.title {
+	padding: 19px 0 0;
+	height: 32px;
+	text-align: center;
+	width: 228px;
+}
+.brand-all-view .best-brand ul {
+	padding: 0 35px;
+}
+.brand-all-view .best-brand ul li {
+	margin: 0 0 10px 0;
+	width:178px; height:88px; border:1px solid #dfdfdf;
+}
+
+/*** list-con ***/
+.brand-all-view .all-list-con {
+	position: relative;
+	z-index: 6;
+	width: 873px;
+	clear: both;
+	text-align: center;
+	border-top: 1px solid #dfdfdf;
+}
+.brand-all-view .all-list-con .list-view {
+	padding: 4px 0 0; z-index:4;
+}
+.brand-all-view .all-list-con .close {
+	position: absolute; z-index:4;
+	right: 14px;
+	top: 4px; font-size:11px;
+	padding-left: 9px;
+	cursor: pointer; display:block;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_op_cl.gif") no-repeat 0 3px;
+}
+/*** 메인 베너 ***/
+div.main-banner {
+	margin: 36px 0 0;
+	position: relative;
+	z-index: 1;
+	float: left;
+	width: 650px;
+	height: 250px;
+	overflow: hidden;
+}
+div.main-banner .view-con,
+div.main-banner .banner-menu {
+	position: absolute;
+	z-index: 4;
+}
+div.main-banner .view-con {
+	right: 8px;
+	top: 10px; 
+}
+div.main-banner .banner-menu {
+	left: 0;
+	top: 223px;
+	width: 650px;
+	height: 9px;
+	text-align: center;
+}
+div.main-banner .banner-list ul li{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 650px;
+	height: 250px;
+}
+div.main-banner .banner-list ul li:first-child,
+div.main-banner .banner-list ul li.first-child {
+	
+}
+/*** 인기상품10 ***/
+
+.hot-item-ten {
+	float: left;
+	margin: 10px 0 0;
+	width: 649px;
+	height: 363px;
+	border: 1px solid #dfdfdf;
+	border-right: 0;
+	border-top: 2px solid #555;
+	z-index:2;
+}
+.hot-item-ten .item-menu {
+	float: left;
+	width: 184px;
+	height: 363px;
+	border-right: 1px solid #dfdfdf; 
+	z-index:5;
+}
+.hot-item-ten .item-menu p.title {
+	position: relative;
+	z-index: 2;
+	margin: -2px -1px 0 -1px;
+	height: 80px;
+	width: 186px;
+	text-align: center;
+	border-top:2px solid #d21b22;
+}
+.hot-item-ten .item-menu ul {
+	margin: 0 -1px -1px 0;
+	padding: 4px 0 1px 0;
+}
+.hot-item-ten .item-menu ul li {
+	padding: 1px 30px 0 20px;
+	height: 68px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_listing_off.gif") no-repeat right 0;
+	border-bottom: 1px solid #dfdfdf;
+}
+.hot-item-ten .item-menu ul li img {
+	vertical-align: top;
+	width: 126px;
+	height: 66px;
+}
+.hot-item-ten .item-menu ul li.selected {
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_listing_on.gif") no-repeat 162px 29px;
+} 
+.hot-item-ten .brand-product-wrap {
+	position: relative;
+	float: left;
+	margin: 0 0 -1px;
+	width: 464px;
+	height: 362px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_list.gif") repeat-y right 0 0;
+	z-index:3;
+}
+.hot-item-ten .brand-product-wrap ul.main li {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 464px;
+	height: 362px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_list.gif") repeat-y right 0 #fff;
+}
+.hot-item-ten .brand-product-wrap ul li {
+	width: 465px;
+	height: 326px;
+	height: 91px;
+}
+.hot-item-ten .brand-product-wrap ul.main li ul li {
+	position: relative;
+	float: left;
+	width: 121px;
+	height: 91px;
+	background: none;
+}
+.hot-item-ten .brand-product-wrap ul li ul li.first-child ,
+.hot-item-ten .brand-product-wrap ul li ul li:first-child {
+	width: 220px;
+	height: 360px;
+}
+.hot-item-ten .brand-product-wrap ul li ul li.first-child ul li ul {
+	width: 220px;
+	height: 360px;
+	overflow: hidden;
+	background: #fff;
+}
+.hot-item-ten .brand-product-wrap ul li ul li.first-child ul li {
+	float: none;
+	width: 220px;
+	height: 181px;
+	border-bottom: 1px solid #dedede;
+	background: #fff;
+}
+.hot-item-ten .brand-product-wrap ul li ul li:first-child ul li.first-child {
+	position: relative;
+	z-index: 1000;
+	width: 221px; 
+	border-right: 1px solid #dedede;
+	padding: 0;
+}
+.hot-item-ten .brand-product-wrap ul li ul li p {
+	padding-top: 7px;
+	text-align: center;
+}
+
+/*** layer ***/
+
+div.brand-info {
+	display: none;
+	position: absolute;
+	left: 126px;
+	top: 3px;
+	z-index: 5;
+	padding: 9px 9px 9px;
+	width: 200px;
+	height: 150Px;
+	border: 1px solid #ababab;
+	background: #fff url("//image.ssgdfs.com/images/shop/brand/bg_layer.gif") no-repeat -1px -1px;
+}
+div.brand-pattern {
+	background: #fff;
+}
+div.brand-pattern p.photo {height:94px; border:1px solid #dfdfdf;}
+div.brand-pattern p.photo a {
+	display: inline !important;
+	width: auto !important;
+	background: none !important;
+}
+div.brand-pattern p.tel {
+	padding: 6px 0 0;
+	height: 18px;
+	text-align: center;
+	letter-spacing: 1px;
+	font-weight: normal;
+	color: #666;
+	background: #f8f8f8;
+	border-top: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.brand-pattern ul.pattern {
+	padding: 4px 0 5px;
+	margin: 0 -4px 3px 0;
+	width: 205px;
+	height: auto !important;
+	overflow: hidden;
+	float:left
+}
+div.brand-pattern ul.pattern li {
+	float: left !important;
+	margin: 0 4px 0 0 !important;
+	padding: 4px 0 0 !important;
+	height: 20px !important;
+	display: inline !important;
+	width: 98px !important;
+	overflow: hidden !important;
+	/*background: #f2f2f2!important;
+	border: 1px solid #ccc;*/
+}
+div.brand-pattern ul.pattern li a {
+	display: block !important;
+	padding: 0 !important;
+	width: 64px !important;
+	text-align: center !important;
+	font-size: 11px !important;
+	font-weight: normal !important;
+	color: #666 !important;
+	background: #f2f2f2 !important;
+}
+div.link {
+	clear: both;
+	width: 200px;
+}
+.listing-all ul.main ul li  div.link a {
+	display: inline !important;
+	padding: 0 !important;
+	width: auto !important;
+}
+
+/** 인기상품 상품 정보 레이어 ***/
+
+
+.product-info-layer {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	padding: 21px 0 0;
+	width: 122px;
+	height: 70px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_layer_popup.png") repeat 0 0;
+	/*border: 1px solid #dfdfdf;
+	background: #fff url("//image.ssgdfs.com/images/shop/brand/bg_layer_bot.gif") no-repeat 203px 127px;*/
+}
+
+.product-info-layer p {
+	padding: 0 0 6px !important;
+	line-height:14px;
+	font-size:11px;
+}
+ul li.first-child .product-info-layer {width:221px; height:160px; position:absolute; left:0; top:0;}
+ul li.first-child .product-info-layer p.product-name {height:auto; margin-top:60px;}
+.product-info-layer p a {
+	color: #fff;
+}
+/*.product-info-layer p.brand a{
+	display:block;
+	color:#fff;
+} */
+.product-info-layer p.product-name {height:8px; margin:7px 0 3px 0; overflow:hidden;}
+.product-info-layer p.price span.origin{
+	font-size: 11px;
+	text-decoration: line-through;
+}
+.product-info-layer p.price span.us-currency {
+	font-size: 14px;
+	font-weight: bold;
+	color: #ff7082;
+}
+.product-info-layer p.price span.nation-currency {
+	font-size: 11px;
+	color: #ff7082;
+}
+.brand span.nation-currency {display:block;}
+
+/* tab-list */
+
+.list-tab {
+	clear: both;
+	padding: 50px 0 0;
+	width: 1000px;
+	overflow: hidden;
+}
+.list-tab ul.tab-menu {
+	width: 1000px;
+	height: 38px;
+	border-bottom: 2px solid #555;
+}
+.list-tab ul.tab-menu li {
+	float: left;
+	margin: 0 -1px 0 0;
+	width: 128px;
+	height: 37px;
+	text-align: center;
+	background: #f4f4f3;
+	border: 1px solid #c8c8c8;
+	border-bottom: 0;
+}
+.list-tab ul.tab-menu li a {display:block;padding:12px 0;}
+.list-tab ul.tab-menu li.selected {
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_list_tab.gif") repeat-x 0 0;
+	border: 1px solid #424242;
+	border-bottom: 0;
+}
+.section-title {
+	height:50px;
+}
+.section-title p {
+	padding:9px 0 0 19px;
+}
+.brand-list {
+	width: 1000px;
+	overflow: hidden;
+	/*border-top: 1px solid #dfdfdf;*/
+}
+.brand-list ul {
+	/*margin: 0 -1px 0 -1px;*/
+	width: 1000px;
+	overflow: hidden;
+	margin-left:-1px;
+}
+.brand-list ul li { 
+	width:199px;
+	float: left;
+	border:1px solid #dfdfdf;
+	margin-right:-1px;
+	text-align:center;
+	/*margin: 0 -1px 0 0px;
+	width: 199px;
+	display: inline;
+	border: 1px solid #dfdfdf;
+	border-right: 0;
+	text-align: center;*/
+}
+.brand-list ul li p {
+	padding: 2px;
+}
+.brand-list ul li.line {
+	margin: -1px -1px 0 0;
+}
+.brand-list ul li div.able {padding: 14px 0;height: 30px; background: #f8f8f8;border-top: 1px solid #dfdfdf;}
+.brand-list ul li div.able span {
+	display: block;
+	text-align: center;
+	width:190px;
+	padding:0 5px;
+}
+.plan-list {
+	width: 1000px;
+	overflow: hidden;
+}
+.plan-list ul {
+	margin: 0 0 0 -40px;
+	padding: 20px 0 0;
+	width: 1040px;
+	overflow: hidden;
+}
+.plan-list ul li {
+	float: left;
+	padding: 0 15px 20px 44px;
+	width: 200px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_plan_list.gif") no-repeat 14px 5px;
+}
+.plan-list ul li img {
+	border: 1px solid #dfdfdf;
+}
+/** 서브 페이지 철자 검색 ***/
+
+.char-search {
+	width: 1000px;
+	overflow: hidden;
+	border-top: 2px solid #555;
+}
+.char-search .char-con {
+	position: relative;
+	width: 1000px;
+	height: 41px;
+	border-bottom: 1px solid #dfdfdf;
+	background: #fbfbfb;
+}
+.char-search .char-con .link-nation {
+	position: absolute;
+	right: 10px; 
+	top: 9px;
+} 
+.char-search .title {
+	float: left;
+	padding: 15px 0 0 20px;
+	width: 168px;
+}
+.char-search .char-menu {
+	float: left;
+	width: 812px;
+}
+.char-search .char-menu ul {
+	float: left;
+	padding: 12px 12px 0;
+	overflow: hidden;
+}
+.char-search .char-menu ul li {
+	float: left;
+	width: 24px;
+	height: 16px;
+	overflow: hidden;
+}
+.char-search .char-menu ul li a {
+	display: block;
+	padding: 1px 0 0;
+	font-size: 11px;
+	text-align: center;
+}
+.char-search .char-menu ul li.selected {
+	background: #555; 
+}
+.char-search .char-menu ul li.selected a {
+	font-weight: bold;
+	color: #fff;
+}
+.char-search .char-menu ul.alpa {
+	background:url("//images.ssgdfs.com/images/shop/brand/bg_lang.gif") no-repeat right 3px;
+}
+.result-brand {
+	clear: both;
+	width: 1000px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.result-brand {
+	width: 1000px;
+	overflow: hidden;
+}
+.result-char {
+	float: left;
+	padding: 0 0 0 20px;
+	width: 180px; 
+	font-size: 90px;
+	color: #333;
+}
+.result-char-k {float: left;padding:10px 0 0 10px;width:190px; font-size:40px; color: #333; font-weight:bold;}
+div.listing-result {
+	float: left;
+	width: 799px;
+	min-height: 109px;
+	height: auto !important;
+	height: 109px;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_char_result.gif") repeat-y 0 0;
+	border-left: 1px solid #dfdfdf;
+}
+div.listing-result ul {
+	padding: 5px 0 0;
+}
+div.listing-result ul li {
+	float: left;
+	padding: 0 2px 0;
+	width: 195px;
+	height: 20px;
+}
+div.listing-result ul li span{ 
+	display: block;
+	padding: 3px 0 3px 8px;
+	width: 187px;
+}
+div.listing-result ul li.selected span {
+	background: #efefef; 
+}
+div.listing-result ul li.selected a {
+	font-weight: bold;
+	color: #333;
+}
+div.listing-result ul li a {
+	font-size: 11px;
+}
+div.store-intro {
+	margin: 18px 0 0;
+	width: 1000px;
+	height: 329px;
+	overflow: hidden;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.store-intro div.store-info ,
+div.store-intro div.store-banner {
+	float: left;
+}
+div.store-intro div.store-info {
+	width: 300px;
+}
+div.store-intro p {
+	padding: 7px 0 0 40px;
+}
+div.store-intro .store-location {color:#828282;}
+div.store-intro p.photo {
+	padding: 3px 0 0 40px;
+}
+div.store-intro p.brand {
+	padding-top: 8px;
+	font-weight: bold;
+	color: #333;
+}
+div.store-intro p.tel {
+	color: #be1e2d;
+}
+div.store-intro p.site-location {
+	padding: 14px 0 0 40px;
+}
+div.store-intro p.site-location strong,
+div.store-intro p.site-location span,
+div.store-intro p.site-location a{
+	font-weight: normal;
+	color: #5a5a5a;
+	font-size: 11px;
+}
+.title-best {
+	padding: 27px 0 0 1px;
+	height: 22px;
+	border-bottom: 2px solid #555;
+}
+
+
+
+/** 브랜드 이밴트 **/
+div.brand p.list-counter {margin-top:25px;}
+p.list-counter span.font-bold {font-weight:bold; color:#333;}
+div.brand-event .more-view {margin-left:170px; border-top:1px solid #eaeaea; text-align:center; clear: both;}
+div.brand-event {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+	float:left;
+	height:auto;
+}
+div.brand-event dl{
+	width: 1000px;
+	height : 138px;
+	overflow: hidden;
+}
+div.brand-event dl dt ,
+div.brand-event dl dd {
+	float: left;
+}
+div.brand-event dl dt {
+	padding: 16px 0 0;
+	width: 160px;
+	border-top: 2px solid #555;
+}
+div.brand-event dl dd {
+	width: 840px;
+}
+div.brand-event dl dd ul li {
+	float: left;
+	padding: 0 0 10px 10px;
+	width: 200px;
+}
+div.brand-event dl dd ul li p.banner {
+	border: 1px solid #dfdfdf;
+}
+div.event-info {
+	width: 200px;
+	overflow: hidden;
+}
+div.brand-event dl dd p.term {
+	float: left;
+	padding: 7px 0 0;
+	width: 112px;
+}
+div.brand-event dl dd p.term span {
+	display: block;
+	color:#999;
+}
+div.brand-event dl dd p.like  {
+	padding: 9px 0 0;
+}
+div.brand-event dl dd p.like img {
+	vertical-align: middle;
+}
+div.brand-event dl dd p.like span {
+	display: inline-block;
+	width: 32px;
+	height: 14px;
+	font-size: 11px;
+	text-align: center;
+	background:url("//image.ssgdfs.com/images/shop/brand/bg_count.gif") no-repeat 0 0;
+}
+
+/*** 연관 기획전 ***/
+div.relation-plan {
+	clear: both;
+	width: 1000px;
+	float:left;
+	margin:0 0 0 -1px; overflow:hidden; border-bottom:1px solid #dfdfdf; border-top:2px solid #000;
+}
+table {
+	width: 100%;
+	margin:0 0 -1px -1px;
+}
+.relation-plan th {
+	border-right: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+}
+.relation-plan th span {display:block; padding:8px 0;}
+.relation-plan td {
+	padding: 10px 0 9px 10px;
+	text-align: left;
+	border-bottom: 1px solid #e1e1e1;
+}
+.relation-plan tr.no-product-txt td {height:20px; background:#f4f4f3; text-align:center; padding:4px 0;}
+.relation-plan tr.category-table td {border-right:1px solid #dfdfdf; border-left:1px solid #dfdfdf;}
+.relation-plan tr.category-table td.date {text-align:center; border-right:0 none;}
+.relation-plan td.selected a {font-weight:bold; color:#666; text-decoration:underline;}
+.relation-plan td.date {
+	padding-left: 0;
+	padding-right: 10px;
+	font-size:11px; font-family:"Tahoma" , "타호마"; color:#999;
+}
+
+.plan-depth {margin:0 0 30px 0;}
+
+/** section-searh tab-menu ***/
+
+div.section-search {
+	margin:0;
+	width: 1000px;
+	float:left;
+}
+div.section-search ul.tab-menu {
+	width: 1000px;
+	overflow: hidden;
+}
+/* div.section-search ul.tab-mar {margin-bottom:-30px;} */
+div.section-search ul.tab-menu li {
+	float: left;
+	margin: 0 -1px 0 0;
+	padding: 11px 17px 0 19px;
+	height: 22px;
+	background: #f4f4f3;
+	border: 1px solid #c8c8c8;
+	border-bottom: 0;
+}
+div.section-search ul.tab-menu li.selected {
+	background: #474747;
+	border: 1px solid #393939;
+}
+div.section-search ul.tab-menu li.selected a {
+	color: #fff;
+}
+.product-list p.more-view {
+	text-align:center;
+}
+.product-list p.more-view span {
+	cursor: pointer;
+}
+
+.listing-all ul.main {
+	  display: none;
+	
+}
+ #view01 {
+    dispaly: block;
+ }
+
+
+
+/*** 사은품 ***/
+
+div.freebie h3 {
+	padding: 36px 0 0 24px;
+	height: 26px;
+	background:url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 35px;
+	border-bottom: 2px solid #000; 
+	clear:both;
+}
+div.freebie h3 img {
+	vertical-align: middle;
+}
+div.freebie h3.num {
+	 padding: 30px 0 0 24px;
+	 height: 31px;
+	 background-position: 0 32px;
+	 width:976px;
+} 
+
+div.freebie {float:left;}
+
+div.occasion {	
+	float: left;
+	width: 998px;
+	overflow: hidden;
+	border: 1px solid #dfdfdf;
+	border-bottom: 0px solid #dfdfdf;
+	
+}
+div.occasion .ceremony-listing {border-bottom:1px solid #dfdfdf;}
+div.occasion ul ,
+div.occasion ul li{
+	width: 998px;
+	overflow: hidden;
+}
+div.occasion ul li {
+	height: auto;
+}
+div.occasion div.ceremony {
+	float: left;
+	width: 499px;
+	border-right: 1px solid #dfdfdf;
+}
+div.occasion div.ceremony p.photo {
+	float: left;
+	padding: 15px 0 0; 
+	width: 180px;
+	height: 165px;
+	text-align: center;
+}
+div.ceremony-info {
+	float: left;
+	padding: 43px 0 0 20px;
+	width: 297px;
+}
+div.ceremony-info p {
+	color: #333;
+}
+div.ceremony-info p.title {
+	padding: 0 0 16px;
+	font-size: 14px;
+	font-weight: bold;
+}
+div.ceremony-info .ceremony-item {
+	display:block;
+	padding: 2px 0 0 8px;
+	color: #666; 
+	background:url("//image.ssgdfs.com/images/shop/order/dot_gray.gif") no-repeat 4px 10px;
+}
+div.ceremony-info p.ceremony-term {
+	padding: 20px 0 0;
+	font-size: 11px;
+	color: #d62b21;
+}
+
+div.list-ceremony {
+	float: left;
+	width: 498px;
+	height: auto; 
+	overflow: hidden;
+	border-left:1px solid #dfdfdf; margin-left:-1px;
+}
+div.list-ceremony  ul {
+	padding: 0 0 0 18px;
+	width: 498px;
+	overflow: hidden;
+}
+div.list-ceremony  ul li {
+	float: left;
+	padding: 10px 0 0;
+	width: 240px;
+	height: 80px;
+}
+div.list-ceremony  ul li p.photo {
+	float: left;
+	width: 80px;
+	height: 70px;
+}
+div.list-ceremony  ul li div.list-info {
+	float: left;
+	padding: 10px 0 0;
+	overflow: hidden;
+}
+div.list-ceremony  ul li div.list-info p {
+	line-height: 17px;
+}
+div.list-ceremony  ul li div.list-info p.product-name {
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #333; 
+	margin-bottom:3px;
+}
+div.list-ceremony  ul li div p.product-name {font-weight:bold; color:#000;}
+div.list-ceremony  ul li div p.freebie {color:#999;}
+div.list-ceremony  ul li div.list-info p.product-name input[type="radio"] {display:inline-block; margin:-1px 2px 0 0;}
+div.list-ceremony  ul li div.list-info p.freebie {
+	font-size: 11px;
+	color: #888;
+	width:140px;
+}
+
+div.occ-completion {border:0 none;}
+div.occ-completion .list-ceremony {width:100%;}
+div.occ-completion .list-ceremony ul {width:100%; padding:0;}
+div.occ-completion .list-ceremony ul li {width:282px; padding:20px 30px 20px 20px; border-right:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf;}
+div.occ-completion .list-ceremony ul li.bor-none {border-right:0 none;}
+div.occ-completion .list-ceremony ul li div.list-info p.freebie {width:200px;}
+
+/* 스페셜_매장 방문 시에만 구매 가능한 상품 */
+
+div.present h3 {
+	padding:0 0 0 24px;
+	height: 26px;
+	background:url("//image.ssgdfs.com/images/shop/order/bg_h3.gif") no-repeat 0 0;
+	clear:both;
+}
+div.present h3 img {
+	vertical-align: middle;
+}
+
+.brand div.present {
+	padding-top:50px;
+	width: 1000px;
+	height: auto;
+	overflow: hidden;
+}
+div.present .brand-order {width:500px; float:left; position:relative;}
+.order-spacial {
+	width: 490px;
+	border-top: 2px solid #555;
+	background: #fff;
+	padding-bottom:1px;
+}
+.order-spacial table {width:100%;}
+.order-spacial table th {height:30px; border-bottom:1px solid #dfdfdf; border-right:1px solid #dfdfdf; text-align:left; font-weight:normal;}
+.order-spacial table th span {margin-left:20px;}
+.order-spacial table td {
+	height: 30px;
+	color: #353535;
+	text-align: center;
+	border-bottom:1px solid #e1e1e1;
+}
+
+.special-order {width:100px; height:40px; position:absolute; right:10px; top:-10px;}
+.order-spacial .special-txt {height:100px; border-bottom:1px solid #e1e1e1; border-top:1px solid #e1e1e1; background:#f4f4f3;}
+.order-spacial .special-txt p {text-align:center; padding-top:40px;}
+
+.no-product {width:100%; height:178px; padding-top:18px; border-top:2px solid #555; text-align:center; font-weight:bold; color:#333; font-size:27px;}
+
+.brand p.list-counter span span.num {margin:0 5px;}
+
+/* 검색-컬러 */
+div.pattern-search table tbody tr td.color ul li {width:110px; height:25px; padding-bottom:5px;}
+div.pattern-search table tbody tr td.color ul li img {display:inline-block; vertical-align:middle; margin:-4px 5px 0 0;}
+
+/* 브랜드 신규 기획전 */
+
+div.plan-list {width:1000px; border-bottom: 1px solid #dfdfdf;}
+div.plan-list table {width: 100%; }
+div.plan-list td {padding:0 0 0 10px; height:40px; border-bottom:1px solid #dfdfdf; }
+div.plan-list td.selected a {font-weight:bold; color:#666; text-decoration:underline;}
+div.plan-list td a {margin-left:20px;}
+div.plan-list td.fta span {display:block; margin:0 20px; text-align:right; color:#999; font-size:11px; font-family:"Tahoma", "타호마"}
+
+
+.brand-banner-list {width:1000px; height:auto; overflow:hidden;} 
+.brand-banner-list ul {width:1010px; height:auto; overflow:hidden; float:left; margin:20px 0 0 -11px;}
+.brand-banner-list li {width:495px; height:100px; float:left; margin:0 0 10px 10px;}
+
+.brand .section-search div.pattern-search {margin:0 0 30px 0; float:left;}
+.brand .section-search .pattern-wrap {width:100%; height:auto; float:left;}
+
+#searchForm {width:1000px; height:auto; float:left;}
+
+div.brand .range-search .price-hori .input-area {
+    position: absolute;
+    left: 20px;
+    bottom: 0px;
+}
+div.pattern-search table tr td ul.category {
+    min-height: 40px;
+    height: auto !important;
+    height: 40px;
+    overflow: hidden;
+}

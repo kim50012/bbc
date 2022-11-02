@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Koreanair">
+    <procedure id="addRoute"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+		 	EXEC [SHOP_WX_LETTER_USER_ANSWER_INSERT]
+ 			@LETTER_ID 	= #LETTER_ID:INT#
+			, @SHOP_ID	= #SHOP_ID:INT#
+			, @OPENID 	= #OPENID:NVARCHAR#
+			, @ANSWER1 	= #ANSWER1:NVARCHAR#
+			, @ANSWER2 	= #ANSWER2:NVARCHAR#
+			, @ANSWER3 	= #ANSWER3:NVARCHAR#
+			, @ANSWER4 	= #ANSWER4:NVARCHAR#
+			, @ANSWER5 	= #ANSWER5:NVARCHAR#
+			, @ANSWER6 	= #ANSWER6:NVARCHAR#
+		]]>
+	</procedure>
+	<procedure id="prizeList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+		 	EXEC [SHOP_EVENT_RESULT_USER_SELECT]
+ 			@EVENT_ID 	= #EVENT_ID:INT#
+		]]>
+	</procedure>
+	<!-- 保存分享信息 -->
+	<procedure id="share"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	     <![CDATA[
+		 	EXEC [SHOP_WX_LETTER_USER_INSERT]
+ 			@LETTER_ID 	=#LETTER_ID:INT#
+			, @SHOP_ID	=#SHOP_ID:INT#
+			, @OPENID 	=#OPENID:NVARCHAR#
+		]]>
+	</procedure>
+</sqlMap>

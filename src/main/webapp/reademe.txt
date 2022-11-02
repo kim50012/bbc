@@ -1,0 +1,70 @@
+***********************************************************
+***********************    농심에 관련    ***********************
+***********************************************************
+JSP 	: /front/nongshim
+struts 	: /resources/struts/front/struts-nongshim.xml
+JAVA 	: package com.waremec.wpt.front.nongshim
+
+
+메뉴링크 변경 2015-09-02
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/goods/sellList.htm'
+WHERE MENU_URL = '/admin/goodsSell/goodsSell.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/goods/selloutList.htm'
+WHERE MENU_URL = '/admin/sellOutGoods/sellOutGoods.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/goods/storeList.htm'
+WHERE MENU_URL = '/admin/depotGoods/depotGoods.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/cust/grade/list.htm'
+WHERE MENU_URL = '/admin/grade/list.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/cust/point/pointList.htm'
+WHERE MENU_URL = '/admin/pointMst/pointMst.htm'
+
+UPDATE MENU_MST
+ SET MENU_URL = '/admin/report/order/summary.htm'
+WHERE MENU_URL = '/admin/orderBaseCount/orderBaseCount.htm'
+
+UPDATE MENU_MST
+ SET MENU_URL = '/admin/income/incomeList.htm'
+WHERE MENU_URL = '/admin/myIncome/myIncome.htm'
+
+UPDATE MENU_MST
+ SET MENU_URL = '/admin/income/detailList.htm'
+WHERE MENU_URL = '/admin/incomeDetail/incomeDetail.htm'
+ 
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/nongshim/bbsResultList.htm'
+WHERE MENU_URL = '/admin/shimEventManage/list.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/report/goods/goodsSummary.htm'
+WHERE MENU_URL = '/admin/GoodsStatistics/GoodsStatistics.htm'
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/report/shop/list.htm'
+WHERE MENU_URL = '/admin/goodsCurrent/list.htm'
+
+
+ UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/display/normalList.htm'
+WHERE MENU_URL = '/admin/goodsDisplay/goodsDisplay.htm'
+
+  UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/display/presaleList.htm'
+WHERE MENU_URL = '/admin/beforeDisplay/beforeDisplay.htm'
+
+  UPDATE MENU_MST
+ SET MENU_URL = '/admin/bbs/bbsList.htm'
+WHERE MENU_URL = '/admin/bbsManage/bbsManage.htm'
+
+  UPDATE MENU_MST
+ SET MENU_URL = '/admin/goods/category/list.htm'
+WHERE MENU_URL = '/admin/goodsClass/list.htm'

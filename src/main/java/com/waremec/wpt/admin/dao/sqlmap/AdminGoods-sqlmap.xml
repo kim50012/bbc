@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AdminGoods">
+	<!-- 店铺商品分类 -->
+	<typeAlias alias="adminGoods" type="com.waremec.wpt.admin.domain.AdminGoods"/>
+
+	<!-- 主页面信息查询-一级分类查询 -->
+	<select id="oneList" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_ONE_SELECT] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@PAGE_CURR = #pageCurr:INT#
+		 	,@PAGE_UINT = #pageUint:INT#
+		]]>
+	</select>
+	<select id="oneListCount" parameterClass="adminGoods" resultClass="java.lang.Integer">
+	    <![CDATA[
+		 	SELECT	
+		 			COUNT(*)
+		 			
+			FROM 	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE 	T1.SGC_PARENT_ID IS NULL
+			  AND	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_ACTIVE = 1
+		]]>
+	</select>
+	<!-- 主页面信息查询-二级分类查询 -->
+	<select id="twoList" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_TWO_SELECT] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@SGC_PARENT_ID = #shopGoodsOneId:INT#
+		]]>
+	</select>
+	
+	<!-- 弹出页面信息查询一级分类  -->
+	<select id="oneSelectList" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsOneId
+			    	,T1.SGC_NM	AS shopGoodsOneNm
+			    	
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SGC_PARENT_ID IS NULL
+			  AND	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_ID = CASE ISNULL(#shopGoodsOneId:INT#, 0) WHEN 0 THEN T1.SGC_ID
+			  				  	ELSE #shopGoodsOneId:INT#
+			  				  	END
+			  AND 	T1.SGC_STS = 1
+			  AND	T1.SGC_ACTIVE = 1 
+		]]>
+	</select>
+	<!-- 弹出页面信息查询二级分类  -->
+	<select id="twoSelectList" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsTwoId
+			    	,T1.SGC_NM	AS shopGoodsTwoNm
+			    	
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SGC_PARENT_ID IS NOT NULL
+			  AND	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_PARENT_ID = #shopGoodsOneId:INT#
+			  AND	T1.SGC_ID = CASE ISNULL(#shopGoodsTwoId:INT#, 0) WHEN 0 THEN T1.SGC_ID
+			  				  	ELSE #shopGoodsTwoId:INT#
+			  				  	END
+			  AND	T1.SGC_STS = 1 
+			  AND	T1.SGC_ACTIVE = 1 
+		]]>
+	</select>
+	<select id="oneSelectCheck" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsOneId
+		 			
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_PARENT_ID IS NULL
+			  AND	T1.SGC_ACTIVE = 1
+			  AND	T1.SGC_NM = #shopGoodsOneNm:NVARCHAR#
+		]]>
+	</select>
+	<select id="twoSelectCheckOne" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsOneId
+		 			
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SGC_PARENT_ID IS NOT NULL
+			  AND	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_NM = #shopGoodsOneNm:NVARCHAR#
+			  AND	T1.SGC_ACTIVE = 1 
+		]]>
+	</select>
+	<select id="twoSelectCheckTwo" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T2.SGC_ID	AS shopGoodsTwoId
+		 			
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T2
+			
+			WHERE	T2.SHOP_ID = #shopId:INT#
+			  AND	T2.SGC_NM = #shopGoodsTwoNm:NVARCHAR#
+			  AND	T1.SGC_ACTIVE = 1 
+		]]>
+	</select>
+	<select id="oneSelectModifyCheck" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsOneId
+		 			
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_ID <> #shopGoodsOneId:INT#
+			  AND	T1.SGC_NM = #shopGoodsOneNm:NVARCHAR# 
+			  AND	T1.SGC_ACTIVE = 1 
+			  AND 	T1.SGC_PARENT_ID IS NULL
+		]]>
+	</select>
+	<select id="oneSelectModifyCheck2" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	SELECT  
+		 			T1.SGC_ID	AS shopGoodsOneId
+		 			
+			FROM	[dbo].[SHOP_GOODS_CLASS] AS T1
+			
+			WHERE	T1.SHOP_ID = #shopId:INT#
+			  AND	T1.SGC_ID <> #shopGoodsTwoId:INT#
+			  AND	T1.SGC_NM = #shopGoodsTwoNm:NVARCHAR# 
+			  AND	T1.SGC_ACTIVE = 1 
+			  AND 	T1.SGC_PARENT_ID IS NOT NULL
+		]]>
+	</select>
+
+	<!-- 商品分组保存 -->
+	<select id="saveGoodsClass" parameterClass="adminGoods" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_INSERT] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@SGC_ID = #shopGoodsOneId:INT#,
+		 	@SGC_NM = #shopGoodsOneNm:NVARCHAR#,
+		 	@SGC_ID2 = #shopGoodsTwoId:INT#,
+		 	@SGC_NM2 = #shopGoodsTwoNm:NVARCHAR#,
+		 	@SGC_TYPE_ID = #shopGoodsType:INT#
+		]]>
+	</select>
+
+	<!-- 商品分组修改 -->
+	<procedure id="modify" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_MODIFY] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@SGC_ID_OLD = #shopGoodsOneOldId:INT#,
+		 	@SGC_ID2_OLD = #shopGoodsTwoOldId:INT#,
+		 	@SGC_ID_NEW = #shopGoodsOneId:INT#,
+		 	@SGC_NM_NEW = #shopGoodsOneNm:NVARCHAR#,
+		 	@SGC_ID2_NEW = #shopGoodsTwoId:INT#,
+		 	@SGC_NM2_NEW = #shopGoodsTwoNm:NVARCHAR#,
+		 	@SGC_TYPE_ID = #shopGoodsType:INT#,
+		 	@OPERATION = #operation:VARCHAR#,
+		 	@EDIT = #edit:VARCHAR#
+		]]>
+	</procedure>
+
+	<!-- 商品分组删除 -->
+	<procedure id="gcDelete" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_DELETE] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@USER_ID = #userId:NVARCHAR#,
+		 	@SGC_ID = #shopGoodsOneId:INT#,
+		 	@SGC_ID2 = #shopGoodsTwoId:INT#
+		]]>
+	</procedure>
+
+	<!-- 商品分组排序 -->
+	<procedure id="menuSort" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_SORT] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@USER_ID = #userId:NVARCHAR#,
+		 	@SGC_ID = #shopGoodsOneId:INT#,
+		 	@SGC_ID2 = #shopGoodsTwoId:INT#,
+		 	@OPTION = #option:VARCHAR#
+		]]>
+	</procedure>
+	
+	<!-- 商品登记查询list查询 -->
+	<select id="goodsClassList" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_CREATE_LIST_SELECT]
+		 	@SHOP_ID	= #shopId:INT#
+		 	,@GOODS_NM	= #goodsNm:NVARCHAR#
+		 	,@PAGE_CURR	= #pageCurr:INT#
+		 	,@PAGE_UINT	= #pageUint:INT#
+		]]>
+	</select>
+	<select id="goodsClassListCount" parameterClass="adminGoods" resultClass="java.lang.Integer">
+	    <![CDATA[
+			SELECT
+					COUNT(*)
+			FROM 	DBO.GOODS AS T1
+					LEFT JOIN	DBO.GOODS_CLASS AS T2 
+								ON T2.GC_ID = T1.GC_ID
+					LEFT JOIN	DBO.SHOP_FILE_MST AS T3 
+								ON T3.[FILE_ID] = T1.IMG_ID
+			WHERE 	T1.SHOP_ID = #shopId:INT#
+  			  AND	T1.GOODS_STS = 1
+		]]>
+	</select>
+
+	<!-- 商品登记保存 -->
+	<procedure id="goodssave" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [GOODS_INSERT] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@USER_ID = #userId:NVARCHAR#,
+		 	@GOODS_NM = #goodsNm:NVARCHAR#,
+		 	@GC_ID2 = #goodsClassTwoId:NVARCHAR#,
+		 	@GC_ID3 = #goodsClassThreeId:INT#,
+		 	@SPEC_NM = #specNm:NVARCHAR#,
+		 	@UNIT_TXT = #unitTxt:NVARCHAR#,
+		 	@IS_REAL = #isReal:INT#,
+		 	@SEO_TAG = #seoTag:NVARCHAR#,
+		 	@GOODS_WEIGHT = #goodsWeight:INT#,
+		 	@IMG_ID = #goodsImgId:INT#,
+		 	@BRAND_ID = #pageCurr:INT#
+		]]>
+	</procedure>
+	
+	<!-- 商品登记一修改页面-页面加载及属性查询 -->
+	<select id="goodsSelect" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_SELECT] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@GOODS_ID = #goodsId:INT#
+		]]>
+	</select>
+	
+	<!-- 商品登记一修改页面-分类List查询 -->
+	<select id="goodsClassListModify" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_CLASS_SELECT_CLASS]  
+		 	@SHOP_ID = #shopId:INT#
+		 	,@GOODS_ID = #goodsId:INT#
+		 	,@SEARCH_TYPE = #searchType:INT#
+		]]>
+	</select>
+	
+	<!-- 商品登记一修改页面-分类查询 -->
+	<select id="goodsClassSelectModify" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_CLASS_SELECT_GOODS] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@GOODS_ID = #goodsId:INT#
+		 	,@SEARCH_TYPE = #searchType:INT#
+		]]>
+	</select>
+	
+	<!-- 商品登记一修改页面-属性选择弹出页面-分类查询 -->
+	<select id="goodsClassSelect" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_CLASS_SELECT_TMP] 
+		 	@GC_ID = #goodsClassOneId:INT#
+		]]>
+	</select>
+	
+	<procedure id="getBrandList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [BRAND_SELECT] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		]]>
+	</procedure>
+	
+	<!-- 商品登记一一修改页面-属性选择弹出页面-商品查询  -->
+	<select id="goodsSelectSpec" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_SELECT_SPEC] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@GC_ID = #goodsClassTwoId:INT#
+		]]>
+	</select>
+	
+	<!-- 商品登记一一修改页面-属性选择弹出页面-保存返回查询 -->
+	<select id="goodsSpecSelect" parameterClass="adminGoods" resultClass="adminGoods">
+	    <![CDATA[
+		 	EXEC [GOODS_SPEC_SELECT] 
+		 	@SHOP_ID = #shopId:INT#
+		 	,@GC_ID2 = #goodsClassTwoId:INT#
+		 	,@GOODS_ID = #goodsId:INT#
+		]]>
+	</select>
+
+	<!-- 商品登记修改 -->
+	<procedure id="goodsModify" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [GOODS_MODIFY] 
+		 	@SHOP_ID = #shopId:INT#,
+		 	@USER_ID = #userId:NVARCHAR#,
+		 	@GOODS_ID = #goodsId:INT#,
+		 	@GOODS_NM = #goodsNm:NVARCHAR#,
+		 	@GC_ID2 = #goodsClassTwoId:NVARCHAR#,
+		 	@GC_ID3 = #goodsClassThreeId:INT#,
+		 	@SPEC_NM = #specNm:NVARCHAR#,
+		 	@UNIT_TXT = #unitTxt:NVARCHAR#,
+		 	@IS_REAL = #isReal:INT#,
+		 	@SEO_TAG = #seoTag:NVARCHAR#,
+		 	@GOODS_WEIGHT = #goodsWeight:INT#,
+		 	@IMG_ID = #goodsImgId:INT#
+		]]>
+	</procedure>
+
+	<!-- 商品登记删除 -->
+	<procedure id="goodsDelete" parameterClass="adminGoods" remapResults="true">
+	    <![CDATA[
+		 	EXEC [GOODS_DELETE] 
+		 	@SHOP_ID = #shopId:INT#,
+			@USER_ID = #userId:NVARCHAR#,
+		 	@GOODS_ID = #goodsId:INT#
+		]]>
+	</procedure>
+	
+	
+	<!-- ================================================== -->
+	<select id="GOODS_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [GOODS_LIST_SELECT]
+					@SHOP_ID = #SHOP_ID#,
+					@GOODS_ID = #GOODS_ID#,
+					@GOODS_NM = #GOODS_NM#,
+					@GC_ID_LV1 = #GC_ID_LV1#,
+					@GC_ID_LV2 = #GC_ID_LV2#,
+					@PAGE_CURR = #PAGE_CURR#,
+					@PAGE_UINT = #PAGE_UINT#,
+					@ORDERBY = #ORDERBY#,
+					@USER_ID = #USER_ID#
+		]]></select>
+	<select id="selectGoodsClassCombo" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@SGC_PARENT_ID = #SGC_PARENT_ID#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="TRANSPORT_SHEET_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [TRANSPORT_SHEET_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="VOUCHER_MST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [VOUCHER_MST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@VOUCHER_TYPE = #VOUCHER_TYPE#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="SHOP_SPEC_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_SPEC_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@GC_ID = #GC_ID#,
+				@SPEC_ID = #SPEC_ID#,
+				@SPEC_TYPE = #SPEC_TYPE#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="MAP_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [MAP_SELECT]
+				@AREA_PARENT_ID = #AREA_PARENT_ID#,
+				@AREA_LEVL = #AREA_LEVL#,
+				@USER_ID = #USER_ID#
+		]]></select>
+	<select id="LINK_PAGE_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [LINK_PAGE_LIST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@USER_ID = #USER_ID#,
+				@LINK_TYPE = #LINK_TYPE#,
+				@PAGE_NM = #PAGE_NM#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#
+		]]></select>
+	<select id="SHOP_FILE_MST_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_FILE_MST_LIST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@FILE_ID = #FILE_ID#,
+				@FILE_NM = #FILE_NM#,
+				@FILE_TYPE = #FILE_TYPE#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#,
+				@USER_ID = #USER_ID#,
+				@FILE_GROUP = 1
+		]]></select>
+	<!-- ================================================== -->
+	<select id="SPEC_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[SPEC_INSERT]
+				@SHOP_ID 		= #SHOP_ID# 
+				, @GC_ID 		= #GC_ID# 
+				, @SPEC_NM 		= #SPEC_NM# 
+				, @USER_ID		= #USER_ID# 
+		]]>
+	</select>
+	<select id="SPEC_VALUE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[SPEC_VALUE_INSERT]
+				@SHOP_ID 		= #SHOP_ID# 
+				, @GC_ID 		= #GC_ID# 
+				, @SPEC_ID 		= #SPEC_ID# 
+				, @SPEC_VALUE_NM 		= #SPEC_VALUE_NM# 
+				, @USER_ID		= #USER_ID# 
+		]]>
+	</select>
+	<!-- ================================================== -->
+	
+	<select id="LINK_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [LINK_LIST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@USER_ID = #USER_ID#,
+				@LINK_TYPE = #LINK_TYPE#,
+				@PAGE_NM = #PAGE_NM#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#
+		]]>
+	</select>
+	<!-- 添加链接 -->
+	<select id="linkSave" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_LINK_INSERT]
+		 	@PAGE_NM =#PAGE_NM:NVARCHAR#,
+		 	@PAGE_TYPE =#PAGE_TYPE:INT#,	
+		 	@URL = #URL:NVARCHAR#,
+		 	@SHOP_ID = #SHOP_ID:INT#
+		]]>
+	</select>
+	
+	<!-- 链接列表 -->
+	<select id="linkList" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> 
+	    <![CDATA[
+		 	EXEC [SHOP_LINK_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@USER_ID = #USER_ID#,
+				@LINK_TYPE = #LINK_TYPE#,
+				@PAGE_NM = #PAGE_NM#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#
+		]]>
+	</select>
+		
+	<!-- ================================================== -->
+	<!-- 公共管理设置的序号调整操作 -->
+	<select id="updatePublicControlSet" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	    <![CDATA[
+		 	EXEC [PAGE_HEADER_SORT]
+		 	@SHOP_ID	= #shopId:INT#,
+		 	@LINK_TYPE	=#linkType:INT#,
+			@PAGE_NM	=#pageName:NVARCHAR#,
+			@PAGE_ID	=#pageId:INT#,		
+			@OPTION		=#option:VARCHAR#,	
+			@JOB_TYPE	=#jobType:CHAR#
+
+		]]>
+	</select>
+	
+	<!-- ================================================== -->
+	<!-- HZM -->
+	<select id="SHOP_SETTING_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+			 	EXEC [SHOP_SETTING_SELECT]
+					@SHOP_ID = #SHOP_ID#,
+					@SET_ID = #SET_ID#
+			]]>
+	</select>
+	
+	<select id="SHOP_SETTING_INSERT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+			 	EXEC [SHOP_SETTING_INSERT]
+					@SHOP_ID = #SHOP_ID#,
+					@SET_ID = #SET_ID#,
+					@VAL_CHAR = #VAL_CHAR#,
+					@VAL_INT = #VAL_INT#,
+					@VAL_NCHAR = #VAL_NCHAR#
+			]]>
+	</select>
+	
+</sqlMap>

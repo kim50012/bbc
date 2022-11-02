@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Blog">
+	 
+	  <select id="SHOP_BLOG_GROUP_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_BLOG_GROUP_SELECT]
+			@SHOP_ID			= #SHOP_ID#		 
+			,@BG_ID				= #BG_ID#
+			,@BG_PARENT_ID		= #BG_PARENT_ID#
+			,@PAGE_CURR			= #PAGE_CURR#
+			,@PAGE_UINT			= #PAGE_UINT#
+			,@ORDERBY			= #ORDERBY#
+			,@CUST_SYS_ID		= #CUST_SYS_ID#
+			,@USER_ID			= #USER_ID#
+    ]]>
+    </select>
+    
+     <select id="saveBlogGroup" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+			EXEC [dbo].[SHOP_BLOG_GROUP_INSERT] 
+			@SHOP_ID 			= #SHOP_ID#	
+			, @BG_ID 			= NULL	
+			, @BG_NM 			= #BG_NM# 
+			, @BG_PARENT_ID  	= NULL	 
+			, @BG_LEVL 			= NULL	 
+			, @SORT_NO 		 	= NULL	 
+			, @JOB_TYPE		 	= 'I'
+    ]]>
+    </select>
+    
+    <select id="SHOP_FILE_MST_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_FILE_MST_LIST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@FILE_ID = #FILE_ID#,
+				@FILE_NM = #FILE_NM#,
+				@FILE_TYPE = #FILE_TYPE#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#,
+				@USER_ID = #USER_ID#,
+				@FILE_GROUP = 3
+		]]></select>
+		
+    <select id="createBlog" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_BLOG_INSERT]
+				@SHOP_ID 			= #SHOP_ID#
+				, @BLOG_ID 			= NULL
+				, @BLOG_GROUP_ID 	= #BLOG_GROUP_ID#
+				, @BLOG_TITLE 		= #BLOG_TITLE#
+				, @BLOG_DETAIL 		= #BLOG_DETAIL#
+				, @BLOG_FILE_ID 	= #BLOG_FILE_ID#
+				, @IS_DELETE 		= NULL
+				, @USER_ID	 		= #USER_ID#
+				, @JOP_TYPE			= 'I'
+		]]></select>
+    <select id="modifyBlog" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_BLOG_INSERT]
+				@SHOP_ID 			= #SHOP_ID#
+				, @BLOG_ID 			= #BLOG_ID#
+				, @BLOG_GROUP_ID 	= #BLOG_GROUP_ID#
+				, @BLOG_TITLE 		= #BLOG_TITLE#
+				, @BLOG_DETAIL 		= #BLOG_DETAIL#
+				, @BLOG_FILE_ID 	= #BLOG_FILE_ID#
+				, @IS_DELETE 		= 0
+				, @USER_ID	 		= #USER_ID#
+				, @JOP_TYPE			= 'U'
+		]]></select>
+    <select id="SHOP_BLOG_LIST_SELECT" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> <![CDATA[
+		 	EXEC [SHOP_BLOG_LIST_SELECT]
+				@SHOP_ID = #SHOP_ID#,
+				@BLOG_GROUP_ID = #BLOG_GROUP_ID#,
+				@PAGE_CURR = #PAGE_CURR#,
+				@PAGE_UINT = #PAGE_UINT#,
+				@ORDERBY = #ORDERBY#,
+				@CUST_SYS_ID = #CUST_SYS_ID#,
+				@USER_ID = #USER_ID#,
+				@BLOG_ID = #BLOG_ID#
+		]]></select>
+	<!-- add:2016/11/28    日志模板查询  author:naRan-->
+    <select id="getLogTemplateList" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"> 
+		SELECT  CD_ID, CD_VAL 
+		FROM	DBO.CM_CODE AS T1
+		WHERE	T1.IS_DELETE = 0
+		AND	T1.FD_NM = #SEARCH_TYPE#
+	</select>
+		
+		
+</sqlMap>

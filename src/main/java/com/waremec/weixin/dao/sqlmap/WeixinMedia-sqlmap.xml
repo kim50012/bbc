@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WeixinMedia">
+
+   <typeAlias alias="fileItem" type="com.waremec.weixin.domain.material.FileItem"/>
+   
+   
+    <select id="insertDownloadedMedia" parameterClass="fileItem" resultClass="java.util.HashMap" remapResults="true">
+    <![CDATA[
+		 EXEC [dbo].[SHOP_WX_FILE_MST_INSERT]
+			@JOB_TYPE			= 'I'
+			,@WFILE_GROUP 		= 1		 
+			,@SHOP_ID			= #shopId#
+			,@WFILE_ID			= NULL
+			,@WFILE_NM			= #fileName#		 
+			,@WFILE_SYS_NM		= #fileSysName# 
+			,@WFILE_TYPE		= #fileType#  
+			,@WFILE_SIZE		= #fileSize#
+			,@FULL_URL			= #fullUrl#
+			,@IS_DELETE			= 1
+			,@CUST_SYS_ID		= #custSysId#
+			,@WFILE_DURATION	= #duration#
+			,@WFILE_WIDTH 		= #imageWidth#
+			,@WFILE_HEIGHT 		= #imageHeight#
+    ]]>
+    </select>
+ 
+	 
+</sqlMap>

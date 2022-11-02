@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Event">
+	 
+	<select id="SHOP_GAME_CHECKING_BY_CUST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_GAME_CHECKING_BY_CUST]
+			  @SHOP_ID	= #SHOP_ID# 
+			, @EVENT_ID = #EVENT_ID#
+			, @CUST_SYS_ID = #CUST_SYS_ID#
+		]]></select>
+	<select id="getGageActionInfo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_GAME_ACTION_BY_CUST]
+			  @SHOP_ID	= #SHOP_ID# 
+			, @EVENT_ID = #EVENT_ID#
+			, @CUST_SYS_ID = #CUST_SYS_ID#
+		]]></select>
+	  
+	<select id="selectGameItemListById" parameterClass="java.lang.Integer" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_GAME_ITEM_SELECT]
+			   @EVENT_ID = #value#
+		]]></select>
+	  
+	<select id="selectRedParkInfo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_GAME_PRIZE_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@CUST_SYS_ID 	= #CUST_SYS_ID#
+				,@PRIZE_ID 		= #PRIZE_ID#
+		]]></select>
+	<select id="saveRedParkSendResult" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_GAME_PRIZE_UPDATE]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@CUST_SYS_ID 	= #CUST_SYS_ID#
+				,@PRIZE_ID 		= #PRIZE_ID#
+		]]></select>
+		
+	
+		
+	<select id="insertEventFollowUser" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_USER_INSERT]
+				 @EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+		]]></select>
+		
+		
+	<select id="EVENT_00003_SHOP_EVENT_FOLLOW_USER_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_USER_SELECT]
+				 @EVENT_ID 	 = #EVENT_ID#
+				 ,@EVENT_DT  = #EVENT_DT#
+				 ,@OPENID 	 = #OPENID#
+		]]></select>
+	  
+	<select id="SHOP_EVENT_USER_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_EVENT_USER_SELECT]
+				 @EVENT_ID 	 = #EVENT_ID#
+				 ,@FROM_OPENID  = #FROM_OPENID#
+		]]></select>
+	<select id="SHOP_EVENT_USER_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		EXEC [dbo].[SHOP_EVENT_USER_INSERT]
+				 @EVENT_ID 	 	= #EVENT_ID#
+				 ,@FROM_OPENID  = #FROM_OPENID#
+				 ,@MOBILE  		= #MOBILE#
+		]]></select>
+	  
+ 	 <select id="getEventCustInfoByOpenId" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[CUST_SELECT_BY_OPENID]
+				  @OPENID 	 = #OPENID#
+		]]> </select>	
+ 	 
+ 	 
+ 	 <select id="EVENT_00007_POINT_CHECK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00007_POINT_CHECK]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@TYPE 	 		= #TYPE#
+		]]> </select>	
+ 	 <select id="EVENT_00007_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00007_POINT_INSERT]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@POINT_TYPE 	= #POINT_TYPE#
+				,@POINT 	 	= #POINT#
+		]]> </select>	
+ 	 <select id="EVENT_00007_POINT_GET_SUM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00007_POINT_GET_SUM]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+		]]> </select>	
+ 	 <select id="EVENT_00007_POINT_FRIENDS_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00007_POINT_FRIENDS_LIST]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+		]]> </select>	
+ 	 <select id="EVENT_00008_QR_HIST_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00008_QR_HIST_INSERT]
+	    		@SHOP_ID 	 	= #SHOP_ID#
+				,@OPENID 	 	= #OPENID#
+	    		,@SCAN_TYPE 	= #SCAN_TYPE#
+		]]> </select>	
+ 	 <select id="EVENT_00008_QR_HIST_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00008_QR_HIST_SELECT]
+	    		@SHOP_ID 	 	= #SHOP_ID#
+				,@OPENID 	 	= #OPENID#
+		]]> </select>
+		
+ 	 <select id="EVENT_00008_NATIONALITY_MST_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00008_NATIONALITY_MST_SELECT]
+			  	 @SHOP_ID 	 	= #shopId#
+			  	 ,@NAT_NAME 	= #natName#
+		]]>
+		</select>
+		
+ 	 <select id="EVENT_00008_PARTAKE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00008_PARTAKE_INSERT]
+			  	 @SHOP_ID 	 		= #shopId#
+				, @PAR_ID			= #parId#		
+				, @OPENID			= #openId#
+				, @NAT_ID			= #natId#
+				, @FLIGHT_NO_ARRIVE	= #flightNoArrive#
+				, @FLIGHT_DT_ARRIVE	= #flightDateArrive#
+				, @FLIGHT_NO_DEP	= #flightNoDep#
+				, @FLIGHT_DT_DEP	= #flightDateDep#	
+				, @PASSPORT_NM		= #passPortName#
+		]]>
+		</select>
+ 	  <select id="EVENT_00008_PARTAKE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00008_PARTAKE_SELECT]
+			  	 @SHOP_ID 	 		= #shopId#
+				, @OPEN_ID			= #openId#
+		]]>
+		</select>
+ 	  <select id="SHOP_WX_LETTER_USER_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[SHOP_WX_LETTER_USER_INSERT]
+	    		@SHOP_ID 	 	= #shopId#
+				,@OPENID 	 	= #openId#
+				,@LETTER_ID		= #letterId#
+		]]> </select>	
+ 	  <select id="SHOP_EVENT_USER_RANK_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[SHOP_EVENT_USER_RANK_SELECT]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID	= #FROM_OPENID#
+		]]> 
+		</select>	
+  
+ 	  <select id="SHOP_EVENT_USER_RANK_LIST_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[SHOP_EVENT_USER_RANK_LIST_SELECT]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID	= #FROM_OPENID#
+				,@PAGE_CURR		= #PAGE_CURR#
+				,@PAGE_UINT		= #PAGE_UINT#
+		]]> 
+		</select>	
+  
+ 	  <select id="SHOP_EVENT_FOLLOW_USER_UNIQUE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[SHOP_EVENT_FOLLOW_USER_UNIQUE_INSERT]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID	= #FROM_OPENID#
+		]]> 
+		</select>	
+		
+		
+		<select id="selectEvent10RedParkInfo" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_HONGBAO_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+		
+		<select id="SHOP_EVENT_FOLLOW_HONGBAO_SELECT2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_HONGBAO_SELECT2]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+		
+		<select id="saveEvent10RedParkResult" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_HONGBAO_UPDATE]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+				,@EVENT_ID 	 	= #EVENT_ID#
+				,@SEQID 	 	= #SEQID#
+				,@ERRORNO 	 	= #ERRORNO#
+		]]>
+		</select>
+		<select id="insertQRCodeScanedResult" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00008_QR_HIST_INSERT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+				,@SCENE_ID 	 	= #SCENE_ID#
+		]]>
+		</select>
+  
+	<!-- 	<select id="selectHongbaoUserList"  resultClass="java.lang.String">
+		<![CDATA[
+			SELECT  
+			 A.OPENID 
+			 FROM SHOP_EVENT_FOLLOW_USER A
+			 INNER JOIN WX_USER B
+			 ON A.OPENID = B.OPENID
+			 INNER JOIN WX_USER C
+			 ON A.FROM_OPENID = C.OPENID
+			 LEFT JOIN (
+				SELECT A.OPENID
+				, COUNT(*) AS CNT FROM SHOP_EVENT_FOLLOW_USER A
+				WHERE EVENT_ID = 10
+				AND A.HONGBAO_STS = 2
+				GROUP BY A.OPENID
+			 ) D
+			 ON A.FROM_OPENID = D.OPENID
+			WHERE EVENT_ID = 10
+			AND A.HONGBAO_STS != 2
+			AND	 A.[STATUS] = 0 
+			AND		A.CREATE_DT <= '2015-09-19 11:00:00' 
+			AND		b.SUBSCRIBE_TIME <= '2015-09-19 11:00:00' 
+		]]>
+		</select> -->
+		
+		<select id="selectHongbaoUserList"  resultClass="java.lang.String">
+		<![CDATA[
+			SELECT 
+			A.OPENID 
+			FROM	SHOP_EVENT_FOLLOW_USER A		 
+					INNER JOIN WX_USER U
+							ON	A.FROM_OPENID = U.OPENID
+					LEFT JOIN WX_USER B
+							ON A.OPENID = B.OPENID
+			WHERE	EVENT_ID = 10
+			AND		HONGBAO_STS IN(0, 1)
+			AND		A.STATUS = 0
+			AND		U.SUBSCRIBE IN (1)
+			AND		B.SUBSCRIBE IN (1)
+			AND		B.SUBSCRIBE_TIME <= '2015-10-01 00:00:00' 
+			AND		U.SUBSCRIBE_TIME <= '2015-10-01 00:00:00' 
+
+		]]>
+		</select>
+		
+		<select id="SHOP_EVENT_FOLLOW_CHANCE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_CHANCE_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+  
+		<select id="SHOP_EVENT_FOLLOW_ACTION_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_ACTION_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+		
+		<select id="SHOP_EVENT_FOLLOW_ACTION_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_ACTION_INSERT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+  
+		<select id="EVENT_00008_QR_PRIZE_UPDATE" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00008_QR_PRIZE_UPDATE]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+  
+		<select id="EVENT_00012_DICE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00012_DICE_SELECT]
+			  	 @EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+  
+		<select id="EVENT_00012_DICE_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00012_DICE_INSERT]
+			  	 @EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+		
+		<select id="EVENT_00012_DICE_LIST_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_00012_DICE_LIST_SELECT]
+			  	 @EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+				,@PAGE_CURR 	= #pageCurr#
+				,@PAGE_UINT 	= #pageUnit#
+		]]>
+		</select>
+  		
+		
+		 <select id="EVENT_00015_POINT_CHECK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_00015_POINT_CHECK]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@TYPE 	 		= #TYPE#
+		]]> </select>	
+	 	 <select id="EVENT_00015_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00015_POINT_INSERT]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@POINT_TYPE 	= #POINT_TYPE#
+					,@POINT 	 	= #POINT#
+			]]> </select>	
+	 	 <select id="EVENT_00015_POINT_GET_SUM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00015_POINT_GET_SUM]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+	 	 <select id="EVENT_00015_POINT_FRIENDS_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00015_POINT_FRIENDS_LIST]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+			
+			<select id="EVENT_00016_POINT_CHECK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00016_POINT_CHECK]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@TYPE 	 		= #TYPE#
+			]]> </select>	
+	 	 <select id="EVENT_00016_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00016_POINT_INSERT]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@POINT_TYPE 	= #POINT_TYPE#
+					,@POINT 	 	= #POINT#
+			]]> </select>	
+	 	 <select id="EVENT_00016_POINT_GET_SUM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00016_POINT_GET_SUM]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+	 	 <select id="EVENT_00016_POINT_FRIENDS_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00016_POINT_FRIENDS_LIST]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>
+
+		<insert id="EVENT_00021_INSERT" parameterClass="java.util.HashMap"><![CDATA[
+				    EXEC [dbo].[EVENT_00021_ACTIVITY_INSERT]
+							@EVENT_ID	= #EVENT_ID#
+							,@OPENID  	= #openId#
+							,@FROMNAME	= #fromname#
+							,@FROMTEXT	     = #fromtext#
+							,@TYPE    	= #type#
+							,@GETDATE	 = #getdate#
+							,@JLNUM	 =  #jlNum#
+		]]></insert>
+	
+		<select id="EVENT_00021_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    SELECT FROMTEXT from dbo.EVENT_00021_ACTIVITY 
+		    where OPENID= #fromOpenid# and FxBZ  = #FxBZ#
+		]]></select>
+	
+		 <select id="EVENT_00021_POINT_CHECK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00021_POINT_CHECK]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@TYPE 	 		= #TYPE#
+			]]> </select>	
+	 	 <select id="EVENT_00021_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00021_POINT_INSERT]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@POINT_TYPE 	= #POINT_TYPE#
+					,@POINT 	 	= #POINT#
+			]]> </select>	
+	 	 <select id="EVENT_00021_POINT_GET_SUM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00021_POINT_GET_SUM]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+	 	 <select id="EVENT_00021_POINT_FRIENDS_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00021_POINT_FRIENDS_LIST]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+				<select id="EVENT_00021_PERSONFX_SELECT"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap"   remapResults="true"><![CDATA[
+				  EXEC [dbo].[EVENT_00021_POINT_ACCFXNUM]
+							@OPENID 	= #openid#
+		]]></select>
+		
+				
+		 <select id="EVENT_00022_POINT_CHECK" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00022_POINT_CHECK]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@TYPE 	 		= #TYPE#
+			]]> </select>	
+	 	 <select id="EVENT_00022_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00022_POINT_INSERT]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+					,@FROM_OPENID 	= #FROM_OPENID#
+					,@POINT_TYPE 	= #POINT_TYPE#
+					,@POINT 	 	= #POINT#
+			]]> </select>	
+	 	 <select id="EVENT_00022_POINT_GET_SUM" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00022_POINT_GET_SUM]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+	 	 <select id="EVENT_00022_POINT_FRIENDS_LIST" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00022_POINT_FRIENDS_LIST]
+		    		@EVENT_ID 	 	= #EVENT_ID#
+					,@OPENID 	 	= #OPENID#
+			]]> </select>	
+			
+	 	 <insert id="EVENT_00021_PAGE_INSERT" parameterClass="java.util.HashMap"><![CDATA[
+		    INSERT INTO EVENT_00021_INFLOW(pageid) VALUES (#PAGEID#)
+		]]></insert>
+		 	 <select id="EVENT_00022_POINT_WINUSER" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[EVENT_00022_POINT_WINUSER]
+	    				  @OPENID 	= #OPENID#
+						, @PHONE	 	= #PHONE#
+						, @ITEM			= 	#ITEM#		
+						
+			]]> </select>	
+	 	 <select id="SHOP_EVENT_ENTRY_USER_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		    EXEC [dbo].[SHOP_EVENT_ENTRY_USER_INSERT]
+	   		@SHOP_ID =#shopId:INT#  ,
+	   		@CUST_SYS_ID=#cust_sys_id:INT# ,
+	   		@EVENT_ID =#event_id:INT#  ,
+			@CUST_NM =#cust_nm:NVARCHAR# ,
+			@BIRTHDAY =#birthday:SMALLDATETIME# ,
+			@ADR_PROVINCE_ID =#adr_province_id:INT# ,
+			@ADR_CITY_ID =#adr_city_id:INT# ,
+			@ADR_DETAIL =#adr_detail:NVARCHAR# ,
+			@ADR_ZIP =#adr_zip:NVARCHAR# ,
+			@MOBILE_NO =#mobile_no:NVARCHAR# ,
+			@EMAIL =#email:NVARCHAR# ,
+			@REASON =#reason:NVARCHAR# ,
+			@FILEURL1 = #fileUrl1:NVARCHAR#,
+			@FILEURL2 = #fileUrl2:NVARCHAR#,
+			@FILEURL3 = #fileUrl3:NVARCHAR#,
+			@FILEURL4 = #fileUrl4:NVARCHAR#,
+			@FILEURL5 = #fileUrl5:NVARCHAR#
+			]]> </select>	
+		<select id="dash_address" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		    <![CDATA[
+	  				SELECT g_id,g_name from Dash_Address WHERE s_id=#sId# 
+		    ]]>
+	    </select>
+
+
+		<select id="EVENT_00021_REQ_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+		    <![CDATA[
+		    	EXEC [EVENT_00021_REQ_INSERT]
+					@SHOP_ID		=#shopId#
+					,@OPENID		=#openId#
+					,@CUST_SYS_ID	=#custSysId#
+					,@CUSTNM		=#custNm#
+					,@CITY			=#city#
+					,@DIST			=#dist#
+					,@ADDR			=#addr#
+					,@POSTAL		=#postal#
+					,@BYEAR			=#bYear#
+					,@BMON			=#bMon#
+					,@BDAY			=#bDay#
+					,@MOBILE		=#mobile#
+					,@EMAIL			=#eMail#
+					,@CMT			=#cmt#
+					,@IMG_ID1		=#imgId1#
+					,@IMG_ID2		=#imgId2#
+					,@IMG_ID3		=#imgId3#
+					,@IMG_ID4		=#imgId4#
+					,@IMG_ID5		=#imgId5#
+		    ]]>
+		</select>    
+    
+    
+		<select id="SHOP_EVENT_FOLLOW_ACTION_CHANCE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_ACTION_CHANCE_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+    
+    
+		<select id="SHOP_EVENT_FOLLOW_ACTION_CHANCE_UPDATE" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_FOLLOW_ACTION_CHANCE_UPDATE]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@OPENID 		= #OPENID#
+				,@SEQID 		= #SEQID#
+				,@HONGBAO_AMT 	= #HONGBAO_AMT#
+				,@HONGBAO_STS 	= #HONGBAO_STS#
+		]]>
+		</select>
+    
+    
+		<select id="SHOP_EVENT_VIEW_USER_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[SHOP_EVENT_VIEW_USER_INSERT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+				,@PAGENM 		= #PAGENM#
+		]]>
+		</select>
+    
+ 	 	<select id="EVENT_POINT_INSERT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+	    EXEC [dbo].[EVENT_POINT_INSERT]
+	    		@EVENT_ID 	 	= #EVENT_ID#
+				,@OPENID 	 	= #OPENID#
+				,@FROM_OPENID 	= #FROM_OPENID#
+				,@POINT_TYPE 	= #POINT_TYPE#
+		]]> </select>
+    
+		<select id="EVENT_CHANCE_SELECT" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_CHANCE_SELECT]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+		]]>
+		</select>
+    
+    
+		<select id="EVENT_CHANCE_UPDATE" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		EXEC [dbo].[EVENT_CHANCE_UPDATE]
+			  	 @SHOP_ID 		= #SHOP_ID#
+				,@EVENT_ID 		= #EVENT_ID#
+				,@FROM_OPENID	= #FROM_OPENID#
+				,@OPENID 		= #OPENID#
+				,@SEQID 		= #SEQID#
+				,@HONGBAO_AMT 	= #HONGBAO_AMT#
+				,@HONGBAO_STS 	= #HONGBAO_STS#
+		]]>
+		</select>
+    
+</sqlMap>

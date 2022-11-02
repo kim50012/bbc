@@ -1,0 +1,448 @@
+@charset "utf-8";
+
+div.page-location {
+    z-index: 40;   
+}
+#body {
+	position: relative;
+	z-index: 50;
+}
+
+.category-title {
+	padding:  23px 0 0;
+	height: 43px;
+}
+div.page-location {
+	margin: -66px 0 0;
+	height: 66px;
+	border:  0;
+}
+/*** one-depth-title ***/
+
+.depth-title {
+	position: relative;
+	width: 1000px;
+	height:  66px;
+}
+
+div.page-location {
+	position: relative;
+	width: 1000px;
+	height: 66px;
+}
+div.page-location ul {
+	position: absolute;
+	right: 0;
+	top: 20px;
+}
+div.page-location ul li {
+	float: left;
+	padding: 0 0 0 28px;
+	background: url(//image.ssgdfs.com/images/shop/cn/category/bg_arrow.gif) no-repeat 14px 9px;
+}
+div.page-location ul li:first-child ,
+div.page-location ul li.first-child {
+	padding-top: 5px;
+	background:  none;
+}
+div.location ul li .sbHolder {
+	width: 128px;
+	text-align: left;
+}
+div.location ul li .sbOption {
+	width:128px;
+}
+div.page-location ul li .sbHolder ul li {
+	padding-left: 0;
+	text-align: left;
+	background-image: none;
+	clear:both;
+}
+/* 검색-컬러 */
+div.pattern-search table tbody tr td.color ul li {width:110px; height:25px; padding-bottom:5px;}
+div.pattern-search table tbody tr td.color ul li img {display:inline-block; vertical-align:middle; margin:-4px 5px 0 0;}
+
+/*category*/
+
+div.category {
+	padding: 0 0 60px;
+	width: 1000px;
+	/*overflow: hidden;*/
+}
+div.category .top-banner {
+	width: 1000px;
+	height: 350px;
+	overflow: hidden;
+}
+div.banner {
+	position: relative;
+	float: left;
+	width: 800px;
+	height: 350px;
+	overflow: hidden;
+}
+div.banner .banner-menu, 
+div.banner .view-con {
+	position: absolute;
+	z-index: 4;
+}
+div.banner .view-con span {
+	cursor: pointer;
+}
+div.banner .banner-menu {
+	left: 0;
+	top: 312px;
+}
+div.banner .view-con {
+	top: 11px;
+	right: 21px;
+	width: 32px;
+}
+div.banner .banner-menu ul {
+	margin: 0 -1px 0 0;
+	width: 801px;
+	overflow: hidden;
+}
+div.banner .banner-menu ul li {
+	float: left;
+	margin: 0 1px 0 0;
+	height: 38px;
+	overflow: hidden;
+	text-align: center;
+	background: #3e3838;
+}
+div.banner .menu-type01 ul li {
+	width: 801px;
+}
+div.banner .menu-type02 ul li {
+	width: 399px;
+}
+div.banner .menu-type03 ul li {
+	width: 266px;
+}
+div.banner .menu-type04 ul li {
+	width: 199px;
+}
+div.banner .menu-type05 ul li {
+	width: 157px;
+}
+div.banner .menu-type06 ul {
+	margin: 0 -1px 0 2px;
+}
+div.banner .menu-type06 ul li {
+	width: 132px;
+}
+div.banner .menu-type07 {
+	margin: 0 -1px 0 1px; 
+} 
+div.banner .menu-type07 ul li {
+	display:  block;
+	width: 113px;
+}
+div.banner .menu-type08 ul li {
+	float: left;
+	margin: 0 1px 0 0;
+	height: 38px;
+	width: 99px;
+	overflow: hidden;
+	text-align: center;
+	background: #3e3838;
+}
+div.banner .banner-menu ul li a {
+	display: block;
+	padding: 12px 0 0;
+	font-size: 12px;
+	text-decoration: none;
+	color: #918b8b;
+}
+div.banner .banner-menu ul li.selected {
+	color: #fff;
+	background: #000;
+}
+.banner-list ul li {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.best-banner {
+	width: 200px;
+	height: 350px;
+	overflow: hidden;
+}
+div.best-banner ul li {
+	
+}
+div.best-banner p img {
+	vertical-align: top;
+}
+div.best-banner p.title {
+	width: 200px;
+	padding: 13px 0 0;
+	height: 23px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 1px solid #fff;
+	background: url(//image.ssgdfs.com/images/shop/cn/category/bg_banner_title.gif) no-repeat 0 0;
+}
+div.best-banner p.banner {
+	display: none;
+	border-bottom: 1px solid #fff;
+}
+div.best-banner ul li.selected p.banner {
+	display: block;
+}
+div.best-product {
+	margin: 30px 0 0;
+	width: 1000px;
+	height: 298px;
+	overflow: hidden;
+	border-top: 2px solid #3b3b3b;
+}
+div.best-product .best-navi {
+	float: left;
+	width: 200px;
+	height: 298px;
+	background: #3b3b3b;
+}
+div.best-product .best-navi p {
+	padding:  15px 0 0 10px;
+	height: 35px;
+}
+div.best-product .best-navi ul {
+	padding: 0 0 0 9px;
+	width: 182px;
+}
+div.best-product .best-navi ul li {
+	float: left;
+	position: relative;
+	padding: 1px 0 0 1px;
+	width: 90px;
+	height: 59px;
+	overflow: hidden;
+}
+div.best-product .best-navi ul li p {
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	padding: 0;
+	width: 80px;
+	height: 49px;
+	border: 5px solid #d62b21;
+}
+div.best-product .best-navi ul li p {
+	display: none;
+}
+div.best-product .best-navi ul li p span {
+	display: block;
+	position: relative;
+	opacity: 0;
+	width: 80px;
+	height: 49px;
+	*filter: alpha(opacity = 50);
+}
+div.best-product .best-navi ul li.selected p {
+	display: block;
+}
+div.listing-best {
+	float: left;
+	width: 800px;
+	height: 297px;
+	overflow: hidden;
+	border-bottom: 1px solid #dfdfdf;
+}
+.listing-best ul li  {
+	float: left;
+}
+.listing-best ul li  p.photo {
+	padding: 40px 0 0;
+}
+.listing-best ul li p.icon {
+	position: absolute;
+	left: 9px;
+	top: 20px;
+}
+.listing-best ul li p.photo {
+	padding: 40px 0 0;
+}
+
+div.nation-product {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+}
+div.nation-product dl {
+	width: 1000px;
+	border-top: 2px solid #3b3b3b;
+}
+div.nation-product dl dt {
+	float: left;
+	padding: 64px 0 0;
+	width: 200px;
+	height: 234px;
+	text-align: center;
+	background: #3b3b3b;
+}
+div.brand-best {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+}
+div.brand-best div.tab-menu {
+	width: 1000px;
+	padding: 5px 0 0;
+	height: 35px;
+	background: #3b3b3b;
+	overflow: hidden;
+}
+ul.cate-tab  li {
+	float: left;
+	margin: 0 0 0 4px;
+	display: inline;
+	padding:  9px 0 0;
+	width:  196px;
+	height:  27px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+}
+ul.cate-tab li a {
+	font-family: "Tahoma";
+	color: #fff;
+}
+ul.cate-tab  li.on a {
+	color: #333;
+}
+ul.cate-tab li.on {	
+	background: #d72b21;
+}
+ul.cate-tab  li.on a {
+	color: #fff;
+} 
+ul.sort-menu {
+	float: left;
+	padding: 0 20px 0 0; 
+	width: 579px;
+	overflow: hidden;
+}
+ul.sort-menu li {
+	 
+	float: right;
+	padding: 10px 0 0 14px;
+}
+ul.sort-menu li.on {
+	font-weight: bold;
+}
+ul.sort-menu li.on a {
+	color: #fff;
+}
+.brand-best .list-basic {
+	width: 998px;
+	border: 1px solid #dfdfdf;
+	border-top: 0;
+	height: 280px;
+	overflow: hidden;
+}
+.brand-best .list-basic ul li {
+	width: 199px;
+}
+div.depth-menu {
+	margin: 30px 0 0;
+	width: 1000px;
+	overflow: hidden;
+}
+div.depth-menu dl {
+	width: 1000px;
+	overflow: hidden;
+	background: #2a2a2a;
+}
+div.depth-menu dl dt {
+	float: left;
+	padding: 25px 0 0;
+	width: 200px;
+	text-align: center;
+	border-top: 2px solid #d62b21;
+	background: url(//image.ssgdfs.com/images/shop/cn/category/bg_cate.png) no-repeat 0 0;
+}
+div.depth-menu dl dd {
+	float: left;
+	width: 800px;
+	background: #fff;
+	border-top: 2px solid #555;
+	background: #fff;
+}
+div.depth-menu dl dd ul {
+	padding: 12px 0 10px 23px;
+	width: 777px;
+	overflow: hidden;
+	background: #f3f3f3;
+}
+div.depth-menu dl dd ul.sub-depth {
+	padding: 0;
+	width: 800px;;
+	overflow: hidden;
+	background: #f3f3f3;
+}
+div.depth-menu dl dd ul.sub-depth {
+	padding: 0;
+	width: 800px;
+	min-height: 34px;
+	overflow: hidden;
+}
+div.depth-menu dl dd ul.sub-depth li {
+	margin: 0;
+	padding: 12px 0 10px 23px;
+	width: 777px;
+	overflow: hidden;
+}
+div.depth-menu dl dd ul.sub-depth li ul {
+	padding: 0;
+	width: 800px;
+	overflow: hidden;
+}
+div.depth-menu dl dd ul.sub-depth li ul li {
+	float: left;
+	padding: 0;
+	width: auto;
+	margin: 0 10px 0 0 !important;
+}
+div.depth-menu dl dd ul.first-child {
+	background: #fff;
+	border-bottom: 1px solid #dfdfdf;
+}
+div.depth-menu dl dd ul li {
+	float: left;
+	
+}
+div.depth-menu dl dd ul li.on a {
+	color: #d62b21;
+}
+div.depth-menu dl dd ul.first-child  li {
+	padding: 4px 5px 4px;
+}
+div.depth-menu dl dd ul.first-child  li.on { 
+	background: #d62b21;
+}
+div.depth-menu dl dd ul.first-child  li.on a {
+	color: #fff;
+}
+.product-list {
+}
+.best-five {
+	width: 1000px;
+	overflow: hidden;
+}
+.best-five p.title {
+	padding: 11px 0 0 20px;
+	height: 29px;
+	background: #3b3b3b;
+}
+div.best-five .list-basic {
+	width: 998px;
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+}
+div.best-five .list-basic ul li {
+	width: 199px;
+
+}

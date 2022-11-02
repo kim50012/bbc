@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ScreenTwo">
+	<typeAlias alias="screenTwoDomain" type="com.waremec.wpt.dashboard.screenTwo.domain.ScreenTwoDomain" />
+	
+	<resultMap id="getMonthStartChart" class="screenTwoDomain">
+		<result column="YEAR"		property="year" 	jdbcType="VARCHAR"/>
+		<result column="MON1"		property="month01" 	jdbcType="VARCHAR"/>
+		<result column="MON2"		property="month02" 	jdbcType="VARCHAR"/>
+		<result column="MON3"		property="month03" 	jdbcType="VARCHAR"/>
+		<result column="MON4"		property="month04" 	jdbcType="VARCHAR"/>
+		<result column="MON5"		property="month05" 	jdbcType="VARCHAR"/>
+		<result column="MON6"		property="month06" 	jdbcType="VARCHAR"/>
+		<result column="MON7"		property="month07" 	jdbcType="VARCHAR"/>
+		<result column="MON8"		property="month08" 	jdbcType="VARCHAR"/>
+		<result column="MON9"		property="month09" 	jdbcType="VARCHAR"/>
+		<result column="MON10"		property="month10" 	jdbcType="VARCHAR"/>
+		<result column="MON11"		property="month11" 	jdbcType="VARCHAR"/>
+		<result column="MON12"		property="month12" 	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getAreaAvgStartTimeChart" class="screenTwoDomain">
+		<result column="year"		property="year" 	jdbcType="VARCHAR"/>
+		<result column="month"		property="month" 	jdbcType="VARCHAR"/>
+		<result column="address"	property="address"  jdbcType="VARCHAR"/>
+		<result column="CNT"	property="cnt"  jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getAddressList" class="screenTwoDomain">
+		<result column="address"	property="address" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getAddressList_sorting" class="screenTwoDomain">
+		<result column="address"	property="address" jdbcType="VARCHAR"/>
+		<result column="CNT"	property="cnt"  jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getWeekConnectionChart" class="screenTwoDomain">
+		<result column="week"	property="week" jdbcType="VARCHAR"/>
+		<result column="weekCount"	property="weekCount"  jdbcType="VARCHAR"/>
+	</resultMap>
+	<resultMap id="getWeekNotStratChart" class="screenTwoDomain">
+		<result column="week"	property="week" jdbcType="VARCHAR"/>
+		<result column="weekStart"	property="weekStart" jdbcType="VARCHAR"/>
+		<result column="weekSum"	property="weekSum"  jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getGengxinDate" class="screenTwoDomain">
+		<result column="gengxinDate"	property="gengxinDate" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="getYangjiWorkMntChart" class="screenTwoDomain">
+		<result column="workTime"	property="workTime" jdbcType="VARCHAR"/>
+		<result column="dayWorkTime"	property="dayWorkTime" jdbcType="VARCHAR"/>
+		<result column="outRange"	property="outRange" jdbcType="VARCHAR"/>
+		<result column="receiveDate"	property="receiveDate" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	
+	<select id="getMonthStartChart" parameterClass="map" resultMap="getMonthStartChart"><![CDATA[
+		EXEC Dash_YearWorkTime_monthStart_Get_List
+	]]>
+	</select>
+	
+	<select id="getAreaAvgStartTimeChart" parameterClass="map" resultMap="getAreaAvgStartTimeChart"><![CDATA[
+		EXEC Dash_ProvinceWorkTime_areaAvgStartTime_Get_List
+	]]>
+	</select>
+	
+	<select id="getAddressList" parameterClass="map" resultMap="getAddressList"><![CDATA[
+		EXEC Dash_ProvinceWorkTime_areaAvgStartTime_Get_Address
+	]]>
+	</select>
+	
+	<select id="getAddressList_sorting" parameterClass="map" resultMap="getAddressList_sorting"><![CDATA[
+		EXEC Dash_ProvinceWorkTime_Get_List_sorting
+											@dir = #dir:VARCHAR#
+											
+	]]>
+	</select>
+	
+	<select id="getWeekConnectionChart" parameterClass="map" resultMap="getWeekConnectionChart"><![CDATA[
+		EXEC Dash_WeekReceive_WeekConnection_Get_List
+	]]>
+	</select>
+	
+	<select id="getWeekNotStratChart" parameterClass="map" resultMap="getWeekNotStratChart"><![CDATA[
+		EXEC Dash_WeekReceive_WeekNotStrat_Get_List
+	]]>
+	</select>
+	
+	<select id="getGengxinDate" parameterClass="map" resultMap="getGengxinDate"><![CDATA[
+		EXEC Dash_screenTwo__Get_Date
+											@pageType = #pageType:VARCHAR#
+		
+	]]>
+	</select>
+	
+	<select id="getYangjiWorkMntChart" parameterClass="map" resultMap="getYangjiWorkMntChart"><![CDATA[
+		EXEC Dash_ProtoMacWarn_WeekNotStrat_Get_List
+	]]>
+	</select>
+			
+	
+</sqlMap>

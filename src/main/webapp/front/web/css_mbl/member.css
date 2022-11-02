@@ -1,0 +1,297 @@
+
+
+
+.loginbox	{}
+.loginbox .tts	{display:none;}
+.section.login	{position:relative;width:300px;margin:0 auto;padding:20px 0 10px;}
+.section.login .p	{margin-bottom:5px;}
+.section.login .text	{width:218px;font-weight:bold;}
+.section.login .p.login	{position:absolute;right:0;top:20px;}
+.section.login .p.keep	{color:#999999;letter-spacing:-1px;line-height:20px;font-weight:bold;}
+	.sp.login	{width:73px;height:63px;border:1px solid #C30000;background:#D02B2B -webkit-gradient(linear, left top, left bottom, from(#D02B2B), to(#A20000)) no-repeat;}
+	.sp.login > u	{display:block;height:62px;border-top:1px solid #FF3B3B;line-height:62px;color:#FFFFFF;white-space:nowrap;font-size:12px;}
+.section.find	{padding:10px 0 15px;border-top:1px solid #CCCCCC;}
+.section.find .p.find	{text-align:center;}
+.section.find .btn	{width:130px;margin:0 4px;}
+
+.section.signup	{width:100%;border-top:1px solid #C4BEBA;background:#F0E9E4;}
+.section.signup .box	{position:relative;padding:10px;min-height:30px;}
+.section.signup .p.desc	{margin-right:70px;color:#935C39;font-size:11px;}
+.section.signup .p.go	{position:absolute;right:10px;top:10px;}
+
+.message	{margin-bottom:20px;padding:20px 10px 0;text-align:center;}
+.message p.big	{margin:20px 0;font-weight:bold;font-size:16px;line-height:1.4;letter-spacing:-1px;text-align:center;}
+.message p.desc	{text-align:left;}
+.message > .button > .btn	{width:30%;max-width:100px;}
+
+.sc.message.signup p.small	{color:#888888;}
+
+
+.btn.byipin		{width:120px;}
+.btn.bymobile	{width:120px;}
+.message.pw	> p	{text-align:left;}
+.message.pw	> .big	{margin-bottom:10px;}
+.message.pw	> .small	{margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #DDDDDD;font-size:12px;color:#999999;}
+.message.pw	> .choice	{margin-bottom:20px;}
+.message.pw	> .choice > .btn	{display:block;clear:both;width:100%;margin:10px 0;}
+
+.signup.intro .message.signup .big	{ margin-bottom:10px;font-size:13px;}
+.signup.intro .message.signup .button	{ margin-top:20px;font-size:13px;}
+
+.signup.agree 			{padding-top:10px;}
+.signup.agree .sc		{padding:0 10px;margin-bottom:10px;}
+.signup.agree .sc.agreement > h1	{margin-bottom:5px;padding:10px 0 7px;border-bottom:1px solid #DDDDDD;font-size:14px;}
+.signup.agree .sc.cert > h1	{padding:10px 0 7px;border-bottom:none;}
+.signup.agree p {position:relative;line-height:28px;}
+.signup.agree p .check {width:24px;height:24px;}
+.signup.agree p .sbtn {position:absolute;right:0;top:0;}
+.signup.agree .cert > .button  	{height:40px; text-align: center;}
+.signup.agree .byipin	{width:45%;max-width:200px; margin-right:5px;}
+.signup.agree .bymobile	{width:45%;max-width:200px;height:55px !important;}
+
+
+
+.signup.agree .row	{position:relative;}
+.signup.agree .row > b.t	{position:absolute;left:0;top:0;width:80px;height:100%;background:#F1F1F1;color:#666666;white-space:nowrap;font-size:12px;letter-spacing:-1px;font-weight:normal;line-height:40px;}
+.signup.agree .row > p,
+.signup.agree .row > .p	{margin-left:80px;min-height:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:30px;}
+.signup.agree .service {margin-bottom:5px;}
+.signup.agree .service div.row {border-bottom:1px dotted #ddd;}
+.signup.agree .service div.row select {width:60px;}
+.signup.agree .service div.row > b.t {background:none;}
+.signup.agree .service div.phone input[type="text"] {width:52px;}
+.signup.agree .service div.gender select {width:80px;}
+.signup.agree .service div.skl {border-bottom:1px solid #ddd;}
+.signup.agree .note {background:none;}
+.signup.agree .note .box {border-bottom:1px solid #d9d9d9;}
+.signup.agree .note p {line-height:18px; margin-bottom:0;}
+.signup.agree .submit {text-align:center; margin:5px 0;}
+.signup.agree .confirm {width:70%;}
+.signup.agree .conb {position:relative; border-bottom:0 none !important;}
+.signup.agree .conb .sbtn {position:absolute;left:250px;top:10px;}
+.signup.agree .conb p span {display:block; color:#999; font-size:12px;}
+.signup.agree .conb p span em {color:#666;}
+.signup.agree .service .txt {line-height:15px; font-size:12px;}
+
+
+
+
+
+/* ����ȸ���Ծȳ� */
+.message.am	> .button	{margin-top:20px;}
+
+/* ȸ���ԿϷ� */
+.message.su	.desc	{margin-bottom:20px;font-size:12px;color:#999999;text-align:center;}
+.message.su	.submit	{margin-bottom:20px;}
+
+
+/* ȸ�������Է� */
+.psdetail	{border-top:2px solid #333333;margin-bottom:20px;}
+.psdetail .box.txt	{margin:0;padding:0;border-bottom:1px solid #DDDDDD;}
+.psdetail .box.txt .row	{padding:3px 10px;}
+.psdetail .box.txt .row:last-child	{border-bottom:none;}
+.psdetail .box.txt .row > b	{top:3px;}
+.psdetail .box.txt .row > p	{margin-left:90px;}
+
+.psdetail .box> .row.vip	{border-bottom:none;}
+.psdetail .box.vip .row > .p	{position:relative;margin-left:0;}
+.psdetail .box.vip .row > .p .off	{position:absolute;right:0;top:4px;}
+.psdetail .submit	{text-align:center;}
+.psdetail .submit.signup	{width:100%;}
+.psdetail > .submit	{padding:10px;text-align:center;}
+.psdetail > .submit > .btn	{width:40%;}
+
+
+.psadded > .box	{padding:0px;}
+.psadded .p.s	{color:#888888;}
+.psadded > .submit	{padding:10px;text-align:center;}
+.psadded > .submit > button	{width:35%;}
+
+.personal.passport > .submit	{padding:10px;text-align:center;}
+.personal.passport > .submit > .btn	{width:40%;}
+
+.personal.password > .submit	{padding:10px;text-align:center;}
+.personal.password > .submit > .btn	{width:40%;}
+
+/* my coupon*/
+
+
+
+/* specialorder */
+.specialorder .sc.apply .image	{height:156px;border:1px solid #ce9e75;background:#dcb89c url('/images/shop/specialorder.png') no-repeat 50% 0;}
+.specialorder .sc.apply	{margin:10px 0;text-align:center;}
+.specialorder > .sc.apply > .submit	{margin:10px;text-align:center;}
+.specialorder > .sc.apply > .submit > .btn	{width:35%;min-width:180px;}
+
+.specialorder ul.list 		{border-top:2px solid #000000;}
+.specialorder ul.list li {position:relative;padding:5px 10px;border-bottom:1px solid #DDDDDD;}
+.specialorder ul.list li:last-child {border-bottom:none;}
+.specialorder ul.list li li {padding:5px 0;border-bottom-style:dotted;}
+.specialorder ul.list .row > p {}
+.specialorder ul.list .row > .whn,
+.specialorder ul.list .row > .ref	{display:inline;margin-right:10px;color:#999999;}
+.specialorder ul.list .row > .brd	{margin-top:5px;font-weight:bold;}
+.specialorder ul.list .row > .sbj	{margin-top:5px;font-size:16px;line-height:1.3;}
+.specialorder ul.list .row > .stt	{text-align:right;}
+.specialorder ul.list .row > .stt small	{}
+.specialorder ul.list .row > .stt .ok	{font-size:14px;font-weight:bold;color:#D02D2D;}
+.specialorder .list > .listmore	{margin-bottom:10px;}
+
+.specialorder > .sc > .submit	{margin:10px;text-align:center;}
+.specialorder > .sc > .submit > .btn	{width:35%;min-width:180px;}
+.specialorder > .sc > .specialbtn > .btn {min-width:130px !important;}
+
+.specialorder > .sc.departure > header	{position:relative;}
+.specialorder > .sc.departure > header .sbtn	{position:absolute;right:10px;top:0;margin-top:2px;}
+
+.specialorder > .sc .box.txt		{position:relative;margin-bottom:10px;padding:0;border-top:2px solid #000000;}
+.specialorder > .sc .box.txt > .row	{padding:5px 0;}
+.specialorder > .sc .box.txt > .row:last-child	{border-bottom:none;}
+.specialorder > .sc .box.txt > .ex	{position:absolute;left:10px;bottom:0;height:20px;color:#999999;font-size:11px;}
+
+.specialorder > .sc .box.aboutitem	{padding-bottom:20px;}
+
+.specialorder > .sc .cscall	{margin-top:5px;padding:5px 10px;}
+.specialorder .sc.message > h1			{width:141px;height:141px;margin:0 auto;background:url('/images/shop/specialorderdone.png') no-repeat 0 0;font-size:0;}
+.specialorder .sc.message .desc			{width:100%;max-width:300px;margin:0 auto;text-align:center;color:#888888;}
+.specialorder .sc.message > .button			{margin:20px;}
+.specialorder .sc.message > .button > .btn	{width:30%;}
+
+
+div.none	{padding:50px 0;text-align:center;color:#999999;}
+
+
+
+/* mycoupon */
+#ct > .mycoupon	{margin-top:-10px;}
+.mycoupon header.ht	{margin-top:10px;}
+.mycoupon header.button			{margin:10px;text-align:center;}
+.mycoupon header.button .btn	{width:50%;}
+.mycoupon > .sc	{margin-bottom:20px;}
+.mycoupon > .sc > ul	{}
+.mycoupon > .sc > ul > li	{padding:10px;border-bottom:1px solid #DDDDDD;}
+.mycoupon > .sc > ul > li > div	{position:relative;}
+
+.mycoupon .sc.coupon .c			{padding-top:10px;border-top:1px solid #DDDDDD;}
+.mycoupon .sc.coupon .c > h2	{text-indent:10px;}
+.mycoupon .sc.coupon .c > ul > li	{margin-bottom:5px;padding:10px;border-bottom:1px dotted #DDDDDD;}
+.mycoupon .sc.coupon .c > ul > li:last-child	{border-bottom:none;}
+
+.mycoupon .sc.reg > fieldset	{padding:10px;}
+.mycoupon .sc.reg > fieldset > p	{margin-bottom:10px;}
+.mycoupon .sc.reg > fieldset > div	{position:relative;text-align:center;}
+.mycoupon .sc.reg > fieldset > div > .text	{width:70%;max-width:250px;}
+.mycoupon .sc.reg > fieldset > div > .btn	{width:25%;max-width:100px;}
+
+.mycoupon ul.list 	{border-top:2px solid #000000;}
+.mycoupon ul.list > li {position:relative;padding:10px;border-bottom:1px solid #DDDDDD;}
+.mycoupon ul.list > li:last-child {border-bottom:none;}
+.mycoupon ul.list .c	{position:relative;}
+.mycoupon ul.list .c > .sbj	{font-size:16px;line-height:1.3;font-weight:bold;margin-bottom:5px;}
+.mycoupon ul.list .c > .dsc,.mycoupon ul.list .c > .ovr,
+.mycoupon ul.list .c > .dis	{color:#999999;font-size:11px;}
+.mycoupon ul.list .c > .rest	{position:absolute;right:0;top:0;}
+.mycoupon ul.list .c > .rest var	{font-size:15px;font-weight:bold;margin-right:3px;}
+
+.mycoupon ul.list .c > .stt	{text-align:right;}
+.mycoupon ul.list .c > .stt small	{}
+.mycoupon ul.list .c > .stt .ok	{font-size:14px;font-weight:bold;color:#D02D2D;}
+
+#ct > .mysave	{}
+.mysave .sc > .box	{padding:10px;border-bottom:1px solid #DDDDDD;background:#F6F6F6;}
+.mysave .sc > .list	{}
+.mysave .sc > .list li	{padding:10px 0 ;border-bottom:1px solid #DDDDDD;}
+.mysave .sc > .list li:last-child	{border-bottom:none;}
+.mysave .sc > .list .row	{padding-left:0; position:relative;}
+.mysave .sc > .list .row > .sbj	{padding-left:10px; margin-bottom:10px;margin-right:140px;font-size:18px;font-weight:bold;}
+.mysave .sc > .list .row > .whn	{padding-left:10px;}
+.mysave .sc > .list .row > .whn .tts {display:inline !important; width:auto; height:auto; font-size:13px !important; line-height:1.25em !important;}
+.mysave .sc > .list .row > .prc	{position:absolute;right:10px;top:0;float:right;text-align:right;}
+.mysave .sc > .list .row > .prc var	{font-size:15px;font-weight:bold;}
+.mysave .sc > .list .row > .prc var.out	{color:#D02D2D;}
+.mysave .sc > .list .row > .prc var.in	{color:#2484C1;}
+
+.mysave .sc.list .list li .box .save-list	{position:relative;padding:10px 10px 10px 10px; border-top:1px solid #DDDDDD;margin-top:10px;background:#f6f6f6;line-height:20px;min-height:20px; text-align:center;}
+.mysave .sc.list .list li .box .whn	{padding-left:10px;}
+.mysave .sc.list .list li .row .sbtn {position:absolute;right:10px;top:35px;}
+
+
+.mysave .sc.list .list li .box .save-list .tit {border-top:1px solid #000;border-bottom:1px solid #d9d9d9;}
+.mysave .sc.list .list li .box .save-list .tit b {display:inline-block; width:30%; font-weight:block;}
+.mysave .sc.list .list li .box .save-list .list-box .box {width:100%; border-bottom:1px solid #d9d9d9;}
+.mysave .sc.list .list li .box .save-list .list-box b {display:inline-block; width:30%; font-size:12px; font-weight:normal;}
+.mysave .sc.list .list li .box .save-list .total {height:21px; background:#d9d9d9;}
+.mysave .sc.list .list li .box .save-list .total b {display:inline-block; width:30%;}
+.mysave .sc.list .list li .box .save-list .total b.txt {width:60%;}
+
+
+
+
+#ct > .myqna > .sc.reg	{position:relative;border-bottom:2px solid #000000;height:38px;}
+#ct > .myqna > .sc.reg > .submit	{position:absolute;right:10px;top:0;}
+#ct > .myqna > .sc.list	{}
+
+.myqna .sc.reg .desc	{padding-left:10px;font-size:11px;color:#999999;}
+.myqna .sc.list li		{border-bottom:1px solid #DDDDDD;background:#F6F6F6;}
+.myqna .sc.list li:last-child	{border-bottom:none;}
+.myqna .sc.list p.q	{position:relative;padding:10px 10px 10px 50px;background:#FFFFFF;line-height:20px;min-height:20px;font-weight:bold;}
+.myqna .sc.list div.q	{padding:10px 0;border-top:1px solid #DDDDDD;}
+.myqna .sc.list li > .box > div	{display:none;padding:10px 10px 10px 50px;color:#666666;}
+.myqna .sc.list li.on > .box > div	{display:block;}
+.myqna .sc.list li.on > .box > div.q {background:url(/images/mypage/ico_q.png) no-repeat 20px 10px;}
+.myqna .sc.list li.on > .box > div.a {background:url(/images/mypage/ico_a.png) no-repeat 10px 10px;}
+.myqna .sc.list li > .box > div.a	{margin:0 10px;padding-left:40px;border-top:1px dotted #DDDDDD;}
+
+.myqna > .sc.form			{margin-top:-10px;}
+.myqna > .sc.form > .box	{padding:0;}
+.myqna > .sc.form > .box > .row	{padding: 5px 10px;}
+.myqna > .sc.form > .box > .row .p,.myqna > .sc.form > .box > .row .p	{min-height:30px;}
+
+.myqna > .sc.form > .submit	{margin:10px;text-align:center;}
+.myqna > .sc.form > .submit > .btn	{width:35%;}
+.myqna > .sc.form .p.s	{font-size:11px;line-height:15px;color:#999999;}
+
+.myqna b.stt	{position:absolute;left:10px;top:10px;width:30px;padding:2px;border-radius:3px;font-size:11px;height:16px;line-height:18px;overflow:hidden;text-align:center;font-weight:normal;color:#FFFFFF;}
+.myqna b.stt.a	{background:#D02D2D;}
+.myqna b.stt.q	{background:#289A9A;}
+
+/* psportal */
+#ct > .psportal	{min-height:240px;}
+.psportal .button p	{margin-bottom:5px;text-align:center;}
+.psportal .btn.my	{width:80%;max-width:250px;}
+@media (min-width:768px) {
+	.psportal {margin-top:100px;min-height:140px;}
+	.psportal .button {width:100%; overflow:hidden; margin:0 auto; text-align:center;}
+	.psportal .button p	{width:21%; display:inline-block; margin:0 5px;text-align:center;}
+	.psportal .btn.my	{width:100%;height:80px !important;max-width:250px;}
+	.psportal .btn.my u {height:40px !important; padding-top:40px; font-size:13px !important;}
+	.psportal .btn.my u.myinfo1 {background:url(/images/mypage/bg_myinfo1.png) no-repeat center 16px}
+	.psportal .btn.my u.myinfo2 {background:url(/images/mypage/bg_myinfo2.png) no-repeat center 16px}
+	.psportal .btn.my u.myinfo3 {background:url(/images/mypage/bg_myinfo3.png) no-repeat center 16px}
+	.psportal .btn.my u.myinfo4 {background:url(/images/mypage/bg_myinfo4.png) no-repeat center 16px}	
+}
+
+/* agreement */
+
+.terms-box {padding:10px;}
+.terms-box p {padding: 0 0 4px;}
+.table {width: 100%;}
+	#tbar {margin-bottom: 0; border-bottom: 0;}
+	th {font-weight: bold;}
+	caption {display: none;}
+	.info-table table {width: 100%;}
+	.info-table th {border: 1px solid #dfdfdf; border-top: 2px solid #000;  height: 40px; background: #f6f6f6;}
+	.info-table td {border: 1px solid #dfdfdf; border-top: 0; padding: 10px 8px 10px; min-height: 14px;}
+	.info-table td p {text-align: left; padding-left: 10px padding-right: 10px; color: #666;}
+	.info-table td.rate p {text-align: center; padding-left: 0;} 
+	.info-notice {padding: 16px 10px 0; min-height: 115px; background: #f6f6f6;}
+	.notice p {color: #888; padding-bottom: 17px;}
+	.offvip .submit {margin-bottom:15px; text-align:center;}
+	.offvip .submit .confirm {width:70%;}
+	
+/* banner */
+.memberbanner {display:none;}
+@media (min-width:768px){
+.memberbanner {display:block; margin:5px 0;}
+.memberbanner p {width:100%; margin-top:5px; text-align:center; background:#f7f7f6; border-top:1px solid #ddd;}
+}

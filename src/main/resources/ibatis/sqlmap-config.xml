@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="1024"
+		maxSessions="32" maxTransactions="16" useStatementNamespaces="true"
+		defaultStatementTimeout="500000" />
+	 
+ 		 <!--  <typeHandler jdbcType="CLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler"/>    -->
+ 		<typeHandler javaType="net.sourceforge.jtds.jdbc.ClobImpl" callback="com.waremec.framework.dao.handler.ClobTypeHandler"/>   
+ 		<typeHandler javaType="boolean" callback="com.waremec.framework.dao.handler.YNBooleanTypeHandler"/>
+		
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Label-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Login-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Main_sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Detail-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Order-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/OrderConfirm-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Cart-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Favorites-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/CheckInHist-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Customer-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Promotion-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/EventRoulette-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Blog_sqlmap.xml" /><!-- Front Blog -->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Counter-sqlmap.xml" /><!-- Front Blog -->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/NewsFeed-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/MessageList-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Koreanair-sqlmap.xml" /> <!--Koreanair 2015.4.30 add by lilifang-->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Event-sqlmap.xml" /> <!-- Event --> 
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Magazine_sqlmap.xml" /><!-- Front Blog -->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Vote-sqlmap.xml" /><!-- Front Blog -->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/BBS-sqlmap.xml" />
+<!-- 	<sqlMap resource="com/waremec/wpt/front/incheonAirport/sqlmap/AirportNews-sqlmap.xml" /> -->
+	
+<!-- 	<sqlMap resource="com/waremec/wpt/dao/sqlmap/ScreenOne-sqlmap.xml" />Dashboard -->
+<!-- 	<sqlMap resource="com/waremec/wpt/dao/sqlmap/ScreenTwo-sqlmap.xml" />Dashboard -->
+		
+<!-- 	<sqlMap resource="com/waremec/wpt/hsad/sqlmap/WorkSel-sqlmap.xml" /> -->
+<!-- 	<sqlMap resource="com/waremec/wpt/hsad/sqlmap/Hsad-sqlmap.xml"/>hsad   -->
+<!-- 	<sqlMap resource="com/waremec/wpt/hsad/sqlmap/WorkUpload-sqlmap.xml" />  -->
+	
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/Redpark-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/SsgSSO-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/Weixin-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinCustom-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinGroup-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinLetter-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinMass-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinMedia-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinMenu-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinMessage-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinOrder-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinQRCode-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinStatistic-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinTemplateMessage-sqlmap.xml" />
+	<sqlMap resource="com/waremec/weixin/dao/sqlmap/WeixinUser-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/LuckyTable-sqlmap.xml" /> 
+	
+	<sqlMap resource="com/waremec/alipay/dao/sqlmap/Alipay-sqlmap.xml" />
+	
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Dahan-sqlmap.xml" /><!-- 大韩韩空news -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Combo-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Menu-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Template-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/User-sqlmap.xml"/> 
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Group-sqlmap.xml"/> 
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/GoodsDisplay-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Shop-sqlmap.xml"/><!-- 店铺的创建，修改，删除 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Point-sqlmap.xml"/><!-- 店铺积分管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/GoodsSell-sqlmap.xml"/><!-- 销售中的商品管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/ShopMainPage-sqlmap.xml"/><!-- 店鋪主頁 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/MyFile-sqlmap.xml"/><!-- 我的文件 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/GoodsCurrent-sqlmap.xml"/><!-- 客户概况 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/OrderBaseCount-sqlmap.xml"/><!-- 订单概况 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/IncomeDetail-sqlmap.xml"/><!-- 收支明细 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/SendMsgAll-sqlmap.xml"/><!--微信管理-> 群发功能 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Reply-sqlmap.xml"/><!--微信管理-> 自动功能 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/MaterialManage-sqlmap.xml"/><!--微信管理-> 素材管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/MsgControl-sqlmap.xml"/><!--微信管理-> 消息管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Cust-sqlmap.xml" /><!-- 客户筛选 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminGoods-sqlmap.xml" /><!-- 店铺运营-商品分类/商品登记 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminPromotion-sqlmap.xml" /><!-- 店铺运营-促销管理/促销管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminVote-sqlmap.xml" /><!-- 店铺运营-投票调查/投票调查 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminOrdersAll-sqlmap.xml" /><!-- 店铺运营-所有订单-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminWxCustMenu-sqlmap.xml" /><!-- 微信自定义菜单-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminMyIncome-sqlmap.xml" /><!-- 我的收入-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/RouletteActivity-sqlmap.xml" /><!-- 摇奖活动-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminUser-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminGroup-sqlmap.xml" /><!-- 公司信息 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Grade-sqlmap.xml" /><!-- 等级管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminTransportSheet-sqlmap.xml" /><!-- 运费模板 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminSetUp-sqlmap.xml" /><!-- 设置 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminWeixinTimer-sqlmap.xml" /><!-- 定时发送  -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/CustCurrent-sqlmap.xml" /><!-- 客户现状-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/GoodsStatistics-sqlmap.xml" /><!-- 商品统计-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Blog-sqlmap.xml" /><!-- Blog -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Mass-sqlmap.xml" /><!-- Blog -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/CustRatio-sqlmap.xml" /><!-- 客户占比分析 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Material-sqlmap.xml" />
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/MsgManage-sqlmap.xml" /> <!-- 消息管理 --> 
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/Voucher-sqlmap.xml" /> <!-- 优惠券管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/ImgTextSituation-sqlmap.xml" /> <!--ImgTextSituation 2015.5.7 add by wangbin-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/InternationalManage-sqlmap.xml" /> <!--国际化管理-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/BBS-sqlmap.xml" /> <!--BBS申请管理-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/File-sqlmap.xml" /> <!--File管理-->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminNongshim-sqlmap.xml" /> <!--nongshim 1 month-->
+	<!-- <sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/BuyApplyManage-sqlmap.xml" /> 客户购买申请管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/NewsInterfaceList-sqlmap.xml" /><!--  图文消息接口列表 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/codeManage-sqlmap.xml" /><!--  System Code Manage -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/PageManage-sqlmap.xml" /><!--  系统页面管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminMenu-sqlmap.xml" /><!-- 菜单管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminHuman-sqlmap.xml" /><!-- 菜单管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/ApplyManage-sqlmap.xml" /><!-- 菜单管理 -->
+	<sqlMap resource="com/waremec/wpt/admin/dao/sqlmap/AdminQuestion-sqlmap.xml" /><!-- 咨询问题管理 -->
+	
+<!-- 	<sqlMap resource="com/waremec/wpt/front/nongshim/sqlmap/EntryForm_sqlmap.xml" /> -->
+	<sqlMap resource="com/waremec/wpt/front/nongshim/sqlmap/NewsFeedNongshim_sqlmap.xml" />
+<!-- 	<sqlMap resource="com/waremec/wpt/front/nongshim/sqlmap/Publish-sqlmap.xml" /> -->
+	
+<!-- 	<sqlMap resource="com/waremec/wpt/front/human/sqlmap/HumanLecture-sqlmap.xml" /> -->
+	
+	<!-- human -->
+<!-- 	<sqlMap resource="com/waremec/wpt/front/human/sqlmap/ApplyMessage-sqlmap.xml" /> -->
+	
+	<!-- incheonAirport -->
+<!-- 	<sqlMap resource="com/waremec/wpt/front/incheonAirport/sqlmap/Coupon-sqlmap.xml" /> -->
+	
+	<!-- wxi -->
+	<sqlMap resource="com/waremec/wxi/dao/sqlmap/wxi-sqlmap.xml" />
+	
+	<!-- human -->
+	<sqlMap resource="com/waremec/wpt/hzm/dao/sqlmap/HzmSample-sqlmap.xml" />
+	
+	<!-- 第三方平台sql -->
+	<sqlMap resource="com/waremec/weixin/thirdparty/dao/sqlmap/Thirdparty-sqlmap.xml" />
+	
+	<!-- BBC System sql -->
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/Bbc_sqlmap.xml" />
+	
+</sqlMapConfig>	

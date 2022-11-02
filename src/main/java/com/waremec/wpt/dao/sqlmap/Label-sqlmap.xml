@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Label">
+	
+    <select id="GET_ALL_LABEL" resultClass="java.util.HashMap" remapResults="true">
+        <![CDATA[
+        	EXEC [GET_ALL_LABEL]
+       	]]>
+    </select>
+    <select id="GET_ALL_LABEL_BBC" resultClass="java.util.HashMap" remapResults="true">
+        <![CDATA[
+        	EXEC [GET_ALL_LABEL_BBC]
+       	]]>
+    </select>
+</sqlMap>

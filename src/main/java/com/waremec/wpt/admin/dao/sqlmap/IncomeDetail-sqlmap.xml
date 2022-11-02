@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="IncomeDetail">
+	<!-- 查询该客户的地址信息 -->
+	<select id="selectOrderList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ORDER_PAY_LIST_SELECT]
+		 	@SHOP_ID=#shopId:INT#,
+		 	@CREATED_DT_FROM=#createdDateFrom:SMALLDATETIME#,
+		 	@CREATED_DT_TO=#createdDateTo:SMALLDATETIME#,
+		 	@IS_REFUND=#isRefund:INT#,
+		 	@PAY_TYPE_ID=#payTypeId:INT#,
+		 	@PAGE_CURR=#pageCurr:INT#,
+		 	@PAGE_UINT=#pageUnit:INT#,
+		 	@ORDERBY=#orderBy:VARCHAR#
+		]]>
+	</select>
+	<select id="selectOrderListCount" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[	
+	    SELECT COUNT(A.ORDER_ID) AS COUNT_NUM
+	    	FROM	[ORDER] A
+	    	INNER JOIN ORDER_SHOP B
+	    			ON A.ORDER_ID=B.ORDER_ID
+	    	INNER JOIN ORDER_PAY C
+	    			ON C.ORDER_ID=B.ORDER_ID
+			WHERE	B.SHOP_ID = #shopId:INT#
+			AND		C.CREATED_DT >= ISNULL(#createdDateFrom:SMALLDATETIME#, C.CREATED_DT)
+			AND		C.CREATED_DT <= ISNULL(#createdDateTo:SMALLDATETIME#, C.CREATED_DT)
+			AND		A.IS_REFUND = ISNULL(#isRefund:INT#,A.IS_REFUND)
+			AND		C.PAY_TYPE_ID = ISNULL(#payTypeId:INT#,C.PAY_TYPE_ID)
+		]]>
+	</select>
+	<select id="selectPayType"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[	
+	    SELECT
+		    	PAY_TYPE_ID
+				,PAY_NAME
+				,IS_DIRECT
+				,IS_ONLINE
+				,PAY_IF_INFO
+				,SORT_NO
+		FROM 	PAYMENT_MST
+		]]>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.error-box {width:100%; height:555px; margin:66px auto;}
+.error-box .error {width:100%; height:184px; padding:137px 0 130px 0; margin-bottom:30px; border-top:2px solid #303030; border-bottom:1px solid #eaeaea; text-align:center;}
+.error-box .error p {text-align:center;}
+.error-box .error .txt {text-indent:-9999em;}
+.error-box .btn {text-align:center;}
+.error-box .btn a img {border:0 none;} 

@@ -1,0 +1,10 @@
+﻿@CHARSET "UTF-8";
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td, iframe, select, textarea
+{
+	font-size: 12px;
+	font-family: Arial, "Microsoft Yahei" , "Malgun Gothic";
+	color: #333;
+}
+.k-widget {
+	font-family: Arial, "Microsoft Yahei" , "Malgun Gothic";
+}

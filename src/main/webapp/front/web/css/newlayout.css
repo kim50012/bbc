@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/*윙배너 자동롤링*/
+.newNop_leftWing {border-bottom:1px solid #f3f3f3;}
+
+.newNop_leftWing .bx-wrapper {margin:0 auto;}
+.newNop_leftWing .bx-wrapper .bx-viewport {left:0;background: none repeat scroll 0 0; border: 0;box-shadow: 0 0 0;}
+
+.newNop_leftWing .bx-wrapper .bx-pager {position:absolute; width:110px;}
+.newNop_leftWing .bx-wrapper .bx-controls-direction a.bx-prev  {top:8px; right:15px; margin-top:0;}
+.newNop_leftWing .bx-wrapper .bx-prev {left:0; background:url(//image.ssgdfs.com/images/shop/201409_renewal_main/ssg_controls.png) 9px 15px no-repeat; width:12px; height:12px;}
+.newNop_leftWing .bx-wrapper .bx-prev:hover {background-position:9px  15px;}
+
+.newNop_leftWing .bx-wrapper .bx-pager, .newNop_leftWing .bx-wrapper .bx-controls-auto {bottom:8px;}
+	
+.newNop_leftWing .bx-wrapper .bx-pager.bx-default-pager a {background: url("//image.ssgdfs.com/images/shop/common/201409_renewal_leftBnr/wing_dotOff.png") center center no-repeat; display:block; width:8px; height:8px; margin:0; margin:0 3px;}
+.newNop_leftWing .bx-wrapper .bx-pager.bx-default-pager a:hover, .newNop_leftWing .bx-wrapper .bx-pager.bx-default-pager a.active {background: url("//image.ssgdfs.com/images/shop/common/201409_renewal_leftBnr/wing_dotOn.png") center center no-repeat; display:block; width:8px; height:8px; margin:0; margin:0 3px;}
+
+
+/*left side*/
+.newNop_left_menu_wrap {width:110px; border:1px solid #f3f3f3; border-bottom:0; position:absolute; top:13px; left:-120px; z-index:2;}
+.newNop_left_menu { width:110px; border-top:0; background:#fff;}
+
+.newNop_left_rolling {border-bottom:1px solid #f3f3f3; /*border-top:1px solid #f3f3f3;*/ position:relative;}
+.newNop_left_rolling .left_bn_bt {position:absolute; bottom:10px; left:26px;}
+.newNop_left_rolling .left_bn_bt a {margin:0 3px;}
+
+.newNop_left_bn {border-bottom:1px solid #f3f3f3;}
+
+/*side_menu*/
+.newNop_side_menu {position:absolute; top:148px; left:0; right:0; width:1000px; margin:0 auto; z-index:999999;}
+.mainLeftbar {top:-11px !important; }
+#newNopquickbar {position:absolute; top:165px; left:0; right:0; width:1000px; margin:0 auto; z-index:999999;}
+#newNopquickbar .newNop_side_menu {top:0;}
+#newNopquickbar.fixed {position:fixed; top:0; margin-top:5px;} /*사이드 배너 고정 fixed*/
+
+/*right side*/
+.newNop_right_menu_wrap {position:absolute; top:0; right:-109px; width:98px; text-align:center;}
+.newNop_r_menu_icon {margin-bottom:3px;}
+.newNop_right_menu {border:1px solid #e3e3e3; background:url("//image.ssgdfs.com/images/shop/common/201409_renewal_main/right_mu_bg.gif") 0 0 repeat; }
+
+.newNop_right_menu .newNop_rate_cacl {border-bottom:1px solid #e3e3e3;  background-color:#f4f3ef; padding:13px 0;}
+.newNop_right_menu .newNop_rate_cacl dt {margin-bottom:6px;}
+.newNop_right_menu .newNop_rate_cacl dd {font-weight:bold; color:#fe0002; text-align: left; margin-left: 21px;}
+.newNop_right_menu .newNop_rate_cacl dd span {font-size:11px; font-family:Tahoma;}
+
+.newNop_right_menu .newNop_rate_calculator {background-color:#f4f3ef; border-top:1px solid #newNop_fff; border-bottom:1px solid #e3e3e3; padding:7px 0 14px 0;}
+.newNop_right_menu .newNop_rate_calculator form {margin-top:9px; float:none;}
+.newNop_right_menu .newNop_rate_calculator form label {width:12px; padding-left:5px; float:left; font-family: Tahoma;} 
+.newNop_right_menu .newNop_rate_calculator form input[type="text"] {display:inline-block; font-size:11px; border:1px solid #d8372e; width:55px; height:18px; padding:0 8px; text-align:right; }
+.newNop_right_menu .newNop_rate_calculator form .calculator_p1 {margin-bottom:10px;}
+.newNop_right_menu .newNop_rate_calculator form .calculator_p2 { font-size:11px; font-weight:bold; font-family:Tahoma; width:74px; margin-left:18px; height:18px; padding:0; text-align:right;  word-break: break-all;   margin-top: 12px;}
+
+.newNop_right_menu .newNop_myMenu li {border-bottom:1px solid #e3e3e3; padding:10px 0; text-align:center;}
+
+.newNop_right_menu .newNop_today_pro {margin:0 2px 2px 2px; position:relative; background-color:#fff; padding-top:10px; padding-bottom:37px;}
+.newNop_right_menu .newNop_today_pro ul {width:60px; margin:0 auto; overflow:hidden;}
+.newNop_right_menu .newNop_today_pro li {margin-top:10px; margin-bottom:0;}
+.newNop_right_menu .newNop_today_pro li.newNop_last_list {margin-bottom:0;}
+.newNop_right_menu .newNop_today_pro li img {width:60px; height:60px;}
+.newNop_right_menu .newNop_today_pro .view-area {margin-top:38px;}
+.newNop_right_menu .newNop_today_pro .newNop_today_prev {position:absolute; top:37px; right:0; left:0; margin:0 auto;}
+.newNop_right_menu .newNop_today_pro .newNop_today_next {position:absolute; bottom:13px; right:0; left:0; margin:0 auto;}
+
+.newNop_right_menu .userPoint {border-bottom:1px solid #e3e3e3;  background-color:#fff;}
+.newNop_right_menu .userPoint p {color:#fff; height:21px; line-height:21px; background:#8c8c8c url(//image.ssgdfs.com/images/shop/common/201409_renewal_rightBnr/quickBar_arrow01.gif) 85px 50% no-repeat; }
+.newNop_right_menu .userPoint dl {margin:11px 0;}
+.newNop_right_menu .userPoint dt {margin-bottom:6px;}
+.newNop_right_menu .userPoint dd {font-weight:bold; color:#fe0002;}
+.newNop_right_menu .userPoint dd span {font-size: 11px; font-family: Tahoma;}
+
+.quickTop a {height:21px; display:block; line-height:21px; font-size:10px; font-weight:bold; color:#fff !important; background:#8c8c8c url(//image.ssgdfs.com/images/shop/common/201409_renewal_rightBnr/quickBar_arrow02.gif) 30px 50% no-repeat;}
+
+#newNopquickbar div.view-area ul {
+	height: 150px !important;
+}

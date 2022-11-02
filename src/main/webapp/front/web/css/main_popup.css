@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+
+#wrap {width:100%; background:url("//image.ssgdfs.com/images/shop/order/bg_wrap.gif") no-repeat right 0;}
+#head {position:relative;	padding:16px 0 0 20px;	height:34px; background:#2a2a2a;}
+
+/* 주문가능시간조회 및 구매한도 조회 팝업 */
+
+.order-timepop {width:440px; height:auto; padding:20px 35px 30px 20px;}
+.order-timepop .info {width:433px; height:auto; padding-bottom:30px; margin:5px 0 20px 0; border:1px solid #cfcfcf; background:#f8f8f8;}
+.order-timepop .info .info-tit {height:44px; padding:30px 0 0 22px; text-align:center; font-size:12px; color:#333; line-height:18px; text-align:left;}
+.order-timepop .info .info-tit span {margin-right:10px; font-weight: bold;}
+.order-timepop .info .info-tit span.last {color:#666; font-weight:normal;}
+.order-timepop .info .info-tit strong {margin-right:5px; font-weight:normal; color:#d62b21;}
+.order-timepop .info .info-con1 {padding-top:18px; text-align:center; font-size:14px; color:#333; line-height:20px; font-weight:bold;}
+.order-timepop .info .info-con1 strong {margin-left:10px; font-size:16px; color:#d62b21;}
+.order-timepop .info .info-con2 {text-align:center; font-size:14px; color:#333; line-height:20px; font-weight:bold;}
+.order-timepop .info .info-con2 strong {font-size:16px; color:#d62b21;}
+.order-timepop .info .info-con3 {  padding: 30px 0 0 0; line-height: 20px; text-align: center; color: #333;}
+.order-timepop .info .info-con3 strong {font-weight:normal; color:#d62b21;}
+.order-timepop table {width:100%; margin:7px 0 20px 0; border-top:2px solid #000;}
+.order-timepop table th {height:45px; border-right:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; text-align:left;}
+.order-timepop table th span {margin:15px 0 0 20px;}
+.order-timepop table td {height:25px; border-bottom:1px solid #dfdfdf; text-align:left;}
+.order-timepop table td p {padding:10px 0 10px 20px;}
+.order-timepop table td p input[type="text"] {width:283px;}
+.order-timepop table td p img {vertical-align:middle; margin-left:4px;}
+.order-timepop table td.time p {float:left; margin-right:20px;}
+.order-timepop table td p.possible-p {color:#d42c21; font-size:14px; line-height:20px; font-weight:bold;}
+.order-timepop p.day {height:24px; margin-bottom:7px; text-align:right;}
+.order-timepop p.day span {display:block; margin-right:142px; font-weight:bold;}
+.order-timepop p.day .day {float:right;}
+.order-timepop .btn {text-align:center;}
+.order-timepop ul.check-tip {width:auto; padding:12px 0 3px 20px; margin-top:20px; border:1px solid #cfcfcf; background:#f8f8f8;}
+.order-timepop ul.check-tip li {padding:0 0 9px 11px; color:#777; font-size:11px; line-height:16px; background:url("//image.ssgdfs.com/images/shop/common/popup/dot_check.gif") no-repeat 0 5px;}
+.order-timepop ul.check-tip li span {display:block;}
+.txt-tipping {display:block; clear:both; height:auto; padding-left:7px; background:url("//image.ssgdfs.com/images/shop/order/dot_gray.gif") no-repeat 0 6px; color:#555;}
+.txt-tipping span {font-weight:bold;}
+
+.ui-datepicker {z-index:30 !important; }
+
+/* select */
+.order-timepop table td.place .sbHolder {width:311px; z-index: 10;}
+.order-timepop table td.place .sbOptions {width:311px;}
+.order-timepop table td.place .sbSelector {width:311px;}
+
+.order-timepop table td.place ul li, .order-timepop table td.time ul li {padding:0;}
+
+.order-timepop table td.time .sbHolder {width:75px;}
+.order-timepop table td.time .sbOptions {width:75px;}
+.order-timepop table td.time .sbSelector {width:75px;}
+
+.order-timepop p.day .sbHolder {width:132px; margin-top:-20px; float:right; text-align:left;}
+.order-timepop p.day .sbOptions {width:132px;}
+.order-timepop p.day .sbSelector {width:132px;}
+.sbOptions a {padding:2px 7px 2px 10px  !important;}
+
+
+/* notice */
+.notice-con {border:2px solid #2a2a2a;}
+/* .notice-con .notice-box {padding:20px;} */
+.notice-con .bottom-close {width:100%; height:30px; background:#2a2a2a;}
+.notice-con .bottom-close p.today-close {float:left; margin:8px 0 8px 10px;}
+.notice-con .bottom-close p.today-close label {margin-left:7px; color:#b3b3b3; line-height:14px;}
+.notice-con .bottom-close p.close {float:right; margin:8px 0 8px 0; color:#fff; line-height:14px;}
+.notice-con .bottom-close p.close a {margin:0 10px 0 6px;}

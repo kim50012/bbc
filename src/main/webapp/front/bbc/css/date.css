@@ -1,0 +1,239 @@
+.date {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /*height: 3.94rem;*/
+  margin: 0 auto;
+}
+.date-title {
+  height: 0.28rem;
+  display: flex;
+}
+.date-lbtn,.date-rbtn {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.date-lbtn:after {
+  display: block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #e4e4e4;
+  border-left: 2px solid #e4e4e4;
+  transform: rotate(45deg);
+}
+.date-rbtn:after {
+  display: block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #e4e4e4;
+  border-right: 2px solid #e4e4e4;
+  transform: rotate(-45deg);
+}
+.date .dateModel{
+  padding-top: 0.24rem;
+  display: flex;
+  justify-content: center;
+}
+.date-model {
+  padding-top: 0.24rem;
+  display: flex;
+  justify-content: space-between;
+}
+.date-head-list {
+  display: flex;
+  height: 0.5rem;
+  margin-top: 0.11rem;
+}
+.date-model 
+.left-model,.right-model {
+  width: 2.9rem;
+  height: 1.12rem;
+  border: 1px solid #ededed;
+  border-radius: 0.1rem;
+  background: #f4f5f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.left-model p,
+.right-model p {
+  font-size: 0.24rem;
+  text-align: center;
+  margin-bottom: 0.12rem;
+  font-weight: bold;
+}
+.left-model h4,
+.left-model h4 span {
+  color: #ec8921;
+  font-size: 0.28rem;
+  text-align: center;
+  font-weight: bold;
+}
+.right-model h4,
+.right-model h4 span {
+  color: #009944;
+  font-size: 0.28rem;
+  text-align: center;
+  font-weight: bold;
+}
+.day-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.12rem;
+}
+.date-item-list {
+  flex: 1;
+  display: flex;
+  margin-top: 0.04rem;
+}
+.date-con {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0080c6;
+}
+.date-con span {
+  font-size: 0.28rem;
+  font-weight: bold;
+}
+.date-item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date-item span {
+  font-size: 0.24rem;
+  font-weight: bold;
+}
+.date-item-list .date-item span {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 0.5rem;
+  color: #555555;
+  font-family: Dotum;
+  font-size: .24rem;
+  z-index: 10;
+}
+.date-item-list .date-item span.pre-day,
+.date-item-list .date-item span.next-day {
+  color: #bbbbbb;
+}
+/*.today {
+  position: relative;
+  background-image: -webkit-linear-gradient(90deg, #004983, #007fc4);
+  color: #FFFFFF !important;
+  z-index: 10;
+}*/
+.selected {
+  position: relative;
+  font-size: 0.24rem;
+  background: #FFFFFF;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+.selected span {
+  background: #555555;
+  font-size: 0.24rem;
+  font-weight: normal;
+  color: #FFFFFF !important;
+}
+.date-sign {
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2;
+}
+.date-sign i{
+  display: none;
+}
+
+.date-sign .a1{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/orangeCircle.png);
+  background-repeat: no-repeat;
+  background-size:  0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .a2{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/orangeDoshed.png);
+  background-repeat: no-repeat;
+  background-size:  0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .b1{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/blueCircle.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .b2 {
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/blueDoshed.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .c1{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/purpleCircle.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .c2{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/purpleDoshed.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .d1{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/greenCircle.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}
+.date-sign .d2{
+  display: block;
+  width: 0.12rem;
+  height: 0.12rem;
+  background-image: url(../image/greenDoshed.png);
+  background-repeat: no-repeat;
+  background-size: 0.1rem auto;
+  background-position: center bottom;
+}

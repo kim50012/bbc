@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+.k-editor-toolbar-wrap{
+	text-align: left;
+}
+span.attachment_items {
+	display: inline-block;
+	line-height: 18px;
+	height: 20px;
+	margin-right: 20px;
+}
+span.attachment_items a {
+	display: inline-block;
+	height: 20px;
+}
+
+span.attachment_items a.attachment_delete {
+	display: inline-block;
+	background-image: url(/images/framework/button/cross-small.png);
+	background-position: ceter center;
+	background-repeat: no-repeat;
+	margin-top: 0px;
+	height: 20px;
+	width: 16px;
+	position: absolute;
+	z-index: 999;
+}
+
+div.bulletinTitle{
+	display: inline-block;
+	clear: both;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	top: 10px;
+	left: 20px;
+	position: absolute;
+	z-index: 999;
+}

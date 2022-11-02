@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="admin/shopLack" extends="portal-default" namespace="/admin/shopLack">
+		<action name="*" method="{1}" class="adminShopLackAction">
+		    <result name="userDefinePageView">/admin/shopLack/userDefinePageView.jsp</result>
+		    <result name="userDefinePageView2">/admin/shopLack/userDefinePageView2.jsp</result>
+		    <result name="userDefinePageView3">/admin/shopLack/userDefinePageView3.jsp</result>
+		    <result name="userDefinePageView4">/admin/shopLack/userDefinePageView4.jsp</result>
+		    <result name="userDefinePageView5">/admin/shopLack/userDefinePageView5.jsp</result>
+		    <result name="shopMainPageView">/admin/shopLack/shopMainPageView.jsp</result>
+		    <result name="shopMainPageView2">/admin/shopLack/shopMainPageView2.jsp</result>
+		    <result name="shopMainPageView3">/admin/shopLack/shopMainPageView3.jsp</result>
+		    <result name="shopMainPageView4">/admin/shopLack/shopMainPageView4.jsp</result>
+		    <result name="shopMainPageView5">/admin/shopLack/shopMainPageView5.jsp</result>
+		    <result name="{1}">/admin/shopLack/{1}.jsp</result>
+		    
+		</action>
+	</package> 
+	
+	
+</struts>

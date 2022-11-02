@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="hzm/shopManage" extends="portal-default" namespace="/hzm/shopManage">
+		<action name="*" method="{1}" class="hzmShopManageAction">
+			<result name="userDefinePageView">/hzm/hzmShopManage/userDefinePageView.jsp</result>
+		    <result name="userDefinePageView2">/hzm/hzmShopManage/userDefinePageView2.jsp</result>
+		    <result name="userDefinePageView3">/hzm/hzmShopManage/userDefinePageView3.jsp</result>
+		    <result name="userDefinePageView4">/hzm/hzmShopManage/userDefinePageView4.jsp</result>
+		    <result name="userDefinePageView5">/hzm/hzmShopManage/userDefinePageView5.jsp</result>
+		    <result name="shopMainPageView">/hzm/hzmShopManage/shopMainPageView.jsp</result>
+		    <result name="shopMainPageView2">/hzm/hzmShopManage/shopMainPageView2.jsp</result>
+		    <result name="shopMainPageView3">/hzm/hzmShopManage/shopMainPageView3.jsp</result>
+		    <result name="shopMainPageView4">/hzm/hzmShopManage/shopMainPageView4.jsp</result>
+		    <result name="shopMainPageView5">/hzm/hzmShopManage/shopMainPageView5.jsp</result>
+		    <result name="M" type="chain">
+	    		<param name="namespace">/hzm/shopManage</param>
+      			<param name="actionName">hzm_UpdateWebzineListById</param>
+      			<param name="pageId">${pageId}</param>
+	    	</result>
+		    <result name="H" type="chain">
+	    		<param name="namespace">/hzm/shopManage</param>
+      			<param name="actionName">hzm_ModifyCustomPageEditor</param>
+      			<param name="pageId">${pageId}</param>
+      			<param name="pageFlag">${pageFlag}</param>
+	    	</result>
+		    <result name="{1}">/hzm/hzmShopManage/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/blog" extends="portal-default" namespace="/hzm/blog">
+		<action name="*" method="{1}" class="hzmBlogAction">
+		    <result name="{1}">/hzm/hzmShopManage/{1}.jsp</result>
+		</action>
+	</package>
+
+	<package name="hzm/bbs" extends="portal-default" namespace="/hzm/bbs">
+		<action name="*" method="{1}" class="hzmBBSAction">
+		    <result name="{1}">/hzm/hzmBBS/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/report/shop" extends="portal-default" namespace="/hzm/report/shop">
+		<action name="*" method="{1}" class="hzmReportShopAction">
+		    <result name="{1}">/hzm/report/shop/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/goods/category" extends="portal-default" namespace="/hzm/goods/category">
+		<action name="*" method="{1}" class="hzmGoodsClassAction">
+		    <result name="{1}">/hzm/goods/category/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/goods" extends="portal-default" namespace="/hzm/goods">
+		<action name="*" method="{1}" class="hzmGoodsAction">
+		    <result name="displayPreview">/hzm/goods/hzm_DisplayPreview.jsp</result>
+		    <result name="displayPreview2">/hzm/goods/hzm_DisplayPreview2.jsp</result>
+		    <result name="displayPreview3">/hzm/goods/hzm_DisplayPreview3.jsp</result>
+		    <result name="displayPreview4">/hzm/goods/hzm_DisplayPreview4.jsp</result>
+		    <result name="displayPreview5">/hzm/goods/hzm_DisplayPreview5.jsp</result>
+		    <result name="{1}">/hzm/goods/{1}.jsp</result>
+		</action>
+	</package> 
+	
+	<package name="hzm/goods/display" extends="portal-default" namespace="/hzm/goods/display">
+		<action name="*" method="{1}" class="hzmDisplayAction">
+		 	<result name="displayPreview">/hzm/goods/display/hzm_DisplayPreview.jsp</result>
+		    <result name="displayPreview2">/hzm/goods/display/hzm_DisplayPreview2.jsp</result>
+		    <result name="displayPreview3">/hzm/goods/display/hzm_DisplayPreview3.jsp</result>
+		    <result name="displayPreview4">/hzm/goods/display/hzm_DisplayPreview4.jsp</result>
+		    <result name="displayPreview5">/hzm/goods/display/hzm_DisplayPreview5.jsp</result>
+		    <result name="{1}">/hzm/goods/display/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/goods/goods" extends="portal-default" namespace="/hzm/goods/goods">
+		<action name="*" method="{1}" class="hzmGoodsManageAction">
+		    <result name="{1}">/hzm/goods/goods/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/report/order" extends="portal-default" namespace="/hzm/report/order">
+		<action name="*" method="{1}" class="hzmReportOrderAction">
+		    <result name="{1}">/hzm/report/order/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/orders" extends="portal-default" namespace="/hzm/orders">
+		<action name="*" method="{1}" class="hzmOrdersAction">
+		    <result name="ordersAllConds">/admin/orders/ordersAllConds.jsp</result>
+		    <result name="{1}">/hzm/orders/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/weixin/menu" extends="portal-default" namespace="/hzm/weixin/menu">
+		<action name="*" method="{1}" class="hzmWeixinMenuAction">
+		    <result name="{1}">/hzm/weixin/menu/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/weixin/reply" extends="portal-default" namespace="/hzm/weixin/reply">
+		<action name="*" method="{1}" class="hzmWeixinReplyAction">
+		    <result name="{1}">/hzm/weixin/reply/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/msgControl" extends="portal-default" namespace="/hzm/msgControl">
+		<action name="*" method="{1}" class="hzmMsgControlAction">
+		    <result name="{1}">/hzm/msgControl/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/weixin/material" extends="portal-default" namespace="/hzm/weixin/material">
+		<action name="*" method="{1}" class="hzmWeixinMaterialAction">
+		    <result name="{1}">/hzm/weixin/material/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/weixin/mass" extends="portal-default" namespace="/hzm/weixin/mass">
+		<action name="*" method="{1}" class="hzmWeixinMassAction">
+		    <result name="{1}">/hzm/weixin/mass/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/report" extends="portal-default" namespace="/hzm/report">
+		<action name="*" method="{1}" class="hzmReportSummaryAction">
+		    <result name="{1}">/hzm/report/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/report/goods" extends="portal-default" namespace="/hzm/report/goods">
+		<action name="*" method="{1}" class="hzmReportGoodsAction">
+		    <result name="{1}">/hzm/report/goods/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="hzm/shop" extends="portal-default" namespace="/hzm/shop">
+		<action name="*" method="{1}" class="hzmShopAction">
+		    <result name="{1}">/hzm/shop/{1}.jsp</result>
+		</action>
+	</package>
+	
+</struts>

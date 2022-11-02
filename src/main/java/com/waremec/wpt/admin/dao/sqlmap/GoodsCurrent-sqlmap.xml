@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="GoodsCurrent">
+	<!-- 查询该客户的地址信息 -->
+	<select id="selectCountCurrent" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [ANALYSIS_INFLOW_SELECT]
+		 	@SHOP_ID	=#shopId:INT#,
+		 	@BEGIN_DT	=#startDate:SMALLDATETIME#,
+		 	@END_DT		=#endDate:SMALLDATETIME#,
+		 	@JOB_TYPE	=#jobType:CHAR#
+		]]>
+	</select>
+	<select id="selectShopMessage" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[	
+	    EXEC [SHOP_SELECT]
+		 	@SHOP_ID	=#shopId:INT#
+		]]>
+	</select>
+	<select id="selectOrderBaseCount"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[	
+	    EXEC	[ORDER_BASE_COUNT_SELECT]
+		  @SHOP_ID		=#shopId:INT#		
+		 ,@START_DT		=#startDate:SMALLDATETIME# 
+		 ,@END_DT		=#endDate:SMALLDATETIME# 
+		 ,@PAGE_CURR	=#pageCurr:INT#		
+		 ,@PAGE_UINT	=#pageUnit:INT#	
+		 	
+		]]>
+	</select>
+
+</sqlMap>

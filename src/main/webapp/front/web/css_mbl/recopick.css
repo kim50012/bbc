@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.reco_tab{/*overflow:hidden;*/ *zoom:1;}
+.reco_tab:after {content:''; display:block; clear:both;}
+.reco_tab li{position:relative; float:left; text-align:center; border-left:1px solid #e4a100; background:#f7b310;}
+.reco_tab li:first-child{border-left:0;}
+.reco_tab a{display:block; padding:13px 0; font-size:0.95em; color:#fff;}
+.reco_tab li.active{font-weight:bold; background:#000;}
+.reco_tab li.active span.bg{display:block;}
+.reco_tab_con{display:none;}
+.reco_tab_con.active{display:block;}
+
+/*탭 수정 추가 0903*/
+.newTab li {position: relative; float: left; text-align: center; border-left: 1px solid #E4A100; background:#d4d4d4; box-sizing:border-box; width:50%; border-left: 1px solid #E1E1E1; border-right: 1px solid #CFCFCF;}
+.newTab li a{color:#000;}
+.newTab li.active a {color:#fff;}

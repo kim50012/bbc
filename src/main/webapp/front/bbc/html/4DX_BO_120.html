@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TOP5 타이틀 BO 실적</title>
+    <!--bootstarp：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <!--按钮：公用-->
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_BO_120.js" type="text/javascript" charset="utf-8"></script>    
+  </head>
+  <body>
+    <div class="app top5App" id="app">
+	  	<div class="content">
+	  		<div class="scroll-wrap refresh-wrap">
+	  			<div class="container">
+      			<div class="title2">
+              <span class="font24 bold">TOP 5 타이틀 BO 실적 현황</span><span class="font20 fontOrange">단위 : 1,000</span>
+          </div>
+            <div class="table1">
+         			<table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+
+                <tr>
+                  <th class="noWrapCell">타이틀</th>
+                  <th class="noWrapCell">진척율</th>
+                  <th class="noWrapCell">관객수</th>
+                  <th class="noWrapCell">총좌석수</th>
+                  <th class="noWrapCell">진척율</th>
+                </tr>
+                <tr id= "openData" onclick="tagscheck(this)">
+                  
+                  <td class="center">Solo: A Star Wars Story</td>
+                  <td class="noWrapCell">2018-01-18</td>
+                  <td>24</td>
+                  <td>73</td>
+                  <td>32.8%</td>
+                </tr>
+                <tr onclick="tagscheck(this)">
+                  
+                  <td class="center">염력</td>
+                  <td class="noWrapCell">2018-01-31</td>
+                  <td>56</td>
+                  <td>726</td>
+                  <td>7.8%</td>
+                </tr>
+                <tr onclick="tagscheck(this)">
+                  
+                  <td class="center">블랙팬서</td>
+                  <td class="noWrapCell">2018-02-14</td>
+                  <td>244</td>
+                  <td>1,106</td>
+                  <td>22.1%</td>
+                </tr>
+                <tr onclick="tagscheck(this)">
+                  
+                  <td class="center">곤지암</td>
+                  <td class="noWrapCell">2018-03-24</td>
+                  <td>230</td>
+                  <td>1,209</td>
+                  <td>19.1%</td>
+                </tr>
+                <tr onclick="tagscheck(this)">
+		            
+		              <td class="center">램페이지</td>
+		              <td class="noWrapCell">2018-04-12</td>
+		              <td>101</td>
+		              <td>710</td>
+		              <td>14.3%</td>
+		            </tr>
+          		</table>
+        		</div>
+	        </div>
+	        <div id ="relevant" class="table-wrap container relevant">
+		        <div class="title1">
+		        	<div>
+		            <i class="fourDPlex icon-sanjiao"></i
+		            	>
+		            <span class="bold">상세 현황</span>
+	            </div>
+	    			</div>
+			    	<div class="table1">
+			      	<table class="table-col2 open" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+			        	
+			      		<colgroup>
+			      			<col width="27%"/>
+			      			<col width="73%"/>
+			      		</colgroup>
+			        	<tr>
+
+			          	<th class="right">
+			          	  <p>타이틀 명</p>
+			          	</th>
+			          	<td class="left">
+			          	  <p>Solo : A Star Wars Story</p>
+			          	</td>
+
+			        	</tr>
+			        	<tr>
+			         		<th class="right">
+			         		  <p>영화 정보</p>
+			         		</th>
+			          	<td class="left">
+			          	  <p>감독 : 론 하워드</p>
+			          	  <p>시놉시스 : 최고의 파일럿을 꿈꾸던 ‘한 솔로’ 는 문제적 멘토 ‘베킷’의 유혹에 빠져</p>
+			          	</td>
+
+			        	</tr>
+			      	</table>
+			    	</div>
+			    	<div class="chart" id="chart" style="height: 300px;padding-top: .12rem;"></div>
+			    </div>
+	  		</div>
+	  	</div>
+	  </div> 
+  
+  </body>
+</html> 

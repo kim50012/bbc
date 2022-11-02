@@ -1,0 +1,61 @@
+1. [2015-10-23]
+	1)목록
+		ssgdfs_china_web/web/WEB-INF/ui.tld [18662]
+		ssgdfs_site/src/kr/co/crewmate/site/web/taglib/IconTagProductRenewal.java [18663]
+		ssgdfs_site/src/kr/co/crewmate/site/web/taglib/SelectTag.java [18662]
+		
+	2)설명 
+		-	상품상세 :  리뷰코드추가
+		-	상품아이콘 변경 : 아이콘 이미지 변경에 따른 경로 수정
+2. [2015-10-26]
+	1)목록 [18674]
+		 
+		 ssgdfs_china_web/src/kr/co/crewmate/site/web/controller/mobile/ProductController.java
+		 ssgdfs_china_web/web/WEB-INF/decorators.xml
+		 ssgdfs_china_web/web/js_mobile/common.js
+		 ssgdfs_china_web/web/js_mobile/history/반영목록.txt
+		 ssgdfs_china_web/web/pages/decorators/mblmain.jsp
+		 ssgdfs_china_web/web/pages/decorators/mobileempty.jsp
+		 ssgdfs_china_web/web/pages/decorators/mobileproduct.jsp
+		 ssgdfs_china_web/web/pages/mobile/common/commonFooter.jsp
+		 ssgdfs_china_web/web/pages/mobile/common/renewalFooter.jsp
+		 ssgdfs_china_web/web/pages/mobile/common/renewalNodocFooter.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/ajaxProductReviewRenewal.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewBasic.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewComment.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewDetail.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewGuide.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewRenewal.jsp
+		 ssgdfs_china_web/web/pages/mobile/product/itemviewReview.jsp
+		 ssgdfs_china_web/web/pages/script/mshop.js.jsp
+		 ssgdfs_site/src/kr/co/crewmate/site/dao/ProductDao.java
+		 ssgdfs_site/src/kr/co/crewmate/site/dao/ibatis/SqlMapProductDao.java
+		 ssgdfs_site/src/kr/co/crewmate/site/dao/ibatis/map/ProductSQL.xml
+		 ssgdfs_site/src/kr/co/crewmate/site/model/product/ProductData.java
+		 ssgdfs_site/src/kr/co/crewmate/site/service/ProductService.java
+		 ssgdfs_site/src/kr/co/crewmate/site/service/impl/ProductServiceImpl.java
+		 ssgdfs_site/src/kr/co/crewmate/utils/DateUtil.java
+		 
+	2)  설명
+		-	CMall Renewal Project  2차 오픈 - 상품상세
+3.	[2015-10-26]
+	1)목록
+		ssgdfs_china_web/src/kr/co/crewmate/site/web/controller/mobile/MobileChinaMainController.java [18676]
+	2)설명 	
+		-	CMall Renewal Project  2차 오픈 - FOOTER
+
+4.	[2015-10-27]
+	1)목록
+		ssgdfs_china_web/web/pages/mobile/product/ajaxProductReviewRenewal.jsp[18687]
+		ssgdfs_china_web/web/pages/mobile/product/itemviewComment.jsp[18697]
+	2)설명 	
+		-	수량 100개이상 들어가지 못하도록 방어로직 추가
+		-	상품평_나이 성별 구매여부 추가
+    
+5.	[2015-10-30]
+	1)목록
+		ssgdfs_site/src/kr/co/crewmate/site/dao/ibatis/map/ProductSQL.xml[18771]
+	2)설명 	
+		-	상품상세 기획전 소제목 중복 제거
+    
+

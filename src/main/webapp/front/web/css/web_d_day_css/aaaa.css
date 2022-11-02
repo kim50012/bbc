@@ -1,0 +1,17 @@
+
+
+.dfDayWrap{width:1000px;height:auto;background:#232323 url(images/bg_dfd_black.jpg) left top no-repeat}
+#dfDayCount{overflow:hidden}
+.dfDayBx{
+	
+	background: transparent url('../images/dash.png') 0 0 no-repeat;
+	float: left;
+	margin-left: 20px;
+	position: relative;
+}
+
+.dfDayBx .dfDayNum{overflow:hidden;float:left;width:55px;height:94px;text-align:center}
+.dfDayBx .dfDayNumTop,
+.dfDayBx .dfDayNumBtm{overflow:hidden;height:94px}
+.dfDayBx .dfDayNumTop img,
+.dfDayBx .dfDayNumBtm img{vertical-align:top}

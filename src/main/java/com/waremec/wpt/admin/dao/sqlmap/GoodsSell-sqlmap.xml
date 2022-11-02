@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="GoodsSell">
+	<!-- 商铺创建 -->
+	<typeAlias alias="shopGoodsClass" type="com.waremec.wpt.admin.domain.ShopGoodsClass"/>
+	<!-- 获取公司的信息 -->
+	<select  id="selectShopGoodsClass" parameterClass="shopGoodsClass" resultClass="shopGoodsClass">
+	    <![CDATA[
+		 	SELECT 
+				 	 SHOP_ID AS shopId
+					,SGC_ID	 AS sgcId
+					,SGC_NM  AS sgcNm
+					,SGC_PARENT_ID AS sgcParentId
+					,SGC_TYPE_ID   AS sgcTypeId
+					,SGC_STS	   AS sgcSts
+					,SORT_NO	   AS sortNo
+			FROM	[DBO].[SHOP_GOODS_CLASS]
+			WHERE	SHOP_ID=#shopId:INT#
+		]]>
+	</select>	
+	<typeAlias alias="adminGoodsDisplayClass" type="com.waremec.wpt.admin.domain.AdminGoodsDisplayClass"/>
+	<select id="updateGoodsGroup" parameterClass="adminGoodsDisplayClass" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+	     	EXEC [GOODS_DISPLAY_CLASS_INSERT]
+	     	@JOB_TYPE=#jobType:CHAR#,
+	     	@SHOP_ID=#shopId:INT#,
+	     	@GOODS_ID=#goodsId:NVARCHAR#,
+	     	@DISPLAY_ID=#displayId:NVARCHAR#,
+	     	@SGC_ID=#sgcId:INT#
+	     ]]>
+	</select>
+	<typeAlias alias="adminGoodsDisplay" type="com.waremec.wpt.admin.domain.AdminGoodsDisplay"/>
+	<!-- 查询当前销售中的商品数量  -->	
+	<select id="selectCount" parameterClass="adminGoodsDisplay" resultClass="java.lang.Integer" >
+	     <![CDATA[
+			SELECT	COUNT(T1.SHOP_ID) 
+			FROM [DBO].[GOODS_DISPLAY] T1
+			WHERE	T1.SHOP_ID=#shopId:INT#
+			AND		T1.START_DT<= GETDATE()
+			AND		T1.END_DT>=GETDATE()
+			AND		(	SELECT  SUM(STOCK_NOW) 
+						FROM	[DBO].[GOODS_DISPLAY_PRICE] A
+						WHERE	A.SHOP_ID = T1.SHOP_ID
+						AND		A.GOODS_ID = T1.GOODS_ID
+						AND		A.DISPLAY_ID = T1.DISPLAY_ID
+						GROUP BY A.SHOP_ID
+					) >=0
+			AND 	T1.IS_DELETE=0
+	     ]]>
+	</select>
+	<!-- 查询该店铺商品的信息 -->
+	<procedure id="getGoodsSellList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [GOODS_DISPLAY_SALESOUT_SELECT]
+		 	@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:NCHAR#,
+		 	@PAGE_CURR 	= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 	= #PAGE_UINT:INT#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#
+		]]>
+	</procedure>
+	<!-- 下，上架一个商品 -->
+	<select id="publishGoods" parameterClass="adminGoodsDisplay" remapResults="true" resultClass="java.util.HashMap" >
+	    <![CDATA[
+	     	EXEC [GOODS_DISPLAY_UPDATE]
+		 	  @JOB_TYPE=#jobType:CHAR#	
+			, @SHOP_ID =#shopId:INT#
+			, @GOODS_ID =#goodsId:NVARCHAR#
+			, @DISPLAY_ID=#displayId:NVARCHAR#
+			, @START_DESC =#startDesc:NVARCHAR#
+			, @END_DESC =#endDesc:NVARCHAR#
+			, @END_DT =#endDate:DATETIME#
+			, @MODIFIED_DT =#modifiedDate:SMALLDATETIME#
+			, @IS_DELETE=#isDelete:INT#			
+	     ]]>
+	</select>
+	<!-- 查询当前仓库中商品的数量  -->
+	<select id="selectDepotCount" parameterClass="adminGoodsDisplay" resultClass="java.lang.Integer" >
+	     <![CDATA[
+	     	SELECT	COUNT(T1.SHOP_ID) 
+			FROM [DBO].[GOODS_DISPLAY] T1
+			WHERE	T1.SHOP_ID=#shopId:INT#
+			AND		T1.END_DT < GETDATE()
+			AND		(	SELECT  SUM(STOCK_NOW) 
+						FROM	[DBO].[GOODS_DISPLAY_PRICE] A
+						WHERE	A.SHOP_ID = T1.SHOP_ID
+						AND		A.GOODS_ID = T1.GOODS_ID
+						AND		A.DISPLAY_ID = T1.DISPLAY_ID
+						GROUP BY A.SHOP_ID
+					) > 0
+			AND 	T1.IS_DELETE=0
+	     ]]>
+	</select>
+	<!-- 查询当前仓库中商品的数量  -->
+	<select id="selectSellOutCount" parameterClass="adminGoodsDisplay" resultClass="java.lang.Integer" >
+	     <![CDATA[
+	     	SELECT	COUNT(T1.SHOP_ID) 
+			FROM [DBO].[GOODS_DISPLAY] T1
+			WHERE	T1.SHOP_ID=#shopId:INT#
+			AND		(	SELECT  SUM(STOCK_NOW) 
+						FROM	[DBO].[GOODS_DISPLAY_PRICE] A
+						WHERE	A.SHOP_ID = T1.SHOP_ID
+						AND		A.GOODS_ID = T1.GOODS_ID
+						AND		A.DISPLAY_ID = T1.DISPLAY_ID
+						GROUP BY A.SHOP_ID
+					) = 0
+			AND 	T1.IS_DELETE=0
+	     ]]>
+	</select>
+</sqlMap>

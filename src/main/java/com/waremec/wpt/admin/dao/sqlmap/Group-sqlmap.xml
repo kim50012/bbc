@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Group">
+	
+	<typeAlias alias="adminGroup" 		type="com.waremec.wpt.admin.domain.AdminGroup"/>
+	 
+	 <!-- 根据用户Id查询公司list  -->
+    <select id="selectGroupListByUserId" parameterClass="string" resultClass="adminGroup">
+        <![CDATA[
+        	EXEC [MANAGEMENT_INFO_DISPLAY]
+        	@USER_ID=#value#
+       	]]>
+    </select>
+     
+     <!-- 根据公司id查询公司-->
+    <select id="selectGroupById" parameterClass="java.lang.Integer" resultClass="adminGroup">
+        <![CDATA[
+        	SELECT [G_CORP_ID] as g_corp_id
+					,[G_CORP_NM] as g_corp_nm
+					,[CONTACT_NM] as contact_nm
+					,[CONTACT_MOBILE_NO] as contact_mobile_no
+					,[CONTACT_EMAIL] as contact_email
+					,[CONTACT_QQ] as contact_qq
+					,[ADMIN_USER_ID] as admin_user_id
+					,[CREATED_USER_ID] as created_user_id
+					,[SORT_NO] as sort_no
+					,[MODIFIED_DT] as modified_dt
+					,[CREATED_DT] as created_dt
+			FROM [dbo].[GROUP_CORP]
+			WHERE  G_CORP_ID= #value#
+       	]]>
+    </select>
+    
+    <procedure id="insertGroup" parameterClass="adminGroup" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+		 	EXEC [GROUP_CORP_INSERT]	
+			@G_CORP_NM			=#g_corp_nm#,	
+			@G_CORP_ID			=#g_corp_id#,	
+			@USER_ID			=#userId#,		 		
+			@CONTACT_NM			=#contact_nm#,						
+			@CONTACT_MOBILE_NO	=#contact_mobile_no#,						
+			@CONTACT_EMAIL		=#contact_email#,					
+			@CONTACT_QQ			=#contact_qq#,			
+			@ADMIN_USER_ID		=#admin_user_id#,				
+			@CREATED_USER_ID	=#created_user_id#,				
+			@SORT_NO			=#sort_no:TINYINT#,						
+			@MODIFIED_DT		=#modified_dt:SMALLDATETIME#,				
+			@CREATED_DT			=#created_dt:SMALLDATETIME#,
+			@JOB_TYPE			=#jobType#,		
+			@OUT_CORP_ID		=#out_corp_id#, 
+			@OUT_ERR_MSG		=#out_err_msg#	
+		]]>
+	</procedure>
+	
+    <procedure id="updateGroup" parameterClass="adminGroup" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+		 	EXEC [GROUP_CORP_INSERT]	
+			@G_CORP_NM			=#g_corp_nm#,	
+			@G_CORP_ID			=#g_corp_id#,	
+			@USER_ID			=#userId#,		 		
+			@CONTACT_NM			=#contact_nm#,						
+			@CONTACT_MOBILE_NO	=#contact_mobile_no#,						
+			@CONTACT_EMAIL		=#contact_email#,					
+			@CONTACT_QQ			=#contact_qq#,			
+			@ADMIN_USER_ID		=#admin_user_id#,				
+			@CREATED_USER_ID	=#created_user_id#,				
+			@SORT_NO			=#sort_no:TINYINT#,						
+			@MODIFIED_DT		=#modified_dt:SMALLDATETIME#,				
+			@CREATED_DT			=#created_dt:SMALLDATETIME#,
+			@JOB_TYPE			=#jobType#,		
+			@OUT_CORP_ID		=#out_corp_id#, 
+			@OUT_ERR_MSG		=#out_err_msg#	
+		]]>
+	</procedure>
+	
+</sqlMap>

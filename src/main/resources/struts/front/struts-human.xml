@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	  <package name="front/human" extends="portal-default" namespace="/front/human">
+		<action name="*" method="{1}" class="humanIndexAction"> 
+		    <result name="{1}">/front/human/{1}.jsp</result>
+		</action>
+	</package> 
+	<package name="front/human/bbs" extends="portal-default" namespace="/front/human/bbs">
+		<action name="*" method="{1}" class="humanBbsAction"> 
+		    <result name="{1}">/front/human/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/human/applyMessage" extends="portal-default" namespace="/front/human/applyMessage">
+		<action name="*" method="{1}" class="applyMessageAction"> 
+		    <result name="{1}">/front/human/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/human/lecture" extends="portal-default" namespace="/front/human/lecture">
+		<action name="*" method="{1}" class="humanLectureAction">
+		    <result name="{1}">/front/human/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front/skin" extends="portal-default" namespace="/front/skin">
+		<action name="*" method="{1}" class="skinListAction">
+		    <result name="{1}">/front/skin/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

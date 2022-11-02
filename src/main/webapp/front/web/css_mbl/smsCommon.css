@@ -1,0 +1,26 @@
+@charset "utf-8";
+section, nav, header, aside, footer, menu{display:block;} for ie 6, 7, 8
+default layout
+html, body{height:100%;}
+body{margin:0; padding:0; font-family:"맑은 고딕", AppleGothic,'애플고딕', HelveticaNeue , Droid Sans, Gulim, "굴림", Verdana, Georgia; font-size:14px; line-height:1; color:#2c2c2c; -webkit-text-size-adjust:none;}
+table{clear:both; width:100%; border-spacing:0px; border:0; border-collapse:collapse;}
+p, div, th, td{font-size:100%;}
+img,input,select,textarea{vertical-align:middle;}
+input.type-image, input.type-radio{border:0 none;}
+input,select,textarea{font-family:AppleGothic,'애플고딕',Droid Sans, Gulim, "굴림", Verdana, Georgia; font-size:100%;}
+legend{display:none;}
+menu{margin:0; padding:0;}
+img{border:0;}
+a{color:#555353; text-decoration:none;}
+.skip{position:absolute; top:0; left:-1000px; width:0; height:0; font-size:0; line-height:0;}
+hr,caption{display:none;}
+colgroup{background:none;}
+h1, h2, h3, h4, h5, h6{font-size:100%; font-weight:normal; -webkit-text-stroke-width:.02em;}
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, form, fieldset, table, caption, tbody, tfoot, thead, tr, th, td, img{border:0; margin:0; padding:0; list-style:none;}
+/* 
+
+
+
+
+
+ */

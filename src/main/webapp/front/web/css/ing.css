@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+
+#contents {width:1000px; height:316px; margin-top:66px; border-top:2px solid #303030;}
+.ing-box {margin:0 33px; height:216px; text-align:center;}
+.ing-box .title {margin-top:100px;}
+.ing-box .txt {margin-top:67px; position:relative;}
+.ing-box .ing-bar {margin-top:34px;}
+.ing-box .btn-txt {margin-top:99px; padding-top:11px; border-top:1px solid #eaeaea;}
+.ing-box .btn-txt span {display:block; height:30px; padding-left:19px; text-align:left; background:url("//image.ssgdfs.com/images/shop/order/dot_gray.gif") no-repeat 11px 7px; font-size:11px; line-height:20px;}
+.ing-box .btn-txt span a {margin-left:5px;}
+.ing-box .btn-txt span img {vertical-align:middle;}

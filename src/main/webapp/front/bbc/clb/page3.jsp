@@ -1,0 +1,521 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.waremec.framework.utilities.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="label" value="<%=LabelUtil.getLabelBbcMap(application)%>" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>회비관리</title>
+<link rel="stylesheet" type="text/css" href="../css/font.css" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="../css/date.css" />
+<script>var intClbSq = "${amsClb.CLB_SQ}";</script>
+<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/headerBBC.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script> 
+<style>
+.app {
+	padding-top: 0;
+}
+
+.app-header {
+	position: relative;
+}
+
+.app-header .logo img {
+	width: 0.60rem;
+}
+.headerTitle {
+	width: 5.2rem;
+	overflow: initial;
+	padding-left: 0.2rem;
+	font-size: 0.3rem;
+	line-height: 1;
+	font-weight: bold;
+}
+</style>
+<script>
+	$(function() {
+		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="${amsClb.CLB_MAI_IMG_PTH}"></image><p class="headerTitle">${amsClb.CLB_NM}</p></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
+		$("#appHD").prepend(htm)
+		$(".logo")
+				.click(
+						function() {
+							window.location.href = '/front/bbc/clb/clbDetMy.htm?intClbsq=${intClbsq }';
+						});
+	});
+</script>
+<style>
+.subBtn {
+	padding: 0.2rem 0.1rem;
+}
+.title1 .bold {
+    font-size: 0.33rem;
+}
+.container {
+	padding: 0;
+	background: #f0f0f0;
+}
+.pb12 {
+    padding-bottom: 0.12rem;
+	background: #fff;
+	padding-right: 0.32rem;
+	padding-left: 0.32rem;
+}
+.title2 {
+	background: #fff;
+	padding-right: 0.32rem;
+	padding-left: 0.32rem;
+}
+.table3 {
+    padding-bottom: 0.22rem;
+}
+</style>
+</head>
+
+<body>
+<div class="app top5App" id="app">
+	<div class="content">
+		<div class="scroll-wrap refresh-wrap" id="appHD">
+			<div class="container">
+			
+	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;display:none;">
+	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;">
+	                <div class="orangeBtn subBtn f-col font26" onclick="sendFee();">회비납부공지</div>
+	                <div class="blueBtn subBtn f-col font26" onclick="alert('준비중입니다.');">정회원추가</div>
+	              </div>
+	            </div>
+	            
+				<div class="date mt10 date_schedule pb12" style="padding-top: 0.4rem;padding-bottom:0.3rem;" id="idCalendar"></div>
+				<div class="table" style="padding-top:0.1rem;background: #fff;">
+					<table class="drag-table noWrapTable alignRightTable" id="tableHeader" cellspacing="0" cellpadding="2" width="120%" border="1">
+						<tr>
+							<th class="noWrapCell">이월금액</th>
+							<th class="noWrapCell">월수입</th>
+							<th class="noWrapCell">월지출</th>
+							<th class="noWrapCell">월합계</th>
+						</tr>
+						<tr>
+							<td class="center" id="TotalFee" style="font-size:0.3rem;">0</td>
+							<td class="center" id="monthP" style="color:blue;font-size:0.3rem;">0</td>
+							<td class="center" id="monthM" style="color:red;font-size:0.3rem;">0</td>
+							<td class="center" id="monthFee" style="font-weight:bold;font-size:0.3rem;">0</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="title2">
+					<span class="font24 bold">회비 상세 내역</span><span class="font20 fontOrange">기준 : 전월 25일 ~ 당월 24일</span>
+				</div>
+				<div class="table" id="dailyFeeList">
+					<table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="120%" border="1">
+						<!--
+						<tr>
+							<th class="noWrapCell">입력일자</th>
+							<th class="noWrapCell">대분류</th>
+							<th class="noWrapCell">소분류</th>
+							<th class="noWrapCell">금액</th>
+							<th class="noWrapCell">내역</th>
+						</tr>
+						-->
+						<!--
+						<tr>
+							<td class="center">Solo: A Star Wars Story</td>
+							<td class="noWrapCell">2018-01-18</td>
+							<td>24</td>
+							<td>73</td>
+							<td>32.8%</td>
+						</tr>
+						-->
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+
+	$(function() {
+		getData("${amsClb.FEEMONTH}");
+	});
+
+	function modFee(level, id) {
+		if (level == "회비") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page4&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "가입비") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page5&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "코트수입-벙개") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page6&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "이벤트") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page7&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "협찬") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page8&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "기타") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page9&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "코트비") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page10&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "운영비") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page11&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "교류전비용") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page12&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "유니폼비용") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page13&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "송년회비용") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page14&intClbsq=${intClbsq }&para2="+id;	
+		}
+		if (level == "운영진비용") {
+			window.location.href="/front/bbc/clb/getPage.htm?pageName=page15&intClbsq=${intClbsq }&para2="+id;	
+		}
+	}
+	
+
+	function sendFee() {
+
+		messageBox({
+			title : '확인',
+			message : '전체회원에게 회원납부 공지를 하시겠습니까?',
+			type : 'confirm',
+			callback : function() {
+				sendFeeAction();
+			}
+		})
+	}
+
+	function sendFeeAction() {
+
+		var load = loading();
+		load.show()
+
+		$.ajax({
+			data : {},
+			type : "POST",
+			url : "/front/bbc/clb/sendFee.htm",
+			success : function(data) {
+				load.hide()
+				alert("정상적으로 공지 발송이 되었습니다.");
+			},
+			error : function(xhr, status, e) {
+				load.hide()
+				alert("Error : " + status);
+			}
+		});
+	}
+
+
+	function getData(para3) {
+
+		var para1 = "FEE_LIST";
+		var para2 = "${intClbsq }";
+		var para4 = "TIME";
+
+		var load = loading();
+		load.show()
+
+		$
+				.ajax({
+					data : {
+						para1 : para1,
+						para2 : para2,
+						para3 : para3,
+						para4 : para4
+					},
+					type : "POST",
+					url : "/front/bbc/clb/getData.htm",
+					success : function(data) {
+
+						if (data.list.length != 0) {
+
+							$("#TotalFee").html(0);
+							$("#monthP").html(0);
+							$("#monthM").html(0);
+							$("#monthFee").html(0);
+
+							var htmTitle = '';
+							htmTitle = ''
+								+ '<tr>'
+								+ '	<th class="noWrapCell">입력일자</th>'
+								+ '	<th class="noWrapCell">대분류</th>'
+								+ '	<th class="noWrapCell">소분류</th>'
+								+ '	<th class="noWrapCell">금액</th>'
+								+ '	<th class="noWrapCell">내역</th>'
+								+ '</tr>'
+								;
+
+							//$("#table1").html(htmTitle);
+							$("#dailyFeeList").html('');
+
+							htm = '<div class="table3"><table class="drag-table alignRightTable" id="tableList" cellspacing="0" cellpadding="2" width="120%" border="1"></table></div>';
+							$("#dailyFeeList").append(htm);
+							htm = ''
+								+ '<tr>'
+								+ '	<th class="noWrapCell">일자</td>'
+								+ '	<th class="noWrapCell">수입</td>'
+								+ '	<th class="noWrapCell">지출</td>'
+								+ '	<th class="noWrapCell">합계</td>'
+								+ '</tr>'					
+								;
+							$("#tableList").append(htm);
+							
+							var feeDt = "";
+							
+							for (var i = 0; i < data.list.length; i++) {
+								var htm = '';
+								
+								if (data.list[i].RDT == "합계") {
+// 									htm = ''
+// 									+ '<tr>'
+// 									+ '	<td class="center" colspan="3" style="background: rgb(255, 246, 246);">'+data.list[i].RDT+'</td>'
+// 									+ '	<td onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');" class="right" style="font-weight:bold;">'+data.list[i].AMT+'</td>'
+// 									+ '	<td onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');">'+data.list[i].DSC+'</td>'
+// 									+ '</tr>'					
+// 									;
+									$("#TotalFee").html(data.list[i].AMT);
+								} else if (data.list[i].LEVEL1 == "소계") {
+// 									htm = ''
+// 									+ '<tr>'
+// 									+ '	<td class="center" colspan="3" style="background: #e9f4ff;">'+data.list[i].LEVEL2+'</td>'
+// 									+ '	<td onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');" class="right">'+data.list[i].AMT+'</td>'
+// 									+ '	<td onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');">'+data.list[i].DSC+'</td>'
+// 									+ '</tr>'					
+// 									;
+									$("#monthP").html(data.list[i].AMTP);
+									$("#monthM").html(data.list[i].AMTM);
+									$("#monthFee").html(data.list[i].AMT);
+								}
+								else {
+									
+									if (feeDt != data.list[i].RDT) {
+										// htm = '<div class="table3"><table class="drag-table alignRightTable" id="table'+data.list[i].RDT+'" cellspacing="0" cellpadding="2" width="120%" border="1"></table></div>';
+										// $("#dailyFeeList").append(htm);
+										
+										if (i>2) {
+											htm = ''
+												+ '<tr>'
+												+ '	<th class="center" style="background: #f0f0f0;line-height:0.12rem;padding: 0.1rem;" colspan=4></td>'
+												+ '</tr>'					
+												;
+											$("#tableList").append(htm);
+										}
+									
+										var dt = data.list[i].RDT.substring(3,5);
+										htm = ''
+											+ '<tr>'
+											+ '	<th class="center" style="min-width: 1rem;background: #ffffff;font-weight:bold;font-size: 0.35rem;color: #333333;">'+dt+'일 <span style="font-size:0.26rem;">('+data.list[i].WEEKNAME+')<span></td>'
+											+ '	<th class="center" style="min-width: 1.2rem;max-width: 1.7rem;background: #ffffff;color:blue;font-size: 0.26rem;">'+data.list[i].AMTP+'</td>'
+											+ '	<th class="center" style="min-width: 1rem;background: #ffffff;color:red;font-size: 0.26rem;">'+data.list[i].AMTM+'</td>'
+											+ '	<th class="center" style="min-width: 1.2rem;max-width: 1.7rem;background: #ffffff;color: #333333;font-size: 0.26rem;">'+data.list[i].AMTT+'</td>'
+											+ '</tr>'					
+											;
+										$("#tableList").append(htm);
+									}
+									
+									htm = ''
+										+ '<tr>'
+										+ '	<td style="min-width: 1rem;" onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');">'+data.list[i].LEVEL1+'</td>'
+										+ '	<td style="min-width: 2rem;max-width: 3.6rem;" onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');" colspan="2">'+data.list[i].LEVEL2+'<br><span style="font-weight:bold;line-height: 0.3rem;"><pre style="margin:0;margin-top:0.15rem;">'+data.list[i].DSC+'</pre></span></td>'
+										+ '	<td style="min-width: 1rem;" onclick="modFee(\''+data.list[i].LEVEL1+'\', \''+data.list[i].FEE_SQ+'\');" class="right" '+data.list[i].AMT_TAG+'>'+data.list[i].AMT+'</td>'
+										+ '</tr>'					
+										;
+									$("#tableList").append(htm);
+
+								}
+								feeDt = data.list[i].RDT;
+								
+
+							}
+						} else {
+							//$("#mbrList").html('');
+						}
+						load.hide()
+
+					},
+					error : function(xhr, status, e) {
+						load.hide()
+						alert("Error : " + status);
+					}
+				});
+	}
+	
+	function phoneHtml(a) {
+		
+		if (a == "") {
+			return "";
+		}
+		else {
+			return '<a href="tel:'+a+'">전화걸기</a>';
+		}
+		
+		return b
+	}
+	
+
+	var Class = {
+		create : function() {
+			return function() {
+				this.initialize.apply(this, arguments);
+			}
+		}
+	}
+	Object.extend = function(destination, source) {
+		for ( var property in source) {
+			destination[property] = source[property];
+		}
+		return destination;
+	}
+	
+	var date = Class.create();
+	date.prototype = {
+		initialize : function(container, table, options) {
+			this.Container = document.getElementById(container);
+			this.tables = document.getElementById(table);
+			this.Days = []; //日期对象列表
+			this.SetOptions(options);
+			this.Year = this.options.Year;
+			this.Month = this.options.Month;
+			this.Day = this.options.Day;
+			this.pre = 0;
+			this.next = 0;
+
+			this.lModelTitle = this.Draw();
+		},
+		//设置默认属性
+		SetOptions : function(options) {
+
+			var date = parseDt('${amsClb.FEEDAY }');
+		    this.options = {
+				Year : date.getFullYear(), //显示年
+				Month : ("0" + (date.getMonth()+1)).slice(-2), //显示月
+				Day : date.getDate(), // 日
+			};
+			Object.extend(this.options, options || {});
+		},
+		  //上一个月
+		  PreMonth: function(options) {
+		    //先取得上一个月的日期对象
+		    var d = new Date(this.Year, this.Month - 2, 1);
+		    //再设置属性
+		    this.Year = d.getFullYear();
+		    this.Month = ("0" + (d.getMonth() + 1)).slice(-2);
+		    //重新画日历
+		    this.Draw();
+		    getData(this.Year+'-'+this.Month);
+		  },
+		  //下一个月
+		  NextMonth: function(options) {
+		    var d = new Date(this.Year, this.Month, 1);
+		    this.Year = d.getFullYear();
+		    this.Month = ("0" + (d.getMonth() + 1)).slice(-2);
+		    this.Draw();
+		    getData(this.Year+'-'+this.Month);
+		  },
+		Draw : function() {
+			//日期列表
+			var arr = [], preArr = [], nextArr = [];
+			// 上月天数
+			var PreMonth = new Date(this.Year, (this.Month - 1), 1).getDay();
+			//console.log("PreMonth:"+PreMonth);
+			this.pre = PreMonth - 1;
+			// 当月天数
+			var Month = new Date(this.Year, this.Month, 0).getDate()
+			//console.log("new Date(this.Year, this.Month, 0):"+new Date(this.Year, this.Month, 0));
+			
+			// 下月天数 最终获取的天数是本页面上包含的所有的上月、本月、下月的天数
+			var NextMonth = 42 - arr.length;
+			
+			this.Days = [];
+			// 这里是头部
+			//  var dateTitle = '<div class="date-title"><i class="date-lbtn" onclick="'+this.PreMonth+'"> < </i><span>2018年7月</span><i class="date-rbtn"> > </i></div>'
+			// 日历头部
+			var dateTitle = document.createElement("div");
+			dateTitle.className = "date-title";
+			var lBtn = document.createElement("div");
+			lBtn.className = "date-lbtn";
+			var that = this;
+			lBtn.onclick = function() {
+				that.PreMonth(lBtnClick())
+				//lBtnClick()
+			};
+			var con = document.createElement("div");
+			con.className = "date-con";
+			con.innerHTML = "<span>" + this.Year + "년&nbsp;" + this.Month + "월"
+					+ "</span>";
+			var rBtn = document.createElement("div");
+			rBtn.className = "date-rbtn";
+			rBtn.onclick = function() {
+				that.NextMonth(rBtnClick())
+				//rBtnClick()
+			};
+			dateTitle.appendChild(lBtn);
+			dateTitle.appendChild(con);
+			dateTitle.appendChild(rBtn);
+
+		    while(this.Container.hasChildNodes()) {
+		      this.Container.removeChild(this.Container.firstChild);
+		    }
+			this.Container.appendChild(dateTitle);
+		}
+	}
+
+	$(function() {
+		var day = new date("idCalendar", "tableWrap", {});
+		$("#tableUp").click(function() {
+			$("#tableWrap").slideUp()
+		})
+	})
+	
+		function lBtnClick(date) {
+	      	return {
+				a1: [1,2,12,30],
+				a2: [1,13],
+				d1: [1],
+				d2: [1],
+				lModelTitle: '선적 예정 현황',
+				lMTno1: 2,
+				lMTno2: 4,
+				rModelTitle: '오픈 예정 현황',
+				rMTno1: 2,
+				rMTno2: 4,
+			}
+		}
+		function rBtnClick(date) {
+			return {
+				a1: [1,2,12,30],
+				a2: [1,13],
+				d1: [1],
+				d2: [1],
+				lModelTitle: '선적 예정 현황',
+				lMTno1: 2,
+				lMTno2: 4,
+				rModelTitle: '오픈 예정 현황',
+				rMTno1: 2,
+				rMTno2: 4,
+			}
+		}
+		function parseDt(str) {
+		    var y = str.substr(0, 4);
+		    var m = str.substr(5, 2);
+		    var d = str.substr(8, 2);
+		    return new Date(y,m-1,d);
+		}
+</script>
+</html>

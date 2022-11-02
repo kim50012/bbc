@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/font.css" /> <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" /> <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" /> <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/index.css"/> <!--首页：index-->    
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script> <!--bootstarp公用-->
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_MAIN_101.js" type="text/javascript" charset="utf-8"></script><!--表格改变列宽，有表格的-->
+    <style>
+    .drag-table td {
+    	border-right: 0px;
+    	border-left: 1px solid #ededed;
+    }
+    .drag-table th:after, .drag-table td:after {
+    	border-right: 0px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="page1 contract_page1 pop-page">
+      <header class="app-header">
+        <div class="logo">
+        	<img class= "back" src="../image/back.png"/>
+          <text class="font24 bold ml24">계약 상세 현황</text>
+        </div>
+      </header>
+      <div class="content">
+      	<div class="scroll-wrap refresh-wrap">
+          <div class="container pt20">
+          	<div class="table table_contract">
+              <table class="drag-table" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+              	<tr class="activePrevTr">
+              	  <th>국가</th>
+              	  <th>사업자</th>
+              	  <th>사이트</th>
+              	  <th>진척율</th>
+              	</tr>
+              	<tr class="activeTr">
+              	  <td>유럽</td>
+              	  <td>Pathe</td>
+              	  <td>Brumath</td>
+              	  <td>50%</td>
+              	</tr>
+              </table>
+            </div>
+            <div class="title1">
+              <div>
+                <i class="fourDPlex icon-sanjiao"></i>
+                <span>계약 진척 현황</span>
+              </div>
+            </div>
+            <div class="table">
+              <table class="drag-table table-cos" id="table2" cellspacing="0" cellpadding="2" width="100%" border="1">
+              	<tr>
+              	  <th>8강</th>
+              	  <th>준결승</th>
+              	  <th>결승</th>
+              	  <th>우승</th>
+              	</tr>
+              	<tr>
+              	  <td>A</td><td rowspan="2">A</td><td rowspan="4">A</td><td rowspan="8">A</td>
+              	</tr>
+              	<tr>
+              	  <td>B</td>
+              	</tr>
+              	<tr>
+              	  <td>C</td><td rowspan="2">C</td>
+              	</tr>
+              	<tr>
+              	  <td>D</td>
+              	</tr>
+              	<tr>
+              	  <td>E</td><td rowspan="2">E</td><td rowspan="4">E</td>
+              	</tr>
+              	<tr>
+              	  <td>F</td>
+              	</tr>
+              	<tr>
+              	  <td>G</td><td rowspan="2">G</td>
+              	</tr>
+              	<tr>
+              	  <td>H</td>
+              	</tr>
+              </table>
+            </div>
+          </div>
+      	</div>
+      </div>
+    </div>
+  </body>
+</html>

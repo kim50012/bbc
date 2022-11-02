@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"> <!--bootstarp：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/font.css" /> <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" /> <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" /> <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
+    
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script> <!--bootstarp公用-->
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_SO112.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div class="app performance11">
+      <header class="page-head">
+        <div class="page-name">
+          <img src="../image/back-Button.png" class="mr24"/>
+          <span>기계약PO</span>
+        </div>
+      </header>
+      <div class="content">
+        <div class="scroll-wrap refresh-wrap">
+          <div class="container">
+            <div class="chart-wrap">
+              <div class="title2">
+                <span class="font24 bold">기 계약 RO 현황</span>
+              </div>
+              <div class="chart">
+                <div id="chart"></div>
+                <div class="chartTitle">
+                  <div class="chartTitleInfo"></div>
+                </div>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>기계약 상세</span>
+                </div>
+              </div>
+              <div class="table" id="table1">
+                <table class="drag-table" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr class="bggrey">
+                    <th class="fontGrey" rowspan="2">国家和地区</th>
+                    <th class="fontGrey" rowspan="2">影院</th>
+                    <th class="fontGrey" colspan="4">18년 선적 달성율</th>
+                    <th class="fontGrey" colspan="3">判量数量</th>
+                  </tr>
+                  <tr class="bggrey">
+                    <th class="fontGrey">全部</th>
+                    <th class="fontGrey">先导/开放式</th>
+                    <th class="fontGrey">先发制人/未公开</th>
+                    <th class="fontGrey">达到率</th>
+                    <th class="fontGrey">A</th>
+                    <th class="fontGrey">B</th>
+                    <th class="fontGrey">C</th>
+                  </tr>
+                  <tr class="moreDataTr">
+                    <td>
+                      <div class="hideMore" onclick="showMoreData(this)">
+                        <span class="icon-wrap">
+                          <i class="fourDPlex icon-sanjiao"></i>
+                        </span>
+                        <span>기계약 RO</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <span>总数</span>
+                      </div>
+                      <div>
+                        <p>影院1</p>
+                        <p>影院2</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <span>数量</span>
+                      </div>
+                      <div>
+                        <p>1</p>
+                        <p>11</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <span>数量</span>
+                      </div>
+                      <div>
+                        <p>1</p>
+                        <p>11</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <span>数量</span>
+                      </div>
+                      <div>
+                        <p>1</p>
+                        <p>11</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <span>数量 RO</span>
+                      </div>
+                      <div>
+                        <p>1</p>
+                        <p>11</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

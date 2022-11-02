@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MyFile">
+	<!-- 查询该客户的地址信息 -->
+	<select id="selectShopFileList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_FILE_MST_SELECT]
+		 	@SHOP_ID=#shopId:INT#,
+		 	@FILE_ID=#fileId:INT#,
+		 	@FILE_NM=#fileName:NVARCHAR#,
+		 	@FILE_TYPE=#fileType:TINYINT#,
+		 	@PAGE_CURR=#pageCurr:INT#,
+		 	@PAGE_UINT=#pageUint:INT#,
+		 	@BEGIN_DT=#beginDate:SMALLDATETIME#,
+		 	@END_DT=#endDate:SMALLDATETIME#,
+		 	@FILE_GROUP = #fileGroup#
+		]]>
+	</select>
+	<select id="selectShopFileCount" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[	
+	    SELECT COUNT(FILE_ID) AS COUNT_NUM
+	    	FROM	SHOP_FILE_MST A
+			WHERE	A.SHOP_ID = #shopId:INT#
+			AND		A.IS_USE = 1
+			AND		A.FILE_TYPE = ISNULL(#fileType:TINYINT#, A.FILE_TYPE)
+			AND		A.CREATED_DT >= ISNULL(#beginDate:SMALLDATETIME#, A.CREATED_DT)
+			AND		A.CREATED_DT <= ISNULL(#endDate:SMALLDATETIME#, A.CREATED_DT)
+			AND		A.FILE_NM LIKE	ISNULL('%'+#fileName:NVARCHAR#+'%',A.FILE_NM)
+			AND		A.FILE_GROUP	=	#fileGroup#
+		]]>
+	</select>
+	<update id="deleteShopFile" parameterClass="java.util.HashMap">
+	    UPDATE 	SHOP_FILE_MST
+	    SET		IS_USE=#isUse:NVARCHAR#
+				,MODIFIED_ID=#modifiedId:NVARCHAR#
+				,MODIFIED_DT=GETDATE()
+	    WHERE SHOP_ID=#shopId:INT#
+	    AND	  FILE_ID=#fileId:INT#
+	</update>
+	<update id="updateShopFile" parameterClass="java.util.HashMap">
+	    UPDATE 	SHOP_FILE_MST
+	    SET		MODIFIED_ID=#modifiedId:NVARCHAR#
+				,FILE_NM=#fileName:NVARCHAR#
+				,MODIFIED_DT=GETDATE()
+	    WHERE SHOP_ID=#shopId:INT#
+	    AND	  FILE_ID=#fileId:INT#
+	</update>
+	<select id="saveWebzine" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [DYNAMIC_PAGE_WEBZINE_INSERT]
+		 	@SHOP_ID=#SHOP_ID:INT#,
+			@USER_ID=#USER_ID:NVARCHAR#,
+			@PAGE_NM=#PAGE_NAME:NVARCHAR#,
+			@IMG_SRC1=#IMG_SRC1:NVARCHAR#,
+			@IMG_SRC2=#IMG_SRC2:NVARCHAR#,
+			@IMG_SRC3=#IMG_SRC3:NVARCHAR#,
+			@IMG_SRC4=#IMG_SRC4:NVARCHAR#,
+			@IMG_SRC5=#IMG_SRC5:NVARCHAR#,
+			@IMG_SRC6=#IMG_SRC6:NVARCHAR#,
+			@LINK_URL1=#LINK_URL1:NVARCHAR#,
+			@LINK_URL2=#LINK_URL2:NVARCHAR#,
+			@LINK_URL3=#LINK_URL3:NVARCHAR#,
+			@LINK_URL4=#LINK_URL4:NVARCHAR#,
+			@LINK_URL5=#LINK_URL5:NVARCHAR#,
+			@LINK_URL6=#LINK_URL6:NVARCHAR#
+		]]>
+	</select>
+	<select id="saveUpdateWebzine" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [DYNAMIC_PAGE_WEBZINE_UPDATE]
+		 	@SHOP_ID=#SHOP_ID:INT#,
+			@USER_ID=#USER_ID:NVARCHAR#,
+			@PAGE_NM=#PAGE_NAME:NVARCHAR#,
+			@IMG_SRC=#IMG_SRC:NVARCHAR#,
+			@LINK_URL=#LINK_URL:NVARCHAR#,
+			@PAGE_ID=#pageId:INT#,
+			@ITEM_ID=#itemId:INT#,
+			@POSITION_TYPE=#positionType:NVARCHAR#
+		]]>
+	</select>
+	<select id="savePublicControlSet" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [DYNAMIC_PAGE_WEBAD_INSERT]
+		 	@SHOP_ID=#SHOP_ID:INT#,
+			@USER_ID=#USER_ID:NVARCHAR#,
+			@PAGE_NM=#PAGE_NAME:NVARCHAR#,
+			@IMG_SRC1=#IMG_SRC1:NVARCHAR#,
+			@IMG_SRC2=#IMG_SRC2:NVARCHAR#,
+			@IMG_SRC3=#IMG_SRC3:NVARCHAR#,
+			@IMG_SRC4=#IMG_SRC4:NVARCHAR#,
+			@IMG_SRC5=#IMG_SRC5:NVARCHAR#,
+			@IMG_SRC6=#IMG_SRC6:NVARCHAR#,
+			@LINK_URL1=#LINK_URL1:NVARCHAR#,
+			@LINK_URL2=#LINK_URL2:NVARCHAR#,
+			@LINK_URL3=#LINK_URL3:NVARCHAR#,
+			@LINK_URL4=#LINK_URL4:NVARCHAR#,
+			@LINK_URL5=#LINK_URL5:NVARCHAR#,
+			@LINK_URL6=#LINK_URL6:NVARCHAR#,
+			@POSITION_TYPE=#positionType:NVARCHAR#
+		]]>
+	</select>
+	<select id="selectBlogList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			EXEC [SHOP_BLOG_LIST_SELECT]
+
+			 @SHOP_ID		=#shopId:INT#				
+			,@BLOG_GROUP_ID	=#blogGroupId:INT#			
+			,@PAGE_CURR		=#pageCurr:INT#				
+			,@PAGE_UINT		=#pageUnit:INT#				
+			,@ORDERBY		=#orderBy:VARCHAR#		
+			,@BLOG_ID		=#blogId:INT#				
+			,@BLOG_TITLE	=#blogTitle:NVARCHAR#	
+		]]>
+	</select>
+	<select id="deleteShopBlog" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+			EXEC [SHOP_BLOG_INSERT]
+			 @JOP_TYPE      =#jobType:CHAR#
+			,@SHOP_ID		=#shopId:INT#					
+			,@BLOG_ID		=#blogId:INT#				
+			,@USER_ID		=#userId:NVARCHAR#
+			,@IS_DELETE 	=#isDelete:INT#	
+			,@BLOG_TITLE	='3'
+			,@BLOG_GROUP_ID	=12		
+		]]>
+	</select>
+</sqlMap>

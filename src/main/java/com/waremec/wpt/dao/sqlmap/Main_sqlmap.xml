@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Main">
+
+	<typeAlias alias="sessionSkin" 	type="com.waremec.wpt.front.domain.SessionSkin"/>
+
+	<parameterMap id="getTemplateMainProductTemp04Params" class="java.util.Map"> 
+	    <parameter property="SHOP_ID"  	javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
+	    <parameter property="IS_REAL" 	javaType="java.lang.String"      jdbcType="TINYINT" mode="IN"/>
+		<parameter property="IS_USED" 	javaType="java.lang.String"  	  jdbcType="INTEGER" mode="IN"/> 
+		<parameter property="PRICE" 	javaType="java.math.BigDecimal"   jdbcType="DECIMAL" mode="IN"/>
+		<parameter property="TODAY" 	javaType="java.util.Date"   	  jdbcType="DATETIME" mode="IN"/>
+		<parameter property="TEMP_ID" 	javaType="java.lang.String"   	  jdbcType="INTEGER" mode="IN"/>
+	</parameterMap>
+	<select id="getTemplateMainProductTemp04" parameterMap="getTemplateMainProductTemp04Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_DISPLAY_SELECT_MAIN_TEMP04 ?,?,?,?,?,?} 
+	</select>
+	<select id="getTemplateMainProductTemp10" parameterMap="getTemplateMainProductTemp04Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_DISPLAY_SELECT_MAIN_TEMP10 ?,?,?,?,?,?} 
+	</select>
+	
+	<parameterMap id="getTemplateMainProductTemp08Params" class="java.util.Map"> 
+	    <parameter property="SHOP_ID"  	javaType="java.lang.String"     jdbcType="INTEGER" 	mode="IN"/>
+	    <parameter property="IS_REAL" 	javaType="java.lang.String"     jdbcType="TINYINT" 	mode="IN"/>
+		<parameter property="IS_USED" 	javaType="java.lang.String"  	jdbcType="INTEGER" 	mode="IN"/> 
+		<parameter property="PRICE" 	javaType="java.math.BigDecimal" jdbcType="DECIMAL" 	mode="IN"/>
+		<parameter property="TODAY" 	javaType="java.util.Date"   	jdbcType="DATETIME" mode="IN"/>
+		<parameter property="TEMP_ID" 	javaType="java.lang.String"   	jdbcType="INTEGER" 	mode="IN"/>
+		<parameter property="USER_ID" 	javaType="java.lang.String"   	jdbcType="VARCHAR"	mode="IN"/>
+	</parameterMap>
+	<select id="getTemplateMainProductTemp08" parameterMap="getTemplateMainProductTemp08Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_DISPLAY_SELECT_MAIN_TEMP08 ?,?,?,?,?,?,?} 
+	</select>
+	<select id="getTemplateMainProductTemp11" parameterMap="getTemplateMainProductTemp08Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_DISPLAY_SELECT_MAIN_TEMP11 ?,?,?,?,?,?,?} 
+	</select>
+	<parameterMap id="getTemplate01Params" class="java.util.Map"> 
+	    <parameter property="SHOP_ID"  		javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
+	    <parameter property="PAGE_ID" 		javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
+		<parameter property="PAGE_TYPE" 	javaType="java.lang.String"  	 jdbcType="INTEGER" mode="IN"/> 
+		<parameter property="SKIN_TYPE" 	javaType="java.lang.String"   	 jdbcType="INTEGER" mode="IN"/>
+		<parameter property="TMPL_NO" 		javaType="java.lang.String"   	 jdbcType="INTEGER" mode="IN"/>
+	</parameterMap>
+	<select id="getTemplate01List" parameterMap="getTemplate01Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call DYNAMIC_PAGE_SELECT ?,?,?,?,?} 
+	</select>
+	<select id="getClassList"  resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_CLASS_SELECT} 
+	</select>
+	<procedure id="getGoodsList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [GOODS_DISPLAY_LIST_SELECT_LLF] 
+		 	@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:VARCHAR#,
+		 	@PAGE_CURR 	= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 	= #PAGE_UINT:INT#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#
+		]]>
+	</procedure>
+	
+	<procedure id="getGoodsListRev"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [GOODS_DISPLAY_LIST_SELECT_REV] 
+		 	@SHOP_ID	= #SHOP_ID:INT#,
+		 	@IS_REAL 	= #IS_REAL:TINYINT#,
+		 	@IS_USED 	= #IS_USED:TINYINT#,
+		 	@PRICE 		= #PRICE:DECIMAL#,
+		 	@TODAY 		= #TODAY:DATETIME#,
+		 	@SGC_ID		= #SGC_ID:INT#,
+		 	@TEMP_ID 	= #TEMP_ID:VARCHAR#,
+		 	@PAGE_CURR 	= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 	= #PAGE_UINT:INT#,
+		 	@CUST_SYS_ID= #CUST_SYS_ID:INT#,
+		 	@ORDERBY	= #ORDERBY:VARCHAR#,
+		 	@BRAND_ID	= #BRAND_ID:INT#,
+		 	@GOODS_NM	= #GOODS_NM:VARCHAR#
+		]]>
+	</procedure>
+	
+	<insert id="addFavorite" parameterClass="java.util.HashMap">
+	    INSERT INTO [dbo].[FAVORITES_GOODS]
+		           ([SHOP_ID]
+		           ,[CUST_SYS_ID]
+		           ,[GOODS_ID]
+		           ,[DISPLAY_ID]
+		           ,[FAV_IN_DT])
+		     VALUES
+		           (#shopId#
+		           ,#custSysId#
+		           ,#goodsId#
+		           ,#displayId#
+		           ,getdate())
+	    
+	</insert>
+	
+	<update id="removeFavorite" parameterClass="java.util.HashMap">
+	    UPDATE [dbo].[FAVORITES_GOODS]
+		   SET [FAV_OUT_DT] =getdate()
+		 WHERE [SHOP_ID] 	= #shopId#
+		   AND [CUST_SYS_ID]= #custSysId#
+		   AND [GOODS_ID] 	= #goodsId#
+		   AND [DISPLAY_ID] = #displayId#
+	</update>
+	
+	<procedure id="getShopClassGrade1List"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_SELECT_GRADE1] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		]]>
+	</procedure>
+	
+	
+	<procedure id="getShopClassGradeTotalList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_SELECT_USED] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		]]>
+	</procedure>
+	
+	<procedure id="getShopBannerList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_BANNER_SELECT] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		]]>
+	</procedure>
+	
+	<procedure id="getShopClassTreeList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_GOODS_CLASS_TREE_SELECT] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		]]>
+	</procedure>
+	<procedure id="getBrandList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [BRAND_SELECT] 
+		 	@SHOP_ID	= #SHOP_ID:INT#
+		 	,@BRAND_ID	= #BRAND_ID:INT#
+		]]>
+	</procedure>
+	<select id="getPageShopInf"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	SELECT 
+		  [SHOP_ID]
+	      ,[SKIN_TYPE_SHOP]
+	      ,[SKIN_TYPE_WEB]
+	      ,[PAGE_ID_SHOP_MAIN]
+	      ,[PAGE_ID_SHOP_LIST]
+	      ,[PAGE_ID_SHOP_DETAIL]
+	      ,[PAGE_ID_SHOP_HOME]
+	      ,[MODIFIED_ID]
+	      ,[CREATED_ID]
+	      ,[MODIFIED_DT]
+	      ,[CREATED_DT]
+	  FROM [dbo].[PAGE_SHOP]
+	 WHERE [SHOP_ID]=#SHOP_ID:INT#
+	</select>	
+	
+	<select id="getSessionSkinByShopId" parameterClass="java.lang.Integer" resultClass="sessionSkin">
+	     <![CDATA[
+		 	EXEC [SHOP_SESSIONSKIN_SELECT] 
+		 	@SHOP_ID	= #value#
+		]]>
+<!--     <![CDATA[ -->
+<!-- 	SELECT  /* Main.getSessionSkinByShopId */   -->
+<!-- 		  T1.[SHOP_ID]					AS shopId -->
+<!-- 	      ,T1.[SKIN_TYPE_SHOP]			AS skinTypeShop -->
+<!-- 	      ,T1.[SKIN_TYPE_WEB]			AS skinTypeWeb -->
+<!-- 	      ,T1.[PAGE_ID_SHOP_MAIN]		AS pageIdShopMain -->
+<!-- 	      ,T1.[PAGE_ID_SHOP_LIST]		AS pageIdShopList -->
+<!-- 	      ,T1.[PAGE_ID_SHOP_DETAIL]	AS pageIdShopDetail -->
+<!-- 	      ,T1.[PAGE_ID_SHOP_HOME]		AS pageIdShopHome -->
+<!-- 		  ,( -->
+<!-- 			SELECT  B.FULL_URL -->
+<!-- 			FROM	SHOP AS A -->
+<!-- 					INNER JOIN SHOP_FILE_MST B -->
+<!-- 							ON A.IMG_LOGO_PIC = B.[FILE_ID] -->
+<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
+<!-- 		    ) 						AS shopLogoImgUrl -->
+<!-- 		  ,( -->
+<!-- 			SELECT  A.SHOP_NM -->
+<!-- 			FROM	SHOP AS A -->
+<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
+<!-- 		    ) 						AS shopName	 -->
+<!-- 		  ,( -->
+<!-- 			SELECT  B.FULL_URL -->
+<!-- 			FROM	SHOP AS A -->
+<!-- 					INNER JOIN SHOP_FILE_MST B -->
+<!-- 							ON A.IMG_2D_BARCODE = B.[FILE_ID] -->
+<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
+<!-- 		    ) 						AS shopQRImgUrl -->
+<!-- 	  FROM [dbo].[PAGE_SHOP] T1 -->
+<!-- 	 WHERE T1.[SHOP_ID]=#SHOP_ID:INT#	  -->
+<!--     ]]> -->
+	</select>
+	
+	<procedure id="getNavigationList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_NAVIGATION_SELECT] 
+		 	@SHOP_ID = #shopId:INT#
+		]]>
+	</procedure>
+	
+</sqlMap>

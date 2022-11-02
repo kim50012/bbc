@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ShopMainPage">
+	<parameterMap id="selectShopPageParam" class="java.util.Map"> 
+		<parameter property="SHOP_ID" 	javaType="java.lang.String"  	  jdbcType="INT" mode="IN"/> 
+	</parameterMap>
+	<!-- 查询该客户的地址信息 -->
+	<select id="selectShopPage" parameterMap="selectShopPageParam" resultClass="java.util.HashMap" remapResults="true">
+	    {call PAGE_SHOP_SELECT ?} 
+	</select>
+	<!-- 修改店铺主页信息 -->
+	<update id="updateShopPage" parameterClass="java.util.HashMap">
+	    UPDATE	PAGE_HEADER
+		SET		SKIN_TYPE=#skinId:INT#
+				,MODIFIED_ID=#userId:NVARCHAR#
+				,MODIFIED_DT=GETDATE()
+		WHERE	SHOP_ID=#shopId:INT#
+		  AND 	PAGE_ID=#pageId:INT#
+	</update>
+	
+	<!-- 修改店铺主页信息2 -->
+
+	<select id="updateShopPage2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_SKIN_UPDATE]
+	    	  @SHOP_ID =#shopId:INT#
+	    	, @PAGE_ID =#pageId:INT#
+	    	, @PAGE_TYPE = 1
+	    	, @SKIN_TYPE =#skinId:INT#
+			, @USER_ID =#userId:NVARCHAR#
+	    ]]>
+	</select>
+	<select id="updateShop" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_IMG_2D_BARCODE_UPDATE]
+	    	  @SHOP_ID =#shopId:INT#
+	    	, @FILE_ID =#fileId:INT#
+	    	, @FILE_NM =#fileName:NVARCHAR#
+	    	, @FILE_SYS_NM=#fileSysName:NVARCHAR#
+	    	, @FILE_TYPE=#fileType:TINYINT#
+	    	, @FILE_SIZE=#fileSize:INT#
+	    	, @FULL_URL	=#fileUrl:NVARCHAR#
+	    	, @IS_USE=#isUse:TINYINT#
+	    	, @MODIFIED_ID=#modifiedId:NVARCHAR#
+	    	, @CREATED_ID=#createdId:NVARCHAR#
+	    	, @USER_ID=#userId:NVARCHAR#
+	    ]]>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="EventRoulette">
+	
+    <select id="selectEventRoulette" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GAME_HEADER_MODIFY_SELECT]
+			@SHOP_ID=#shopId:INT#,
+			@GAME_ID=#gameId:INT#,
+			@CUST_SYS_ID=#custSysId:INT#,
+			@ITEM_ID=#itemId:INT#
+		]]>
+    </select>
+    <select id="updateEventRoulette" resultClass="java.util.HashMap" parameterClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_GAME_CHANCE_MODIFY]
+			@SHOP_ID=#shopId:INT#,
+			@GAME_ID=#gameId:INT#,
+			@CUST_SYS_ID=#custSysId:INT#,
+			@ITEM_ID=#itemId:INT#,
+			@CHANE_ID=#chaneId:INT#,
+			@MSG=#msg:NVARCHAR#
+		]]>
+    </select>
+</sqlMap>

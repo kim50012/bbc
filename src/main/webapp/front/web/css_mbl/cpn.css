@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+#popMain p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0;}
+#popMain input,textarea,select,button,table{font-size:13px;line-height:1.25em}
+#popMain{position:relative;color:#000000;overflow-x:hidden;background-color:#FFFFFF;}
+#popMain .pop{background-color:#FFFFFF;}
+#popMain .s{-webkit-text-size-adjust:none}
+
+
+#popMain img,fieldset{border:none}
+#popMain ul,ol{list-style:none}
+#popMain table{border-collapse:collapse}
+#popMain em,address,i,var{font-style:normal}
+#popMain a{color:inherit;text-decoration:none}
+/*a:visited{color:#888}*/
+#popMain input,select,button,.button{vertical-align:middle;}
+#popMain select{height:28px;border:1px solid #B3B3B3;background:#ffffff;}
+#popMain input.text	{height:28px;padding:0;border:1px solid #B3B3B3;border-radius:3px;text-indent:3px;font-size:14px;}
+#popMain input.radio,input.check,input.checkbox	{height:20px;}
+#popMain select.r	{border-radius:3px;}
+#popMain select.t	{-webkit-appearance:none;-moz-appearance:none;border:none;width:auto;height:auto;}
+/* common */
+#popMain h1	{font-size:15px;}
+/*section	{border:1px solid #999;}*/
+#popMain section h1,h2	{font-size:13px;color:#666;}
+#popMain section section h1,h3	{font-size:12px;color:#666;font-weight:normal;}
+#popMain button.sp	{font-size:0;padding:0;}
+.itembox	{  }
+/*.btn	{ display:inline-block;padding:5px;background:#eee;border-radius:5px;border:1px solid #999;}*/
+.sp	{ display:inline-block;padding:5px; color:#fff;border:none;}
+.tts	{display:none;}
+div.textarea	{padding:3px;border:1px solid #B3B3B3;line-height:1;}
+div.textarea > textarea	{width:100%;height:100%;border:0;}
+.red	{color:#D02D2D ! important;}
+.big	{font-size:16px;}
+.ig	{display:inline-block;margin-right:20px;line-height:20px;}
+.ig > .radio{margin-top:-2px;margin-right:5px;}
+.ig > label	{line-height:20px;}
+
+#popMain	{position:relative;width:100%;height:100%;min-height:600px;margin:0 auto;overflow:hidden;}
+#popMain	{font-family:helvetica;}
+
+/* popup */
+#popup	{position:relative;}
+#phd	{height:40px;border-bottom:1px solid #DDDDDD;background:#F1F1F1;}
+#phd > h1	{line-height:40px;font-size:17px;color:#666666;text-align:center;}
+#pft	{position:absolute;right:5px;top:5px;}
+#main .tts	{ display:none; }
+.page .on	{ font-weight:bold; }
+.item .mbr .prc	{text-decoration:line-through;}
+.page .page	{display:inline;}
+.btn, .sp	{cursor:pointer;}
+
+.tts	{display:none;}
+
+.btn > u,.sbtn > u,.mbtn > u,.sp > u	{text-decoration:none;}
+a.btn, button.btn			{vertical-align:middle;display:inline-block;height:28px;padding:0;border:1px solid #B3B3B3;border-radius:0;background:#dadada -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dadada)) no-repeat;white-space:nowrap;color:#333333;font-size:12px;letter-spacing:-1px;text-align:center;overflow:hidden;}
+a.btn.bk, button.btn.bk		{border-color:#222222;background:#232323 -webkit-gradient(linear, left top, left bottom, from(#4a4a4a), to(#1b1b1b)) no-repeat;color:#ffffff;}
+a.btn.br, button.btn.br	{padding:0;border-color:#553C1E;background:#4D2700 -webkit-gradient(linear, left top, left bottom, from(#B27C3C), to(#84592C)) no-repeat;color:#ffffff;}
+a.btn.rd, button.btn.rd	{padding:0;border-color:#C30000;border-bottom-color:#930000;background:#D02B2B -webkit-gradient(linear, left top, left bottom, from(#CF2929), to(#A40000)) no-repeat;color:#ffffff;}
+
+.ht,section > header.ht		{height:auto;padding:0 10px 5px !important;}
+.ht > h1,.ht > h2		{color:#333333;font-size:16px;line-height:22px;}
+.ht.b	{border-bottom:2px solid #333333;}
+
+/* box common */
+.box > .row	{position:relative;padding:5px 10px;border-bottom:1px solid #DDDDDD;}
+.box > .row:last-child	{border-bottom:none;}
+.box > .row > b,
+.box > .row > b.t	{position:absolute;left:0;top:0;width:80px;height:100%;background:#F1F1F1;color:#666666;white-space:nowrap;font-size:12px;letter-spacing:-1px;font-weight:normal;line-height:40px;}
+.box > .row > p,
+.box > .row > .p	{margin-left:80px;min-height:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:30px;}
+.box > .row > .p	{white-space:normal;}
+.box > .row > .p.s	{line-height:1.3;}
+
+/* box.prc common */
+.box.prc				{padding:10px 0;}
+.box.prc > .row			{position:relative;padding:0 10px;border-bottom:none;}
+.box.prc > .row > b,
+.box.prc > .row > b.t	{left:10px;width:80px;background:transparent;line-height:28px;}
+.box.prc > .row > p,
+.box.prc > .row > .p	{min-height:28px;line-height:28px;text-align:right;white-space:normal;}
+.box.prc > .row.sum		{padding-top:9px;border-top:1px dotted #DDDDDD;font-weight:bold;font-size:14px;}
+.box.prc > .row.sum > b	{top:10px;font-weight:bold;font-size:14px;letter-spacing:-1px;}
+
+/* box.txt common */
+.box.txt				{padding:10px 0;}
+.box.txt > .row			{position:relative;padding:0 10px;border-bottom:1px dotted #DDDDDD;}
+.box.txt > .row > b,
+.box.txt > .row > b.t	{left:10px;width:100px;background:transparent;line-height:28px;}
+.box.txt > .row > p,
+.box.txt > .row > .p	{min-height:28px;line-height:28px;text-align:left;white-space:normal;}
+.box.txt > .row.sum		{padding-top:9px;border-top:1px dotted #DDDDDD;font-weight:bold;font-size:14px;}
+.box.txt > .row.sum > b	{top:10px;font-weight:bold;font-size:14px;letter-spacing:-1px;}
+
+.box.txt > .row > div.auth > p,
+.box.txt > .row > div.auth > .p    {min-height:28px; padding-left:80px; line-height:28px;text-align:left;white-space:normal;}
+
+
+
+/* note */
+.note	{color:#666666;}
+.note > dl	{padding:10px;border:1px solid #DDDDDD;background:#F6F6F6;font-size:12px;}
+.note > dl > dt	{margin-bottom:3px;font-weight:bold;}
+.note > dl > dd	{position:relative;padding-left:13px;}
+.note > dl > dd > i	{position:absolute;left:0;top:0;}
+.note .box	{margin:20px 0 0;;padding:10px;border-top:1px solid #DDDDDD;background:#F6F6F6;font-size:12px;}
+.note .box > b	{margin-bottom:3px;font-weight:bold;}
+.note .box > p	{position:relative;margin-bottom:5px;padding-left:13px;}
+.note .box > p.t	{font-weight:bold;padding-left:0;}
+.note .box > p > i	{position:absolute;left:0;top:0;}
+.air .box	{background:#fff;}
+
+

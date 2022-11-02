@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+#authoritySelect{
+	width: 99.6%;
+	height: 25px;
+}
+/*管理组样式（弹出画面）*/
+#authorityGroupManage{
+	width: 700px;
+	height: 690px;
+	background-color: #FFFFFF;
+}
+
+#divAuthorityData{
+	height: 470px;
+	width: 100%;
+}
+
+/*权限组列表表头*/
+#authorityGroupHeader{
+	position: relative;
+	float: left;
+	width: 680px;
+	left: 10px;
+	top: 10px;	
+}
+/* 表头中的table */
+#tableGroupHead{
+	table-leyout: fixed; 
+	position: relative;
+	width: 680px;
+}
+
+/*权限组列表内容*/
+#authorityGroupData{
+	position: relative;
+	border-style: 1px solid;
+	width: 680px;
+	height: 250px;
+	float: left;
+	left: 10px;
+	top: 10px;
+}
+
+/* 权限组表格内容 */
+#tableGroupData{
+	width: 680px;
+}
+
+.groupColumn1{
+	width:50px;
+	text-align: center;
+}
+.groupColumn2{
+	width: 150px;
+	text-align: center;
+}
+.groupColumn3{
+	width: 150px;
+}
+.groupColumn4{
+	width: 250px;
+}
+/*具体的组信息*/
+#groupSpecificMsg{
+	position: relative;
+	width: 100%;
+	float: left;
+	top: 15px;
+}
+
+#tabGroupMsgOperation{
+	width: 96%;
+	position: relative;
+	float: left;
+	left: 10px;
+}
+
+
+.txtDetailedStyle{
+	height: 20px;
+	width: 90%;
+}
+.selectDetailStyle{
+	width: 90%;
+}
+/*******权限组管理信息部分***********/
+
+.locationStyle{
+	width: 96.5%;
+	position: relative;
+	float: left;
+	left: 10px;
+}
+
+/***********************************************/
+.authorityGridList {
+	border: solid 1px #8db2e3;
+	height: 100%;
+}

@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+.limit-span{word-break:break-word;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;text-align: center;width:96%;margin-left:2%;}
+
+/* seatManage页面样式  START */
+.top-seat-img{position: absolute;left:15px;bottom:8px;}
+.seat-list-div{width:96%;height:auto;margin-left:2%;margin-top:20px;}
+.seat-list-div table{width:100%;position: relative;text-align: center;}
+.seat-list-div table thead{border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+.seat-list-div table thead tr{background-color: #ebffe1;}
+.seat-list-div table thead tr td{font-size:12px;color:#333333;height:25px;}
+.seat-list-div table tbody tr{background-color: #fff;border-bottom:1px solid #ccc;height:30px;}
+.seat-list-div table tbody tr td .seatManage-selected-div{width:38px;height:18px;border:1px solid #eee;display:inline-block;cursor: pointer;}
+.seat-list-div table tbody tr td .seatManage-selected-div.selected{background-image: url("/wxi/image/seatManage/icon_master.png");background-position: center;background-repeat: no-repeat;background-size:16px 16px; }
+.seatManage-delete-img{cursor: pointer;}
+/* seatManage页面样式  END */
+
+/* seatAdd页面样式  START */
+.seat-add-list-div{width:100%;height:auto;margin-top:80px;background-color: #fff;}
+.seat-add-head-img{width:100%;height:auto;position: relative;}
+.seat-add-head-img .seat-add-msg{width:100%;font-size:12px;color:#323232;text-align: left;}
+.seat-add-head-img .seat-add-msg tr td{vertical-align: middle; }
+.seat-add-head-img .seat-add-msg tr td .seat-head-img{width:50px;height:50px;border:1px solid #ccc;display: inline-block;}
+.seat-add-head-img .seat-add-msg tr td .seat-head-img img{width:50px;height:50px;}
+.seat-add-head-img .seat-add-msg tr td .upload-add-div{position: absolute;display:inline-block;bottom:0;}
+.seat-add-head-img .seat-add-msg tr td .upload-head{color:#0098df;margin-left:10px;font-style:italic;cursor: pointer;}
+.seat-add-head-img .seat-add-msg tr td .head-img-msg{color:#a9a9a9;font-style:italic;}
+.seat-add-head-img .seat-add-msg  tbody tr td input{width:90%;height:30px;border-radius:4px;}
+.seat-add-head-img .seat-add-msg  tbody tr td .seat-group-select{width:90%;height:30px;border-radius:4px; overflow: hidden;background: url(/wxi/image/seatManage/seat_add3.png) no-repeat right #ddd;-webkit-appearance: none;background-color: #fff;font-family: "Microsoft YaHei", "Malgun Gothic","맑은 고딕", Arial;font-size:12px;}
+.seat-add-head-img .seat-add-msg  tbody tr td .select-click-img{position: absolute;right:10.5%;top:22px;}
+.key-world-all-div{background-color: #f7f7f7;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;margin-top:20px;}
+.key-world-all-div .keywork-warp .clearfix li{width:125px;float:left;margin-left:10px;height:30px;border:1px solid #b8b8b8;border-radius:5px;margin-bottom:10px;line-height:30px;color:#333;cursor: pointer;}
+.key-world-all-div .keywork-warp .clearfix li span{width:70px;margin-left:30px;word-break:break-word;text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;text-align: center;}
+.key-world-all-div .keywork-warp .clearfix .key-world-select.selected{background-image: url("/wxi/image/dkfManager/duihao.png");background-position: 14px 9px ;background-repeat: no-repeat;background-size:16px 12px;background-color: #f7f7f7; }
+.key-world-all-div .agent-item{border-bottom:1px dashed #c9c9c9;padding-bottom:10px; }
+.key-world-all-div .agent-item.last-div{border:0;}
+.seat-add-submit{width:100%;text-align: center;background-color: #fff;margin-top:30px;cursor: pointer;}
+.seat-add-submit div{width:100px;height:30px;border-radius:4px;border:1px solid #009900;text-align: center;line-height:30px;font-size:14px;color:#707070;display:inline-block;}
+/* seatAdd页面样式 END */
+
+/* keyworldGroupManage页面样式 START */
+.key-world-manage-select:hover{background-color: #f7f7f7 !important;background-image: url("/wxi/image/seatManage/icon_xiugai.png");background-position: 14px 9px ;background-repeat: no-repeat;background-size:16px 12px;}
+.modifyKeyWorldGroup{width:100%;height:100%;background-color: rgba(0,0,0,0.2);position: absolute;top:0;left:0;z-index:100;display:none;}
+.modifyKeyWorldGroup .modify-key-show-div{width:90%;margin-left:5%;margin-top:50px;position: relative;background-color: #fff;text-align: center;border-radius:4px;}
+.modifyKeyWorldGroup .modify-key-show-div div {width:97%;padding-top:2px;height:36px;line-height:36px;font-size:14px;color:#333333;border-bottom:2px solid #41b841;text-align: left;padding-left:3%;}
+.modifyKeyWorldGroup .modify-key-show-div div img{position: absolute;right:10px;top:12.5px;cursor: pointer;}
+.modifyKeyWorldGroup .modify-key-show-div input{margin-top:30px;width:80%;height:30px;border-radius:4px;margin-bottom:30px;}
+.modifyKeyWorldGroup .modify-key-show-div span{width:100px;height:28px;line-height:28px;display:inline-block;font-size:14px;color:#707070;text-align: center;border:1px solid #009900;margin-bottom: 30px;border-radius:4px;cursor: pointer;}
+/* keyworldGroupManage页面样式 END */
+
+/* dkfManage页面样式 START */
+.title-css{height:48px;line-height:48px;border-bottom:1px solid #ccc;background-color: #fff;font-size:16px;color:#7f7f7f;width:98%;margin-left:1%;background-repeat: no-repeat;background-position:92.5% 15px ;background-image: url("/wxi/image/seatManage/arrow_01.png");}
+.title-css img{margin-left:25px;margin-right:30px;}
+.title-css:hover{background-image: url("/wxi/image/seatManage/arrow_02.png");background-color: #ebffe1;}
+/* dkfManage页面样式 END */
+
+/* bPoupMsg页面样式 START */
+.bPoup-msg-div{position: absolute;top:15%;left:5%;width:90%;height:190px;border-radius:4px;text-align: center;z-index:200;background-color: #fff;display:none;}
+.bPoup-msg-div	div {width:97%;padding-top:2px;height:36px;line-height:36px;font-size:14px;color:#333333;border-bottom:2px solid #41b841;text-align: left;padding-left:3%;position: relative;}
+.bPoup-msg-div	div img{position: absolute;right:10px;top:12.5px;cursor: pointer;}
+.bPoup-msg-div	p{margin-top:30px;width:94%;height:30px;margin-bottom:30px;margin-left:3%;}
+.bPoup-msg-div	span{height:28px;line-height:28px;display:inline-block;font-size:14px;color:#707070;text-align: center;border:1px solid #009900;margin-bottom: 30px;border-radius:4px;cursor: pointer;}
+.bPoup-msg-div	.submit-false{margin-left:40px;width:70px;padding-left:30px;background-repeat: no-repeat;background-position:12px 8px;background-image: url(/wxi/image/dkfManager/bt_close.png);display:none;}
+.bPoup-msg-div	.submit-true{width:70px;padding-left:30px;background-repeat: no-repeat;background-image: url(/wxi/image/dkfManager/bt_pass.png);background-position:12px 8px;display:none;}
+.bPoup-msg-div	.submit-know{width:100px;}
+/* bPoupMsg页面样式 END */
+
+
+
+

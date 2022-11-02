@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SsgSSO">
+	<typeAlias alias="sso" 			type="com.waremec.weixin.domain.SsgSSO"/>
+	
+    <select id="insertSsgSSOTicketReturnUrl" parameterClass="sso" resultClass="java.util.HashMap">
+        <![CDATA[
+        	EXEC [WEB_SSO_IF_TICKET_INSERT]
+				  @SHOP_ID 		= #shopId#
+				, @OPENID 		= #openid#
+				, @TICKET 		= #ticket#
+				, @RSA_SIGN 	= #sign#
+				, @TIME_STAMP   = #timestamp#
+				, @URL 			= #url#
+				, @MENU_ID	 	= #menuId#
+       	]]>
+    </select>
+    <select id="selectReturnUrlByShopId" parameterClass="java.lang.Integer" resultClass="java.lang.String">
+        <![CDATA[
+        	SELECT REDIRECT_URL 
+        	from WEB_SERVICE_AUTH
+			where shop_id = #value#
+       	]]>
+    </select>
+    
+</sqlMap>

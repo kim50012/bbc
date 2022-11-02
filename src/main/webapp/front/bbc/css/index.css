@@ -1,0 +1,70 @@
+.lbtn,.rbtn {
+  width: 0.32rem;
+}
+.lbtn .fourDPlex,
+.rbtn .fourDPlex {
+  position: relative;
+  fonsiz: 0.28rem;
+  color: #bcbcbc;
+  z-index: 100;
+}
+.canvas {
+  flex: 1;
+}
+.chart-footer {
+  font-size: 0.24rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.32rem;
+  padding-bottom: 0.5rem;
+}
+.chart-footer span {
+  color: #959595;
+}
+.chart-footer img{
+  width: .18rem;
+  height: .02rem;
+  margin-right: 0.1rem;
+}
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+  .drag-table {
+    width: 100%;
+  
+  }
+  .drag-table th,tr {
+   word-break: keep-all;
+   white-space: nowrap;
+  }
+  .rbtn i {
+    display: none;
+  }
+  canvas {
+    width: 100% ;
+    height: 100% ;
+  }
+  .wrap-wite {
+    background: none;
+  }
+  .pb08 {
+    padding-bottom: 0.08rem;
+  }
+  #packUp1:active {
+    color: #e42e43;
+  }
+  #packUp2:active {
+    color: #e42e43;
+  }
+  #packUp3:active {
+    color: #e42e43;
+  }
+  .select:active {
+    color: #e42e43;
+    border: 1px solid #e42e43;
+  }
+  .select:active .sanjiao {
+    border-color: #e42e43;
+  }

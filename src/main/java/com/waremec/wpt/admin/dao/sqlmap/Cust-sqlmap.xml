@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Cust">
+    <!-- 查询所有用户 -->
+	<procedure id="getCust" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		    EXEC CUST_LIST  
+		    @SHOP_ID=#shopId:INT#,
+		    @CUST_SYS_ID=#custSysId:INT#,
+		    @CUST_NICK_NM=#nickName:NVARCHAR#,
+		    @WX_IF_SEX_ID =#sex:INT#,
+		    @WX_IF_PROVINCE_NM=#areaSel:NVARCHAR#,
+		    @CUST_POINT_START=#pointStart:INT#,
+		    @CUST_POINT_END=#pointEnd:INT#,
+		    @GRADE_ID=#gradeSel:INT#,
+		    @PUR_TIMES_START=#startNum:INT#,
+		    @PUR_TIMES_END=#endNum:INT#,
+		    @LAST_PUR_DT_START=#startConsumeDate:DATE#,
+		    @LAST_PUR_DT_END=#endConsumeDate:DATE#,
+		    @GOODS_PRICE_AVG_START=#startGoodsAvg:MONEY#,
+		    @GOODS_PRICE_AVG_END=#endGoodsAvg:MONEY#,
+			@SUBSCRIBE_TIME_START=#subscribe_time_start:DATE#,				
+			@SUBSCRIBE_TIME_END=#subscribe_time_end:DATE#,
+			@SUBSCRIBE=#subscribe:INT#,					
+		    @FLAG=1,
+		    @PAGE_CURR=#pageCurr:INT#,
+		    @PAGE_UINT=#pageUnit:INT#,
+		    @CUST_TYPE=#cust_type:CHAR#
+	    ]]>
+	</procedure>
+	<!-- 查询用户聊天记录 -->
+	<select id="getChatHist" parameterClass="map" resultClass="java.util.HashMap" remapResults="true">
+	 <![CDATA[
+		 Exec CUST_SHOP_MESSAGE_SELECT 
+			@SHOP_ID = #SHOP_ID#
+			,@CUST_SYS_ID = #CUST_SYS_ID#
+			,@USER_ID = #USER_ID#
+			,@RECEIVE_DT = #RECEIVE_DT#
+			,@COMMENT = #COMMENT#
+			,@MARK = #MARK#
+			,@MSG_ID = #MSG_ID#
+		]]>
+	</select>
+	<typeAlias alias="adminMap" type="com.waremec.wpt.admin.domain.AdminMap"/>
+	<!-- 查询区域 -->
+	<select  id="areaSel" parameterClass="adminMap" resultClass="adminMap">
+			   SELECT [AREA_NM]	AS areaName
+			   		  ,[AREA_ID] AS areaId
+			   FROM [dbo].[MAP]
+			   WHERE AREA_LEVL=#areaLevel#
+			   AND	IS_DELETE=0
+	</select>
+	<typeAlias alias="adminCustShop" type="com.waremec.wpt.admin.domain.AdminCustShop"/>
+	<!-- 根据custId查询等级 -->
+	<select  id="gradeGetById" parameterClass="adminCustShop" resultClass="adminCustShop">
+	   <![CDATA[
+        	SELECT [SHOP_ID] as shopId
+					,[GRADE_ID] as gradeId
+					,[CUST_POINT] as custPoint
+					,[CUST_SYS_ID] as cust_sys_id
+        	FROM [dbo].[CUST_SHOP]
+        	WHERE SHOP_ID=#shopId# 
+        	AND CUST_SYS_ID=#cust_sys_id#
+       	]]>
+	</select>
+	<!-- 更新等级 -->
+	<update id="gradeChangeOne" parameterClass="adminCustShop">
+	     <![CDATA[
+	     	UPDATE	[DBO].[CUST_SHOP]
+	     	SET		GRADE_ID=#gradeId:INT#
+	     	WHERE	CUST_SYS_ID=#cust_sys_id:INT#
+	     	AND		SHOP_ID=#shopId:INT#
+	     ]]>
+	</update>
+	<!-- 更新积分 -->
+	<update id="pointChangeOne" parameterClass="adminCustShop">
+	     <![CDATA[
+	     	UPDATE	[DBO].[CUST_SHOP]
+	     	SET		CUST_POINT=#custPoint:INT#
+	     	WHERE	CUST_SYS_ID=#cust_sys_id:INT#
+	     	AND		SHOP_ID=#shopId:INT#
+	     ]]>
+	</update>
+	<!-- 查询条数  -->
+	<select id="selectCount" parameterClass="adminCustShop" resultClass="java.lang.Integer" >
+	     <![CDATA[
+			SELECT
+				COUNT(T1.SHOP_ID)
+			FROM CUST_SHOP T1
+			LEFT JOIN GRADE_MST T2
+			ON T1.GRADE_ID=T2.GRADE_ID
+			AND T1.SHOP_ID=T2.SHOP_ID
+			WHERE T1.SHOP_ID=#shopId#
+	     ]]>
+	</select>
+	 
+	<typeAlias alias="adminGrade" type="com.waremec.wpt.admin.domain.AdminGrade"/>
+	<!-- 查询区域 -->
+	<select  id="gradeSel" parameterClass="adminGrade" resultClass="adminGrade">
+	   SELECT
+	   		GRADE_ID as gradeId
+	   		,GRADE_NM as gradeName
+	   FROM [dbo].[GRADE_MST]
+	   WHERE SHOP_ID=#shopId# 
+	     AND IS_USE=1
+	</select>
+ 
+ 
+	<select id="getChat" parameterClass="map" resultClass="java.util.HashMap" remapResults="true"><![CDATA[
+		 	EXEC CUST_DETAIL 
+				@SHOP_ID = #SHOP_ID#
+				,@CUST_SYS_ID = #CUST_SYS_ID#
+	 ]]>
+	</select>
+	
+	<typeAlias alias="adminWxMessageInfoEtc" type="com.waremec.wpt.admin.domain.AdminWxMessageInfoEtc"/>
+	<!--保存备注和加星 -->
+	<procedure id="infoEtcSave" parameterClass="adminWxMessageInfoEtc" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [WX_MESSAGE_INFO_ETC_INSERT]	
+			@JOB_TYPE			=#jobType:CHAR#,										
+			@ID					=#id:INT#,								
+			@MARK				=#mark:TINYINT#,			
+			@COMMENT			=#comment:NVARCHAR#		
+		]]>
+	</procedure>
+	<!-- 查询条数  -->
+	<select id="selectById" parameterClass="adminWxMessageInfoEtc" resultClass="java.lang.Integer" >
+	     <![CDATA[
+			SELECT
+				COUNT(ID)
+			FROM [dbo].[WX_MESSAGE_INFO_ETC] 
+			WHERE ID=#id#
+	     ]]>
+	</select>
+	
+		<select id="modifyCustInfo" parameterClass="map" resultClass="java.util.HashMap"  remapResults="true">
+	     <![CDATA[
+			EXEC [CUST_INFO_SINGLE_INFO_UPDATE]	
+				@CUST_SYS_ID	= #CUST_SYS_ID#
+				, @TYPE		 	= #TYPE#
+				, @VALUE 		= #VALUE#
+			
+	     ]]>
+	</select>
+	
+</sqlMap>

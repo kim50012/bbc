@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Template"> 
+	<typeAlias alias="pageHeader" type="com.waremec.wpt.admin.common.domain.PageHeader"/>
+	<typeAlias alias="pageItem" type="com.waremec.wpt.admin.common.domain.PageItem"/>
+	<typeAlias alias="pageDtl" type="com.waremec.wpt.admin.common.domain.PageDtl"/>
+ 
+ 	<select id="createPageHeader" parameterClass="pageHeader" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_HEADER_INSERT]
+			  @JOB_TYPE = 'I'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= 0
+			, @PAGE_TYPE = #pageType#
+			, @SKIN_TYPE = #skinType#
+			, @USER_ID	= #createdId#  
+			, @DISPLAY_ID	= #displayId#  
+			, @PAGE_NM	= #pageNm#  
+		]]>
+	</select>
+	
+	<select id="modifyPageHeader" parameterClass="pageHeader" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_HEADER_INSERT]
+			  @JOB_TYPE = 'U'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= #pageId#
+			, @PAGE_TYPE = #pageType#
+			, @SKIN_TYPE = #skinType#
+			, @USER_ID	= #createdId#  
+			, @DISPLAY_ID	= #displayId#  
+			, @PAGE_NM	= #pageNm#  
+		]]>
+	</select>
+	
+	<select id="deletePageHeader" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_HEADER_INSERT]
+			  @JOB_TYPE = 'D'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= #pageId#
+			, @PAGE_TYPE = #pageType#
+			, @SKIN_TYPE = #skinType#
+			, @USER_ID	= #createdId#  
+			, @DISPLAY_ID	= #displayId#  
+		]]>
+	</select>
+	
+	<select id="updatePageShop" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[PAGE_SHOP_MODIFY]
+			  @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= #pageId#
+			, @USER_ID	= #createdId#
+			, @JOP_TYPE = #jobType#  
+		]]>
+	</select>
+	
+ 	<select id="createPageItem" parameterClass="pageItem"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_ITEM_INSERT]
+			  @JOB_TYPE = 'I'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= #pageId#
+			, @ITEM_ID  = 0
+			, @SORT  = #sort#
+			, @TMPL_NO 	= #tmplNo#
+			, @USER_ID= #createdId#  
+		]]>
+	</select>
+	
+	<select id="modifyPageItem" parameterClass="pageItem"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_ITEM_INSERT]
+			  @JOB_TYPE = 'U'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID	= #pageId#
+			, @ITEM_ID  = 0
+			, @SORT  = #sort#
+			, @TMPL_NO 	= #tmplNo#
+			, @USER_ID= #createdId#  
+		]]>
+	</select>
+	
+ 	<select id="createPageTel" parameterClass="pageDtl"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_DTL_INSERT]
+			  @JOB_TYPE = 'I'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID 	= #pageId#
+			, @ITEM_ID	= #itemId#
+			, @DTL_ID  = 0
+			, @VAL01  = #val01#
+			, @VAL02  = #val02#
+			, @VAL03  = #val03#
+			, @VAL04  = #val04#
+			, @VAL05  = #val05#
+			, @VAL06  = #val06#
+			, @VAL07  = #val07#
+			, @VAL08  = #val08#
+			, @VAL09  = #val09#
+			, @VAL10  = #val10#
+			, @TXT01  = #txt01#
+			, @TXT02  = #txt02#
+			, @USER_ID= #createdId#  
+		]]>
+	</select>
+ 	
+ 	<select id="modifyPageTel" parameterClass="pageDtl"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_DTL_INSERT]
+			  @JOB_TYPE = 'U'
+			, @SHOP_ID	= #shopId# 
+			, @PAGE_ID 	= #pageId#
+			, @ITEM_ID	= #itemId#
+			, @DTL_ID  = 0
+			, @VAL01  = #val01#
+			, @VAL02  = #val02#
+			, @VAL03  = #val03#
+			, @VAL04  = #val04#
+			, @VAL05  = #val05#
+			, @VAL06  = #val06#
+			, @VAL07  = #val07#
+			, @VAL08  = #val08#
+			, @VAL09  = #val09#
+			, @VAL10  = #val10#
+			, @TXT01  = #txt01#
+			, @TXT02  = #txt02#
+			, @USER_ID= #createdId#  
+		]]>
+	</select>
+	
+	
+ 	<select id="DYNAMIC_PAGE_HEADER_MODIFY_SELECT" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_HEADER_MODIFY_SELECT]
+			  @SHOP_ID	= #SHOP_ID# 
+			, @DISPLAY_ID 	= #DISPLAY_ID#
+			, @PAGE_ID = #PAGE_ID#
+			, @USER_ID= #USER_ID#  
+		]]>
+	</select>
+ 	<select id="DYNAMIC_PAGE_DTL_MODIFY_SELECT" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[DYNAMIC_PAGE_DTL_MODIFY_SELECT]
+			  @SHOP_ID	= #SHOP_ID# 
+			, @DISPLAY_ID 	= #DISPLAY_ID#
+			, @PAGE_ID = #PAGE_ID#
+			, @ITEM_ID = #ITEM_ID# 
+			, @USER_ID= #USER_ID#  
+		]]>
+	</select>
+	<select id="SHOP_NAVIGATION_SELECT" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[SHOP_NAVIGATION_SELECT]
+			  @SHOP_ID	= #SHOP_ID#  
+		]]>
+	</select>
+	<procedure id="SHOP_NAVIGATION_INSERT" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap" remapResults="true" ><![CDATA[
+		EXEC [dbo].[SHOP_NAVIGATION_INSERT]
+			  @SHOP_ID	= #SHOP_ID:INT# 
+			  ,@IMG_URL=#IMG_URL:NVARCHAR#
+			  ,@URL=#URL:NVARCHAR#
+			  ,@NAME=#NAME:NVARCHAR#
+			  ,@PAGE_NUM=#PAGE_NUM:NVARCHAR#
+			  ,@JOB_TYPE=#JOB_TYPE:NVARCHAR#
+			  ,@BACK_COLOR=#BACK_COLOR:VARCHAR#
+			  ,@WORD_COLOR=#WORD_COLOR:VARCHAR#
+		]]>
+	</procedure>
+	<select id="getShopColorList" parameterClass="java.util.HashMap"  resultClass="java.util.HashMap" remapResults="true" >
+		<![CDATA[
+			EXEC [dbo].[CM_CODE_SELECT] 
+			@SEARCH_TYPE = #SEARCH_TYPE:NVARCHAR#
+		]]>
+	</select>
+
+</sqlMap>

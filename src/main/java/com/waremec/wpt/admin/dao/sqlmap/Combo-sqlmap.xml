@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Combo"> 
+	<typeAlias alias="combo" type="com.waremec.wpt.admin.common.domain.Combo"/>
+ 
+  	<select id="findList" parameterClass="map"  resultClass="combo">
+  		[dbo].[COMBOBOX_SELECT]
+			@COMBO_TYPE			= #comboType#
+			, @SHOP_ID			= #shopId#
+			, @PARAMS_I1		= #paramsI1#
+			, @PARAMS_I2		= #paramsI2#
+			, @PARAMS_I3		= #paramsI3#
+			, @PARAMS_I4		= #paramsI4#
+			, @PARAMS_I5		= #paramsI5#
+			, @PARAMS_V1		= #paramsV1#
+			, @PARAMS_V2		= #paramsV2#
+			, @PARAMS_V3		= #paramsV3#
+			, @PARAMS_V4		= #paramsV4#
+			, @PARAMS_V5		= #paramsV5#
+		 	 
+  
+  	</select>
+
+	  	
+</sqlMap>

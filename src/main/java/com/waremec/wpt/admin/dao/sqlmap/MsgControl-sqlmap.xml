@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MsgControl">
+	<select id="saveAutoReply" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_MESSAGE_KEYWORD_INSERT]
+		 	@JOB_TYPE=#jobType:CHAR#,
+		 	@MESSAGE_ID=#messageId:INT#,
+		 	@SHOP_ID=#shopId:INT#,
+			@MSG_TITLE=#msgTitle:NVARCHAR#,
+			@SEND_FILE_TYPE=#sendFileType:INT#,
+			@MATERIAL_FILE_ID=#materialFileId:INT#,
+			@COVER_PAGE_ID=#coverPageId:INT#,
+			@SHOP_GOODS_URL=#shopGoodsUrl:NVARCHAR#,
+			@SEND_MSG_BODY=#sendMsgBody:NVARCHAR#,
+			@SEND_TYPE=#sendType:INT#,
+			@SEND_TIME=#sendTime:SMALLDATETIME#,
+			@CREATED_ID=#createdId:NVARCHAR#,
+			@MODIFIED_ID=#modifiedId:NVARCHAR#,
+			@CREATED_DT=#createdDate:SMALLDATETIME#,
+			@MODIFIED_DT=#modifiedDate:SMALLDATETIME#,
+			@KEYWORD=#keyWord:NVARCHAR#
+		]]>
+	</select>
+	<select id="selectMsgControlList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_WX_MESSAGE_SELECT]
+		 	@MESSAGE_ID=#messageId:INT#,
+		 	@SHOP_ID=#shopId:INT#,
+			@PAGE_CURR=#pageCurr:INT#,
+			@PAGE_UINT=#pageUnit:INT#,
+			@USER_ID=#userId:NVARCHAR#,
+			@MSG_GROUP=#msgGroup:VARCHAR#					
+		]]>
+	</select>
+</sqlMap>

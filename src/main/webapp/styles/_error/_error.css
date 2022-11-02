@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+body {
+	background-image: none;
+}
+#errorMessage{
+	background-image: url(/images/common/bacground.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}

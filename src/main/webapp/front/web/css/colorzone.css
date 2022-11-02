@@ -1,0 +1,127 @@
+@charset "utf-8";
+@import url("base.css");
+@import url("layout.css");
+@import url("top100.css");
+
+.top-titlebox {width:100%; height:66px; position:relative;}
+.top-titlebox .title {position:absolute; left:0; top:25px;}
+.top-titlebox .page-sublocation {padding-top:25px;}
+.color-choice-box {width:100%; height:240px; margin-bottom:30px; overflow:hidden; position:relative;}
+.color-choice-box .color-txt {width:200px; height:238px; float:left; position:relative; background:#2a2a2a; border-top:2px solid #d62b21;}
+.color-choice-box .color-txt .txt {padding:27px 0 0 20px;}
+.color-choice-box .color-txt .color-search {width:180px; height:59px; position:absolute; left:10px; bottom:10px;}
+
+.color-choice-box .color-box {width:800px; height:238px; position:absolute; top:0; right:0; padding-top:22px; border-top:2px solid #2a2a2a; z-index:10;}
+.color-choice-box .color-box ul {width:800px; height:57px; padding:0 0 0 70px;}
+.color-choice-box .color-box ul li {width:62px; height:57px; margin-left:40px; float:left; overflow:hidden; position:relative;}
+/*.color-choice-box .color-box ul li a {display:block;}
+.color-choice-box .color-box ul li a span {display:block; width:23px; height:23px; position:absolute; left:19px; top:15px;}*/
+.color-choice-box .color-box ul li.first-child {margin-left:0;}
+.color-choice-box .color-box ul.center-line {padding:19px 0 27px 15px;}
+.color-choice-box .color-box ul li input {margin:15px;}
+.color-choice-box .color-box ul li label {display:block; width:62px; height:57px; position:absolute; left:0; top:0; cursor:pointer;}
+.color-choice-box .color-box ul li span {display:block; width:23px; height:23px; position:absolute; left:19px; top:15px; z-index:10;}
+.color-choice-box .color-banner {padding:0; z-index:20;}
+
+.color-container {width:100%; height:auto;}
+.color-container .color-tab-box {width:100%; height:44px; margin-bottom:24px; border-bottom:2px solid #ededed;}
+.color-tab-box li {float:left; width:124px; height:42px; margin-left:-1px; background:#f4f4f3; border:1px solid #c8c8c8;}
+.color-tab-box li.tab-on {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/bg_tab_on.gif") repeat-x 0 0; border:1px solid #464646;}
+.color-tab-box li a {display:block; width:124px; height:30px; padding-top:15px; text-align:center;}
+.color-tab-box li span {display:block; text-indent:-9999em;}
+
+.mycolor-box {width:100%; height:167px; margin-bottom:30px; border-top:2px solid #2a2a2a; border-bottom:1px solid #dfdfdf;}
+.mycolor-box .mycolor-goods {width:193px; height:148px; padding-top:19px; float:left; background:#f2f2f0; text-align:center;}
+.mycolor-box .mycolor-goods .color {padding:14px 0 10px 0;}
+.mycolor-box .mycolor-list-box {width:807px; height:167px; float:right; position:relative; background:url("//image.ssgdfs.com/images/shop/cn/colorzone/bg_mycolor.gif") no-repeat 0 0 #fff;}
+.mycolor-box .mycolor-save {width:108px; height:132px; margin:8px 0; padding:16px 0 0 0; position:absolute; left:355px; top:0; background:#f3f3f3; border:1px solid #dfdfdf; text-align:center;}
+/*.mycolor-box .mycolor-save .color {padding:16px 0 10px 0;}*/
+.mycolor-box .mycolor-list {width:807px; height:167px;}
+.mycolor-box .mycolor-list ul {width:330px; height:67px; padding:51px 0 0 25px; float:left;}
+.mycolor-box .mycolor-list ul.mycolor-list02 {margin-left:90px;}
+.mycolor-box .mycolor-list ul li {width:25px; height:65px; float:left; padding-right:5px;}
+
+.mycolor-save p {font-family:"tahoma" , "타호마"; font-size:11px;}
+.mycolor-save .mycolor-tit-white {color:#b6b6b6;}
+.mycolor-save .mycolor-tit-beige {color:#b6b6b6;}
+.mycolor-save .mycolor-tit-ivory {color:#b6b6b6;}
+.mycolor-save .mycolor-tit-gold {color:#d5b355;}
+.mycolor-save .mycolor-tit-sky {color:#a2c9df;}
+.mycolor-save .mycolor-tit-blue {color:#3379d9;}
+.mycolor-save .mycolor-tit-navy {color:#245899;}
+.mycolor-save .mycolor-tit-purple {color:#7944a0;}
+.mycolor-save .mycolor-tit-violet {color:#a73c8b;}
+.mycolor-save .mycolor-tit-pink {color:#e55399;}
+.mycolor-save .mycolor-tit-red {color:#b94230;}
+.mycolor-save .mycolor-tit-brown {color:#8c5d10;}
+.mycolor-save .mycolor-tit-khaki {color:#718a29;}
+.mycolor-save .mycolor-tit-green {color:#269c12;}
+.mycolor-save .mycolor-tit-olive {color:#c9d71e;}
+.mycolor-save .mycolor-tit-yellow {color:#e5dc4f;}
+.mycolor-save .mycolor-tit-silver {color:#b6b6b6;}
+.mycolor-save .mycolor-tit-gray {color:#9f9f9f;}
+.mycolor-save .mycolor-tit-charcoal {color:#4e4e4e;}
+.mycolor-save .mycolor-tit-black {color:#000;}
+.mycolor-save .mycolor-tit-rainbow {color:#53e5cb;}
+.mycolor-save .mycolor-tit-multi {color:#53e5cb;}
+.mycolor-save .mycolor-tit-pattern {color:#aaa;}
+.mycolor-save .mycolor-tit-no {color:#9f9f9f;}
+.mycolor-save ul {width:65px; height:65px; margin:13px auto 10px auto; overflow:hidden;}
+.mycolor-save ul li {width:65px; height:65px; text-indent:-9999em;}
+.mycolor-save ul li span {display:block;}
+.mycolor-save ul li.my-no {background:#9f9f9f;}
+.mycolor-save ul li.my-white {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_02.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-beige {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_13.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-ivory {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_20.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-gold {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_08.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-sky {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_11.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-blue {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_04.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-navy {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_10.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-purple {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_07.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-violet {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_19.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-pink {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_06.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-red {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_05.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-brown {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_14.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-khaki {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_15.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-green {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_12.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-olive {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_17.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-yellow {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_16.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-silver {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_09.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-gray {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_03.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-charcoal {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_18.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-black {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_01.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-multi {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_21.gif") repeat-x 0 0;}
+.mycolor-save ul li.my-pattern {background:url("//image.ssgdfs.com/images/shop/cn/colorzone/mycolor01_22.gif") repeat 0 0;}
+
+.color-container .counter .cnt span {font-weight:bold; font-size:12px; color:#333;}
+.color-container .counter .cnt span.count-no {font-size:30px; color:#d62b21; font-family:"tahoma" , "타호마";}
+.color-container .counter .cnt span.count-no span {font-size:12px; font-family:"dotum","돋움";}
+.color-container .more-view {text-align:center; margin-bottom:70px;}
+
+
+.recommend-colorbox {width:100%; float:left; padding-bottom:47px;}
+.recommend-colorbox p.colortxt {width:100%; height:15px; padding:7px 0; border-top:2px solid #555; border-bottom:1px solid #dfdfdf; background:#f7f7f7; font-weight:bold; color:#343434; text-align:center;}
+.recommend-colorbox ul.recommend-list {height:29px; padding:3px 60px 3px 60px; border-bottom:1px solid #dfdfdf;}
+.recommend-colorbox ul.recommend-list li {width:27px; height:27px; margin-left:11px; border:1px solid #fff; float:left;}
+.recommend-colorbox ul.recommend-list li img {margin:1px;}
+.recommend-colorbox ul.recommend-list li.on {border:1px solid #9c9c9c;}
+.recommend-colorbox .list-basic ul li .photo {padding:29px 0 0 0;}
+.recommend-colorbox .list-basic ul li p.product-name {padding:2px 2px 4px 4px;}
+.recommend-colorbox .list-basic ul li p.brand {height:32px; overflow:hidden; padding:4px 2px 0 2px;}
+.color-hotitem .list-basic ul li .photo {padding:29px 0 0 0;}
+.color-hotitem .list-basic ul li p.product-name {padding:2px 2px 4px 4px;}
+.color-hotitem .list-basic ul li p.brand {height:32px; overflow:hidden; padding:4px 2px 0 2px;}
+.color-product-type .list-basic ul li .photo {padding:29px 0 0 0;}
+.color-product-type .list-basic ul li p.product-name {padding:2px 2px 4px 4px;}
+.color-product-type .list-basic ul li p.brand {height:32px; overflow:hidden; padding:4px 2px 0 2px;}
+
+.color-hotitem {width:100%; float:left; padding-bottom:68px;}
+.color-hotitem .more-view {text-align:center;}
+
+.color-product-box {width:100%; float:left;}
+.color-product-box .more-view {margin-bottom:31px;}
+
+.color-product p {height:20px; padding:0 0 10px 25px; background:url("//image.ssgdfs.com/images/shop/cn/order/bg_h3.gif") no-repeat 0 3px; border-bottom:2px solid #555; font-size:18px; color:#333; font-weight:bold;}
+.color-product span {font-size:12px;}
+.color-product span span.count {color:#d62b21; font-weight:bold;}
+.color-product-type {width:100%; float:left;}

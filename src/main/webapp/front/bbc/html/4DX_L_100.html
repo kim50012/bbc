@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" /> <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" /> <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" /> <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    </style>
+</head>
+      
+  <body>
+    <div class="loginContent" id="demoDiv1">
+      <div class="loginLogo">
+        <img src="../image/logoW.svg"/>
+      </div>
+      <div class="loginInput">
+        <form onsubmit="return check(this)" action="">
+	        <div class="input-wrap contentText">
+	          <input type="" name="" id="userName" value="" />
+	          <div>4DX World</div>
+	        </div>
+	        
+	        <div class="input-wrap contentPassword">
+	          <input type="" name="" id="passWord" value="" />
+	          <div>패스워드 입력</div>
+	        </div>
+	        <div class="switchLabel">
+	          <div class="switchIcon">
+	            <label class="switch">
+	              <input type="checkbox" name="" id="" value="" />
+	              <i class="switch-btn"></i>
+	            </label> 
+	          </div>
+	          <div class="switchWord">아이디 저장</div>
+	        </div>
+	        <button type="button" class="loginBtn" id="bt"/>로그인</button>
+	        <div class="explain">
+	          <p class="exWord"><span class="dian">본 시스템은 CJ그룹 임직원 중 사전 등록된 사용자에 한해 사용할 수.</span></p>
+	          <p class="exWord"><span class="dian">불법적인 접근 및 사용시 관련 법규에 의해 처벌될 수 있습니다.</span></p>
+	          <p class="exWord"><span class="dian">사용 권한 신청은 CJ월드 > 전자결재를 이용해 주세요.</span></p>
+	          <p class="exWord"><span class="dian">계정 입력시 대/소문자를 유의해 주세요</span></p>
+	        </div>
+	      </form>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('input').on('input',function() {
+        if($(this).val()) {
+          $(this).css('background-color','#FFFFFF')
+        } else {
+          $(this).css('background-color','none')
+        }
+      })
+			$("input").keyup(function(){
+				usrValue = $("#userName").val();
+				passWord = $("#passWord").val();
+				if(usrValue!=""&&passWord!=""){
+									$(".loginBtn").addClass("light")
+								}else{
+									$(".loginBtn").removeClass("light")
+								}
+			})
+	     $("#bt").click(function(){
+	      if($("#userName").val() == 'admin' && $("#passWord").val() == '1234') {
+	        window.location.href = "4DX_MAIN_100.html"
+	      } else {
+	        alert('账号或密码错误')
+	      }
+	     })
+		}); 
+  </script>
+</html>

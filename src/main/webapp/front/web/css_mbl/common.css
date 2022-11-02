@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+section, nav, header, aside, footer, menu{display:block;} /* for ie 6, 7, 8 */
+
+/* default layout */
+html, body{height:100%;}
+body{margin:0; padding:0; font-size:12px; line-height:1; color:#333; -webkit-text-size-adjust:none;}
+a{color:#333; text-decoration:none;}
+hr,caption,legend{display:none;}
+colgroup{background:none;}
+h1, h2, h3, h4, h5, h6{font-size:100%; /*font-weight:normal; -webkit-text-stroke-width:.02em;*/}
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, form, fieldset, table, caption, tbody, tfoot, thead, tr, th, td, img, input, button{border:0; margin:0; padding:0;}
+ul, ol, li{list-style:none;}
+table{clear:both; width:100%; border-spacing:0px; border:0; border-collapse:collapse;}
+p, div, th, td{font-size:13px;}
+img,input,select,textarea,button{vertical-align:middle;}
+input.type-image, input.type-radio{border:0 none;}
+input,select,textarea{font-size:12px;}
+menu{margin:0; padding:0;}
+input{-webkit-border-radius:0; -webkit-appearance:none;}
+var{font-style:normal;}
+
+.skip{position:absolute; top:0; left:-1000px; width:0; height:0; font-size:0; line-height:0;}

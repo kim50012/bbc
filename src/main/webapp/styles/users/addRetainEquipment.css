@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+/* 保有设备列表样式 */
+.kendoListStyle{
+	min-height: 350px;
+	height: auto;
+}

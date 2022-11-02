@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>일자순보기</title>
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_CI_120.js" type="text/javascript" charset="utf-8"></script>
+  
+  </head>
+  
+  <body>
+    <div class="app riskManagement1" id="app">
+<!--内容区域-->
+      <div class="content">
+<!--分类标题-->
+        <div class="container refresh-wrap f-column" style="height: 100%;">
+          <div class="button-title plr24">
+  	        <div class="fontBlack font24 bold">전사 Issue 관리</div>
+  	        <div>
+  	          <div class="btn-white" url='4DX_CI_110.html' onclick="goAppPage(this)">사업자별보기</div>
+  	          <div class="select-wrap ml10">
+  	            <div class="select" onclick="selectGo(this)"><span>진행중</span><i class="sanjiao"></i></div>
+  	          </div>
+  	        </div>
+          </div>
+          <div class="scroll-wrap">
+            <div class="list-wrap f-col">
+              <ul>
+                <li class="link"> 
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-06</span>
+                        <div class="imgTab">
+                          <img src="../image/cgvSmall.svg"/>
+                          <img src="../image/flag1.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>기술 지원 </span>
+                        <span> (진행중) </span>
+                      </div>
+                      <span>CGV 한국 / 제주 AB쇼핑몰 1호점</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2의 왼쪽 fan 이 손상된 채로 입고되어, 고품회수 필요한지 품질보증팀의</div>
+                </li>
+                <li class="link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-05</span>
+                        <div class="imgTab">
+                          <img src="../image/zeon.png"/>
+                          <img src="../image/japanFlag.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>품질 보증</span>
+                        <span>(진행중)</span>
+                      </div>
+                      <span>Aeon Entertainment 일본 / choufu</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2 회수 후 고장 분석 착수함</div>
+                </li>
+                <li class="resolved link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-04</span>
+                        <div class="imgTab">
+                          <img src="../image/cgvSmall.svg"/>
+                          <img src="../image/chinaFlag.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업</span>
+                        <span> (완료) </span>
+                      </div>
+                      <span>CGV 중국 / 颐堤港店</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span >2018-07-04</span>
+                        <div class="imgTab">
+                          <img src="../image/pathe.png"/>
+                          <img src="../image/flag2.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span class="fontGrey font20">품질 보증</span>
+                        <span class="fontGrey font20"> (완료) </span>
+                      </div>
+                      <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                    </div>
+                  </div>
+                  <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                
+                <li class="link"> 
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-06</span>
+                        <div class="imgTab">
+                          <img src="../image/cgvSmall.svg"/>
+                          <img src="../image/flag1.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>기술 지원 </span>
+                        <span> (진행중) </span>
+                      </div>
+                      <span>CGV 한국 / 제주 AB쇼핑몰 1호점</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2의 왼쪽 fan 이 손상된 채로 입고되어, 고품회수 필요한지 품질보증팀의</div>
+                </li>
+                <li class="link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-05</span>
+                        <div class="imgTab">
+                          <img src="../image/zeon.png"/>
+                          <img src="../image/japanFlag.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>품질 보증</span>
+                        <span>(진행중)</span>
+                      </div>
+                      <span>Aeon Entertainment 일본 / choufu</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">환경장비 Fog2 회수 후 고장 분석 착수함</div>
+                </li>
+                <li class="resolved link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span>2018-07-04</span>
+                        <div class="imgTab">
+                          <img src="../image/cgvSmall.svg"/>
+                          <img src="../image/chinaFlag.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span>영업</span>
+                        <span> (완료) </span>
+                      </div>
+                      <span>CGV 중국 / 颐堤港店</span>
+                    </div>
+                  </div>
+                  <div class="gray-model">코스피 단가 변경 요청함 (USD 3,000)</div>
+                </li>
+                <li class="resolved link">
+                  <div class="title">
+                    <div class="date-wrap">
+                        <i class="tab-new"></i>
+                        <span >2018-07-04</span>
+                        <div class="imgTab">
+                          <img src="../image/pathe.png"/>
+                          <img src="../image/flag2.svg"/>
+                        </div>
+                    </div>
+                    <div class="riskTitle">
+                      <div>
+                        <span class="fontGrey font20">품질 보증</span>
+                        <span class="fontGrey font20"> (완료) </span>
+                      </div>
+                      <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                    </div>
+                  </div>
+                  <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                <li class="resolved link">
+                    <div class="title">
+                      <div class="date-wrap">
+                          <i class="tab-new"></i>
+                          <span >2018-07-04</span>
+                          <div class="imgTab">
+                            <img src="../image/pathe.png"/>
+                            <img src="../image/flag2.svg"/>
+                          </div>
+                      </div>
+                      <div class="riskTitle">
+                        <div>
+                          <span class="fontGrey font20">품질 보증</span>
+                          <span class="fontGrey font20"> (완료) </span>
+                        </div>
+                        <span class="font20 fontGrey">Pathe 프랑스 / Montpellier</span>
+                      </div>
+                    </div>
+                    <div class="gray-model fontGrey">환경장비 Fog2 회수 후 고장 분석 준비함</div>
+                  </li>
+                
+              </ul>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> 

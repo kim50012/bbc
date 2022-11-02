@@ -1,0 +1,32 @@
+charset "utf-8";
+
+div.best-product div.view-con a {
+	display: inline-block;
+	display: inline;
+	zoom: 1;
+}
+
+button {width:auto; height:26px;}
+.button-ok span {height:21px; margin-left:15px; padding:4px 15px 0 0;}
+.terms-search p.max-mini {vertical-align:top;}
+
+
+.button-write {width:105px;}
+.button-write span {display:block; padding:8px 20px 0 0; text-align:right;}
+.button-search-w {width:150px;}
+.button-search-w span {display:block; padding:8px 20px 0 0; text-align:right;}
+
+.product-review table tbody td.board-txtbox .star-box p.star {width:114px;}
+
+.paginate-box .paginate a.mar-right {margin-top:-24px;}
+
+span.txt-tipping {background:url(/images/shop/order/dot_gray.gif) no-repeat 0 7px;} /* ie7 */
+
+.product-modify a {display:inline-block; vertical-align:middle; margin-top:0;}
+.order-board table td.select-container .sbHolder {width:53px;}
+.order-board table td.select-container .sbSelector{width:53px;}
+.order-board table td.select-container .sbOptions{width:53px;}
+.order-board table td.select-container p {margin-right:2px;}
+.order-board table td.select-container p .sbHolder {width:40px;}
+.order-board table td.select-container p .sbSelector{width:40px;}
+.order-board table td.select-container p .sbOptions{width:40px;}

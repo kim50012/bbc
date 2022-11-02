@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Counter">
+
+
+	<typeAlias alias="counter" type="com.waremec.wpt.front.domain.Counter"/>
+	<typeAlias alias="pageUrlType" type="com.waremec.wpt.front.domain.PageUrlType"/>
+
+	 
+	<select id="saveCounter" parameterClass="counter" resultClass="java.util.HashMap" remapResults="true">
+	    <![CDATA[
+	    	EXEC [dbo].[ANALYSIS_INFLOW_INSERT]
+				@SHOP_ID 		= #shopId#
+				, @CUST_SYS_ID 	= #custSysId#
+				, @PAGE_TP		= #pageTp#
+				, @PAGE_ID 		= #pageId#
+				, @GOODS_ID 	= #goodsId#
+				, @DISPLAY_ID 	= #displayId#
+				, @AI_IP 		= #aiIP#
+				, @AI_DEVICE 	= #aiDevice#
+				, @OPENID 		= #openid#
+				, @JOP_TYPE		= 'I'
+				
+	    ]]>
+	</select>
+	<select id="selectPageUrlType"  resultClass="pageUrlType" >
+	    <![CDATA[
+	    	SELECT T1.PAGE_TP AS pageTp
+				, PAGE_NM AS pageNm
+				, PAGE_URL as pageUrl
+				, PAGE_GROUP as pageGroup
+				, PAGE_GROUP2 as pageGroup2
+			 FROM ANALYSIS_PAGE  T1
+			WHERE T1.IS_DELETE = 0
+
+	    ]]>
+	</select>
+</sqlMap>

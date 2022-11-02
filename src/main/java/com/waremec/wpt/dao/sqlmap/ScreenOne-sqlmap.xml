@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ScreenOne">
+	<typeAlias alias="screenOneDomain" type="com.waremec.wpt.dashboard.screenOne.domain.ScreenOneDomain" />
+											 
+	<resultMap id="provinceWorkTime" class="screenOneDomain">
+	    <result column="RankNum"		property="RankNum" 		jdbcType="VARCHAR"/>
+		<result column="ProvinceId"		property="ProvinceId" 	jdbcType="VARCHAR"/>
+		<result column="ProvinceName"	property="ProvinceName" jdbcType="VARCHAR"/>
+		<result column="WorkTime"		property="WorkTime" 	jdbcType="VARCHAR"/>
+		<result column="EquiCount"		property="EquiCount" 	jdbcType="VARCHAR"/>
+		<result column="WorkTimeIcon"	property="WorkTimeIcon" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="monthAvgTime" class="screenOneDomain">
+	    <result column="ZhisheName"		property="ZhisheName" 	jdbcType="VARCHAR"/>
+		<result column="ThisMon"		property="ThisMon" 		jdbcType="VARCHAR"/>
+		<result column="PrevMon"		property="PrevMon" 		jdbcType="VARCHAR"/>
+		<result column="SubArrow"		property="SubArrow" 	jdbcType="VARCHAR"/>
+		<result column="ThisWorkTime"	property="ThisWorkTime" jdbcType="VARCHAR"/>
+		<result column="PrevWorkTime"	property="PrevWorkTime" jdbcType="VARCHAR"/>
+		<result column="JobsDate"		property="JobsDate" 	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="dealerAvgTimeChart" class="screenOneDomain">
+		<result column="DealerName"		property="DealerName" 	jdbcType="VARCHAR"/>
+		<result column="MonthWorkTime"	property="MonthWorkTime" jdbcType="VARCHAR"/>
+		<result column="SaleEqui"		property="SaleEqui" 	jdbcType="VARCHAR"/>
+		<result column="ProtoEqui"		property="ProtoEqui" 	jdbcType="VARCHAR"/>
+		<result column="PDIWarn"		property="PDIWarn" 		jdbcType="VARCHAR"/>
+		<result column="EposFault"		property="EposFault" 	jdbcType="VARCHAR"/>
+		<result column="Deviated"		property="Deviated" 	jdbcType="VARCHAR"/>
+		<result column="GpsFault"		property="GpsFault" 	jdbcType="VARCHAR"/>
+		<result column="TransferIn"		property="TransferIn" 	jdbcType="VARCHAR"/>
+		<result column="TransferOut"	property="TransferOut" 	jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getProvinceWorkTime" parameterClass="map" resultMap="provinceWorkTime"><![CDATA[
+		EXEC Dash_Screen1DealerState  	@item = 1,
+										@zhishe = #zhishe#
+	]]>
+	</select>
+	
+	<select id="getMonthAvgTime" parameterClass="map" resultMap="monthAvgTime"><![CDATA[
+		EXEC Dash_Screen1DealerState  	@item = 2,
+										@zhishe = #zhishe#
+	]]>
+	</select>
+	
+	<select id="getDealerAvgTimeChart" parameterClass="map" resultMap="dealerAvgTimeChart"><![CDATA[
+		EXEC Dash_Screen1DealerState  	@item = 3,
+										@zhishe = #zhishe#
+	]]>	
+	</select>
+	
+
+</sqlMap>

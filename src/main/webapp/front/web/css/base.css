@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+/* @font-face{font-family:"vista"; src:url("../font/vista.eot")}
+@font-face{font-family:"vista"; src:url("../font/vista.woff")}  */
+
+/* @font-face {
+    font-family: 'vista';
+    src: url('../font/cn/vista.eot'),
+         url('../font/cn/vista.woff') format('woff');
+}
+ */
+
+
+
+/* base css */
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	width: 100%;
+}
+body {
+	width: 100%;
+	font-size: 13px;
+	/* font-family: "돋움" , "Dotum", "tahoma" , sans-serif; */
+	/* font-family: vista, Tahoma, Verdana, Simsun, sans-serif; */
+	font-family: Microsoft Yahei, Verdana, Simsun, sans-serif;
+	color: #666;
+	/* letter-spacing : -0.1em; */
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 1px;
+	font-size: 1em;
+}
+img,
+input.type-image {
+	border: none;
+}
+input[type="radio"],
+input[type="checkbox"] {
+	border: 0 !important;
+}
+
+fieldset, legend {
+	border: 0;
+}
+
+form, h1, h2, h3, h4, h5, h6, p, div, th, td, table, select, address {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.6em;
+}
+h3 {
+	font-size: 1.2em;
+}
+h4,
+h5,
+h6 {
+	font-size: 1em;
+}
+
+hr {
+	display: none;
+}
+
+ul, li, ol, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+select {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	background: #fff;
+	font-family: "돋움" , "Dotum",  sans-serif;
+}
+textarea {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	border: 1px solid #b4b6b9;
+	background: #fff;
+	font-family: "돋움" , "Dotum",  sans-serif;
+	line-height: 1.4em;
+	color: #5a5a5a;
+}
+input {
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	font-size: 1em;
+	line-height: 1.2em;
+	color: #5a5a5a;
+	font-family: "돋움" , "Dotum",  sans-serif;
+}
+input.checkbox {
+	padding: 0;
+	border: none;
+}
+a:link, a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration:none;
+}
+iframe {
+	border: 0;
+}
+button {
+	cursor: pointer;
+}
+#skip-navigation {
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+legend,
+caption {
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+.number {
+	font-family: "tahoma";	
+}
+.discount {
+	color: #d62b21;
+}
+
+.pager {
+	clear: both;
+	position:relative;
+	width: 100%;
+	height:30px;
+}
+.pager {text-align:center;}
+.pager a img {
+	width:21px;
+	height:19px;
+	margin:0 -4px;
+	vertical-align:middle;
+}
+.pager strong {
+	margin: 0 5px 0 0;
+	display:inline-block;
+	width:20px;
+	height:16px; 
+	font-size:11px;
+}
+.pager a {
+	margin: 0 5px 0 0;
+	display:inline-block;
+	width:19px;
+	height:19px;
+	font-size:11px;
+}
+.pager a.first , .pager a.prev {
+	margin-right:0;
+}
+.pager a.last, .pager a.next {
+	margin-right:0;
+}
+
+input[type="text"] {height:22px; border:1px solid #dadada; border-right:1px solid #bababa; border-bottom:1px solid #bababa;}

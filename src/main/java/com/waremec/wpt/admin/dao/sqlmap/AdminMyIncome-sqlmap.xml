@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AdminMyIncome">
+	<!-- 我的收入 -->
+	<typeAlias alias="adminMyIncome" type="com.waremec.wpt.admin.domain.AdminMyIncome" />
+
+	<!-- 主页面LIST查询 -->
+	<select id="searchList" parameterClass="adminMyIncome" resultClass="adminMyIncome" remapResults="true">
+	    <![CDATA[
+		 	EXEC [SHOP_PAYMENT_SELECT]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+		 	,@USER_ID = #USER_ID_IN:NVARCHAR#
+		 	,@PAY_TYPE_ID = #PAY_TYPE_ID:INT#
+		 	,@IS_USE = #IS_USE:INT#
+		 	,@PAGE_CURR=#pageCurr:INT#
+		 	,@PAGE_UINT=#pageUnit:INT#
+		 	,@ORDERBY=#orderBy:VARCHAR#
+		]]>
+	</select>
+
+	<!-- 信息修改 -->
+	<procedure id="modify" parameterClass="adminMyIncome">
+	    <![CDATA[
+		 	EXEC [SHOP_PAYMENT_TYPE_MODIFY]
+		 	@SHOP_ID = #SHOP_ID_IN:INT#
+			,@PAY_TYPE_ID = #PAY_TYPE_ID_IN:INT#
+			,@OP_TYPE = #OP_TYPE_IN:VARCHAR#
+			,@USER_ID = #USER_ID_IN:NVARCHAR#
+		]]>
+	</procedure>
+	
+	<update id="deletePayment" parameterClass="java.util.HashMap" >
+	    UPDATE SHOP_PAYMENT 
+	    SET	   IS_AVAILABLE=0
+	    WHERE  SHOP_ID=#SHOP_ID#
+	    AND	   PAY_TYPE_ID=#PAY_TYPE_ID#
+	</update>
+	
+	<procedure id="paymentInsert" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	   <![CDATA[
+			EXEC [SHOP_PAYMENT_MST_INSERT] 
+			 @JOB_TYPE			= #JOB_TYPE#
+			, @PAY_TYPE_ID		= #PAY_TYPE_ID#
+			, @PAY_NAME			= #PAY_NAME#	
+			, @IS_DIRECT		= #IS_DIRECT#	
+			, @IS_ONLINE		= #IS_ONLINE#	
+			, @PAY_IF_INFO		= #PAY_IF_INFO#	
+			, @SORT_NO			= #SORT_NO#	
+			, @LOGO_URL			= #LOGO_URL#	
+			, @PAY_PRE_DESC		= #PAY_PRE_DESC#	
+			, @PAY_PRE_DT		= #PAY_PRE_DT#	
+			, @PAY_PRE_INFO		= #PAY_PRE_INFO#	
+			, @SHOP_ID			= #SHOP_ID#	
+			, @IS_AVAILABLE		= #IS_AVAILABLE#	
+			, @IS_USE			= #IS_USE#	
+	   ]]>
+	</procedure>
+
+	<procedure id="paymentDetail" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_PAYMENT_SELECT]
+		 	@SHOP_ID = #SHOP_ID:INT#
+		 	,@USER_ID = #USER_ID:NVARCHAR#
+		 	,@PAY_TYPE_ID = #PAY_TYPE_ID:INT#
+		 	,@IS_USE = #IS_USE:INT#
+		 	,@PAGE_CURR=#pageCurr:INT#
+		 	,@PAGE_UINT=#pageUnit:INT#
+		 	,@ORDERBY=#orderBy:VARCHAR#
+		]]>
+	</procedure>
+</sqlMap>

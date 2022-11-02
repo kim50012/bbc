@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Blog">
+
+	<parameterMap id="blogGetTemplate01Params" class="java.util.Map"> 
+	    <parameter property="SHOP_ID"  		javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
+	    <parameter property="PAGE_ID" 		javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
+		<parameter property="PAGE_TYPE" 	javaType="java.lang.String"  	 jdbcType="INTEGER" mode="IN"/> 
+		<parameter property="SKIN_TYPE" 	javaType="java.lang.String"   	 jdbcType="INTEGER" mode="IN"/>
+		<parameter property="TMPL_NO" 		javaType="java.lang.String"   	 jdbcType="INTEGER" mode="IN"/>
+	</parameterMap>
+	
+	<select id="blogGetTemplate01List" parameterMap="blogGetTemplate01Params" resultClass="java.util.HashMap" remapResults="true">
+		 {call DYNAMIC_PAGE_SELECT ?,?,?,?,?} 
+	</select>
+	
+	<select id="blogGetClassList"  resultClass="java.util.HashMap" remapResults="true">
+		 {call GOODS_CLASS_SELECT} 
+	</select>
+	
+	<procedure id="blogGetList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_BLOG_LIST_SELECT] 
+		 	@SHOP_ID		= #SHOP_ID:INT#,
+		 	@BLOG_GROUP_ID	= #BLOG_GROUP_ID:INT#,
+		 	@PAGE_CURR 		= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 		= #PAGE_UINT:INT#,
+		 	@ORDERBY		= #ORDERBY:VARCHAR#,
+		 	@CUST_SYS_ID	= #CUST_SYS_ID:INT#,
+		 	@USER_ID 		= #USER_ID:VARCHAR#,
+		 	@BLOG_ID		= #BLOG_ID:INT#,
+		 	@BLOG_TITLE		= #BLOG_TITLE:VARCHAR#
+		]]>
+	</procedure>
+	
+	<procedure id="blogGetGroupList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_BLOG_GROUP_SELECT] 
+		 	@SHOP_ID		= #SHOP_ID:INT#,
+		 	@BG_ID			= #BG_ID:INT#,
+		 	@BG_PARENT_ID	= #BG_PARENT_ID:INT#,
+		 	@PAGE_CURR 		= #PAGE_CURR:INT#,
+		 	@PAGE_UINT 		= #PAGE_UINT:INT#,
+		 	@ORDERBY		= #ORDERBY:VARCHAR#,
+		 	@CUST_SYS_ID	= #CUST_SYS_ID:INT#,
+		 	@USER_ID 		= #USER_ID:VARCHAR#
+		]]>
+	</procedure>
+	
+	
+	
+	<procedure id="blogGetReviewList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	     <![CDATA[
+		 	EXEC [SHOP_REVIEW_SELECT] 
+		 	@SHOP_ID		 = #SHOP_ID:INT#,
+		 	@CUST_SYS_ID 	 = #CUST_SYS_ID:INT#,
+		 	@REVIEW_TYPE 	 = #REVIEW_TYPE:INT#,
+		 	@PARENT_ID 	 	 = #PARENT_ID:INT#,
+		 	@PAGE_CURR 		 = #PAGE_CURR:INT#,
+		 	@PAGE_UNIT 		 = #PAGE_UNIT:INT#,
+		 	@ORDERBY 		 = #ORDERBY:VARCHAR#
+		]]>
+	</procedure>
+	<select id="saveBlogPreview" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_REVIEW_INSERT]
+	    	 @SHOP_ID=#shopId:INT#
+			,@REVIEW_TYPE=#reviewType:INT#
+			,@PARENT_ID=#parentId:INT#
+			,@REVIEW_ID =#reviewId:INT#
+			,@REVIEW_P_ID=#reviewPId:INT#
+			,@REVIEW_DESC=#reviewDesc:NVARCHAR#
+			,@CUST_SYS_ID=#custSysId:INT#			
+			,@USER_ID=#uesrId:NVARCHAR#
+			,@REVIEW_POINT=#reviewPoint:INT#		
+			
+			,@JOB_TYPE=#jobType:CHAR#		
+	    ]]>
+	</select>
+	<select id="selectShopBlogList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BLOG_GROUP_MANAGER_SELECT]
+	    	 @SHOP_ID=#shopId:INT#
+	    ]]>
+	</select>
+	<select id="updateShopBlogClassifyManager" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BLOG_GROUP_UPDATE]
+	    	 @SHOP_ID		=#SHOP_ID#,
+	    	 @BG_ID 		=#BG_ID#,
+			 @BG_NM 		=#BG_NM#,
+			 @BG_PARENT_ID 	=#BG_PARENT_ID#,
+			 @BG_LEVL 		=#BG_LEVL#,
+			 @SORT_NO 		=#SORT_NO#,
+			 @USER_ID		=#USER_ID#,
+			 @IS_DELETE		=#IS_DELETE#,
+			 @JOB_TYPE		=#JOB_TYPE#		
+	    ]]>
+	</select>
+	<!-- 保存积分设定 -->
+	<select id="pointSave" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BLOG_POINT_MST_INSERT]
+	    	  @USER_ID			=#userId:NVARCHAR#
+	    	, @SHOP_ID 			=#shopId:INT#						
+			, @LIKE_POINT		=#likePoint:INT#					
+			, @REPLY_POINT		=#replyPoint:INT#						
+			, @SHARE_POINT		=#sharePoint:INT#							
+	    ]]>
+	</select>
+	<!-- 查询积分设定信息 -->
+	<select id="showPointPoupe" parameterClass="java.util.HashMap" resultClass="java.util.HashMap"  remapResults="true">
+	    <![CDATA[
+	    	EXEC [SHOP_BLOG_POINT_MST_SELECT]
+	    	  @SHOP_ID 			=#shopId:INT#												
+	    ]]>
+	</select>
+</sqlMap>

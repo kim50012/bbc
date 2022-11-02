@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ueditor图片对话框</title>
+    <!--页面中一定要引入internal.js为了能直接使用当前打开dialog的实例变量-->
+<!--internal.js默认是放到dialogs目录下的-->
+    <script type="text/javascript" src="../internal.js"></script>
+
+    <!-- jquery -->
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+
+    <!-- webuploader -->
+    <script src="../../third-party/webuploader/webuploader.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../third-party/webuploader/webuploader.css">
+
+    <!-- image dialog -->
+    <link rel="stylesheet" href="image.css" type="text/css" />
+     <script type="text/javascript">
+   function getContents(){
+	   
+	  var content = editor.getContent();
+	  console.lg('===content=');
+	  console.log(content);
+	  window.close();
+   }
+    
+    </script>
+</head>
+
+<body>
+<style>
+.button {
+	display: inline-block;
+	padding: 9px 15px 9px 15px;
+	height: 12px;
+	border-radius: 2px;
+	background-color: #d0112d;
+	color: #fff;
+	line-height: 12px;
+	cursor: pointer;
+}
+
+.button.bg-red { 
+	background-color: #d0112d;
+}
+.button.bg-orange { 
+	/* background-color: #fb6e52;  */
+	background-color: #ff6650; 
+}
+
+
+.button-icon {
+	display: inline-block;
+	margin-right: 10px;
+	width: 12px;
+	height: 12px;
+}
+
+.button-icon.search {
+	background: url(/admin/images/v2-icons/ico_search.png) no-repeat center center;
+}
+
+.button-icon.skip {
+	width: 15px;
+	background: url(/admin/images/v2-icons/ico_skip.png) no-repeat center center;
+}
+
+.button-icon.conform {
+	width: 17px;
+	background: url(/admin/images/v2-icons/ico_comform.png) no-repeat center center;
+}
+.button-icon.cancel {
+	width: 12px;
+	background: url(/admin/images/v2-icons/ico_cancle.png) no-repeat center center;
+}
+</style>
+ 
+ <div class="wrapper">
+ 	
+ 	<!--dom结构部分--> 
+ 	<div id="uploader-demo"> 
+ 		<!--用来存放item--> 
+ 		<div id="fileList" class="uploader-list"></div> 
+ 		<div id="filePicker">上传图片</div> 
+ 	</div>
+ 	<div class="js-img-preview" style=" background-color: green; height: 235px;">
+ 	<img  alt="" src="data:image/jpeg;base64,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">
+ 	</div>
+ 	
+ 	<div style="background-color: red; text-align: center;">
+ 		<div class="action-buttons">
+		<span class="button bg-orange js-btn-confirm">
+			<span class="button-icon conform"></span>
+			<span class="button-name">保存</span>	
+		</span>
+		<span class="button bg-orange  js-btn-cancel">
+			<span class="button-icon cancel"></span>
+			<span class="button-name">取消</span>	
+		</span>
+	</div>
+ 	</div>
+ 
+ </div>
+ 
+ 
+ 	
+ 	
+<script type="text/javascript">
+var _baseUrl = '/admin/js/ueditor/';
+
+ // 初始化Web Uploader 
+ var uploader = WebUploader.create({ 
+	 // 选完文件后，是否自动上传。
+	 auto: true, 
+	 // swf文件路径
+	 swf: _baseUrl + 'third-party/webuploader/Uploader.swf', 
+	 // 文件接收服务端。 
+	 server: '/admin/uploader/upload.htm', 
+	 // 选择文件的按钮。可选。
+	 // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	 pick: {
+		id : '#filePicker',
+		//innerHTML : 'AAAA',
+		multiple : false
+	 }, 
+	 // 只允许选择图片文件。
+	 accept: { 
+		 title: 'Images', 
+		 extensions: 'gif,jpg,jpeg,bmp,png', 
+		 mimeTypes: 'image/*' 
+	  } ,
+	  formData : {
+		  
+	  },
+	  fileVal : 'file',
+	  fileNumLimit : 2,
+	  fileSingleSizeLimit : 1024 * 1024,
+	  duplicate : true
+});
+ 
+ //监听fileQueued事件，通过uploader.makeThumb来创建图片预览图。
+//当有文件添加进来的时候 
+uploader.on( 'fileQueued', function( file ) { 
+	console.log('file:');
+	console.log(file);
+	
+	var $li = $('<div id="' + file.id + '" class="file-item thumbnail">' 
+				+ '<img>' 
+				+ 	'<div class="info">' + file.name + '</div>' 
+				+ '</div>' ), 
+	$img = $li.find('img'); 
+	
+	//$list为容器jQuery实例 
+	var $list = $('#fileList');
+	$list.append($li); 
+	
+	// 创建缩略图 
+	// 如果为非图片文件，可以不用调用此方法。 
+	// thumbnailWidth x thumbnailHeight 为 100 x 100 
+	var thumbnailWidth = thumbnailHeight = 100;
+	uploader.makeThumb(file, function( error, src ) { 
+		if (error){ 
+			$img.replaceWith('<span>不能预览</span>'); 
+			return; 
+		} 
+		
+		$img.attr( 'src', src ); 
+		}, 
+		thumbnailWidth, thumbnailHeight ); 
+});
+ 
+//然后剩下的就是上传状态提示了，当文件上传过程中, 上传成功，上传失败，
+//上传完成都分别对应uploadProgress,uploadSuccess, uploadError, uploadComplete事件。
+// 文件上传过程中创建进度条实时显示。 
+uploader.on('uploadProgress', function(file, percentage ) { 
+	console.log('=========uploadProgress============');
+	console.log('file:');
+	console.log(file);
+	console.log('percentage:');
+	console.log(percentage);
+	
+	var $li = $( '#'+file.id ), 
+	$percent = $li.find('.progress span'); 
+	
+	// 避免重复创建 
+	if (!$percent.length){ 
+		$percent = $('<p class="progress"><span></span></p>').appendTo( $li ).find('span'); 
+	} 
+	
+	$percent.css('width', percentage * 100 + '%' ); 
+}); 
+
+// 文件上传成功，给item添加成功class, 用样式标记上传成功。 
+uploader.on('uploadSuccess', function(file,response ) { 
+	console.log('=========uploadSuccess============');
+	console.log('file:');
+	console.log(file);
+	console.log('response :');
+	console.log(response );
+	$( '#'+file.id ).addClass('upload-state-done'); 
+}); 
+
+// 文件上传失败，显示上传出错。 
+uploader.on( 'uploadError', function( file,reason  ) { 
+	console.log('=========uploadError============');
+	console.log('file:');
+	console.log(file);
+	console.log('reason:');
+	console.log(reason);
+	
+	var $li = $( '#'+file.id ), 
+	$error = $li.find('div.error'); 
+	// 避免重复创建 
+	if(!$error.length){ 
+		$error = $('<div class="error"></div>').appendTo( $li ); 
+	} 
+	
+	$error.text('上传失败'); 
+}); 
+
+// 完成上传完了，成功或者失败，先删除进度条。 
+uploader.on('uploadComplete', function( file ) { 
+	console.log('=========uploadComplete============');
+	console.log('file:');
+	console.log(file);
+	$( '#'+file.id ).find('.progress').remove(); 
+});
+
+
+
+//阻止此事件可以拒绝某些类型的文件拖入进来。目前只有 chrome 提供这样的 API，且只能通过 mime-type 验证。
+uploader.on('dndAccept', function( items ) { 
+	console.log('=========dndAccept============');
+	console.log('items:');
+	console.log(items);
+});
+
+//当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列
+uploader.on('beforeFileQueued', function( file) { 
+	console.log('=========beforeFileQueued============');
+	console.log('file:');
+	console.log(file);
+});
+ 
+//当一批文件添加进队列以后触发。
+uploader.on('filesQueued', function(files) { 
+	console.log('=========filesQueued============');
+	console.log('files:');
+	console.log(files);
+});
+//当文件被移除队列后触发
+uploader.on('fileDequeued', function(file) { 
+	console.log('=========fileDequeued============');
+	console.log('file:');
+	console.log(file);
+});
+//当文件被移除队列后触发
+uploader.on('reset', function() { 
+	console.log('=========reset============');
+});
+
+//当开始上传流程时触发
+uploader.on('startUpload', function() { 
+	console.log('=========startUpload============');
+});
+
+//当开始上传流程暂停时触发
+uploader.on('stopUpload', function() { 
+	console.log('=========stopUpload============');
+});
+//当所有文件上传结束时触发。
+uploader.on('uploadFinished', function() { 
+	console.log('=========uploadFinished============');
+});
+//某个文件开始上传前触发，一个文件只会触发一次。
+uploader.on('uploadStart', function(file ) { 
+	console.log('=========uploadStart============');
+	console.log('file:');
+	console.log(file);
+});
+//当某个文件的分块在发送前触发，主要用来询问是否要添加附带参数，大文件在开起分片上传的前提下此事件可能会触发多次。
+uploader.on('uploadBeforeSend', function(object,data ,headers  ) { 
+	console.log('=========uploadBeforeSend============');
+	console.log('object:');
+	console.log(object);
+	console.log('data:');
+	console.log(data);
+	console.log('headers:');
+	console.log(headers);
+});
+//当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为false, 则此文件将派送server类型的uploadError事件。
+uploader.on('uploadAccept', function(object,ret) { 
+	console.log('=========uploadAccept============');
+	console.log('object:');
+	console.log(object);
+	console.log('ret:');
+	console.log(ret);
+	
+	if(object.success){
+		console.log('上传成功');
+	}else{
+		console.log('上传失败');
+		  // 通过return false来告诉组件，此文件上传有错。
+		return false;
+	}
+	
+});
+//当validate不通过时，会以派送错误事件的形式通知调用者
+uploader.on('error', function(type  ) { 
+	console.log('=========error============');
+	console.log(type );
+});
+</script>
+ 
+ <!-- http://my.oschina.net/baochanghong/blog/402155  -->
+<script>
+	//可以直接使用以下全局变量
+	//当前打开dialog的实例变量
+    console.log('editor: ');
+    console.log(editor);
+    //一些常用工具
+  	console.log('domUtils: ');
+  	console.log(domUtils);
+  	console.log('dialog: ');
+  	console.log(dialog);
+  	
+  	console.log('utils: ');
+  	console.log(utils);
+  	
+  	console.log('browser: ');
+  	console.log(browser);
+</script>
+</body>
+</html>

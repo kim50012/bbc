@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <!--按钮：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <!--首页：index-->
+
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!--bootstarp公用-->
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/run.js" type="text/javascript" charset="utf-8"></script>
+    <!--run 首页用-->
+    <script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+    <!--index首页用-->
+    <script src="../js/countUp.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/4DX_MAIN_100.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+
+    <div class="app indexApp" id="app">
+      <div class="content">
+        <div class="scroll-wrap refresh-wrap">
+          <div class="wrap-wite">
+            <div class="wrap-list">
+              <div class="top">
+                <span>2018-07-04</span>
+              </div>
+              <div class="bottom">
+                <span class="bold fontBlue">D-<span class="fontBlue countUp" id="countD1"></span></span>
+              </div>
+            </div>
+            <div class="wrap-list">
+              <div class="top">
+                <span class="bold fontBlue"><span class="fontBlue countUp" id="countU2"></span>관</span>
+                <span class="spacer">/</span>
+                <span>800관</span>
+              </div>
+              <div class="bottom">
+                <span>Magic No.</span>
+                <span class="spacer"></span>
+                <span class="bold fontOrange countUp" id="countD2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="selectList">
+            <div class="select-wrap right">
+              <div class="select" onclick="selectOne(this)"><span>본사</span><i class="sanjiao"></i></div>
+            </div>
+            <div class="select-wrap ml10">
+              <div class="select" onclick="selectTwo(this)"><span>Attraction</span><i class="sanjiao"></i></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="chart-wrap" id="chartBackTop2">
+              <div class="title1" id="cavasTitle2">
+                <span class="bold">선적 현황</span>
+                <span class="fontOrange">당월/누적 기준</span>
+              </div>
+              <div class="chart">
+                <div class="lbtn">
+                  <i class="fourDPlex icon-left_arrow" id="lbtn2"></i>
+                </div>
+                <div class="canvas" id="chart2">
+                  <canvas width="600" height="300"></canvas>
+                </div>
+                <div class="rbtn">
+                  <i class="fourDPlex icon-right_arrow" id="rbtn2"></i>
+                </div>
+              </div>
+              <div class="chart-footer">
+                <img src="../image/notes.png"></img>
+                <span>예상실적 : 4건(5월), 67건(누적)</span>
+              </div>
+            </div>
+            <div class="table-wrap tablewrap2" id="tablewrap2" style="display: none;">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>선적 상세 현황</span>
+                </div>
+                <i class="fourDPlex icon-jian" id="packUp2"></i>
+              </div>
+              <div class="table">
+                <table class="drag-table" id="table2" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr>
+                    <th>국가</th>
+                    <th>사업자</th>
+                    <th>사이트 </th>
+                    <th>상세활동</th>
+                    <th>예상선적일</th>
+                    <th>실제선적일</th>
+                    <th>오픈예정일</th>
+                  </tr>
+                  <tr>
+                    <td>India</td>
+                    <td>Pathe</td>
+                    <td>Guwahati</td>
+                    <td>극장사 포워더 및 선사 확인 및 확정</td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/10</td>
+                    <td>2018/7/10</td>
+                  </tr>
+                  <tr>
+                    <td>India</td>
+                    <td>PVP</td>
+                    <td>Hyderabad</td>
+                    <td>자본거래신고</td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/15</td>
+                    <td>2018/7/15</td>
+                  </tr>
+                  <tr>
+                    <td>China</td>
+                    <td>CCI</td>
+                    <td>Wanda nanjing lisui</td>
+                    <td>도면 / PO 완료</td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/16</td>
+                    <td>2018/7/16</td>
+                  </tr>
+                  <tr>
+                    <td>China</td>
+                    <td>Nordisk</td>
+                    <td> Wanda wulumuqigaoxin</td>
+                    <td>선적일 확정</td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                    <td>2018/7/25</td>
+                  </tr>
+                  <tr>
+                    <td>France</td>
+                    <td>Pathe</td>
+                    <td>Lyon Bellecour</td>
+                    <td>선적예상일 확보</td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                    <td>2018/7/23</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="chart-wrap" id="chartBackTop3">
+              <div class="title1" id="cavasTitle3">
+                <span class="bold">오픈 현황</span>
+                <span class="fontOrange">당월/누적 기준</span>
+              </div>
+              <div class="chart">
+                <div class="lbtn">
+                  <i class="fourDPlex icon-left_arrow" id="lbtn3"></i>
+                </div>
+                <div class="canvas" id="chart3">
+                  <canvas width="600" height="300"></canvas>
+                </div>
+                <div class="rbtn">
+                  <i class="fourDPlex icon-right_arrow" id="rbtn3"></i>
+                </div>
+              </div>
+              <div class="chart-footer">
+                <img src="../image/notes.png"></img>
+                <span>예상실적 : 13건(4월), 194건(누적)</span>
+              </div>
+            </div>
+            <div class="table-wrap tablewrap3" id="tablewrap3" style="display: none;">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>오픈상세 현황</span>
+                </div>
+                <i class="fourDPlex icon-jian" id="packUp3"></i>
+              </div>
+              <div class="table">
+                <table class="drag-table" id="table2" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr>
+                    <th>국가</th>
+                    <th>사업자</th>
+                    <th>사이트</th>
+                    <th>상세활동</th>
+                    <th>인프라공사완료일</th>
+                    <th>장비설치 완료일</th>
+                    <th>인허가 완료일 </th>
+                    <th>오픈 예상일</th>
+                    <th>오픈완료일</th>
+                  </tr>
+                  <tr>
+                    <td>India</td>
+                    <td>Pathe</td>
+                    <td>Guwahati</td>
+                    <td>오픈 완료</td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/10</td>
+                    <td></td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/10</td>
+                  </tr>
+                  <tr>
+                    <td>India</td>
+                    <td>PVP </td>
+                    <td>Hyderabad</td>
+                    <td>인프라 공사 완료</td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                    <td></td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>China</td>
+                    <td>CCI</td>
+                    <td>Wanda nanjing lisui</td>
+                    <td>퍼밋 완료</td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                    <td>2018/6/16</td>
+                    <td>2018/6/30</td>
+                    <td>2018/6/16</td>
+                  </tr>
+                  <tr>
+                    <td>China</td>
+                    <td>Nordisk</td>
+                    <td> Wanda wulumuqigaoxin</td>
+                    <td>설치 완료</td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                    <td></td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>France</td>
+                    <td>Pathe</td>
+                    <td>Lyon Bellecour</td>
+                    <td>인프라 공사 시작</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2018/6/30</td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="container pb20">
+            <div class="chart-wrap" id="chartBackTop1">
+              <div class="title1" id="cavasTitle1">
+                <span class="bold">계약 현황</span>
+                <span class="fontOrange">당월/누적 기준</span>
+              </div>
+              <div class="chart">
+                <div class="lbtn">
+                  <i class="fourDPlex icon-left_arrow" id="lbtn1"></i>
+                </div>
+                <div class="canvas" id="chart1">
+                  <canvas width="600" height="300"></canvas>
+                </div>
+                <div class="rbtn">
+                  <i class="fourDPlex icon-right_arrow" id="rbtn1"></i>
+                </div>
+              </div>
+              <div class="chart-footer">
+                <img src="../image/notes.png"></img>
+                <span>예상실적 : 4건(6월), 7건(누적)</span>
+              </div>
+            </div>
+            <div class="table-wrap tablewrap1" id="tablewrap1" style="display:none;">
+              <div class="title1">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>계약 상세 현황</span>
+                </div>
+                <i class="fourDPlex icon-jian" id="packUp1"></i>
+              </div>
+              <div class="table">
+                <table class="drag-table alignCenterTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+                  <tr>
+                    <th>국가</th>
+                    <th>사업자</th>
+                    <th>사이트</th>
+                    <th>진척율</th>
+                  </tr>
+                  <tr>
+                    <td>유럽</td>
+                    <td>Pathe</td>
+                    <td>Brumath</td>
+                    <td>50%</td>
+                  </tr>
+                  <tr>
+                    <td>인도</td>
+                    <td>PVR</td>
+                    <td>Guwahati</td>
+                    <td>70%</td>
+                  </tr>
+                  <tr>
+                    <td>유럽</td>
+                    <td>CCI</td>
+                    <td>Varna</td>
+                    <td>100%</td>
+                  </tr>
+                  <tr>
+                    <td>북유럽</td>
+                    <td>Nordisk</td>
+                    <td>Bergen</td>
+                    <td>100%</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="categoryList mt10">
+
+            <span>경영정보 바로가기</span>
+
+            <div class="category">
+              <div class="catigoryElement">사업 진행 현황</div>
+              <div class="catigoryElement">사업 현황</div>
+              <div class="catigoryElement">BO 일일 실적</div>
+              <div class="catigoryElement">전체 BO 실적 조회</div>
+              <div class="catigoryElement">전사 이슈 관리</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
