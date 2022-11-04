@@ -22,59 +22,39 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 0.5rem;text-align: center;">WEB SYSTEM 사용자 신청</div>
+        <div style="color: #ffffff;font-size: 0.5rem;text-align: center;">신규회원 가입</div>
       </div>
       <div class="loginInput">
-<!--         <form onsubmit="return check(this)" action=""> -->
 	        <div class="input-wrap contentText">
-				<select type="" id="clbSq">
-					<option value="">클럽선택</option>
-					<option value="9">북경 배드민턴 클럽</option>
-					<option value="23">TJKBC</option>
-					<option value="27">중경아이콕</option>
-					<option value="31">누구라도배드민턴</option>
-					<option value="33">북경 위러 조선족 배드민턴 클럽</option>
-				</select>
+	          <input type="" name="" id="userID" value="" />
+	          <div id="inputID">아이디 입력</div>
 	        </div>
 	        <div class="input-wrap contentText">
-	          <input type="" name="" id="userNick" value="" />
-	          <div id="inputNick">위챗 닉네임 입력</div>
+	          <input type="" name="" id="userNm" value="" />
+	          <div>이름 (실명)</div>
 	        </div>
+	        <div class="switchLabel">
+	          <div class="switchWord">여자&nbsp;&nbsp;</div>
+	          <div class="switchIcon">
+	            <label class="switch">
+	              <input type="checkbox" name="sex" id="sex" checked/>
+	              <i class="switch-btn"></i>
+	            </label> 
+	          </div>
+	          <div class="switchWord">남자</div>
+	        </div>
+	        <div style="height:0.3rem;"></div>
 	        <div class="input-wrap contentText">
-	          <input type="" name="" id="userClbNick" value="" />
-	          <div id="inputClbNick">클럽내 이름</div>
-	        </div>
-	        <div class="input-wrap contentText">
-	          <input type="" name="" id="userName" value="" />
-	          <div id="inputID">사용하실 신규 아이디 입력</div>
-	        </div>
-	        
-	        <div class="input-wrap contentPassword">
-	          <input type="password" name="" id="passWord" value="" />
-	          <div id="inputPW">패스워드 입력</div>
-	        </div>
-	        <div class="input-wrap contentPassword">
-	          <input type="password" name="" id="passWord2" value="" />
-	          <div id="inputPW">패스워드 확인</div>
+	          <input type="" name="" id="userMobile" value="" />
+	          <div id="inputMobile">휴대폰번호</div>
 	        </div>
 	        <div class="input-wrap contentText">
 	          <input type="" name="" id="cmt" value="" />
 	          <div id="inputCmt">비고</div>
 	        </div>
-	        <div class="switchLabel">
-	          <div class="switchIcon">
-	            <label class="switch">
-	              <input type="checkbox" name="saveId" id="saveId" checked/>
-	              <i class="switch-btn"></i>
-	            </label> 
-	          </div>
-	          <div class="switchWord">아이디 저장</div>
-	        </div>
-	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">신청하기</button>
+	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">가입하기</button>
 	        <div class="explain">
-	          <p class="exWord"><span class="dian">신청하신 아이디는 기존 사용하던 위챗 아이디와 통합됩니다.</span></p>
-	          <p class="exWord"><span class="dian">신청 후 최대 2일 이내 관리자 승인 후 사용이 가능합니다.</span></p>
-	          <p class="exWord"><span class="dian">단, 본 시스템은 위챗 공증계정에서 계정 등록 한 사용자에 한해 사용할 수 있습니다.</span></p>
+	          <p class="exWord"><span class="dian">최초 비밀번호는 "1" 로 자동 설정 됩니다.</span></p>
 	        </div>
 <!-- 	      </form> -->
 
@@ -93,9 +73,8 @@
 		});
 		
 		$("input").keyup(function(){
-			usrValue = $("#userName").val();
-			passWord = $("#passWord").val();
-			if(usrValue!=""&&passWord!=""){
+			usrValue = $("#userID").val();
+			if(usrValue!=""){
 				$(".loginBtn").addClass("light")
 			}else{
 				$(".loginBtn").removeClass("light")
@@ -111,109 +90,76 @@
 					break;
 			}
 		});
-
-		var bbcUserid = getCookie("usrValue");
-		var bbcUserpw = getCookie("passWord");
-
-		if (bbcUserid != "") {
-			$("#userName").val(bbcUserid);
-			$("#passWord").val(bbcUserpw);
-
-
-			$("#inputID").html("");
-			$("#inputPW").html("");
-			
-			
-			usrValue = $("#userName").val();
-			passWord = $("#passWord").val();
-			if(usrValue!=""&&passWord!=""){
-				$(".loginBtn").addClass("light")
-			}else{
-				$(".loginBtn").removeClass("light")
-			}
-		}
 		
 	}); 
 	
 	var appLogin = {
 			biz: {
 				login: function() {
-					var userName = $("#userName").val();
-					var passWord = $("#passWord").val();
-					var passWord2 = $("#passWord2").val();
+					var userID = $("#userID").val();
+					var sex = "1";
 					
-					var clbSq = $("#clbSq").val();
-					var userNick = $("#userNick").val();
-					var userClbNick = $("#userClbNick").val();
+					if ($("#saveId").is(":checked")) {
+						sex = "2";
+					}
+					else { // ID 저장하기 체크 해제 시,
+						sex = "1";
+					}		
+
+					var userNm = $("#userNm").val();
+					var userMobile = $("#userMobile").val();
+					
 					var cmt = $("#cmt").val();
 
-					if (passWord != passWord2) {
-						alert("비밀번호가 일치하지 않습니다.");
-						return false;
-					}
-					if (clbSq == "") {
-						alert("가입된 클럽 하나를 선택하세요.");
-						return false;
-					}
-					if (userNick == "") {
-						alert("위챗 닉네임을 선택하세요.");
-						return false;
-					}
-					if (userClbNick == "") {
-						alert("클럽내 사용했던 이름을 입력하세요.");
-						return false;
-					}
-					if (userName == "") {
+					if (userID == "") {
 						alert("아이디를 입력하세요.");
 						return false;
 					}
-					if (passWord == "") {
-						alert("비밀번호를 입력하세요.");
+					if (userNm == "") {
+						alert("실명으로 이름을 입력하세요.");
+						return false;
+					}
+					if (userMobile == "") {
+						alert("휴대폰 번호를 입력 하세요.");
 						return false;
 					}
 					
 					loadingShow();
 
-					if ($("#saveId").is(":checked")) {
-						setCookie("usrValue", userName, 360); // 360일 동안 쿠키 보관
-						setCookie("passWord", passWord, 360); // 360일 동안 쿠키 보관
-					}
-					else { // ID 저장하기 체크 해제 시,
-						deleteCookie("usrValue");
-						deleteCookie("passWord");
-					}
-
-					var clbSq = $("#clbSq").val();
-					var userNick = $("#userNick").val();
-					var userClbNick = $("#userClbNick").val();
-					var userName = $("#userName").val();
-					
 					var jopType = "I"; 
-					
-					$.ajax({
-				 	 		data:{
-				 	 			strJobtype : jopType
-				 	 			,intClbsq : clbSq
-				 	 			,strMbrid : userName
-				 	 			,strMbrnm : userNick
-				 	 			,strLnkactid : userNick
-				 	 			,strClbniknm : userClbNick
-				 	 			,strMbrpw : passWord
-				 	 			,strMmo : cmt
-				 	 		},
+
+					 $.ajax({
+					 	 		data:{
+					 	 			para1 : "AMS_USER_INSERT"
+					 	 			,para2 : "1"
+					 	 			,para3 : userID
+					 	 			,para4 : userNm
+					 	 			,para5 : sex
+					 	 		},
 							type : "POST",
-							url : "/front/bbc/mbr/userAddSave.htm",
+							url : "/front/bbc/badMatch/userInsert.htm",
 							success : function(data) {
 								console.log(data);
-								alert("회원신청이 완료되었습니다. \n2일 이내 승인이 완료됩니다.");
+								var statusFlag = data.list[0].RSLT;
+								
+								if (statusFlag == 'FAIL') {
+									alert("이미 가입되어 있는 아이디 입니다.");
+									loadingHide();
+									return;
+								}
+
+								alert("정상 가입 되었습니다. \n초기 비밀 번호는 1 입니다.");
 								window.location = "/front/bbc/mbr/bbcLogin.htm";
+								
 							},
 							error : function(xhr, status, e) {
 								loadingHide();
 								alert("Error : " + status);
 							}
-					});
-					return false; //此处必须返回false，阻止常规的form提交
+						});					
+					
+					
+					return false;
 				}
 			}
 		};	

@@ -565,4 +565,66 @@ public class BadMatchAction extends WeixinBaseAction {
 		return NONE;
 	}
 	
+
+	
+	//---------------------------------------------------------------
+	// userInsert
+	//---------------------------------------------------------------
+	public String userInsert(){
+
+		String ret = "fail";
+		
+		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+		if (sessionMember == null) {
+//			ret="fail";
+//			request.put("strLngdv", "zh-CN");
+//			return NONE;
+			strLngdv = "ko-KR";
+			request.put("strLngdv", strLngdv);
+		}
+		else {
+			strLngdv = sessionMember.getLang();
+			request.put("strLngdv", strLngdv);
+		}
+
+		try{
+
+			Map<String,Object> searchMap=new HashMap<String, Object>();
+			
+			searchMap.put("P1", para1);
+			searchMap.put("P2", para2);
+			searchMap.put("P3", para3);
+			searchMap.put("P4", para4);
+			searchMap.put("P5", para5);
+			searchMap.put("P6", para6);
+			searchMap.put("P7", para7);
+			searchMap.put("P8", para8);
+			searchMap.put("P9", para9);
+			searchMap.put("P10", para10);
+			searchMap.put("P11", para11);
+			searchMap.put("P12", para12);
+			searchMap.put("P13", para13);
+			searchMap.put("P14", para14);
+			searchMap.put("P15", para15);
+			searchMap.put("P16", para16);
+			searchMap.put("P17", para17);
+			searchMap.put("P18", para18);
+			searchMap.put("P19", para19);
+			searchMap.put("P20", para20);
+			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
+			renderJSON(pageData);
+			
+	    	
+		}catch(Exception e){
+			e.printStackTrace();
+			ret="fail";
+
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			returnMap.put("ret", ret);
+			renderJSON(returnMap);
+		}		
+		
+		return NONE;
+	}	
+	
 }

@@ -24,7 +24,7 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <img src="../image/logoBBC.png" style="width:4.9rem;"/>
+        <div id="inputNick" style="color: #ffffff;font-size: 0.5rem;text-align: center;">Let's Play</div>
       </div>
       <div class="loginInput">
 <!--         <form onsubmit="return check(this)" action=""> -->
@@ -55,7 +55,7 @@
 	        </div>
 <!-- 	      </form> -->
 
-			<button class="loginBtn light" id="downloadApp" onclick="window.location = 'http://39.104.55.19/bbcApp.apk';" style="width: 30%;height:0.5rem;background: #e9711a;font-size: 0.25rem;margin-left: 70%;">APP 다운로드</button>
+<!-- 			<button class="loginBtn light" id="downloadApp" onclick="window.location = 'http://39.104.55.19/bbcApp.apk';" style="width: 30%;height:0.5rem;background: #e9711a;font-size: 0.25rem;margin-left: 70%;">APP 다운로드</button> -->
       </div>
     </div>
   </body>

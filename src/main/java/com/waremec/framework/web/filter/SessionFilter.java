@@ -271,6 +271,10 @@ public class SessionFilter implements Filter {
 		else if(url.startsWith("/front/bbc/mbr/userAddSave")){
 			return true;
 		}
+
+		else if(url.startsWith("/front/bbc/badMatch/userInsert.htm")){
+			return true;
+		}
 		
 		else if(url.startsWith("/admin/login/saveUser.htm")){
 			return true;
