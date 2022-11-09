@@ -19,12 +19,17 @@
     <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
     <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
     <script src="../js/rem5.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <style>
+    	.loginContent {
+    		background-image: url(../image/bg3.jpg);
+    	}
+    </style>
 </head>
       
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 0.5rem;text-align: center;">Let's Play</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 0.5rem;text-align: center;">ENJOY SPORTS</div>
       </div>
       <div class="loginInput">
 <!--         <form onsubmit="return check(this)" action=""> -->
@@ -50,8 +55,8 @@
 	        <button class="loginBtn light" id="bbcLogin2" style="width: 100%;height: 1rem;">신규회원가입</button>
 	        <div class="explain">
 	          <p class="exWord"><span class="dian">아직 WEB 아이디가 없는 사용자는 신규회원가입 버튼을 클릭하여 신청해주세요.</span></p>
-	          <p class="exWord"><span class="dian">단, 본 시스템은 위챗 공증계정에서 계정 등록 한 사용자에 한해 사용할 수 있습니다.</span></p>
-	          <p class="exWord"><span class="dian">아래 APP 다운로드 버튼을 이용하여 안드로이드 버전 App를 설치 할 수 있습니다.</span></p>
+	          <p class="exWord"><span class="dian">단, 본 시스템은 관리자가 승인한 사용자에 한하여 사용할 수 있습니다.</span></p>
+	          <p class="exWord"><span class="dian">관리자 승인없이 가입된 사용자는 임의로 삭제될 수 있습니다.</span></p>
 	        </div>
 <!-- 	      </form> -->
 
@@ -149,7 +154,7 @@
 								if(data.ret=="success"){
 									
 									if ("${strPtourl}" == "") {
-										window.location = "/front/bbc/exc/excDoList.htm?shopId=68";
+										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
 									}
 									else {
 										window.location = "${strPtourl}&shopId=68";

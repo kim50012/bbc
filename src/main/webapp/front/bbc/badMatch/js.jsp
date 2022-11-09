@@ -1,32 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript" charset="utf-8">
 var clbJson = [{
-	    name: '북경배드민턴 클럽',
+	    name: 'HS Badminton Club',
 	    value: '1'
 	},
 	{
-	    name: '왕징배드민턴 클럽',
+	    name: '793 Badminton Club',
 	    value: '2'
 	},
 	{
-	    name: 'BSC',
+	    name: 'KBC',
 	    value: '3'
-	},
-	{
-	    name: 'BWC',
-	    value: '4'
-	},
-	{
-		name: '홍 배드민턴 클럽',
-		value: '6'
-	},
-	{
-		name: '위러 배드민턴 클럽',
-		value: '7'
-	},
-	{
-		name: 'SK 북경 배드민턴 클럽',
-		value: '8'
 	},
 ];
 var lvlJson = [
