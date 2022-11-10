@@ -34,7 +34,7 @@
 			<div class="modules" style="border:none;font-size:0.22rem;">
 					<div class="module" style="background:#fff;padding:0.2rem">
 						<div class="list flex row1"><span class="text-outline text-width">${label.场地数}</span><p>${amsClb.COR_CNT}${label.个}</p></div>
-						<div class="list flex row1"><span class="nowrap text-outline text-width">${label.地址}</span><p class="flex1" style="white-space: pre-wrap;">${amsClb.ATD_ADR} ${amsClb.ATD_ADR_DTL}</p></div>
+						<div class="list flex row1"><span class="nowrap text-outline text-width">${label.地址}</span><p class="flex1" style="white-space: pre-wrap;"><!-- ${amsClb.ATD_ADR} -->${amsClb.ATD_ADR_DTL}</p></div>
 <%-- 						<div class="list flex row1" style="flex-flow:row-reverse;" ><span style="color:#01cfb9;margin-left:0.1rem;">${label.查看地图}</span><img style="width:0.17rem;height:0.22rem;margin-top:0.04rem;" src="../img/map.png"/></div> --%>
 					</div>
 			</div>

@@ -17,12 +17,17 @@
     <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
     <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
     <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <style>
+    	.loginContent {
+    		background-image: url(../image/bg3.jpg);
+    	}
+    </style>
 </head>
       
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div style="color: #ffffff;font-size: 0.5rem;text-align: center;">신규회원 가입</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">신규회원 가입</div>
       </div>
       <div class="loginInput">
 	        <div class="input-wrap contentText">

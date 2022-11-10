@@ -92,7 +92,7 @@
 								<input class="right" type="text" id="strCorcnt" value="${amsClb.COR_CNT}" placeholder="${label.请输入}"/>
 							</div>
 						</div>
-						<div class="list90 bottom-dashed flex">
+						<div class="list90 bottom-dashed flex" style="display:none;">
 							<p class="left-part">${label.场地地址}</p>
 							<label for="atdAdr" style="position: relative;">
 								<input style="color:#666;width:4rem;" class="right weui-input" id="atdAdr" type="text" value="" >

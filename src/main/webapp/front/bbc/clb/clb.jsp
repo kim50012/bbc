@@ -57,7 +57,7 @@
 										<p class="lh20 word-title" onclick="window.location='/front/bbc/clb/clbDetMy.htm?intClbsq=${amsClbListMy.CLB_SQ}';">${amsClbListMy.CLB_NM}【${amsClbListMy.CLB_MBR_CNT} ${label.人}】</p>
 										<p class="small22-text small22">${label.联系人}：${amsClbListMy.CTT_NM}</p>
 										<div class="flex small22-text small22">
-											<p class="flex1">${amsClbListMy.ATD_ADR}${amsClbListMy.ATD_ADR_DTL}</p>
+											<p class="flex1"><!-- ${amsClbListMy.ATD_ADR} -->${amsClbListMy.ATD_ADR_DTL}</p>
 											<span class="nowrap open" onclick="window.location='/front/bbc/clb/clbDetMy.htm?intClbsq=${amsClbListMy.CLB_SQ}';">${label.展开}</span>
 										</div>
 									</div>

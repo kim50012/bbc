@@ -104,7 +104,7 @@
 								<input class="right" type="text" id="strCorcnt" value="" placeholder="${label.请输入}"/>
 							</div>
 						</div>
-						<div class="list90 bottom-dashed flex">
+						<div class="list90 bottom-dashed flex" style="display:none;">
 							<p class="left-part">${label.场地地址}</p>
 							<label for="atdAdr" style="position: relative;">
 								<input style="color:#666;width:4rem;" class="right weui-input" id="atdAdr" type="text" value="" >
@@ -266,8 +266,8 @@
 	 				return;
 	 			}
 	 			if (strAtdadr == "") {
-	 				alert("${label.请输入场地地址}");
-	 				return;
+// 	 				alert("${label.请输入场地地址}");
+// 	 				return;
 	 			}
 	 			if (strAtdadrdtl == "") {
 	 				alert("${label.请输入详细地址}");

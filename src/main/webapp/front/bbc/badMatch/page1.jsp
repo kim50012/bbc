@@ -66,7 +66,7 @@
                     <td class="left">
                     	<div class="input-wrap inContent">
 							          <input type="text" id="city" value="" />
-							          <div>북경, 천진, 상해 등 도시 입력</div>
+							          <div>도시 이름 입력</div>
 							        </div>
                   	</td>
                   </tr>
