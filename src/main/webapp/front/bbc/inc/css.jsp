@@ -5,3 +5,16 @@
 <link rel="icon" href="http://bbc.manhuaking.cn/favicon.ico" type="image/x-icon" />
 <link rel="apple-touch-icon-precomposed" href="http://bbc.manhuaking.cn/favicon.png" />
 <link rel="stylesheet" type="text/css" href="../css/common10.css"/>
+<style>
+	@media(min-width:720px) {
+ 		body {
+ 			width:400px;
+ 		}
+ 		.module {
+ 			width:400px;
+ 		}
+ 		.footer {
+ 			width:400px;
+ 		}
+	}
+</style>

@@ -5,11 +5,11 @@ var clbJson = [{
 	    value: '1'
 	},
 	{
-	    name: '793 Badminton Club',
+	    name: '15 793 Badminton Club',
 	    value: '2'
 	},
 	{
-	    name: 'KBC',
+	    name: '793 Badminton Club',
 	    value: '3'
 	},
 ];
@@ -171,6 +171,16 @@ $(function() {
     background-size: 0.6rem 0.6rem;
     top: 0.12rem;
 }
+</style>
+<style>
+   	@media(min-width:720px) {
+    	body {
+    		width:430px;
+    	}
+ 		.footer {
+ 			width:400px;
+ 		}
+   	}
 </style>
 	<div class="radio-pop" id="pop-up-help" style="display:none;">
 		<div class="radio-wrap" style="padding:0;width:6.5rem;">

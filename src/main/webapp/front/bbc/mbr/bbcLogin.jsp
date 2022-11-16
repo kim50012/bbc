@@ -29,7 +29,7 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">ENJOY SPORTS</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">SHUT UP & BANDMINTON</div>
       </div>
       <div class="loginInput">
 <!--         <form onsubmit="return check(this)" action=""> -->

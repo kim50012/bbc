@@ -119,6 +119,11 @@
     width: 0.45rem;
     height: 0.45rem;
 }
+   	@media(min-width:720px) {
+ 		.footer {
+ 			width:400px;
+ 		}
+   	}
 </style>
 <script>
 	$(function() {
