@@ -23,6 +23,21 @@
     	.loginContent {
     		background-image: url(../image/bg3.jpg);
     	}
+   	@media(min-width:720px) {
+    	body {
+    		width:450px;
+    		background-color: #c0c0c0;
+    	}
+ 		.footer {
+ 			width:450px;
+ 		}
+		.loginContent {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		}
+   	}
     </style>
 </head>
 

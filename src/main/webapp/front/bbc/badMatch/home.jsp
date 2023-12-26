@@ -121,7 +121,11 @@
 }
    	@media(min-width:720px) {
  		.footer {
- 			width:400px;
+ 			width:450px;
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
  		}
    	}
 </style>

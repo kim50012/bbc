@@ -177,8 +177,10 @@ public class SessionFilter implements Filter {
 								writer.close();
 							}else{
 								String goUrl = request.getRequestURL()+"?"+ request.getQueryString();
+								String strPtourl = goUrl;
 								goUrl = URLEncoder.encode(goUrl, "utf-8");
 								request.getSession().setAttribute("goUrl", goUrl);
+								request.getSession().setAttribute("strPtourl", strPtourl);
 								request.getRequestDispatcher("/fronterror/timeout.htm").forward(request, response);
 								return;
 							}
@@ -192,8 +194,10 @@ public class SessionFilter implements Filter {
 
 							if(!path.startsWith("/front/bbc/badMatch/getData.htm")){	//手机
 								String goUrl = request.getRequestURL()+"?"+ request.getQueryString();
+								String strPtourl = goUrl;
 								goUrl = URLEncoder.encode(goUrl, "utf-8");
 								request.getSession().setAttribute("goUrl", goUrl);
+								request.getSession().setAttribute("strPtourl", strPtourl);
 								request.getRequestDispatcher("/fronterror/timeout.htm").forward(request, response);
 								return;
 							}

@@ -60,6 +60,20 @@
 	min-height:50%;
 	border: solid 1px blue;
 }
+	@media(min-width:720px) {
+ 		body {
+ 			width:100%;
+ 		}
+ 		.module {
+ 			width:100%;
+ 		}
+ 		.footer {
+ 			width:100%;
+ 		}
+ 		.app {
+ 			width:100%;
+ 		}
+	}
 </style>
 <script>
 helpHtmlTag = "※ 본선 경기 결과 페이지 입니다.<br><br>본선 경기의 모든 경기 결과를 조회할 수 있습니다.<br><br>대회 운영진은 입력, 수정 버튼을 클릭하여 경기 결과 입력 및 수정을 할 수 있습니다.";

@@ -97,7 +97,7 @@
 						</c:if>						
 					</div>
 				</div>
-				<div class="" style="background:#fff;border-bottom:1px dashed #ddd;">
+				<div class="" style="background:#fff;border-bottom:1px dashed #ddd;display:none;">
 					<p class="title-icon title-icon1" style="line-height:0.8rem;font-weight:normal;font-size:0.24rem;" onclick="$('#singleLayout').toggle();">${label.单打}${label.比赛管理}</p>
 					<div class="buttons" style="background:#fff;text-align:left;margin-left:0.2rem;display:none;" id="singleLayout">
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/clbRankSingles.htm?intClbsq=${amsClb.CLB_SQ}');">${label.单打}${label.排名查询}</button>
@@ -118,7 +118,7 @@
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/web/publish/mobile/product/communityList.htm?displayId=8');">북배클수다방<c:if test="${amsClb.BBC_REVIEW_CNT > 0}"><font color="red">(${amsClb.BBC_REVIEW_CNT})</font></c:if></button>
 						</c:if>
 						<c:if test="${amsClb.CLB_SQ != 9}">
-						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/web/publish/mobile/product/communityList.htm?displayId=1');">${label.商户社区}</button>
+<%-- 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/web/publish/mobile/product/communityList.htm?displayId=1');">${label.商户社区}</button> --%>
 						</c:if>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/getPage.htm?pageName=page18&intClbsq=${amsClb.CLB_SQ}');">미니게임결과</button>
 						<c:if test="${(amsClb.CLB_GD == 'A') || amsClb.CLB_GD == 'B'}">

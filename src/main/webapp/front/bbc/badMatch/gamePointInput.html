@@ -30,6 +30,7 @@
 <style type="text/css">
 	.app {
 		padding-top: 0rem;
+		width: 100%;
 	}
 	.app > .content {
     	padding-bottom: 0rem;
@@ -63,9 +64,12 @@
 	.subBtn {
     	padding: 0.16rem 0.1rem;
     }
+	body {
+		width: 100%;
+	}
 </style>
 </head>
-<body>
+<body onkeydown="inputKey(event)">
 	<div class="app news14_app" id="appPointInput">
 		<div class="content">
 			<div style="height:100%;">
@@ -93,6 +97,20 @@
 	</div>
 </body>
 <script type="text/javascript">
+	function inputKey(key) {
+	    if (key.keyCode == 37) {
+	    	addPointA(-1);
+	    }
+	    if (key.keyCode == 38) {
+	    	addPointA(1);
+	    }
+	    if (key.keyCode == 39) {
+	    	addPointB(1);
+	    }
+	    if (key.keyCode == 40) {
+	    	addPointB(-1);
+	    }
+	}	
 
 	$(window).bind('orientationchange resize', function(event){
 		window.location.reload();

@@ -8,13 +8,34 @@
 <style>
 	@media(min-width:720px) {
  		body {
- 			width:400px;
+ 			width:450px;
  		}
  		.module {
- 			width:400px;
+ 			width:450px;
  		}
  		.footer {
- 			width:400px;
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
  		}
+		.wrap {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		}
+		.head-information {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		}
+		.content {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		}
 	}
 </style>

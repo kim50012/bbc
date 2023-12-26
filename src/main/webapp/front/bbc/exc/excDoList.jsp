@@ -246,11 +246,6 @@
 		</div>			
 			
 			
-			<!-- START bottom menu -->
-			<c:set var="menuTag" value="1" />
-			<%@ include file="/front/bbc/exc/menu.jsp"%> 
-			<!-- END bottom menu -->
-			
 		<script type="text/javascript">
 
 		$(document).ready(function(){
@@ -374,72 +369,16 @@
 
 	</script>
 			
-	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<script type="text/javascript">
-	
-// 	    // 페이지 로딩 직후 앱에서 자동 호출 합니다.
-// 	    function callfromApp() {
-// 	    	alert("${loginMbrSq}");
-// 	        if (typeof app_login_complete === 'function') {
-// 	            app_login_complete('${loginMbrSq}');
-// 	        }
-// 	    }
-	
-		$(function(){ 
-			  wx.config({
-				    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				    appId: "${appInfo.appId }", // 必填，公众号的唯一标识
-				    timestamp: "${signInfo.timestamp }", // 必填，生成签名的时间戳
-				    nonceStr: "${signInfo.nonceStr }", // 必填，生成签名的随机串
-				    signature: "${signInfo.signature }",// 必填，签名，见附录1
-				    jsApiList: [//分享接口
-				       		 	 'onMenuShareTimeline'		//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-				        		,'onMenuShareAppMessage'	//获取“分享给朋友”按钮点击状态及自定义分享内容接口
-				                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-				});  
-			  
-			  	wx.ready(function(){
-			  		
-			  		wx.onMenuShareTimeline({
-			  		    title: '${label.活动列表} ${label.参加活动}', // 分享标题
-// 			  		    link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa1bf729b5d982ae1&redirect_uri=http%3A%2F%2Fbbc.manhuaking.cn%2Fw%2Ft.htm%3Fk%3DMWMUFH2V1W1WUOXWUHUWBH4ZTUAXGDRQ%26tu%3Dhttp%253A%252F%252Fbbc.manhuaking.cn%252Ffront%252Fbbc%252Fexc%252FexcDoList.htm%253FshopId%253D68&response_type=code&scope=snsapi_base&state=n#wechat_redirect', //'${shareInfo.link}', // 分享链接
-			  		    link: '${shareInfo.link}',
-			  		    imgUrl: 'http://bbc.manhuaking.cn/front/bbc/img/logo.jpg', // 分享图标
-			  		    success: function () { 
-			  		        // 用户确认分享后执行的回调函数
-			  		    },
-			  		    cancel: function () { 
-			  		        // 用户取消分享后执行的回调函数
-			  		    }
-			  		});
-			  		
-			  		wx.onMenuShareAppMessage({
-			  		    title: '${label.活动列表}', // 分享标题
-			  		    desc: '${label.参加活动}', // 分享描述 
-// 			  		    link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa1bf729b5d982ae1&redirect_uri=http%3A%2F%2Fbbc.manhuaking.cn%2Fw%2Ft.htm%3Fk%3DMWMUFH2V1W1WUOXWUHUWBH4ZTUAXGDRQ%26tu%3Dhttp%253A%252F%252Fbbc.manhuaking.cn%252Ffront%252Fbbc%252Fexc%252FexcDoList.htm%253FshopId%253D68&response_type=code&scope=snsapi_base&state=n#wechat_redirect',//'${shareInfo.link}', // 分享链接
-						link: '${shareInfo.link}',
-			  		    imgUrl: 'http://bbc.manhuaking.cn/front/bbc/img/logo.jpg', // 分享图标
-			  		    success: function () { 
-			  		        // 用户确认分享后执行的回调函数
-			  		       // alert('success 11');
-			  		    },
-			  		    cancel: function () { 
-			  		        // 用户取消分享后执行的回调函数
-			  		    	// alert('error 11');
-			  		    }
-			  		});
-				});
-			  	
-			  	
-			  	wx.error(function(res){
-			  	    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-		
-			  	});
-			  
-		});
-	</script>
 	
 		</div>
+		
+
+			<!-- START bottom menu -->
+			<c:set var="menuTag" value="1" />
+			<%@ include file="/front/bbc/exc/menu.jsp"%> 
+			<!-- END bottom menu -->
+					
+		
 		<%@ include file="/front/bbc/inc/loading.jsp"%> 
 		
 		<c:set var="helpTag" value="65" />

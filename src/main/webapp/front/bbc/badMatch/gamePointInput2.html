@@ -30,6 +30,7 @@
 <style type="text/css">
 	.app {
 		padding-top: 0rem;
+		width: 100%;
 	}
 	.app > .content {
     	padding-bottom: 0rem;
@@ -70,10 +71,13 @@
 	    height: calc(100vw); 
 	    width: calc(100vh - 10px) !important;
     }
+	body {
+		width: 100%;
+	}
     
 </style>
 </head>
-<body class="sbody">
+<body class="sbody" onkeydown="inputKey(event)">
 	<div class="app news14_app" id="appPointInput">
 		<div class="content">
 			<div class="scroll-wrap" style="height:100%;">
@@ -102,6 +106,21 @@
 	
 </body>
 <script type="text/javascript">
+	function inputKey(key) {
+	    if (key.keyCode == 37) {
+	    	addPointA(-1);
+	    }
+	    if (key.keyCode == 38) {
+	    	addPointA(1);
+	    }
+	    if (key.keyCode == 39) {
+	    	addPointB(1);
+	    }
+	    if (key.keyCode == 40) {
+	    	addPointB(-1);
+	    }
+	}	
+
 
 	$("#pointA").html(Number(getCookie("inputScoreA")));
 	$("#pointB").html(Number(getCookie("inputScoreB")));

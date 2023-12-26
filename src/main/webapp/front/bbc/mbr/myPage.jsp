@@ -62,6 +62,41 @@
 					overflow:hidden;
 					text-overflow:ellipsis;
 				}
+	@media(min-width:720px) {
+ 		body {
+ 			width:450px;
+ 		}
+ 		.module {
+ 			width:450px;
+ 		}
+ 		.footer {
+			position: fixed;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+ 		}
+		.bg {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		    background-size: 8.4rem;
+		}
+		.module {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		    top: 2.9rem;
+		}
+		.modules {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		    top: 4.63rem;
+		}
+	}
 		</style>
 	</head>
 	<body>

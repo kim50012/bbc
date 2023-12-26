@@ -12,7 +12,7 @@ function getRem(pwidth, prem) {
 
 	if (isPC) {
 		pwidth = document.body.clientWidth;
-		prem = 50;
+		prem = 60;
 		console.log(pwidth);
 	}
 	var html = document.getElementsByTagName("html")[0];

@@ -31,7 +31,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="">
+		<div class="wrap">
 			<div class="module">
 				<div class="list68">
 					<p class="title-icon">${label.系统介绍视频}</p>

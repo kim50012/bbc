@@ -66,6 +66,20 @@
     line-height: 0.5rem;
     border-radius: 0.2rem;
 }
+	@media(min-width:720px) {
+ 		body {
+ 			width:100%;
+ 		}
+ 		.module {
+ 			width:100%;
+ 		}
+ 		.footer {
+ 			width:100%;
+ 		}
+ 		.app {
+ 			width:100%;
+ 		}
+	}
 </style>
 <script>
 	

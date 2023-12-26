@@ -175,11 +175,18 @@ $(function() {
 <style>
    	@media(min-width:720px) {
     	body {
-    		width:430px;
+    		width:450px;
+    		background-color: #c0c0c0;
     	}
  		.footer {
- 			width:400px;
+ 			width:450px;
  		}
+		.app {
+			position: absolute;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    width: 450px;
+		}
    	}
 </style>
 	<div class="radio-pop" id="pop-up-help" style="display:none;">

@@ -15,6 +15,7 @@
  </head>
 
  <body onload="fn_followLayerShow();$('#foo').fadeOut(200);">
+
  </body>  	 
 </body>
 </html>

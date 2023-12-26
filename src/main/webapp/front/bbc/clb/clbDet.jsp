@@ -13,6 +13,7 @@
 		<%@ include file="/front/bbc/inc/js.jsp"%> 
 	</head>
 	<body >
+		<div class="wrap">
 			<div class="modules">
 					<div class="list68 flex">
 						<p class="flex1 title-icon">${label.俱乐部概况}</p>
@@ -371,5 +372,6 @@
 	<c:if test="${amsClb.CLB_JIN_ST == 'JIN'}">
 		<%@ include file="/front/bbc/inc/returnPage.jsp"%>
 	</c:if>
+		</div>
 	</body>
 	</html>
