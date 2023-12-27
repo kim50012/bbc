@@ -267,7 +267,7 @@ function saveData() {
 
 	var para1 = "FEE_SAVE";
 	var para2 = "${para2}";
-	var para3 = "9";
+	var para3 = "${intClbsq }";
 	var para4 = $("#txtFeeDt").val();
 	var para5 = "A";
 	var para6 = $("#txtLevel1").val();

@@ -127,14 +127,6 @@
 			</div>
 			<div class="modules">
 					<div class="sub-content"  style="padding-bottom:2.1rem;">
-						<!--
-						<div class="list90 bottom-dashed flex">
-							<p class="float"><img src="../img/perinfo.png"></p>
-							<p class="flex1">${label.个人信息}</p>
-							<p class="right-btn" ></p>
-						</div>
-						-->
-
 						<c:if test="${amsMbr.MBR_SQ == 22 or amsMbr.MBR_SQ == 29 or amsMbr.MBR_SQ == 34}">
 						<div class="list90 bottom-dashed flex">
 							<p class="float"><img src="../img/perinfo.png"></p>
@@ -150,22 +142,7 @@
 						</div>
 						<div class="list90 bottom-dashed flex">
 							<p class="float"><img src="../img/perinfo.png"></p>
-							<p class="flex1" onclick="window.location='/front/bbc/mbr/report.html';">리포트</p>
-							<p class="right-btn"></p>
-						</div>
-						<div class="list90 bottom-dashed flex">
-							<p class="float"><img src="../img/perinfo.png"></p>
-							<p class="flex1" onclick="window.location='/front/bbc/clb/autoLogin.htm?intClbsq=9';">로그인</p>
-							<p class="right-btn"></p>
-						</div>
-						<div class="list90 bottom-dashed flex">
-							<p class="float"><img src="../img/perinfo.png"></p>
-							<p class="flex1" onclick="window.location='/front/bbc/badMatch/getPage.htm?pageName=page28';">코인</p>
-							<p class="right-btn"></p>
-						</div>
-						<div class="list90 bottom-dashed flex">
-							<p class="float"><img src="../img/apply-btn2.png"></p>
-							<p class="flex1" onclick="window.location='/front/web/publish/mobile/product/productReg.htm';">상품등록</p>
+							<p class="flex1" onclick="window.location='/front/bbc/mbr/amsSelect.htm?strJobtype=C';">접속이력</p>
 							<p class="right-btn"></p>
 						</div>
 						<div class="list90 bottom-dashed flex">

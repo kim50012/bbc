@@ -131,7 +131,7 @@
 			
 			
 	
-		<a href="/front/bbc/mbr/report.html" class="r_pg_top show">홈으로</a>
+		<a href="/front/bbc/mbr/myPage.htm" class="r_pg_top show">홈으로</a>
 		<%@ include file="/front/bbc/inc/loading.jsp"%>
 		 
 	</body>
