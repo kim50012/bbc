@@ -119,10 +119,10 @@ public class SessionFilter implements Filter {
 		if(path.startsWith("/front/")){	//手机
 
 			HttpSession session = request.getSession();
-			
+
+			setSessionSkin(request, 68);
 			SessionSkin sessionSkin = (SessionSkin) session.getAttribute(SessionUtils.SESSION_SKIN);
-			 
-			
+
 			if(true){
 				SessionMember sessionMember = (SessionMember) 	session.getAttribute(SessionUtils.SESSION_MEMEBER);
 				if(sessionMember == null){
@@ -161,6 +161,7 @@ public class SessionFilter implements Filter {
 						}
 					}
 				}else{
+					
 					if(sessionSkin == null){
 						
 
@@ -261,6 +262,10 @@ public class SessionFilter implements Filter {
 		}
 
 		else if(url.startsWith("/front/bbc/mbr/bbcLogin")){
+			return true;
+		}
+
+		else if(url.startsWith("/front/bbc/mbr/oauth.htm")){
 			return true;
 		}
 

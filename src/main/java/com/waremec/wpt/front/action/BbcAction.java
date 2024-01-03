@@ -1,5 +1,11 @@
 package com.waremec.wpt.front.action;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +19,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.baidu.translate.TransApi;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.waremec.framework.common.PageData;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.ListUtil;
@@ -22,8 +30,10 @@ import com.waremec.weixin.action.WeixinBaseAction;
 import com.waremec.weixin.domain.AppInfo;
 import com.waremec.weixin.domain.template.DataItem;
 import com.waremec.weixin.domain.user.SessionMember;
+import com.waremec.weixin.service.KakaoService;
 import com.waremec.weixin.thread.QRCodeEventThread;
 import com.waremec.weixin.utils.EncryptUtils;
+import com.waremec.weixin.utils.HttpClientUtils;
 import com.waremec.wpt.admin.domain.AdminMyIncome;
 import com.waremec.wpt.admin.domain.AdminOrders;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
@@ -313,8 +323,16 @@ public class BbcAction extends WeixinBaseAction {
 	private String para8;
 	private String para9;
 	
+	private String code;
+	private String error;
+	private String error_description;
+	private String state;
+	
 	@Resource
 	protected BbcService bbcService;
+	
+	@Resource
+	protected KakaoService kakaoService;
 	
 	//---------------------------------------------------------------
 	// [회원-mbr] Member
@@ -350,7 +368,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -410,7 +428,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -468,7 +486,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -522,7 +540,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -567,7 +585,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -610,7 +628,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			loginUserId = "";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 		}
 		else {
 			loginUserId = sessionMember.getOpenid();
@@ -702,7 +720,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -768,7 +786,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			loginUserId = "";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			ret="fail";
 			return NONE;
 		}
@@ -842,7 +860,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -920,7 +938,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -1014,7 +1032,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -1077,7 +1095,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -1135,7 +1153,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -1195,7 +1213,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -1256,7 +1274,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -1399,7 +1417,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				String errorMessageBbc = "No Authorization.";
 				request.put("errorMessageBbc", errorMessageBbc);
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -1493,7 +1511,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				String errorMessageBbc = "No Authorization.";
 				request.put("errorMessageBbc", errorMessageBbc);
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -1573,7 +1591,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -1665,7 +1683,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -1751,7 +1769,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -1873,7 +1891,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -1973,7 +1991,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -2019,7 +2037,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -2079,7 +2097,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -2132,7 +2150,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2236,7 +2254,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2312,7 +2330,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2433,7 +2451,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2510,7 +2528,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2586,7 +2604,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2687,7 +2705,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2777,7 +2795,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2835,7 +2853,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2906,7 +2924,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -2977,7 +2995,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -3027,7 +3045,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -3071,7 +3089,7 @@ public class BbcAction extends WeixinBaseAction {
 		
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			ret="fail";
 			return NONE;
 		}
@@ -3128,7 +3146,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3183,7 +3201,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -3253,7 +3271,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -3319,7 +3337,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3392,7 +3410,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3449,7 +3467,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3505,7 +3523,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3560,7 +3578,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3617,7 +3635,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3668,7 +3686,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -3742,7 +3760,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -3818,7 +3836,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -3874,7 +3892,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -3920,7 +3938,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -3974,7 +3992,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4028,7 +4046,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4083,7 +4101,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4174,7 +4192,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -4248,7 +4266,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -4300,7 +4318,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -4356,7 +4374,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -4408,7 +4426,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4486,7 +4504,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4564,7 +4582,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4656,7 +4674,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4774,7 +4792,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4878,7 +4896,7 @@ public class BbcAction extends WeixinBaseAction {
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 				return "noAuth";
 			}
 			else {
@@ -4920,7 +4938,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -4978,7 +4996,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -5026,7 +5044,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -5114,7 +5132,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -5279,7 +5297,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -5335,7 +5353,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -5374,7 +5392,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -5428,7 +5446,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -5489,7 +5507,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -5630,7 +5648,7 @@ public class BbcAction extends WeixinBaseAction {
 		if (sessionMember == null) {
 			Map<String, Object> mapResult = new HashMap<String, Object>();
 			mapResult.put("MSG_OUT","System Error.");
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			renderJSON(mapResult);
 			return NONE;
 		}
@@ -5651,7 +5669,6 @@ public class BbcAction extends WeixinBaseAction {
 			map.put("MBR_SQ",sessionMember.getCustSysId());		// [경기] 회원시퀀스
 			map.put("EXC_SQ",intExcsq);		// [경기] 운동 시퀀스
 			
-
 			map.put("CORT_CNT",intCortcnt);			//코트수
 			map.put("PARTNER_BASIC_COIN",intPartnerbasiccoin);	//파트너찾기 기준 코인
 			map.put("TEAM_BASIC_COIN",intTeambasiccoin);		//상대팀찾기 기준 코인
@@ -5697,14 +5714,49 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String userAddRequest(){
 
+		String ret;
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 		try{
 			
-		}
-		catch(Exception e){
-			// Error Page
-			String errorMessageBbc = e.getMessage() ;
-			request.put("errorMessageBbc", errorMessageBbc);
-			return "noAuth";
+			String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
+			Map<String,Object> userInfo = kakaoService.getUserInfo(accessToken);
+	        logger.info(userInfo);
+	        String email = userInfo.get("email").toString();
+	        String thumbnail_image = userInfo.get("thumbnail_image").toString();
+			Map<String,Object> map=new HashMap<String, Object>();
+			
+	 		map.put("JOP_TYPE","KAKAO");
+			map.put("MBR_ID",email);
+			map.put("MBR_MAI_IMG_PTH",thumbnail_image);
+			Map<String,Object> mapResult=commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
+	    	
+			String msgOut = (String) mapResult.get("MSG_OUT");
+			String strLnkactid = (String) mapResult.get("LNK_ACT_ID");
+			
+			if(msgOut.equals("S")){
+				SessionMember sessionMember = getSessionMember();
+				sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+				sessionMember.setUserType("WEB");
+				session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
+				logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
+				ret="success";
+			}
+			else {
+				ret="addUserInfo";
+			}
+
+			request.put("strPtourl",strPtourl);
+			request.put("thumbnail_image",thumbnail_image);
+			request.put("email",email);
+			request.put("ret",ret);
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			ret="fail";
+			request.put("strPtourl",strPtourl);
+			request.put("ret",ret);
+			return "userAddRequest";
 		}
 		return "userAddRequest";
 	}
@@ -5841,7 +5893,16 @@ public class BbcAction extends WeixinBaseAction {
 				session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
 				logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
 				ret="success";
-			}	    	
+			}
+
+			if(msgOut.equals("KAKAO_NOT_ASSGIN")){
+				SessionMember sessionMember = getSessionMember();
+				sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+				sessionMember.setUserType("WEB");
+				session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
+				logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
+				ret="KAKAO_NOT_ASSGIN";
+			}
 	    	
 		}catch(Exception e){
 			e.printStackTrace();
@@ -5853,6 +5914,60 @@ public class BbcAction extends WeixinBaseAction {
 		renderJSON(returnMap);		
 		
 		return NONE;
+	}
+
+	//---------------------------------------------------------------
+	// 로그인
+	//---------------------------------------------------------------
+	public String kakaoAssign(){
+
+		try{
+
+			String loginUserId = "";
+			String currLanguage = LabelUtil.getCurrentLanguage();
+			
+			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+			if (sessionMember == null) {
+				loginUserId = "";
+				request.put("strLngdv", "ko-KR");
+			}
+			else {
+				loginUserId = sessionMember.getOpenid();
+				strLngdv = sessionMember.getLang();
+				request.put("strLngdv", strLngdv);
+			}
+			
+			String accessToken = kakaoService.getAccessToken(code, "kakaoAssign");
+
+			logger.info("code ==> " + code);
+			logger.info("accessToken ==> " + accessToken);
+	        
+			Map<String,Object> userInfo = kakaoService.getUserInfo(accessToken);
+	        logger.info(userInfo);
+	        String email = userInfo.get("email").toString();
+	        String thumbnail_image = userInfo.get("thumbnail_image").toString();
+			
+			Map<String,Object> searchMap=new HashMap<String, Object>();
+
+			searchMap.put("JOP_TYPE", "S");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("MBR_SQ", sessionMember.getCustSysId());
+			//searchMap.put("LANG", currLanguage);
+			Map<String, Object> amsMbr = commonService.select("Bbc.sqlAMS_MBR_SELECT",searchMap);
+
+			request.put("amsMbr", amsMbr);
+			request.put("email", email);
+			request.put("strPtourl", strPtourl);
+			request.put("thumbnail_image", thumbnail_image);
+			
+		}
+		catch(Exception e){
+			// Error Page
+			String errorMessageBbc = e.getMessage() ;
+			request.put("errorMessageBbc", errorMessageBbc);
+			return "noAuth";
+		}
+		return "kakaoAssign";
 	}
 
 	//---------------------------------------------------------------
@@ -5870,7 +5985,7 @@ public class BbcAction extends WeixinBaseAction {
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 			if (sessionMember == null) {
 				loginUserId = "";
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -5910,7 +6025,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -5967,7 +6082,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -6002,7 +6117,7 @@ public class BbcAction extends WeixinBaseAction {
 			request.put("atrMtcList", atrMtcList);
 
 
-			// 최고 승률 500 경기 이상
+			// 최고 승률 평균 경기 이상
 			searchMap.clear();
 			searchMap.put("JOP_TYPE", "BB");
 			searchMap.put("LOGIN_USER", loginUserId);
@@ -6017,7 +6132,7 @@ public class BbcAction extends WeixinBaseAction {
 			request.put("atrMtcListB", atrMtcListB);
 
 
-			// 최고 승률 100~499 경기
+			// 최고 승률 100~499 경기  -> 진보 상세 데이터로 변경 (핸디별 획득 BBC)
 			searchMap.clear();
 			searchMap.put("JOP_TYPE", "BC");
 			searchMap.put("LOGIN_USER", loginUserId);
@@ -6100,7 +6215,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -6156,7 +6271,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -6218,7 +6333,7 @@ public class BbcAction extends WeixinBaseAction {
 			if (sessionMember == null) {
 				loginUserId = "";
 				loginMbrSq = 0;
-				request.put("strLngdv", "zh-CN");
+				request.put("strLngdv", "ko-KR");
 			}
 			else {
 				loginUserId = sessionMember.getOpenid();
@@ -6329,7 +6444,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -6375,7 +6490,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -6466,7 +6581,7 @@ public class BbcAction extends WeixinBaseAction {
 		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 		if (sessionMember == null) {
 			ret="fail";
-			request.put("strLngdv", "zh-CN");
+			request.put("strLngdv", "ko-KR");
 			return NONE;
 		}
 		else {
@@ -6497,15 +6612,31 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
 		
 		return NONE;
 	}	
+
+	public String oauth() {
+		String ret;
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		try{
+			returnMap.put("code",code);
+			returnMap.put("error",error);
+			returnMap.put("error_description",error_description);
+			returnMap.put("state",state);
+			ret="success";
+			returnMap.put("ret",ret);
+		}catch(Exception e){
+			e.printStackTrace();
+			ret="fail";
+			returnMap.put("ret",ret);
+			return "userAddRequest";
+		}
+		return "userAddRequest";
+	}
 	
 	public String getShopId() {
 		return shopId;
@@ -8581,6 +8712,38 @@ public class BbcAction extends WeixinBaseAction {
 
 	public String getPara9() {
 		return para9;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public String getError_description() {
+		return error_description;
+	}
+
+	public void setError_description(String error_description) {
+		this.error_description = error_description;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public void setPara9(String para9) {

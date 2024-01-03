@@ -13,15 +13,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<link rel="apple-touch-icon" href="/images/bbcicon2.png" />
-    <link rel="stylesheet" type="text/css" href="../css/font.css" /> <!--字体图标：公用-->
-    <link rel="stylesheet" type="text/css" href="../css/reset.css" /> <!--reset：公用-->
-    <link rel="stylesheet" type="text/css" href="../css/common.css" /> <!--公共：公用-->
-    <link rel="stylesheet" type="text/css" href="../css/button.css" /> <!--按钮：公用-->
-    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
-    <script src="../js/rem5.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
+    <link rel="stylesheet" type="text/css" href="/front/bbc/css/font.css" /> <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="/front/bbc/css/reset.css" /> <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="/front/bbc/css/common.css" /> <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="/front/bbc/css/button.css" /> <!--按钮：公用-->
+    <script src="/front/bbc/js/jquery.js" type="text/javascript" charset="utf-8"></script> <!--jquery公用-->
+    <script src="/front/bbc/js/rem5.js" type="text/javascript" charset="utf-8"></script> <!--rem公用-->
     <style>
     	.loginContent {
-    		background-image: url(../image/bg3.jpg);
+    		background-image: url(/front/bbc/image/bg3.jpg);
     	}
    	@media(min-width:720px) {
     	body {
@@ -67,9 +67,10 @@
 	          <div class="switchWord">아이디 저장</div>
 	        </div>
 	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">로그인</button>
-	        <button class="loginBtn light" id="bbcLogin2" style="width: 100%;height: 1rem;">신규회원가입</button>
+	        <button class="loginBtn light" id="kakaoLogin" style="width: 100%;height: 1rem;">카카오톡 로그인</button>
+	        <button class="loginBtn light" id="bbcLogin2" style="width: 100%;height: 1rem;display:none;">신규회원가입</button>
 	        <div class="explain">
-	          <p class="exWord"><span class="dian">아직 WEB 아이디가 없는 사용자는 신규회원가입 버튼을 클릭하여 신청해주세요.</span></p>
+	          <p class="exWord"><span class="dian">WEB 아이디가 없는 사용자는 카카오톡 로그인으로 회원 가입후 사용하세요.</span></p>
 	          <p class="exWord"><span class="dian">단, 본 시스템은 관리자가 승인한 사용자에 한하여 사용할 수 있습니다.</span></p>
 	          <p class="exWord"><span class="dian">관리자 승인없이 가입된 사용자는 임의로 삭제될 수 있습니다.</span></p>
 	        </div>
@@ -115,6 +116,11 @@
 			window.location='userAddRequest.htm';
 		});
 
+		$('#kakaoLogin').click(function(e) {
+// 			e.preventDefault();
+			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/userAddRequest.htm';
+		});
+		
 		var bbcUserid = getCookie("usrValue");
 		var bbcUserpw = getCookie("passWord");
 
@@ -169,14 +175,25 @@
 								if(data.ret=="success"){
 									
 									if ("${strPtourl}" == "") {
-										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+// 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+										window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
 									}
 									else {
 										window.location = "${strPtourl}&shopId=68";
 									}
+								}
+								else if (data.ret=="KAKAO_NOT_ASSGIN") {
 
+// 									if ("${strPtourl}" == "") {
+// 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+// 									}
+// 									else {
+// 										window.location = "${strPtourl}&shopId=68";
+// 									}
 									
-								}else{
+									window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/kakaoAssign.htm';
+								}
+								else{
 									loadingHide();
 				     				alert("${label.失败了}");
 								}

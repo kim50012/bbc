@@ -177,7 +177,8 @@ public class HttpClientUtils {
 			HttpPost httpPost = new HttpPost(url);
 			logger.info("Executing Request: " + httpPost.getRequestLine());
 			logger.info("POST Data: " + jsonObject.toString());
-			
+ 			httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+ 			
 			//设置post编码  
 //			httpPost.getParams().setParameter("http.protocol.content-charset",HTTP.UTF_8);  
 //			httpPost.getParams().setParameter(HTTP.CONTENT_ENCODING, HTTP.UTF_8);  
@@ -186,8 +187,7 @@ public class HttpClientUtils {
 			 
 //			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 			httpPost.setEntity(new StringEntity(jsonObject.toString(), Consts.UTF_8));
-			 //设置报文头  
-// 			 httpPost.setHeader("Content-Type", "text/xml;charset=" + HTTP.UTF_8);  
+			 //设置报文头    
 			// 执行post请求
 			CloseableHttpResponse response = httpClient.execute(httpPost);
 			

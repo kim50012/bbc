@@ -41,7 +41,7 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 0.6rem;text-align: center;-webkit-text-stroke-width: medium;">신규회원 가입</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 0.6rem;text-align: center;-webkit-text-stroke-width: medium;">카카오톡 연동</div>
       </div>
       <div class="loginInput">
 			<div style="text-align: center; padding-bottom: 10px; ">
@@ -49,10 +49,6 @@
 			</div>
 	        <div class="input-wrap contentText">
 	          <input type="" name="" id="userID" value="${email}" readonly/>
-	        </div>
-	        <div class="input-wrap contentText">
-	          <input type="" name="" id="userNm" value="" />
-	          <div>이름 (실명)</div>
 	        </div>
 	        <div class="switchLabel">
 	          <div class="switchWord">여자&nbsp;&nbsp;</div>
@@ -65,14 +61,9 @@
 	          <div class="switchWord">남자</div>
 	        </div>
 	        <div style="height:0.3rem;"></div>
-	        <div class="input-wrap contentText">
-	          <input type="" name="" id="cmt" value="" />
-	          <div id="inputCmt">인사말</div>
-	        </div>
-	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">가입하기</button>
+	        <button class="loginBtn light" id="bbcLogin" style="width: 100%;height: 1rem;">연동하기</button>
 	        <div class="explain">
 	          <p class="exWord"><span class="dian">카카오톡 연동 로그인시 비밀번호는 필요 없습니다.</span></p>
-	          <p class="exWord"><span class="dian">이름은 실명으로 등록 해주세요.</span></p>
 	        </div>
 <!-- 	      </form> -->
 
@@ -81,16 +72,6 @@
   </body>
   <script type="text/javascript">
 	$(document).ready(function(){
-		
-		if ("${ret}" == "success") {
-			if ("${strPtourl}" == "") {
-// 				window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
-				window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
-			}
-			else {
-				window.location = "${strPtourl}&shopId=68";
-			}
-		}
 		
 		$('input').on('input',function() {
 			if($(this).val()) {
@@ -134,16 +115,8 @@
 						sex = "1";
 					}		
 
-					var userNm = $("#userNm").val();
-					
-					var cmt = $("#cmt").val();
-
 					if (userID == "") {
 						alert("아이디를 입력하세요.");
-						return false;
-					}
-					if (userNm == "") {
-						alert("실명으로 이름을 입력하세요.");
 						return false;
 					}
 					loadingShow();
@@ -152,29 +125,30 @@
 
 					 $.ajax({
 					 	 		data:{
-					 	 			para1 : "AMS_USER_INSERT"
+					 	 			para1 : "AMS_USER_UPDATE"
 					 	 			,para2 : "1"
-					 	 			,para3 : userID
-					 	 			,para4 : userNm
-					 	 			,para5 : sex
-					 	 			,para6 : "${thumbnail_image}"
-						 	 		,para7 : "KAKAO"
+						 	 		,para3 : userID
+						 	 		,para4 : "${amsMbr.MBR_SQ}"
+					 	 			,para5 : "${thumbnail_image}"
 					 	 		},
 							type : "POST",
 							url : "/front/bbc/badMatch/userInsert.htm",
 							success : function(data) {
 								console.log(data);
-								var statusFlag = data.list[0].RSLT;
+								var statusFlag = data.list[0].RSLR;
 								
-								if (statusFlag == 'FAIL') {
-									alert("이미 가입되어 있는 아이디 입니다.");
-									loadingHide();
-									return;
+								if (statusFlag == 'S') {
+									if ("${strPtourl}" == "") {
+// 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+										window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
+									}
+									else {
+										window.location = "${strPtourl}&shopId=68";
+									}	
 								}
-
-								alert("정상 가입 되었습니다. \n다시 한번 로그인 해주세요.");
-								window.location = "/front/bbc/mbr/bbcLogin.htm";
-								
+								else {
+									alert("Error");
+								}
 							},
 							error : function(xhr, status, e) {
 								loadingHide();

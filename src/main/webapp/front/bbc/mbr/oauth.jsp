@@ -41,14 +41,12 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 0.6rem;text-align: center;-webkit-text-stroke-width: medium;">신규회원 가입</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">신규회원 가입</div>
       </div>
       <div class="loginInput">
-			<div style="text-align: center; padding-bottom: 10px; ">
-			    <img src="${thumbnail_image}" style=" height: 2rem; width: auto; margin: auto;">	          
-			</div>
 	        <div class="input-wrap contentText">
-	          <input type="" name="" id="userID" value="${email}" readonly/>
+	          <input type="" name="" id="userID" value="" />
+	          <div id="inputID">아이디 입력</div>
 	        </div>
 	        <div class="input-wrap contentText">
 	          <input type="" name="" id="userNm" value="" />
@@ -66,13 +64,20 @@
 	        </div>
 	        <div style="height:0.3rem;"></div>
 	        <div class="input-wrap contentText">
+	          <input type="" name="" id="userMobile" value="" />
+	          <div id="inputMobile">휴대폰번호</div>
+	        </div>
+	        <div class="input-wrap contentText">
 	          <input type="" name="" id="cmt" value="" />
-	          <div id="inputCmt">인사말</div>
+	          <div id="inputCmt">비고</div>
 	        </div>
 	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">가입하기</button>
 	        <div class="explain">
-	          <p class="exWord"><span class="dian">카카오톡 연동 로그인시 비밀번호는 필요 없습니다.</span></p>
-	          <p class="exWord"><span class="dian">이름은 실명으로 등록 해주세요.</span></p>
+	          <p class="exWord"><span class="dian">최초 비밀번호는 "1" 로 자동 설정 됩니다.</span></p>
+	          <p class="exWord"><span class="dian">code = ${code}</span></p>
+	          <p class="exWord"><span class="dian">error = ${error}</span></p>
+	          <p class="exWord"><span class="dian">error_description = ${error_description}</span></p>
+	          <p class="exWord"><span class="dian">state = ${state}</span></p>
 	        </div>
 <!-- 	      </form> -->
 
@@ -81,16 +86,6 @@
   </body>
   <script type="text/javascript">
 	$(document).ready(function(){
-		
-		if ("${ret}" == "success") {
-			if ("${strPtourl}" == "") {
-// 				window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
-				window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
-			}
-			else {
-				window.location = "${strPtourl}&shopId=68";
-			}
-		}
 		
 		$('input').on('input',function() {
 			if($(this).val()) {
@@ -135,6 +130,7 @@
 					}		
 
 					var userNm = $("#userNm").val();
+					var userMobile = $("#userMobile").val();
 					
 					var cmt = $("#cmt").val();
 
@@ -146,6 +142,11 @@
 						alert("실명으로 이름을 입력하세요.");
 						return false;
 					}
+					if (userMobile == "") {
+						alert("휴대폰 번호를 입력 하세요.");
+						return false;
+					}
+					
 					loadingShow();
 
 					var jopType = "I"; 
@@ -157,8 +158,6 @@
 					 	 			,para3 : userID
 					 	 			,para4 : userNm
 					 	 			,para5 : sex
-					 	 			,para6 : "${thumbnail_image}"
-						 	 		,para7 : "KAKAO"
 					 	 		},
 							type : "POST",
 							url : "/front/bbc/badMatch/userInsert.htm",
@@ -172,7 +171,7 @@
 									return;
 								}
 
-								alert("정상 가입 되었습니다. \n다시 한번 로그인 해주세요.");
+								alert("정상 가입 되었습니다. \n초기 비밀 번호는 1 입니다.");
 								window.location = "/front/bbc/mbr/bbcLogin.htm";
 								
 							},

@@ -67,9 +67,10 @@
 	          <div class="switchWord">아이디 저장</div>
 	        </div>
 	        <button class="loginBtn" id="bbcLogin" style="width: 100%;height: 1rem;">로그인</button>
-	        <button class="loginBtn light" id="bbcLogin2" style="width: 100%;height: 1rem;">신규회원가입</button>
+	        <button class="loginBtn light" id="kakaoLogin" style="width: 100%;height: 1rem;">카카오톡 로그인</button>
+	        <button class="loginBtn light" id="bbcLogin2" style="width: 100%;height: 1rem;display:none;">신규회원가입</button>
 	        <div class="explain">
-	          <p class="exWord"><span class="dian">아직 WEB 아이디가 없는 사용자는 신규회원가입 버튼을 클릭하여 신청해주세요.</span></p>
+	          <p class="exWord"><span class="dian">WEB 아이디가 없는 사용자는 카카오톡 로그인으로 회원 가입후 사용하세요.</span></p>
 	          <p class="exWord"><span class="dian">단, 본 시스템은 관리자가 승인한 사용자에 한하여 사용할 수 있습니다.</span></p>
 	          <p class="exWord"><span class="dian">관리자 승인없이 가입된 사용자는 임의로 삭제될 수 있습니다.</span></p>
 	        </div>
@@ -112,9 +113,14 @@
 
 		$('#bbcLogin2').click(function(e) {
 // 			e.preventDefault();
-			window.location='/front/bbc/mbr/userAddRequest.htm';
+			window.location='userAddRequest.htm';
 		});
 
+		$('#kakaoLogin').click(function(e) {
+// 			e.preventDefault();
+			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/userAddRequest.htm';
+		});
+		
 		var bbcUserid = getCookie("usrValue");
 		var bbcUserpw = getCookie("passWord");
 
@@ -163,10 +169,31 @@
 							type : "POST",
 							url : "/front/bbc/clb/bbcLoginCheck.htm",
 							success : function(data) {
+// 								window.location = "/front/bbc/exc/excDoList.htm";
+// 									window.location = "/front/bbc/exc/excDoList.htm?shopId=68";
 								console.log(data.ret);
 								if(data.ret=="success"){
-									location.reload();									
-								}else{
+									
+									if ("${strPtourl}" == "") {
+// 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+										window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
+									}
+									else {
+										window.location = "${strPtourl}&shopId=68";
+									}
+								}
+								else if (data.ret=="KAKAO_NOT_ASSGIN") {
+
+// 									if ("${strPtourl}" == "") {
+// 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
+// 									}
+// 									else {
+// 										window.location = "${strPtourl}&shopId=68";
+// 									}
+									
+									window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/kakaoAssign.htm';
+								}
+								else{
 									loadingHide();
 				     				alert("${label.失败了}");
 								}

@@ -89,7 +89,7 @@
 		  <c:if test="${atrMtcListB.size() > 0}">
           <div class="container">
             <div class="title2">
-              <span class="font24 bold">최고 승률상 500 경기 이상</span><span class="font20 fontOrange">기준 : ${amsClb.TODAY}</span>
+              <span class="font24 bold">최고 승률상 평균 경기 이상</span><span class="font20 fontOrange">기준 : ${amsClb.TODAY}</span>
             </div>
             <div class="table">
               <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
@@ -122,46 +122,7 @@
           </div>
 		  </c:if>
           
-          
-          
-          
-          
-          <div class="container">
-            <div class="title2">
-              <span class="font24 bold">최고 승률상 <c:if test="${atrMtcListB.size() > 0}">500 경기 미만</c:if></span><span class="font20 fontOrange">기준 : 클럽 평균 게임 횟수 이상</span>
-            </div>
-            <div class="table">
-              <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
 
-                <tr class="activePrevTr">
-                  <th class="lie">순위</th>
-                  <th>이름</th>
-                  <th>경기수</th>
-                  <th>승/패</th>
-                  <th>승률</th>
-                </tr>
-                
-				<!-- START Data Loop -->
-				<c:forEach var="atrMtcListC" items="${atrMtcListC}" varStatus="status">  
-
-                <tr id= "openData" <c:if test="${status.count == 1}">class="activeTr"</c:if>>
-                  <td class="center">${status.count}</td>
-                  <td>${atrMtcListC.CLB_NIK_NM}</td>
-                  <td>${atrMtcListC.GAME_CNT}</td>
-                  <td>${atrMtcListC.WIN}/${atrMtcListC.LOSE}</td>
-                  <td>${atrMtcListC.WIN_RATE}%</td>
-                </tr>
-                
-				 </c:forEach>
-				<!-- END Data Loop -->                
-                
-                
-              </table>
-            </div>
-          </div>
-          
-          
-          
           
           <div class="container">
             <div class="title2">
@@ -198,6 +159,46 @@
           </div>
           
           
+          
+
+          <div class="container">
+            <div class="title2">
+              <span class="font24 bold">핸디별 진보 상세 현황</span><span class="font20 fontOrange">기준 : 클럽 평균 게임 횟수 이상</span>
+            </div>
+            <div class="table">
+              <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+
+                <tr class="activePrevTr">
+                  <th class="lie">순위</th>
+                  <th>이름</th>
+                  <th>승/패<br>승률 %</th>
+                  <th>합계</th>
+                  <th>약자<br>상대</th>
+                  <th>동레벨</th>
+                  <th>강자<br>상대</th>
+                </tr>
+                
+				<!-- START Data Loop -->
+				<c:forEach var="atrMtcListC" items="${atrMtcListC}" varStatus="status">  
+
+                <tr id= "openData" <c:if test="${status.count == 1}">class="activeTr"</c:if>>
+                  <td class="center">${status.count}</td>
+                  <td>${atrMtcListC.CLB_NIK_NM}</td>
+                  <td style="text-align: center;">${atrMtcListC.WIN}/${atrMtcListC.LOSE}<br>(${atrMtcListC.WIN_RATE})</td>
+                  <td style="text-align: right;<c:if test="${atrMtcListC.BBC >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC < 0}"> color:red;</c:if>">${atrMtcListC.BBC}</td>
+                  <td style="text-align: right;<c:if test="${atrMtcListC.BBC_MINUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_MINUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_MINUS}</td>
+                  <td style="text-align: right;<c:if test="${atrMtcListC.BBC_EQUAL >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_EQUAL < 0}"> color:red;</c:if>">${atrMtcListC.BBC_EQUAL}</td>
+                  <td style="text-align: right;<c:if test="${atrMtcListC.BBC_PLUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_PLUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_PLUS}</td>
+                </tr>
+                
+				 </c:forEach>
+				<!-- END Data Loop -->                
+                
+                
+              </table>
+            </div>
+          </div>
+                    
           
           
           
@@ -237,8 +238,6 @@
               </table>
             </div>
           </div>
-          
-          
           
           
           
