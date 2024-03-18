@@ -196,7 +196,7 @@
 								prvMonth = data.list[i].YYYYMM;
 							}
 						} else {
-							//$("#mbrList").html('');
+
 						}
 						load.hide()
 
