@@ -233,13 +233,13 @@ public class BbcAction extends WeixinBaseAction {
 	private String strBmtgd;	  	// [클럽가입신청] 배드민턴 조(A,B,C,D)
 	private String strAgeyy;	  	// [클럽가입신청] 연령(10대,20대...)
 	private int intMbrsqa1;			// [경기선수] 선수 A1
-	private int intMtcclbbbca1;		// [경기선수] 경기시코인 A1
+	private String intMtcclbbbca1;		// [경기선수] 경기시코인 A1
 	private int intMbrsqa2;			// [경기선수] 선수 A2
-	private int intMtcclbbbca2;		// [경기선수] 경기시코인 A2
+	private String intMtcclbbbca2;		// [경기선수] 경기시코인 A2
 	private int intMbrsqb1;			// [경기선수] 선수 B1
-	private int intMtcclbbbcb1;		// [경기선수] 경기시코인 B1
+	private String intMtcclbbbcb1;		// [경기선수] 경기시코인 B1
 	private int intMbrsqb2;			// [경기선수] 선수 B2
-	private int intMtcclbbbcb2;		// [경기선수] 경기시코인 B2
+	private String intMtcclbbbcb2;		// [경기선수] 경기시코인 B2
 	private String datFrdt;			// 조회 시작 일자
 	private String datTodt;			// 조회 끝 일자
 	private String strOrderby;
@@ -2408,13 +2408,14 @@ public class BbcAction extends WeixinBaseAction {
 			loginMbrSq = sessionMember.getCustSysId();
 
 			searchMap.clear();
-			searchMap.put("JOP_TYPE", "S");
+//			searchMap.put("JOP_TYPE", "S");
 			searchMap.put("LOGIN_USER", loginUserId);
 			searchMap.put("CLB_SQ", intClbsq);
 			searchMap.put("MBR_SQ_A1", intMbrsqa1);
 			searchMap.put("MBR_SQ_A2", intMbrsqa2);
 			searchMap.put("MBR_SQ_B1", intMbrsqb1);
 			searchMap.put("MBR_SQ_B2", intMbrsqb2);
+			searchMap.put("JOP_TYPE", strMtctp);
 			List<Map<String, Object>> atrMtcList = commonService.selectList("Bbc.sqlATR_MTC_SELECT_TEAM",searchMap);
 			
 			request.put("loginMbrSq", loginMbrSq);
@@ -6186,6 +6187,22 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcListF = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
 			request.put("atrMtcListF", atrMtcListF);
 			
+
+
+			// 연승 쿼리
+			searchMap.clear();
+			searchMap.put("JOP_TYPE", "BG");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("MTC_SQ", intMtcsq);
+			//searchMap.put("MBR_SQ", sessionMember.getCustSysId());
+			searchMap.put("FR_DT", datFrdt);
+			searchMap.put("TO_DT", datTodt);
+			searchMap.put("LANG", currLanguage);
+			searchMap.put("ORDERBY", "BBC");
+			List<Map<String, Object>> atrMtcListBG = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
+			request.put("atrMtcListBG", atrMtcListBG);
+			
 		}
 		catch(Exception e){
 			// Error Page
@@ -8086,11 +8103,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intMbrsqa1 = intMbrsqa1;
 	}
 
-	public int getIntMtcclbbbca1() {
+	public String getIntMtcclbbbca1() {
 		return intMtcclbbbca1;
 	}
 
-	public void setIntMtcclbbbca1(int intMtcclbbbca1) {
+	public void setIntMtcclbbbca1(String intMtcclbbbca1) {
 		this.intMtcclbbbca1 = intMtcclbbbca1;
 	}
 
@@ -8102,11 +8119,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intMbrsqa2 = intMbrsqa2;
 	}
 
-	public int getIntMtcclbbbca2() {
+	public String getIntMtcclbbbca2() {
 		return intMtcclbbbca2;
 	}
 
-	public void setIntMtcclbbbca2(int intMtcclbbbca2) {
+	public void setIntMtcclbbbca2(String intMtcclbbbca2) {
 		this.intMtcclbbbca2 = intMtcclbbbca2;
 	}
 
@@ -8118,11 +8135,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intMbrsqb1 = intMbrsqb1;
 	}
 
-	public int getIntMtcclbbbcb1() {
+	public String getIntMtcclbbbcb1() {
 		return intMtcclbbbcb1;
 	}
 
-	public void setIntMtcclbbbcb1(int intMtcclbbbcb1) {
+	public void setIntMtcclbbbcb1(String intMtcclbbbcb1) {
 		this.intMtcclbbbcb1 = intMtcclbbbcb1;
 	}
 
@@ -8134,11 +8151,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intMbrsqb2 = intMbrsqb2;
 	}
 
-	public int getIntMtcclbbbcb2() {
+	public String getIntMtcclbbbcb2() {
 		return intMtcclbbbcb2;
 	}
 
-	public void setIntMtcclbbbcb2(int intMtcclbbbcb2) {
+	public void setIntMtcclbbbcb2(String intMtcclbbbcb2) {
 		this.intMtcclbbbcb2 = intMtcclbbbcb2;
 	}
 

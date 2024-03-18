@@ -60,6 +60,7 @@
 				}
 				.btn-borders{
 					margin-top: 0.18rem;
+					margin-bottom: 0;
 				}
 				.screen{
 					position: absolute;
@@ -174,7 +175,8 @@
 						        </div>
 							</li>
 							<li class="flex3 cell-6 cell">
-								<button class="btn-borders float1" onclick="search('');" style="width:1rem;vertical-align:middle;background:#01cfb9;color:#fff;">${label.查询}</button>
+								<button class="btn-borders float1" onclick="search('', 'S');" style="width:1rem;vertical-align:middle;background:#01cfb9;color:#fff;">${label.查询}</button>
+								<button class="btn-borders float1" onclick="search('', 'J');" style="width:1rem;vertical-align:middle;background:#01cfb9;color:#fff;">박빙</button>
 							</li>
 						</ul>
 					</div>
@@ -390,14 +392,14 @@
 					$(".screen").hide();
 				});
 			});
-			function search(strOrderby) {
+			function search(strOrderby, strMtctp) {
 				
 				//if ($("#intMbrsqa2").val() == "0" && $("#intMbrsqb2").val() == "0") {
 				//	alert("${label.请输入姓名}");
 				//	return;
 				//}
 				
-				window.location='gameTeam.htm?intClbsq=${intClbsq}&intMbrsqa1='+$("#intMbrsqa1").val() + '&intMbrsqa2='+$("#intMbrsqa2").val() + '&intMbrsqb1='+$("#intMbrsqb1").val() + '&intMbrsqb2='+$("#intMbrsqb2").val();
+				window.location='gameTeam.htm?intClbsq=${intClbsq}&intMbrsqa1='+$("#intMbrsqa1").val() + '&intMbrsqa2='+$("#intMbrsqa2").val() + '&intMbrsqb1='+$("#intMbrsqb1").val() + '&intMbrsqb2='+$("#intMbrsqb2").val() + '&strMtctp=' + strMtctp;
 			}
      		$(function(){
      		 	$("#datFrdt").calendar({

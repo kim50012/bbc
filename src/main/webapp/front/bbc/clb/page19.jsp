@@ -129,7 +129,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">잊고 있던 하루 전날의 경기 결과는 과감히 입력하지 않는다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">잊고 있던 하루 전날의 경기 결과도 생각이 나면 시스템에 바로 입력한다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},false);">아니다(X)</div>
@@ -178,7 +178,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자들끼리의 경기시 가장 잘치는 사람이 각각 파트너를 지정해주며, 기타 사항에도 늘 잘치는 사람 말을 따르는 것이 좋다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">"초심자끼리"의 경기시 가장 잘치는 사람이 각각 파트너를 지정해주며, 기타 사항에도 초심자 중 잘치는 사람 말을 따르는 것이 좋다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},true);">아니다(X)</div>
@@ -255,7 +255,8 @@
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
                     	초심자들의 실력은 종이 한장 차이 입니다.<br>
-                    	특히 사석(뒷풀이)에서 비슷한 실력의 파트너에게 플레이에 대한 지적 보다는 화이팅을 하는 것이 예의 입니다.
+                    	특히 사석(뒷풀이)에서 비슷한 실력의 파트너에게 플레이에 대한 지적 보다는 화이팅을 하는 것이 예의 입니다.<br>
+                    	실력 차이가 별로 나지 않는 상황에서의 지적은 실력 상승은 없고 기분만 상하게 합니다.
 					</div>
                   </div>
                 </div>
@@ -298,7 +299,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -307,7 +308,7 @@
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
                     	앞사람은 뒷 사람을 볼 수 없어 운이 없는 경우 큰 부상이 발생할 수 있습니다. 항상 후위에 있는 사람이 앞사람과 충돌 상황을 판단하여 피해 주어야 합니다.<br> 
-						아무리 득점을 할 수 있는 좋은 기회라 하더라도 앞사람과 충돌이 예상 될 경우에는 후위 사람이 무조건 피해 주어야 합니다.<br>
+						아무리 득점을 할 수 있는 좋은 기회라 하더라도 앞 사람과 충돌이 예상 될 경우에는 후위 사람이 무조건 피해 주어야 합니다.<br>
 						안전에 대한 플레이는 항상 주의하여야 합니다.
 					</div>
                   </div>
@@ -336,7 +337,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자들 경기 시 남여 파트너의 경우 혼복대형(여자 앞에 남자 뒤에)으로 플레이 하는 것이 좋으며 비슷한 실력의 사람끼리 맞추어 치는 것이 좋다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자들 경기 시 남여 파트너의 경우 혼복 대형(여자 앞에 남자 뒤에)으로 플레이 하는 것이 좋으며 비슷한 실력의 사람끼리 맞추어 치는 것이 좋다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},true);">아니다(X)</div>
@@ -389,7 +390,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자분들은 경기이사님의 판단에 따라 레슨이 필요할 경우 레슨을 수강해야만 한다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자분들은 주변 의견에 따라 레슨이 필요할 경우 레슨을 수강해야만 한다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},false);">아니다(X)</div>
@@ -404,7 +405,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -441,7 +442,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자는 기본기 습득이  중요 하므로 승리 여부에 집착하기 보다 경기를 통해 다양한 기술을 체득할 수 있도록 경기에 임하는 것이 좋다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">초심자는 기본기 및 경기 경험이 중요 하므로 승리 여부에 집착하기 보다 경기를 통해 경험과 기본기를 체득 할 수 있도록 경기에 임하는 것이 좋다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},false);">아니다(X)</div>
@@ -465,8 +466,8 @@
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
                     	초심자들의 실력은 종이 한장 차이 입니다.<br>
-                    	초심자를 탈출할 D조 정도 실력(300~450)은 되어야, 배드민턴의 기본인 스텝,하이클리어,드롭,헤어핀 등 모두를 어느정도 구사할 수 있습니다.<br>
-                    	특정 약점 혹은 특정 기술만 익혀 승리만 한다면 실력의 느는 한계에 부딪칩니다.<br>
+                    	초심자를 탈출할 D조 정도 실력(300~450)은 되어야 배드민턴의 기본인 스텝, 하이클리어, 드롭, 헤어핀 등 모두를 어느정도 구사할 수 있습니다.<br>
+                    	약한 상대에게만 공격 한다던지 혹은 특정 기술만 익혀 승리만 한다면 실력의 느는 한계에 부딪칩니다.<br>
                     	D조가 되기까지는 초심자는 승부에 연연해 하지 마시고, 모든 면에서 골고루 연습하고 훈련해야 합니다.
 					</div>
                   </div>
@@ -561,7 +562,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -649,7 +650,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">${amsClb.CLB_NM} 회원들과의 친목교류 및 신속한 적응을 위해 가급적 월례회는 참가해야 하며, 기타 친목을 위한 뒷풀이도 참여하는 것이 좋다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">${amsClb.CLB_NM} 회원들과의 친목교류 및 신속한 적응을 위해 가급적 일요일 운동에는 참가해야 하며, 기타 친목을 위한 뒷풀이도 참여하는 것이 좋다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},false);">아니다(X)</div>
@@ -672,7 +673,6 @@
                       </div>
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
-                    	월례회는 매월 첫째주 금요일 정규 운동 시간에 진행합니다. 운동시간 끝나기 5분전~! 기억 해주세요~<br>
                     	뒷풀이는 참석하면 친목도모에 좋으나 강요하지는 않습니다.<br>참석 후에는 너무 많은 음주와 늦은 귀가만 조심하시면 될거 같네요~<br> 
 						재미있는 분위기의 뒷풀이 후, 다음 날 과음으로 인한 가족들 반대때문에 일주일만에 탈퇴하신분도 계시다는 전설이.. ㅋㅋㅋ 
 					</div>
@@ -724,15 +724,10 @@
                       </div>
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
-                    	경기들어갈땐 반드시 한번도 안친 새콕으로 들어가야 합니다.<br>한번이라도 거의 새거 같은 콕은 난타 칠때 연습용으로 사용하세요.<br>
-                    	* 초보 분들이 특히 잘 안지키시는 룰 입니다. * <br>
-                    	*단, 새거 같은 콕을 가져가서, 새콕 4개를 묻어두고 헌 콕으로 경기를 시작할 경우는 괜찮습니다.<br>
-						이 경우, 초심자들은 스윙 스피드가 낮아 4개 콕이 모두 남는 경우가 있습니다.<br><br>
+                    	타 클럽과의 경기에는 한번도 안친 새콕으로 들어가는 것이 예의 입니다.<br>한번이라도 경기를 했던 거의 새거 같은 콕은 난타 칠때 연습용으로 사용하세요.<br>
+                    	*단, 새거 같은 콕을 가져가서, 새콕 4개를 묻어두고 헌 콕으로 경기를 시작할 경우는 괜찮습니다.<br><br>
 						
-						이런 규칙이 있는 이유는 몇번 친 콕은 새거 같아도, 내구성이 급격히 떨어져 있기에 금방 손상이 되어 콕이 남아나질 않습니다.<br>
-						승리팀이 남은 콕을 가져가야 하는데, 쓰던 콕 가져와서 하나 이하로 남게되면 기분이 좋지 않습니다.<br>
-						같은 초보끼리라서 우리끼리니까 괜찮아 하시다가 그게 습관이 되어 다른 회원분들과 헌콕으로 경기를 하게되면 말도 못하고 기분이 상하게 됩니다.<br>
-						반드시 꼬옥! 새콕 가지고 들어가주세요 ~<br>
+						신나는 배드민턴 동호회는 경기에 지장을 주지 않는 헌 콕을 사용하여 회비를 절약 하는 것이 좋습니다 ^^<br>
 					</div>
                   </div>
                 </div>
@@ -774,7 +769,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -782,6 +777,7 @@
                       </div>
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
+                    	타 클럽과의 경기에는 아래 룰을 따릅니다.<br>
                     	*각 클럽마다 규칙은 조금씩 다르지만, 대부분 이 룰을 따릅니다.<br>
 						남은콕이 2개 이하면 승리팀이 모두 가져가고, 3개 남을 경우 남은 한개는 패배팀에 줍니다.<br> 
 						누굴 줄지는 패배팀에서 알아서 ~, 물론 4개 다 남으면 4명 서로 하나씩 다시 가져갑니다.<br><br>
@@ -828,7 +824,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -865,7 +861,7 @@
                   </div>
                 </div>
                 <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
-                	동지옹 코트의 경우 좌우측 벽에 소화전이 있으며, 노출된 소화전문이 유리로 되어있어 급격한 방향전환으로 소화전 유리에 부딛칠 경우 큰 부상을 입을수 있으니 주의해야 한다.
+                	나의 파트너가 콕만 보고 자주 나의 콕을 대신하여 칠때 한번 정도는 알려주기 위해서 강하게 마이볼 이라고 외치고 내가 친다.
                 </div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
@@ -889,7 +885,8 @@
                       </div>
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
-                    	2년전 소화전에 부딛치며 유리가 깨져 크게 다친 경우가 있습니다.<br>주의 바랍니다.
+                    	승부 보다 가장 중요한 것은 안전이고 파트너와의 호흡 입니다.<br>
+                    	파트너가 잘못된 플레이를 하더라도 경기 중에는 매번 피해주고 끝난 후에 가볍게 이야기 해주는 것이 좋습니다.<br>
 					</div>
                   </div>
                 </div>
@@ -917,7 +914,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">타 클럽과의 교류전을 마친 후 나와 잘 맞는 파트너를 경기이사님께 알려드리고 다음 경기에 편성해 주십사 부탁드린다.</div>
+                <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">타 클럽과의 교류전 및 자체 대회를 마친 후 나와 잘 맞는 파트너를 운영진에게 알려드리고 다음 경기에 편성해 주십사 부탁드린다.</div>
 	          	<div class="btn-wrap" style="padding-top: 0.3rem;padding-bottom: 0;">
 	          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;" id="btn${req}">
 	                <div class="orangeBtn subBtn f-col font26" onclick="ans(${req},true);">아니다(X)</div>
@@ -1035,7 +1032,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -1090,7 +1087,7 @@
                     <div class="title borderBt">
                       <div>
                         <div class="f-row">
-                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 아니다(X)</span>
+                          <span class="bold font20 fontBlue" id="ansDft${req}">정답 : 그렇다(O)</span>
                         </div>
                         <div class="f-row">
                           <span class="bold font20 fontColor5" id="ansRlt${req}">정답</span>
@@ -1099,8 +1096,6 @@
                     </div>
                     <div class="fontColor5 font30 mt20" style="line-height:0.38rem;">
                     	동절기에는 습기가 없는 콕은 잘 깨지니 적당히 가습(최대 1분)하여 콕 손상을 예방하는 것이 좋습니다.<br>
-                    	클럽에서 준비한 가습기가 비치되어 있지 않을 경우 카운터에 가습기가 있습니다.<br>
-                    	운동전 집에서 가습을 미리 하고 오셔도 좋습니다.<br>
                     	단 너무 오랜 시간 가습할 경우 문제가 되니 적당히 가습을 해서 사용하세요. 
 					</div>
                   </div>
