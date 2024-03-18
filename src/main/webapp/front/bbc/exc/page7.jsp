@@ -57,6 +57,9 @@
 .subBtn {
 	padding: 0.2rem 0.1rem;
 }
+.table {
+    -webkit-overflow-scrolling:touch
+}
 </style>
 </head>
 

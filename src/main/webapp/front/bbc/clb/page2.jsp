@@ -63,6 +63,7 @@
 }
 .table {
     -webkit-overflow-scrolling:touch
+}
 </style>
 </head>
 
