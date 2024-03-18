@@ -207,15 +207,17 @@ public class WeixinService extends CommonServiceImpl implements CommonService {
 			throw new WeixinAuthException(WeixinAuthException.APP_INFO_ERROR);
 		}
 		//1.从数据库获取
-		String token = weixinDao.getAccessToken(appInfo.getSysId());
-		System.out.println(token);
-		if(StringUtils.isEmpty(token)){
-			logger.info("<><><><><><><><><><><><><><><><><><><><>");
-			logger.info("access token expires,create new access token");
-			token = WeixinUtils.getAccessToken(appInfo.getAppId(), appInfo.getAppSecret());
-			logger.info("token======================================================+"+token);
-			weixinDao.saveAccessToken(new AccessToken(appInfo.getSysId(),token));
-		}
+		String token = null; 
+//				weixinDao.getAccessToken(appInfo.getSysId());
+		// 위챗 사용 안함 20240318
+//		System.out.println(token);
+//		if(StringUtils.isEmpty(token)){
+//			logger.info("<><><><><><><><><><><><><><><><><><><><>");
+//			logger.info("access token expires,create new access token");
+//			token = WeixinUtils.getAccessToken(appInfo.getAppId(), appInfo.getAppSecret());
+//			logger.info("token======================================================+"+token);
+//			weixinDao.saveAccessToken(new AccessToken(appInfo.getSysId(),token));
+//		}
 		
 		return token;
 	}
@@ -226,15 +228,15 @@ public class WeixinService extends CommonServiceImpl implements CommonService {
 		}
 		//1.从数据库获取
 		String token = null;
-		System.out.println(token);
-		if(StringUtils.isEmpty(token)){
-			logger.info("<><><><><><><><><><><><><><><><><><><><>");
-			logger.info("access token expires,create new access token");
-			token = WeixinUtils.getAccessToken("wxb06504914e40437c", "5852e197890ed082f38fef166e2d5283");
-			logger.info("token======================================================+"+token);
-			weixinDao.saveAccessToken(new AccessToken(appInfo.getSysId(),token));
-		}
-		
+//		System.out.println(token);
+//		if(StringUtils.isEmpty(token)){
+//			logger.info("<><><><><><><><><><><><><><><><><><><><>");
+//			logger.info("access token expires,create new access token");
+//			token = WeixinUtils.getAccessToken("wxb06504914e40437c", "5852e197890ed082f38fef166e2d5283");
+//			logger.info("token======================================================+"+token);
+//			weixinDao.saveAccessToken(new AccessToken(appInfo.getSysId(),token));
+//		}
+//		
 		return token;
 	}
 	
@@ -268,12 +270,12 @@ public class WeixinService extends CommonServiceImpl implements CommonService {
 		}
 		//1.从数据库获取
 		String ticket = weixinDao.getApiTicket(appInfo.getSysId());
-		if(StringUtils.isEmpty(ticket)){
-			logger.info("Ticket expires,create new ticket");
-			ApiTicket apiTicket = WeixinUtils.getApiTicket(getAccessToken(appInfo));
-			weixinDao.saveApiTicket(appInfo,apiTicket);
-			ticket = apiTicket.getTicket();
-		}
+//		if(StringUtils.isEmpty(ticket)){
+//			logger.info("Ticket expires,create new ticket");
+//			ApiTicket apiTicket = WeixinUtils.getApiTicket(getAccessToken(appInfo));
+//			weixinDao.saveApiTicket(appInfo,apiTicket);
+//			ticket = apiTicket.getTicket();
+//		}
 		
 		return ticket;
 	}
