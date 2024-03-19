@@ -91,7 +91,7 @@
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/gameTeam.htm?intClbsq=${amsClb.CLB_SQ}');">${label.伙伴比赛列表}</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}');">월별현황</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/gamePeriod.htm?intClbsq=${amsClb.CLB_SQ}');">${label.期间别比赛现况}</button>
-						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/gamePointInput2.html');">점수판</button>
+						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem; border:solid 1px #01cfb9; color: #01cfb9;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${amsClb.CLB_SQ}');">경기점수판</button>
 					</div>
 				</div>
 				<div class="" style="background:#fff;border-bottom:1px dashed #ddd;display:none;">

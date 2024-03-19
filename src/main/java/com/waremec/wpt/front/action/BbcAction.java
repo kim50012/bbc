@@ -338,8 +338,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [회원-mbr] Member
 	//---------------------------------------------------------------
 	public String mbr(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			String returnPage = "mbr";
@@ -357,8 +355,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club
 	//---------------------------------------------------------------
 	public String clb(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -417,8 +413,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club One
 	//---------------------------------------------------------------
 	public String clbOne(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -475,8 +469,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 검색
 	//---------------------------------------------------------------
 	public String clbSearch() throws Exception{
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -532,8 +524,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbDet(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 
@@ -574,8 +564,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 수정조회
 	//---------------------------------------------------------------
 	public String clbView(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -619,8 +607,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 회원 가입신청
 	//---------------------------------------------------------------
 	public String clbJinSave(){
-
-		jsSdkSttingNormal();
 		
 		String loginUserId = "";
 		String ret="fail";
@@ -710,8 +696,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbDetMy(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -760,18 +744,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String clbReg(){
 
-		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
-			
-		}
-		catch(Exception e){
-			// Error Page
-			String errorMessageBbc = e.getMessage() ;
-			request.put("errorMessageBbc", errorMessageBbc);
-			return "noAuth";
-		}
-		
 		return "clbReg";
 	}
 	
@@ -926,8 +898,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 회원관리
 	//---------------------------------------------------------------
 	public String clbMbrList(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1020,8 +990,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [회원승인] 회원관리
 	//---------------------------------------------------------------
 	public String mbrReqList(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1083,8 +1051,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club autoLogin
 	//---------------------------------------------------------------
 	public String autoLogin(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1141,8 +1107,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 회원 상세 정보
 	//---------------------------------------------------------------
 	public String clbMbrInfo(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1201,8 +1165,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 나의 정보
 	//---------------------------------------------------------------
 	public String clbMyInfo(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1263,8 +1225,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [회원-mbr] 회원카드
 	//---------------------------------------------------------------
 	public String clbMbrCard(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1396,13 +1356,11 @@ public class BbcAction extends WeixinBaseAction {
 		}
 		return "clbMbrCard";
 	}
-	
+
 	//---------------------------------------------------------------
 	// [클럽-clb] Club 경기 화면
 	//---------------------------------------------------------------
 	public String gameReg(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1489,14 +1447,106 @@ public class BbcAction extends WeixinBaseAction {
 		
 		return "gameReg";
 	}
+	
+
+	//---------------------------------------------------------------
+	// [클럽-clb] Club 경기 등록 화면 gameRegWithScoreBoard
+	//---------------------------------------------------------------
+	public String gameRegWithScoreBoard(){
+
+		try{
+			//--------- Main Logic
+
+			String loginUserId = "";
+			int loginMbrSq;
+			String loginNickName = "";
+			String loginBbc = "";
+			String currLanguage = LabelUtil.getCurrentLanguage();
+			
+			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+			if (sessionMember == null) {
+				String errorMessageBbc = "No Authorization.";
+				request.put("errorMessageBbc", errorMessageBbc);
+				request.put("strLngdv", "ko-KR");
+				return "noAuth";
+			}
+			else {
+				loginUserId = sessionMember.getOpenid();
+				strLngdv = sessionMember.getLang();
+				request.put("strLngdv", strLngdv);
+			}
+			
+			currLanguage = strLngdv;
+
+			loginMbrSq = sessionMember.getCustSysId();
+			
+			Map<String,Object> searchMap=new HashMap<String, Object>();
+
+			searchMap.put("JOP_TYPE", "R");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("CLB_JIN_ST", "JIN");
+			searchMap.put("LANG", currLanguage);
+			List<Map<String, Object>> amsClbMbr = commonService.selectList("Bbc.sqlAMS_CLB_MBR_SELECT",searchMap);
+			
+			String kewordData = "[";
+			String comma = "";
+			for(int i = 0; i < amsClbMbr.size(); i++){
+				kewordData = kewordData + comma + "{";
+				String checkLoginId = amsClbMbr.get(i).get("MBR_SQ") + "";
+				String checkLoginId2 = loginMbrSq+"";
+				if (checkLoginId.equals(checkLoginId2)) {
+					loginNickName = amsClbMbr.get(i).get("CLB_NIK_NM") + "";
+					loginBbc = amsClbMbr.get(i).get("CLB_BBC") + "";
+				}
+				
+				kewordData = kewordData + "'name':'"+amsClbMbr.get(i).get("CLB_NIK_NM")+"',";
+				kewordData = kewordData + "'bbc':'"+amsClbMbr.get(i).get("CLB_BBC")+"',";
+				kewordData = kewordData + "'rank':'"+amsClbMbr.get(i).get("CLB_RANK")+"',";
+				kewordData = kewordData + "'imgUrl':'"+amsClbMbr.get(i).get("MBR_MAI_IMG_PTH")+"',";
+				kewordData = kewordData + "'keyword':'"+amsClbMbr.get(i).get("CLB_NIK_KEYWORD")+"',";
+				kewordData = kewordData + "'id':'"+amsClbMbr.get(i).get("MBR_SQ")+"',";
+				kewordData = kewordData + "'grade':'"+amsClbMbr.get(i).get("CLB_GD_NM")+"'";
+				
+				kewordData = kewordData + "}";
+				comma = ",";
+			}
+			kewordData = kewordData + "]";
+
+			request.put("loginMbrSq", loginMbrSq);
+			request.put("loginNickName", loginNickName);
+			request.put("loginBbc", loginBbc);
+			request.put("kewordData", kewordData);
+			request.put("intMtcsetcnt", intMtcsetcnt);  // GAME 시퀀스
+			
+			if (intAtemscr==0) {
+				request.put("intAtemscr", "");
+			}
+			else {
+				request.put("intAtemscr", intAtemscr);
+			}
+			if (intBtemscr==0) {
+				request.put("intBtemscr", "");
+			}
+			else {
+				request.put("intBtemscr", intBtemscr);
+			}
+		}
+		catch(Exception e){
+			// Error Page
+			String errorMessageBbc = e.getMessage() ;
+			request.put("errorMessageBbc", errorMessageBbc);
+			return "noAuth";
+		}
+		
+		return "gameRegWithScoreBoard";
+	}
 
 	
 	//---------------------------------------------------------------
 	// [클럽-clb] Club 경기 화면
 	//---------------------------------------------------------------
 	public String gameRegSingle(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1577,8 +1627,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 경기 화면
 	//---------------------------------------------------------------
 	public String gameView(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1669,8 +1717,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 경기 조회 화면
 	//---------------------------------------------------------------
 	public String gameResult(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -1799,6 +1845,8 @@ public class BbcAction extends WeixinBaseAction {
 			map.put("MTC_CLB_BBC_B1",intMtcclbbbcb1);	// [경기선수] 경기결과입력시점BB코인 B1
 			map.put("MBR_SQ_B2",intMbrsqb2);		// [경기선수] 회원시퀀스 B2
 			map.put("MTC_CLB_BBC_B2",intMtcclbbbcb2);	// [경기선수] 경기결과입력시점BB코인 B2
+
+			map.put("STD_SQ",intMtcsetcnt);	// GAME 시퀀스
 
 			map.put("A_TEAM_NM",strHmenm);
 			map.put("B_TEAM_NM",strAwynm);
@@ -2136,8 +2184,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 일일 경기 목록
 	//---------------------------------------------------------------
 	public String gameTody(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2240,8 +2286,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 단식 경기 목록
 	//---------------------------------------------------------------
 	public String gameSingleList(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2316,8 +2360,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 팀 경기 목록
 	//---------------------------------------------------------------
 	public String gameTeam(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2438,8 +2480,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 기간별 경기 목록
 	//---------------------------------------------------------------
 	public String gamePeriod(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2515,8 +2555,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 기간별 단식 경기 목록
 	//---------------------------------------------------------------
 	public String gamePeriodSingle(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2592,8 +2630,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 베스트 파트너
 	//---------------------------------------------------------------
 	public String bestPartner(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2695,8 +2731,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 랭킹
 	//---------------------------------------------------------------
 	public String clbRank(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2785,8 +2819,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 단식랭킹
 	//---------------------------------------------------------------
 	public String clbRankSingles(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2843,8 +2875,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 공지사항
 	//---------------------------------------------------------------
 	public String clbNotice() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2914,8 +2944,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 회칙
 	//---------------------------------------------------------------
 	public String clbRule() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -2985,8 +3013,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 공지사항 등록
 	//---------------------------------------------------------------
 	public String clbNoticeReg() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -3035,8 +3061,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 회칙등록
 	//---------------------------------------------------------------
 	public String clbRuleReg() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -3191,8 +3215,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 이벤트
 	//---------------------------------------------------------------
 	public String clbEventList() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -3261,8 +3283,6 @@ public class BbcAction extends WeixinBaseAction {
 	// [클럽-clb] Club 이벤트
 	//---------------------------------------------------------------
 	public String clbEventListEnd() {
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -3385,18 +3405,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String clbEventReg() {
 
-		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
-			
-		}
-		catch(Exception e){
-			// Error Page
-			String errorMessageBbc = e.getMessage() ;
-			request.put("errorMessageBbc", errorMessageBbc);
-			return "noAuth";
-		}
-		
 		return "clbEventReg";
 	}
 
@@ -3731,17 +3739,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String exc(){
 
-		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
-		}
-		catch(Exception e){
-			// Error Page
-			String errorMessageBbc = e.getMessage() ;
-			request.put("errorMessageBbc", errorMessageBbc);
-			return "noAuth";
-		}
-		
 		return "exc";
 	}
 	
@@ -3751,8 +3748,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String excDoList(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 			
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -3825,8 +3820,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String excGame(){
 
-		jsSdkSttingNormal();
-		
 		try{
 			//--------- Main Logic
 			
@@ -3883,8 +3876,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String excReg(){
 
-		jsSdkSttingNormal();
-		
 		try{
 			//--------- Main Logic
 			
@@ -3925,8 +3916,6 @@ public class BbcAction extends WeixinBaseAction {
 	// 정규운동 설정
 	//---------------------------------------------------------------
 	public String clbExcReg(){
-
-		jsSdkSttingNormal();
 		
 		try{
 			//--------- Main Logic
@@ -4183,8 +4172,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String excJin(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -4257,8 +4244,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String excJinSave(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -4309,8 +4294,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String excJinCar(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -4365,8 +4348,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String excView(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -4839,11 +4820,7 @@ public class BbcAction extends WeixinBaseAction {
 	public String itd(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
-			//------------------------------------------------------------------------------------------
-			//jsSdkSttingNormal();
 			SessionSkin sessionSkin  = (SessionSkin) session.get(SessionUtils.SESSION_SKIN);
 			shopId = sessionSkin.getShopId().toString();
 			
@@ -4887,8 +4864,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String myPage(){
 
-		jsSdkSttingNormal();
-		
 		try{
 			//--------- Main Logic
 			
@@ -4987,8 +4962,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String msgDoList(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 			
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -5035,8 +5008,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String msgJin(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -5344,8 +5315,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String msgReg(){
 
-		jsSdkSttingNormal();
-		
 		try{
 			//--------- Main Logic
 			
@@ -5498,8 +5467,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String msgView(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -5555,8 +5522,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String excAutoGame(){
 
-		jsSdkSttingNormal();
-		
 		try{
 
 			String loginUserId = "";
@@ -5976,8 +5941,6 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	public String bbcLoginAssign(){
 
-		jsSdkSttingNormal();
-		
 		try{
 
 			String loginUserId = "";
@@ -6072,8 +6035,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String bbcBestAward(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -6221,8 +6182,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbMbrMonthly(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
@@ -6339,8 +6298,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String getPage(){
 
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
 
 			String loginUserId = "";
 			int loginMbrSq = 0;
