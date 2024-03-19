@@ -94,7 +94,12 @@
 
 	$(function() {
 		getData();
+		appWidth();
 	});
+	
+	function appWidth() {
+		$(".app").css("width", $(window).width());
+	}
 
 	function getData() {
 
