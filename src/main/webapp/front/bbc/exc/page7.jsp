@@ -21,6 +21,7 @@
 <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
 <style>
 .app {
 	padding-top: 0;
@@ -76,6 +77,15 @@
 							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
 					</div>
 
+
+					<div class="content" style="padding: 20px;">
+						<div class="chart" id="chart"></div>
+					</div>
+					
+					<div class="content" style="padding: 20px;">
+						<div class="chart2" id="chart2"></div>
+					</div>
+
 					<div class="table-wrap">
 						<div class="table" id="tableDiv" style="overflow: scroll;height: 87Vh;">
 							<table class="drag-table noWrapTable" id="table1" cellspacing="0" cellpadding="2" border="1" style="height:300px;">
@@ -112,10 +122,9 @@
 		var para5 = "${para5}";
 
 		var load = loading();
-		load.show()
+		load.show();
 
-		$
-				.ajax({
+		$.ajax({
 					data : {
 						para1 : para1,
 						para2 : para2,
@@ -127,17 +136,38 @@
 					url : "/front/bbc/clb/getData.htm",
 					success : function(data) {
 
+				        var arrYyyymm = [];
+						var arrBarRateTT = [];
+						var arrLineRateMM = [];
+						var arrLineRateMW = [];
+
+						var arrBarCoinTT = [];
+						var arrLineCoinMM = [];
+						var arrLineCoinMW = [];
+						
 						if (data.list.length != 0) {
 
 							$("#table1").html('');
-
-							htm = ''
-							;
+							htm = '';
 							$("#table1").append(htm);
 
 							var j = 0;
 							var prvMonth = "";
 							for (var i = 0; i < data.list.length; i++) {
+
+								if (data.list[i].YYYYMM != "Total") {
+									arrYyyymm.push(data.list[i].YYYYMM);
+
+									arrBarRateTT.push(data.list[i].WIN_RATE);
+									arrLineRateMM.push(data.list[i].MMW_WIN_RATE);
+									arrLineRateMW.push(data.list[i].MW_WIN_RATE);
+
+									arrBarCoinTT.push(data.list[i].BBC);
+									arrLineCoinMM.push(data.list[i].MMW_BBC);
+									arrLineCoinMW.push(data.list[i].MW_BBC);
+									
+								}
+								
 								var htm = '';
 								if (prvMonth != data.list[i].YYYYMM) {
 									j = 0;
@@ -206,7 +236,12 @@
 						} else {
 
 						}
-						load.hide()
+						
+						if ("" != "${para3}") {
+							tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW);	
+						}
+						
+						load.hide();
 
 					},
 					error : function(xhr, status, e) {
@@ -269,6 +304,165 @@
 				});
 	}
 	
+
+	function tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW) {
+
+        var data = {
+			name: ['종합','복식','혼합복식'],
+			yyyymm: arrYyyymm,
+			bar1: arrBarRateTT,
+			line1: arrLineRateMM,
+			line2: arrLineRateMW,
+        }
+
+        var data2 = {
+			name: ['종합','복식','혼합복식'],
+			yyyymm: arrYyyymm,
+			bar1: arrBarCoinTT,
+			line1: arrLineCoinMM,
+			line2: arrLineCoinMW,
+        }
+
+        console.log(data);
+        console.log(data2);
+        
+		drew("승율", "chart", data);
+		drew("Coin", "chart2", data2);
+		
+	}
 	
+    function drew(sTitle, chartID, data) {
+        var cw = $("#"+chartID)[0].clientWidth;
+        var fsize = cw / 592 * 20;
+        $("#"+chartID).css('height', cw / 592 * 386 + 'px')
+        var myChart = echarts.init(document.getElementById(chartID));
+        var option = {
+				title: {
+					text: sTitle,
+					top:30,
+					textStyle:{
+						color:'#555555',
+						fontStyle:'normal',
+						fontWeight:'bold',
+						fontSize:fsize
+					}
+          		},
+				legend: {
+					top:0,
+					data: data.name,
+					itemWidth: 20,
+					itemHeight: 12,
+					itemGap: 10,
+					x: "center",
+					y: "top",
+            		textStyle:{
+						color:'#555555',
+						fontStyle:'normal',
+						fontWeight:'bold',
+						fontSize:fsize
+            		}
+      			},
+          		grid:{
+					x:35,
+					y:60,
+					x2:0,
+					y2:30,
+					borderWidth:1
+          		},
+				xAxis: {
+					axisLine:{
+						lineStyle: {
+							color: "#ededed",
+							width: 2
+              			},
+        			},
+            		axisLabel :{
+						show:true,
+						textStyle: { color: '#959595' }
+            		},
+            		data: data.yyyymm,
+          		},
+          		yAxis: {
+            		axisLine:false,
+		            axisLabel :{
+						show:true,
+						textStyle: { color: '#555555' }
+		            },
+            		splitNumber: 1,
+          		},
+          		animationDurationUpdate: 1200,
+          		series: [
+          			{
+						name: '종합',
+						type: 'bar',
+	            		itemStyle: {
+	              			normal: {
+	                			label: {  
+	                  				show: true,  
+									color: "#ccc",
+									fontWeight:'bold',
+									position: "insideBottom"
+	                			},
+	                			color: new echarts.graphic.LinearGradient(
+	                  				0, 1, 0, 0,
+	                  				[
+										{offset: 0, color: '#0080c6'},
+										{offset: 1, color: '#004d87'}
+	                  				]
+	                			)
+	              			}
+	            		},
+	            		z: 10,
+	            		data: data.bar1
+          			},
+          			{
+						name: '복식',
+						type:'line',
+						symbol:'circle',
+						itemStyle: {
+							normal: {
+								label: {  
+									show: true,  
+									color: "#e42e43",
+									fontWeight:'bold',
+									position: "top"
+	                    		},
+	                			color: "#e42e43",
+								lineStyle: {
+									color: "#e42e43"
+								}
+	              			}
+	            		},
+	            		z: 100,
+	            		data: data.line1
+	          		},
+	          		{
+						name: '혼합복식',
+						type:'line',
+						symbol:'circle',
+						itemStyle: {
+							normal: {
+								label: {  
+									show: true,  
+									color: "#ec8921",
+									fontWeight:'bold',
+									position: "bottom"
+								},
+			                	color: "#ec8921",
+								lineStyle: {
+									color: "#ec8921"
+								}
+			              	}
+            			},
+			            z: 100,
+			            data: data.line2
+					}
+				]
+        };
+        myChart.setOption(option);
+		$("#scrolltop").click(function(){
+			$(".scroll-wrap").animate({scrollTop:"0px"},800)
+		})
+	}
 </script>
 </html>

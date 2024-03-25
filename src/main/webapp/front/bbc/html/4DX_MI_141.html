@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>어트랙션 연간전망</title>
+    <!--bootstarp：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/font.css" />
+    <!--字体图标：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <!--reset：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <!--公共：公用-->
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <!--按钮：公用-->
+
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!--jquery公用-->
+    <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+    <!--rem公用-->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <!--表格改变列宽，有表格的-->
+    <script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+  </head>
+  <body>
+    <div class="app news14_app" id="app">
+      <div class="content" style="padding: 20px;">
+      	<div class="chart" id="chart"></div>
+      </div>
+      <div class="content" style="padding: 20px;">
+      	<div class="chart2" id="chart2"></div>
+      </div>
+    </div>
+	<script>
+		$(function() {
+			var load = new loading();
+			tagscheck();
+		});
+		
+		function tagscheck() {
+
+	        var data = {
+				name: ['종합','복식','혼합복식'],
+				yyyymm: ["2023-12","2024-01","2024-02","2024-03"],
+				bar1: [85, 64, 63, 57],
+				line1: [67, 67, 59, 63],
+				line2: [100, 63, 68, 50],
+	        }
+	        
+			drew("승율", "chart", data);
+			drew("Coin", "chart2", data);
+		    load.hide();
+		}
+		
+	    function drew(sTitle, chartID, data) {
+	        var cw = $("#"+chartID)[0].clientWidth;
+	        var fsize = cw / 592 * 20;
+	        $("#"+chartID).css('height', cw / 592 * 386 + 'px')
+	        var myChart = echarts.init(document.getElementById(chartID));
+	        var option = {
+					title: {
+    					text: sTitle,
+    					top:30,
+    					textStyle:{
+							color:'#555555',
+							fontStyle:'normal',
+							fontWeight:'bold',
+							fontSize:fsize
+    					}
+	          		},
+					legend: {
+						top:0,
+						data: data.name,
+						itemWidth: 20,
+						itemHeight: 12,
+						itemGap: 10,
+						x: "center",
+						y: "top",
+	            		textStyle:{
+							color:'#555555',
+							fontStyle:'normal',
+							fontWeight:'bold',
+							fontSize:fsize
+	            		}
+          			},
+	          		grid:{
+						x:35,
+						y:60,
+						x2:0,
+						y2:30,
+						borderWidth:1
+	          		},
+					xAxis: {
+						axisLine:{
+							lineStyle: {
+								color: "#ededed",
+								width: 2
+	              			},
+            			},
+	            		axisLabel :{
+							show:true,
+							textStyle: { color: '#959595' }
+	            		},
+	            		data: data.yyyymm,
+	          		},
+	          		yAxis: {
+	            		axisLine:false,
+			            axisLabel :{
+							show:true,
+							textStyle: { color: '#555555' }
+			            },
+	            		splitNumber: 1,
+	          		},
+	          		animationDurationUpdate: 1200,
+	          		series: [
+	          			{
+							name: '종합',
+							type: 'bar',
+		            		itemStyle: {
+		              			normal: {
+		                			label: {  
+		                  				show: true,  
+										color: "#ccc",
+										fontWeight:'bold',
+										position: "insideBottom"
+		                			},
+		                			color: new echarts.graphic.LinearGradient(
+		                  				0, 1, 0, 0,
+		                  				[
+											{offset: 0, color: '#0080c6'},
+											{offset: 1, color: '#004d87'}
+		                  				]
+		                			)
+		              			}
+		            		},
+		            		z: 10,
+		            		data: data.bar1
+	          			},
+	          			{
+							name: '복식',
+							type:'line',
+							symbol:'circle',
+							itemStyle: {
+								normal: {
+									label: {  
+										show: true,  
+										color: "#e42e43",
+										fontWeight:'bold',
+										position: "top"
+		                    		},
+		                			color: "#e42e43",
+									lineStyle: {
+										color: "#e42e43"
+									}
+		              			}
+		            		},
+		            		z: 100,
+		            		data: data.line1
+		          		},
+		          		{
+							name: '혼합복식',
+							type:'line',
+							symbol:'circle',
+							itemStyle: {
+								normal: {
+									label: {  
+										show: true,  
+										color: "#ec8921",
+										fontWeight:'bold',
+										position: "bottom"
+									},
+				                	color: "#ec8921",
+									lineStyle: {
+										color: "#ec8921"
+									}
+				              	}
+	            			},
+				            z: 100,
+				            data: data.line2
+						}
+					]
+	        };
+	        myChart.setOption(option);
+				$("#scrolltop").click(function(){
+					$(".scroll-wrap").animate({scrollTop:"0px"},800)
+				})
+		    }	
+	    
+	</script>
+  </body>
+</html>
