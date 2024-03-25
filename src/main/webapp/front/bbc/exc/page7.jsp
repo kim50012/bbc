@@ -104,7 +104,10 @@
 
 	$(function() {
 		getData();
-		appWidth();
+
+		if ("" == "${para3}") {
+			appWidth();	
+		}
 	});
 	
 	function appWidth() {
