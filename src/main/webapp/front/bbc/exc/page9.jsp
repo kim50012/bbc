@@ -101,7 +101,7 @@
 	$(function() {
 		setInterval(function(){
 			getData();
-		}, 3000);
+		}, 2000);
 	});
 	
 
