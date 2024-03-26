@@ -101,7 +101,6 @@
 
 </body>
 <script type="text/javascript">
-
 	$(function() {
 		getData();
 
