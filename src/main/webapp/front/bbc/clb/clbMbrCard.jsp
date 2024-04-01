@@ -11,6 +11,7 @@
 		<title>${amsMbr.CLB_NIK_NM } ${label.信息 }</title>
 		<%@ include file="/front/bbc/inc/css.jsp"%> 
 		<link rel="stylesheet" type="text/css" href="../css/jquery.typeahead.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
 		<%@ include file="/front/bbc/inc/js.jsp"%> 
 		<script src="../js/jquery.typeahead.js" type="text/javascript" charset="utf-8"></script>
 	</head>
@@ -28,7 +29,7 @@
 					width:0.8rem; 
 				}
 				.cell-2{
-					width:1.2rem; 
+					width:1.4rem; 
 				}
 				.cell-3{
 					width:1rem; 
@@ -255,9 +256,9 @@
 			</div>
 			
 			<!-- 천적 -->
-			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
+			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;display:none;">
 				<div class="flex">
-						<p class="flex1 title-icon" style="color: #ff0000;">상대하기 어려운 '천적' (최근 3개월 기준)</p>
+						<p class="flex1 title-icon" style="color: #ff0000;">상대전적('천적':붉은색 배경)</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
@@ -293,7 +294,7 @@
 			<!-- 밥 -->
 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
 				<div class="flex">
-						<p class="flex1 title-icon" style="color: #0000ff;">상대하기 쉬운 '밥' (최근 3개월 기준)</p>
+						<p class="flex1 title-icon">상대전적(<span style="color: #0000ff;">'밥':파란색</span>, <span style="color: #ff0000;">'천적':붉은색</span>)</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
@@ -312,9 +313,11 @@
 				<!-- START Data Loop -->
 				<c:forEach var="atrMtcMbrJ" items="${atrMtcMbrJ}" varStatus="status">  
 					
-					<ul class="flex list78 ul-list word">
+					<ul class="flex list78 ul-list word" ${atrMtcMbrJ.FLAG_TAG}>
 						<li class="flex2 cell-1 cell">${status.count}</li>
-						<li class="flex2 cell-2 cell" style="text-decoration:underline;" onclick="window.location='/front/bbc/clb/clbMbrCard.htm?intClbsq=${intClbsq}&intMbrsq=${atrMtcMbrJ.MBR_SQ}';">${atrMtcMbrJ.CLB_NIK_NM}</li>
+						<li class="flex2 cell-2 cell" style="text-decoration:underline;" onclick="window.location='/front/bbc/clb/clbMbrCard.htm?intClbsq=${intClbsq}&intMbrsq=${atrMtcMbrJ.MBR_SQ}';">
+							${atrMtcMbrJ.CLB_NIK_NM} ${atrMtcMbrJ.ICON_TAG}
+						</li>
 						<li class="flex2 cell-3 cell">${atrMtcMbrJ.GAME_CNT}</li>
 						<li class="flex2 cell-4 cell">${atrMtcMbrJ.WIN}/${atrMtcMbrJ.LOSE}</li>
 						<li class="flex2 cell-5 cell">${atrMtcMbrJ.WIN_RATE}%</li>
