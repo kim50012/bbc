@@ -26,7 +26,7 @@
 					color:#aaa;
 				}
 				.cell-1{
-					width:0.8rem; 
+					width:0.9rem; 
 				}
 				.cell-2{
 					width:1.2rem; 
