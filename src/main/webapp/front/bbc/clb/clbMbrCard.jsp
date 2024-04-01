@@ -29,7 +29,7 @@
 					width:0.8rem; 
 				}
 				.cell-2{
-					width:1.4rem; 
+					width:1.2rem; 
 				}
 				.cell-3{
 					width:1rem; 
@@ -314,9 +314,9 @@
 				<c:forEach var="atrMtcMbrJ" items="${atrMtcMbrJ}" varStatus="status">  
 					
 					<ul class="flex list78 ul-list word" ${atrMtcMbrJ.FLAG_TAG}>
-						<li class="flex2 cell-1 cell">${status.count}</li>
+						<li class="flex2 cell-1 cell">${atrMtcMbrJ.ICON_TAG} ${status.count}</li>
 						<li class="flex2 cell-2 cell" style="text-decoration:underline;" onclick="window.location='/front/bbc/clb/clbMbrCard.htm?intClbsq=${intClbsq}&intMbrsq=${atrMtcMbrJ.MBR_SQ}';">
-							${atrMtcMbrJ.CLB_NIK_NM} ${atrMtcMbrJ.ICON_TAG}
+							${atrMtcMbrJ.CLB_NIK_NM}
 						</li>
 						<li class="flex2 cell-3 cell">${atrMtcMbrJ.GAME_CNT}</li>
 						<li class="flex2 cell-4 cell">${atrMtcMbrJ.WIN}/${atrMtcMbrJ.LOSE}</li>
