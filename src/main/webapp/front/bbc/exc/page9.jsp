@@ -143,7 +143,7 @@
 						if (gameStatus == "END") {
 							$("#gameNo").addClass('orangeBtn');
 							endCount++;
-							if (endCount > 20) {
+							if (endCount > 10) {
 								createGame();
 							}
 						}

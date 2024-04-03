@@ -186,7 +186,8 @@
 
 				if (data.list.length != 0) {
 					for (var i = 0; i < data.list.length; i++) {
-						window.location = '/front/bbc/clb/gameRegWithScoreBoard.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ;
+// 						window.location = '/front/bbc/clb/gameRegWithScoreBoard.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ;
+						window.location = '/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ;
 					}
 				} else {
 
