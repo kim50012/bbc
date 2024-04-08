@@ -155,7 +155,7 @@
 			
 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
 				<div class="flex">
-						<p class="flex1 title-icon">Best${label.伙伴} – BB Coin Top 10</p>
+						<p class="flex1 title-icon">Best${label.伙伴} – BB Coin</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
@@ -189,7 +189,7 @@
 			
 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
 				<div class="flex">
-						<p class="flex1 title-icon">Best${label.伙伴} – ${label.胜率} Top 10</p>
+						<p class="flex1 title-icon">Best${label.伙伴} – ${label.胜率}</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
@@ -223,7 +223,7 @@
 
 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
 				<div class="flex">
-						<p class="flex1 title-icon">${label.伙伴} Top 10 - ${label.多}${label.比赛数}</p>
+						<p class="flex1 title-icon">${label.伙伴} - ${label.多}${label.比赛数}</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
@@ -256,39 +256,33 @@
 			</div>
 			
 			<!-- 천적 -->
-			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;display:none;">
-				<div class="flex">
-						<p class="flex1 title-icon" style="color: #ff0000;">상대전적('천적':붉은색 배경)</p>
-<!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
-				</div>
-			</div>
-			<div class="module list-head" style="border-top:none;">
-				<ul class="flex">
-					<li class="flex2 cell-1 cell">${label.排序}</li>
-					<li class="flex2 cell-2 cell">${label.姓名}</li>
-					<li class="flex2 cell-3 cell">${label.比赛数}</li>
-					<li class="flex2 cell-4 cell">My${label.胜}/${label.败}</li>
-					<li class="flex2 cell-5 cell">My${label.胜率}</li>
-					<li class="flex2 cell-6 cell">BB Coin</li>
-				</ul>
-			</div>
-			<div class="module" style="border-top:none;background:#fff;padding-bottom:0.2rem;">
-
-				<!-- START Data Loop -->
-				<c:forEach var="atrMtcMbrK" items="${atrMtcMbrK}" varStatus="status">  
-					
-					<ul class="flex list78 ul-list word">
-						<li class="flex2 cell-1 cell">${status.count}</li>
-						<li class="flex2 cell-2 cell" style="text-decoration:underline;" onclick="window.location='/front/bbc/clb/clbMbrCard.htm?intClbsq=${intClbsq}&intMbrsq=${atrMtcMbrK.MBR_SQ}';">${atrMtcMbrK.CLB_NIK_NM}</li>
-						<li class="flex2 cell-3 cell">${atrMtcMbrK.GAME_CNT}</li>
-						<li class="flex2 cell-4 cell">${atrMtcMbrK.WIN}/${atrMtcMbrK.LOSE}</li>
-						<li class="flex2 cell-5 cell">${atrMtcMbrK.WIN_RATE}%</li>
-						<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTeam.htm?intClbsq=${intClbsq}&intMbrsqa1=${intMbrsq}&intMbrsqb1=${atrMtcMbrK.MBR_SQ}';">${atrMtcMbrK.BBC_TAG}</li>
-					</ul>
-				 </c:forEach>
-				<!-- END Data Loop -->
-				
-			</div>
+<!-- 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;display:none;"> -->
+<!-- 				<div class="flex"> -->
+<!-- 						<p class="flex1 title-icon" style="color: #ff0000;">상대전적('천적':붉은색 배경)</p> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="module list-head" style="border-top:none;"> -->
+<!-- 				<ul class="flex"> -->
+<%-- 					<li class="flex2 cell-1 cell">${label.排序}</li> --%>
+<%-- 					<li class="flex2 cell-2 cell">${label.姓名}</li> --%>
+<%-- 					<li class="flex2 cell-3 cell">${label.比赛数}</li> --%>
+<%-- 					<li class="flex2 cell-4 cell">My${label.胜}/${label.败}</li> --%>
+<%-- 					<li class="flex2 cell-5 cell">My${label.胜率}</li> --%>
+<!-- 					<li class="flex2 cell-6 cell">BB Coin</li> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 			<div class="module" style="border-top:none;background:#fff;padding-bottom:0.2rem;"> -->
+<%-- 				<c:forEach var="atrMtcMbrK" items="${atrMtcMbrK}" varStatus="status">   --%>
+<!-- 					<ul class="flex list78 ul-list word"> -->
+<%-- 						<li class="flex2 cell-1 cell">${status.count}</li> --%>
+<%-- 						<li class="flex2 cell-2 cell" style="text-decoration:underline;" onclick="window.location='/front/bbc/clb/clbMbrCard.htm?intClbsq=${intClbsq}&intMbrsq=${atrMtcMbrK.MBR_SQ}';">${atrMtcMbrK.CLB_NIK_NM}</li> --%>
+<%-- 						<li class="flex2 cell-3 cell">${atrMtcMbrK.GAME_CNT}</li> --%>
+<%-- 						<li class="flex2 cell-4 cell">${atrMtcMbrK.WIN}/${atrMtcMbrK.LOSE}</li> --%>
+<%-- 						<li class="flex2 cell-5 cell">${atrMtcMbrK.WIN_RATE}%</li> --%>
+<%-- 						<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTeam.htm?intClbsq=${intClbsq}&intMbrsqa1=${intMbrsq}&intMbrsqb1=${atrMtcMbrK.MBR_SQ}';">${atrMtcMbrK.BBC_TAG}</li> --%>
+<!-- 					</ul> -->
+<%-- 				 </c:forEach> --%>
+<!-- 			</div> -->
 			
 			
 			<!-- 밥 -->
