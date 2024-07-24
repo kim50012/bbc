@@ -1,47 +1,29 @@
 package com.waremec.wpt.front.action;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.baidu.translate.TransApi;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.waremec.framework.common.PageData;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.ListUtil;
 import com.waremec.framework.utilities.SessionUtils;
-import com.waremec.framework.utilities.StringUtil;
 import com.waremec.weixin.action.WeixinBaseAction;
 import com.waremec.weixin.domain.AppInfo;
 import com.waremec.weixin.domain.template.DataItem;
 import com.waremec.weixin.domain.user.SessionMember;
 import com.waremec.weixin.service.KakaoService;
-import com.waremec.weixin.thread.QRCodeEventThread;
 import com.waremec.weixin.utils.EncryptUtils;
-import com.waremec.weixin.utils.HttpClientUtils;
-import com.waremec.wpt.admin.domain.AdminMyIncome;
-import com.waremec.wpt.admin.domain.AdminOrders;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.BbcService;
 import com.waremec.wpt.front.thread.SendMsgThread;
-
-import net.sf.json.JSONObject;
 
 import com.waremec.framework.utilities.LabelUtil;
 
@@ -648,11 +630,6 @@ public class BbcAction extends WeixinBaseAction {
 			
 			try{
 
-//				{{first.DATA}}
-//				会员编号：{{keyword1.DATA}}
-//				加入时间：{{keyword2.DATA}}
-//				{{remark.DATA}}
-
 				String first = "经历(小组A,B,C,D,E) : " + strBmtgd;
 				String keyword1 = strClbniknm;
 				String strClbsq = String.valueOf(intClbsq);
@@ -680,9 +657,6 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -784,8 +758,6 @@ public class BbcAction extends WeixinBaseAction {
 			map.put("CLB_GD",strClbgd);
 			map.put("CLB_MAI_IMG_PTH",strClbmaiimgpth);
 			map.put("CLB_MAI_IMG_FNM",strClbmaiimgfnm);
-			//map.put("CLB_BAK_IMG_PTH",CLB_BAK_IMG_PTH);
-			//map.put("CLB_BAK_IMG_FNM",CLB_BAK_IMG_FNM);
 			map.put("MAX_MBR_CNT",intMbrcnt);
 			map.put("CTT_NM",strCttnm);
 			map.put("CTT_PHN_NO",strCttphnno);
@@ -812,9 +784,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -865,8 +835,7 @@ public class BbcAction extends WeixinBaseAction {
 			map.put("EXC_TME_DCT",strExctmedct);
 			map.put("CLB_MAI_IMG_PTH",strClbmaiimgpth);
 			map.put("CLB_MAI_IMG_FNM",strClbmaiimgfnm);
-			//map.put("CLB_BAK_IMG_PTH",CLB_BAK_IMG_PTH);
-			//map.put("CLB_BAK_IMG_FNM",CLB_BAK_IMG_FNM);
+
 			map.put("MAX_MBR_CNT",intMbrcnt);
 			map.put("CTT_NM",strCttnm);
 			map.put("CTT_PHN_NO",strCttphnno);
@@ -885,9 +854,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -926,9 +893,7 @@ public class BbcAction extends WeixinBaseAction {
 			searchMap.put("REG_MBR_SQ", sessionMember.getCustSysId());
 			searchMap.put("LANG", currLanguage);
 			Map<String, Object> amsClb = commonService.select("Bbc.sqlAMS_CLB_SELECT",searchMap);
-			
 			request.put("amsClb", amsClb);
-
 			
 			searchMap.clear();
 			searchMap.put("JOP_TYPE", "S");
@@ -937,9 +902,7 @@ public class BbcAction extends WeixinBaseAction {
 			searchMap.put("CLB_JIN_REQ_ST", "REQ");
 			searchMap.put("LANG", currLanguage);
 			List<Map<String, Object>> atrClbJinReq = commonService.selectList("Bbc.sqlATR_CLB_JIN_REQ_SELECT",searchMap);
-
 			request.put("atrClbJinReq", atrClbJinReq);
-
 
 			searchMap.clear();
 			searchMap.put("JOP_TYPE", "S");
@@ -992,8 +955,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String mbrReqList(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			String currLanguage = LabelUtil.getCurrentLanguage();
 
@@ -1053,8 +1014,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String autoLogin(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			String currLanguage = LabelUtil.getCurrentLanguage();
 
@@ -1109,8 +1068,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbMbrInfo(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			String currLanguage = LabelUtil.getCurrentLanguage();
 			
@@ -1167,8 +1124,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbMyInfo(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			String currLanguage = LabelUtil.getCurrentLanguage();
 			
@@ -1227,8 +1182,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String clbMbrCard(){
 		
 		try{
-			//--------- Main Logic
-			
 			String loginUserId = "";
 			String currLanguage = LabelUtil.getCurrentLanguage();
 			
@@ -1363,8 +1316,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String gameReg(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			int loginMbrSq;
 			String loginNickName = "";
@@ -1455,8 +1406,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String gameRegWithScoreBoard(){
 
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			int loginMbrSq;
 			String loginNickName = "";
@@ -1549,8 +1498,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String gameRegSingle(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			int loginMbrSq;
 			String loginNickName = "";
@@ -1629,8 +1576,6 @@ public class BbcAction extends WeixinBaseAction {
 	public String gameView(){
 		
 		try{
-			//--------- Main Logic
-
 			String loginUserId = "";
 			int loginMbrSq;
 			String loginNickName = "";
@@ -1856,13 +1801,6 @@ public class BbcAction extends WeixinBaseAction {
 	    	renderJSON(mapResult);
 	    	
 			try{
-				
-//				{{first.DATA}}
-//				比赛名称：{{keyword1.DATA}}
-//				比赛时间：{{keyword2.DATA}}
-//				名次：{{keyword3.DATA}}
-//				{{remark.DATA}}
-
 				String openId1 = String.valueOf(mapResult.get("OPENID1"));
 				String openId2 = String.valueOf(mapResult.get("OPENID2"));
 				String openId3 = String.valueOf(mapResult.get("OPENID3"));
@@ -1969,13 +1907,6 @@ public class BbcAction extends WeixinBaseAction {
 	    	renderJSON(mapResult);
 	    	
 			try{
-				
-//				{{first.DATA}}
-//				比赛名称：{{keyword1.DATA}}
-//				比赛时间：{{keyword2.DATA}}
-//				名次：{{keyword3.DATA}}
-//				{{remark.DATA}}
-
 				String openId1 = String.valueOf(mapResult.get("OPENID1"));
 				String openId2 = String.valueOf(mapResult.get("OPENID2"));
 				String strMtcsq = String.valueOf(mapResult.get("RST_SQ_OUT"));
@@ -3150,9 +3081,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3390,9 +3319,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3454,9 +3381,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3511,9 +3436,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3566,9 +3489,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3579,7 +3500,7 @@ public class BbcAction extends WeixinBaseAction {
 	//---------------------------------------------------------------
 	// [클럽-clb] Club 회원 정보 수정
 	//---------------------------------------------------------------
-	public String clbMbrModify(){
+	public String clbMbrModifyNew(){
 
 		String loginUserId = "";
 		String ret="fail";
@@ -3623,9 +3544,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3674,9 +3593,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -3723,9 +3640,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -4465,9 +4380,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -4543,9 +4456,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -4636,9 +4547,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -4741,15 +4650,8 @@ public class BbcAction extends WeixinBaseAction {
 			
 			
 			return NONE;
-			
-//			String msgOut = (String) mapResult.get("MSG_OUT");
-//			if(msgOut.equals("S")){
-//				ret="success";
-//			}
-//			else {
-//				ret=msgOut;
-//			}
-			
+
+
 		}catch(Exception e){
 			e.printStackTrace();
 			ret="fail";
@@ -4805,9 +4707,7 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
+
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -5190,16 +5090,6 @@ public class BbcAction extends WeixinBaseAction {
 
 					String templateId = "roTAZQ0IBQmXwIUE2IebSH3haqCj6uhHiSLg_3DBUwA";	//成为会员通知
 					
-					/*
-					{{first.DATA}}
-					发货日期：{{keyword1.DATA}}
-					发货商品：{{keyword2.DATA}}
-					收货确认日期：{{keyword3.DATA}}
-					收货人：{{keyword4.DATA}}
-					备注：{{keyword5.DATA}}
-					{{remark.DATA}}
-					*/
-					
 					String first = "구매하신 콕 배송이 완료 되었습니다.";
 					String keyword1 = String.valueOf(amsExcList.get("DT"));
 					String keyword2 = String.valueOf(amsExcList.get("EXC_JIN_DLY")) + " 통";
@@ -5235,14 +5125,6 @@ public class BbcAction extends WeixinBaseAction {
 			}			
 			
 			return NONE;
-			
-//			String msgOut = (String) mapResult.get("MSG_OUT");
-//			if(msgOut.equals("S")){
-//				ret="success";
-//			}
-//			else {
-//				ret=msgOut;
-//			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -5300,9 +5182,6 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -5396,9 +5275,6 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -5452,9 +5328,6 @@ public class BbcAction extends WeixinBaseAction {
 			e.printStackTrace();
 			ret="fail";
 		}
-		/*JSONObject jo = new JSONObject();
-		jo.put("ret", ret);
-  		renderHtml(jo.toJSONString());*/
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("ret", ret);
 		renderJSON(returnMap);
@@ -8722,6 +8595,5 @@ public class BbcAction extends WeixinBaseAction {
 
 	public void setPara9(String para9) {
 		this.para9 = para9;
-	}
-	
+	}	
 }

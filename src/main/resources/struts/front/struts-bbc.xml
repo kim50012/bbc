@@ -41,6 +41,7 @@
  		    <result name="page17">/front/bbc/clb/page17.jsp</result>
  		    <result name="page18">/front/bbc/clb/page18.jsp</result>
  		    <result name="page19">/front/bbc/clb/page19.jsp</result>
+		    <result name="clbMbrModify">/front/bbc/clb/clbMbrModify.jsp</result>
 		    <result name="{1}">/front/bbc/clb/{1}.jsp</result>
 		</action>
 	</package>
@@ -113,6 +114,15 @@
  		    <result name="page28">/front/bbc/badMatch/page28.jsp</result>
  		    <result name="page29">/front/bbc/badMatch/page29.jsp</result>
 		    <result name="{1}">/front/bbc/badMatch/{1}.jsp</result>
+		</action>
+	</package>
+	
+	
+ 	<package name="front/bbc/bbcNew" extends="portal-default" namespace="/front/bbc/bbcNew">
+		<action name="*" method="{1}" class="bbcNewAction">
+ 		    <result name="noAuth">/front/error/noAuth.jsp</result>
+ 		    <result name="timeout">/front/error/timeout.jsp</result>
+		    <result name="{1}">/front/bbc/bbcNew/{1}.jsp</result>
 		</action>
 	</package>
 	
