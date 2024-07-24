@@ -71,8 +71,15 @@ public class BadMatchAction extends WeixinBaseAction {
 	private String para19;
 	private String para20;
 
-	
-	
+	private int intClbsq;
+	private int intMbrsq;
+	private String strClbniknm;
+	private String strClbgd;
+	private int intBthDtTp;
+	private String strAtttp;
+	private String strBmtgd;
+	private float intClbbbc;
+	private float intJinclbbbc;
 
 	public String getShopId() {
 		return shopId;
@@ -217,6 +224,60 @@ public class BadMatchAction extends WeixinBaseAction {
 	}
 	public void setPara20(String para20) {
 		this.para20 = para20;
+	}
+	public int getIntClbsq() {
+		return intClbsq;
+	}
+	public void setIntClbsq(int intClbsq) {
+		this.intClbsq = intClbsq;
+	}
+	public int getIntMbrsq() {
+		return intMbrsq;
+	}
+	public void setIntMbrsq(int intMbrsq) {
+		this.intMbrsq = intMbrsq;
+	}
+	public String getStrClbniknm() {
+		return strClbniknm;
+	}
+	public void setStrClbniknm(String strClbniknm) {
+		this.strClbniknm = strClbniknm;
+	}
+	public String getStrClbgd() {
+		return strClbgd;
+	}
+	public void setStrClbgd(String strClbgd) {
+		this.strClbgd = strClbgd;
+	}
+	public int getIntBthDtTp() {
+		return intBthDtTp;
+	}
+	public void setIntBthDtTp(int intBthDtTp) {
+		this.intBthDtTp = intBthDtTp;
+	}
+	public String getStrAtttp() {
+		return strAtttp;
+	}
+	public void setStrAtttp(String strAtttp) {
+		this.strAtttp = strAtttp;
+	}
+	public String getStrBmtgd() {
+		return strBmtgd;
+	}
+	public void setStrBmtgd(String strBmtgd) {
+		this.strBmtgd = strBmtgd;
+	}
+	public float getIntClbbbc() {
+		return intClbbbc;
+	}
+	public void setIntClbbbc(float intClbbbc) {
+		this.intClbbbc = intClbbbc;
+	}
+	public float getIntJinclbbbc() {
+		return intJinclbbbc;
+	}
+	public void setIntJinclbbbc(float intJinclbbbc) {
+		this.intJinclbbbc = intJinclbbbc;
 	}
 
 	
@@ -566,7 +627,7 @@ public class BadMatchAction extends WeixinBaseAction {
 	}
 	
 
-	
+
 	//---------------------------------------------------------------
 	// userInsert
 	//---------------------------------------------------------------
@@ -623,6 +684,67 @@ public class BadMatchAction extends WeixinBaseAction {
 			returnMap.put("ret", ret);
 			renderJSON(returnMap);
 		}		
+		
+		return NONE;
+	}	
+	
+
+	//---------------------------------------------------------------
+	// userInsert
+	//---------------------------------------------------------------
+	public String updateMbrInfo(){
+
+		try{
+
+			String loginUserId = "";
+			String ret="fail";
+			
+			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+			if (sessionMember == null) {
+				ret="fail";
+				request.put("strLngdv", "ko-KR");
+				return NONE;
+			}
+			else {
+				loginUserId = sessionMember.getOpenid();
+				strLngdv = sessionMember.getLang();
+				request.put("strLngdv", strLngdv);
+			}
+			
+			try{
+
+				Map<String,Object> map=new HashMap<String, Object>();
+
+		 		map.put("JOP_TYPE","U");
+				map.put("LOGIN_USER",loginUserId);
+				
+				map.put("CLB_SQ",intClbsq);
+				map.put("MBR_SQ",intMbrsq);
+				map.put("CLB_GD",strClbgd);
+				map.put("CLB_BBC",intClbbbc);
+				map.put("JIN_CLB_BBC",intJinclbbbc);
+				map.put("CLB_NIK_NM",strClbniknm);
+				map.put("CLB_JIN_ST",strAtttp);
+				map.put("LST_MOD_MBR_SQ",intBthDtTp);
+				map.put("BMT_GD",strBmtgd);
+				
+				Map<String,Object> mapResult=commonService.select("Bbc.sqlAMS_CLB_MBR_INSERT", map);
+				String msgOut = (String) mapResult.get("MSG_OUT");
+				if(msgOut.equals("S")){
+					ret="success";
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+				ret="fail";
+			}
+
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			returnMap.put("ret", ret);
+			renderJSON(returnMap);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		return NONE;
 	}	

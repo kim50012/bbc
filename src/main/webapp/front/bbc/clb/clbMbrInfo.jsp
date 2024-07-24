@@ -347,11 +347,12 @@
      			 	 			,intMbrsq : intMbrsq
      			 	 			,strClbniknm : strClbniknm
      			 	 			,strAtttp : datJindt
-     			 	 			,intYywincnt : intYywincnt
+     			 	 			,intBthDtTp : intYywincnt
      			 	 			,strBmtgd : strBmtgd
      			 	 		},
      					type : "POST",
-     					url : "/front/bbc/clb/clbMbrModify.htm",
+ 					    contentType : "application/x-www-form-urlencoded;charset=utf-8",
+     					url : "/front/bbc/badMatch/updateMbrInfo.htm",
      					success : function(data) {
 
      						if(data.ret=="success"){
@@ -392,9 +393,7 @@
      					    contentType : "application/x-www-form-urlencoded;charset=utf-8",
      						url : "/front/bbc/clb/getData.htm",
      						success : function(data) {
-
      							window.location.reload();
-
      						},
      						error : function(xhr, status, e) {
      							window.location.reload();
