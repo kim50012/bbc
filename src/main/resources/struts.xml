@@ -95,8 +95,6 @@
 	<include file="struts/admin/struts-master.xml" />
 	<include file="struts/admin/struts-admin.xml" />
 	<include file="struts/admin/struts-shopManage.xml" />
-<!-- 	<include file="struts/admin/struts-dashboard.xml" /> -->
-<!-- 	<include file="struts/admin/struts-human.xml" /> -->
 	<include file="struts/admin/struts-shopLack.xml" />
 	<include file="struts/admin/struts-dhhk.xml" />
 	
@@ -105,9 +103,6 @@
 	<include file="struts/front/struts-marketing.xml" />
 	<include file="struts/front/struts-event.xml" />
 	<include file="struts/front/struts-nongshim.xml" />
-<!-- 	<include file="struts/front/struts-human.xml" /> -->
-<!-- 	<include file="struts/front/struts-incheonAirport.xml" /> -->
-
 
 	<include file="struts/weixin/struts-weixin.xml" />
 	<include file="struts/payment/struts-payment.xml" />
@@ -120,18 +115,6 @@
 	<!--  hzm-->
 	<include file="struts/hzm/struts-hzmPortal.xml" />
 	<include file="struts/hzm/struts-hzmShopManage.xml" />
-	
-	<!-- weibo -->
-<!-- 	<include file="struts/hzm_weibo/struts-hzmWeiBo.xml" /> -->
-	
-	<!-- PMS -->
-<!-- 	<include file="struts/pms/struts-pms.xml" /> -->
-	
-	<!-- Home -->
-<!-- 	<include file="struts/home/struts-home.xml" /> -->
-	
-	
-	
 	
 	<!-- BBC System -->
 	<include file="struts/front/struts-bbc.xml" />
