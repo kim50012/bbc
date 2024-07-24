@@ -393,9 +393,7 @@
      					    contentType : "application/x-www-form-urlencoded;charset=utf-8",
      						url : "/front/bbc/clb/getData.htm",
      						success : function(data) {
-
      							window.location.reload();
-
      						},
      						error : function(xhr, status, e) {
      							window.location.reload();
