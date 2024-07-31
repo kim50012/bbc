@@ -8,25 +8,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>점수판 세로 고정 모드</title>
-<!--bootstarp：公用-->
-<!-- <link rel="stylesheet" type="text/css" href="../css/font.css" /> -->
-<!--字体图标：公用-->
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
-<!--reset：公用-->
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
-<!--公共：公用-->
 <link rel="stylesheet" type="text/css" href="../css/button.css" />
-<!--按钮：公用-->
-
 <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<!--jquery公用-->
 <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
-<!--rem公用-->
-<!-- <script src="../js/bootstrap.min.js"></script> -->
-<!-- <script src="../js/header.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
-<!--表格改变列宽，有表格的-->
-<!-- <script src="../js/4DX_MI_140.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="../js/jquery.touchSwipe.js"></script>
 <style type="text/css">
 	.app {
 		padding-top: 0rem;
@@ -73,7 +61,7 @@
     
 </style>
 </head>
-<body class="sbody" onkeydown="inputKey(event)">
+<body id="body" class="sbody" onkeydown="inputKey(event)">
 	<div class="app news14_app" id="appPointInput">
 		<div class="content">
 			<div class="scroll-wrap" style="height:100%;">
@@ -101,8 +89,25 @@
 	</div>
 	
 </body>
+
 <script type="text/javascript">
+	$(function(){
+		$("#body").swipe({
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				if( direction == "left" ){
+					//왼쪽
+				}else if( direction == "right" ){
+					//오른쪽
+					threshold:0
+				}
+			},
+			threshold:0,
+			fingers:'all'
+		});
+	});
+	
 	function inputKey(key) {
+		
 	    if (key.keyCode == 37) {
 	    	addPointA(1);
 	    }

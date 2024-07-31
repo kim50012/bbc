@@ -79,7 +79,8 @@
 		            </div>
 		            
 					<div class="title2" style="border-top:solid 1px #01cfb9; border-bottom:solid 1px #01cfb9">
-						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${amsClb.CLB_SQ}">게임 목록</a></span> <span
+						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${amsClb.CLB_SQ}">게임 목록 <span class="mdi mdi-refresh-circle"></span>
+						</a></span> <span
 							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
 					</div>
 
@@ -215,44 +216,6 @@
 	}
 
 
-	function saveData() {
-
-		var para1 = "FEE_SAVE";
-		var para2 = "${para2}";
-		var para3 = "9";
-		var para4 = $("#txtFeeDt").val();
-		
-		var load = loading();
-		load.show()
-
-		$.ajax({
-					data : {
-						para1 : para1,
-						para2 : para2,
-						para3 : para3,
-						para4 : para4,
-						para5 : para5,
-						para6 : para6,
-						para7 : para7,
-						para8 : para8,
-						para9 : para9
-					},
-					type : "POST",
-				    contentType : "application/x-www-form-urlencoded;charset=utf-8",
-					url : "/front/bbc/clb/getData.htm",
-					success : function(data) {
-
-						window.location.href="/front/bbc/clb/getPage.htm?pageName=page3&intClbsq=${intClbsq }";	
-						load.hide()
-
-					},
-					error : function(xhr, status, e) {
-						load.hide()
-						alert("Error : " + status);
-					}
-				});
-	}
-	
 	
 </script>
 </html>

@@ -21,6 +21,7 @@
 <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery.touchSwipe.js"></script>
 <style type="text/css">
 	.app {
 		padding-top: 0rem;
@@ -63,7 +64,7 @@
 	}
 </style>
 </head>
-<body onkeydown="inputKey(event)">
+<body id="body" onkeydown="inputKey(event)">
 	<div class="app news14_app" id="appPointInput">
 		<div class="content">
 			<div style="height:100%;">
@@ -77,10 +78,15 @@
 						</div>
 			          	<div class="btn-wrap" style="padding-top: 0.7rem;">
 			          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;display: initial;">
-			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;" onclick="changeCt();">
+			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;">
 			                	<span class="mdi mdi-arrow-left-bold-box" style="font-size: 0.5rem;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${amsClb.CLB_SQ}'"></span>
 			                </div>
-			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.7rem;" onclick="init();">
+			                
+			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
+			                	<span class="mdi mdi-swap-horizontal-bold" style="font-size: 0.5rem;" onclick="changeCt();"></span>
+			                </div>
+
+			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
 			                	<span class="mdi mdi-refresh-circle" style="font-size: 0.5rem;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt=${intMtcsetcnt}'"></span>
 							</div>
 			              </div>
@@ -102,8 +108,26 @@
 		setInterval(function(){
 			getData();
 		}, 2000);
+
+		$("#body").swipe({
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			    if (direction == "up") {
+			    	addPointA(-1);
+			    }
+			    if (direction == "right") {
+			    	addPointA(1);
+			    }
+			    if (direction == "down") {
+			    	addPointB(1);
+			    }
+			    if (direction == "left") {
+			    	addPointB(-1);
+			    }
+			},
+			threshold:0,
+			fingers:'all'
+		});
 	});
-	
 
 	function getData() {
 
@@ -161,6 +185,34 @@
 		
 	}
 
+
+	function saveScore() {
+
+		var para1 = "AMS_GAME_UPDATE";
+		var para2 = "${intClbsq}";
+		var para3 = "${intMtcsetcnt}";
+		var para4 = $("#pointA").html();
+		var para5 = $("#pointB").html();
+
+		$.ajax({
+			data : {
+				para1 : para1,
+				para2 : para2,
+				para3 : para3,
+				para4 : para4,
+				para5 : para5
+			},
+			type : "POST",
+			url : "/front/bbc/clb/getData.htm",
+			success : function(data) {
+				
+			},
+			error : function(xhr, status, e) {
+				alert("Error : " + status);
+			}
+		});
+		
+	}	
 
 	function createGame() {
 
@@ -223,8 +275,8 @@
 	function init() {
 		$("#pointA").html(0);
 		$("#pointB").html(0);
-		setCookie("A", 0);
-		setCookie("B", 0);
+// 		setCookie("A", 0);
+// 		setCookie("B", 0);
 	}
 	function addPointA(a){
 		var point = $("#pointA").html();
@@ -233,7 +285,8 @@
 			rlt = 0;
 		}
 		$("#pointA").html(rlt);
-		setCookie("A", rlt);
+// 		setCookie("A", rlt);
+		saveScore();
 	}
 	function addPointB(a){
 		var point = $("#pointB").html();
@@ -242,15 +295,17 @@
 			rlt = 0;
 		}
 		$("#pointB").html(rlt);
-		setCookie("B", rlt);
+// 		setCookie("B", rlt);
+		saveScore();
 	}
 	function changeCt() {
 		var pointA = $("#pointA").html();
 		var pointB = $("#pointB").html();
 		$("#pointA").html(pointB);
 		$("#pointB").html(pointA);
-		setCookie("A", pointB);
-		setCookie("B", pointA);
+// 		setCookie("A", pointB);
+// 		setCookie("B", pointA);
+		saveScore();
 	}
 	function setCookie(a, b) {
 		var date = new Date();
