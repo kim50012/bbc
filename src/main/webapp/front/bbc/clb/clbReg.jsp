@@ -357,8 +357,8 @@
  				return;
  			}
  			if (strAtdadr == "") {
- 				alert("${label.请输入场地地址}");
- 				return;
+//  				alert("${label.请输入场地地址}");
+//  				return;
  			}
  			if (strAtdadrdtl == "") {
  				alert("${label.请输入详细地址}");
