@@ -2639,12 +2639,22 @@ public class BbcAction extends WeixinBaseAction {
 			searchMap.put("LANG", currLanguage);
 			searchMap.put("ORDERBY", strOrderby);
 			List<Map<String, Object>> atrMtcList = commonService.selectList("Bbc.sqlATR_MTC_SELECT_BEST",searchMap);
+			
+
+			searchMap.clear();
+			searchMap.put("JOP_TYPE", "C");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("MBR_SQ", intMbrsq);
+			searchMap.put("LANG", currLanguage);
+			List<Map<String, Object>> atrMtcList2 = commonService.selectList("Bbc.sqlATR_MTC_SELECT_BEST",searchMap);
 
 			
 			request.put("loginMbrSq", loginMbrSq);
 			request.put("loginNickName", loginNickName);
 			request.put("loginBbc", loginBbc);
 			request.put("atrMtcList", atrMtcList);
+			request.put("atrMtcList2", atrMtcList2);
 			
 			
 		}

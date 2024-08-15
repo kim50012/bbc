@@ -1,2 +1,4 @@
 /target/
 /spy.log
+/.project
+/.gitignore
