@@ -78,11 +78,11 @@
 					</div>
 
 
-					<div class="content" style="padding: 20px;">
+					<div class="content" id="chartArea1" style="padding: 20px;">
 						<div class="chart" id="chart"></div>
 					</div>
 					
-					<div class="content" style="padding: 20px;">
+					<div class="content" id="chartArea2" style="padding: 20px;">
 						<div class="chart2" id="chart2"></div>
 					</div>
 
@@ -103,10 +103,7 @@
 <script type="text/javascript">
 	$(function() {
 		getData();
-
-		if ("" == "${para3}") {
-			appWidth();	
-		}
+		appWidth();	
 	});
 	
 	function appWidth() {
@@ -240,7 +237,13 @@
 						}
 						
 						if ("" != "${para3}") {
+							$("#chartArea1").show();
+							$("#chartArea2").show();
 							tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW);	
+						}
+						else {
+							$("#chartArea1").hide();
+							$("#chartArea2").hide();
 						}
 						
 						load.hide();
@@ -306,28 +309,24 @@
 				});
 	}
 	
-
 	function tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW) {
 
         var data = {
 			name: ['종합','복식','혼합복식'],
-			yyyymm: arrYyyymm,
-			bar1: arrBarRateTT,
-			line1: arrLineRateMM,
-			line2: arrLineRateMW,
+			yyyymm: arrYyyymm.reverse(),
+			bar1: arrBarRateTT.reverse(),
+			line1: arrLineRateMM.reverse(),
+			line2: arrLineRateMW.reverse(),
         }
 
         var data2 = {
 			name: ['종합','복식','혼합복식'],
-			yyyymm: arrYyyymm,
-			bar1: arrBarCoinTT,
-			line1: arrLineCoinMM,
-			line2: arrLineCoinMW,
+			yyyymm: arrYyyymm.reverse(),
+			bar1: arrBarCoinTT.reverse(),
+			line1: arrLineCoinMM.reverse(),
+			line2: arrLineCoinMW.reverse(),
         }
 
-        console.log(data);
-        console.log(data2);
-        
 		drew("승율", "chart", data);
 		drew("Coin", "chart2", data2);
 		
@@ -335,8 +334,9 @@
 	
     function drew(sTitle, chartID, data) {
         var cw = $("#"+chartID)[0].clientWidth;
-        var fsize = cw / 592 * 20;
-        $("#"+chartID).css('height', cw / 592 * 386 + 'px')
+        var cHeight = $(window).height();
+        var fsize = cHeight * 0.013;
+        $("#"+chartID).css('height', cHeight * 0.2 + 'px')
         var myChart = echarts.init(document.getElementById(chartID));
         var option = {
 				title: {
