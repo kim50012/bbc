@@ -67,10 +67,9 @@
 <body>
 	<div class="app">
 
-
 		<div class="content">
 			<div class="scroll-wrap" id="appPage2">
-				<div class="container">
+				<div class="container" style="padding:0;">
 				
 					<div class="title2">
 						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}">월별 현황</a></span> <span
@@ -78,11 +77,11 @@
 					</div>
 
 
-					<div class="content" id="chartArea1" style="padding: 20px;">
+					<div class="content" id="chartArea1">
 						<div class="chart" id="chart"></div>
 					</div>
 					
-					<div class="content" id="chartArea2" style="padding: 20px;">
+					<div class="content" id="chartArea2" style="padding-top:20px;">
 						<div class="chart2" id="chart2"></div>
 					</div>
 
@@ -309,11 +308,23 @@
 				});
 	}
 	
+	function accumulateArray(arr) {
+	    let accumulatedValue = 0;
+	    return arr.map(value => accumulatedValue += roundNumber(value, 0));
+	}
+	
+	function roundNumber(value, decimals) {
+	    const factor = Math.pow(10, decimals);
+	    return Math.round(value * factor) / factor;
+	}
+	
 	function tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW) {
 
+		var yyyyMmRev = arrYyyymm.reverse();
+		
         var data = {
 			name: ['종합','복식','혼합복식'],
-			yyyymm: arrYyyymm.reverse(),
+			yyyymm: yyyyMmRev,
 			bar1: arrBarRateTT.reverse(),
 			line1: arrLineRateMM.reverse(),
 			line2: arrLineRateMW.reverse(),
@@ -321,10 +332,10 @@
 
         var data2 = {
 			name: ['종합','복식','혼합복식'],
-			yyyymm: arrYyyymm.reverse(),
-			bar1: arrBarCoinTT.reverse(),
-			line1: arrLineCoinMM.reverse(),
-			line2: arrLineCoinMW.reverse(),
+			yyyymm: yyyyMmRev,
+			bar1: accumulateArray(arrBarCoinTT.reverse()),
+			line1: accumulateArray(arrLineCoinMM.reverse()),
+			line2: accumulateArray(arrLineCoinMW.reverse()),
         }
 
 		drew("승율", "chart", data);
@@ -335,8 +346,15 @@
     function drew(sTitle, chartID, data) {
         var cw = $("#"+chartID)[0].clientWidth;
         var cHeight = $(window).height();
-        var fsize = cHeight * 0.013;
-        $("#"+chartID).css('height', cHeight * 0.2 + 'px')
+        var fsizeWeight = 0.013;
+        var cHeightWeight = 0.3;
+        
+        if (cw < 640) {
+        	cHeightWeight = 0.4;
+        }
+        
+        var fsize = cHeight * fsizeWeight;
+        $("#"+chartID).css('height', cHeight * cHeightWeight + 'px')
         var myChart = echarts.init(document.getElementById(chartID));
         var option = {
 				title: {
@@ -367,7 +385,7 @@
           		grid:{
 					x:35,
 					y:60,
-					x2:0,
+					x2:20,
 					y2:30,
 					borderWidth:1
           		},
