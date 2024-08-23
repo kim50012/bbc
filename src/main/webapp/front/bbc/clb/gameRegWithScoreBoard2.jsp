@@ -118,7 +118,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition1">
+			<div class="competition1" style="display:none;">
 				<div class="party float">
 					<div class="competition-red">
 					 	<p class="fullname float">${label.现在}BB Coin</p>
@@ -148,7 +148,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition2">
+			<div class="competition2" style="display:none;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float">${label.最终}BB Coin</p>
@@ -168,7 +168,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition2" style="width:100%;height:1.5rem;">
+			<div class="competition2" style="width:100%;height:1.5rem;display:none;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float" style="width:50%;">1 Team Name</p>
@@ -192,10 +192,7 @@
 
 			
 			<div style="text-align: center;margin-top: 0.8rem;">
-					<button class="btn-submit" id="btnMsg" onclick="window.location='gamePeriod.htm?intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">${label.期间别比赛现况}</button>
-			</div>
-			<div style="text-align: center;margin-top: 0.2rem;">
-					<button class="btn-submit" id="btnMsg" onclick="window.location='gameTody.htm?intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">${label.今日比赛列表}</button>
+					<button class="btn-submit" id="btnMsg" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">경기목록 보기</button>
 			</div>
 	
 
@@ -203,9 +200,7 @@
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------------------- -->
-
     <script>
-
     var data = ${kewordData};
     //name, bbc, rank, imgUrl, keyword, id, grade
     
@@ -218,6 +213,8 @@
     ' <span class="id">( {{rank}}${label.位}, {{bbc}}${label.分} )</span>' +
     '</span>';
     
+    </script>
+    <script>
     typeof $.typeahead === 'function' && $.typeahead({
         input: "#strMbrnma1",
         minLength: 0,
@@ -342,11 +339,6 @@
 
 		function fn_GameSave(strJobtype) {
 			
-// 			if (("${intClbsq}" == "24") && (strJobtype == "I") && ("${loginMbrSq}" != "20")) {
-// 				alert("교류전의 경우 경기를 생성할 수 없습니다.");
-// 				return;
-// 			}
-			
  			var intClbsq= "${intClbsq}";	  // 클럽시퀀스
 			var intMbrsqa1= $('#intMbrsqa1').val();			// [경기선수] 선수 A1
 			var intMtcclbbbca1= $('#intMtcclbbbca1').val();	// [경기선수] 경기시코인 A1
@@ -358,11 +350,12 @@
 			var intMtcclbbbcb2= $('#intMtcclbbbcb2').val();	// [경기선수] 경기시코인 B2
 			var intAtemscr= $('#intAtemscr').val();			// [경기선수] A팀 점수
 			var intBtemscr= $('#intBtemscr').val();			// [경기선수] B팀 점수
-			
+
 			var strMbrnma1= $('#strMbrnma1').val();			// [경기선수] 선수 이름 A1
 			var strMbrnma2= $('#strMbrnma2').val();			// [경기선수] 선수 이름 A2
 			var strMbrnmb1= $('#strMbrnmb1').val();			// [경기선수] 선수 이름 B1
 			var strMbrnmb2= $('#strMbrnmb2').val();			// [경기선수] 선수 이름 B2
+			var intMtcsetcnt = "${intMtcsetcnt}";	  // 게임
 
 			var strHmenm= $('#teamA').val();			// 
 			var strAwynm= $('#teamB').val();			// 
@@ -437,6 +430,7 @@
 			 	 			,strMbrnmb2 : strMbrnmb2
 			 	 			,strHmenm : strHmenm
 			 	 			,strAwynm : strAwynm
+// 			 	 			,intMtcsetcnt : intMtcsetcnt
 			 	 		},
 					type : "POST",
 					url : "/front/bbc/clb/gameSave.htm",
@@ -508,13 +502,7 @@
 								$('#btnMsg').html();
 								$('#btnMsg').show();
 			     				alert("${label.保存成功了}");
-			     				//window.location="/front/bbc/clb/gameTody.htm?intClbsq=${intClbsq}&intMbrsq=${loginMbrSq}";
-								
-			     				if(intMbrsqa1=="${loginMbrSq}" || intMbrsqa2 == "${loginMbrSq}" || intMbrsqb1 == "${loginMbrSq}" || intMbrsqb2 == "${loginMbrSq}") {
-									window.location="/front/bbc/clb/gameTody.htm?intClbsq=${intClbsq}&intMbrsq=${loginMbrSq}";
-								} else {
-									window.location="/front/bbc/clb/gameTody.htm?intClbsq=${intClbsq}";	
-								}
+								window.location="/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}";
 							}
 							
 						}else{
@@ -531,7 +519,65 @@
 				});
 		}
 
-    
+		$(function() {
+// 			setInterval(function(){
+// 				saveScore();
+// 			}, 1000);
+		});
+		
+
+		function saveScore() {
+
+			var para1 = "AMS_GAME_UPDATE";
+			var para2 = "${intClbsq}";
+			var para3 = "${intMtcsetcnt}";
+			var para4 = $("#intAtemscr").val();
+			var para5 = $("#intBtemscr").val();
+			var para6= $('#strMbrnma1').val();			// [경기선수] 선수 이름 A1
+			var para7= $('#strMbrnma2').val();			// [경기선수] 선수 이름 A2
+			var para8= $('#strMbrnmb1').val();			// [경기선수] 선수 이름 B1
+			var para9= $('#strMbrnmb2').val();			// [경기선수] 선수 이름 B2
+
+			$.ajax({
+				data : {
+					para1 : para1,
+					para2 : para2,
+					para3 : para3,
+					para4 : para4,
+					para5 : para5,
+					para6 : para6,
+					para7 : para7,
+					para8 : para8,
+					para9 : para9
+				},
+				type : "POST",
+				url : "/front/bbc/clb/getData.htm",
+				success : function(data) {
+					
+				},
+				error : function(xhr, status, e) {
+					alert("Error : " + status);
+				}
+			});
+			
+		}
+
+		function addPointA(a){
+			var point = $("#intAtemscr").val();
+			var rlt = Number(point)+Number(a);
+			if (rlt < 0) {
+				rlt = 0;
+			}
+			$("#intAtemscr").val(rlt);
+		}
+		function addPointB(a){
+			var point = $("#intBtemscr").val();
+			var rlt = Number(point)+Number(a);
+			if (rlt < 0) {
+				rlt = 0;
+			}
+			$("#intBtemscr").val(rlt);
+		}    
     
     </script>
 

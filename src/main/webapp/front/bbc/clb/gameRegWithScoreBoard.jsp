@@ -16,9 +16,16 @@
 		<%@ include file="/front/bbc/inc/remjs.jsp"%> 
 		<script src="../js/footer.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery.typeahead.js" type="text/javascript" charset="utf-8"></script>
-		
+		<style type="text/css">
+			.typeahead__list, .typeahead__dropdown {
+			    min-width: 4rem;
+			}
+			.typeahead__list2, .typeahead__dropdown {
+			    min-width: 4rem;
+			}
+		</style>
 	</head>
-	<body style="background:#fff;text-align:center;">
+	<body style="background:#fff;text-align:center;width:100%;">
 	
 			<div style="text-align: center;padding-top: 0.4rem;padding-bottom: 0.2rem;">
 					<button class="btn-submit" id="btnCal" onclick="fn_GameSave('S');" style="background-color: #c0c0c0;">${label.比赛结果查看} (${label.保存})</button>
@@ -46,7 +53,7 @@
 					                       autocomplete="off"
 					                       placeholder="${label.请输入}"
 					                       value="${loginNickName}"
-					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;">
+					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;font-size: 0.24rem;">
 					            </span>
 				            </div>
 				        </div>
@@ -61,7 +68,7 @@
 					                       backdropOnFocus="true"
 					                       autocomplete="off"
 					                       placeholder="${label.请输入}"
-					                       class="name-input" style="margin-bottom:0rem;height: 0.69rem;">
+					                       class="name-input" style="margin-bottom:0rem;height: 0.69rem;font-size: 0.24rem;">
 					            </span>
 				            </div>
 				        </div>
@@ -91,7 +98,7 @@
 					                       autofocus
 					                       autocomplete="off"
 					                       placeholder="${label.请输入}"
-					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;">
+					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;font-size: 0.24rem;">
 					            </span>
 				            </div>
 				        </div>						
@@ -104,7 +111,7 @@
 					                       autofocus
 					                       autocomplete="off"
 					                       placeholder="${label.请输入}"
-					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;">
+					                       class="name-input" style="margin-bottom:0.02rem;height: 0.69rem;font-size: 0.24rem;">
 					            </span>
 				            </div>
 				        </div>
@@ -215,10 +222,6 @@
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------------------- -->
-	<style>
-	.typeahead__list, .typeahead__dropdown {min-width: 300px;}
-	</style>
-
     <script>
 
     var data = ${kewordData};
@@ -556,6 +559,10 @@
 			var para3 = "${intMtcsetcnt}";
 			var para4 = $("#intAtemscr").val();
 			var para5 = $("#intBtemscr").val();
+			var para6= $('#strMbrnma1').val();			// [경기선수] 선수 이름 A1
+			var para7= $('#strMbrnma2').val();			// [경기선수] 선수 이름 A2
+			var para8= $('#strMbrnmb1').val();			// [경기선수] 선수 이름 B1
+			var para9= $('#strMbrnmb2').val();			// [경기선수] 선수 이름 B2
 
 			$.ajax({
 				data : {
@@ -563,7 +570,11 @@
 					para2 : para2,
 					para3 : para3,
 					para4 : para4,
-					para5 : para5
+					para5 : para5,
+					para6 : para6,
+					para7 : para7,
+					para8 : para8,
+					para9 : para9
 				},
 				type : "POST",
 				url : "/front/bbc/clb/getData.htm",

@@ -109,24 +109,24 @@
 			getData();
 		}, 2000);
 
-		$("#body").swipe({
-			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-			    if (direction == "up") {
-			    	addPointA(-1);
-			    }
-			    if (direction == "right") {
-			    	addPointA(1);
-			    }
-			    if (direction == "down") {
-			    	addPointB(1);
-			    }
-			    if (direction == "left") {
-			    	addPointB(-1);
-			    }
-			},
-			threshold:0,
-			fingers:'all'
-		});
+// 		$("#body").swipe({
+// 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+// 			    if (direction == "up") {
+// 			    	addPointA(-1);
+// 			    }
+// 			    if (direction == "right") {
+// 			    	addPointA(1);
+// 			    }
+// 			    if (direction == "down") {
+// 			    	addPointB(1);
+// 			    }
+// 			    if (direction == "left") {
+// 			    	addPointB(-1);
+// 			    }
+// 			},
+// 			threshold:0,
+// 			fingers:'all'
+// 		});
 	});
 
 	function getData() {

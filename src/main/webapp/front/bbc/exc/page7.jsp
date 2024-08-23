@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
 <link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
 <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
@@ -72,7 +73,7 @@
 				<div class="container" style="padding:0;">
 				
 					<div class="title2">
-						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}">월별 현황</a></span> <span
+						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}">월별 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
 							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
 					</div>
 

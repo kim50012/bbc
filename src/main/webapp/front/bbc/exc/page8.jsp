@@ -25,6 +25,7 @@
 <style>
 .app {
 	padding-top: 0;
+	width: 100%;
 }
 
 .app-header {
@@ -33,6 +34,10 @@
 
 .app-header .logo img {
 	width: 0.60rem;
+}
+.drag-table td {
+	padding-left: 0;
+	padding-right: 0;
 }
 .drag-table td img{
     display: inline;
@@ -47,6 +52,9 @@
 }
 .table {
     -webkit-overflow-scrolling:touch
+}
+body {
+	width: 100%;
 }
 </style>
 <script>
@@ -75,6 +83,7 @@
 		          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;">
 		                <div class="blueBtn subBtn f-col font26" onclick="getData();">조회</div>
 		                <div class="orangeBtn subBtn f-col font26" onclick="createGame();">경기생성</div>
+		                <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/clb/gameRegWithScoreBoard2.htm?intClbsq=${amsClb.CLB_SQ}';">결과입력<br>(태블릿)</div>
 		              </div>
 		            </div>
 		            
@@ -133,7 +142,8 @@
 						+ '	<th>A팀</th>'
 						+ '	<th>B팀</th>'
 						+ '	<th>점수판</th>'
-						+ '	<th>입력</th>'
+						+ '	<th>입력<br>모바일</th>'
+// 						+ '	<th>입력<br>태블릿</th>'
 						+ '</tr>'
 						;
 						$("#table1").append(htm);	
@@ -144,10 +154,11 @@
 						+ '<tr>'
 						+ '	<td class="center">'+data.list[i].GAME_SQ+'</td>'
 						+ '	<td class="center">'+data.list[i].GAME_ST_NM+'</td>'
-						+ '	<td class="center">'+data.list[i].A_TEM_SCR+'</td>'
-						+ '	<td class="center">'+data.list[i].B_TEM_SCR+'</td>'
+						+ '	<td class="center">'+data.list[i].A_TEM_NM1+'<br>'+data.list[i].A_TEM_NM2+'<br>'+data.list[i].A_TEM_SCR+'</td>'
+						+ '	<td class="center">'+data.list[i].B_TEM_NM1+'<br>'+data.list[i].B_TEM_NM2+'<br>'+data.list[i].B_TEM_SCR+'</td>'
 						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-youtube-tv" style="font-size: 0.5rem;"></span></a></td>'
 						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/clb/gameRegWithScoreBoard.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-pencil-plus" style="font-size: 0.5rem;"></span></a></td>'
+// 						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/clb/gameRegWithScoreBoard2.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-pencil-plus" style="font-size: 0.5rem;"></span></a></td>'
 						+ '</tr>'					
 						;
 						$("#table1").append(htm);
