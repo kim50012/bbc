@@ -123,12 +123,11 @@
 <!-- 				            </div> -->
 <!-- 				        </div> -->
 <!-- 					</div> -->
-<%-- 					<input type="hidden" id="intMbrsq" value="${intMbrsq}"/> --%>
 <!-- 					<div class="float" style="height:0.7rem;line-height:0.7rem;position:relative;padding-right:0;"> -->
 <%-- 						<button class="btn-borders float1" onclick="search();" style="vertical-align:middle;background:#01cfb9;color:#fff;">${label.查询}</button> --%>
 <!-- 					</div> -->
 <!-- 				</div> -->
-			
+				<input type="hidden" id="intMbrsq" value="${intMbrsq}"/>
 				<!-- START Data Loop -->
 				<c:forEach var="atrMtcList" items="${atrMtcList}" varStatus="status">  
 						
