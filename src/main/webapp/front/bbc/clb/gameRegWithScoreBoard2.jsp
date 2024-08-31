@@ -23,6 +23,24 @@
 			.typeahead__list2, .typeahead__dropdown {
 			    min-width: 4rem;
 			}
+			.drag-table {
+			    margin-left: 2.5%;
+			    width: 95%;
+			    margin-top: 40px;
+			    background-color: white;
+			    border: solid 1px;
+			}
+			.drag-table th, td{
+			    border: solid 1px;
+			    font-size: 0.2rem;
+			    vertical-align: middle;
+			}
+			.competition, .competition1, .competition2 {
+    			width: 6.2rem;
+    		}
+    		.vs {
+		    	width: 0.24rem;
+		    }
 		</style>
 	</head>
 	<body style="background:#fff;text-align:center;width:100%;">
@@ -195,6 +213,15 @@
 					<button class="btn-submit" id="btnMsg" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">경기목록 보기</button>
 			</div>
 	
+			<div class="container">
+				<div class="table-wrap">
+					<div class="table" id="tableDiv">
+						<table class="drag-table" id="table1" cellspacing="0" cellpadding="2" border="1">
+						</table>
+						<br><br>
+					</div>
+				</div>
+			</div>
 
 <!-- ----------------------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------------------- -->
@@ -523,8 +550,78 @@
 // 			setInterval(function(){
 // 				saveScore();
 // 			}, 1000);
+
+			getGameListData();
+			
 		});
-		
+
+
+
+		function getGameListData() {
+
+			var para1 = "AMS_GAME_SELECT_LIST";
+			var para2 = "${amsClb.CLB_SQ}";
+
+			$.ajax({
+				data : {
+					para1 : para1,
+					para2 : para2
+				},
+				type : "POST",
+				url : "/front/bbc/clb/getData.htm",
+				success : function(data) {
+
+					if (data.list.length != 0) {
+
+						$("#table1").html('');
+
+						var htm = '';
+						htm = ''
+							+ '<tr style="background-color:#eeeeee;line-height: 0.6rem;">'
+							+ '	<th>게임시간</th>'
+							+ '	<th>상태</th>'
+							+ '	<th>A팀</th>'
+							+ '	<th colspan="2">점수</th>'
+							+ '	<th>B팀</th>'
+							+ '</tr>'
+							;
+							$("#table1").append(htm);	
+							
+						for (var i = 0; i < data.list.length; i++) {
+							
+							var linkHtml = "";
+							var fontColorA = "";
+							var fontColorB = "";
+							
+							if (data.list[i].GAME_ST == "END") {
+									if (data.list[i].A_TEM_SCR > data.list[i].B_TEM_SCR) {
+										fontColorA = ' style="color:blue;"';
+									}
+									else {
+										fontColorB = ' style="color:blue;"';
+									}
+									htm = ''
+										+ '<tr>'
+										+ '	<td class="center">'+data.list[i].REG_DT+'</td>'
+										+ '	<td class="center">'+data.list[i].GAME_ST_NM+'</td>'
+										+ '	<td class="center" '+fontColorA+'>'+data.list[i].A_TEM_NM1+'<br>'+data.list[i].A_TEM_NM2+'</td>'
+										+ '	<td class="center" '+fontColorA+'>'+data.list[i].A_TEM_SCR+'</td>'
+										+ '	<td class="center" '+fontColorB+'>'+data.list[i].B_TEM_SCR+'</td>'
+										+ '	<td class="center" '+fontColorB+'>'+data.list[i].B_TEM_NM1+'<br>'+data.list[i].B_TEM_NM2+'</td>'
+										+ '</tr>'					
+										;
+										$("#table1").append(htm);
+							}
+							
+						}
+					}
+
+				},
+				error : function(xhr, status, e) {
+					alert("Error : " + status);
+				}
+			});
+		}
 
 		function saveScore() {
 

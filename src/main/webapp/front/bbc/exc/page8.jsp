@@ -150,14 +150,37 @@ body {
 						
 					for (var i = 0; i < data.list.length; i++) {
 						
+						var linkHtml = "";
+						var fontColorA = "";
+						var fontColorB = "";
+						
+						if (data.list[i].GAME_ST == "END") {
+							linkHtml = '' 
+								+ '	<td class="center" style="text-decoration: underline;">&nbsp;</td>'
+								+ '	<td class="center" style="text-decoration: underline;">&nbsp;</td>'
+								;
+								if (data.list[i].A_TEM_SCR > data.list[i].B_TEM_SCR) {
+									fontColorA = ' style="color:blue;"';
+								}
+								else {
+									fontColorB = ' style="color:blue;"';
+								}
+						}
+						else {
+							linkHtml = '' 
+								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-youtube-tv" style="font-size: 0.5rem;"></span></a></td>'
+								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/clb/gameRegWithScoreBoard.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-pencil-plus" style="font-size: 0.5rem;"></span></a></td>'
+								;
+						}
+						
+						
 						htm = ''
 						+ '<tr>'
 						+ '	<td class="center">'+data.list[i].GAME_SQ+'</td>'
 						+ '	<td class="center">'+data.list[i].GAME_ST_NM+'</td>'
-						+ '	<td class="center">'+data.list[i].A_TEM_NM1+'<br>'+data.list[i].A_TEM_NM2+'<br>'+data.list[i].A_TEM_SCR+'</td>'
-						+ '	<td class="center">'+data.list[i].B_TEM_NM1+'<br>'+data.list[i].B_TEM_NM2+'<br>'+data.list[i].B_TEM_SCR+'</td>'
-						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-youtube-tv" style="font-size: 0.5rem;"></span></a></td>'
-						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/clb/gameRegWithScoreBoard.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-pencil-plus" style="font-size: 0.5rem;"></span></a></td>'
+						+ '	<td class="center" '+fontColorA+'>'+data.list[i].A_TEM_NM1+'<br>'+data.list[i].A_TEM_NM2+'<br>'+data.list[i].A_TEM_SCR+'</td>'
+						+ '	<td class="center" '+fontColorB+'>'+data.list[i].B_TEM_NM1+'<br>'+data.list[i].B_TEM_NM2+'<br>'+data.list[i].B_TEM_SCR+'</td>'
+						+ linkHtml
 // 						+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/clb/gameRegWithScoreBoard2.htm?intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt='+data.list[i].GAME_SQ+'"><span class="mdi mdi-pencil-plus" style="font-size: 0.5rem;"></span></a></td>'
 						+ '</tr>'					
 						;

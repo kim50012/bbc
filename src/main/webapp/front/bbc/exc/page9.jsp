@@ -108,7 +108,6 @@
 		setInterval(function(){
 			getData();
 		}, 2000);
-
 // 		$("#body").swipe({
 // 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 // 			    if (direction == "up") {
@@ -184,7 +183,6 @@
 		});
 		
 	}
-
 
 	function saveScore() {
 
