@@ -3,6 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="label" value="<%=LabelUtil.getLabelBbcMap(application) %>" />
+<%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
+<%
+    // 현재 날짜를 가져오기
+    Date today = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String currentDate = sdf.format(today);
+
+    // 숨기고 싶은 날짜 설정
+    String targetDate = "2024-09-27";
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,14 +33,45 @@
 			.typeahead__list2, .typeahead__dropdown {
 			    min-width: 4rem;
 			}
+		    .score-input {
+		    	font-size: 0.42rem;
+		    }
+		    <%
+		        if (currentDate.equals(targetDate)) {
+		    %>
+		    .competition {
+/* 		    	display: none; */
+		    }
+		    .fullname {
+		    	display: none;
+		    }
+		    .fullname1 {
+		    	display: none;
+		    }
+		    .typeahead__container {
+		    	display: none;
+		    }
+		    .fraction  {
+		    	width: 90%;
+		    }
+		    .score-input {
+		    	width: 80%;
+		    	font-size: 1rem;
+		    }
+		    .name {
+		    	display: none;
+		    }
+		    <%
+		        }
+		    %>
 		</style>
 	</head>
 	<body style="background:#fff;text-align:center;width:100%;">
 	
-			<div style="text-align: center;padding-top: 0.4rem;padding-bottom: 0.2rem;">
-					<button class="btn-submit" id="btnCal" onclick="fn_GameSave('S');" style="background-color: #c0c0c0;">${label.比赛结果查看} (${label.保存})</button>
-					<button class="btn-submit" id="btnSave" onclick="$('#btnSave').hide();fn_GameSave('I');" style="display:none;background-color: red;">${label.比赛结果保存}</button>
-					<button class="btn-submit" id="btnMsg" onclick="window.location='gameReg.htm?intClbsq=${intClbsq}';" style="display:none;"></button>
+			<div style="text-align: center;padding-bottom: 0.2rem;">
+					<button class="btn-submit" id="btnCal" onclick="fn_GameSave('S');" style="background-color: #c0c0c0;margin-top: 0.2rem;">${label.比赛结果查看} (${label.保存})</button>
+					<button class="btn-submit" id="btnSave" onclick="$('#btnSave').hide();fn_GameSave('I');" style="display:none;background-color: red;margin-top: 0.2rem;">${label.比赛结果保存}</button>
+					<button class="btn-submit" id="btnMsg" onclick="window.location='gameReg.htm?intClbsq=${intClbsq}';" style="display:none;margin-top: 0.2rem;"></button>
 			</div>
 				
 			<div class="competition">
@@ -124,7 +165,7 @@
 					 	<p class="fullname float">${label.现在}BB Coin</p>
 					 	<p class="fraction float">${label.让分}</p>
 					</div>
-					<div class="name float">
+					<div class="name1 float">
 						<input class="name-input" style="margin-bottom:0.02rem;"type="text" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="${loginBbc}" readonly="readonly"/ >						
 						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="" readonly="readonly"/>
 					</div>
@@ -142,7 +183,7 @@
 					<div class="score float">
 						<input class="score-input" type="text" style="font-size: 0.42rem;" name="CAL_HND_CAP_B1" id="CAL_HND_CAP_B1" value="" readonly="readonly"/ >
 					</div>
-					<div class="name float">
+					<div class="name1 float">
 						<input class="name-input" style="margin-bottom:0.02rem;" type="text" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="" readonly="readonly"/ >						
 						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="" readonly="readonly"/>
 					</div>
@@ -183,14 +224,16 @@
 				</div>
 			</div>	
 
-			<div class="competition2" style="height:3.8rem;">
+			<div class="competition2" style="height:2.8rem;">
 				<div class="party float">
 					<div class="competition-red">
-					 	<p class="fullname float" style="width: 100%;">A팀</p>
+					 	<p class="fraction float" style="width: 100%;">A팀</p>
 					</div>
-					<div class="name float" style="width: 100%;">
-						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;"type="button" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="+" onclick="addPointA(1);">						
-						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="-" onclick="addPointA(-1);">
+					<div class="name float" style="width: 100%;display: block;">
+						<button class="btn-submit" id="btnReset" onclick="addPointA(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
+						<button class="btn-submit" id="btnReset" onclick="addPointA(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
+<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;"type="button" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="+" onclick="addPointA(1);">						 -->
+<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="-" onclick="addPointA(-1);"> -->
 					</div>
 				</div>
 				<div class="vs float">vs
@@ -199,9 +242,11 @@
 					<div class="competition-blue">
 						<p class="fraction float" style="width: 100%;">B팀</p>
 					</div>
-					<div class="name float" style="width: 100%;">
-						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;" type="button" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="+" onclick="addPointB(1);">
-						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="-" onclick="addPointB(-1);">
+					<div class="name float" style="width: 100%;display: block;">
+						<button class="btn-submit" id="btnReset" onclick="addPointB(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
+						<button class="btn-submit" id="btnReset" onclick="addPointB(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
+<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;" type="button" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="+" onclick="addPointB(1);"> -->
+<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="-" onclick="addPointB(-1);"> -->
 					</div>
 				</div>
 			</div>
@@ -213,8 +258,9 @@
 
 
 			
-			<div style="text-align: center;margin-top: 0.8rem;">
-					<button class="btn-submit" id="btnMsg" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">경기목록 보기</button>
+			<div style="text-align: center;margin-top: 0.4rem;">
+					<button class="btn-submit" id="btnMsg2" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}';" style="background-color: #c0c0c0;">경기목록 보기</button>
+					<button class="btn-submit" id="btnReset" onclick="fn_GameReset();" style="background-color: #c0c0c0;margin-top: 0.2rem;margin-bottom: 0.2rem;">초기화 [경기번호:${intMtcsetcnt}]</button>
 			</div>
 	
 
@@ -525,8 +571,8 @@
 								} else {
 									$('#btnMsg').html("${label.保存成功了}.");	
 								}
-								$('#btnMsg').html();
-								$('#btnMsg').show();
+// 								$('#btnMsg').html();
+// 								$('#btnMsg').show();
 			     				alert("${label.保存成功了}");
 								window.location="/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${intClbsq}";
 							}
@@ -549,6 +595,19 @@
 			setInterval(function(){
 				saveScore();
 			}, 1000);
+			
+
+		    <%
+		        if (currentDate.equals(targetDate)) {
+		    %>
+			$('#btnCal').hide();
+			$('#btnSave').hide();
+			$('#btnMsg').hide();
+			$('#btnMsg2').hide();
+		    <%
+		        }
+		    %>			
+			
 		});
 		
 
@@ -603,7 +662,11 @@
 				rlt = 0;
 			}
 			$("#intBtemscr").val(rlt);
-		}    
+		}
+		
+		function fn_GameReset() {
+			location.reload(true);
+		}
     
     </script>
 

@@ -24,22 +24,28 @@
 					color:#aaa;
 				}
 				.cell-1{
-					width:0.7rem; 
+					width:0.5rem; 
 				}
 				.cell-2{
-					width:1.4rem; 
-				}
-				.cell-3{
 					width:1rem; 
 				}
+				.cell-3{
+					width:0.97rem; 
+				}
 				.cell-4 {
-					width:0.94rem; 
+					width:0.74rem; 
 				}
 				.cell-5{
-					width:0.9rem; 
+					width:0.7rem; 
 				}
 				.cell-6 {
-					width:1.17rem; 
+					width:1rem; 
+				}
+				.cell-7 {
+					width:0.5rem; 
+				}
+				.cell-8 {
+					width:0.7rem; 
 				}
 				.single{
 					width:0.69rem;
@@ -54,6 +60,9 @@
 				    right: 0;
 				    font-size:0.22rem;
 				    top: 0.65rem;
+				}
+				.r_pg_top {
+					display: none;
 				}
 		</style>
 	</head>
@@ -100,10 +109,12 @@
 				<ul class="flex">
 					<li class="flex2 cell-1 cell">${label.排序}</li>
 					<li class="flex2 cell-2 cell">${label.姓名}</li>
+					<li class="flex2 cell-7 cell">팀</li>
 					<li class="flex2 cell-3 cell" style="text-decoration:underline;" onclick="search('GAME_CNT');">${label.比赛数}</li>
 					<li class="flex2 cell-4 cell">${label.胜}/${label.败}</li>
 					<li class="flex2 cell-5 cell" style="text-decoration:underline;" onclick="search('WIN_RATE');">${label.胜率}</li>
-					<li class="flex2 cell-6 cell" style="text-decoration:underline;" onclick="search('BBC');">BB Coin</li>
+					<li class="flex2 cell-8 cell">득실</li>
+					<li class="flex2 cell-6 cell" style="text-decoration:underline;" onclick="search('BBC');">BBCoin</li>
 				</ul>
 			</div>
 			<div class="module" style="border-top:none;background:#fff;">
@@ -114,9 +125,11 @@
 				<ul class="flex list78 ul-list word">
 					<li class="flex2 cell-1 cell">${status.count}</li>
 					<li class="flex2 cell-2 cell">${atrMtcList.CLB_NIK_NM}</li>
+					<li class="flex2 cell-7 cell">${atrMtcList.TEAM_NM_L}</li>
 					<li class="flex2 cell-3 cell">${atrMtcList.GAME_CNT}</li>
 					<li class="flex2 cell-4 cell">${atrMtcList.WIN}/${atrMtcList.LOSE}</li>
 					<li class="flex2 cell-5 cell">${atrMtcList.WIN_RATE}%</li>
+					<li class="flex2 cell-8 cell">${atrMtcList.SCR_MBR}</li>
 					<li class="flex2 cell-6 cell" onclick="searchToday('${atrMtcList.MBR_SQ}');">${atrMtcList.LASTDAY_BBC_TAG}</li>
 				</ul>
 				
@@ -173,7 +186,7 @@
 			<c:set var="helpMsg" value="这画面是当天，期间别查看比赛的结果。<br><br>※可以查看自己或者其他人的成长速度。" />
 		</c:if>
 		
-		<%@ include file="/front/bbc/inc/helpPage.jsp"%> 		
+<%-- 		<%@ include file="/front/bbc/inc/helpPage.jsp"%> 		 --%>
 		
 
 		<script>
@@ -181,7 +194,7 @@
 		var shareWeDesc = "";
 		var shareWeImgUrl = "";
 		</script>
-		<%@ include file="/front/bbc/inc/wechatShare.jsp"%> 	
+<%-- 		<%@ include file="/front/bbc/inc/wechatShare.jsp"%> 	 --%>
 				
 		
 	</body>
