@@ -96,7 +96,9 @@
 					<div class="list68 flex">
 						<p class="flex1 switch-btn switch-btn1 active"><span>베스트파트너</span></p>
 						<p><div class="parting-line"></div></p>
-						<p class="flex1 switch-btn switch-btn2"><span>파트너 조별 순위</span></p>
+						<p class="flex1 switch-btn switch-btn2"><span>파트너 조별</span></p>
+						<p><div class="parting-line"></div></p>
+						<p class="flex1 switch-btn switch-btn3"><span>상대전적</span></p>
 					</div>
 				</div>
 			</div>
@@ -190,7 +192,7 @@
 				</div>
 				</c:if>						
 						
-				<ul class="flex list78 ul-list word">
+				<ul class="flex list78 ul-list word" id="ulData_${atrMtcList.MBR_SQ_A}_${atrMtcList.MBR_SQ_B}">
 					<li class="flex2 cell-1 cell">${atrMtcList.LVL}-${atrMtcList.RANKING}</li>
 					<c:set var="myTaga" value="" />
 					<c:if test="${atrMtcList.MBR_SQ_A == amsClb.MBR_SQ}">
@@ -204,8 +206,8 @@
 					<li class="flex2 cell-7 cell" style="text-decoration:underline;${myTaga}" onclick="search2('${atrMtcList.MBR_SQ_B}', '');">${atrMtcList.MBR_NM_B}</li>
 					<li class="flex2 cell-3 cell">${atrMtcList.MTC_CLB_BBC}</li>
 					<li class="flex2 cell-4 cell">${atrMtcList.WIN}/${atrMtcList.LOSE}</li>
-					<li class="flex2 cell-5 cell">${atrMtcList.WIN_RATE}%</li>
-					<li class="flex2 cell-6 cell" onclick="gotoGameTeam('${atrMtcList.MBR_SQ_A}', '${atrMtcList.MBR_SQ_B}');">${atrMtcList.BBC_TAG}</li>
+					<li class="flex2 cell-5 cell" style="text-decoration:underline;" onclick="gotoListOfTeamResult('ulData_${atrMtcList.MBR_SQ_A}_${atrMtcList.MBR_SQ_B}', ${atrMtcList.MBR_SQ_A}, ${atrMtcList.MBR_SQ_B});">${atrMtcList.WIN_RATE}%</li>
+					<li class="flex2 cell-6 cell" style="text-decoration:underline;" onclick="gotoGameTeam('${atrMtcList.MBR_SQ_A}', '${atrMtcList.MBR_SQ_B}');">${atrMtcList.BBC_TAG}</li>
 				</ul>
 				
 				</c:forEach>
@@ -215,66 +217,57 @@
 					
 			</div>
 			
+			<div class="module" id="listC" style="border-top:none;background:#fff;display:none;padding-top: 0.7rem;">
+			
+				<div class="module list-head" style="border-top:none;">
+					<ul class="flex">
+						<li class="flex2 cell-1 cell">${label.排序}</li>
+						<li class="flex2 cell-2 cell">${label.姓名}</li>
+						<li class="flex2 cell-7 cell">${label.姓名}</li>
+						<li class="flex2 cell-3 cell">${label.合计}Coin</li>
+						<li class="flex2 cell-4 cell">${label.胜}/${label.败}</li>
+						<li class="flex2 cell-5 cell">${label.胜率}</li>
+						<li class="flex2 cell-6 cell">BB Coin</li>
+					</ul>
+				</div>
+				
+				<ul class="flex list78 ul-list word" style="background-color: #f1a5001c;" id="headPartner">
+				</ul>
+				
+				<div id="listTeam">
+					<ul class="flex list78 ul-list word">
+						<li class="flex2 cell"></li>
+					</ul>
+				</div>
+				
+				<br><br><br>
+					
+			</div>
+			
 			
 		<script type="text/javascript">
 
-		$(document).ready(function(){
+			$(document).ready(function(){
 				$(".switch-btn").on("click",function(){
 					$(".switch-btn").removeClass("active");
 					$(this).addClass("active");
 					if($(this).attr("class").indexOf("switch-btn1") >= 0){
 						$("#listA").show();
 						$("#listB").hide();
+						$("#listC").hide();
 					}
 					else if($(this).attr("class").indexOf("switch-btn2") >= 0){
 						$("#listA").hide();
 						$("#listB").show();
+						$("#listC").hide();
 					}
+					else if($(this).attr("class").indexOf("switch-btn3") >= 0){
+						$("#listA").hide();
+						$("#listB").hide();
+						$("#listC").show();
+					}
+				});
 			});
-		});
-
-		    var data = ${kewordData};
-		    //name, bbc, rank, imgUrl, keyword, id, grade
-		    
-		    var template = '<span class="row">' +
-		    '<span class="avatar">' +
-		    '<img class="member-head" src="{{imgUrl}}">' +
-		    '</span>' +
-		    //'<span class="username">{{name}} <small style="color:#777;">({{id}})</small></span>' +
-		    '<span class="username">{{name}} </span>' +
-		    ' <span class="id">( {{rank}}${label.位}, {{bbc}}${label.分} )</span>' +
-		    '</span>';
-		    
-		    typeof $.typeahead === 'function' && $.typeahead({
-		        input: "#strMbrnm",
-		        minLength: 0,
-		        maxItem: 8,
-		        //order: "asc",
-		        cashe: false,
-		        searchOnFocus: false,
-		        emptyTemplate: 'no result for {{query}}',
-		        //display: ["name"],
-		        correlativeTemplate: true,
-		        templateValue: "{{name}}",
-		        source: {
-		        	myGroup: {
-		                data: data,
-		                display: ["name", "keyword"],
-		                template: template
-		            }
-		        },
-		        callback: {
-		            onClickAfter: function (node, a, item, event) {
-		            	$("#intMbrsq").val(item.id);
-		            },
-		        	onHideLayout: function (node, query) {
-		            	if ($("#strMbrnm").val() == "") {
-			            	$("#intMbrsq").val("");
-		            	}
-		            }
-		        },
-		        debug: true
-		    });		
 
 			function search(strOrderby) {
 				var intMbrsq = $("#intMbrsq").val();
@@ -287,7 +280,19 @@
 			function gotoGameTeam(intMbrsqa1, intMbrsqa2) {
 				window.location='/front/bbc/clb/gameTeam.htm?intClbsq=${intClbsq}&intMbrsqa1='+intMbrsqa1+'&intMbrsqa2='+intMbrsqa2+'&intMbrsqb1=0&intMbrsqb2=0';
 			}
-		
+
+			function gotoListOfTeamResult(ulID, mbrA, mbrB){
+				$(".switch-btn").removeClass("active");
+				$(".switch-btn3").addClass("active");
+				$("#listA").hide();
+				$("#listB").hide();
+				$("#listC").show();
+				
+				$("#headPartner").html($("#"+ulID).html());
+				getData(mbrA, mbrB);
+				
+			}
+			
 			$(document).ready(function(){
 				$(".down").click(function(){
 					$(".screen").toggle();
@@ -297,6 +302,54 @@
 					$(".screen").hide();
 				});
 			});
+			
+
+			function getData(mbrA, mbrB) {
+
+				var para1 = "PARTNER_RELATIVE_RECORD";
+				var para2 = "${amsClb.CLB_SQ}";
+
+				$.ajax({
+					data : {
+						para1 : para1,
+						para2 : para2,
+						para4 : mbrA,
+						para5 : mbrB
+					},
+					type : "POST",
+					url : "/front/bbc/clb/getData.htm",
+					success : function(data) {
+
+						if (data.list.length != 0) {
+
+							$("#listTeam").html('');
+
+							var htm = '';
+							for (var i = 0; i < data.list.length; i++) {
+								
+								htm = ''
+									+ '<ul class="flex list78 ul-list word">'
+									+ '<li class="flex2 cell-1 cell">'+data.list[i].LVL+'</li>'
+									+ '<li class="flex2 cell-2 cell">'+data.list[i].MBR_NM_A+'</li>'
+									+ '<li class="flex2 cell-7 cell">'+data.list[i].MBR_NM_B+'</li>'
+									+ '<li class="flex2 cell-3 cell">'+data.list[i].MTC_CLB_BBC+'</li>'
+									+ '<li class="flex2 cell-4 cell">'+data.list[i].WIN+'/'+data.list[i].LOSE+'</li>'
+									+ '<li class="flex2 cell-5 cell">'+data.list[i].WIN_RATE+'%</li>'
+									+ '<li class="flex2 cell-6 cell">'+data.list[i].BBC_TAG+'</li>'	
+									+ '</ul>'	
+								;
+								$("#listTeam").append(htm);
+							}
+						} else {
+
+						}
+					},
+					error : function(xhr, status, e) {
+						alert("Error : " + status);
+					}
+				});
+			}			
+			
 		</script>	
 		<%@ include file="/front/bbc/inc/returnPage.jsp"%>
 		
