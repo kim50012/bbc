@@ -11,7 +11,7 @@
     String currentDate = sdf.format(today);
 
     // 숨기고 싶은 날짜 설정
-    String targetDate = "2024-09-27";
+    String targetDate = "2024-09-29";
 %>
 <!DOCTYPE html>
 <html>
