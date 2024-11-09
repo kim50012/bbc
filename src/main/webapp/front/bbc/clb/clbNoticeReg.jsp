@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>${label.公告注册}</title>
+		<title>배드민턴 강좌 등록</title>
 		<%@ include file="/front/bbc/inc/css.jsp"%> 
 		<%@ include file="/front/bbc/inc/jquery_css.jsp"%>
 		<%@ include file="/front/bbc/inc/js.jsp"%> 
@@ -60,14 +60,14 @@
 								</div>
 							</div>
 							<div class="list90  flex">
-								<p class="left-part">${label.内容}</p>
+								<p class="left-part">유튜브 URL</p>
 								<div class="flex1">
 									&nbsp;
 								</div>
 							</div>
 							<div class="list90  flex">
 								<div class="flex1">
-									<textarea class="textboxcontent" id="strClbbbdcte" placeholder="请输入内容" style="width:100%;height:4rem;padding:0px;padding-top:0.14rem;padding-bottom:0.14rem;">${atrClbBbdList.CLB_BBD_CTE}</textarea>
+									<textarea class="textboxcontent" id="strClbbbdcte" placeholder="Youtube URL을 입력하세요." style="width:100%;height:4rem;padding:0px;padding-top:0.14rem;padding-bottom:0.14rem;">${atrClbBbdList.CLB_BBD_CTE}</textarea>
 								</div>
 							</div>
 							

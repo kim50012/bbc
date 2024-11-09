@@ -18,7 +18,7 @@
 	<div class="wrap">
 			<div class="header">
 				<div class="back">返回</div>
-				<div class="title">参加活动</div>
+				<div class="title">Club</div>
 				<div class="menu-bar">
 					<span></span>
 					<span></span>

@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>${label.公告}</title>
+		<title>배드민턴 강좌</title>
 		<%@ include file="/front/bbc/inc/css.jsp"%> 
 		<%@ include file="/front/bbc/inc/js.jsp"%> 
 		<style type="text/css">
@@ -17,7 +17,7 @@
 					text-align:left;
 				}
 				.cell-2{
-					width:2.8rem; 
+					width:3.3rem; 
 					text-align:left;
 					
 				}
@@ -26,7 +26,7 @@
 					text-align:right; 
 				}
 				.newtext{
-					width:2.8rem;
+					width:3.8rem;
 					text-align:left;
 					word-break:keep-all;
 					white-space:nowrap;
@@ -67,7 +67,7 @@
 			</div>
 			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
 					<div class="flex">
-							<p class="flex1 title-icon">${label.俱乐部公告}</p>
+							<p class="flex1 title-icon">동영상 목록</p>
 							<c:if test="${(amsClbMbr.CLB_GD == 'A') || amsClbMbr.CLB_GD == 'B'}">
 								<button id="btn" class="btn-join" onclick="window.location='/front/bbc/clb/clbNoticeReg.htm?intClbsq=${amsClb.CLB_SQ}';">${label.创建公告}</button>
 							</c:if>
@@ -91,11 +91,11 @@
 					<ul class="flex list68 ul-list" onclick="$('#ulNoticeBody${atrClbBbdList.CLB_BBD_SQ}').toggle(600);">
 						<li class="flex2 cell-1 cell" style="${ntcTag}">${atrClbBbdList.REG_DT}</li>
 						<li class="flex2 cell-2 cell"><div class="newtext float" style="${ntcTag}">${atrClbBbdList.CLB_BBD_TIT}</div>${atrClbBbdList.NEW_TAG}</li>
-						<li class="flex2 cell-3 cell">${label.管理员}</li>
 					</ul>
 					<ul class="flex ul-list" style="display:none;" id="ulNoticeBody${atrClbBbdList.CLB_BBD_SQ}">
 						<li class="flex2 cell-1 cell" style="padding:0.2rem;line-height:0.4rem">
-							<pre style="white-space: pre-wrap;">${atrClbBbdList.CLB_BBD_CTE}</pre>
+							<iframe style="width: 6rem;height: 6rem;" src="${atrClbBbdList.CLB_BBD_ST}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<%-- 							<pre style="white-space: pre-wrap;">${atrClbBbdList.CLB_BBD_CTE}</pre> --%>
 							<c:if test="${atrClbBbdList.REG_MBR_SQ == amsClbMbr.MBR_SQ}">
 								<div class="flex">
 									<p class="flex1">&nbsp;</p>
