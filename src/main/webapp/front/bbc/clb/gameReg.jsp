@@ -35,7 +35,7 @@
 				
 			<div class="competition2" style="width:100%;height:0.8rem;">
 				<div class="name float" style="width:100%;height:auto;">
-					<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.3rem;width:91%;" type="text" name="textScore" id="textScore" placeholder="음성으로 점수를 입력하세요">
+					<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.3rem;width:91%;" type="text" name="textScore" id="textScore" onchange="fn_onchange();" placeholder="음성으로 점수를 입력하세요">
 				</div>
 			</div>	
 			
