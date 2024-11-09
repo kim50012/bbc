@@ -33,6 +33,12 @@
 					<button class="btn-submit" id="btnMsg" onclick="window.location='gameReg.htm?intClbsq=${intClbsq}';" style="display:none;"></button>
 			</div>
 				
+			<div class="competition2" style="width:100%;height:0.8rem;">
+				<div class="name float" style="width:100%;height:auto;">
+					<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.3rem;width:91%;" type="text" name="textScore" id="textScore" placeholder="음성으로 점수를 입력하세요">
+				</div>
+			</div>	
+			
 			<div class="competition">
 				<div class="party float">
 					<div class="competition-red">
@@ -340,12 +346,82 @@
 			$('#btnMsg').hide();
     	}
 
+    	function fn_setMember(idNo, strMemberName) {
+			$('#strMbrnm'+idNo).val(strMemberName);
+			var selectedItem = data.find(function(item) {
+				  return item.name === strMemberName;
+				});			
+        	$("#intMbrsq"+idNo).val(selectedItem.id);
+        	$("#intMtcclbbbc"+idNo).val(selectedItem.bbc);
+    	}
+    	
+    	function fn_setScoreFromText(str) {
+			var result = [];
+			var remainingStr = str.replace(/\s+/g, "");
+			
+			// 1단계: "name" 값이 str에서 존재하는 동안 반복
+			while (true) {
+			  var matched = false;
+			
+			  // data 배열을 순회하면서, str에서 name이 있으면 처리
+			  for (var i = 0; i < data.length; i++) {
+			    var item = data[i];
+			    if (remainingStr.includes(item.name)) {
+			      // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
+			      result.push(item);
+			      //result.push({ key: item.key, name: item.name });
+			      remainingStr = remainingStr.replace(item.name, ''); // 이름 지우기
+			      matched = true;
+			      break; // 첫 번째 일치하는 항목만 처리하고, 다음 iteration으로 넘어감
+			    }
+			  }
+			
+			  // 더 이상 일치하는 name이 없으면 종료
+			  if (!matched) break;
+			}
+			
+			// 2단계: 남은 문자열에서 "대"를 기준으로 숫자 추출
+			const match = remainingStr.match(/(\d+)대(\d+)/);
+			
+			var firstNumber = null;
+			var secondNumber = null;
+			
+			if (match) {
+			  firstNumber = match[1];  // "대" 앞 숫자
+			  secondNumber = match[2]; // "대" 뒤 숫자
+			}
+
+			if (result.length === 4) {
+				$("#strMbrnma1").val(result[0].name);		
+	        	$("#intMbrsqa1").val(result[0].id);
+	        	$("#intMtcclbbbca1").val(result[0].bbc);
+
+				$("#strMbrnma2").val(result[1].name);		
+	        	$("#intMbrsqa2").val(result[1].id);
+	        	$("#intMtcclbbbca2").val(result[1].bbc);
+
+				$("#strMbrnmb1").val(result[2].name);		
+	        	$("#intMbrsqb1").val(result[2].id);
+	        	$("#intMtcclbbbcb1").val(result[2].bbc);
+
+				$("#strMbrnmb2").val(result[3].name);		
+	        	$("#intMbrsqb2").val(result[3].id);
+	        	$("#intMtcclbbbcb2").val(result[3].bbc);
+
+				$('#intAtemscr').val(firstNumber);
+				$('#intBtemscr').val(secondNumber);
+			}
+			
+    	}
+    	
 		function fn_GameSave(strJobtype) {
 			
 // 			if (("${intClbsq}" == "24") && (strJobtype == "I") && ("${loginMbrSq}" != "20")) {
 // 				alert("교류전의 경우 경기를 생성할 수 없습니다.");
 // 				return;
 // 			}
+
+			fn_setScoreFromText($('#textScore').val());
 			
  			var intClbsq= "${intClbsq}";	  // 클럽시퀀스
 			var intMbrsqa1= $('#intMbrsqa1').val();			// [경기선수] 선수 A1
