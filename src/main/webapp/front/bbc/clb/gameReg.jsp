@@ -376,7 +376,7 @@
 				    break; // 첫 번째 일치하는 항목만 처리하고, 다음 iteration으로 넘어감
 				  }
 				}
-				if (matched === false) {
+				if (!matched) {
 					userName = remainingStr.substring(0, 2);
 					
 					// data 배열을 순회하면서, str에서 name이 있으면 처리
