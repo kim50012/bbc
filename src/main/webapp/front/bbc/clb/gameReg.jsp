@@ -361,34 +361,57 @@
 			
 			// 1단계: "name" 값이 str에서 존재하는 동안 반복
 			while (true) {
-			  var matched = false;
-			
-			  // data 배열을 순회하면서, str에서 name이 있으면 처리
-			  for (var i = 0; i < data.length; i++) {
-			    var item = data[i];
-			    if (remainingStr.includes(item.name)) {
-			      // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
-			      result.push(item);
-			      //result.push({ key: item.key, name: item.name });
-			      remainingStr = remainingStr.replace(item.name, ''); // 이름 지우기
-			      matched = true;
-			      break; // 첫 번째 일치하는 항목만 처리하고, 다음 iteration으로 넘어감
-			    }
-			  }
-			
-			  // 더 이상 일치하는 name이 없으면 종료
-			  if (!matched) break;
+				var matched = false;
+				var userName = remainingStr.substring(0, 3);
+
+				// data 배열을 순회하면서, str에서 name이 있으면 처리
+				for (var i = 0; i < data.length; i++) {
+				  var item = data[i];
+				  if (remainingStr.includes(userName)) {
+				    // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
+				    result.push(item);
+				    //result.push({ key: item.key, name: item.name });
+				    remainingStr = remainingStr.replace(item.name, ''); // 이름 지우기
+				    matched = true;
+				    break; // 첫 번째 일치하는 항목만 처리하고, 다음 iteration으로 넘어감
+				  }
+				}
+				if (matched === false) {
+					userName = remainingStr.substring(0, 2);
+					
+					// data 배열을 순회하면서, str에서 name이 있으면 처리
+					for (var i = 0; i < data.length; i++) {
+					  var item = data[i];
+					  if (remainingStr.includes(userName)) {
+					    // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
+					    result.push(item);
+					    //result.push({ key: item.key, name: item.name });
+					    remainingStr = remainingStr.replace(item.name, ''); // 이름 지우기
+					    matched = true;
+					    break; // 첫 번째 일치하는 항목만 처리하고, 다음 iteration으로 넘어감
+					  }
+					}
+				}
+			  
+				// 더 이상 일치하는 name이 없으면 종료
+				if (!matched) break;
 			}
 			
 			// 2단계: 남은 문자열에서 "대"를 기준으로 숫자 추출
-			const match = remainingStr.match(/(\d+)대(\d+)/);
+			var match = remainingStr.match(/(\d+)대(\d+)/);
 			
 			var firstNumber = null;
 			var secondNumber = null;
 			
 			if (match) {
-			  firstNumber = match[1];  // "대" 앞 숫자
-			  secondNumber = match[2]; // "대" 뒤 숫자
+				firstNumber = match[1];  // "대" 앞 숫자
+				secondNumber = match[2]; // "대" 뒤 숫자
+			}
+			
+			if (secondNumber === null || secondNumber === "") {
+				match = remainingStr.match(/(\d+)때(\d+)/);
+				firstNumber = match[1];  // "대" 앞 숫자
+				secondNumber = match[2]; // "대" 뒤 숫자
 			}
 
 			if (result.length === 4) {
