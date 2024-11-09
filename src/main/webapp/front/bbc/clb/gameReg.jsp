@@ -367,7 +367,8 @@
 				// data 배열을 순회하면서, str에서 name이 있으면 처리
 				for (var i = 0; i < data.length; i++) {
 				  var item = data[i];
-				  if (remainingStr.includes(userName)) {
+				  var itemName = item.name;
+				  if (itemName === userName) {
 				    // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
 				    result.push(item);
 				    //result.push({ key: item.key, name: item.name });
@@ -382,7 +383,8 @@
 					// data 배열을 순회하면서, str에서 name이 있으면 처리
 					for (var i = 0; i < data.length; i++) {
 					  var item = data[i];
-					  if (remainingStr.includes(userName)) {
+					  var itemName = item.name;
+					  if (itemName === userName) {
 					    // name이 str에 있으면, key와 name을 변수에 담고, str에서 해당 name을 지움
 					    result.push(item);
 					    //result.push({ key: item.key, name: item.name });
@@ -398,7 +400,14 @@
 			}
 			
 			// 2단계: 남은 문자열에서 "대"를 기준으로 숫자 추출
+			
+			remainingStr = remainingStr.replace(/[^대때\s0-9]/g, "");
+			
 			var match = remainingStr.match(/(\d+)대(\d+)/);
+			var match2 = remainingStr.match(/(\d+)때(\d+)/);
+			console.log(remainingStr);
+			console.log(match);
+			console.log(match2);
 			
 			var firstNumber = null;
 			var secondNumber = null;
@@ -408,11 +417,12 @@
 				secondNumber = match[2]; // "대" 뒤 숫자
 			}
 			
-			if (secondNumber === null || secondNumber === "") {
-				match = remainingStr.match(/(\d+)때(\d+)/);
-				firstNumber = match[1];  // "대" 앞 숫자
-				secondNumber = match[2]; // "대" 뒤 숫자
+			if (match2) {
+				firstNumber = match2[1];  // "때" 앞 숫자
+				secondNumber = match2[2]; // "때" 뒤 숫자
 			}
+			console.log(firstNumber);
+			console.log(secondNumber);
 
 			if (result.length === 4) {
 				$("#strMbrnma1").val(result[0].name);		
