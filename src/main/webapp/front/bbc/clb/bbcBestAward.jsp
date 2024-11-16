@@ -55,8 +55,6 @@
 	  	<div class="content">
         <div class="scroll-wrap refresh-wrap">
 
-          
-          
           <div class="container">
             <div class="title2">
               <span class="font24 bold">베스트 파트너</span><span class="font20 fontOrange">기준 : 파트너간 최다 코인 획득</span>
@@ -93,8 +91,6 @@
             </div>
           </div>
                     
-          
-          
 		  <c:if test="${atrMtcListB.size() > 0}">
           <div class="container">
             <div class="title2">
@@ -130,8 +126,6 @@
             </div>
           </div>
 		  </c:if>
-          
-          
           
 		  <c:if test="${atrMtcListBG.size() > 0}">
           <div class="container">
@@ -173,45 +167,6 @@
           </div>
 		  </c:if>
           
-
-          
-          <div class="container">
-            <div class="title2">
-              <span class="font24 bold">최대 진보상</span><span class="font20 fontOrange">기준 : 초기 코인 대비</span>
-            </div>
-            <div class="table">
-              <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
-
-                <tr class="activePrevTr">
-                  <th class="lie">순위</th>
-                  <th>이름</th>
-                  <th>순위</th>
-                  <th>현재코인</th>
-                  <th>BB Coin</th>
-                </tr>
-                
-				<!-- START Data Loop -->
-				<c:forEach var="atrMtcListD" items="${atrMtcListD}" varStatus="status">  
-
-                <tr id= "openData" <c:if test="${status.count == 1}">class="activeTr"</c:if>>
-                  <td class="center">${status.count}</td>
-                  <td>${atrMtcListD.CLB_NIK_NM}</td>
-                  <td>${atrMtcListD.CLB_RANK}</td>
-                  <td>${atrMtcListD.CLB_BBC}</td>
-                  <td>${atrMtcListD.LASTDAY_BBC_TAG}</td>
-                </tr>
-                
-				 </c:forEach>
-				<!-- END Data Loop -->                
-                
-                
-              </table>
-            </div>
-          </div>
-          
-          
-          
-
           <div class="container">
             <div class="title2">
               <span class="font24 bold">핸디별 진보 상세 현황</span><span class="font20 fontOrange">기준 : 클럽 평균 게임 횟수 이상</span>
@@ -244,7 +199,6 @@
                 
 				 </c:forEach>
 				<!-- END Data Loop -->                
-                
                 
               </table>
             </div>
@@ -285,50 +239,6 @@
               </table>
             </div>
           </div>
-          
-          
-          
-          
-          
-		  <c:if test="${atrMtcListF.size() > 0}">
-          <div class="container">
-            <div class="title2">
-              <span class="font24 bold">최다 이벤트 상</span><span class="font20 fontOrange">기준 : 이벤트 횟수</span>
-            </div>
-            <div class="table" style="padding-bottom: 2rem;">
-              <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
-
-                <tr class="activePrevTr">
-                  <th class="lie">순위</th>
-                  <th>이름</th>
-                  <th>이벤트횟수</th>
-                  <th>승</th>
-                  <th>패</th>
-                  <th>승률</th>
-                  <th>금액환산</th>
-                </tr>
-                
-				<!-- START Data Loop -->
-				<c:forEach var="atrMtcListF" items="${atrMtcListF}" varStatus="status">  
-
-                <tr id= "openData" <c:if test="${status.count == 1}">class="activeTr"</c:if>>
-                  <td class="center">${status.count}</td>
-                  <td>${atrMtcListF.NM}</td>
-                  <td style="color:#e33143;">${atrMtcListF.CNT}</td>
-                  <td>${atrMtcListF.WIN}</td>
-                  <td>${atrMtcListF.LOSE}</td>
-                  <td>${atrMtcListF.RATE}%</td>
-                  <td>${atrMtcListF.RMB}</td>
-                </tr>
-                
-				 </c:forEach>
-				<!-- END Data Loop -->                
-                
-                
-              </table>
-            </div>
-          </div>
-          </c:if>
           
           <br>
           <br>

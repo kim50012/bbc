@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>월별현황</title>
+<title>주간/월간 MVP</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -43,6 +43,25 @@
 .drag-table th {
 	padding: 5px 5px 5px 5px;
 }
+.activeTr td:first-of-type {
+    border-left: 0px solid #e42e43 !important;
+}
+.activeTr td:last-of-type {
+    border-right: 0px solid #e42e43 !important;
+}
+.activeTr2 td:first-of-type {
+    border-left: 0px solid #03A9F4 !important;
+}
+.activeTr2 td {
+    border-top: 1px solid #03A9F4 !important;
+}
+.activeTr2 td {
+    background: #f4f7f9 !important;
+    color: #006ecd !important;
+}
+.activeTr2 td {
+    border-bottom: 1px solid #03A9F4 !important;
+}
 </style>
 <script>
 	$(function() {
@@ -70,10 +89,10 @@
 
 		<div class="content">
 			<div class="scroll-wrap" id="appPage2">
-				<div class="container" style="padding:0;">
+				<div class="container" style="padding:0;padding-left: 0.3rem;">
 				
 					<div class="title2">
-						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}">월별 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page10&intClbsq=${amsClb.CLB_SQ}">MVP 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
 							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
 					</div>
 
@@ -111,7 +130,7 @@
 	}
 
 	function getData() {
-		var para1 = "SELECT_BBC_GET_BY_MONTHLY";
+		var para1 = "SELECT_MVP_GET_BY_W_M";
 		var para2 = "${amsClb.CLB_SQ}";
 		var para3 = "${para3}";
 		var para4 = "${para4}";
@@ -171,27 +190,18 @@
 									if ("" == "${para3}" || i == 0) {
 										htm = ''
 											+ '<tr>'
-											+ '	<th>월</th>'
-											+ '	<th>BBC순위</th>'
-											+ '	<th>승율순위</th>'
+											+ '	<th>주차/월</th>'
+											+ '	<th>일자</th>'
+											+ '	<th>순위</th>'
 											+ '	<th>이름</th>'
+											+ '	<th>MVP</th>'
 											+ '	<th>승/패</th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=WIN_RATE&para5=${para5}">승율</a></th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=BBC&para5=${para5}">BBC</a></th>'
-											+ '	<th>월</th>'
-											+ '	<th>남여복<br>BBC순위</th>'
-											+ '	<th>남여복<br>승율순위</th>'
-											+ '	<th>이름</th>'
-											+ '	<th>남여복<br>승/패</th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=MMW_WIN_RATE&para5=${para5}">남여복<br>승율</a></th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=MMW_BBC&para5=${para5}">남여복<br>BBC</a></th>'
-											+ '	<th>월</th>'
-											+ '	<th>혼복<br>BBC순위</th>'
-											+ '	<th>혼복<br>승율순위</th>'
-											+ '	<th>이름</th>'
-											+ '	<th>혼복<br>승/패</th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=MW_WIN_RATE&para5=${para5}">혼복<br>승율</a></th>'
-											+ '	<th><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=${para3}&para4=MW_BBC&para5=${para5}">혼복<br>BBC</a></th>'
+											+ '	<th>승률</th>'
+											+ '	<th>BBC</th>'
+											+ '	<th>약자<BR>대상</th>'
+											+ '	<th>동급<BR>대상</th>'
+											+ '	<th>강자<BR>대상</th>'
+											+ '	<th>MVP SCORE</th>'
 											+ '</tr>'
 											;
 											$("#table1").append(htm);	
@@ -200,30 +210,36 @@
 								
 								j++;
 								var k = j;
+								var v_weeks = "";
+								var v_week_dt = "";
+								var tagLine = "";
+
+								if (data.list[i].BBC_RANK == 1) {
+									v_weeks = data.list[i].WEEKS;
+									v_week_dt = data.list[i].WEEK_DT;
+								}
+
+								if (data.list[i].BBC_RANK == 1 && data.list[i].DATA_TYPE == "M") {
+									tagLine = 'class="activeTr"';
+								}
+								if (data.list[i].BBC_RANK == 1 && data.list[i].DATA_TYPE == "W") {
+									tagLine = 'class="activeTr2"';
+								}
 								
 								htm = ''
-								+ '<tr>'
-								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=&para5='+data.list[i].YYYYMM+'">'+data.list[i].YYYYMM+'</a></td>'
-								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].RANK_BBC+'</td>'
-								+ '	<td class="center" style="font-weight: bold;color: blue;">'+data.list[i].RANK_RATE+'</td>'
-								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3='+data.list[i].MBR_SQ+'&para5='+data.list[i].YYYYMM+'">'+data.list[i].CLB_NIK_NM+'</a></td>'
+								+ '<tr '+tagLine+'>'
+								+ '	<td class="center" style="font-weight: bold;">'+v_weeks+'</td>'
+								+ '	<td class="center" style="font-weight: bold;">'+v_week_dt+'</td>'
+								+ '	<td class="center" style="font-weight: bold;'+data.list[i].MVP_TAG+'">'+data.list[i].CLB_NIK_NM+'</td>'
+								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].BBC_RANK+'</td>'
+								+ '	<td class="center" style="font-weight: bold;'+data.list[i].MVP_TAG+'">'+data.list[i].MVP+'</td>'
 								+ '	<td class="center">'+data.list[i].WIN+'/'+data.list[i].LOSE+'</td>'
 								+ '	<td class="center">'+data.list[i].WIN_RATE+'%</td>'
-								+ '	<td class="center">'+data.list[i].RANK_TREND_TAG+'</td>'
-								+ '	<td class="center" style="background-color: #fffed4;text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=&para5='+data.list[i].YYYYMM+'">'+data.list[i].YYYYMM+'</a></td>'
-								+ '	<td class="center" style="background-color: #fffed4;font-weight: bold;">'+data.list[i].RANK_BBC_MMW+'</td>'
-								+ '	<td class="center" style="background-color: #fffed4;font-weight: bold;color: blue;">'+data.list[i].RANK_RATE_MMW+'</td>'
-								+ '	<td class="center" style="background-color: #fffed4;text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3='+data.list[i].MBR_SQ+'&para5='+data.list[i].YYYYMM+'">'+data.list[i].CLB_NIK_NM+'</a></td>'
-								+ '	<td class="center" style="background-color: #fffed4;">'+data.list[i].MMW_WIN+'/'+data.list[i].MMW_LOSE+'</td>'
-								+ '	<td class="center" style="background-color: #fffed4;">'+data.list[i].MMW_WIN_RATE+'%</td>'
-								+ '	<td class="center" style="background-color: #fffed4;">'+data.list[i].MMW_RANK_TREND_TAG+'</td>'
-								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3=&para5='+data.list[i].YYYYMM+'">'+data.list[i].YYYYMM+'</a></td>'
-								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].RANK_BBC_MW+'</td>'
-								+ '	<td class="center" style="font-weight: bold;color: blue;">'+data.list[i].RANK_RATE_MW+'</td>'
-								+ '	<td class="center" style="text-decoration: underline;"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}&para3='+data.list[i].MBR_SQ+'&para5='+data.list[i].YYYYMM+'">'+data.list[i].CLB_NIK_NM+'</a></td>'
-								+ '	<td class="center">'+data.list[i].MW_WIN+'/'+data.list[i].MW_LOSE+'</td>'
-								+ '	<td class="center">'+data.list[i].MW_WIN_RATE+'%</td>'
-								+ '	<td class="center">'+data.list[i].MW_RANK_TREND_TAG+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_PLUS+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_EQUAL+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_MINUS+'</td>'
+								+ '	<td class="center" style="font-weight: bold;'+data.list[i].MVP_TAG+'">'+data.list[i].BBC_TOTAL+'</td>'
 								+ '</tr>'					
 								;
 								$("#table1").append(htm);

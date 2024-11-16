@@ -15,6 +15,16 @@
  		    <result name="page7">/front/bbc/mbr/page7.jsp</result>
  		    <result name="page8">/front/bbc/mbr/page8.jsp</result>
  		    <result name="page9">/front/bbc/mbr/page9.jsp</result>
+ 		    <result name="page10">/front/bbc/mbr/page10.jsp</result>
+ 		    <result name="page11">/front/bbc/mbr/page11.jsp</result>
+ 		    <result name="page12">/front/bbc/mbr/page12.jsp</result>
+ 		    <result name="page13">/front/bbc/mbr/page13.jsp</result>
+ 		    <result name="page14">/front/bbc/mbr/page14.jsp</result>
+ 		    <result name="page15">/front/bbc/mbr/page15.jsp</result>
+ 		    <result name="page16">/front/bbc/mbr/page16.jsp</result>
+ 		    <result name="page17">/front/bbc/mbr/page17.jsp</result>
+ 		    <result name="page18">/front/bbc/mbr/page18.jsp</result>
+ 		    <result name="page19">/front/bbc/mbr/page19.jsp</result>
 		    <result name="{1}">/front/bbc/mbr/{1}.jsp</result>
 		</action>
 	</package>
@@ -59,6 +69,16 @@
  		    <result name="page7">/front/bbc/exc/page7.jsp</result>
  		    <result name="page8">/front/bbc/exc/page8.jsp</result>
  		    <result name="page9">/front/bbc/exc/page9.jsp</result>
+ 		    <result name="page10">/front/bbc/exc/page10.jsp</result>
+ 		    <result name="page11">/front/bbc/exc/page11.jsp</result>
+ 		    <result name="page12">/front/bbc/exc/page12.jsp</result>
+ 		    <result name="page13">/front/bbc/exc/page13.jsp</result>
+ 		    <result name="page14">/front/bbc/exc/page14.jsp</result>
+ 		    <result name="page15">/front/bbc/exc/page15.jsp</result>
+ 		    <result name="page16">/front/bbc/exc/page16.jsp</result>
+ 		    <result name="page17">/front/bbc/exc/page17.jsp</result>
+ 		    <result name="page18">/front/bbc/exc/page18.jsp</result>
+ 		    <result name="page19">/front/bbc/exc/page19.jsp</result>
 		    <result name="{1}">/front/bbc/exc/{1}.jsp</result>
 		</action>
 	</package>
