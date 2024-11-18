@@ -236,9 +236,9 @@
 								+ '	<td class="center">'+data.list[i].WIN+'/'+data.list[i].LOSE+'</td>'
 								+ '	<td class="center">'+data.list[i].WIN_RATE+'%</td>'
 								+ '	<td class="center">'+data.list[i].BBC+'</td>'
-								+ '	<td class="center">'+data.list[i].BBC_PLUS+'</td>'
-								+ '	<td class="center">'+data.list[i].BBC_EQUAL+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_MINUS+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_EQUAL+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_PLUS+'</td>'
 								+ '	<td class="center" style="font-weight: bold;'+data.list[i].MVP_TAG+'">'+data.list[i].BBC_TOTAL+'</td>'
 								+ '</tr>'					
 								;
