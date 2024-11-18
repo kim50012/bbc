@@ -113,9 +113,9 @@
 	function getData() {
 		var para1 = "SELECT_BBC_GET_BY_MONTHLY";
 		var para2 = "${amsClb.CLB_SQ}";
-		var para3 = "${para3}";
+		var para3 = "";
 		var para4 = "${para4}";
-		var para5 = "${para5}";
+		var para5 = "";
 
 		var load = loading();
 		load.show();
@@ -151,7 +151,7 @@
 							var prvMonth = "";
 							for (var i = 0; i < data.list.length; i++) {
 
-								if (data.list[i].YYYYMM != "Total") {
+								if (data.list[i].YYYYMM != "Total" && "${para3}" == data.list[i].MBR_SQ) {
 									arrYyyymm.push(data.list[i].YYYYMM);
 
 									arrBarRateTT.push(data.list[i].WIN_RATE);
@@ -226,7 +226,16 @@
 								+ '	<td class="center">'+data.list[i].MW_RANK_TREND_TAG+'</td>'
 								+ '</tr>'					
 								;
-								$("#table1").append(htm);
+
+								console.log(data.list[i].MBR_SQ);
+								
+								if ("" == "${para3}") {
+									$("#table1").append(htm);
+								}
+								else if ("" != "${para3}" && data.list[i].MBR_SQ == "${para3}") {
+									$("#table1").append(htm);
+								}
+								
 								prvMonth = data.list[i].YYYYMM;
 							}
 						} else {
