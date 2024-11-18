@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>주간/월간 MVP</title>
+<title>MVP</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -91,18 +91,12 @@
 			<div class="scroll-wrap" id="appPage2">
 				<div class="container" style="padding:0;padding-left: 0.3rem;">
 				
-					<div class="title2">
-						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page10&intClbsq=${amsClb.CLB_SQ}">MVP 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
-							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
-					</div>
-
-
-					<div class="content" id="chartArea1">
-						<div class="chart" id="chart"></div>
-					</div>
-					
-					<div class="content" id="chartArea2" style="padding-top:20px;">
-						<div class="chart2" id="chart2"></div>
+		            <div class="tab-header">
+		              <div onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page10&intClbsq=${amsClb.CLB_SQ}';" class="active"><p>MVP 전체 현황</p></div>
+		              <div onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page11&intClbsq=${amsClb.CLB_SQ}';"><p>MVP 월간/주간 횟수</p></div>
+		            </div>
+		            
+					<div class="content" style="height:5px;">
 					</div>
 
 					<div class="table-wrap">
@@ -170,42 +164,25 @@
 							var prvMonth = "";
 							for (var i = 0; i < data.list.length; i++) {
 
-								if (data.list[i].YYYYMM != "Total") {
-									arrYyyymm.push(data.list[i].YYYYMM);
-
-									arrBarRateTT.push(data.list[i].WIN_RATE);
-									arrLineRateMM.push(data.list[i].MMW_WIN_RATE);
-									arrLineRateMW.push(data.list[i].MW_WIN_RATE);
-
-									arrBarCoinTT.push(data.list[i].BBC);
-									arrLineCoinMM.push(data.list[i].MMW_BBC);
-									arrLineCoinMW.push(data.list[i].MW_BBC);
-									
-								}
-								
 								var htm = '';
-								if (prvMonth != data.list[i].YYYYMM) {
-									j = 0;
-
-									if ("" == "${para3}" || i == 0) {
-										htm = ''
-											+ '<tr>'
-											+ '	<th>주차/월</th>'
-											+ '	<th>일자</th>'
-											+ '	<th>순위</th>'
-											+ '	<th>이름</th>'
-											+ '	<th>MVP</th>'
-											+ '	<th>승/패</th>'
-											+ '	<th>승률</th>'
-											+ '	<th>BBC</th>'
-											+ '	<th>약자<BR>대상</th>'
-											+ '	<th>동급<BR>대상</th>'
-											+ '	<th>강자<BR>대상</th>'
-											+ '	<th>MVP SCORE</th>'
-											+ '</tr>'
-											;
-											$("#table1").append(htm);	
-									}
+								if (data.list[i].BBC_RANK == 1 && data.list[i].DATA_TYPE == "M") {
+									htm = ''
+										+ '<tr style="color:#333333;">'
+										+ '	<th>주차/월</th>'
+										+ '	<th>일자</th>'
+										+ '	<th>이름</th>'
+										+ '	<th>순위</th>'
+										+ '	<th>MVP</th>'
+										+ '	<th>승/패</th>'
+										+ '	<th>승률</th>'
+										+ '	<th>BBC</th>'
+										+ '	<th>약자<BR>대상</th>'
+										+ '	<th>동급<BR>대상</th>'
+										+ '	<th>강자<BR>대상</th>'
+										+ '	<th>MVP SCORE</th>'
+										+ '</tr>'
+										;
+										$("#table1").append(htm);	
 								}
 								
 								j++;

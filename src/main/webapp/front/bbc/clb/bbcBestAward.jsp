@@ -35,6 +35,10 @@
     }
     .drag-table td {
     	text-align: center;
+    	padding: 0.24rem 0.1rem;
+    }
+    .container {
+    	padding: 0 0.2rem;
     }
     </style>  
     <script>
@@ -169,7 +173,7 @@
           
           <div class="container">
             <div class="title2">
-              <span class="font24 bold">핸디별 진보 상세 현황</span><span class="font20 fontOrange">기준 : 클럽 평균 게임 횟수 이상</span>
+              <span class="font24 bold">최대 진보 상세 현황</span><span class="font20 fontOrange">핸디캡 기준(약자/강자)</span>
             </div>
             <div class="table">
               <table class="drag-table alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
@@ -177,7 +181,7 @@
                 <tr class="activePrevTr">
                   <th class="lie">순위</th>
                   <th>이름</th>
-                  <th>승/패<br>승률 %</th>
+                  <th>승률 %<br>승/패</th>
                   <th>합계</th>
                   <th>약자<br>상대</th>
                   <th>동급</th>
@@ -188,13 +192,13 @@
 				<c:forEach var="atrMtcListC" items="${atrMtcListC}" varStatus="status">  
 
                 <tr id= "openData" <c:if test="${status.count == 1}">class="activeTr"</c:if>>
-                  <td class="center" style="padding: 0.12rem 0.12rem;">${status.count}</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;">${atrMtcListC.CLB_NIK_NM}</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;">${atrMtcListC.WIN}/${atrMtcListC.LOSE}<br>(${atrMtcListC.WIN_RATE})</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;<c:if test="${atrMtcListC.BBC >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC < 0}"> color:red;</c:if>">${atrMtcListC.BBC}</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;<c:if test="${atrMtcListC.BBC_MINUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_MINUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_MINUS}<br>${atrMtcListC.BBC_MINUS_W}/${atrMtcListC.BBC_MINUS_L}</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;<c:if test="${atrMtcListC.BBC_EQUAL >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_EQUAL < 0}"> color:red;</c:if>">${atrMtcListC.BBC_EQUAL}<br>${atrMtcListC.BBC_EQUAL_W}/${atrMtcListC.BBC_EQUAL_L}</td>
-                  <td style="padding: 0.12rem 0.12rem;text-align: center;<c:if test="${atrMtcListC.BBC_PLUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_PLUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_PLUS}<br>${atrMtcListC.BBC_PLUS_W}/${atrMtcListC.BBC_PLUS_L}</td>
+                  <td class="center" style="padding: 0.12rem 0.08rem;">${status.count}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;">${atrMtcListC.CLB_NIK_NM}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;">${atrMtcListC.WIN_RATE}%<br>${atrMtcListC.WIN}/${atrMtcListC.LOSE}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;<c:if test="${atrMtcListC.BBC >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC < 0}"> color:red;</c:if>">${atrMtcListC.BBC}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;<c:if test="${atrMtcListC.BBC_MINUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_MINUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_MINUS}<br>${atrMtcListC.BBC_MINUS_W}/${atrMtcListC.BBC_MINUS_L}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;<c:if test="${atrMtcListC.BBC_EQUAL >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_EQUAL < 0}"> color:red;</c:if>">${atrMtcListC.BBC_EQUAL}<br>${atrMtcListC.BBC_EQUAL_W}/${atrMtcListC.BBC_EQUAL_L}</td>
+                  <td style="padding: 0.12rem 0.08rem;text-align: center;<c:if test="${atrMtcListC.BBC_PLUS >= 0}"> color:blue;</c:if><c:if test="${atrMtcListC.BBC_PLUS < 0}"> color:red;</c:if>">${atrMtcListC.BBC_PLUS}<br>${atrMtcListC.BBC_PLUS_W}/${atrMtcListC.BBC_PLUS_L}</td>
                 </tr>
                 
 				 </c:forEach>
