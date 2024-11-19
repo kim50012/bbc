@@ -68,9 +68,9 @@
 <body>
 	<div class="app">
 
-		<div class="content">
+		<div class="content" >
 			<div class="scroll-wrap" id="appPage2">
-				<div class="container" style="padding:0;">
+				<div class="container" style="padding:0 0.2rem;">
 				
 					<div class="title2">
 						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=${amsClb.CLB_SQ}">월별 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span

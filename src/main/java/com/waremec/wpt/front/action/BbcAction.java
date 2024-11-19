@@ -6028,7 +6028,7 @@ public class BbcAction extends WeixinBaseAction {
 
 			Map<String,Object> searchMap=new HashMap<String, Object>();
 
-			System.out.println("amsClb");
+//			System.out.println("amsClb");
 
 			searchMap.put("JOP_TYPE", "M");
 			searchMap.put("LOGIN_USER", loginUserId);
@@ -6038,7 +6038,7 @@ public class BbcAction extends WeixinBaseAction {
 			Map<String, Object> amsClb = commonService.select("Bbc.sqlAMS_CLB_SELECT",searchMap);
 			request.put("amsClb", amsClb);
 
-			System.out.println("atrMtcList");
+//			System.out.println("atrMtcList");
 			
 			// 최다 경기상
 			searchMap.clear();
@@ -6054,7 +6054,7 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcList = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
 			request.put("atrMtcList", atrMtcList);
 
-			System.out.println("atrMtcListB");
+//			System.out.println("atrMtcListB");
 
 			// 최고 승률 평균 경기 이상
 			searchMap.clear();
@@ -6070,7 +6070,7 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcListB = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
 			request.put("atrMtcListB", atrMtcListB);
 
-			System.out.println("atrMtcListC");
+//			System.out.println("atrMtcListC");
 
 			// 최고 승률 100~499 경기  -> 진보 상세 데이터로 변경 (핸디별 획득 BBC)
 			searchMap.clear();
@@ -6086,7 +6086,7 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcListC = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
 			request.put("atrMtcListC", atrMtcListC);
 
-			System.out.println("atrMtcListE");
+//			System.out.println("atrMtcListE");
 
 			searchMap.clear();
 			searchMap.put("JOP_TYPE", "B");
@@ -6097,7 +6097,7 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcListE = commonService.selectList("Bbc.sqlATR_MTC_SELECT_BEST",searchMap);
 			request.put("atrMtcListE", atrMtcListE);
 
-			System.out.println("atrMtcListBG");
+//			System.out.println("atrMtcListBG");
 
 			// 연승 쿼리
 			searchMap.clear();
@@ -6113,7 +6113,7 @@ public class BbcAction extends WeixinBaseAction {
 			List<Map<String, Object>> atrMtcListBG = commonService.selectList("Bbc.sqlATR_MTC_SELECT_PERIOD",searchMap);
 			request.put("atrMtcListBG", atrMtcListBG);
 
-			System.out.println("end");
+//			System.out.println("end");
 		}
 		catch(Exception e){
 			// Error Page
