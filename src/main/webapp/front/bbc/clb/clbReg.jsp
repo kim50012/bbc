@@ -88,10 +88,10 @@
 					<div class="sub-content">
 						<div class="file flex">
 							<p class="left-part">${label.俱乐部LOGO}</p>
-							<div class="flex1 right" onclick="chooseImage();">
+							<div class="flex1 right">
 								<span>${label.请上传}</span>
-								<img class="file-img" id="file-img" src="../img/file.png"/>
-								<input type="hidden" id="strClbmaiimgpth" value=""/>
+								<img class="file-img" id="customUploadBtn" src="../img/file.png"/>
+								<input type="file" name="image" id="imageFile" accept="image/*" style="display:none;">
 							</div>
 						</div>
 					</div>
@@ -208,6 +208,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
+            $("#customUploadBtn").on("click", function () {
+                $("#imageFile").click();
+            });			
+			
 			$(".btn-submit").click(function(){
 				
 	 			//var intStdsq= $('#intClbsq').val();	  // [클럽] 경기장시퀀스
@@ -296,7 +300,6 @@
      		 });
       });
 
-
  		function fn_ClbReg(Pubclbyn) {
  			
  			//var intStdsq= $('#intClbsq').val();	  // [클럽] 경기장시퀀스
@@ -367,6 +370,16 @@
  			
  			loadingShow();
  			
+ 			
+
+ 		    var imgLogoPicture = $('#imageFile').val();
+ 			//获取照片的文件名
+ 		    var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
+ 			var param = {
+ 					 logoFileName : logoFileName		
+ 			};			
+ 			
+ 			
  			 $.ajax({
  			 	 		data:{
  			 	 			strClbnm : strClbnm
@@ -388,21 +401,15 @@
  			 	 			,strBmtgd : strBmtgd
  			 	 			,strClbgd : strClbgd
  			 	 			,strYwday : strYear
+ 			 	 			,strClbbakimgfnm : imgFileName
  			 	 		},
  					type : "POST",
  					url : "/front/bbc/clb/clbRegSave.htm",
+ 	 				fileElementId : 'imageFile',
  					success : function(data) {
 
 	     				alert("${label.保存成功了}");
 	     				window.location = "/front/bbc/clb/clb.htm";
-		     				
- 						//if(data.ret=="success"){
- 		     				//alert("${label.保存成功了}");
- 		     				//window.location = "/front/bbc/clb/clbRegSave.htm";
- 						//}else{
- 		     				//alert("${label.失败了}");
- 						//}
- 						
  					},
  					error : function(xhr, status, e) {
  						loadingHide();

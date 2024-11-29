@@ -1,5 +1,6 @@
 package com.waremec.wpt.front.action;
 
+import java.io.File;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +11,13 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baidu.translate.TransApi;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.ListUtil;
 import com.waremec.framework.utilities.SessionUtils;
+import com.waremec.framework.utilities.UploadFileUtil;
+import com.waremec.framework.utilities.UploadResult;
 import com.waremec.weixin.action.WeixinBaseAction;
 import com.waremec.weixin.domain.AppInfo;
 import com.waremec.weixin.domain.template.DataItem;
@@ -309,6 +313,8 @@ public class BbcAction extends WeixinBaseAction {
 	private String error;
 	private String error_description;
 	private String state;
+	
+	private File imageFile = null;
 	
 	@Resource
 	protected BbcService bbcService;
@@ -745,6 +751,12 @@ public class BbcAction extends WeixinBaseAction {
 		try{
 
 			Map<String,Object> map=new HashMap<String, Object>();
+
+			if (imageFile != null) {
+				UploadResult result = UploadFileUtil.upload(getRequest(), imageFile, strClbbakimgfnm, UploadFileUtil.UPLOAD_LOGO);
+				strClbmaiimgpth = result.getFileUrl();
+				strClbmaiimgfnm = result.getFileUrl();
+			}
 			
 	 		map.put("JOP_TYPE","I");
 			map.put("LOGIN_USER",loginUserId);
@@ -824,6 +836,12 @@ public class BbcAction extends WeixinBaseAction {
 				map.put("CLB_ST","OPEN");
 			}
 
+			if (imageFile != null) {
+				UploadResult result = UploadFileUtil.upload(getRequest(), imageFile, strClbbakimgfnm, UploadFileUtil.UPLOAD_LOGO);
+				strClbmaiimgpth = result.getFileUrl();
+				strClbmaiimgfnm = result.getFileUrl();
+			}
+			
 			map.put("CLB_SQ",intClbsq);
 			map.put("LOGIN_USER",loginUserId);
 			map.put("REG_MBR_SQ",sessionMember.getCustSysId());
@@ -8672,5 +8690,14 @@ public class BbcAction extends WeixinBaseAction {
 
 	public void setPara9(String para9) {
 		this.para9 = para9;
+	}
+
+	public File getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(File imageFile) {
+		this.imageFile = imageFile;
 	}	
+
 }

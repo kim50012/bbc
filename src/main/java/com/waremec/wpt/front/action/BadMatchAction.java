@@ -1,5 +1,10 @@
 package com.waremec.wpt.front.action;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -8,7 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -19,6 +27,8 @@ import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.ListUtil;
 import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.framework.utilities.StringUtil;
+import com.waremec.framework.utilities.UploadFileUtil;
+import com.waremec.framework.utilities.UploadResult;
 import com.waremec.weixin.action.WeixinBaseAction;
 import com.waremec.weixin.domain.AppInfo;
 import com.waremec.weixin.domain.template.DataItem;
@@ -684,67 +694,6 @@ public class BadMatchAction extends WeixinBaseAction {
 			returnMap.put("ret", ret);
 			renderJSON(returnMap);
 		}		
-		
-		return NONE;
-	}	
-	
-
-	//---------------------------------------------------------------
-	// userInsert
-	//---------------------------------------------------------------
-	public String updateMbrInfo(){
-
-		try{
-
-			String loginUserId = "";
-			String ret="fail";
-			
-			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-			if (sessionMember == null) {
-				ret="fail";
-				request.put("strLngdv", "ko-KR");
-				return NONE;
-			}
-			else {
-				loginUserId = sessionMember.getOpenid();
-				strLngdv = sessionMember.getLang();
-				request.put("strLngdv", strLngdv);
-			}
-			
-			try{
-
-				Map<String,Object> map=new HashMap<String, Object>();
-
-		 		map.put("JOP_TYPE","U");
-				map.put("LOGIN_USER",loginUserId);
-				
-				map.put("CLB_SQ",intClbsq);
-				map.put("MBR_SQ",intMbrsq);
-				map.put("CLB_GD",strClbgd);
-				map.put("CLB_BBC",intClbbbc);
-				map.put("JIN_CLB_BBC",intJinclbbbc);
-				map.put("CLB_NIK_NM",strClbniknm);
-				map.put("CLB_JIN_ST",strAtttp);
-				map.put("LST_MOD_MBR_SQ",intBthDtTp);
-				map.put("BMT_GD",strBmtgd);
-				
-				Map<String,Object> mapResult=commonService.select("Bbc.sqlAMS_CLB_MBR_INSERT", map);
-				String msgOut = (String) mapResult.get("MSG_OUT");
-				if(msgOut.equals("S")){
-					ret="success";
-				}
-			}catch(Exception e){
-				e.printStackTrace();
-				ret="fail";
-			}
-
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 		
 		return NONE;
 	}	

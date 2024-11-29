@@ -78,7 +78,8 @@
 							<p class="left-part">${label.俱乐部LOGO}</p>
 							<div class="flex1 right">
 								<span onclick="chooseImage();">${label.请上传}</span>
-								<img class="file-img" id="file-img" src="${amsClb.CLB_MAI_IMG_PTH}"/>
+								<img class="file-img" id="customUploadBtn" src="${amsClb.CLB_MAI_IMG_PTH}"/>
+								<input type="file" name="image" id="imageFile" accept="image/*" style="display:none;">
 								<input type="hidden" id="strClbmaiimgpth" value="${amsClb.CLB_MAI_IMG_PTH}"/>
 							</div>
 						</div>
@@ -150,6 +151,10 @@
 	<script type="text/javascript">
 
 		$(document).ready(function(){
+
+            $("#customUploadBtn").on("click", function () {
+                $("#imageFile").click();
+            });			
 			
 			document.getElementById("strClbgd").value = "${amsClb.CLB_TYPE}";
 			
@@ -228,14 +233,6 @@
  			}
  			if (strCorcnt == "") {
  				alert("${label.请输入场地数}");
- 				return;
- 			}
- 			if (strAtdadr == "") {
- 				alert("${label.请输入场地地址}");
- 				return;
- 			}
- 			if (strAtdadrdtl == "") {
- 				alert("${label.请输入详细地址}");
  				return;
  			}
  			
