@@ -39,9 +39,6 @@
 		    <%
 		        if (currentDate.equals(targetDate)) {
 		    %>
-		    .competition {
-/* 		    	display: none; */
-		    }
 		    .fullname {
 		    	display: none;
 		    }
@@ -64,6 +61,9 @@
 		    <%
 		        }
 		    %>
+			.competition, .competition1, .competition2 {
+				margin: 0 auto;
+    		}
 		</style>
 	</head>
 	<body style="background:#fff;text-align:center;width:100%;">

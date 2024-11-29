@@ -23,6 +23,15 @@
 			.typeahead__list2, .typeahead__dropdown {
 			    min-width: 4rem;
 			}
+			.competition{
+				margin: 0 auto;
+			}
+			.competition1{
+				margin: 0 auto;
+			}
+			.competition2{
+				margin: 0 auto;
+			}
 		</style>
 	</head>
 	<body style="background:#fff;text-align:center;width:100%;">
@@ -33,7 +42,7 @@
 					<button class="btn-submit" id="btnMsg" onclick="window.location='gameReg.htm?intClbsq=${intClbsq}';" style="display:none;"></button>
 			</div>
 				
-			<div class="competition2" style="width:100%;height:0.8rem;">
+			<div class="competition2" style="height:0.8rem;">
 				<div class="name float" style="width:100%;height:auto;">
 					<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.3rem;width:91%;" type="text" name="textScore" id="textScore" onchange="fn_onchange();" placeholder="음성으로 점수를 입력하세요">
 				</div>
@@ -174,7 +183,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition2" style="width:100%;height:1.5rem;">
+			<div class="competition2" style="height:1.5rem;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float" style="width:50%;">1 Team Name</p>

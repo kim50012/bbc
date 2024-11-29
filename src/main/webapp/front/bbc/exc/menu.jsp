@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-			<div class="footer">
+			<div class="footer" style="position: fixed;">
 				<div class="footer-menu <c:if test="${menuTag == '1'}">active</c:if>" onclick="window.location='/front/bbc/exc/excDoList.htm';">
 					<span class="participate" ></span>
 					<p>${label.参加活动}</p>

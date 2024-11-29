@@ -115,14 +115,10 @@
           <div class="model-gray" style="margin-top: 0.1rem;background: #fff;margin: 0.2rem;">
           
             <div class="bottom-model" style="padding-top: 0;">
-              <!-- 这里如果是没有权限的加class->noclick -->
-<!--               <div class="select-btn" id="eap">결재</div> -->
-
 				<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
 					<input class="imgContent" style="padding-left: 0.1rem;width:45%;padding-right: 0;" type="date" name="datFrdt" id="datFrdt" value="${datFrdt }" />
 					<input class="imgContent" style="padding-left: 0.1rem;width:45%;padding-right: 0;" type="date" name="datTodt" id="datTodt" value="${datTodt }" />
-				</div>              
-              
+				</div>             
               	<button class="confirmBtn" id="confirmBtn" onclick="search('${intMbrsq}');">${label.查询}</button>
             </div>
           </div>

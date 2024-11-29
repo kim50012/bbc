@@ -347,12 +347,12 @@
      			 	 			,intMbrsq : intMbrsq
      			 	 			,strClbniknm : strClbniknm
      			 	 			,strAtttp : datJindt
-     			 	 			,intBthDtTp : intYywincnt
+     			 	 			,intYywincnt : intYywincnt
      			 	 			,strBmtgd : strBmtgd
      			 	 		},
      					type : "POST",
  					    contentType : "application/x-www-form-urlencoded;charset=utf-8",
-     					url : "/front/bbc/badMatch/updateMbrInfo.htm",
+     					url : "/front/bbc/clb/clbMbrModifyNew.htm",
      					success : function(data) {
 
      						if(data.ret=="success"){

@@ -135,9 +135,10 @@
 						</c:if>
 						<c:if test="${(amsClb.CLB_GD == 'A') || amsClb.CLB_GD == 'B'}">
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page2&intClbsq=${amsClb.CLB_SQ}');">시험평가결과</button>
-							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('clbMbrList.htm?intClbsq=${amsClb.CLB_SQ}');">${label.会员管理}</button>
+							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem; border:solid 1px #01cfb9; color: #01cfb9;" onclick="windowlocation('clbMbrList.htm?intClbsq=${amsClb.CLB_SQ}');">${label.会员管理}</button>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;display:none;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page6&intClbsq=${amsClb.CLB_SQ}');">휴가관리</button>
 						</c:if>
+						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}');">출석율관리</button>
 					</div>
 				</div>
 				<div class="" style="height:2rem;background:#fff;">

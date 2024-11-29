@@ -37,9 +37,10 @@
 			}
 			.competition, .competition1, .competition2 {
     			width: 6.2rem;
+				margin: 0 auto;
     		}
     		.vs {
-		    	width: 0.24rem;
+		    	width: 0.2rem;
 		    }
 		</style>
 	</head>
@@ -96,7 +97,7 @@
 						<input class="score-input" type="text" style="font-size: 0.42rem;" name="intAtemscr" id="intAtemscr" value="${intAtemscr }" onchange="fn_onchange();" placeholder="${label.请输入}"/ >
 					</div>
 				</div>
-				<div class="vs float">vs
+				<div class="vs float">v<br>s
 				</div>
 				<div class="another-party float">
 					<div class="competition-blue">
