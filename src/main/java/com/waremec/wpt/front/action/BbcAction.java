@@ -5834,7 +5834,7 @@ public class BbcAction extends WeixinBaseAction {
 	 		map.put("JOP_TYPE","C");
 			map.put("MBR_ID",strMbrid);
 			
-			strMbrpw = EncryptUtils.sha256(strMbrpw);
+//			strMbrpw = EncryptUtils.sha256(strMbrpw);
 			
 			map.put("MBR_PW",strMbrpw);		// [경기] 운동 시퀀스
 						

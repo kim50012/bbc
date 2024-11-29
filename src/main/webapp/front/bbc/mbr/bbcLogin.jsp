@@ -195,7 +195,7 @@
 								}
 								else{
 									loadingHide();
-				     				alert("${label.失败了}");
+				     				alert("Login failed !");
 								}
 							},
 							error : function(xhr, status, e) {

@@ -91,7 +91,7 @@
 							<div class="flex1 right">
 								<span>${label.请上传}</span>
 								<img class="file-img" id="customUploadBtn" src="../img/file.png"/>
-								<input type="file" name="image" id="imageFile" accept="image/*" style="display:none;">
+								<input type="file" name="image" id="imageFile" accept="image/*" style="display:none;" onchange="javascript:logoUpload(this);">
 							</div>
 						</div>
 					</div>
@@ -269,20 +269,11 @@
 	 				alert("${label.请输入场地数}");
 	 				return;
 	 			}
-	 			if (strAtdadr == "") {
-// 	 				alert("${label.请输入场地地址}");
-// 	 				return;
-	 			}
-	 			if (strAtdadrdtl == "") {
-	 				alert("${label.请输入详细地址}");
-	 				return;
-	 			}
 	 			if (strYear == "") {
 	 				alert("${label.请选择}${label.球历}");
 	 				return;
 	 			}
 	 			
-				
 				$(".pop-up-wrap").show();
 				
 			});
@@ -300,6 +291,31 @@
      		 });
       });
 
+		function logoUpload(file){
+			if(checkImage(file)){
+				if (file.files && file.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(evt){
+						$("#customUploadBtn").attr('src', evt.target.result);
+					}; 
+				 	reader.readAsDataURL(file.files[0]);
+				}	
+			}
+		}
+
+		function checkImage(file){
+			var picPath = file.value;
+			if(picPath == ''){
+				return false;
+			}
+		     var type = picPath.substring(picPath.lastIndexOf('.') + 1, picPath.length).toLowerCase();
+		     if (type != 'jpg' && type != 'bmp' && type != 'gif' && type != 'png') {
+		         alert('You can upload format of JPG, GIF, PNG');
+		         return false;
+		     }
+			return true;
+		}
+		
  		function fn_ClbReg(Pubclbyn) {
  			
  			//var intStdsq= $('#intClbsq').val();	  // [클럽] 경기장시퀀스
@@ -359,55 +375,69 @@
  				alert("${label.请输入场地数}");
  				return;
  			}
- 			if (strAtdadr == "") {
-//  				alert("${label.请输入场地地址}");
-//  				return;
- 			}
- 			if (strAtdadrdtl == "") {
- 				alert("${label.请输入详细地址}");
- 				return;
- 			}
  			
  			loadingShow();
  			
  			
 
  		    var imgLogoPicture = $('#imageFile').val();
- 			//获取照片的文件名
- 		    var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
- 			var param = {
- 					 logoFileName : logoFileName		
- 			};			
- 			
- 			
- 			 $.ajax({
- 			 	 		data:{
- 			 	 			strClbnm : strClbnm
- 			 	 			,strClbitd : strClbitd
- 			 	 			,strPubclbyn : strPubclbyn
- 			 	 			,strExctmedct : strExctmedct
- 			 	 			,strCttnm : strCttnm
- 			 	 			,strCttphnno : strCttphnno
- 			 	 			,intMbrcnt : intMbrcnt
- 			 	 			,strCorcnt : strCorcnt
- 			 	 			,strAtdadr : strAtdadr
- 			 	 			,strAtdadrcd : strAtdadrcd
- 			 	 			,strAtdadrdtl : strAtdadrdtl
- 			 	 			,strClbmaiimgpth : strClbmaiimgpth
- 			 	 			,strClbmaiimgfnm : strClbmaiimgfnm
- 			 	 			,strClbniknm : strClbniknm
- 			 	 			,strAgeyy : strAgeyy
- 			 	 			,strGnddv : strGnddv
- 			 	 			,strBmtgd : strBmtgd
- 			 	 			,strClbgd : strClbgd
- 			 	 			,strYwday : strYear
- 			 	 			,strClbbakimgfnm : imgFileName
- 			 	 		},
+ 			var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
+			const file = $("#imageFile")[0].files[0];
+			const formData = new FormData();
+            formData.append("imageFile", file);
+            formData.append("strClbnm", strClbnm);
+            formData.append(",strClbitd", strClbitd);
+            formData.append(",strPubclbyn", strPubclbyn);
+            formData.append(",strExctmedct", strExctmedct);
+            formData.append(",strCttnm", strCttnm);
+            formData.append(",strCttphnno", strCttphnno);
+            formData.append(",intMbrcnt", intMbrcnt);
+            formData.append(",strCorcnt", strCorcnt);
+            formData.append(",strAtdadr", strAtdadr);
+            formData.append(",strAtdadrcd", strAtdadrcd);
+            formData.append(",strAtdadrdtl", strAtdadrdtl);
+            formData.append(",strClbmaiimgpth", strClbmaiimgpth);
+            formData.append(",strClbmaiimgfnm", strClbmaiimgfnm);
+            formData.append(",strClbniknm", strClbniknm);
+            formData.append(",strAgeyy", strAgeyy);
+            formData.append(",strGnddv", strGnddv);
+            formData.append(",strBmtgd", strBmtgd);
+            formData.append(",strClbgd", strClbgd);
+            formData.append(",strYwday", strYear);
+            formData.append(",strClbbakimgfnm", imgFileName);            
+            
+            /*
+	 	 		data:{
+	 	 			strClbnm : strClbnm
+	 	 			,strClbitd : strClbitd
+	 	 			,strPubclbyn : strPubclbyn
+	 	 			,strExctmedct : strExctmedct
+	 	 			,strCttnm : strCttnm
+	 	 			,strCttphnno : strCttphnno
+	 	 			,intMbrcnt : intMbrcnt
+	 	 			,strCorcnt : strCorcnt
+	 	 			,strAtdadr : strAtdadr
+	 	 			,strAtdadrcd : strAtdadrcd
+	 	 			,strAtdadrdtl : strAtdadrdtl
+	 	 			,strClbmaiimgpth : strClbmaiimgpth
+	 	 			,strClbmaiimgfnm : strClbmaiimgfnm
+	 	 			,strClbniknm : strClbniknm
+	 	 			,strAgeyy : strAgeyy
+	 	 			,strGnddv : strGnddv
+	 	 			,strBmtgd : strBmtgd
+	 	 			,strClbgd : strClbgd
+	 	 			,strYwday : strYear
+	 	 			,strClbbakimgfnm : imgFileName
+	 	 			,imageFile : file
+	 	 		},
+	 	 	*/
+ 			$.ajax({
+				 	data : formData,
  					type : "POST",
  					url : "/front/bbc/clb/clbRegSave.htm",
- 	 				fileElementId : 'imageFile',
+ 					contentType: false,
+ 					processData: false,
  					success : function(data) {
-
 	     				alert("${label.保存成功了}");
 	     				window.location = "/front/bbc/clb/clb.htm";
  					},
@@ -421,143 +451,4 @@
 			
 	</script>
 	
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script type="text/javascript">
-
-/*************************************************/
-/****************  图像接口  **********************/
-/*************************************************/
-// 图片接口
-//拍照、本地选图
-var images = {
-  localId: [],
-  serverId: []
-};
-
-//拍照或从手机相册中选图接口
-function chooseImage(){
-  	wx.chooseImage({
-    	success: function (res) {
-    		images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-    		if(res.localIds.length > 1){
-    			alert('您选择了多张图片，将只上传前1张图片!');
-    		}
-    	}
-    	,fail: function(res){
-    	}
-    	,complete: function(res){
-    		uploadImage();
-    	}
-    	,cancel: function(res){
-    	} 
-	});
-}
-
-//上传接口
-function uploadImage(){
-	
-   if (images.localId.length == 0) {
-      //alert('请先选择图片');
-      return;
-    }  
-	
-   var i = 0, length = images.localId.length; 
-   images.serverId = [];
-   
-   if(length > 1) {
-	   	alert('只上传前1张照片');
-	}
-
-	try {
-		   images.localId = _.first(images.localId, length);
-	}
-	catch (e) {
-		//alert(e.message);
-	}
-
-   
-	function upload() {
-
-		var imgId = images.localId.shift();
-		
-		if(!!imgId){
-			wx.uploadImage({
-	        	localId: imgId,
-	        	success: function (res) {
-	        		
-	        		loadingShow();
-	        		
-	 		      	$.ajax({
-	 		    		async: false,  
-		        	 	data:{
-		        	 		shopId: '${appInfo.shopId }',
-		        	 		mediaId: res.serverId,
-		        	 		fileType: 1,   //1:图片  2：语音
-		        	 		date : new Date()
-		        	 	},
-		 				type : "POST",
-		 				url : "/wx/media/download.htm",
-		 				timeout : 15000,
-		 				success : function(res) {
-		 					
-		 					loadingHide();
-	 					 	if(res.success){
-	 							/***************************************************/
-	 						 	/********上传之后会返回fileId 后续操作继续***********/
-	 						 	/***************************************************/
-	 							var fileId = res.data.fileId;
-	 							var fullUrl = res.data.fullUrl;
-	 							//alert(fullUrl);
-		 						$('#strClbmaiimgpth').val(fullUrl);
-		 						$('#file-img').attr('src',fullUrl);
-	 							
-		 					}//end if
-	 					},
-		 				error : function(xhr, status, e) {
-		 					loadingHide();
-		 					alert("error: " + status);
-		 				}
-	  				});
-	 		      	
-	        	},
-		        fail: function (res) {
-		        	loadingHide();
-					alert(JSON.stringify(res));
-		        }
-	      	});
-		}
-    }
-   
-   	upload();
-}
-
-$(function(){ 
-	  wx.config({
-		    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-		    appId: "${appInfo.appId }", // 必填，公众号的唯一标识
-		    timestamp: "${signInfo.timestamp }", // 必填，生成签名的时间戳
-		    nonceStr: "${signInfo.nonceStr }", // 必填，生成签名的随机串
-		    signature: "${signInfo.signature }",// 必填，签名，见附录1
-		    jsApiList: [//分享接口
-		       		 	 'onMenuShareTimeline'		//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-		        		,'onMenuShareAppMessage'	//获取“分享给朋友”按钮点击状态及自定义分享内容接口
-		        		//界面操作
-		        		,'closeWindow'				//关闭当前网页窗口接口
-		        		,'chooseImage'				//拍照或从手机相册中选图接口
-		        		,'uploadImage'				//上传图片接口
-		                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-		});  
-	  
-	  	wx.ready(function(){
-		    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-		});
-	  	
-	  	
-	  	wx.error(function(res){
-	  	    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-
-	  	});
-	  
-});
-</script>
 </html>
