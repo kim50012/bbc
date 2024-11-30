@@ -59,7 +59,7 @@ public class BbcAction extends WeixinBaseAction {
 	private int intBtemscr;	  // [경기] B팀점수
 	private int intBysetscr;	  // [경기] 세트별점수
 	private int intCalhndcap;	  // [경기선수] 계산된핸디캡
-	private double intClbbbc;	  // [클럽회원] 현재BB코인
+	private String intClbbbc;	  // [클럽회원] 현재BB코인
 	private int intClbbbdsq;	  // [클럽게시판댓글] 클럽게시판시퀀스
 	private int intClbcstiosq;	  // [클럽비용출금] 클럽비용입출금시퀀스
 	private int intClbjinreqsq;	  // [클럽가입신청] 가입신청시퀀스
@@ -69,7 +69,7 @@ public class BbcAction extends WeixinBaseAction {
 	private int intCttmbrsq;	  // [클럽] 쪽지수신클럽회원시퀀스
 	private int intExcsq;	  // [운동참석자] 운동시퀀스
 	private int intHmeclbsq;	  // [운동] 클럽시퀀스
-	private double intJinclbbbc;	  // [클럽회원] 최초부여BB코인
+	private String intJinclbbbc;	  // [클럽회원] 최초부여BB코인
 	private int intJinreqmbrsq;	  // [클럽가입신청] 회원시퀀스
 	private int intLoscnt;	  // [회원별랭킹집계] 기준일패배횟수
 	private int intLstclbjinreqsq;	  // [클럽회원] 가입신청시퀀스
@@ -6740,11 +6740,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intCalhndcap = intCalhndcap;
 	}
 
-	public double getIntClbbbc() {
+	public String getIntClbbbc() {
 		return intClbbbc;
 	}
 
-	public void setIntClbbbc(double intClbbbc) {
+	public void setIntClbbbc(String intClbbbc) {
 		this.intClbbbc = intClbbbc;
 	}
 
@@ -6820,11 +6820,11 @@ public class BbcAction extends WeixinBaseAction {
 		this.intHmeclbsq = intHmeclbsq;
 	}
 
-	public double getIntJinclbbbc() {
+	public String getIntJinclbbbc() {
 		return intJinclbbbc;
 	}
 
-	public void setIntJinclbbbc(double intJinclbbbc) {
+	public void setIntJinclbbbc(String intJinclbbbc) {
 		this.intJinclbbbc = intJinclbbbc;
 	}
 
