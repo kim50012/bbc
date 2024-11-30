@@ -39,47 +39,13 @@
 <!-- 		<script type="text/javascript" src="https://www.appmake.co.kr/asset/js/appmake_sendpush.js"></script>	 -->
 	</head>
 	<%@ include file="/front/bbc/inc/tags.jsp"%>
-	<body style="background:#fff;">
+	<body style="background:#fff;margin: 0 auto;">
 		<div class="wrap no-footer" style="background:#fff;height: 100%;">
-			<div class="header">
-				<div class="back">返回</div>
-				<div class="title">北京羽毛球俱乐部</div>
-				<div class="menu-bar">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</div>
-			<div class="content">
-			
-				<!-- START Data Loop -->
-				<c:set var="hmeClbsq" value="${amsExcList.HME_CLB_SQ}"/>
-			
-				<div class="module" style="display:none;">
-				
-					<div class="sub-content">
-						<div class="flex Participant-title" style="padding-top: 0;padding-bottom: 0.2rem;">		
-
-							<button id="btn" class="btn-join" style="margin-top: 0;">${label.参加活动}</button>
-						</div>
-					</div>
-				</div>
-				<!-- END Data Loop -->
-				
-				
-				<c:set var="excJintpTag" value="" />
-				
-				<c:if test="${hmeClbsq == 2300}">
-					<c:set var="excJintpTag" value="display:none;" />
-				</c:if>
-								
-				
-			</div>
-			
-		<div>
-			<br/><br/><br/><br/>
-		</div>
-		
+		<c:set var="hmeClbsq" value="${amsExcList.HME_CLB_SQ}"/>
+		<c:set var="excJintpTag" value="" />
+		<c:if test="${hmeClbsq == 2300}">
+			<c:set var="excJintpTag" value="display:none;" />
+		</c:if>
 		<c:set var="jinTag1" value="(正常) 基本参与办法，BB COIN是比赛结束后正常反映。" />
 		<c:set var="jinTag2" value="(和平) 愉快运动~BB COIN是只能反映30%。" />
 		<c:set var="jinTag3" value="(受伤) 身体状态不好~BB COIN是只能反映30%。" />
@@ -96,10 +62,13 @@
 		<div class="pop-up-wrap" id="joinExc" style="display: block;">
 			<div class="pop-up-content" style="padding-top:0.1rem;top:48%;height: 100%;width: 100%;">
 			
-				<c:if test="${amsExcList.EXC_TP == '1003'}">
-					<div class="inp-wrap" style="font-size: 0.3rem;padding-top:0.1rem;border-bottom: 1px dashed #d2d2d2;${excJintpTag }">
-						※ ${label.参与类型}
+				<div class="module" style="width: 100%;margin-top: 0.5rem;">
+					<div class="list68 flex">
+						<p class="flex1 title-icon" style="">${label.参与类型}</p>
 					</div>
+				</div>
+				
+				<c:if test="${amsExcList.EXC_TP == '1003'}">
 					<div class="inp-wrap">
 						<div class="radio-box checked" style="padding-top:0.25rem;">
 							<label for="r1-5" class="float1"><input  type="radio" name="activityType1" id="r1-5" value="5" checked/></label>
@@ -154,9 +123,6 @@
 				</c:if>
 				
 				<c:if test="${amsExcList.EXC_TP != '1003'}">
-					<div class="inp-wrap" style="font-size: 0.3rem;padding-top:0.1rem;border-bottom: 1px dashed #d2d2d2;${excJintpTag }">
-						※ ${label.参与类型}
-					</div>
 					<div class="inp-wrap" style="${excJintpTag }">
 						<div class="radio-box checked" style="padding-top:0.25rem;">
 							<label for="r1-1" class="float1"><input  type="radio" name="activityType1" id="r1-1" value="1" checked/></label>
@@ -242,6 +208,10 @@
 					<span class="sure" onclick="fn_ExcJinDel();">${label.确认}</span>
 				</div>
 			</div>
+		</div>
+		</div>	
+		<div>
+			<br/><br/><br/><br/>
 		</div>
 		<script type="text/javascript">
 

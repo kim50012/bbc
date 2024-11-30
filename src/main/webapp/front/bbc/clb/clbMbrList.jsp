@@ -84,7 +84,7 @@
 					<li class="flex2 cell-6 cell">${label.确认}</li>
 				</ul>
 				</div>
-				<div class="module" style="border-top:none;background:#fff;">
+				<div class="module" style="border-top:none;background:#fff;overflow: scroll;height: 82Vh;">
 				
 				<!-- START Data Loop -->
 				<c:forEach var="atrClbJinReq" items="${atrClbJinReq}" varStatus="status">
@@ -137,7 +137,7 @@
 					<li class="flex2 cell-6 cell">${label.修改}</li>
 				</ul>
 				</div>
-				<div class="module" style="border-top:none;background:#fff;">
+				<div class="module" style="border-top:none;background:#fff;overflow: scroll;height: 82Vh;">
 				
 				
 				<!-- START Data Loop -->
@@ -182,7 +182,7 @@
 					<li class="flex2 cell-6 cell">Rank</li>
 				</ul>
 				</div>
-				<div class="module" style="border-top:none;background:#fff;">
+				<div class="module" style="border-top:none;background:#fff;overflow: scroll;height: 82Vh;">
 				
 				
 				<!-- START Data Loop -->
@@ -225,7 +225,7 @@
 					<li class="flex2 cell-11 cell">생일</li>
 				</ul>
 				</div>
-				<div class="module" style="border-top:none;background:#fff;">
+				<div class="module" style="border-top:none;background:#fff;overflow: scroll;height: 82Vh;">
 				
 				
 				<!-- START Data Loop -->

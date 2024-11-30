@@ -65,9 +65,9 @@
 					<c:forEach var="amsExcList" items="${amsExcList}" varStatus="status">  
 								<p></p>
 								
-						<div class="modules"<c:if test="${status.count == 1}"> style="margin-top: 0;"</c:if>>
+						<div class="modules" style="border: 1px solid #d2d2d2;<c:if test="${status.count == 1}">margin-top: 2px;</c:if>">
 						
-							<div class="list78 flex">
+							<div class="list78 flex" style="border-bottom: 1px solid #2196F3;">
 								<p class="club-logo">
 									<img class="club-icon" src="${amsExcList.CLB_MAI_IMG_PTH}"/>
 								</p>
@@ -82,8 +82,12 @@
 								</p>
 							</div>
 							<div class="sub-content" onclick="window.location='excJin.htm?intExcsq=${amsExcList.EXC_SQ}';">
-								<div class="list flex row1"><span class="text-outline">${label.日期}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_DATE}</span></p></div>
-								<div class="list flex row1"><span class="text-outline">${label.时间}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_FR_TIME}~${amsExcList.EXC_TO_TIME} ${amsExcList.WEEKNAME }</span></p></div>
+								<div class="list flex row1">
+									<span class="text-outline">${label.日期}：</span>
+									<p><span style="font-weight:bold;">${amsExcList.EXC_DATE}</span>
+									<span style="font-weight:bold;<c:if test="${amsExcList.WEEKNAME.contains('Saturday')}">color:blue;</c:if><c:if test="${amsExcList.WEEKNAME.contains('Sunday')}">color:red;</c:if>">${amsExcList.WEEKNAME }</span></p>
+								</div>
+								<div class="list flex row1"><span class="text-outline">${label.时间}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_FR_TIME}~${amsExcList.EXC_TO_TIME}</span></p></div>
 								<div class="list flex row1"><span class="text-outline">${label.场地}：</span><p style="font-weight:bold;">${amsExcList.EXC_TIT}</p>&nbsp;<span class="blink">※</span></div>
 								<div class="list flex row1" style="display:none;"><span class="text-outline">${label.创建}：</span><p>${amsExcList.CLB_NIK_NM}</p></div>
 								<c:if test="${amsExcList.EXC_TP != '1003' && amsExcList.ATD_CNT > 0}">
@@ -120,9 +124,9 @@
 					<c:forEach var="amsExcList" items="${amsExcList2}" varStatus="status">  
 								<p></p>
 								
-						<div class="modules"<c:if test="${status.count == 1}"> style="margin-top: 0;"</c:if>>
+						<div class="modules" style="border: 1px solid #d2d2d2;<c:if test="${status.count == 1}">margin-top: 2px;</c:if>">
 						
-							<div class="list78 flex" onclick="window.location='/front/bbc/clb/clbDet.htm?intClbsq=${amsExcList.HME_CLB_SQ}';">
+							<div class="list78 flex" style="border-bottom: 1px solid #2196F3;" onclick="window.location='/front/bbc/clb/clbDet.htm?intClbsq=${amsExcList.HME_CLB_SQ}';">
 								<p class="club-logo">
 									<img class="club-icon" src="${amsExcList.CLB_MAI_IMG_PTH}"/>
 								</p>
@@ -134,8 +138,12 @@
 								</p>
 							</div>
 							<div class="sub-content">
-								<div class="list flex row1"><span class="text-outline">${label.日期}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_DATE}</span></p></div>
-								<div class="list flex row1"><span class="text-outline">${label.时间}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_FR_TIME}~${amsExcList.EXC_TO_TIME} ${amsExcList.WEEKNAME }</span></p></div>
+								<div class="list flex row1">
+									<span class="text-outline">${label.日期}：</span>
+									<p><span style="font-weight:bold;">${amsExcList.EXC_DATE}</span>
+									<span style="font-weight:bold;<c:if test="${amsExcList.WEEKNAME.contains('Saturday')}">color:blue;</c:if><c:if test="${amsExcList.WEEKNAME.contains('Sunday')}">color:red;</c:if>">${amsExcList.WEEKNAME }</span></p>
+								</div>
+								<div class="list flex row1"><span class="text-outline">${label.时间}：</span><p><span style="font-weight:bold;">${amsExcList.EXC_FR_TIME}~${amsExcList.EXC_TO_TIME}</span></p></div>
 								<div class="list flex row1"><span class="text-outline">${label.场地}：</span><p style="font-weight:bold;">${amsExcList.EXC_TIT}</p>&nbsp;<span class="blink">※</span></div>
 								<div class="list flex row1" style="display:none;"><span class="text-outline">${label.创建}：</span><p>${amsExcList.CLB_NIK_NM}</p></div>
 								<c:if test="${amsExcList.EXC_TP != '1003' && amsExcList.ATD_CNT > 0}">

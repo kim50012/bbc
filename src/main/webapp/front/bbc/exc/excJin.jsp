@@ -196,7 +196,7 @@
                     						<span style="line-height: 1.3;font-size: 0.28rem;"><!--  onclick="fnTranslate($(this).text(), 'org');" --> <c:if test="${amsJinList.EXC_JIN_TP == 7 and amsJinList.EXC_TP != '1003' and amsJinList.RANKING > 0}">대기</c:if>${amsJinList.EXC_JIN_CMT} </span>
                     						
 											<c:if test="${amsJinList.MBR_SQ eq loginMbrSq || ((amsExcList.CLB_GD == 'A' || amsClb.amsExcList == 'B') && amsJinList.CLB_GD eq 'X')}">
-											<span onclick="fn_ExcJinDelOpen('${amsJinList.MBR_SQ}');" style="border-radius: 4px;border: 1px solid #ec8921;padding-left: 0.1rem;padding-right: 0.1rem;">${label.不参加}</span>
+											<span onclick="fn_ExcJinDelOpen('${amsJinList.MBR_SQ}');" style="border-radius: 4px;border: 1px solid #ec8921;padding-left: 0.1rem;padding-right: 0.1rem;background-color: #ec8921;color: #FFFFFF;">${label.删除}</span>
 											</c:if>                      						
                       						
 					  						<c:if test="${amsJinList.EM_TYPE ne '9'}">
@@ -210,10 +210,10 @@
 									<c:set var="displayReply" value="N" />
 									<c:forEach items="${amsJinListReply }" var="reply" varStatus="status">
 										<c:if test="${reply.MBR_SQ  eq amsJinList.MBR_SQ}">
-                							<p style="line-height: 0.4rem;"><!--  onclick="fnTranslate($(this).text(), 'org');" -->
+                							<p style="line-height: 0.4rem;position: relative;"><!--  onclick="fnTranslate($(this).text(), 'org');" -->
                 								<span style="font-weight: bold;">${reply.CLB_NIK_NM}</span> : ${reply.EXC_JIN_CMT}
                 								<c:if test="${reply.MBR_SQ_CMT  eq loginMbrSq}">
-                								&nbsp;<span class="delBtn" onclick="delCarMsg('${reply.REPLY_SQ}');" style="padding: 0.02rem 0.14rem;">${label.删除}</span>
+                								&nbsp;<span class="delBtn" onclick="delCarMsg('${reply.REPLY_SQ}');" style="padding: 0 0.14rem;margin-top: 0.05rem;float: right;line-height: 0.3rem;}">${label.删除}</span>
                 								</c:if>
                 							</p>
 											<c:set var="displayReply" value="Y" />
