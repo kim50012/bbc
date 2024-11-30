@@ -161,6 +161,18 @@
 		load.show();
 
 
+		var htm1 = ''
+				+ '<tr style="color:#333333;height:0.8rem;">'
+				+ '	<th>요일</th>'
+				+ '	<th>총 참석자 수</th>'
+				+ '	<th>요일 수(회))</th>'
+				+ '	<th>평균</th>'
+				+ '</tr>'
+				+ '<tr>'
+				+ '	<td class="center" colspan="4">데이터가 없습니다.</td>'
+				+ '</tr>'
+				;
+		$("#table1").html(htm1);	
 		para1 = "SELECT_ATTENTION_GET_BY_TOTAL";
 		$.ajax({
 					data : {
@@ -237,6 +249,29 @@
 				
 				
 
+				var htm2 = ''
+					+ '<tr style="color:#333333;height:0.8rem;">'
+					+ '	<th>누적 랭킹</th>'
+					+ '	<th>누적참여횟수</th>'
+					+ '	<th>이름</th>'
+					+ '	<th>1월</th>'
+					+ '	<th>2월</th>'
+					+ '	<th>3월</th>'
+					+ '	<th>4월</th>'
+					+ '	<th>5월</th>'
+					+ '	<th>6월</th>'
+					+ '	<th>7월</th>'
+					+ '	<th>8월</th>'
+					+ '	<th>9월</th>'
+					+ '	<th>10월</th>'
+					+ '	<th>11월</th>'
+					+ '	<th>12월</th>'
+					+ '</tr>'
+					+ '<tr>'
+					+ '	<td class="center" colspan="15">데이터가 없습니다.</td>'
+					+ '</tr>'
+					;
+			$("#table2").html(htm2);
 		para1 = "SELECT_ATTENTION_GET_BY_Y";
 		$.ajax({
 					data : {
@@ -333,7 +368,49 @@
 					}
 				});		
 		
-
+	
+		var htm3 = ''
+			+ '<tr style="color:#333333;height:0.8rem;">'
+			+ '	<th>누적 랭킹</th>'
+			+ '	<th>누적참여횟수</th>'
+			+ '	<th>이름</th>'
+			+ '	<th>1일</th>'
+			+ '	<th>2일</th>'
+			+ '	<th>3일</th>'
+			+ '	<th>4일</th>'
+			+ '	<th>5일</th>'
+			+ '	<th>6일</th>'
+			+ '	<th>7일</th>'
+			+ '	<th>8일</th>'
+			+ '	<th>9일</th>'
+			+ '	<th>10일</th>'
+			+ '	<th>11일</th>'
+			+ '	<th>12일</th>'
+			+ '	<th>13일</th>'
+			+ '	<th>14일</th>'
+			+ '	<th>15일</th>'
+			+ '	<th>16일</th>'
+			+ '	<th>17일</th>'
+			+ '	<th>18일</th>'
+			+ '	<th>19일</th>'
+			+ '	<th>20일</th>'
+			+ '	<th>21일</th>'
+			+ '	<th>22일</th>'
+			+ '	<th>23일</th>'
+			+ '	<th>24일</th>'
+			+ '	<th>25일</th>'
+			+ '	<th>26일</th>'
+			+ '	<th>27일</th>'
+			+ '	<th>28일</th>'
+			+ '	<th>29일</th>'
+			+ '	<th>30일</th>'
+			+ '	<th>31일</th>'
+			+ '</tr>'
+			+ '<tr>'
+			+ '	<td class="center" colspan="34">데이터가 없습니다.</td>'
+			+ '</tr>'
+			;
+	$("#table3").html(htm3);	
 		para1 = "SELECT_ATTENTION_GET_BY_M";
 		$.ajax({
 					data : {
