@@ -106,22 +106,22 @@
 					<div class="table-wrap">
 						<div class="table" id="tableDiv" style="overflow: scroll;height: 87Vh;">
 							<div class="title2">
-								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}">요일별 참석 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
-									class="font20 fontOrange">기준：${amsClb.TODAY}</span>
+								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}"><span id="spanYear1"></span> 요일별 참석 현황 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+									class="font20 fontOrange">기준：<span id="spanYear12" class="font20 fontOrange"></span></span>
 							</div>
 							<table class="drag-table noWrapTable" id="table1" cellspacing="0" cellpadding="2" border="1">
 							</table>
 							
 							<div class="title2">
-								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}">연간 누적 참석율 랭킹 <span class="mdi mdi-refresh-circle"></span></a></span> <span
-									class="font20 fontOrange">기준：${amsClb.TODAY}</span>
+								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}"><span id="spanYear2"></span> 연간 누적 참석율 랭킹 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+									class="font20 fontOrange">기준：<span id="spanYear22" class="font20 fontOrange"></span></span>
 							</div>
 							<table class="drag-table noWrapTable" id="table2" cellspacing="0" cellpadding="2" border="1">
 							</table>
 							
 							<div class="title2">
-								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}">월별 참석율 랭킹 <span class="mdi mdi-refresh-circle"></span></a></span> <span
-									class="font20 fontOrange">기준：${amsClb.TODAY}</span>
+								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}"><span id="spanMonth"></span> 월별 참석율 랭킹 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+									class="font20 fontOrange">기준：<span id="spanMonth2" class="font20 fontOrange"></span></span>
 							</div>
 							<table class="drag-table noWrapTable" id="table3" cellspacing="0" cellpadding="2" border="1">
 							</table>
@@ -160,6 +160,12 @@
 		var load = loading();
 		load.show();
 
+		$("#spanYear1").html(para3 + "년");
+		$("#spanYear12").html(para3 + "년");
+		$("#spanYear2").html(para3 + "년");
+		$("#spanYear22").html(para3 + "년");
+		$("#spanMonth").html(para4);
+		$("#spanMonth2").html(para4);
 
 		var htm1 = ''
 				+ '<tr style="color:#333333;height:0.8rem;">'
