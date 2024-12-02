@@ -407,33 +407,33 @@
 										+ '<tr style="color:#333333;">'
 										+ '	<th>승률</th>'
 										+ '	<th>코인</th>'
-										+ '	<th>800▲</th>'
+										+ '	<th>900▲</th>'
+										+ '	<th>800</th>'
 										+ '	<th>700</th>'
 										+ '	<th>600</th>'
 										+ '	<th>500</th>'
 										+ '	<th>400</th>'
 										+ '	<th>300</th>'
 										+ '	<th>200</th>'
-										+ '	<th>100</th>'
-										+ '	<th>100▼</th>'
-										+ '	<th>800▲</th>'
+										+ '	<th>200▼</th>'
+										+ '	<th>900▲</th>'
+										+ '	<th>800</th>'
 										+ '	<th>700</th>'
 										+ '	<th>600</th>'
 										+ '	<th>500</th>'
 										+ '	<th>400</th>'
 										+ '	<th>300</th>'
 										+ '	<th>200</th>'
-										+ '	<th>100</th>'
-										+ '	<th>100▼</th>'
-										+ '	<th>800▲</th>'
+										+ '	<th>200▼</th>'
+										+ '	<th>900▲</th>'
+										+ '	<th>800</th>'
 										+ '	<th>700</th>'
 										+ '	<th>600</th>'
 										+ '	<th>500</th>'
 										+ '	<th>400</th>'
 										+ '	<th>300</th>'
 										+ '	<th>200</th>'
-										+ '	<th>100</th>'
-										+ '	<th>100▼</th>'
+										+ '	<th>200▼</th>'
 										+ '</tr>'
 										;
 										$("#table1").append(htm);	
@@ -448,7 +448,7 @@
 								var bbc300 = 0;
 								var bbc200 = 0;
 								var bbc100 = 0;
-								var bbc00 = 0;
+								var bbc900 = 0;
 								var rate800 = 0;
 								var rate700 = 0;
 								var rate600 = 0;
@@ -457,7 +457,7 @@
 								var rate300 = 0;
 								var rate200 = 0;
 								var rate100 = 0;
-								var rate00 = 0;
+								var rate900 = 0;
 								var tagRate800 = '';
 								var tagRate700 = '';
 								var tagRate600 = '';
@@ -466,7 +466,7 @@
 								var tagRate300 = '';
 								var tagRate200 = '';
 								var tagRate100 = '';
-								var tagRate00 = '';
+								var tagRate900 = '';
 								var tagBBC800 = '';
 								var tagBBC700 = '';
 								var tagBBC600 = '';
@@ -475,7 +475,7 @@
 								var tagBBC300 = '';
 								var tagBBC200 = '';
 								var tagBBC100 = '';
-								var tagBBC00 = '';
+								var tagBBC900 = '';
 
 								rate800 = data.list[i].RATE_800;
 								rate700 = data.list[i].RATE_700;
@@ -485,7 +485,7 @@
 								rate300 = data.list[i].RATE_300;
 								rate200 = data.list[i].RATE_200;
 								rate100 = data.list[i].RATE_100;
-								rate00 = data.list[i].RATE_00;
+								rate900 = data.list[i].RATE_900;
 								bbc800 = data.list[i].BBC_800;
 								bbc700 = data.list[i].BBC_700;
 								bbc600 = data.list[i].BBC_600;
@@ -494,7 +494,7 @@
 								bbc300 = data.list[i].BBC_300;
 								bbc200 = data.list[i].BBC_200;
 								bbc100 = data.list[i].BBC_100;
-								bbc00 = data.list[i].BBC_00;
+								bbc900 = data.list[i].BBC_900;
 
 								tagRate800 = 'style="font-weight: bold;color:red;"';
 								if (rate800 >= 50) {
@@ -528,9 +528,9 @@
 								if (rate100 >= 50) {
 									tagRate100 = 'style="font-weight: bold;color:blue;"';
 								}
-								tagRate00 = 'style="font-weight: bold;color:red;"';
-								if (rate00 >= 50) {
-									tagRate00 = 'style="font-weight: bold;color:blue;"';
+								tagRate900 = 'style="font-weight: bold;color:red;"';
+								if (rate900 >= 50) {
+									tagRate900 = 'style="font-weight: bold;color:blue;"';
 								}
 
 								tagBBC800 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
@@ -565,9 +565,9 @@
 								if (bbc100 >= 0) {
 									tagBBC100 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
 								}
-								tagBBC00 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
-								if (bbc00 >= 0) {
-									tagBBC00 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								tagBBC900 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc900 >= 0) {
+									tagBBC900 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
 								}
 
 								
@@ -578,6 +578,7 @@
 								+ '	<td class="center" style="font-weight: bold;background: #f4f7f9 !important;">'+data.list[i].WIN_RATE+'</td>'
 								+ '	<td class="center" style="font-weight: bold;background: #f4f7f9 !important;">'+data.list[i].BBC+'</td>'
 								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].CLB_LEVEL+'</td>'
+								+ '	<td class="center" '+tagRate900+'>'+data.list[i].RATE_900+'</td>'
 								+ '	<td class="center" '+tagRate800+'>'+data.list[i].RATE_800+'</td>'
 								+ '	<td class="center" '+tagRate700+'>'+data.list[i].RATE_700+'</td>'
 								+ '	<td class="center" '+tagRate600+'>'+data.list[i].RATE_600+'</td>'
@@ -586,7 +587,7 @@
 								+ '	<td class="center" '+tagRate300+'>'+data.list[i].RATE_300+'</td>'
 								+ '	<td class="center" '+tagRate200+'>'+data.list[i].RATE_200+'</td>'
 								+ '	<td class="center" '+tagRate100+'>'+data.list[i].RATE_100+'</td>'
-								+ '	<td class="center" '+tagRate00+'>'+data.list[i].RATE_00+'</td>'
+								+ '	<td class="center" '+tagBBC900+'>'+data.list[i].BBC_900+'</td>'
 								+ '	<td class="center" '+tagBBC800+'>'+data.list[i].BBC_800+'</td>'
 								+ '	<td class="center" '+tagBBC700+'>'+data.list[i].BBC_700+'</td>'
 								+ '	<td class="center" '+tagBBC600+'>'+data.list[i].BBC_600+'</td>'
@@ -595,7 +596,7 @@
 								+ '	<td class="center" '+tagBBC300+'>'+data.list[i].BBC_300+'</td>'
 								+ '	<td class="center" '+tagBBC200+'>'+data.list[i].BBC_200+'</td>'
 								+ '	<td class="center" '+tagBBC100+'>'+data.list[i].BBC_100+'</td>'
-								+ '	<td class="center" '+tagBBC00+'>'+data.list[i].BBC_00+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_900W+'/'+data.list[i].BBC_900L+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_800W+'/'+data.list[i].BBC_800L+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_700W+'/'+data.list[i].BBC_700L+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_600W+'/'+data.list[i].BBC_600L+'</td>'
@@ -604,7 +605,6 @@
 								+ '	<td class="center">'+data.list[i].BBC_300W+'/'+data.list[i].BBC_300L+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_200W+'/'+data.list[i].BBC_200L+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_100W+'/'+data.list[i].BBC_100L+'</td>'
-								+ '	<td class="center">'+data.list[i].BBC_00W+'/'+data.list[i].BBC_00L+'</td>'
 								+ '</tr>'					
 								;
 								$("#table1").append(htm);
