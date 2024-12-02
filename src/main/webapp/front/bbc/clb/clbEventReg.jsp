@@ -54,8 +54,8 @@
 							<p class="left-part">${label.图片}</p>
 							<div class="flex1 right"  onclick="chooseImage();">
 								<span>${label.请上传}</span>
-								<img class="file-img" id="file-img" src="../img/file.png"/>
-								<input type="hidden" id="strPtourl" value=""/>
+								<img class="file-img" id="customUploadBtn" src="../img/file.png"/>
+								<input type="file" name="image" id="imageFile" accept="image/*" style="display:none;" onchange="javascript:logoUpload(this);">
 							</div>
 							
 						</div>
@@ -74,6 +74,11 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
+            $("#customUploadBtn").on("click", function () {
+                $("#imageFile").click();
+            });			
+			
+            
 		 	$(".list90 input[type='radio']").change(function(){
 				if ($(":radio[name='strClbgd']").is(':checked')) {
 					$(".radio-box").removeClass("checked");
@@ -104,36 +109,66 @@
 				
 				$(".pop-up-wrap").show();
 				
-
+	 		    var imgLogoPicture = $('#imageFile').val();
+	 			var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
+				const file = $("#imageFile")[0].files[0];
+				const formData = new FormData();
+	            formData.append("imageFile", file);
+	            formData.append("intClbsq", intClbsq);
+	            formData.append("strPtourl", imgFileName);
+	            formData.append("strEvtcte", strEvtcte);
+	            formData.append("strHmenm", strHmenm);
+	            formData.append("strAwynm", strAwynm);
+				
 	 			loadingShow();
 	 			
-	 			 $.ajax({
-	 			 	 		data:{
-	 			 	 			intClbsq : intClbsq
-	 			 	 			,strPtourl : strPtourl
-	 			 	 			,strEvtcte : strEvtcte
-	 			 	 			,strHmenm : strHmenm
-	 			 	 			,strAwynm : strAwynm
-	 			 	 		},
-	 					type : "POST",
-	 					url : "/front/bbc/clb/clbEventSave.htm",
-	 					success : function(data) {
+	 			$.ajax({
+				 	data : formData,
+ 					type : "POST",
+ 					url : "/front/bbc/clb/clbEventSave.htm",
+ 					contentType: false,
+ 					processData: false,
+ 					success : function(data) {
 
-		     				alert("${label.保存成功了}");
-		    				window.location = "/front/bbc/clb/clbEventList.htm?intClbsq="+intClbsq;
-			     			
-	 					},
-	 					error : function(xhr, status, e) {
-	 						loadingHide();
-	 						alert("Error : " + status);
-	 					}
-	 				});				
+	     				alert("${label.保存成功了}");
+	    				window.location = "/front/bbc/clb/clbEventList.htm?intClbsq="+intClbsq;
+		     			
+ 					},
+ 					error : function(xhr, status, e) {
+ 						loadingHide();
+ 						alert("Error : " + status);
+ 					}
+	 			});				
 				
 			});
 			
       });
 
 
+		function logoUpload(file){
+			if(checkImage(file)){
+				if (file.files && file.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(evt){
+						$("#customUploadBtn").attr('src', evt.target.result);
+					}; 
+				 	reader.readAsDataURL(file.files[0]);
+				}	
+			}
+		}
+
+		function checkImage(file){
+			var picPath = file.value;
+			if(picPath == ''){
+				return false;
+			}
+		     var type = picPath.substring(picPath.lastIndexOf('.') + 1, picPath.length).toLowerCase();
+		     if (type != 'jpg' && type != 'bmp' && type != 'gif' && type != 'png') {
+		         alert('You can upload format of JPG, GIF, PNG');
+		         return false;
+		     }
+			return true;
+		}
 
 			
 	</script>

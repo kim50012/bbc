@@ -3475,6 +3475,11 @@ public class BbcAction extends WeixinBaseAction {
 		
 		try{
 
+			if (imageFile != null) {
+				UploadResult result = UploadFileUtil.upload(getRequest(), imageFile, strPtourl, UploadFileUtil.UPLOAD_LOGO);
+				strPtourl = result.getFileUrl();
+			}
+			
 			Map<String,Object> map=new HashMap<String, Object>();
 			
 	 		map.put("JOP_TYPE", "I");
