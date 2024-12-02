@@ -92,8 +92,8 @@
 				<div class="container" style="padding:0;padding-left: 0.3rem;">
 				
 		            <div class="tab-header">
-		              <div onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page13&intClbsq=${amsClb.CLB_SQ}';" class="active"><p>파트너LVL분석</p></div>
-		              <div><p>준비중</p></div>
+		              <div onclick="tab(this, 1)"><p>파트너LVL분석(조)</p></div>
+		              <div onclick="tab(this, 2)"><p>파트너LVL분석(Coin)</p></div>
 		            </div>
 		            
 					<div class="content" style="height:5px;">
@@ -114,11 +114,21 @@
 
 </body>
 <script type="text/javascript">
+	function tab(el, index) {
+	    $(".active").removeClass('active');
+	    $(el).addClass('active');
+	    if(index == 1) {
+			getData();
+	    } else if(index == 2) {
+	  	 	getData2();
+	    }
+	}
 	$(function() {
-		getData();
+	    $(".tab-header p").eq(0).click();
+// 		getData();
 		appWidth();	
 	});
-	
+	  
 	function appWidth() {
 		$(".app").css("width", $(window).width());
 	}
@@ -318,6 +328,283 @@
 								+ '	<td class="center">'+data.list[i].BBC_CW+'/'+data.list[i].BBC_CL+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_DW+'/'+data.list[i].BBC_DL+'</td>'
 								+ '	<td class="center">'+data.list[i].BBC_EW+'/'+data.list[i].BBC_EL+'</td>'
+								+ '</tr>'					
+								;
+								$("#table1").append(htm);
+								prvMonth = data.list[i].YYYYMM;
+							}
+						} else {
+
+						}
+						
+						load.hide();
+
+					},
+					error : function(xhr, status, e) {
+						load.hide()
+						alert("Error : " + status);
+					}
+				});
+	}
+	
+	
+
+	function getData2() {
+		var para1 = "SELECT_GET_LVL_BBCOIN2";
+		var para2 = "${amsClb.CLB_SQ}";
+		var para3 = "${para3}";
+		var para4 = "${para4}";
+		var para5 = "${para5}";
+
+		var load = loading();
+		load.show();
+
+		$.ajax({
+					data : {
+						para1 : para1,
+						para2 : para2,
+						para3 : para3,
+						para4 : para4,
+						para5 : para5
+					},
+					type : "POST",
+					url : "/front/bbc/clb/getData.htm",
+					success : function(data) {
+
+				        var arrYyyymm = [];
+						var arrBarRateTT = [];
+						var arrLineRateMM = [];
+						var arrLineRateMW = [];
+
+						var arrBarCoinTT = [];
+						var arrLineCoinMM = [];
+						var arrLineCoinMW = [];
+						
+						if (data.list.length != 0) {
+
+							$("#table1").html('');
+							htm = '';
+							$("#table1").append(htm);
+
+							var j = 0;
+							var prvMonth = "";
+							for (var i = 0; i < data.list.length; i++) {
+								j++;
+								var tagLine = "";
+								var htm = '';
+
+								if (j==1) {
+									htm = ''
+										+ '<tr style="color:#333333;">'
+										+ '	<th rowspan="2">순위</th>'
+										+ '	<th rowspan="2">이름</th>'
+										+ '	<th colspan="2">전체</th>'
+										+ '	<th rowspan="2">나의<br>급수</th>'
+										+ '	<th colspan="9">승율 (파트너 급수별)</th>'
+										+ '	<th colspan="9">BB Coin (파트너 급수별)</th>'
+										+ '	<th colspan="9">승패 (파트너 급수별)</th>'
+										+ '</tr>'
+										+ '<tr style="color:#333333;">'
+										+ '	<th>승률</th>'
+										+ '	<th>코인</th>'
+										+ '	<th>800▲</th>'
+										+ '	<th>700</th>'
+										+ '	<th>600</th>'
+										+ '	<th>500</th>'
+										+ '	<th>400</th>'
+										+ '	<th>300</th>'
+										+ '	<th>200</th>'
+										+ '	<th>100</th>'
+										+ '	<th>100▼</th>'
+										+ '	<th>800▲</th>'
+										+ '	<th>700</th>'
+										+ '	<th>600</th>'
+										+ '	<th>500</th>'
+										+ '	<th>400</th>'
+										+ '	<th>300</th>'
+										+ '	<th>200</th>'
+										+ '	<th>100</th>'
+										+ '	<th>100▼</th>'
+										+ '	<th>800▲</th>'
+										+ '	<th>700</th>'
+										+ '	<th>600</th>'
+										+ '	<th>500</th>'
+										+ '	<th>400</th>'
+										+ '	<th>300</th>'
+										+ '	<th>200</th>'
+										+ '	<th>100</th>'
+										+ '	<th>100▼</th>'
+										+ '</tr>'
+										;
+										$("#table1").append(htm);	
+									tagLine = 'class="activeTr"';
+								}
+
+								var bbc800 = 0;
+								var bbc700 = 0;
+								var bbc600 = 0;
+								var bbc500 = 0;
+								var bbc400 = 0;
+								var bbc300 = 0;
+								var bbc200 = 0;
+								var bbc100 = 0;
+								var bbc00 = 0;
+								var rate800 = 0;
+								var rate700 = 0;
+								var rate600 = 0;
+								var rate500 = 0;
+								var rate400 = 0;
+								var rate300 = 0;
+								var rate200 = 0;
+								var rate100 = 0;
+								var rate00 = 0;
+								var tagRate800 = '';
+								var tagRate700 = '';
+								var tagRate600 = '';
+								var tagRate500 = '';
+								var tagRate400 = '';
+								var tagRate300 = '';
+								var tagRate200 = '';
+								var tagRate100 = '';
+								var tagRate00 = '';
+								var tagBBC800 = '';
+								var tagBBC700 = '';
+								var tagBBC600 = '';
+								var tagBBC500 = '';
+								var tagBBC400 = '';
+								var tagBBC300 = '';
+								var tagBBC200 = '';
+								var tagBBC100 = '';
+								var tagBBC00 = '';
+
+								rate800 = data.list[i].RATE_800;
+								rate700 = data.list[i].RATE_700;
+								rate600 = data.list[i].RATE_600;
+								rate500 = data.list[i].RATE_500;
+								rate400 = data.list[i].RATE_400;
+								rate300 = data.list[i].RATE_300;
+								rate200 = data.list[i].RATE_200;
+								rate100 = data.list[i].RATE_100;
+								rate00 = data.list[i].RATE_00;
+								bbc800 = data.list[i].BBC_800;
+								bbc700 = data.list[i].BBC_700;
+								bbc600 = data.list[i].BBC_600;
+								bbc500 = data.list[i].BBC_500;
+								bbc400 = data.list[i].BBC_400;
+								bbc300 = data.list[i].BBC_300;
+								bbc200 = data.list[i].BBC_200;
+								bbc100 = data.list[i].BBC_100;
+								bbc00 = data.list[i].BBC_00;
+
+								tagRate800 = 'style="font-weight: bold;color:red;"';
+								if (rate800 >= 50) {
+									tagRate800 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate700 = 'style="font-weight: bold;color:red;"';
+								if (rate700 >= 50) {
+									tagRate700 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate600 = 'style="font-weight: bold;color:red;"';
+								if (rate600 >= 50) {
+									tagRate600 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate500 = 'style="font-weight: bold;color:red;"';
+								if (rate500 >= 50) {
+									tagRate500 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate400 = 'style="font-weight: bold;color:red;"';
+								if (rate400 >= 50) {
+									tagRate400 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate300 = 'style="font-weight: bold;color:red;"';
+								if (rate300 >= 50) {
+									tagRate300 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate200 = 'style="font-weight: bold;color:red;"';
+								if (rate200 >= 50) {
+									tagRate200 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate100 = 'style="font-weight: bold;color:red;"';
+								if (rate100 >= 50) {
+									tagRate100 = 'style="font-weight: bold;color:blue;"';
+								}
+								tagRate00 = 'style="font-weight: bold;color:red;"';
+								if (rate00 >= 50) {
+									tagRate00 = 'style="font-weight: bold;color:blue;"';
+								}
+
+								tagBBC800 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc800 >= 0) {
+									tagBBC800 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC700 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc700 >= 0) {
+									tagBBC700 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC600 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc600 >= 0) {
+									tagBBC600 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC500 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc500 >= 0) {
+									tagBBC500 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC400 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc400 >= 0) {
+									tagBBC400 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC300 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc300 >= 0) {
+									tagBBC300 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC200 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc200 >= 0) {
+									tagBBC200 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC100 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc100 >= 0) {
+									tagBBC100 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+								tagBBC00 = 'style="font-weight: bold;color:red;background: #f4f7f9 !important;"';
+								if (bbc00 >= 0) {
+									tagBBC00 = 'style="font-weight: bold;color:blue;background: #f4f7f9 !important;"';
+								}
+
+								
+								htm = ''
+								+ '<tr>'
+								+ '	<td class="center" style="font-weight: bold;">'+j+'</td>'
+								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].CLB_NIK_NM+'</td>'
+								+ '	<td class="center" style="font-weight: bold;background: #f4f7f9 !important;">'+data.list[i].WIN_RATE+'</td>'
+								+ '	<td class="center" style="font-weight: bold;background: #f4f7f9 !important;">'+data.list[i].BBC+'</td>'
+								+ '	<td class="center" style="font-weight: bold;">'+data.list[i].CLB_LEVEL+'</td>'
+								+ '	<td class="center" '+tagRate800+'>'+data.list[i].RATE_800+'</td>'
+								+ '	<td class="center" '+tagRate700+'>'+data.list[i].RATE_700+'</td>'
+								+ '	<td class="center" '+tagRate600+'>'+data.list[i].RATE_600+'</td>'
+								+ '	<td class="center" '+tagRate500+'>'+data.list[i].RATE_500+'</td>'
+								+ '	<td class="center" '+tagRate400+'>'+data.list[i].RATE_400+'</td>'
+								+ '	<td class="center" '+tagRate300+'>'+data.list[i].RATE_300+'</td>'
+								+ '	<td class="center" '+tagRate200+'>'+data.list[i].RATE_200+'</td>'
+								+ '	<td class="center" '+tagRate100+'>'+data.list[i].RATE_100+'</td>'
+								+ '	<td class="center" '+tagRate00+'>'+data.list[i].RATE_00+'</td>'
+								+ '	<td class="center" '+tagBBC800+'>'+data.list[i].BBC_800+'</td>'
+								+ '	<td class="center" '+tagBBC700+'>'+data.list[i].BBC_700+'</td>'
+								+ '	<td class="center" '+tagBBC600+'>'+data.list[i].BBC_600+'</td>'
+								+ '	<td class="center" '+tagBBC500+'>'+data.list[i].BBC_500+'</td>'
+								+ '	<td class="center" '+tagBBC400+'>'+data.list[i].BBC_400+'</td>'
+								+ '	<td class="center" '+tagBBC300+'>'+data.list[i].BBC_300+'</td>'
+								+ '	<td class="center" '+tagBBC200+'>'+data.list[i].BBC_200+'</td>'
+								+ '	<td class="center" '+tagBBC100+'>'+data.list[i].BBC_100+'</td>'
+								+ '	<td class="center" '+tagBBC00+'>'+data.list[i].BBC_00+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_800W+'/'+data.list[i].BBC_800L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_700W+'/'+data.list[i].BBC_700L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_600W+'/'+data.list[i].BBC_600L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_500W+'/'+data.list[i].BBC_500L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_400W+'/'+data.list[i].BBC_400L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_300W+'/'+data.list[i].BBC_300L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_200W+'/'+data.list[i].BBC_200L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_100W+'/'+data.list[i].BBC_100L+'</td>'
+								+ '	<td class="center">'+data.list[i].BBC_00W+'/'+data.list[i].BBC_00L+'</td>'
 								+ '</tr>'					
 								;
 								$("#table1").append(htm);
