@@ -117,6 +117,15 @@
 								</select>
 							</div>
 						</div>
+						<div class="list90 bottom-dashed flex">
+							<p class="left-part">성별</p>
+							<div class="flex1">
+								<select class="dropdown" id="strGnddv" dir="rtl" style="color:#666;padding-right: 0.24rem;" placeholder="${label.请输入}">
+									<option value="MALE">남성</option>
+									<option value="FEMA">여성</option>
+								</select>
+							</div>
+						</div>
 						
 						<c:set var="varDisplay" value="initial" />
 						
@@ -266,6 +275,7 @@
 				<c:if test="${amsClb.CLB_SQ == 11}">
 	  			document.getElementById("selClb").value = "${amsClbMbr.BMTYEAR}";
 				</c:if>
+				document.getElementById("strGnddv").value = "${amsClbMbr.GND_DV}";
 	  			
 	  		});
 		 
@@ -305,6 +315,7 @@
      			var datJindt = $('#strClBthdt').val();
      			var intYywincnt = $('#strClBthdttp').val();
      			var strBmtgd = $('#strBmtgd').val();
+     			var strGnddv = $('#strGnddv').val();
 				
      			if (strClbniknm == "") {
      				alert("${label.请输入}${label.姓名}");
@@ -349,6 +360,7 @@
      			 	 			,strAtttp : datJindt
      			 	 			,intYywincnt : intYywincnt
      			 	 			,strBmtgd : strBmtgd
+     			 	 			,strGnddv : strGnddv
      			 	 		},
      					type : "POST",
  					    contentType : "application/x-www-form-urlencoded;charset=utf-8",

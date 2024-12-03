@@ -3656,6 +3656,7 @@ public class BbcAction extends WeixinBaseAction {
 			map.put("CLB_JIN_ST",strAtttp);
 			map.put("LST_MOD_MBR_SQ",intYywincnt);
 			map.put("BMT_GD",strBmtgd);
+			map.put("GND_DV",strGnddv);
 			
 			
 			Map<String,Object> mapResult=commonService.select("Bbc.sqlAMS_CLB_MBR_INSERT", map);
