@@ -108,6 +108,7 @@
 	     , @CLB_NIK_NM = #CLB_NIK_NM#
 	     , @JIN_CLB_BBC = #JIN_CLB_BBC#
 	     , @BMT_GD = #BMT_GD#
+	     , @GND_DV = #GND_DV#
 	  ]]>
 	 </select>
 	
