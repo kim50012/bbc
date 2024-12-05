@@ -323,7 +323,7 @@
 				};
 				var con = document.createElement("div");
 				con.className = "date-con";
-				con.innerHTML = "<span onclick='showTr();'>" + this.Year + "년" + this.Month + "</span>";
+				con.innerHTML = "<span onclick='showTr();'>" + this.Year + "년 " + this.Month + "월</span>";
 				var rBtn = document.createElement("div");
 				rBtn.className = "date-rbtn";
 				rBtn.onclick = function() {
