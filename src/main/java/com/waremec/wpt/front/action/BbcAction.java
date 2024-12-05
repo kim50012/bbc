@@ -6149,9 +6149,9 @@ public class BbcAction extends WeixinBaseAction {
 	}	
 	
 
-	
+
 	//---------------------------------------------------------------
-	// 운동 참여 수정
+	// 나의 월간 현황
 	//---------------------------------------------------------------
 	public String clbMbrMonthly(){
 
@@ -6207,6 +6207,82 @@ public class BbcAction extends WeixinBaseAction {
 			return "noAuth";
 		}
 		return "clbMbrMonthly";
+	}
+	
+
+	//---------------------------------------------------------------
+	// 월간 참석자 조회
+	//---------------------------------------------------------------
+	public String clbAttendanceMonthly(){
+
+		try{
+
+			String loginUserId = "";
+			int loginMbrSq = 0;
+			String currLanguage = LabelUtil.getCurrentLanguage();
+			
+			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+			if (sessionMember == null) {
+				loginUserId = "";
+				loginMbrSq = 0;
+				request.put("strLngdv", "ko-KR");
+			}
+			else {
+				loginUserId = sessionMember.getOpenid();
+				loginMbrSq = sessionMember.getCustSysId();
+				strLngdv = sessionMember.getLang();
+				request.put("strLngdv", strLngdv);
+			}
+
+			Map<String,Object> searchMap=new HashMap<String, Object>();
+
+
+			searchMap.put("JOP_TYPE", "M");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("REG_MBR_SQ", intMbrsq);
+			searchMap.put("LANG", currLanguage);
+			searchMap.put("CTT_NM", datFrdt);
+			
+			Map<String, Object> amsClb = commonService.select("Bbc.sqlAMS_CLB_SELECT",searchMap);
+			request.put("amsClb", amsClb);
+			request.put("datFrdt", datFrdt);
+			
+			
+			request.put("amsClb", amsClb);
+			request.put("loginMbrSq", loginMbrSq);
+			request.put("para1", para1);
+			request.put("para2", para2);
+			request.put("para3", para3);
+			request.put("para4", para4);
+			request.put("para5", para5);
+			request.put("para6", para6);
+			request.put("para7", para7);
+			request.put("para8", para8);
+			request.put("para9", para9);
+
+			searchMap.clear();
+			searchMap.put("P1", para1);
+			searchMap.put("P2", para2);
+			searchMap.put("P3", para3);
+			searchMap.put("P4", para4);
+			searchMap.put("P5", para5);
+			searchMap.put("P6", para6);
+			searchMap.put("P7", para7);
+			searchMap.put("P8", para8);
+			searchMap.put("P9", para9);
+			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_COMMON_PROCEDURE", searchMap);
+			
+			request.put("pageData", pageData);		
+			
+		}
+		catch(Exception e){
+			// Error Page
+			String errorMessageBbc = e.getMessage() ;
+			request.put("errorMessageBbc", errorMessageBbc);
+			return "noAuth";
+		}
+		return "clbAttendanceMonthly";
 	}
 	
 

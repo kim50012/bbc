@@ -25,6 +25,16 @@
  		    <result name="page17">/front/bbc/mbr/page17.jsp</result>
  		    <result name="page18">/front/bbc/mbr/page18.jsp</result>
  		    <result name="page19">/front/bbc/mbr/page19.jsp</result>
+ 		    <result name="page20">/front/bbc/mbr/page20.jsp</result>
+ 		    <result name="page21">/front/bbc/mbr/page21.jsp</result>
+ 		    <result name="page22">/front/bbc/mbr/page22.jsp</result>
+ 		    <result name="page23">/front/bbc/mbr/page23.jsp</result>
+ 		    <result name="page24">/front/bbc/mbr/page24.jsp</result>
+ 		    <result name="page25">/front/bbc/mbr/page25.jsp</result>
+ 		    <result name="page26">/front/bbc/mbr/page26.jsp</result>
+ 		    <result name="page27">/front/bbc/mbr/page27.jsp</result>
+ 		    <result name="page28">/front/bbc/mbr/page28.jsp</result>
+ 		    <result name="page29">/front/bbc/mbr/page29.jsp</result>
 		    <result name="{1}">/front/bbc/mbr/{1}.jsp</result>
 		</action>
 	</package>
@@ -51,6 +61,16 @@
  		    <result name="page17">/front/bbc/clb/page17.jsp</result>
  		    <result name="page18">/front/bbc/clb/page18.jsp</result>
  		    <result name="page19">/front/bbc/clb/page19.jsp</result>
+ 		    <result name="page20">/front/bbc/clb/page20.jsp</result>
+ 		    <result name="page21">/front/bbc/clb/page21.jsp</result>
+ 		    <result name="page22">/front/bbc/clb/page22.jsp</result>
+ 		    <result name="page23">/front/bbc/clb/page23.jsp</result>
+ 		    <result name="page24">/front/bbc/clb/page24.jsp</result>
+ 		    <result name="page25">/front/bbc/clb/page25.jsp</result>
+ 		    <result name="page26">/front/bbc/clb/page26.jsp</result>
+ 		    <result name="page27">/front/bbc/clb/page27.jsp</result>
+ 		    <result name="page28">/front/bbc/clb/page28.jsp</result>
+ 		    <result name="page29">/front/bbc/clb/page29.jsp</result>
 		    <result name="clbMbrModify">/front/bbc/clb/clbMbrModify.jsp</result>
 		    <result name="{1}">/front/bbc/clb/{1}.jsp</result>
 		</action>
@@ -79,6 +99,16 @@
  		    <result name="page17">/front/bbc/exc/page17.jsp</result>
  		    <result name="page18">/front/bbc/exc/page18.jsp</result>
  		    <result name="page19">/front/bbc/exc/page19.jsp</result>
+ 		    <result name="page20">/front/bbc/exc/page20.jsp</result>
+ 		    <result name="page21">/front/bbc/exc/page21.jsp</result>
+ 		    <result name="page22">/front/bbc/exc/page22.jsp</result>
+ 		    <result name="page23">/front/bbc/exc/page23.jsp</result>
+ 		    <result name="page24">/front/bbc/exc/page24.jsp</result>
+ 		    <result name="page25">/front/bbc/exc/page25.jsp</result>
+ 		    <result name="page26">/front/bbc/exc/page26.jsp</result>
+ 		    <result name="page27">/front/bbc/exc/page27.jsp</result>
+ 		    <result name="page28">/front/bbc/exc/page28.jsp</result>
+ 		    <result name="page29">/front/bbc/exc/page29.jsp</result>
 		    <result name="{1}">/front/bbc/exc/{1}.jsp</result>
 		</action>
 	</package>
