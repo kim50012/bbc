@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>월간 민턴 일정</title>
+<title>출석 조회</title>
 <!--bootstarp：公用-->
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <!--字体图标：公用-->
@@ -109,6 +109,12 @@
 	    left: 0rem;
 	    margin-top: 0.05rem;
 	}
+	.drag-table th {
+		padding: 0.1rem 0;
+	}
+	.drag-table td {
+		padding: 0.1rem 0;
+	}
 </style>
 <script>
    $(function() {
@@ -133,7 +139,7 @@
 						<span class="font24 bold">출석 조회</span>
 					</div>
 					<div class="date mt10 date_schedule pb12" id="idCalendar"></div>
-					<div id="tableWrap">
+					<div id="tableWrap" style="display:none;">
 						<div class="title1">
 							<div>
 								<i class="fourDPlex icon-sanjiao"></i> <span class="bold">상세현황</span>
@@ -142,6 +148,66 @@
 						</div>
 						<div class="table">
 							<table class="drag-table" id="table1" cellspacing="0" cellpadding="2" width="100%" border="1">
+								<colgroup>
+									<col width="27%" />
+									<col width="73%" />
+								</colgroup>
+
+
+							  	<c:forEach var="amsJinList" items="${amsJinList}" varStatus="status">
+								<tr id="tr${amsJinList.EXC_DATE }" class="hideTr">
+									<th <c:if test="${amsJinList.PAST_EXC eq 'N'}">style="border-right: 1px solid #dc95d0;background: #f8f4f4;"</c:if>>
+										<div class="mb10">${amsJinList.EXC_DATE }</div>
+										<c:if test="${amsJinList.EXC_TP eq '1001' and amsJinList.CLB_SQ eq amsJinList.HME_CLB_SQ}">
+											<div class="green-solid fontGreen">${amsJinList.EXC_TP_NM }</div>
+										</c:if>
+										<c:if test="${amsJinList.EXC_TP eq '1001' and amsJinList.CLB_SQ ne amsJinList.HME_CLB_SQ}">
+											<div class="green-hollow fontGreen">&nbsp;${amsJinList.EXC_TP_NM }</div>
+										</c:if>
+										<c:if test="${amsJinList.EXC_TP ne '1001' and amsJinList.CLB_SQ eq amsJinList.HME_CLB_SQ}">
+											<div class="orange-hollow fontOrange">${amsJinList.EXC_TP_NM }</div>
+										</c:if>
+										<c:if test="${amsJinList.EXC_TP ne '1001' and amsJinList.CLB_SQ ne amsJinList.HME_CLB_SQ}">
+											<div class="orange-solid fontOrange">&nbsp;${amsJinList.EXC_TP_NM }</div>
+										</c:if>
+									</th>
+									<td>
+										<div style="line-height: 0.5rem;">${amsJinList.EXC_TIT } | ${amsJinList.EXC_FR_TIME } ~ ${amsJinList.EXC_TO_TIME }</div>
+										<c:if test="${amsJinList.CLB_SQ ne amsJinList.HME_CLB_SQ}">
+											<c:if test="${amsJinList.PAST_EXC eq 'Y'}">
+												<div style="line-height: 0.5rem;">${label.不参加}</div>
+											</c:if>
+											
+											<div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-right: 0.12rem;margin-left: -0.2rem;margin-top: 0.2rem;">
+                								<div class="blueBtn subBtn f-col font26" onclick="window.location='/front/bbc/exc/excJin.htm?intExcsq=${amsJinList.EXC_SQ }';">운동공지보기</div>
+              								</div>
+										</c:if>
+										<c:if test="${amsJinList.CLB_SQ eq amsJinList.HME_CLB_SQ}">
+											<div style="line-height: 0.5rem;<c:if test="${amsJinList.BBC < 0}">color:red;</c:if><c:if test="${amsJinList.BBC > 0}">color:blue;</c:if>">BB Coin 증감 : ${amsJinList.BBC }</div>
+											<div style="line-height: 0.5rem;">${amsJinList.TCNT } 경기 ${amsJinList.WCNT } 승 ${amsJinList.LCNT } 패</div>
+											<div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-right: 0.12rem;margin-left: -0.2rem;margin-top: 0.2rem;">
+												<div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsJinList.CLB_SQ }&intMbrsq=${amsJinList.MBR_SQ }&datFrdt=${amsJinList.EXC_DATE }&datTodt=${amsJinList.EXC_DATE }';">경기결과보기</div>
+                								<div class="blueBtn subBtn f-col font26" onclick="window.location='/front/bbc/exc/excJin.htm?intExcsq=${amsJinList.EXC_SQ }';">운동공지보기</div>
+              								</div>
+										</c:if>
+									</td>
+
+								</tr>
+								</c:forEach>
+							</table>
+						</div>
+					</div>
+					
+					<div id="tableWrap">
+						<div class="title1">
+							<div>
+								<i class="fourDPlex icon-sanjiao"></i> <span class="bold">참석현황</span>
+								<span>&nbsp;</span>
+							</div>
+							<button class="confirmBtn" id="confirmBtn" style="padding: 0.08rem 0.35rem;" onclick="fnCopyClbMbrNm();">회원 이름 복사하기</button>
+						</div>
+						<div class="table">
+							<table class="drag-table" id="table2" cellspacing="0" cellpadding="2" width="100%" border="1">
 							</table>
 						</div>
 					</div>
@@ -193,7 +259,7 @@
 			//设置默认属性
 			SetOptions : function(options) {
 
-				var date = parseDt('${amsClb.THISMONTH}-01');
+				var date = parseDt('${datFrdt}-01');
 			    this.options = {
 					Year : date.getFullYear(), //显示年
 					Month : ("0" + (date.getMonth()+1)).slice(-2), //显示月
@@ -253,7 +319,7 @@
 				var that = this;
 				lBtn.onclick = function() {
 					//that.PreMonth(lBtnClick())
-					lBtnClick(parseDt('${amsClb.THISMONTH}-01'))
+					lBtnClick(parseDt('${datFrdt}-01'))
 				};
 				var con = document.createElement("div");
 				con.className = "date-con";
@@ -262,7 +328,7 @@
 				rBtn.className = "date-rbtn";
 				rBtn.onclick = function() {
 					//that.NextMonth(rBtnClick())
-					rBtnClick(parseDt('${amsClb.THISMONTH}-01'))
+					rBtnClick(parseDt('${datFrdt}-01'))
 				};
 				dateTitle.appendChild(lBtn);
 				dateTitle.appendChild(con);
@@ -338,7 +404,7 @@
 							}
 								
 							num.onclick = function() {
-								//console.log($(this).children('span:first').html());
+								console.log($(this).children('span:first').html());
 								var numHtml = $(this).children('span:first').html();
 								numHtml = ("0" + (numHtml)).slice(-2);
 								if (this.children[0].className
@@ -351,11 +417,12 @@
 										selected.classList.remove("selected")
 									}
 									this.classList.add("selected")
-									$(that.tables).slideDown()
-									$(".hideTr").hide()
-									$("#tr${datFrdt}-"+numHtml).show()
-									
+// 									$(that.tables).slideDown()
+// 									$(".hideTr").hide()
+// 									$("#tr${datFrdt}-"+numHtml).show()
 								}
+								var dateATT = '${datFrdt}-' + numHtml;
+								searchAttendanceData(dateATT);
 							}
 							var signA1 = null;
 							var signA2 = null;
@@ -459,7 +526,7 @@
 				rMTno2 : ${amsClb.TT_CNT_1001},
 			});
 			$("#tableUp").click(function() {
-				$("#tableWrap").slideUp()
+// 				$("#tableWrap").slideUp()
 			})
 		})
 		function lBtnClick(date) {
@@ -484,8 +551,85 @@
 		    return new Date(y,m-1,d);
 		}
 		function showTr() {
-			$(".hideTr").show();
-			$("#tableWrap").show();
+// 			$(".hideTr").show();
+// 			$("#tableWrap").show();
+		}
+		function searchAttendanceData(searchDate) {
+			var para1 = "SELECT_GET_ATTENDANCE_LIST";
+			var para2 = "${amsClb.CLB_SQ}";
+			var para3 = searchDate;
+
+			var load = loading();
+			load.show();
+
+			$("#table2").html('');
+			
+			$.ajax({
+						data : {
+							para1 : para1,
+							para2 : para2,
+							para3 : para3
+						},
+						type : "POST",
+						url : "/front/bbc/clb/getData.htm",
+						success : function(data) {
+
+							if (data.list.length != 0) {
+
+								$("#table2").html('');
+								htm = '';
+								$("#table2").append(htm);
+
+								var j = 0;
+								for (var i = 0; i < data.list.length; i++) {
+
+									var htm = '';
+									if (i == 0) {
+										htm = ''
+											+ '<tr style="color:#333333;">'
+											+ '	<th>Seq</th>'
+											+ '	<th>이름</th>'
+											+ '</tr>'
+											;
+											$("#table2").append(htm);	
+									}
+									
+									htm = ''
+										+ '<tr>'
+										+ '	<td class="center">'+data.list[i].ROWNUM+'</td>'
+										+ '	<td class="center" id="clbNikNm">'+data.list[i].CLB_NIK_NM+'</td>'
+										+ '</tr>'					
+									;
+									$("#table2").append(htm);
+								}
+							}
+							
+							load.hide();
+
+						},
+						error : function(xhr, status, e) {
+							load.hide()
+							alert("Error : " + status);
+						}
+					});
+		}
+		
+		function fnCopyClbMbrNm() {
+            // 모든 clbNikNm ID를 가진 요소의 텍스트를 배열로 가져오기
+            let names = [];
+            $('[id="clbNikNm"]').each(function () {
+                names.push($(this).text());
+            });
+
+            // 배열을 줄바꿈(\n)으로 합침
+            let textToCopy = names.join(' ');
+
+            // 텍스트를 클립보드에 복사
+            navigator.clipboard.writeText(textToCopy).then(function () {
+                alert('복사 되었습니다.:\n' + textToCopy);
+            }).catch(function (err) {
+                console.error('Failed to copy: ', err);
+            });
 		}
 	</script>
 </body>

@@ -6247,33 +6247,16 @@ public class BbcAction extends WeixinBaseAction {
 			Map<String, Object> amsClb = commonService.select("Bbc.sqlAMS_CLB_SELECT",searchMap);
 			request.put("amsClb", amsClb);
 			request.put("datFrdt", datFrdt);
-			
-			
-			request.put("amsClb", amsClb);
-			request.put("loginMbrSq", loginMbrSq);
-			request.put("para1", para1);
-			request.put("para2", para2);
-			request.put("para3", para3);
-			request.put("para4", para4);
-			request.put("para5", para5);
-			request.put("para6", para6);
-			request.put("para7", para7);
-			request.put("para8", para8);
-			request.put("para9", para9);
 
 			searchMap.clear();
-			searchMap.put("P1", para1);
-			searchMap.put("P2", para2);
-			searchMap.put("P3", para3);
-			searchMap.put("P4", para4);
-			searchMap.put("P5", para5);
-			searchMap.put("P6", para6);
-			searchMap.put("P7", para7);
-			searchMap.put("P8", para8);
-			searchMap.put("P9", para9);
-			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_COMMON_PROCEDURE", searchMap);
+			searchMap.put("JOP_TYPE", "T");
+			searchMap.put("LOGIN_USER", currLanguage);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("MBR_SQ", intMbrsq);
+			searchMap.put("REG_DT", datFrdt+"-01");
+			List<Map<String, Object>> amsJinList = commonService.selectList("Bbc.sqlATR_EXC_JIN_SELECT", searchMap);
 			
-			request.put("pageData", pageData);		
+			request.put("amsJinList", amsJinList);
 			
 		}
 		catch(Exception e){
