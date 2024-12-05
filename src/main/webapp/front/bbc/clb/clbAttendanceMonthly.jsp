@@ -624,12 +624,21 @@
             // 배열을 줄바꿈(\n)으로 합침
             let textToCopy = names.join(' ');
 
-            // 텍스트를 클립보드에 복사
-            navigator.clipboard.writeText(textToCopy).then(function () {
+         	// 임시 텍스트 영역 생성
+            let tempTextArea = $('<textarea>');
+            $('body').append(tempTextArea);
+            tempTextArea.val(textToCopy).select();
+
+            // 클립보드 복사 실행
+            try {
+                document.execCommand('copy');
                 alert('복사 되었습니다.:\n' + textToCopy);
-            }).catch(function (err) {
-                console.error('Failed to copy: ', err);
-            });
+            } catch (err) {
+                console.error('Copy failed:', err);
+            }
+
+            // 임시 텍스트 영역 제거
+            tempTextArea.remove();
 		}
 	</script>
 </body>
