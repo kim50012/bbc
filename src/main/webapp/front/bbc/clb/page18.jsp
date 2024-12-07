@@ -75,7 +75,7 @@
           				
 				
 					<div class="title2">
-						<span class="font24 bold">회원관리</span> <span
+						<a href="/front/bbc/clb/getPage.htm?pageName=page20&intClbsq=${amsClb.CLB_SQ}"><span class="font24 bold">모니터링 가기</span></a> <span
 							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
 					</div>
 

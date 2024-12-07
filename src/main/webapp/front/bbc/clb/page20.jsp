@@ -107,7 +107,7 @@
 					<div class="table-wrap">
 						<div class="table" id="tableDiv" style="overflow: scroll;height: 87Vh;">
 							<div class="title2">
-								<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}"><span id="spanYear1"></span> 대회 경기 결과 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+								<span class="font24 bold"><a href="/front/bbc/clb/getPage.htm?pageName=page20&intClbsq=${amsClb.CLB_SQ}"><span id="spanYear1"></span> 대회 경기 결과 <span class="mdi mdi-refresh-circle"></span></a></span> <span
 									class="font20 fontOrange">기준：<span id="spanYear12" class="font20 fontOrange">${amsClb.TODAY }</span></span>
 							</div>
 							<table class="drag-table noWrapTable" id="table1" cellspacing="0" cellpadding="2" border="1">
