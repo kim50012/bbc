@@ -195,7 +195,7 @@
                     					<div style="max-width: 4.6rem;">
                     						<span style="line-height: 1.3;font-size: 0.28rem;"><!--  onclick="fnTranslate($(this).text(), 'org');" --> <c:if test="${amsJinList.EXC_JIN_TP == 7 and amsJinList.EXC_TP != '1003' and amsJinList.RANKING > 0}">대기</c:if>${amsJinList.EXC_JIN_CMT} </span>
                     						
-											<c:if test="${amsJinList.MBR_SQ eq loginMbrSq || ((amsExcList.CLB_GD == 'A' || amsClb.amsExcList == 'B') && amsJinList.CLB_GD eq 'X')}">
+											<c:if test="${amsJinList.MBR_SQ eq loginMbrSq || (amsExcList.CLB_GD == 'A' || amsClb.amsExcList == 'B')}">
 											<span onclick="fn_ExcJinDelOpen('${amsJinList.MBR_SQ}');" style="border-radius: 4px;border: 1px solid #ec8921;padding-left: 0.1rem;padding-right: 0.1rem;background-color: #ec8921;color: #FFFFFF;">${label.删除}</span>
 											</c:if>                      						
                       						
@@ -408,11 +408,6 @@
 	
  	function fn_ExcJinDel(intMbrsq, cmt) {
 
-		<c:if test="${amsExcList.EXC_DATE < amsExcList.TODAY}">
-			alert("날짜가 지난 운동공지 입니다. 일자를 확인하세요.");
-			return;
-		</c:if>
-		
 		if (cmt == "") {
 			alert("${label.请输入不参加原因}");
 			return;
