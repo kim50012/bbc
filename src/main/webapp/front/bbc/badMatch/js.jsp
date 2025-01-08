@@ -12,6 +12,10 @@ var clbJson = [{
 	    name: '793 Badminton Club',
 	    value: '3'
 	},
+	{
+	    name: '하노이 Badminton Club',
+	    value: '9'
+	},
 ];
 var lvlJson = [
 	{name: 'A조',value: 'A'},

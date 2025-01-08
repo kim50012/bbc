@@ -140,7 +140,8 @@
 								if (statusFlag == 'S') {
 									if ("${strPtourl}" == "") {
 // 										window.location = "/front/bbc/badMatch/getPage.htm?pageName=home&shopId=68";
-										window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
+// 										window.location = "/front/bbc/clb/clbDetMy.htm?intClbsq=59&shopId=68";
+										window.location = "/front/bbc/clb/clb.htm?shopId=68";
 									}
 									else {
 										window.location = "${strPtourl}&shopId=68";
