@@ -192,7 +192,7 @@
 
 	function sendFee() {
 
-		if (("${loginMbrSq}" != "20") && ("${loginMbrSq}" != "530") && ("${loginMbrSq}" != "866") && ("${loginMbrSq}" != "981")) {
+		if ("${amsClb.CLB_GD}" != "A") {
 
 			messageBox({
 				title : '확인',
@@ -393,7 +393,7 @@
 
 	function deleteFee(a) {
 
-		if (("${loginMbrSq}" != "20") && ("${loginMbrSq}" != "530") && ("${loginMbrSq}" != "866") && ("${loginMbrSq}" != "981")) {
+		if ("${amsClb.CLB_GD}" != "A") {
 
 			messageBox({
 				title : '확인',

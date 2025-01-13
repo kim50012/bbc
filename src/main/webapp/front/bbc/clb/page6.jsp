@@ -183,7 +183,7 @@ function goFee() {
 
 function deleteFee(ID) {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 
 		messageBox({
 			title : '확인',
@@ -240,7 +240,7 @@ function deleteData(ID) {
 
 function sendFee() {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 
 		messageBox({
 			title : '확인',

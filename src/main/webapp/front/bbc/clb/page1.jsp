@@ -44,6 +44,7 @@
     padding: 0.2rem 0.1rem;
 }
 </style>
+<fmt:parseNumber value="${amsClb.THISMONTH.substring(0,4)}" var="intYear" />
 </head>
 
 <body>
@@ -65,55 +66,66 @@
 			<div class="tab-wrap f-col" style="padding-bottom: 0;">
 				<div class="tab-con">
 					<div class="tabs">
+					
+					
 						<!--这里的news是标识下面的tab-new是否显示，默认不显示-->
-						<div class="tab" id="tab2020-01" onclick="getData('2020-01')">
+						<div class="tab" id="tab${intYear-1}-12" onclick="getData('${intYear-1}-12')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-01</h4>
+							<h4 class="tab-title">${intYear-1}-12</h4>
 						</div>
-						<div class="tab" id="tab2020-02" onclick="getData('2020-02')">
+						<div class="tab" id="tab${intYear}-01" onclick="getData('${intYear}-01')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-02</h4>
+							<h4 class="tab-title">${intYear}-01</h4>
 						</div>
-						<div class="tab" id="tab2020-03" onclick="getData('2020-03')">
+						<div class="tab" id="tab${intYear}-02" onclick="getData('${intYear}-02')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-03</h4>
+							<h4 class="tab-title">${intYear}-02</h4>
 						</div>
-						<div class="tab" id="tab2020-04" onclick="getData('2020-04')">
+						<div class="tab" id="tab${intYear}-03" onclick="getData('${intYear}-03')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-04</h4>
+							<h4 class="tab-title">${intYear}-03</h4>
 						</div>
-						<div class="tab" id="tab2020-05" onclick="getData('2020-05')">
+						<div class="tab" id="tab${intYear}-04" onclick="getData('${intYear}-04')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-05</h4>
+							<h4 class="tab-title">${intYear}-04</h4>
 						</div>
-						<div class="tab" id="tab2020-06" onclick="getData('2020-06')">
+						<div class="tab" id="tab${intYear}-05" onclick="getData('${intYear}-05')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-06</h4>
+							<h4 class="tab-title">${intYear}-05</h4>
 						</div>
-						<div class="tab" id="tab2020-07" onclick="getData('2020-07')">
+						<div class="tab" id="tab${intYear}-06" onclick="getData('${intYear}-06')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-07</h4>
+							<h4 class="tab-title">${intYear}-06</h4>
 						</div>
-						<div class="tab" id="tab2020-08" onclick="getData('2020-08')">
+						<div class="tab" id="tab${intYear}-07" onclick="getData('${intYear}-07')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-08</h4>
+							<h4 class="tab-title">${intYear}-07</h4>
 						</div>
-						<div class="tab" id="tab2020-09" onclick="getData('2020-09')">
+						<div class="tab" id="tab${intYear}-08" onclick="getData('${intYear}-08')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-09</h4>
+							<h4 class="tab-title">${intYear}-08</h4>
 						</div>
-						<div class="tab" id="tab2020-10" onclick="getData('2020-10')">
+						<div class="tab" id="tab${intYear}-09" onclick="getData('${intYear}-09')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-10</h4>
+							<h4 class="tab-title">${intYear}-09</h4>
 						</div>
-						<div class="tab" id="tab2020-11" onclick="getData('2020-11')">
+						<div class="tab" id="tab${intYear}-10" onclick="getData('${intYear}-10')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-11</h4>
+							<h4 class="tab-title">${intYear}-10</h4>
 						</div>
-						<div class="tab" id="tab2020-12" onclick="getData('2020-12')">
+						<div class="tab" id="tab${intYear}-11" onclick="getData('${intYear}-11')">
 							<i class="tab-new"></i>
-							<h4 class="tab-title">2020-12</h4>
+							<h4 class="tab-title">${intYear}-11</h4>
 						</div>
+						<div class="tab" id="tab${intYear}-12" onclick="getData('${intYear}-12')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear}-12</h4>
+						</div>
+						<div class="tab" id="tab${intYear+1}-01" onclick="getData('${intYear+1}-01')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-01</h4>
+						</div>
+						
 					</div>
 					<div class="con-wrap">
 						<!--这里的已解决和未解决的在li的class有区别，以解决的添加class：resolved-->
@@ -166,6 +178,9 @@
 		<!--底部导航栏-->
 	</div>
 	<input type="hidden" id="thisMonth" value="${amsClb.THISMONTH}" />
+	<input type="hidden" id="thisMonth2" value="${amsClb.THISMONTH.substring(0,4)}" />
+	<input type="hidden" id="thisMonth3" value="${intYear-1}" />
+	<input type="hidden" id="thisMonth4" value="${intYear+1}" />
 	<input type="hidden" id="feeStatus" value="TOTAL" />
 	<textarea id="notice"></textarea>
 </body>
@@ -175,7 +190,7 @@
 
 function setFeeNormal(id, nick) {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "22" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 
 		messageBox({
 			title : '확인',
@@ -205,7 +220,7 @@ function setFeeNormal(id, nick) {
 
 function setFeeNormal6(id, nick) {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "22" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 
 		messageBox({
 			title : '확인',
@@ -235,7 +250,7 @@ function setFeeNormal6(id, nick) {
 
 function setFeeAbnormal(id, nick) {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "22" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 		messageBox({
 			title : '확인',
 			message : '권한이 없습니다.',
@@ -265,7 +280,7 @@ function setFeeAbnormal(id, nick) {
 
 function setFeeCancel(id, nick) {
 
-	if ("${loginMbrSq}" != "20" && "${loginMbrSq}" != "22" && "${loginMbrSq}" != "24" && "${loginMbrSq}" != "866") {
+	if ("${amsClb.CLB_GD}" != "A") {
 
 		messageBox({
 			title : '확인',

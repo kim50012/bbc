@@ -188,7 +188,7 @@
 				<div style="text-align: center;margin-top: 0.8rem;">
 					<button class="btn-submit" onclick="fn_ClbMbrModify();">${label.保存}</button>
 				</div>
-				<c:if test="${amsClb.CLB_SQ == 9}">
+				<c:if test="${amsClb.CLB_SQ == 9 || amsClb.CLB_MBR_SQ == 20}">
 				<div style="text-align: center;margin-top: 0.8rem;">
 					<button class="btn-submit" onclick="addMbr('${amsClbMbr.MBR_SQ}');">정회원추가</button>
 				</div>
