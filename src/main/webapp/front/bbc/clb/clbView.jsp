@@ -328,5 +328,4 @@
 			
 	</script>
 	
-</script>
 </html>

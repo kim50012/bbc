@@ -84,25 +84,6 @@ public class SessionFilter implements Filter {
 			
 		}
 
-		if(path.startsWith("/pms/")){//back office page
-			
-			AdminUser adminUser = (AdminUser) request.getSession().getAttribute(SessionUtils.BACK_USER_SESSION);
-			
-			if(adminUser == null && !isIgnoredUrl(path)){
-				if("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))){
-					response.setHeader("sessionstatus", "timeout");
-					PrintWriter writer = response.getWriter(); 
-					writer.print("{\"success\":false}");
-					writer.close();
-				}else{
-					//未登录用户跳转到login页面
-					request.getSession().setAttribute("goUrl", request.getRequestURL()+"?"+ request.getQueryString());
-					response.sendRedirect("/pms/login/login.htm");
-					return;
-				}
-			}
-			
-		}
 		/**
 		 * /openwx/
 		 */
@@ -138,8 +119,6 @@ public class SessionFilter implements Filter {
 					if (!curLang.equals(sesLang)) {
 						LabelUtil.setLanguage(sessionMember.getLang());
 					}
-					//logger.info("##### curLang==>" +  curLang);
-					//logger.info("##### sesLang==>" +  sesLang);
 				}
 				
 			}
@@ -164,7 +143,6 @@ public class SessionFilter implements Filter {
 					
 					if(sessionSkin == null){
 						
-
 						if(path.startsWith("/front/bbc/badMatch/getPage.htm?pageName=page2")){	//手机
 							return;
 						}
