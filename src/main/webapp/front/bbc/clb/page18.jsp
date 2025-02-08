@@ -67,9 +67,13 @@
 				<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
 					<input class="imgContent" type="date" name="datFrdt" id="datFrdt" value="${amsClb.TODAY}" />
 					<div></div>
-				</div>              
-              
-              	<button class="confirmBtn" id="confirmBtn" onclick="getData($('#datFrdt').val());">${label.查询}</button>
+				</div>
+				<div class="input-wrap" style="width: 150%;margin-right: 0.2rem;">
+					<button class="confirmBtn" id="confirmBtn" onclick="getData($('#datFrdt').val());">${label.查询}</button>
+				</div>
+				<div class="input-wrap" style="width: 150%;margin-right: 0.2rem;">
+              		<button class="confirmBtn" id="confirmBtn" onclick="gotoDashboard($('#datFrdt').val());">현황판</button>
+				</div>
             </div>
           </div>
           				
@@ -248,6 +252,10 @@
 						alert("Error : " + status);
 					}
 				});
+	}
+	
+	function gotoDashboard(dt) {
+		window.location="/front/bbc/exc/getPage.htm?pageName=page14&intClbsq=${intClbsq}&para1="+dt;	
 	}
 	
 	function phoneHtml(a) {

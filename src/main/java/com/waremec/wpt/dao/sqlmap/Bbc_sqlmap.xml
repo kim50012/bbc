@@ -566,6 +566,8 @@
 		, @MTC_CLB_BBC_B2 = #MTC_CLB_BBC_B2#
 		, @A_TEAM_NM = #A_TEAM_NM#
 		, @B_TEAM_NM = #B_TEAM_NM#
+		, @EVENT = NULL
+		, @COURT = NULL
 	  ]]>
 	 </select>
 	

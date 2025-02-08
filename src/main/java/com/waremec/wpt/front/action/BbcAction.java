@@ -1767,6 +1767,94 @@ public class BbcAction extends WeixinBaseAction {
 	}
 
 	//---------------------------------------------------------------
+	// [클럽-clb] Club 경기 화면
+	//---------------------------------------------------------------
+	public String miniGameView(){
+		
+		try{
+			String loginUserId = "";
+			int loginMbrSq;
+			String loginNickName = "";
+			String loginBbc = "";
+			String currLanguage = LabelUtil.getCurrentLanguage();
+			
+			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+			if (sessionMember == null) {
+				request.put("strLngdv", "ko-KR");
+				return "noAuth";
+			}
+			else {
+				loginUserId = sessionMember.getOpenid();
+				strLngdv = sessionMember.getLang();
+				request.put("strLngdv", strLngdv);
+			}
+			
+			currLanguage = strLngdv;
+
+			loginMbrSq = sessionMember.getCustSysId();
+			
+			Map<String,Object> searchMap=new HashMap<String, Object>();
+
+			searchMap.put("JOP_TYPE", "R");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("CLB_SQ", intClbsq);
+			searchMap.put("CLB_JIN_ST", "JIN");
+			searchMap.put("LANG", currLanguage);
+			List<Map<String, Object>> amsClbMbr = commonService.selectList("Bbc.sqlAMS_CLB_MBR_SELECT",searchMap);
+			
+			String kewordData = "[";
+			String comma = "";
+			for(int i = 0; i < amsClbMbr.size(); i++){
+				kewordData = kewordData + comma + "{";
+				String checkLoginId = amsClbMbr.get(i).get("MBR_SQ") + "";
+				String checkLoginId2 = loginMbrSq+"";
+				if (checkLoginId.equals(checkLoginId2)) {
+					loginNickName = amsClbMbr.get(i).get("CLB_NIK_NM") + "";
+					loginBbc = amsClbMbr.get(i).get("CLB_BBC") + "";
+				}
+				
+				kewordData = kewordData + "'name':'"+amsClbMbr.get(i).get("CLB_NIK_NM")+"',";
+				kewordData = kewordData + "'bbc':'"+amsClbMbr.get(i).get("CLB_BBC")+"',";
+				kewordData = kewordData + "'rank':'"+amsClbMbr.get(i).get("CLB_RANK")+"',";
+				kewordData = kewordData + "'imgUrl':'"+amsClbMbr.get(i).get("MBR_MAI_IMG_PTH")+"',";
+				kewordData = kewordData + "'keyword':'"+amsClbMbr.get(i).get("CLB_NIK_KEYWORD")+"',";
+				kewordData = kewordData + "'id':'"+amsClbMbr.get(i).get("MBR_SQ")+"',";
+				kewordData = kewordData + "'grade':'"+amsClbMbr.get(i).get("CLB_GD_NM")+"'";
+				
+				kewordData = kewordData + "}";
+				comma = ",";
+			}
+			kewordData = kewordData + "]";
+
+
+			searchMap.clear();
+			searchMap.put("JOP_TYPE", "R");
+			searchMap.put("LOGIN_USER", loginUserId);
+			searchMap.put("HME_CLB_SQ", intClbsq);
+			searchMap.put("REG_MBR_SQ", loginMbrSq);
+			searchMap.put("MTC_SQ", intMtcsq);
+				
+			Map<String,Object> atrMtc=commonService.select("Bbc.sqlATR_MTC_SELECT", searchMap);
+
+			request.put("atrMtc", atrMtc);
+			
+			request.put("loginMbrSq", loginMbrSq);
+			request.put("loginNickName", loginNickName);
+			request.put("loginBbc", loginBbc);
+			request.put("kewordData", kewordData);
+			
+		}
+		catch(Exception e){
+			// Error Page
+			String errorMessageBbc = e.getMessage() ;
+			request.put("errorMessageBbc", errorMessageBbc);
+			return "noAuth";
+		}
+		
+		return "miniGameView";
+	}
+
+	//---------------------------------------------------------------
 	// [클럽-clb] Club 경기 조회 화면
 	//---------------------------------------------------------------
 	public String gameResult(){

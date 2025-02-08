@@ -231,8 +231,8 @@
 	 			var strAtdadrcd= $('#strAtdadrcd').val();	  // [클럽] 경기장주소코드
 	 			var strAtdadrdtl= $('#strAtdadrdtl').val();	  // [클럽] 경기장상세주소
 
-	 			var strClbmaiimgpth = $('#strClbmaiimgpth').val();	  // [클럽] 로고
-	 			var strClbmaiimgfnm = strClbmaiimgpth;
+// 	 			var strClbmaiimgpth = $('#strClbmaiimgpth').val();	  // [클럽] 로고
+// 	 			var strClbmaiimgfnm = strClbmaiimgpth;
 
 	 			var strClbniknm= $('#strClbniknm').val();	  // [클럽가입신청] 클럼내닉네임
 	 			var strAgeyy= $('#strAgeyy').val();	  // [클럽가입신청] 연령(10대,20대...)
@@ -336,8 +336,8 @@
  			var strAtdadrcd= $('#strAtdadrcd').val();	  // [클럽] 경기장주소코드
  			var strAtdadrdtl= $('#strAtdadrdtl').val();	  // [클럽] 경기장상세주소
 
- 			var strClbmaiimgpth = $('#strClbmaiimgpth').val();	  // [클럽] 로고
- 			var strClbmaiimgfnm = strClbmaiimgpth;
+//  			var strClbmaiimgpth = $('#strClbmaiimgpth').val();	  // [클럽] 로고
+//  			var strClbmaiimgfnm = strClbmaiimgpth;
 
  			var strClbniknm= $('#strClbniknm').val();	  // [클럽가입신청] 클럼내닉네임
  			var strAgeyy= $('#strAgeyy').val();	  // [클럽가입신청] 연령(10대,20대...)
@@ -384,27 +384,32 @@
  			var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
 			const file = $("#imageFile")[0].files[0];
 			const formData = new FormData();
-            formData.append("imageFile", file);
+			
+			if (file != undefined) {
+	            formData.append("imageFile", file);	
+				console.log(file);
+			}
+			
             formData.append("strClbnm", strClbnm);
-            formData.append(",strClbitd", strClbitd);
-            formData.append(",strPubclbyn", strPubclbyn);
-            formData.append(",strExctmedct", strExctmedct);
-            formData.append(",strCttnm", strCttnm);
-            formData.append(",strCttphnno", strCttphnno);
-            formData.append(",intMbrcnt", intMbrcnt);
-            formData.append(",strCorcnt", strCorcnt);
-            formData.append(",strAtdadr", strAtdadr);
-            formData.append(",strAtdadrcd", strAtdadrcd);
-            formData.append(",strAtdadrdtl", strAtdadrdtl);
-            formData.append(",strClbmaiimgpth", strClbmaiimgpth);
-            formData.append(",strClbmaiimgfnm", strClbmaiimgfnm);
-            formData.append(",strClbniknm", strClbniknm);
-            formData.append(",strAgeyy", strAgeyy);
-            formData.append(",strGnddv", strGnddv);
-            formData.append(",strBmtgd", strBmtgd);
-            formData.append(",strClbgd", strClbgd);
-            formData.append(",strYwday", strYear);
-            formData.append(",strClbbakimgfnm", imgFileName);            
+            formData.append("strClbitd", strClbitd);
+            formData.append("strPubclbyn", strPubclbyn);
+            formData.append("strExctmedct", strExctmedct);
+            formData.append("strCttnm", strCttnm);
+            formData.append("strCttphnno", strCttphnno);
+            formData.append("intMbrcnt", intMbrcnt);
+            formData.append("strCorcnt", strCorcnt);
+            formData.append("strAtdadr", strAtdadr);
+            formData.append("strAtdadrcd", strAtdadrcd);
+            formData.append("strAtdadrdtl", strAtdadrdtl);
+//             formData.append("strClbmaiimgpth", strClbmaiimgpth);
+//             formData.append("strClbmaiimgfnm", strClbmaiimgfnm);
+            formData.append("strClbniknm", strClbniknm);
+            formData.append("strAgeyy", strAgeyy);
+            formData.append("strGnddv", strGnddv);
+            formData.append("strBmtgd", strBmtgd);
+            formData.append("strClbgd", strClbgd);
+            formData.append("strYwday", strYear);
+            formData.append("strClbbakimgfnm", imgFileName);            
             
             /*
 	 	 		data:{

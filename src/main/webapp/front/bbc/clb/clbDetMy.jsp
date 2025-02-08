@@ -106,7 +106,7 @@
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page10&intClbsq=${amsClb.CLB_SQ}');">MVP</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/bbcBestAward.htm?intClbsq=${amsClb.CLB_SQ}');">베스트TOP5</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/bestPartner.htm?intClbsq=${amsClb.CLB_SQ}');">${label.Best伙伴查询}</button>
-						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/clb/clbNotice.htm?intClbsq=${amsClb.CLB_SQ}');">민턴강의${amsClb.NOTICE_TAG}</button>
+						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;display:none1;" onclick="windowlocation('/front/bbc/clb/clbEventList.htm?intClbsq=${amsClb.CLB_SQ}');">EVENT<c:if test="${amsClb.EVE_CNT > 0}"><font color="red">(${amsClb.EVE_CNT})</font></c:if></button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page13&intClbsq=${amsClb.CLB_SQ}');">파트너분석</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;display:none;" onclick="windowlocation('/front/bbc/clb/clbRule.htm?intClbsq=${amsClb.CLB_SQ}');">${label.会规管理}${amsClb.RULE_TAG}</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;display:none;" onclick="windowlocation('/front/bbc/clb/clbDet.htm?intClbsq=${amsClb.CLB_SQ}');">${label.俱乐部基准信息}</button>
@@ -118,7 +118,7 @@
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/clbExcReg.htm?intClbsq=${amsClb.CLB_SQ}');">${label.设定定期活动}</button>
 						</c:if>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/getPage.htm?pageName=page18&intClbsq=${amsClb.CLB_SQ}');">미니게임결과</button>
-						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;display:none1;" onclick="windowlocation('/front/bbc/clb/clbEventList.htm?intClbsq=${amsClb.CLB_SQ}');">EVENT<c:if test="${amsClb.EVE_CNT > 0}"><font color="red">(${amsClb.EVE_CNT})</font></c:if></button>
+						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 					</div>
 				</div>
 				<div class="" style="background:#fff;">
@@ -141,6 +141,7 @@
 						</c:if>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page12&intClbsq=${amsClb.CLB_SQ}');">출석율관리</button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/clbAttendanceMonthly.htm?intClbsq=${amsClb.CLB_SQ}&intMbrsq=${loginMbrSq}&datFrdt=${amsClb.THISMONTH }');">출석조회</button>
+						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/clb/clbNotice.htm?intClbsq=${amsClb.CLB_SQ}');">민턴강의${amsClb.NOTICE_TAG}</button>
 					</div>
 				</div>
 				<div class="" style="height:2rem;background:#fff;">

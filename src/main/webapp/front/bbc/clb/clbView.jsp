@@ -266,7 +266,12 @@
  			var imgFileName = imgLogoPicture.substring(imgLogoPicture.lastIndexOf('\\') + 1, imgLogoPicture.length);
 			const file = $("#imageFile")[0].files[0];
 			const formData = new FormData();
-            formData.append("imageFile", file);
+
+			if (file != undefined) {
+	            formData.append("imageFile", file);	
+				console.log(file);
+			}
+			
             formData.append("strClbnm", strClbnm);
             formData.append("strClbitd", strClbitd);
             formData.append("strPubclbyn", strPubclbyn);
