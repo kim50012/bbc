@@ -63,7 +63,7 @@
 							<img src="${amsClb.CLB_MAI_IMG_PTH}"/>
 						</p>
 						<p class="word-title float" style="white-space:nowrap;overflow:ellipsis;" onclick="window.location='/front/bbc/clb/clbDet.htm?intClbsq=${amsClb.CLB_SQ}';">
-							${amsClb.CLB_NM}【<span>${amsClb.CLB_MBR_CNT}</span>人】
+							${amsClb.CLB_NM} [<span>${amsClb.CLB_MBR_CNT}</span>人]
 						</p>
 						<div class="number-information float" style="padding-right: 0.2rem;right: 0;position: absolute;">
 							<div class="number-name" >${amsClb.MBR_NM}</div> 
@@ -169,6 +169,7 @@
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/bestPartner.htm?intClbsq=${amsClb.CLB_SQ}');">${label.Best伙伴查询}</button>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/gameTeam.htm?intClbsq=${amsClb.CLB_SQ}');">${label.伙伴比赛列表}</button>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem; border:solid 1px #01cfb9; color: #01cfb9;" onclick="window.location='/front/bbc/clb/gameReg.htm?intClbsq=${amsClb.CLB_SQ}';">${label.输入比赛结果}</button>
+							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 						</div>
 					</div>
 					<div class="" style="background:#fff;">
@@ -186,6 +187,7 @@
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/bbcBestAward.htm?intClbsq=${amsClb.CLB_SQ}');">베스트TOP5</button>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/getPage.htm?pageName=page18&intClbsq=${amsClb.CLB_SQ}');">미니게임결과</button>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/clb/gamePointInput2.html');">점수판</button>
+							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 						</div>
 					</div>
 					<div class="" style="background:#fff;">
@@ -256,10 +258,6 @@
 			</c:if>
 			
 			
-			
-			<!-- ---------------------- D 클럽 관리모드 ---------------------- -->
-			<!-- ---------------------- D 클럽 관리모드 ---------------------- -->
-			<!-- ---------------------- D 클럽 관리모드 ---------------------- -->
 			<!-- ---------------------- A 클럽 관리모드 ---------------------- -->
 			<c:if test="${amsClb.CLB_TYPE == 'D'}">
 			
@@ -276,6 +274,7 @@
 						</c:if>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/clb/clbEventList.htm?intClbsq=${amsClb.CLB_SQ}');">EVENT<c:if test="${amsClb.EVE_CNT > 0}"><font color="red">(${amsClb.EVE_CNT})</font></c:if></button>
 						<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/web/publish/mobile/product/communityList.htm?displayId=1');">${label.商户社区}</button>
+							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 					</div>
 				</div>
 				<div class="" style="background:#fff;">

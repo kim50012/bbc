@@ -31,6 +31,9 @@
 			.competition2{
 				margin: 0 auto;
 			}
+			.name {
+				height: initial;
+			}
 		</style>
 	</head>
 	<body style="background:#fff;text-align:center;width:100%;"> <!-- onload="fn_GameSave('S');"> -->
@@ -85,7 +88,7 @@
 				        
 					</div>
 					<div class="score float">
-						<input class="score-input" type="text" style="font-size: 0.42rem;" name="intAtemscr" id="intAtemscr" value="${atrMtc.A_TEM_SCR}" onchange="fn_onchange();" placeholder="${label.请输入}"/ >
+						<input class="score-input" type="text" style="font-size: 0.42rem;" name="intAtemscr" id="intAtemscr" value="${atrMtc.A_TEM_SCR}" readonly="readonly" />
 					</div>
 				</div>
 				<div class="vs float">vs
@@ -96,7 +99,7 @@
 					 	<p class="fullname1 float">${label.姓名}</p>
 					</div>
 					<div class="score float">
-						<input class="score-input" type="text" style="font-size: 0.42rem;" name="intBtemscr" id="intBtemscr" value="${atrMtc.B_TEM_SCR}" onchange="fn_onchange();" placeholder="${label.请输入}"/ >
+						<input class="score-input" type="text" style="font-size: 0.42rem;" name="intBtemscr" id="intBtemscr" value="${atrMtc.B_TEM_SCR}" readonly="readonly" />
 					</div>
 					<div class="name float">
 				        <div class="typeahead__container">
@@ -137,11 +140,11 @@
 					 	<p class="fraction float">${label.让分}</p>
 					</div>
 					<div class="name float">
-						<input class="name-input" style="margin-bottom:0.02rem;"type="text" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="${atrMtc.MTC_CLB_BBC_A1}" readonly="readonly"/ >						
-						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="${atrMtc.MTC_CLB_BBC_A2}" readonly="readonly"/>
+						<input class="name-input" style="margin-bottom:0.02rem;"type="text" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="${atrMtc.MTC_CLB_BBC_A1}" readonly="readonly" />						
+						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="${atrMtc.MTC_CLB_BBC_A2}" readonly="readonly" />
 					</div>
 					<div class="score float">
-						<input class="score-input" type="text" style="font-size: 0.42rem;" name="CAL_HND_CAP_A1" id="CAL_HND_CAP_A1" value="${atrMtc.CAL_HND_CAP_A}" readonly="readonly"/ >
+						<input class="score-input" type="text" style="font-size: 0.42rem;" name="CAL_HND_CAP_A1" id="CAL_HND_CAP_A1" value="${atrMtc.CAL_HND_CAP_A}" readonly="readonly" />
 					</div>
 				</div>
 				<div class="vs float">vs
@@ -152,11 +155,11 @@
 					 	<p class="fullname1 float">${label.现在}BB Coin</p>
 					</div>
 					<div class="score float">
-						<input class="score-input" type="text" style="font-size: 0.42rem;" name="CAL_HND_CAP_B1" id="CAL_HND_CAP_B1" value="${atrMtc.CAL_HND_CAP_B}" readonly="readonly"/ >
+						<input class="score-input" type="text" style="font-size: 0.42rem;" name="CAL_HND_CAP_B1" id="CAL_HND_CAP_B1" value="${atrMtc.CAL_HND_CAP_B}" readonly="readonly" />
 					</div>
 					<div class="name float">
-						<input class="name-input" style="margin-bottom:0.02rem;" type="text" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="${atrMtc.MTC_CLB_BBC_B1}" readonly="readonly"/ >						
-						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="${atrMtc.MTC_CLB_BBC_B2}" readonly="readonly"/>
+						<input class="name-input" style="margin-bottom:0.02rem;" type="text" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="${atrMtc.MTC_CLB_BBC_B1}" readonly="readonly" />						
+						<input class="name-input" style="margin-bottom:0rem;" type="text" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="${atrMtc.MTC_CLB_BBC_B2}" readonly="readonly" />
 					</div>
 				</div>
 			</div>
@@ -168,19 +171,19 @@
 					 	<p class="fullname1 float">${label.最终}BB Coin</p>
 					</div>
 					<div class="name float">
-						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;" type="text" name="BBC_A1" id="BBC_A1" value="${atrMtc.BBC_A1}" readonly="readonly"/ >						
-						<input class="name-input" style="margin-bottom:0rem;font-size: 0.5rem;" type="text" name="BBC_A2" id="BBC_A2" value="${atrMtc.BBC_A2}" readonly="readonly"/>
+						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;" type="text" name="BBC_A1" id="BBC_A1" value="${atrMtc.BBC_A1}" readonly="readonly" />						
+						<input class="name-input" style="margin-bottom:0rem;font-size: 0.5rem;" type="text" name="BBC_A2" id="BBC_A2" value="${atrMtc.BBC_A2}" readonly="readonly" />
 					</div>
 					<div class="score float" >
-						<input class="score-input red" style="width:2.72rem;font-size:0.3rem;" type="text" name="WEIGHT" id="WEIGHT" value="${atrMtc.WEIGHT_BBC}%" readonly="readonly"/ >
+						<input class="score-input red" style="width:2.72rem;font-size:0.3rem;" type="text" name="WEIGHT" id="WEIGHT" value="${atrMtc.WEIGHT_BBC}%" readonly="readonly" />
 					</div>
 					<div class="name float">
-						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;" type="text" name="BBC_B1" id="BBC_B1" value="${atrMtc.BBC_B1}" readonly="readonly"/ >						
+						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;" type="text" name="BBC_B1" id="BBC_B1" value="${atrMtc.BBC_B1}" readonly="readonly" />						
 						<input class="name-input" style="margin-bottom:0rem;font-size: 0.5rem;" type="text" name="BBC_B2" id="BBC_B2" value="${atrMtc.BBC_B2}" readonly="readonly"/>
 					</div>
 				</div>
 			</div>	
-			<div class="competition2" style="width:100%;height:1.5rem;display:none;">
+			<div class="competition2" style="width:6.38rem;height:1.5rem;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float" style="width:50%;">1 Team Name</p>
@@ -193,35 +196,22 @@
 						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;width:100%;" type="text" name="teamB" id="teamB" value="${atrMtc.B_TEAM_NM}">
 					</div>
 				</div>
-			</div>	
-
-
-			<div class="competition2" style="height:2.8rem;">
-				<div class="party float">
-					<div class="competition-red">
-					 	<p class="fraction float" style="width: 100%;">A팀</p>
+			</div>
+			<div class="competition2" style="width:6.38rem;height:1.5rem;">
+				<div class="party3" style="width:100%;height:2.18rem;">
+					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
+					 	<p class="fullname float" style="width:50%;">코트</p>
+					 	<p class="fullname1 float" style="width:50%;">경기순서</p>
 					</div>
-					<div class="name float" style="width: 100%;display: block;">
-						<button class="btn-submit" id="btnReset" onclick="addPointA(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
-						<button class="btn-submit" id="btnReset" onclick="addPointA(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
-<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;"type="button" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="+" onclick="addPointA(1);">						 -->
-<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="-" onclick="addPointA(-1);"> -->
+					<div class="name float" style="width:47.5%;">
+						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;width:100%;" type="text" name="courtNo" id="courtNo" value="${atrMtc.COURT}">
 					</div>
-				</div>
-				<div class="vs float">vs
-				</div>
-				<div class="another-party float">
-					<div class="competition-blue">
-						<p class="fraction float" style="width: 100%;">B팀</p>
-					</div>
-					<div class="name float" style="width: 100%;display: block;">
-						<button class="btn-submit" id="btnReset" onclick="addPointB(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
-						<button class="btn-submit" id="btnReset" onclick="addPointB(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
-<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;" type="button" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="+" onclick="addPointB(1);"> -->
-<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="-" onclick="addPointB(-1);"> -->
+					<div class="name float" style="width:47.5%;">
+						<input class="name-input" style="margin-bottom:0.02rem;font-size: 0.5rem;width:100%;" type="text" name="gameSeq" id="gameSeq" value="${atrMtc.GAME_SEQ}">
 					</div>
 				</div>
 			</div>
+
 
 			<input type="hidden" id="intMbrsqa1" value="${atrMtc.MBR_SQ_A1}"/>
 			<input type="hidden" id="intMbrsqa2" value="${atrMtc.MBR_SQ_A2}"/>
@@ -370,13 +360,6 @@
     });
 
 
-	$(function() {
-		setInterval(function(){
-			saveScore();
-		}, 1000);
-		
-	});
-    
     	function fn_onchange() {
 			$('#btnCal').show();
 			$('#btnSave').hide();
@@ -543,9 +526,8 @@
 								}
 								$('#btnMsg').html();
 								$('#btnMsg').show();
-			     				alert("${label.保存成功了}");
+								saveCourtMtc();
 			     				
-			     				window.location="/front/bbc/exc/getPage.htm?pageName=page16&intClbsq=${intClbsq}&para1=${datFrdt}";
 							}
 							
 						}else{
@@ -561,53 +543,13 @@
 					}
 				});
 		}
-		
 
+		function saveCourtMtc() {
 
-		function fn_GameDel(strJobtype) {
-
- 			var intClbsq= "${intClbsq}";	  // 클럽시퀀스
- 			var intMtcsq= "${intMtcsq}";	  // 클럽시퀀스
-
-     		if (!confirm("${label.确认删除吗}?")) {
- 				return;
- 			}
-     		
- 			loadingShow();
-     		
-			 $.ajax({
-			 	 		data:{
-			 	 			intClbsq : intClbsq
-			 	 			,strJobtype : strJobtype
-			 	 			,intMtcsq : intMtcsq
-			 	 		},
-					type : "POST",
-					url : "/front/bbc/clb/gameDel.htm",
-					success : function(data) {
-
-						if(data.MSG_OUT=="S"){
-		     				window.location="/front/bbc/exc/getPage.htm?pageName=page16&intClbsq=${intClbsq}&para1=${datFrdt}";
-						}else{
-							loadingHide();
-		     				alert("${label.失败了}");
-						}
-						
-					},
-					error : function(xhr, status, e) {
-						loadingHide();
-						alert("Error : " + status);
-					}
-				});
-		}
-
-
-
-		function saveScore() {
-
-			var para1 = "MINI_GAME_UPDATE";
+			var para1 = "MINI_GAME_UPDATE_COURT";
 			var para2 = "${intMtcsq}";
-			var para3 = $("#intAtemscr").val();
-			var para4 = $("#intBtemscr").val();
+			var para3 = $('#courtNo').val();
+			var para4 = $('#gameSeq').val();
 
 			$.ajax({
 				data : {
@@ -619,7 +561,8 @@
 				type : "POST",
 				url : "/front/bbc/clb/getData.htm",
 				success : function(data) {
-					
+     				alert("${label.保存成功了}");
+     				window.location="/front/bbc/exc/getPage.htm?pageName=page18&intClbsq=${intClbsq}&para1=${datFrdt}";
 				},
 				error : function(xhr, status, e) {
 					alert("Error : " + status);
@@ -628,22 +571,6 @@
 			
 		}
 
-		function addPointA(a){
-			var point = $("#intAtemscr").val();
-			var rlt = Number(point)+Number(a);
-			if (rlt < 0) {
-				rlt = 0;
-			}
-			$("#intAtemscr").val(rlt);
-		}
-		function addPointB(a){
-			var point = $("#intBtemscr").val();
-			var rlt = Number(point)+Number(a);
-			if (rlt < 0) {
-				rlt = 0;
-			}
-			$("#intBtemscr").val(rlt);
-		}
 		
     
     </script>

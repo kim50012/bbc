@@ -275,7 +275,6 @@
 		}
 	}
 	
-
 	function getTeamResult(autoRefresh) {
 		
 		var load = loading();
@@ -311,7 +310,7 @@
 				},
 				error : function(xhr, status, e) {
 					load.hide()
-					alert("Error : " + status);
+// 					alert("Error : " + status);
 					if (autoRefresh) {
 						setTimeout(function(){ getTeamResult(true); }, 10000);
 					}
@@ -364,7 +363,7 @@
 				},
 				error : function(xhr, status, e) {
 					load.hide()
-					alert("Error : " + status);
+// 					alert("Error : " + status);
 					if (autoRefresh) {
 						setTimeout(function(){ getTeamRank(true); }, 10000);
 					}
@@ -436,13 +435,19 @@
 							var tagBtn = '<span class="endSpan">수정</span>';
 							var scoreaa = parseInt(data.list[i].A_TEM_SCR);
 							var scorebb = parseInt(data.list[i].B_TEM_SCR);
+							var currScoreTagA = "";
+							var currScoreTagB = "";
 							if (scoreaa > scorebb) {
 								winFlgA = '<span style="color:blue;">'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
 								winFlgB = '<span>'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</span>';
+								currScoreTagA = 'color:blue;';
+								currScoreTagB = 'color:red;';
 							}
 							else if (scoreaa < scorebb) {
 								winFlgA = '<span>'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
 								winFlgB = '<span style="color:blue;">'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</span>';
+								currScoreTagA = 'color:red;';
+								currScoreTagB = 'color:blue;';
 							}
 							else {
 								winFlgA = '<span>'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
@@ -468,11 +473,11 @@
 								+ '					<tr style="height:1rem;">'
 								+ '						<td rowspan="2" style="text-align: center;'+tagBold+'">'+data.list[i].GAME_SEQ+'<br>경기</td>'
 								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgA+'</td>'
-								+ '						<td style="text-align: center;'+tagBold+'">'+scoreaa+'</td>'
+								+ '						<td style="text-align: center;'+tagBold+currScoreTagA+'">'+scoreaa+'</td>'
 								+ '					</tr>'
 								+ '					<tr style="height:1rem;">'
 								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgB+'</td>'
-								+ '						<td style="text-align: center;'+tagBold+'">'+scorebb+'</td>'
+								+ '						<td style="text-align: center;'+tagBold+currScoreTagB+'">'+scorebb+'</td>'
 								+ '					</tr>'
 								+ '					<tr>'
 								+ '						<td colspan="3">&nbsp;</td>'
@@ -497,7 +502,7 @@
 				},
 				error : function(xhr, status, e) {
 					load.hide()
-					alert("Error : " + status);
+// 					alert("Error : " + status);
 					if (autoRefresh) {
 						setTimeout(function(){ getGameList(true); }, 10000);
 					}
@@ -510,7 +515,6 @@
 		window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page15&para3="+a+"&para5="+b;
 	}
 	function msgBox(msg) {
-		
 		messageBox({
 			title : '알림',
 			message : msg,
@@ -546,7 +550,7 @@
     			},
     			error : function(xhr, status, e) {
     				load.hide()
-    				alert("Error : " + status);
+//     				alert("Error : " + status);
     			}
     		});
     	
@@ -665,7 +669,7 @@
     			},
     			error : function(xhr, status, e) {
     				load.hide();
-    				alert("Error : " + status);
+//     				alert("Error : " + status);
     			}
     		});
     	

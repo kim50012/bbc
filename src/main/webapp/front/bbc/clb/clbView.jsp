@@ -96,7 +96,7 @@
 						<div class="list90 bottom-dashed flex" style="display:none;">
 							<p class="left-part">${label.场地地址}</p>
 							<label for="atdAdr" style="position: relative;">
-								<input style="color:#666;width:4rem;" class="right weui-input" id="atdAdr" type="text" value="" >
+								<input style="color:#666;width:4rem;" class="right weui-input" id="atdAdr" type="text" value="" />
 								<p class="right-btn" style="position: absolute;height: 100%;top: 0;right: 0;">${amsClb.ATD_ADR}</p>
 							</label>
 								<input type="hidden" id="strAtdadr" value="${amsClb.ATD_ADR}"/>

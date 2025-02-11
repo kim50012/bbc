@@ -78,8 +78,9 @@
 			
 			</div> 		
 		
-			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.4rem;" onclick="moveToPage('a');">대시보드<br><span style="color:red;">(PC 화면)</span></a>
-			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.4rem;" onclick="moveToPage('b');">경기결과 등록<br><span style="color:red;">(모바일 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('a');">대시보드<br><span style="color:red;">(PC 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('b');">경기결과 등록<br><span style="color:red;">(모바일 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('c');">대진표수정<br><span style="color:red;">(모바일 화면)</span></a>
 			
 		</div>
 		
@@ -113,8 +114,10 @@ $(function() {
 function moveToPage(type) {
 	var aURL = "/front/bbc/exc/getPage.htm?pageName=page14&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
 	var bURL = "/front/bbc/exc/getPage.htm?pageName=page16&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
+	var cURL = "/front/bbc/exc/getPage.htm?pageName=page18&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
 	if (type == "a") window.open(aURL, "dashboard");
 	if (type == "b") window.open(bURL, "gameResultReg");
+	if (type == "c") window.open(cURL, "gameUpdateSeq");
 }
 
 function getData(dt) {
@@ -160,7 +163,7 @@ function getData(dt) {
 						htm = ''
 							+ '			<tr>'
 							+ '				<td class="center">'+data.list[i].COURT+'</td>'
-							+ '				<td class="center"><a href="/front/bbc/exc/getPage.htm?pageName=page17&intClbsq=${intClbsq}&para1='+data.list[i].COURT+'&para2='+dt+'"><span class="mdi mdi-youtube-tv" style="font-size: 0.5rem;" onclick=""></span></a></td>'
+							+ '				<td class="center"><a href="/front/bbc/exc/getPage.htm?pageName=page17&intClbsq=${intClbsq}&para1='+data.list[i].COURT+'&para2='+dt+'" target="_blank"><span class="mdi mdi-youtube-tv" style="font-size: 0.5rem;" onclick=""></span></a></td>'
 							+ '			</tr>'
 							;
 							$("#tbodyListCourt").append(htm);

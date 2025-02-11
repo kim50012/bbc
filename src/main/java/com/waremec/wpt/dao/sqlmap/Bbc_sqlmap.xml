@@ -568,6 +568,7 @@
 		, @B_TEAM_NM = #B_TEAM_NM#
 		, @EVENT = NULL
 		, @COURT = NULL
+		, @GAME_SEQ = NULL
 	  ]]>
 	 </select>
 	

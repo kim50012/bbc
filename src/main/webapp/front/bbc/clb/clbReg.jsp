@@ -208,10 +208,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
-            $("#customUploadBtn").on("click", function () {
-                $("#imageFile").click();
-            });			
-			
+			$("#customUploadBtn").on("click", function () {
+               $("#imageFile").click();
+			});			
+		
 			$(".btn-submit").click(function(){
 				
 	 			//var intStdsq= $('#intClbsq').val();	  // [클럽] 경기장시퀀스
@@ -289,7 +289,7 @@
 					$("#atdAdr").siblings("p").hide();
 				}
      		 });
-      });
+      	});
 
 		function logoUpload(file){
 			if(checkImage(file)){

@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>미니게임결과</title>
+<title>미니 게임 결과</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -38,12 +38,11 @@
 	$(function() {
 		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="${amsClb.CLB_MAI_IMG_PTH}"></image></div><div class="font24 bold">${amsClb.CLB_NM}</div></header>'
 		$("#appPage2").prepend(htm)
-		$(".app-header")
-				.click(
-						function() {
-							window.location.href = '/front/bbc/clb/clbDetMy.htm?intClbsq=${intClbsq }';
-						});
-	});
+		$(".app-header").click(
+			function() {
+				window.location.href = '/front/bbc/clb/clbDetMy.htm?intClbsq=${intClbsq }';
+			});
+		});
 </script>
 <style>
 .subBtn {

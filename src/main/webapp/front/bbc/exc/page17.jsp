@@ -42,7 +42,7 @@
 		display: initial;
 	}
 	.model-wrap {
-		height: 3.3rem;
+		height: 90%;
     	padding-top: 0.3rem;
 	}
 	.font336 {
@@ -76,10 +76,10 @@
 						<div class="left-model" id="backA">
 							<p class="font336 bold fontBlack" id="pointA">0</p>
 						</div>
-			          	<div class="btn-wrap" style="padding-top: 0.7rem;">
+			          	<div class="btn-wrap">
 			          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;display: initial;">
 			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;">
-			                	<span class="mdi mdi-arrow-left-bold-box" style="font-size: 0.5rem;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page8&intClbsq=${amsClb.CLB_SQ}'"></span>
+			                	<span class="mdi mdi-arrow-left-bold-box" style="font-size: 0.5rem;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}&para1=${para2}'"></span>
 			                </div>
 			                
 			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
@@ -87,7 +87,7 @@
 			                </div>
 
 			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
-			                	<span class="mdi mdi-refresh-circle" style="font-size: 0.5rem;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page9&intClbsq=${amsClb.CLB_SQ}&intMtcsetcnt=${intMtcsetcnt}'"></span>
+			                	<span class="mdi mdi-refresh-circle" style="font-size: 0.5rem;" onclick="window.location.reload()"></span>
 							</div>
 			              </div>
 			            </div>
@@ -160,7 +160,7 @@
 			},
 			error : function(xhr, status, e) {
 				load.hide()
-				alert("Error : " + status);
+// 				alert("Error : " + status);
 			}
 		});
 		

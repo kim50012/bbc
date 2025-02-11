@@ -7,18 +7,18 @@
 <application generated-by="eclipse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://update.zeroturnaround.com/jrebel/rebel-2_1.xsd">
 
 	<classpath>
-		<dir name="D:/workspaceBBC/BBC2017/target/classes">
+		<dir name="E:/96. MIDAS VMWARE/MIDAS eclipse/git/bbc/bbc/target/classes">
 		</dir>
 	</classpath>
 
 	<web>
 		<link target="/">
-			<dir name="D:/workspaceBBC/BBC2017/target/m2e-wtp/web-resources">
+			<dir name="E:/96. MIDAS VMWARE/MIDAS eclipse/git/bbc/bbc/target/m2e-wtp/web-resources">
 				<exclude name="/"/>
 			</dir>
 		</link>
 		<link target="/">
-			<dir name="D:/workspaceBBC/BBC2017/src/main/webapp">
+			<dir name="E:/96. MIDAS VMWARE/MIDAS eclipse/git/bbc/bbc/src/main/webapp">
 			</dir>
 		</link>
 	</web>

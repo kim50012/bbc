@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>코트별 경기결과 입력</title>
+<title>대진표 수정</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -97,7 +97,7 @@
       <header class="page-head">
         <div class="page-name">
             <img src="../image/back.png" class="mr24" onclick='window.location.href="/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${intClbsq}&para1=${para1}";'/>
-          <span>코트별 경기결과 입력</span>
+          <span>대진표 수정</span>
         </div>
       </header>
       <div class="content">
@@ -293,10 +293,9 @@
 								+ '	<table class="drag-table alignCenterTable" cellspacing="0" cellpadding="2" border="1">'
 								+ '		<tbody id="tbodyList-gameTable-list">'
 								+ '			<tr>'
+								+ '				<th>코트</th>'
 								+ '				<th>순서</th>'
 								+ '				<th>팀 A</th>'
-								+ '				<th>결과</th>'
-								+ '				<th>결과</th>'
 								+ '				<th>팀 B</th>'
 								+ '				<th>입력</th>'
 								+ '			</tr>'
@@ -324,15 +323,14 @@
 								else {
 									winFlgA = "";
 									winFlgB = "";
-									tagBtn = '<span style="color:#e42e43;">입력</span>';
+									tagBtn = '<span style="color:#e42e43;">수정</span>';
 								}
 
 								htm = ''
 									+ '			<tr>'
-									+ '				<td class="center"><b>['+gCnt+'경기]</b></td>'
+									+ '				<td class="center"><b>'+data.list[i].COURT+'</b></td>'
+									+ '				<td class="center"><b>'+data.list[i].GAME_NO+'</b></td>'
 									+ '				<td class="center">'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</td>'
-									+ '				<td class="center">'+winFlgA+'</td>'
-									+ '				<td class="center">'+winFlgB+'</td>'
 									+ '				<td class="center">'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</td>'
 									+ '				<td class="center" onclick="gameResult('+data.list[i].MTC_SQ+');">'+tagBtn+'</td>'
 									+ '			</tr>'
@@ -363,8 +361,8 @@
 	}
 
     function gameResult(a) {
-		var aURL = "/front/bbc/clb/miniGameView.htm?intClbsq=${intClbsq}&intMtcsq="+a+"&datFrdt=${para1}&datTodt=${para1}";
-		window.open(aURL, "gameResultRegOne");
+		var aURL = "/front/bbc/clb/miniGameView2.htm?intClbsq=${intClbsq}&intMtcsq="+a+"&datFrdt=${para1}&datTodt=${para1}";
+		window.open(aURL, "gameResultRegOne1");
     }
     
     function gameResult2(a, b, c, d, e) {
