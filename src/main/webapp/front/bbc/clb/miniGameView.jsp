@@ -11,6 +11,7 @@
 		<title>${label.修改比赛结果}</title>
 		<%@ include file="/front/bbc/inc/css.jsp"%> 
 		<link rel="stylesheet" type="text/css" href="../css/jquery.typeahead.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
 		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 		<%@ include file="/front/bbc/inc/remjs.jsp"%> 
 		<script src="../js/footer.js" type="text/javascript" charset="utf-8"></script>
@@ -37,8 +38,8 @@
 	
 	
 			<div style="text-align: center;padding-top: 0.4rem;padding-bottom: 0.2rem;">
-					<button class="btn-submit" id="btnCal" onclick="fn_GameSave('S');" style="background-color: #c0c0c0;">${label.比赛结果查看} (${label.保存})</button>
-					<button class="btn-submit" id="btnSave" onclick="fn_GameSave('U');" style="display:none;background-color: red;">${label.比赛结果保存}</button>
+					<button class="btn-submit" id="btnCal" onclick="fn_GameSave('S');" style="background-color: #c0c0c0;height: 1.2rem;">경기결과보기<br>( 2번 눌러야 "저장" 됩니다 )</button>
+					<button class="btn-submit" id="btnSave" onclick="fn_GameSave('U');" style="display:none;background-color: red;height: 1.2rem;">${label.比赛结果保存}</button>
 					<button class="btn-submit" id="btnMsg" onclick="window.location='gameReg.htm?intClbsq=${intClbsq}';" style="display:none;"></button>
 			</div>
 			
@@ -195,6 +196,18 @@
 				</div>
 			</div>	
 
+			<div class="competition2" style="height:1rem;">
+				<div class="another-party float">
+					<div class="competition-blue" style="height:100%">
+						<p class="fraction float" style="width: 100%;line-height:1rem;">코트 Change</p>
+					</div>
+				</div>
+				<div class="another-party float">
+					<div class="name float" style="width: 100%;display: block;">
+						<button class="btn-submit" id="btnReset" onclick="codeChange();" style="background-color: #03a9f4;margin-top: 0.12rem;width: 2rem;"><span class="mdi mdi-swap-horizontal" style="font-size: 0.5rem;"></span></button>
+					</div>
+				</div>
+			</div>
 
 			<div class="competition2" style="height:2.8rem;">
 				<div class="party float">
@@ -204,8 +217,6 @@
 					<div class="name float" style="width: 100%;display: block;">
 						<button class="btn-submit" id="btnReset" onclick="addPointA(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
 						<button class="btn-submit" id="btnReset" onclick="addPointA(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
-<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;"type="button" name="intMtcclbbbca1" id="intMtcclbbbca1"  value="+" onclick="addPointA(1);">						 -->
-<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbca2" id="intMtcclbbbca2"  value="-" onclick="addPointA(-1);"> -->
 					</div>
 				</div>
 				<div class="vs float">vs
@@ -217,8 +228,6 @@
 					<div class="name float" style="width: 100%;display: block;">
 						<button class="btn-submit" id="btnReset" onclick="addPointB(1);" style="font-size: 0.6rem;background-color: #03a9f4;margin-top: 0.2rem;width: 2rem;">+</button>
 						<button class="btn-submit" id="btnReset" onclick="addPointB(-1);" style="font-size: 0.6rem;background-color: #ff9800;margin-top: 0.2rem;width: 2rem;">-</button>
-<!-- 						<input class="name-input" style="margin-bottom:0.02rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: blue;" type="button" name="intMtcclbbbcb1" id="intMtcclbbbcb1" value="+" onclick="addPointB(1);"> -->
-<!-- 						<input class="name-input" style="margin-bottom:0rem;width: 85%;height: 1.5rem;font-size: 1.22rem;color: red;" type="button" name="intMtcclbbbcb2" id="intMtcclbbbcb2" value="-" onclick="addPointB(-1);"> -->
 					</div>
 				</div>
 			</div>
@@ -557,51 +566,33 @@
 					},
 					error : function(xhr, status, e) {
 						loadingHide();
+// 						alert("Error : " + status);
+					}
+				});
+		}
+
+		
+		function codeChange() {
+			
+			 $.ajax({
+			 	 		data:{
+		 	 					para1 : "UPDATE_MINI_CHANGE_COURT"
+				 	 			,para2 : "${intMtcsq}"
+				 	 		},
+					type : "POST",
+					url : "/front/bbc/badMatch/getData.htm",
+					success : function(data) {
+						window.location.reload();
+						load.hide();
+						
+					},
+					error : function(xhr, status, e) {
+						load.hide()
 						alert("Error : " + status);
 					}
 				});
 		}
 		
-
-
-		function fn_GameDel(strJobtype) {
-
- 			var intClbsq= "${intClbsq}";	  // 클럽시퀀스
- 			var intMtcsq= "${intMtcsq}";	  // 클럽시퀀스
-
-     		if (!confirm("${label.确认删除吗}?")) {
- 				return;
- 			}
-     		
- 			loadingShow();
-     		
-			 $.ajax({
-			 	 		data:{
-			 	 			intClbsq : intClbsq
-			 	 			,strJobtype : strJobtype
-			 	 			,intMtcsq : intMtcsq
-			 	 		},
-					type : "POST",
-					url : "/front/bbc/clb/gameDel.htm",
-					success : function(data) {
-
-						if(data.MSG_OUT=="S"){
-		     				window.location="/front/bbc/exc/getPage.htm?pageName=page16&intClbsq=${intClbsq}&para1=${datFrdt}";
-						}else{
-							loadingHide();
-		     				alert("${label.失败了}");
-						}
-						
-					},
-					error : function(xhr, status, e) {
-						loadingHide();
-						alert("Error : " + status);
-					}
-				});
-		}
-
-
-
 		function saveScore() {
 
 			var para1 = "MINI_GAME_UPDATE";

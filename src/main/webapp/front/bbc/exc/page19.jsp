@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>전체현황</title>
+<title>일일 경기 현황</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -126,10 +126,7 @@
 						<table class="drag-table alignRightTable" cellspacing="0" cellpadding="2" border="1">
 							<tbody id="arealistA1">
 								<tr style="height:1rem;">
-									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamWinA"></td>
-								</tr>
-								<tr style="height:1rem;">
-									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamScoreA"></td>
+									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamWinA">승율 50% 이상</td>
 								</tr>
 							</tbody>
 						</table>
@@ -159,10 +156,7 @@
 						<table class="drag-table alignRightTable" cellspacing="0" cellpadding="2" border="1">
 							<tbody id="arealistA1">
 								<tr style="height:1rem;">
-									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamWinB"></td>
-								</tr>
-								<tr style="height:1rem;">
-									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamScoreB"></td>
+									<td colspan="2" class="title font24 bold" style="text-align: center; font-size: 0.38rem" id="teamWinB">승률 50% 이하</td>
 								</tr>
 							</tbody>
 						</table>
@@ -190,65 +184,27 @@
       </div>
     </div>
     
-	<div class="radio-pop" id="userSelectPop" style="display:none;">
-		<input type="hidden" id="selectUserObjNm" />
-		<input type="hidden" id="round" />
-		<div class="radio-wrap" style="padding:0;width:6.5rem;">
-			
-			<div class="radio-content">
-
-				<div class="container mt10">
-		      		<div class="title2">
-		              <span class="font24 bold">경기 결과</span><span class="font20 fontOrange">스코어입력</span>
-		          	</div>
-		            <div class="scroll-wrap" style="padding-bottom:0.5rem;min-height:5rem;height:5rem;">
-		         		<table class="drag-table alignRightTable" id="userResult" cellspacing="0" cellpadding="2" border="1">
-		                <tbody id="userResultTbody">
-		                <tr>
-			                <th class="noWrapCell" id="teamA">팀A</th>
-			                <th class="noWrapCell" id="teamB">팀B</th>
-		                </tr>
-		                <tr>
-		                	<td>
-                    			<div class="input-wrap inContent" style="height: 1rem;">
-							          <input type="hidden" id="mchReqA" value="" />
-							          <input type="tel" id="scoreA" value="" style="font-size: 0.7rem;text-align: center;"/>
-							          <div style="font-size: 0.5rem;">점수입력</div>
-							        </div>
-							</td>
-		                	<td>
-                    			<div class="input-wrap inContent" style="height: 1rem;">
-							          <input type="hidden" id="mchReqB" value="" />
-							          <input type="tel" id="scoreB" value="" style="font-size: 0.7rem;text-align: center;"/>
-							          <div style="font-size: 0.5rem;">점수입력</div>
-							        </div>
-							</td>
-		                </tr>
-						<!-- START Data Loop -->
-						
-		         		</tbody>
-		         		</table>
-		         		<br>
-		         		<br>
-		         		<br>
-		        	</div>
-          		</div>
-
-			</div>
-			<div class="btn-wrap">
-          	  <div class="buttons">
-                <div class="blueBtn subBtn f-col font26" onclick="$('#userSelectPop').hide();">취소</div>
-                <div class="orangeBtn subBtn f-col font26" onclick="saveGameResult($('#mchReqA').val(), $('#mchReqB').val(), $('#scoreA').val(), $('#scoreB').val());">경기결과저장</div>
-              </div>
-            </div>
-		</div>
-	</div>    
       
   </body>
 <script>
 
+	$(document).ready(function () {
+	    $("#teamWinA").click(function () {
+	        let elem = document.documentElement; // 전체 화면을 위한 요소 (전체 페이지)
+	        if (elem.requestFullscreen) {
+	            elem.requestFullscreen();
+	        } else if (elem.mozRequestFullScreen) { // Firefox 지원
+	            elem.mozRequestFullScreen();
+	        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari 지원
+	            elem.webkitRequestFullscreen();
+	        } else if (elem.msRequestFullscreen) { // IE 지원
+	            elem.msRequestFullscreen();
+	        }
+	    });
+	});	
+
 	$(function() {
-		getTeamResult(true);
+// 		getTeamResult(true);
 		getTeamRank(true);
 		getGameList(true);
 	});
@@ -326,7 +282,7 @@
 	
 		 $.ajax({
 		 	 		data:{
-		 	 			para1 : "SELECT_MINI_TEAM_RANK"
+		 	 			para1 : "SELECT_DAILY_GAME_RANK"
 		 	 			,para2 : "${intClbsq}"
 		 	 			,para3 : "${para1}"
 		 	 		},
@@ -347,7 +303,7 @@
 								+ '	<td style="text-align: center;">'+data.list[i].CLB_NIK_NM+'</td>'
 								+ '	<td style="text-align: center;">'+data.list[i].WIN+'승</td>'
 								+ '	<td style="text-align: center;">'+data.list[i].LOSE+'패</td>'
-								+ '	<td style="text-align: center;">'+data.list[i].SCR_MBR+'점</td>'
+								+ '	<td style="text-align: center;">'+data.list[i].BBC+'</td>'
 								+ '</tr>'
 								;
 								
@@ -379,7 +335,7 @@
 	
 		 $.ajax({
 		 	 		data:{
-		 	 			para1 : "SELECT_MINI_GAME_LIST"
+		 	 			para1 : "SELECT_DAILY_GAME_LIST"
 		 	 			,para2 : "${intClbsq}"
 		 	 			,para3 : "${para1}"
 		 	 		},
@@ -393,11 +349,11 @@
 					var tagT = "";
 					var tagTitle = "";
 					var thisTagT = "";
-
-					$("#dataList").html("");
 					
 					if (data.list.length != 0) {
 
+						$("#dataList").html("");
+						
 						for (var i = 0; i < data.list.length; i++) {
 
 							thisTagT = data.list[i].COURT;
@@ -408,7 +364,7 @@
 									+ '<div class="scroll-wrap f-col" style="border-right: solid 1px #0000ff;">'
 									+ '	<div>'
 									+ '		<div class="title" style="text-align: center;">'
-									+ '			<span class="font24 bold" id="areaTitleNm1">'+data.list[i].COURT+'번 코트</span>'
+									+ '			<span class="font24 bold" id="areaTitleNm1">경기결과 '+data.list[i].COURT+'</span>'
 									+ '		</div>'
 									+ '		<div class="table">'
 									+ '			<table class="drag-table alignRightTable" cellspacing="0" cellpadding="2" border="1">'
@@ -467,10 +423,10 @@
 							}
 							
 							htm = ''
-								+ '					<tr>'
+								+ '					<tr style="display:none;">'
 								+ '						<td colspan="3" style="text-align: center;'+tagTitle+'">'+data.list[i].GAME_STATUS+'</td>'
 								+ '					</tr>'
-								+ '					<tr style="height:1rem;">'
+								+ '					<tr style="height:1rem;border-top: solid 2px #ff5722;">'
 								+ '						<td rowspan="2" style="text-align: center;'+tagBold+'">'+data.list[i].GAME_SEQ+'<br>경기</td>'
 								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgA+'</td>'
 								+ '						<td style="text-align: center;'+tagBold+currScoreTagA+'">'+scoreaa+'</td>'
@@ -491,8 +447,7 @@
 						}
 						
 					} else {
-						$("#dataList").hide();
-						$("#dataList1").css("width", "100%");
+						
 					}
 
 					load.hide();					
@@ -568,112 +523,5 @@
     	$("#userSelectPop").show();
     }
 
-    function saveGameResult(para4, para5, para6, para7) {
-
-    	var load = loading();
-    	var finalYn = "N";
-//     	load.show();
-    	
-		if (para6 == "" || para7 == "") {
-			msgBox("점수를 입력하세요.");
-    		load.hide();
-			return;
-		}
-
-    	if (!("${userInfo.AUTH}" == "A" || "${userInfo.AUTH}" == "B" || "${userInfo.AUTH}" == "C" || "${userInfo.AUTH}" == "D")) {
-    		msgBox("권한이 없습니다.");
-    		load.hide();
-			return;
-    	}
-
-    	 $.ajax({
-    	 	 		data:{
-    	 	 			para1 : "BADMATCH_INSERT_GAME_RESULT"
-    	 	 			,para2 : "${para3}"
-    	 	 			,para3 : finalYn
-    	 	 			,para4 : para4
-    	 	 			,para5 : para5
-    	 	 			,para6 : para6
-    	 	 			,para7 : para7
-    	 	 			,para8 : "${loginMbrSq}"
-    	 	 		},
-    			type : "POST",
-    			url : "/front/bbc/badMatch/getData.htm",
-    			success : function(data) {
-    				
-    				if (data.list[0].RSLT == "END_MATCH") {
-
-        				messageBox({
-        					title : '알림',
-        					message : '예선전이 종료 되었습니다.',
-        					type : 'alert',
-        					callback : function() {
-        						load.hide();
-        						$("#userSelectPop").hide();
-        					}
-        				});
-        				return;
-    				}
-    				 
-    				var scoreA = parseInt(para6);
-    				var scoreB = parseInt(para7);
-    				var vicName = "";
-    				
-    				if (scoreA > scoreB) {
-    					vicName = data.list[0].NAMEA + ", " + data.list[0].NAMEB + " 승";
-    				}
-    				else {
-    					vicName = data.list[0].NAMEC + ", " + data.list[0].NAMED + " 승";
-    				}
-
-    		    	if (!systemTest) {
-
-       		    	 $.ajax({
-       		    	 	 		data:{
-       		    	 	 			para1 : data.list[0].OPENIDA
-       		    	 	 			,para2 : data.list[0].OPENIDB
-       		    	 	 			,para3 : data.list[0].OPENIDC
-       		    	 	 			,para4 : data.list[0].OPENIDD
-       		    	 	 			,para5 : data.list[0].MCH_NM + " - 예선\n" + data.list[0].B_LVL_NM + " / " + data.list[0].GAME_TYPE_NM + " / " + data.list[0].GAME_GROUP_NM + " 경기결과 " +  para6 + " : " + para7
-       		    	 	 			,para6 : data.list[0].NAMEA
-       		    	 	 			,para7 : data.list[0].NAMEB
-       		    	 	 			,para8 : data.list[0].NAMEC
-       		    	 	 			,para9 : data.list[0].NAMED
-       		    	 	 			,para10 : vicName
-       		    	 	 			,para11 : "승패에 문제가 있는 경우 대회 관리자에게 문의 하세요."
-       		    	 	 			,para12 : "/front/bbc/badMatch/getPage.htm?pageName=page15&para3=${para3}"
-       		    	 	 		},
-       		    			type : "POST",
-       		    			url : "/front/bbc/badMatch/sendMsg.htm",
-       		    			success : function(data) {
-       		    			},
-       		    			error : function(xhr, status, e) {
-       		    			}
-       		    		});
-       				
-    		    	}
-
-    				messageBox({
-    					title : '알림',
-    					message : '저장되었습니다.',
-    					type : 'alert',
-    					callback : function() {
-    						getGameList(false);
-    						$("#userSelectPop").hide();
-    					}
-    				});
-    				
-//     				alert("저장되었습니다.");
-//     				$("#userSelectPop").hide();
-    				
-					load.hide();	
-    			},
-    			error : function(xhr, status, e) {
-    				load.hide();
-//     				alert("Error : " + status);
-    			}
-    		});
-    	
-    }
 </script>
 </html>

@@ -125,10 +125,11 @@
           
           	<div class="btn-wrap" style="padding-top: 0;">
           	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;">
-                <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/clb/clbRank.htm?intClbsq=${amsClb.CLB_SQ}';">복식랭킹<br>조회</div>
-                <div class="blueBtn subBtn f-col font26" onclick="search('');">전체현황<br>조회</div>
-                <div class="blueBtn subBtn f-col font26" onclick="gotoGameToday('${loginMbrSq}');">나의현황<br>조회</div>
-                <div class="orangeBtn subBtn f-col font26" onclick="window.location.href='/front/bbc/clb/gameReg.htm?intClbsq=${amsClb.CLB_SQ}';">경기결과<br>등록</div>
+                <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/clb/clbRank.htm?intClbsq=${amsClb.CLB_SQ}';">복식<br>랭킹</div>
+                <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page19&intClbsq=${amsClb.CLB_SQ}&para1=${datFrdt}';">대시<br>보드</div>
+                <div class="blueBtn subBtn f-col font26" onclick="search('');">전체<br>현황</div>
+                <div class="blueBtn subBtn f-col font26" onclick="gotoGameToday('${loginMbrSq}');">나의<br>현황</div>
+                <div class="orangeBtn subBtn f-col font26" onclick="window.location.href='/front/bbc/clb/gameReg.htm?intClbsq=${amsClb.CLB_SQ}';">결과<br>입력</div>
               </div>
             </div>
             

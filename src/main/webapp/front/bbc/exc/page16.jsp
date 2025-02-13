@@ -86,6 +86,7 @@
 .drag-table td {
 	font-size: 0.28rem;
 	line-height: 0.35rem;
+	padding: 0.24rem 0.1rem;
 }
 .drag-table th {
 	font-size: 0.28rem;

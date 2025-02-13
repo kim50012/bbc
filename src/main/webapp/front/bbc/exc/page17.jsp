@@ -43,13 +43,13 @@
 	}
 	.model-wrap {
 		height: 90%;
-    	padding-top: 0.3rem;
+    	padding-top: 0.6rem;
 	}
 	.font336 {
 		font-size: 2.36rem;
 	}
 	.font26 {
-		line-height: 0;
+		line-height: 0.2rem;
     	font-size: 0.18rem;
 	}
 	.btn-wrap {
@@ -70,11 +70,13 @@
 			<div style="height:100%;">
 				<div class="container">
 					<div class="model-wrap" style="height: 0.1rem;color: black;font-size: 0.2rem;padding: 0;padding-top: 0.1rem;">
-						<div class="subBtn f-col font26 blueBtn" id="gameNo" style="padding: 0.13rem;margin: 0;"></div>
+						<div class="subBtn f-col font26 blueBtn" id="gameNo1" style="padding: 0.13rem;height: 0.4rem;margin: 0;"></div>
+						<div class="subBtn f-col font26 blueBtn" id="gameNo2" style="padding: 0.13rem;height: 0.4rem;margin: 0 0.1rem;"></div>
+						<div class="subBtn f-col font26 blueBtn" id="gameNo3" style="padding: 0.13rem;height: 0.4rem;margin: 0;"></div>
 					</div>
 					<div class="model-wrap">
-						<div class="left-model" id="backA">
-							<p class="font336 bold fontBlack" id="pointA">0</p>
+						<div class="left-model" id="backA" style="background-color: #ff0000;">
+							<p class="font336 bold fontBlack" id="pointA" style="color: #ffffff;">0</p>
 						</div>
 			          	<div class="btn-wrap">
 			          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;display: initial;">
@@ -89,10 +91,14 @@
 			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
 			                	<span class="mdi mdi-refresh-circle" style="font-size: 0.5rem;" onclick="window.location.reload()"></span>
 							</div>
+
+			                <div class="subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.2rem;">
+			                	<span class="mdi mdi-overscan" style="font-size: 0.5rem;" id="goFullScreen"></span>
+							</div>
 			              </div>
 			            </div>
-						<div class="left-model" id="backB">
-							<p class="font336 bold fontBlack" id="pointB">0</p>
+						<div class="left-model" id="backB" style="background-color: #0000ff;">
+							<p class="font336 bold fontBlack" id="pointB" style="color: #ffffff;">0</p>
 						</div>
 					</div>
 				</div>
@@ -107,7 +113,7 @@
 	$(function() {
 		setInterval(function(){
 			getData();
-		}, 2000);
+		}, 1300);
 	});
 
 	function getData() {
@@ -134,10 +140,19 @@
 					for (var i = 0; i < data.list.length; i++) {
 						$("#pointA").html(data.list[i].A_TEM_SCR);
 						$("#pointB").html(data.list[i].B_TEM_SCR);
-						$("#backA").css('background-color','#f4f5f8');
-						$("#backB").css('background-color','#f4f5f8');
 						
-						$("#gameNo").html(data.list[i].COURT+" 코트 "+data.list[i].GAME_SEQ+" 경기 : "+data.list[i].P_NM_A1+","+data.list[i].P_NM_A2+" vs "+data.list[i].P_NM_B1+","+data.list[i].P_NM_B2);
+						if (data.list[i].EVENT_TEAM_NM_A == "청팀") {
+							$("#backA").css('background-color','#0000ff');
+							$("#backB").css('background-color','#ff0000');	
+						}
+						else {
+							$("#backA").css('background-color','#ff0000');
+							$("#backB").css('background-color','#0000ff');	
+						}
+
+						$("#gameNo1").html(data.list[i].P_NM_A1+","+data.list[i].P_NM_A2);
+						$("#gameNo2").html(data.list[i].COURT+" 코트 "+data.list[i].GAME_SEQ+" 경기");
+						$("#gameNo3").html(data.list[i].P_NM_B1+","+data.list[i].P_NM_B2);
 						
 						if (scoreA != data.list[i].A_TEM_SCR) {
 							$("#backA").css('background-color','#efff00');
@@ -167,9 +182,24 @@
 	}
 
 	$(window).bind('orientationchange resize', function(event){
-		window.location.reload();
+// 		window.location.reload();
 	});
 
+	$(document).ready(function () {
+	    $("#goFullScreen").click(function () {
+	        let elem = document.documentElement; // 전체 화면을 위한 요소 (전체 페이지)
+	        if (elem.requestFullscreen) {
+	            elem.requestFullscreen();
+	        } else if (elem.mozRequestFullScreen) { // Firefox 지원
+	            elem.mozRequestFullScreen();
+	        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari 지원
+	            elem.webkitRequestFullscreen();
+	        } else if (elem.msRequestFullscreen) { // IE 지원
+	            elem.msRequestFullscreen();
+	        }
+	    });
+	});	
+	
 	function gotoPg(a) {
 		window.location.href="gamePointInput2.html";
 	}
