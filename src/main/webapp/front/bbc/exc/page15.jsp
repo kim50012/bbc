@@ -78,13 +78,14 @@
 			
 			</div> 		
 		
-			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('a');">대시보드<br><span style="color:red;">(PC 화면)</span></a>
-			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('b');">경기결과 등록<br><span style="color:red;">(모바일 화면)</span></a>
-			<a class="tabList font20 mb10" style="cursor:pointer; width: 2.2rem;" onclick="moveToPage('c');">대진표수정<br><span style="color:red;">(모바일 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.2rem;" onclick="moveToPage('a');">대시보드(청백)<br><span style="color:red;">(PC 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.2rem;" onclick="moveToPage('b');">경기결과 등록<br><span style="color:red;">(모바일 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.2rem;" onclick="moveToPage('d');">대시보드(조별)<br><span style="color:red;">(PC 화면)</span></a>
+			<a class="tabList font20 mb10" style="cursor:pointer; width: 3.2rem;" onclick="moveToPage('c');">대진표수정<br><span style="color:red;">(모바일 화면)</span></a>
 			
 		</div>
 		
-        <div class="container f-column" style="height: 100%;padding-top: 2rem;">
+        <div class="container f-column" style="height: 100%;padding-top: 3rem;">
           <div class="scroll-wrap f-col" id="gameTableList" style="padding-bottom:1.64rem;">
           
 
@@ -115,9 +116,11 @@ function moveToPage(type) {
 	var aURL = "/front/bbc/exc/getPage.htm?pageName=page14&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
 	var bURL = "/front/bbc/exc/getPage.htm?pageName=page16&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
 	var cURL = "/front/bbc/exc/getPage.htm?pageName=page18&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
+	var dURL = "/front/bbc/exc/getPage.htm?pageName=page20&intClbsq=${intClbsq}&para1=" + $("#datFrdt").val();
 	if (type == "a") window.open(aURL, "dashboard");
 	if (type == "b") window.open(bURL, "gameResultReg");
 	if (type == "c") window.open(cURL, "gameUpdateSeq");
+	if (type == "d") window.open(dURL, "dashboard22");
 }
 
 function getData(dt) {
