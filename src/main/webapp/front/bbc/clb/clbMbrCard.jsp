@@ -286,13 +286,13 @@
 			
 			
 			<!-- 밥 -->
-			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;">
+			<div class="modules" style="background:#fff;padding-left:0.2rem;padding-right:0.2rem;<c:if test="${intClbsq == 62}">display:none;</c:if>">
 				<div class="flex">
 						<p class="flex1 title-icon">상대전적(<span style="color: #0000ff;">'밥':파란색</span>, <span style="color: #ff0000;">'천적':붉은색</span>)</p>
 <!-- 						<button id="btn"  style="background:none;color:#666;font-size:0.22rem;">更多></button> -->
 				</div>
 			</div>
-			<div class="module list-head" style="border-top:none;">
+			<div class="module list-head" style="border-top:none;<c:if test="${intClbsq == 62}">display:none;</c:if>">
 				<ul class="flex">
 					<li class="flex2 cell-1 cell">${label.排序}</li>
 					<li class="flex2 cell-2 cell">${label.姓名}</li>
@@ -302,7 +302,7 @@
 					<li class="flex2 cell-6 cell">BB Coin</li>
 				</ul>
 			</div>
-			<div class="module" style="border-top:none;background:#fff;padding-bottom:0.2rem;">
+			<div class="module" style="border-top:none;background:#fff;padding-bottom:0.2rem;<c:if test="${intClbsq == 62}">display:none;</c:if>">
 
 				<!-- START Data Loop -->
 				<c:forEach var="atrMtcMbrJ" items="${atrMtcMbrJ}" varStatus="status">  
