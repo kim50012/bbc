@@ -5,698 +5,637 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="label" value="<%=LabelUtil.getLabelBbcMap(application)%>" />
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자체대회 현황판</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <style>
-        /* --- 기본 설정 및 REM 구성 --- */
-        html {
-            font-size: 62.5%; /* 10px = 1rem */
-            height: 100%;
-            box-sizing: border-box;
-        }
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>전체현황</title>
+<link rel="stylesheet" type="text/css" href="../css/font.css" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
+<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rem5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<%@ include file="/front/bbc/badMatch/js.jsp"%> 
+<style>
+.container > div:first-of-type {
+  border-left: solid 1px #0000ff;
+}
 
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
+.drag-table {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #006ecd;
+    border-bottom: 1px solid #CCCCCC;
+    z-index: 300;
+}
+.drag-table th {
+	padding: 0.1rem 0 0.1rem 0;
+	font-size: 0.5rem;
+	line-height: 0.6rem;
+}
+.drag-table td {
+	padding: 0.1rem 0 0.1rem 0;
+	font-size: 0.5rem;
+	line-height: 0.6rem;
+}
+.tab-img img:first-of-type {
+	height: 0.23rem;
+    border: 0;
+    padding-left: 0.03rem;
+    margin: 0;
+    vertical-align: initial;
+}
+.tab-img {
+	display: table-cell;
+}
+.title2 {
+	padding-top: 0;
+}
+.table {
+	padding-bottom: 0.4rem;
+}
+.endSpan {
+	background: #000000;
+    color: #ffffff;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    line-height: 0.6rem;
+    border-radius: 0.2rem;
+}
+.endSpanIng {
+	background: blue;
+    color: #ffffff;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    line-height: 0.6rem;
+    border-radius: 0.2rem;
+}
 
-        body {
-            font-family: "Malgun Gothic", sans-serif;
-            margin: 0;
-            padding: 1rem;
-            background-color: #1f2328; /* 약간 더 어두운 배경 */
-            color: #e6edf3; /* 밝은 기본 텍스트 색상 */
-            font-size: 1.6rem;
-            min-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
+@media(min-width:720px) {
+		body {
+			width:100%;
+		}
+		.module {
+			width:100%;
+		}
+		.footer {
+			width:100%;
+		}
+		.app {
+			width:100%;
+		}
+}
 
-        /* --- 대시보드 컨테이너 --- */
-        .dashboard-container {
-            display: flex; /* 컬럼 래퍼들을 가로로 배치 */
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 192rem;
-            padding: 1rem;
-            padding-top:0rem;
-            align-items: flex-start; /* 상단 정렬 */
-        }
-
-        /* --- 컬럼 래퍼 스타일 --- */
-        .column-wrapper {
-            display: flex;
-            flex-direction: column; /* 제목과 컬럼을 세로로 배치 */
-            gap: 1.5rem; /* 제목과 컬럼 사이 간격 */
-        }
-        .column-wrapper.teams-wrapper {
-             flex: 0 0 40%; /* 너비 40% */
-        }
-        .column-wrapper.courts-wrapper {
-             flex: 0 0 60%; /* 너비 60% */
-        }
-
-        /* --- 컬럼 타이틀 스타일 --- */
-        .column-title {
-            font-size: 1.5rem; /* 타이틀 크기 */
-            color: #e6edf3;
-            text-align: center;
-            margin: 0; /* 기본 마진 제거 */
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #373e47; /* 구분선 색상 */
-            font-weight: 600;
-            text-shadow: 0 0 5px rgba(0, 188, 212, 0.5); /* 모든 타이틀에 사이언 글로우 효과 */
-        }
-        /* 코트 컬럼 타이틀 글로우 제거 */
-        .courts-wrapper .column-title {
-             text-shadow: none;
-             border-bottom-color: #373e47;
-        }
-
-
-        /* --- 컬럼 스타일 (Grid 사용) --- */
-        .column {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .teams-column {
-            grid-template-columns: repeat(2, 1fr);
-            align-content: start;
-        }
-
-        .courts-column {
-            grid-template-columns: repeat(4, 1fr);
-            align-content: start;
-        }
-
-        /* --- 카드 스타일링 (기본) --- */
-        .card {
-            background-color: #262a30; /* 기본 카드 배경색 */
-            border-radius: 0.6rem;
-            padding: 1.5rem;
-            box-shadow: none;
-            border: 1px solid #455a64; /* 기본 테두리 (모든 카드 동일) */
-            display: flex;
-            flex-direction: column;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
-        /* --- 팀 카드 스타일 --- */
-        .teams-column .card {
-             background-color: #21252b; /* 팀 카드 배경색 (더 어둡게) */
-             /* 테두리는 기본값 사용 */
-        }
-         /* --- 코트 카드 스타일 --- */
-        .courts-column .card {
-             background-color: #2a2f36; /* 코트 카드 배경색 */
-             /* 테두리는 기본값 사용 */
-        }
-
-        /* --- 카드 헤더 (제목 + 버튼) --- */
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #455a64; /* 기본 구분선 */
-            padding-bottom: 1rem;
-        }
-         /* 팀 카드 헤더 구분선 */
-         .teams-column .card .card-header {
-             border-bottom-color: #455a64;
-         }
-
-
-        .card .card-header h2 {
-            font-size: 1.7rem;
-            margin: 0;
-            color: #e6edf3; /* 밝은 텍스트 색상 */
-            border-bottom: none;
-            padding-bottom: 0;
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-grow: 1;
-            margin-right: 1rem;
-            text-shadow: 0 0 3px rgba(0, 188, 212, 0.4); /* 팀 카드 제목: 사이언 글로우 */
-        }
-        /* 코트 카드 제목 */
-         .courts-column .card h2 {
-            font-size: 1.7rem;
-            margin: 0;
-            margin-bottom: 1.5rem;
-            color: #e6edf3; /* 밝은 텍스트 색상 */
-            border-bottom: 1px solid #455a64; /* 구분선 색상 통일 */
-            padding-bottom: 1rem;
-            font-weight: 600;
-            text-shadow: 0 0 5px rgba(255, 152, 0, 0.6); /* 주황색 글로우 유지 */
-         }
-
-
-        /* --- 테이블 스타일링 (통일) --- */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1.4rem;
-            table-layout: fixed; /* 레이아웃 고정 */
-        }
-
-        th, td {
-            border: 1px solid #455a64; /* 모든 그리드 라인 색상 통일 (연하게) */
-            padding: 0.9rem 0.8rem;
-            padding-left: 0px;
-            padding-right: 0px;
-            text-align: center;
-            color: #e6edf3; /* 밝은 텍스트 */
-            vertical-align: middle;
-            overflow: hidden;
-        }
-
-        th {
-            background-color: #373e47; /* 모든 헤더 배경색 통일 */
-            font-weight: 600;
-            color: #909dab; /* 헤더 텍스트 색상 조정 */
-            white-space: nowrap;
-        }
-
-         /* 이름/선수 열 스타일 (Ellipsis 적용 - 클래스 사용) */
-         .player-name-cell,
-         .teams-column td:nth-child(2), /* 팀 카드 이름 셀 */
-         th.player-header /* 이름/선수 헤더 */
-          {
-             white-space: nowrap;
-             text-overflow: ellipsis;
-             overflow: hidden;
-             text-indent: 0;
-         }
-         /* 코트 카드 순서, 점수 열은 중앙 정렬 */
-          .courts-column td:nth-child(1), .courts-column th:nth-child(1),
-          .courts-column td:nth-child(3), .courts-column th:nth-child(3) {
-              text-align: center;
-          }
-
-
-        /* 기본 행 스타일 */
-        tbody tr {
-             border: none;
-        }
-
-        /* --- 1위 또는 이기는 팀 강조 스타일 --- */
-        tbody tr.rank-1,
-        tbody tr.winning-team {
-            background-color: rgba(0, 188, 212, 0.1); /* 사이언 배경 강조 */
-            font-weight: bold;
-        }
-        tbody tr.rank-1 td,
-        tbody tr.winning-team td {
-            color: #4dd0e1; /* 밝은 사이언 텍스트 */
-        }
-        tbody tr td.winning-team {
-            background-color: rgba(0, 188, 212, 0.1); /* 사이언 배경 강조 */
-            font-weight: bold;
-            color: #4dd0e1; /* 밝은 사이언 텍스트 */
-        }
-
-        /* --- 순위 숨김 스타일 --- */
-        tbody tr.hidden-rank {
-           display: none;
-        }
-
-        /* --- 코트 카드 부제목 공통 스타일 --- */
-        tbody tr.court-subheading-row td {
-           padding: 0.6rem 0.8rem;
-           font-size: 1.35rem;
-           font-weight: bold;
-           text-align: center;
-           border: 1px solid #455a64; /* 테두리 연하게 통일 */
-           border-left: none;
-           border-right: none;
-           white-space: normal;
-           overflow: visible;
-        }
-        /* --- 현재 경기 부제목 스타일 --- */
-        tbody tr.current-match-header td {
-             color: #FFA726; /* 밝은 주황색 강조 */
-             background-color: #423425; /* 주황색 톤 배경 */
-             text-shadow: none; /* 빛 효과 제거 */
-        }
-         /* --- 다음 경기 부제목 스타일 (덜 강조) --- */
-        tbody tr.next-match-header td {
-             color: #909dab; /* 덜 강조된 회색 (헤더 텍스트 색상과 동일) */
-             background-color: #373e47; /* 기본 헤더 배경색과 동일 */
-             /* text-shadow 제거됨 */
-        }
-
-
-        /* 코트 카드 경기 행 스타일 */
-        tbody tr.court-match-row td {
-            border-left: 1px solid #455a64; /* 테두리 연하게 통일 */
-            border-right: 1px solid #455a64;
-            border-top: none;
-            border-bottom: none;
-        }
-         /* 각 매치의 첫번째 행 위쪽 테두리 */
-         tbody tr.court-match-row.match-row-1 td {
-             border-top: 1px solid #455a64;
-         }
-         /* --- 팀 간 구분선 추가 --- */
-         tbody tr.court-match-row.match-row-2 td {
-             border-bottom: 1px solid #455a64;
-         }
-         /* 각 매치의 마지막 행 아래쪽 테두리 */
-         tbody tr.court-match-row.match-row-4 td {
-             border-bottom: 1px solid #455a64;
-         }
-         /* rowspan 적용된 셀 테두리 조정 */
-         tbody tr.court-match-row td[rowspan] {
-             border-top: 1px solid #455a64;
-             border-bottom: 1px solid #455a64;
-         }
-
-
-        /* --- 더보기/접기 버튼 컨테이너 제거됨 --- */
-
-        /* --- 더보기/접기 버튼 스타일 (팀 카드) --- */
-        .toggle-ranks-button {
-            background-color: transparent; /* 배경 투명 */
-            color: #00bcd4; /* 사이언 색상 */
-            border: 1px solid #00bcd4; /* 사이언 테두리 */
-            padding: 0.4rem 0.8rem;
-            font-size: 1.2rem;
-            border-radius: 0.4rem; /* 약간 더 각지게 */
-            cursor: pointer;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-        .toggle-ranks-button:hover {
-            background-color: rgba(0, 188, 212, 0.2); /* 호버 시 배경 */
-            color: #4dd0e1;
-            border-color: #4dd0e1;
-        }
-        .toggle-ranks-button.less {
-             background-color: rgba(0, 188, 212, 0.2);
-             color: #4dd0e1;
-             border-color: #4dd0e1;
-        }
-         .toggle-ranks-button.less:hover {
-             background-color: transparent;
-             color: #00bcd4;
-             border-color: #00bcd4;
-         }
-         /* 비활성화된 버튼 스타일 제거 */
-         /*
-         .toggle-ranks-button:disabled { ... }
-         */
-
-
-        /* 로딩 및 오류 메시지 스타일 */
-        .loading, .error {
-            text-align: center;
-            padding: 2rem;
-            color: #8b949e; /* 회색 텍스트 */
-        }
-        .error {
-            color: #f85149; /* 오류 텍스트 색상 (빨간색) */
-            background-color: #492222; /* 오류 배경색 (어두운 빨간색) */
-            border: 1px solid #6b3030;
-            border-radius: 0.6rem;
-        }
-        
-        .pdtbLow td {
-        	padding-top: 0.8rem;
-    		padding-bottom: 0.8rem;
-        }
-
-    </style>
+.font24 {
+    font-size: 0.60rem;
+    line-height: 1;
+}
+.bold {
+    font-weight: 700 !important;
+}
+</style>
+<script>
+	
+	$(function() {
+		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="/front/bbc/img/systemLogo2.jpg"></image><p class="headerTitle">배드민턴 대회 관리</p></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
+		$("#app").prepend(htm);
+	});
+	
+</script>
 </head>
-<body>
 
-    <div class="dashboard-container">
+  <body>
+    <div class="app pop-page" style="padding-top: 0rem;">
+      <div class="content" style="display: flex;">
+        <div class="container" style="padding-top: 0.32rem; height: 100%; width: 0%; display: flex;" id="dataList1">
+        
+		</div>
+		<div class="container" style="font-size: 1rem; padding: 0; height: 100%; width: 3%; display: flex; flex-direction: column; justify-content: center; align-items: center;" id="divBtn">
+			<span class="mdi mdi-arrow-left-bold-box" onclick="setLayout(true);"></span>
+			<span class="mdi mdi-arrow-right-bold-box-outline" onclick="setLayout(false);"></span>
+		</div>
+        <div class="container" style="padding-top: 0.32rem; height: 100%; width: 97%; display: flex;" id="dataList">
+			
+        </div>
+      </div>
+    </div>
+    
+	<div class="radio-pop" id="userSelectPop" style="display:none;">
+		<input type="hidden" id="selectUserObjNm" />
+		<input type="hidden" id="round" />
+		<div class="radio-wrap" style="padding:0;width:6.5rem;">
+			
+			<div class="radio-content">
 
-        <div class="column-wrapper teams-wrapper">
-            <h1 class="column-title">조별 순위</h1>
-            <div class="column teams-column">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>A조</h2>
-                        </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-a-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                     <div class="card-header">
-                        <h2>B조</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-b-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                     <div class="card-header">
-                        <h2>C조</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-c-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                     <div class="card-header">
-                        <h2>D조</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-d-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                     <div class="card-header">
-                        <h2>E조</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-e-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                     <div class="card-header">
-                        <h2>F조</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr><th>순위</th><th class="player-header">이름</th><th>승</th><th>패</th><th>득실</th></tr>
-                        </thead>
-                        <tbody id="team-f-data"><tr><td colspan="5" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-            </div> </div> <div class="column-wrapper courts-wrapper">
-             <h1 class="column-title">경기 순서</h1>
-            <div class="column courts-column">
-                <div class="card">
-                    <h2>1번 코트</h2>
-                    <table>
-                        <thead>
-                             <tr><th>순서</th><th class="player-header">선수</th><th>점수</th></tr>
-                        </thead>
-                        <tbody id="court-1-data"><tr><td colspan="3" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                    <h2>2번 코트</h2>
-                    <table>
-                        <thead>
-                            <tr><th>순서</th><th class="player-header">선수</th><th>점수</th></tr>
-                        </thead>
-                        <tbody id="court-2-data"><tr><td colspan="3" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                    <h2>3번 코트</h2>
-                    <table>
-                        <thead>
-                            <tr><th>순서</th><th class="player-header">선수</th><th>점수</th></tr>
-                        </thead>
-                        <tbody id="court-3-data"><tr><td colspan="3" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-                <div class="card">
-                    <h2>4번 코트</h2>
-                    <table>
-                        <thead>
-                            <tr><th>순서</th><th class="player-header">선수</th><th>점수</th></tr>
-                        </thead>
-                        <tbody id="court-4-data"><tr><td colspan="3" class="loading">로딩중...</td></tr></tbody>
-                    </table>
-                </div>
-            </div> </div> </div>
-    <script>
-        // AJAX를 통해 데이터를 가져와 특정 카드의 테이블을 업데이트하는 함수
-        function fetchData(cardId, apiUrl, queryType, courtNo) {
-        	var finalYn = "N";
-            $.ajax({
-                url: apiUrl,
-	 	 		data:{
-	 	 			para1 : queryType
-	 	 			,para2 : "${intClbsq}"
-	 	 			,para3 : "${para1}"
-		 	 		,para4 : courtNo
-	 	 		},
-     			type : "POST",
-                success: function(dataRetulst) {
-                	var data = dataRetulst.list;
-                    const tableBody = $('#' + cardId);
-                    const isCourtCard = cardId.startsWith('court-');
-                    const defaultColspan = isCourtCard ? 3 : 5;
-                    const $card = tableBody.closest('.card'); // 현재 카드 찾기
-                    const $cardHeader = $card.find('.card-header'); // 카드 헤더 찾기
+				<div class="container mt10">
+		      		<div class="title2">
+		              <span class="font24 bold">경기 결과</span><span class="font20 fontOrange">스코어입력</span>
+		          	</div>
+		            <div class="scroll-wrap" style="padding-bottom:0.5rem;min-height:5rem;height:5rem;">
+		         		<table class="drag-table alignRightTable" id="userResult" cellspacing="0" cellpadding="2" border="1">
+		                <tbody id="userResultTbody">
+		                <tr>
+			                <th class="noWrapCell" id="teamA">팀A</th>
+			                <th class="noWrapCell" id="teamB">팀B</th>
+		                </tr>
+		                <tr>
+		                	<td>
+                    			<div class="input-wrap inContent" style="height: 1rem;">
+							          <input type="hidden" id="mchReqA" value="" />
+							          <input type="tel" id="scoreA" value="" style="font-size: 0.7rem;text-align: center;"/>
+							          <div style="font-size: 0.5rem;">점수입력</div>
+							        </div>
+							</td>
+		                	<td>
+                    			<div class="input-wrap inContent" style="height: 1rem;">
+							          <input type="hidden" id="mchReqB" value="" />
+							          <input type="tel" id="scoreB" value="" style="font-size: 0.7rem;text-align: center;"/>
+							          <div style="font-size: 0.5rem;">점수입력</div>
+							        </div>
+							</td>
+		                </tr>
+						<!-- START Data Loop -->
+						
+		         		</tbody>
+		         		</table>
+		         		<br>
+		         		<br>
+		         		<br>
+		        	</div>
+          		</div>
 
-                    // --- "더보기" 상태 유지 로직 (시작) ---
-                    let isCurrentlyExpanded = false;
-                    let $existingButton = null;
-                    if (!isCourtCard && $cardHeader.length > 0) {
-                         $existingButton = $cardHeader.find('.toggle-ranks-button');
-                         isCurrentlyExpanded = $existingButton.data('expanded') === true;
-                    }
-                    // --- "더보기" 상태 유지 로직 (끝) ---
+			</div>
+			<div class="btn-wrap">
+          	  <div class="buttons">
+                <div class="blueBtn subBtn f-col font26" onclick="$('#userSelectPop').hide();">취소</div>
+                <div class="orangeBtn subBtn f-col font26" onclick="saveGameResult($('#mchReqA').val(), $('#mchReqB').val(), $('#scoreA').val(), $('#scoreB').val());">경기결과저장</div>
+              </div>
+            </div>
+		</div>
+	</div>    
+      
+  </body>
+<script>
 
-                    tableBody.empty(); // 테이블 내용 비우기
-                    if (data.length > 0) {
-                        // 팀 카드 처리
-                        if (!isCourtCard) {
-                            let totalRanks = data.length; // 전체 순위 개수
-                            $.each(data, function(index, item) {
-                                let rowClass = "";
-                                if (item.TEAM_RANK === 1) { rowClass += "rank-1 "; }
-                                if (index >= 3 && !isCurrentlyExpanded) {
-                                    rowClass += "hidden-rank";
-                                }
+	$(function() {
+// 		getTeamResult(true);
+		getTeamRank(true, "A");
+		getGameList(true);
+	});
 
-                                let row = '<tr class="' + rowClass.trim() + '">';
-                                row += '<td>' + (item.TEAM_RANK !== undefined ? item.TEAM_RANK : '-') + '</td>';
-                                row += '<td class="player-name-cell" title="' + (item.CLB_NIK_NM || '') + '">' + (item.CLB_NIK_NM !== undefined ? item.CLB_NIK_NM : '-') + '</td>';
-                                row += '<td>' + (item.WIN !== undefined ? item.WIN : '-') + '</td>';
-                                row += '<td>' + (item.LOSE !== undefined ? item.LOSE : '-') + '</td>';
-                                row += '<td>' + (item.SCR_MBR !== undefined ? item.SCR_MBR : '-') + '</td>';
-                                row += '</tr>';
-                                tableBody.append(row);
-                            });
+	function getData() {
 
-                            // 더보기 버튼 상태 업데이트 및 추가 (헤더에)
-                            $cardHeader.find('.toggle-ranks-button').remove(); // 기존 버튼 제거
-                            const buttonText = isCurrentlyExpanded ? '접기' : '더보기';
-                            const buttonClass = isCurrentlyExpanded ? 'toggle-ranks-button less' : 'toggle-ranks-button';
-                            // const isDisabled = totalRanks <= 3; // 비활성화 로직 제거됨
-                            const $newButton = $(
-                                // disabled 속성 제거됨
-                                '<button class="' + buttonClass + '" data-target="#' + cardId + '">' + buttonText + '</button>'
-                            );
-                            // 확장 상태 데이터 저장/갱신
-                            $newButton.data('expanded', isCurrentlyExpanded); // isDisabled 조건 제거
-                            $cardHeader.append($newButton);
+		var load = loading();
+// 		load.show()
+	
+		var a = getDataMyinfoA();
 
-                        }
-                        // 코트 카드 처리 (4행 레이아웃)
-                        else {
-                            let currentMatch = null;
-                            let nextMatches = [];
-                            $.each(data, function(index, item) {
-                                const status = (item.GAME_STATUS || "").trim().toLowerCase();
-                                if (status.includes('현재') || status.includes('current')) {
-                                    currentMatch = item;
-                                } else {
-                                    nextMatches.push(item);
-                                }
-                            });
+		if (a) {
+			load.hide();
+		}
+		else {
+			messageBox({
+				title : '알림',
+				message : '관리자에게 문의 하세요.',
+				type : 'alert',
+				callback : function() {
+					load.hide();
+				}
+			});
+		}
+	}
+	
+	function setLayout(a) {
+		if (a) {
+			$("#dataList").css("width", "97%");
+			$("#dataList1").css("width", "0%");
+		}
+		else {
+			$("#dataList").css("width", "0%");
+			$("#dataList1").css("width", "97%");
+		}
+	}
+	
+	function getGameList(autoRefresh) {
+		
+		var load = loading();
+// 		load.show()
+	
+		 $.ajax({
+		 	 		data:{
+		 	 			para1 : "SELECT_MINI_GAME_LIST"
+		 	 			,para2 : "${intClbsq}"
+		 	 			,para3 : "${para1}"
+		 	 		},
+				type : "POST",
+				url : "/front/bbc/badMatch/getData.htm",
+				success : function(data) {
+					var htm = '';
+					var j = 0;
+					var tag = "";
+					var gCnt = 1;
+					var tagT = "";
+					var tagTitle = "";
+					var thisTagT = "";
 
-                            // 현재 경기 표시 - 클래스 추가
-                            tableBody.append('<tr class="court-subheading-row current-match-header"><td colspan="' + defaultColspan + '">현재 경기</td></tr>');
-                            console.log(currentMatch);
-                            if (currentMatch) {
-                                // 이기는 팀 결정
-                                let team1WinClass = "";
-                                let team2WinClass = "";
-                                const score1 = currentMatch.A_TEM_SCR;
-                                const score2 = currentMatch.B_TEM_SCR;
-                                if (score1 > score2) {
-                                    team1WinClass = " winning-team";
-                                } else if (score2 > score1) {
-                                    team2WinClass = " winning-team";
-                                }
+					$("#dataList").html("");
+					
+					if (data.list.length != 0) {
 
-                                // 4개 행 생성 - 이기는 팀 클래스 추가
-                                let row1 = '<tr class="pdtbLow court-match-row match-row-1' + team1WinClass + '">';
-                                row1 += '<td class="winning-team" rowspan="4">' + (currentMatch.GAME_SEQ !== undefined ? currentMatch.GAME_SEQ : '-') + '경기</td>';
-                                row1 += '<td class="player-name-cell" title="' + (currentMatch.P_NM_A1 || '') + '">' + (currentMatch.P_NM_A1 || '-') + '</td>'; // 선수1
-                                row1 += '<td rowspan="2">' + (score1 !== undefined ? score1 : '-') + '</td>';
-                                row1 += '</tr>';
+						for (var i = 0; i < data.list.length; i++) {
 
-                                let row2 = '<tr class="pdtbLow court-match-row match-row-2' + team1WinClass + '">';
-                                row2 += '<td class="player-name-cell" title="' + (currentMatch.P_NM_A2 || '') + '">' + (currentMatch.P_NM_A2 || '-') + '</td>'; // 선수2
-                                row2 += '</tr>';
+							thisTagT = data.list[i].COURT;
+							
+							if (tagT != thisTagT) {
+								gCnt = 1;
+								htm = ''
+									+ '<div class="scroll-wrap f-col" style="border-right: solid 1px #0000ff;">'
+									+ '	<div>'
+									+ '		<div class="title" style="text-align: center;">'
+									+ '			<span class="font24 bold" id="areaTitleNm1">'+data.list[i].COURT+'번 코트</span>'
+									+ '		</div>'
+									+ '		<div class="table">'
+									+ '			<table class="drag-table alignRightTable" cellspacing="0" cellpadding="2" border="1">'
+									+ '				<thead>'
+									+ '					<tr>'
+									+ '						<th>순서</th>'
+									+ '						<th>이름</th>'
+									+ '						<th>점수</th>'
+									+ '					</tr>'
+									+ '				</thead>'
+									+ '				<tbody id="arealist'+thisTagT+'">'
+									+ '				</tbody>'
+									+ '			</table>'
+									+ '		</div>'
+									+ '	</div>'
+									+ '</div>'
+								;
+									
+								$("#dataList").append(htm);
+							}
+							
+							var winFlgA = "";
+							var winFlgB = "";
+							var tagBtn = '<span class="endSpan">수정</span>';
+							var scoreaa = parseInt(data.list[i].A_TEM_SCR);
+							var scorebb = parseInt(data.list[i].B_TEM_SCR);
+							var currScoreTagA = "";
+							var currScoreTagB = "";
+							if (scoreaa > scorebb) {
+								winFlgA = '<span style="color:blue;">'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
+								winFlgB = '<span>'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</span>';
+								currScoreTagA = 'color:blue;';
+								currScoreTagB = 'color:red;';
+							}
+							else if (scoreaa < scorebb) {
+								winFlgA = '<span>'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
+								winFlgB = '<span style="color:blue;">'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</span>';
+								currScoreTagA = 'color:red;';
+								currScoreTagB = 'color:blue;';
+							}
+							else {
+								winFlgA = '<span>'+data.list[i].P_NM_A1+'<br>'+data.list[i].P_NM_A2+'</span>';
+								winFlgB = '<span>'+data.list[i].P_NM_B1+'<br>'+data.list[i].P_NM_B2+'</span>';
+								tagBtn = '<span class="endSpanIng">입력</span>';
+							}
+							
+							tagTitle = "";
+							var tagBold = "";
+							if (data.list[i].DISPLAY_SEQ == 1) {
+								tagTitle = "background: #006ecd; color: white; height: 0.8rem; font-size: 0.5rem;";
+								tagBold = "font-weight: 600;";
+							}
+							else {
+								tagTitle = "background: #4CAF50; color: white; height: 0.8rem; font-size: 0.5rem;";
+								tagBold = "font-weight: normal;";
+							}
+							
+							htm = ''
+								+ '					<tr>'
+								+ '						<td colspan="3" style="text-align: center;'+tagTitle+'">'+data.list[i].GAME_STATUS+'</td>'
+								+ '					</tr>'
+								+ '					<tr style="height:1rem;">'
+								+ '						<td rowspan="2" style="text-align: center;'+tagBold+'">'+data.list[i].GAME_SEQ+'<br>경기</td>'
+								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgA+'</td>'
+								+ '						<td style="text-align: center;'+tagBold+currScoreTagA+'">'+scoreaa+'</td>'
+								+ '					</tr>'
+								+ '					<tr style="height:1rem;">'
+								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgB+'</td>'
+								+ '						<td style="text-align: center;'+tagBold+currScoreTagB+'">'+scorebb+'</td>'
+								+ '					</tr>'
+								+ '					<tr>'
+								+ '						<td colspan="3">&nbsp;</td>'
+								+ '					</tr>'
+								;
+							j++;
+							gCnt++;
+							$("#arealist"+thisTagT).append(htm);
+							tagT = data.list[i].COURT;
+							
+						}
+						
+					} else {
+						$("#dataList").hide();
+						$("#dataList1").css("width", "100%");
+					}
 
-                                let row3 = '<tr class="pdtbLow court-match-row match-row-3' + team2WinClass + '">';
-                                row3 += '<td class="player-name-cell" title="' + (currentMatch.P_NM_B1 || '') + '">' + (currentMatch.P_NM_B1 || '-') + '</td>'; // 선수3
-                                row3 += '<td rowspan="2">' + (score2 !== undefined ? score2 : '-') + '</td>';
-                                row3 += '</tr>';
+					load.hide();					
 
-                                let row4 = '<tr class="pdtbLow court-match-row match-row-4' + team2WinClass + '">';
-                                row4 += '<td class="player-name-cell" title="' + (currentMatch.P_NM_B2 || '') + '">' + (currentMatch.P_NM_B2 || '-') + '</td>'; // 선수4
-                                row4 += '</tr>';
+					if (autoRefresh) {
+						setTimeout(function(){ getGameList(true); }, 3000);
+					}
+				},
+				error : function(xhr, status, e) {
+					load.hide()
+// 					alert("Error : " + status);
+					if (autoRefresh) {
+						setTimeout(function(){ getGameList(true); }, 3000);
+					}
+				}
+			});
+	}
+	
 
-                                tableBody.append(row1 + row2 + row3 + row4);
-                            } else {
-                                tableBody.append('<tr><td colspan="' + defaultColspan + '">진행중인 경기 없음</td></tr>');
-                            }
+	function getTeamRank(autoRefresh, teamTag) {
+		
+		var load = loading();
+// 		load.show()
+	
+		 $.ajax({
+		 	 		data:{
+		 	 			para1 : "SELECT_DAILY_GAME_MULTI_RANK"
+		 	 			,para2 : "${intClbsq}"
+		 	 			,para3 : "${para1}"
+// 				 	 	,para4 : teamTag
+		 	 		},
+				type : "POST",
+				url : "/front/bbc/badMatch/getData.htm",
+				success : function(data) {
+					var htm = '';
+					var j = 0;
+					var tag = "";
+					var gCnt = 1;
+					var tagT = "";
+					var tagTitle = "";
+					var thisTagT = "";
 
-                            // 다음 경기 표시 - 클래스 추가
-                            tableBody.append('<tr class="court-subheading-row next-match-header"><td colspan="' + defaultColspan + '">다음 경기</td></tr>');
-                            if (nextMatches.length > 0) {
-                                $.each(nextMatches, function(index, item) {
-                                    if (nextMatches.P_NM_A1 != "") {
-                                        // 다음 경기는 승리팀 강조 안함
-                                        let row1 = '<tr class="pdtbLow court-match-row match-row-1">';
-                                        row1 += '<td rowspan="4">' + (item.GAME_SEQ !== undefined ? item.GAME_SEQ : '-') + '경기</td>';
-                                        row1 += '<td class="player-name-cell" title="' + (item.P_NM_A1 || '') + '">' + (item.P_NM_A1 || '-') + '</td>'; // 선수1
-                                        row1 += '<td rowspan="2">' + (item.A_TEM_SCR !== undefined ? item.A_TEM_SCR : '-') + '</td>';
-                                        row1 += '</tr>';
-                                        let row2 = '<tr class="pdtbLow court-match-row match-row-2">';
-                                        row2 += '<td class="player-name-cell" title="' + (item.P_NM_A2 || '') + '">' + (item.P_NM_A2 || '-') + '</td>'; // 선수2
-                                        row2 += '</tr>';
-                                        let row3 = '<tr class="pdtbLow court-match-row match-row-3">';
-                                        row3 += '<td class="player-name-cell" title="' + (item.P_NM_B1 || '') + '">' + (item.P_NM_B1 || '-') + '</td>'; // 선수3
-                                        row3 += '<td rowspan="2">' + (item.B_TEM_SCR !== undefined ? item.B_TEM_SCR : '-') + '</td>';
-                                        row3 += '</tr>';
-                                        let row4 = '<tr class="pdtbLow court-match-row match-row-4">';
-                                        row4 += '<td class="player-name-cell" title="' + (item.P_NM_B2 || '') + '">' + (item.P_NM_B2 || '-') + '</td>'; // 선수4
-                                        row4 += '</tr>';
-                                        tableBody.append(row1 + row2 + row3 + row4);
-                                    } else {
-                                         tableBody.append('<tr><td>' + (item.GAME_SEQ || '-') + '</td><td>(선수/점수 정보 부족)</td><td>-</td></tr>');
-                                    }
-                                });
-                            } else {
-                                tableBody.append('<tr><td colspan="' + defaultColspan + '">예정된 경기 없음</td></tr>');
-                            }
-                        }
-                    } else {
-                        tableBody.append('<tr><td colspan="' + defaultColspan + '">표시할 데이터가 없습니다.</td></tr>');
-                         if (!isCourtCard) {
-                              $cardHeader.find('.toggle-ranks-button').remove();
-                         }
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.error("데이터 가져오기 오류 " + cardId + ": " + textStatus, errorThrown);
-                    const tableBody = $('#' + cardId);
-                    const isCourtCard = cardId.startsWith('court-');
-                    const defaultColspan = isCourtCard ? 3 : 5;
-                     if(tableBody.is(':empty')) {
-                        tableBody.html('<tr><td colspan="' + defaultColspan + '" class="error">데이터를 로드하지 못했습니다.</td></tr>');
-                     }
-                     if (!isCourtCard) {
-                          const $cardHeader = tableBody.closest('.card').find('.card-header');
-                          $cardHeader.find('.toggle-ranks-button').remove();
-                     }
-                }
-            });
-        }
+					$("#dataList1").html("");
+					
+					if (data.list.length != 0) {
 
-        // --- 문서 준비 완료 ---
-        $(document).ready(function() {
+						for (var i = 0; i < data.list.length; i++) {
 
-            // --- 초기 데이터 로드 함수 (변경 없음) ---
-            function loadMockData() {
-                fetchData('team-a-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "A");
-                fetchData('team-b-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "B");
-                fetchData('team-c-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "C");
-                fetchData('team-d-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "D");
-                fetchData('team-e-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "E");
-                fetchData('team-f-data', '/front/bbc/badMatch/getData.htm', 'SELECT_DAILY_GAME_MULTI_RANK', "F");
-                fetchData('court-1-data', '/front/bbc/badMatch/getData.htm', 'SELECT_MINI_GAME_MULTI_LIST', 1);
-                fetchData('court-2-data', '/front/bbc/badMatch/getData.htm', 'SELECT_MINI_GAME_MULTI_LIST', 2);
-                fetchData('court-3-data', '/front/bbc/badMatch/getData.htm', 'SELECT_MINI_GAME_MULTI_LIST', 3);
-                fetchData('court-4-data', '/front/bbc/badMatch/getData.htm', 'SELECT_MINI_GAME_MULTI_LIST', 4);
-            }
+							thisTagT = data.list[i].TEAM_NM;
+							
+							if (tagT != thisTagT) {
+								gCnt = 1;
+								htm = ''
+									+ '<div class="scroll-wrap f-col" style="border-right: solid 1px #0000ff;">'
+									+ '	<div>'
+									+ '		<div class="title" style="text-align: center;">'
+									+ '			<span class="font24 bold" id="areaTitleNm1">'+data.list[i].TEAM_NM+'팀 순위</span>'
+									+ '		</div>'
+									+ '		<div class="table">'
+									+ '			<table class="drag-table alignRightTable" cellspacing="0" cellpadding="2" border="1">'
+									+ '				<thead>'
+									+ '					<tr>'
+									+ '						<th style="border-bottom: 1px solid #006ecd;font-size:0.4rem;">순위</th>'
+									+ '						<th style="border-bottom: 1px solid #006ecd;font-size:0.4rem;">이름</th>'
+									+ '						<th style="border-bottom: 1px solid #006ecd;font-size:0.4rem;">승</th>'
+									+ '						<th style="border-bottom: 1px solid #006ecd;font-size:0.4rem;">패</th>'
+									+ '						<th style="border-bottom: 1px solid #006ecd;font-size:0.4rem;">득실</th>'
+									+ '					</tr>'
+									+ '				</thead>'
+									+ '				<tbody id="arealist'+thisTagT+'">'
+									+ '				</tbody>'
+									+ '			</table>'
+									+ '		</div>'
+									+ '	</div>'
+									+ '</div>'
+								;
+									
+								$("#dataList1").append(htm);
+							}
+							
+							tagTitle = "";
+							var tagBold = "";
+							if (data.list[i].TEAM_RANK <= 3) {
+								tagTitle = "background: #006ecd; color: white; height: 0.8rem; font-size: 0.5rem;";
+								tagBold = "font-weight: 600;";
+							}
+							else {
+								tagTitle = "background: height: 0.8rem; font-size: 0.5rem;";
+								tagBold = "font-weight: normal;";
+							}
+							
+							htm = ''
+								+ '					<tr style="height:1.2rem;">'
+								+ '						<td style="text-align: center;border: 1px solid #006ecd;font-size:0.4rem;'+tagTitle+'">'+data.list[i].TEAM_RANK+'</td>'
+								+ '						<td style="text-align: center;border: 1px solid #006ecd;font-size:0.4rem;'+tagBold+'">'+data.list[i].CLB_NIK_NM+'</td>'
+								+ '						<td style="text-align: center;border: 1px solid #006ecd;font-size:0.4rem;'+tagBold+'">'+data.list[i].WIN+'</td>'
+								+ '						<td style="text-align: center;border: 1px solid #006ecd;font-size:0.4rem;'+tagBold+'">'+data.list[i].LOSE+'</td>'
+								+ '						<td style="text-align: center;border: 1px solid #006ecd;font-size:0.4rem;'+tagBold+'">'+data.list[i].SCR_MBR+'</td>'
+								+ '					</tr>'
+								;
+							j++;
+							gCnt++;
+							$("#arealist"+thisTagT).append(htm);
+							tagT = data.list[i].TEAM_NM;
+							
+						}
+						
+					} else {
+// 						$("#dataList").hide();
+// 						$("#dataList1").css("width", "97%");
+					}
 
-            // 초기 데이터 로드 (변경 없음)
-             loadMockData();
+					load.hide();					
 
-            // --- 주기적 데이터 새로고침 (변경 없음) ---
-            setInterval(function() {
-                 loadMockData();
-            }, 2000);
+					if (autoRefresh) {
+// 						setTimeout(function(){ getTeamRank(true); }, 3000);
+					}
+				},
+				error : function(xhr, status, e) {
+					load.hide()
+// 					alert("Error : " + status);
+					if (autoRefresh) {
+						setTimeout(function(){ getTeamRank(true); }, 3000);
+					}
+				}
+			});
+	}
+	
+	
+	function goUserPage(a,b) {
+		window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page15&para3="+a+"&para5="+b;
+	}
+	function msgBox(msg) {
+		messageBox({
+			title : '알림',
+			message : msg,
+			type : 'alert',
+			callback : function() {}
+		});
+	}	
 
-            // --- 창 크기 조정 처리 (변경 없음) ---
-            function handleResize() {
-                const windowWidth = $(window).width();
-                if (windowWidth < 768) {
-                    $('html').css('font-size', '50%');
-                } else if (windowWidth < 1200) {
-                     $('html').css('font-size', '56.25%');
-                } else {
-//                     $('html').css('font-size', '62.5%');
-                    $('html').css('font-size', '76%');
-                }
-            }
+    function gameResult(a, b, c, d) {
+		
+    	var load = loading();
+//     	load.show()
 
-            $(window).on('resize', handleResize);
-            $(window).trigger('resize');
+    	 $.ajax({
+    	 	 		data:{
+    	 	 			para1 : "BADMATCH_SELECT_TEAM_NAME"
+    	 	 			,para2 : a
+    	 	 			,para3 : b
+    	 	 		},
+    			type : "POST",
+    			url : "/front/bbc/badMatch/getData.htm",
+    			success : function(data) {
 
-            // --- 더보기/접기 버튼 이벤트 리스너 (slideToggle 사용) ---
-            $('.dashboard-container').on('click', '.toggle-ranks-button', function() {
-                const $button = $(this);
-                 // 비활성화 로직 제거됨
+					if (data.list.length != 0) {
+						for (var i = 0; i < data.list.length; i++) {
+							$("#team"+data.list[i].TAG).html(data.list[i].CLB_NM+"<br><br>"+data.list[i].MBR_NM_A+", "+data.list[i].MBR_NM_B);
+							$("#mchReq"+data.list[i].TAG).val(data.list[i].MCH_REQ);
+						}
+					} else {
+						
+					}
+					load.hide();	
+    			},
+    			error : function(xhr, status, e) {
+    				load.hide()
+//     				alert("Error : " + status);
+    			}
+    		});
+    	
+    	$("#mchReqA").val(a);
+    	$("#mchReqB").val(b);
+    	$("#scoreA").val(c);
+    	$("#scoreB").val(d);
+    	if (c == "0") {
+    		$("#scoreA").val("");
+    	}
+    	if (d == "0") {
+    		$("#scoreB").val("");
+    	}
+    	$("#userSelectPop").show();
+    }
 
-                const targetTableBodyId = $button.data('target');
-                const $hiddenRows = $(targetTableBodyId).find('tr.hidden-rank');
-                const $buttonContainer = $button.closest('.card-header'); // 버튼 컨테이너는 이제 card-header
+    function saveGameResult(para4, para5, para6, para7) {
 
-                // 순위가 3개 이하인 경우 토글할 행이 없으므로 버튼 상태만 변경
-                if ($hiddenRows.length === 0) {
-                     const isExpanding = !$button.hasClass('less');
-                     $button.data('expanded', isExpanding); // 상태 저장
-                     if (isExpanding) {
-                        $button.text('접기').addClass('less');
-                     } else {
-                        $button.text('더보기').removeClass('less');
-                     }
-                     return; // 더 이상 진행 안 함
-                }
+    	var load = loading();
+    	var finalYn = "N";
+//     	load.show();
+    	
+		if (para6 == "" || para7 == "") {
+			msgBox("점수를 입력하세요.");
+    		load.hide();
+			return;
+		}
 
-                // 실제 토글 로직
-                const isExpanding = !$button.hasClass('less');
-                $button.data('expanded', isExpanding); // 현재 상태 저장
+    	if (!("${userInfo.AUTH}" == "A" || "${userInfo.AUTH}" == "B" || "${userInfo.AUTH}" == "C" || "${userInfo.AUTH}" == "D")) {
+    		msgBox("권한이 없습니다.");
+    		load.hide();
+			return;
+    	}
 
-                $hiddenRows.slideToggle(200); // 애니메이션 효과 적용
+    	 $.ajax({
+    	 	 		data:{
+    	 	 			para1 : "BADMATCH_INSERT_GAME_RESULT"
+    	 	 			,para2 : "${para3}"
+    	 	 			,para3 : finalYn
+    	 	 			,para4 : para4
+    	 	 			,para5 : para5
+    	 	 			,para6 : para6
+    	 	 			,para7 : para7
+    	 	 			,para8 : "${loginMbrSq}"
+    	 	 		},
+    			type : "POST",
+    			url : "/front/bbc/badMatch/getData.htm",
+    			success : function(data) {
+    				
+    				if (data.list[0].RSLT == "END_MATCH") {
 
-                if (isExpanding) {
-                    $button.text('접기').addClass('less');
-                } else {
-                    $button.text('더보기').removeClass('less');
-                }
-            });
+        				messageBox({
+        					title : '알림',
+        					message : '예선전이 종료 되었습니다.',
+        					type : 'alert',
+        					callback : function() {
+        						load.hide();
+        						$("#userSelectPop").hide();
+        					}
+        				});
+        				return;
+    				}
+    				 
+    				var scoreA = parseInt(para6);
+    				var scoreB = parseInt(para7);
+    				var vicName = "";
+    				
+    				if (scoreA > scoreB) {
+    					vicName = data.list[0].NAMEA + ", " + data.list[0].NAMEB + " 승";
+    				}
+    				else {
+    					vicName = data.list[0].NAMEC + ", " + data.list[0].NAMED + " 승";
+    				}
 
-        });
-    </script>
+    		    	if (!systemTest) {
 
-</body>
+       		    	 $.ajax({
+       		    	 	 		data:{
+       		    	 	 			para1 : data.list[0].OPENIDA
+       		    	 	 			,para2 : data.list[0].OPENIDB
+       		    	 	 			,para3 : data.list[0].OPENIDC
+       		    	 	 			,para4 : data.list[0].OPENIDD
+       		    	 	 			,para5 : data.list[0].MCH_NM + " - 예선\n" + data.list[0].B_LVL_NM + " / " + data.list[0].GAME_TYPE_NM + " / " + data.list[0].GAME_GROUP_NM + " 경기결과 " +  para6 + " : " + para7
+       		    	 	 			,para6 : data.list[0].NAMEA
+       		    	 	 			,para7 : data.list[0].NAMEB
+       		    	 	 			,para8 : data.list[0].NAMEC
+       		    	 	 			,para9 : data.list[0].NAMED
+       		    	 	 			,para10 : vicName
+       		    	 	 			,para11 : "승패에 문제가 있는 경우 대회 관리자에게 문의 하세요."
+       		    	 	 			,para12 : "/front/bbc/badMatch/getPage.htm?pageName=page15&para3=${para3}"
+       		    	 	 		},
+       		    			type : "POST",
+       		    			url : "/front/bbc/badMatch/sendMsg.htm",
+       		    			success : function(data) {
+       		    			},
+       		    			error : function(xhr, status, e) {
+       		    			}
+       		    		});
+       				
+    		    	}
+
+    				messageBox({
+    					title : '알림',
+    					message : '저장되었습니다.',
+    					type : 'alert',
+    					callback : function() {
+    						getGameList(false);
+    						$("#userSelectPop").hide();
+    					}
+    				});
+    				
+//     				alert("저장되었습니다.");
+//     				$("#userSelectPop").hide();
+    				
+					load.hide();	
+    			},
+    			error : function(xhr, status, e) {
+    				load.hide();
+//     				alert("Error : " + status);
+    			}
+    		});
+    	
+    }
+</script>
 </html>
