@@ -8,40 +8,40 @@
 <style>
 	@media(min-width:720px) {
  		body {
- 			width:450px;
+ 			width:720px;
  		}
  		.module {
- 			width:450px;
+ 			width:720px;
  		}
  		.footer {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
  		}
 		.wrap {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.head-information {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.app {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.content {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 	}
 </style>

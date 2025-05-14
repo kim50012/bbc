@@ -22,7 +22,7 @@
 <script src="../js/rem5.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
-<%@ include file="/front/bbc/badMatch/js.jsp"%> 
+<%@ include file="/front/bbc/badMatch/jsPC.jsp"%> 
 <style>
 .container > div:first-of-type {
   border-left: solid 1px #0000ff;

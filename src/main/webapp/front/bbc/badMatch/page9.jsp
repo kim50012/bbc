@@ -35,12 +35,16 @@
 	width: 0.60rem;
 }
 .headerTitle {
-	width: 5.2rem;
+	width: 4.2rem;
 	overflow: initial;
 	padding-left: 0.2rem;
 	font-size: 0.3rem;
 	line-height: 1;
 	font-weight: bold;
+}
+.drag-table td {
+	padding-right: 0;
+    padding-left: 0;
 }
 </style>
 <script>
@@ -148,7 +152,7 @@
 	
 		 $.ajax({
 		 	 		data:{
-		 	 			para1 : "BADMATCH_SEARCH_USER_ALL"
+		 	 			para1 : "BADMATCH_SEARCH_USER_ALL2"
 		 	 			,para2 : para2
 		 	 			,para3 : "${para3}"
 		 	 		},
@@ -161,6 +165,7 @@
 
 					htm = ''
 						+ '<tr>'
+						+ '<th class="noWrapCell">도시</th>'
 						+ '<th class="noWrapCell">클럽</th>'
 						+ '<th class="noWrapCell">이릅</th>'
 						+ '<th class="noWrapCell">급수</th>'
@@ -175,9 +180,10 @@
 							cnt++;
 							htm = ''
 								+ '<tr>'  
+								+ '	<td class="noWrapCell center">'+data.list[i].CITY+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].CLB_NM+'</td>'
-								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'</a></td>'
-								+ '	<td class="noWrapCell center">'+data.list[i].LVL_NM+'('+data.list[i].THIS_YEAR_TYPE+')</td>'
+								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'('+data.list[i].SEX+')</a></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].LVL_NM+'</td>'
 								+ '</tr>'
 							;
 							$("#userResultTbody").append(htm);

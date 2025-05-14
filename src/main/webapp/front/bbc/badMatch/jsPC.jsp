@@ -5,7 +5,7 @@ var clbJson = [{
 	    value: '1'
 	},
 	{
-	    name: 'SBC Badminton Club',
+	    name: '15 793 Badminton Club',
 	    value: '2'
 	},
 	{
@@ -15,18 +15,6 @@ var clbJson = [{
 	{
 	    name: '하노이 Badminton Club',
 	    value: '9'
-	},
-	{
-	    name: 'KBC',
-	    value: '10'
-	},
-	{
-	    name: 'ABC',
-	    value: '13'
-	},
-	{
-	    name: 'PBC',
-	    value: '14'
 	},
 ];
 var lvlJson = [
@@ -54,7 +42,6 @@ var helpHtmlTag = "";
 var wechatShareMsg = "";
 
 $(function() {
-	appWidth();
   	$("#tableUpSub").click(function() {
   		if (slideFlag) {
         	$(".category").slideUp();
@@ -110,19 +97,6 @@ $(function() {
 	});
 });
 
-
-function appWidth() {
-	var windowWidth;
-	var currentWidth = $(window).width();
-
-	if (currentWidth > 1024) {
-	  windowWidth = 1024;
-	} else {
-	  windowWidth = currentWidth;
-	}	
-	$(".app").css("width", windowWidth);
-	$(".footer").css("width", windowWidth);
-}
 
 // A:최고권한
 // B:관리자권한
@@ -206,17 +180,17 @@ function appWidth() {
 <style>
    	@media(min-width:720px) {
     	body {
-    		width:450px;
+    		width:720px;
     		background-color: #c0c0c0;
     	}
  		.footer {
- 			width:450px;
+ 			width:720px;
  		}
 		.app {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
    	}
 </style>

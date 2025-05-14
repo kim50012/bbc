@@ -1,10 +1,3 @@
-/*鏁翠釜椤甸潰鐨勫仛澶栧眰瀹瑰櫒鐢�.app鍋歝lass;
- * header澶撮儴鐨勯〉闈�(寮规椤甸潰)鐢╬age1;
- * 瀛愰〉闈�(寮规椤甸潰)鐢╬age2*/
-/*娉ㄦ剰锛氶」鐩负灏藉彲鑳界殑绗﹀悎PSD璁剧疆锛�
- * 涓轰簡閬垮厤绌烘牸鐨勮宸紝鎵�鏈夊厓绱犺缃垵濮嬪瓧浣撳ぇ灏忎负0
- * 鍥犳濡傛灉鏈夋枃瀛楀唴瀹圭殑涓�瀹氳璁剧疆瀛椾綋澶у皬*/
-/*杩欐槸鏁翠釜椤甸潰鐨勭殑璁剧疆锛屽寘鎷琱eader銆乫ooter*/
 html,body{
   font-family:  "AppleSDGothicNeo","NanumGothic", "Malgun Gothic", "Microsoft YaHei", "Dotum";
 }
@@ -82,7 +75,7 @@ select:focus {
 .file-input {
   display: block;
   border: 1px solid #cccccc;
-  background: url(../image/imgSelected.svg) no-repeat right 0.08rem center; */
+  background: url(../image/imgSelected.svg) no-repeat right 0.08rem center;
   padding: 0.12rem 0.46rem 0.12rem 0.12rem;
   background-size: 0.3rem 0.3rem;
   box-sizing: border-box;
@@ -2988,39 +2981,39 @@ table {
 
 	@media(min-width:720px) {
  		body {
- 			width:450px;
+ 			width:720px;
  		}
  		.module {
- 			width:450px;
+ 			width:720px;
  		}
  		.footer {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
  		}
 		.wrap {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.head-information {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.app {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 		.content {
 			position: absolute;
 		    left: 50%;
 		    transform: translateX(-50%);
-		    width: 450px;
+		    width: 720px;
 		}
 	}

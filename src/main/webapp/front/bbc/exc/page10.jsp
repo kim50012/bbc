@@ -120,7 +120,15 @@
 	});
 	
 	function appWidth() {
-		$(".app").css("width", $(window).width());
+		var windowWidth;
+		var currentWidth = $(window).width();
+
+		if (currentWidth > 1024) {
+		  windowWidth = 1024;
+		} else {
+		  windowWidth = currentWidth;
+		}	
+		$(".app").css("width", windowWidth);
 	}
 
 	function getData() {

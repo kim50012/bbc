@@ -44,7 +44,7 @@
   <body>
     <div class="loginContent" id="demoDiv1">
       <div class="loginLogo">
-        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">BB COIN Net</div>
+        <div id="inputNick" style="color: #ffffff;font-size: 1rem;text-align: center;-webkit-text-stroke-width: medium;">BANDMINTON GROUND</div>
       </div>
       <div class="loginInput">
 <!--         <form onsubmit="return check(this)" action=""> -->

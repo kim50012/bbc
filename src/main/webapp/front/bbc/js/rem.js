@@ -7,44 +7,43 @@ window.onresize = function() {
 };
 
 function getRem(pwidth, prem) {
-	var html = document.getElementsByTagName("html")[0];
-	var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
-	html.style.fontSize = oWidth / pwidth * prem + "px";
+
+	var isPC = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? false : true;
+
+	if (isPC) {
+		pwidth = document.body.clientWidth;
+		prem = 60;
+		console.log(pwidth);
+		
+		var html = document.getElementsByTagName("html")[0];
+		var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+		html.style.fontSize = oWidth / pwidth * prem + "px";
+	}
+	else {
+		//1.首次加载的时候 调用动态设置rem的api
+		setRemSize();
+		//2.当用户企图更改浏览器宽度 自动获取屏幕宽度 在计算rem赋值给根元素里面的font-size
+		window.addEventListener("resize", setRemSize, false);
+	
+	}
 }
-// 小米的写法
-//! function(n) {
-//var e = n.document,
-//  t = e.documentElement,
-//  i = 720,
-//  d = i / 100,
-//  o = "orientationchange" in n ? "orientationchange" : "resize",
-//  a = function() {
-//    var n = t.clientWidth || 320;
-//    n > 720 && (n = 720);
-//    t.style.fontSize = n / d + "px"
-//  };
-//e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
-//}(window);
 
 
-/*
+function setRemSize() {
+	//1.在任何尺寸中都可以获得rem值
+	//线用1px 不用rem
+	//获得屏幕的宽度----获取到了rem值    rem=屏幕宽度/7.5+"px"
+	var windowWidth;
+	var currentWidth = document.documentElement.clientWidth;
 
-(function(doc, win) {
-  var docEl = doc.documentElement,
-    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-    recalc = function() {
-      var clientWidth = docEl.clientWidth;
-      if(!clientWidth) return;
-      if(clientWidth >= 640) {
-        docEl.style.fontSize = '100px';
-      } else {
-        docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
-      }
-    };
-
-  if(!doc.addEventListener) return;
-  win.addEventListener(resizeEvt, recalc, false);
-  doc.addEventListener('DOMContentLoaded', recalc, false);
-})(document, window);
-
-*/
+	if (currentWidth > 1024) {
+	  windowWidth = 1024;
+	} else {
+	  windowWidth = currentWidth;
+	}
+	var _clientWidth = windowWidth / 6.4 + "px";
+//	var _clientWidth = document.documentElement.clientWidth / 6.4 + "px";
+	//console.log(_clientWidth);
+	//将得到的rem值赋值给根元素的font-size
+	document.documentElement.style.fontSize = _clientWidth;
+}

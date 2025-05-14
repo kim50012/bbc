@@ -134,8 +134,8 @@
 </style>
 <script>
 	$(function() {
-		//var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="/front/bbc/img/systemLogo2.jpg"></image><p class="headerTitle">배드민턴 대회 관리</p></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
-		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="/front/bbc/img/bau-title.jpg" style="width: 4rem;"></image></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
+		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="/front/bbc/img/systemLogo2.jpg"></image><p class="headerTitle">배드민턴 대회</p></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
+		// var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="/front/bbc/img/bau-title.jpg" style="width: 4rem;"></image></div><div class="menu"><div class="menu-list" onclick="goMenuList()"><i class="fourDPlex icon-liebiao"></i></div></div></header>'
 		$("#app").prepend(htm);
 
 		if ("${userInfo.B_LVL}" == "N") {
@@ -177,9 +177,9 @@
         <div class="content" id="app">
 	        <div style="height: 100%;">
 	          <div class="container" style="height: 100%;position: relative;">
-	            <h4 class="title">배드민턴 대회</h4>
+	            <h4 class="title" style="display:none;">배드민턴 대회</h4>
 	            <c:if test="${userInfo.AUTH == 'A' || userInfo.AUTH == 'B'}">
-	            <div class="btn-white" onclick="window.location.href='/front/bbc/badMatch/getPage.htm?pageName=page1';" style="position: absolute;top: 0.15rem;right: 0.4rem;">
+	            <div class="btn-white" onclick="window.location.href='/front/bbc/badMatch/getPage.htm?pageName=page1';" style="position: absolute;top: 0.15rem;right: 0.4rem;display:none;">
 	            	+ 대회 신규생성
 	            </div>
 	            </c:if>
@@ -261,7 +261,7 @@
   }
   $(function() {
     $(".tab-header p").eq(0).click()
-  })
+  });
   
 </script>
 <script type="text/javascript">
@@ -369,7 +369,7 @@
 							var htm = '';
 							
 							htm = ''
-								+ '<li style="margin-top: 0.3rem;padding: 0.2rem;border: 1px solid #CCCCCC;border-radius: 0.2rem;">'
+								+ '<li class="list-group-li" style="margin-top: 0.3rem;padding: 0.2rem;border: 1px solid #CCCCCC;border-radius: 0.2rem;">'
 								+ '  <div class="f-row scroll-title" style="margin-bottom: 0;">'
 								+ '    <p class="font24 bold fontColor5" style="width:100%;text-align:center;">데이터가 없습니다.</p>'
 								+ '  </div>'

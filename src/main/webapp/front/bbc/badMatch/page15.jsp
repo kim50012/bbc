@@ -69,6 +69,10 @@
 .drag-table tr:last-of-type td {
 	white-space: nowrap;
 }
+.drag-table td {
+	padding-right: 0;
+    padding-left: 0;
+}
 </style>
 <script>
 	$(function() {

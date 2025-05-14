@@ -115,19 +115,22 @@
             font-weight: 500; /* medium */
             color: #374151; /* gray-700 */
         }
+        .text-white {
+        	color: #ffffff;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-indigo-600 flex items-center">
+            <a href="/front/bbcNew/getPage.htm?pageName=index" class="text-2xl font-bold text-indigo-600 flex items-center">
                 <i class="fas fa-shuttlecock mr-2"></i>
                 <span>배드민턴 그라운드</span>
             </a>
 
             <div class="hidden md:flex items-center space-x-6">
-                <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">홈</a>
+                <a href="/front/bbcNew/getPage.htm?pageName=index" class="text-gray-600 hover:text-indigo-600 transition duration-300">홈</a>
                 <a href="#tournament-info" class="text-gray-600 hover:text-indigo-600 transition duration-300">대회 정보</a>
                 <a href="#club-directory" class="text-gray-600 hover:text-indigo-600 transition duration-300">동호회 둘러보기</a>
                 <c:if test="${userInfo.MBR_SQ == '0'}">
@@ -218,28 +221,28 @@
 
                 <div class="mb-12">
                     <h3 class="section-title-base section-title-tournaments">
-                        <span class="flag-icon flag-vn mr-3"></span> 베트남 대회 정보 (Thông tin giải đấu)
+                        <span class="flag-icon flag-vn mr-3"></span> 베트남 배드민턴 대회 정보
                     </h3>
                     <div id="vietnam-tournaments-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">베트남 대회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 대회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
 
                 <div class="mb-12">
                     <h3 class="section-title-base section-title-tournaments">
-                        <span class="flag-icon flag-kr mr-3"></span> 대한민국 대회 정보
+                        <span class="flag-icon flag-kr mr-3"></span> 대한민국 배드민턴 대회 정보
                     </h3>
                     <div id="korea-tournaments-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">대한민국 대회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 대회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
 
                 <div>
                     <h3 class="section-title-base section-title-tournaments">
-                        <span class="flag-icon flag-cn mr-3"></span> 중국 대회 정보 (赛事信息)
+                        <span class="flag-icon flag-cn mr-3"></span> 중국 배드민턴 대회 정보
                     </h3>
                      <div id="china-tournaments-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">중국 대회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 대회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
             </div>
@@ -250,28 +253,28 @@
 
                  <div class="mb-12">
                     <h3 class="section-title-base section-title-clubs">
-                        <span class="flag-icon flag-vn mr-3"></span> 베트남 동호회 (Câu lạc bộ)
+                        <span class="flag-icon flag-vn mr-3"></span> 베트남 배드민턴 동호회
                     </h3>
                     <div id="vietnam-clubs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">베트남 동호회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 동호회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
 
                 <div class="mb-12">
                     <h3 class="section-title-base section-title-clubs">
-                        <span class="flag-icon flag-kr mr-3"></span> 대한민국 동호회
+                        <span class="flag-icon flag-kr mr-3"></span> 대한민국 배드민턴 동호회
                     </h3>
                     <div id="korea-clubs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">대한민국 동호회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 동호회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
 
                 <div>
                     <h3 class="section-title-base section-title-clubs">
-                        <span class="flag-icon flag-cn mr-3"></span> 중국 동호회 (俱乐部)
+                        <span class="flag-icon flag-cn mr-3"></span> 중국 배드민턴 동호회
                     </h3>
                     <div id="china-clubs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <p class="loading-text col-span-full">중국 동호회 정보를 불러오는 중입니다...</p>
+                        <p class="loading-text col-span-full">배드민턴 동호회 정보를 불러오는 중입니다...</p>
                     </div>
                 </div>
             </div>
@@ -326,11 +329,15 @@
             const statusBadgeClass = tournament.MCH_STATUS === '진행중' ? 'badge-ongoing' : 'badge-finished';
             const location = tournament.CITY ? tournament.CITY + ', ' + tournament.PLACE : tournament.PLACE;
 
+            let sUrl = '/front/bbc/badMatch/getPage.htm?pageName=page2&para3=' + tournament.MCH_SQ;
+            if (tournament.REGION == "CN") {
+            	sUrl = "javascript:void(0)";
+            }
             let cardHTML = '<div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden flex flex-col">';
             cardHTML += '<div class="p-6 flex-grow">'; // 내용 영역
             cardHTML += '<div class="flex items-center justify-between mb-2">'; // 대회명과 아이콘
-            cardHTML += '<h4 class="text-xl font-semibold text-gray-800 truncate" title="' + (tournament.MCH_NM || '') + '">' + (tournament.MCH_NM || '대회명 정보 없음') + '</h4>';
-            cardHTML += '<i class="fas fa-trophy tournament-icon ' + (tournament.MCH_TYPE !== '공식대회' ? 'text-yellow-500' : '') + '"></i>';
+            cardHTML += '<h4 class="text-xl font-semibold text-gray-800 truncate" title="' + (tournament.MCH_NM || '') + '"><a href="' + sUrl + '">' + (tournament.MCH_NM || '대회명 정보 없음') + '</a></h4>';
+            cardHTML += '<i class="fas fa-trophy tournament-icon ' + (tournament.MCH_TYPE !== '공식대회' ? 'text-white' : '') + '"></i>';
             cardHTML += '</div>';
 
             cardHTML += '<p class="text-gray-600 text-sm mb-1">';
@@ -400,7 +407,7 @@
          * @param {Function} cardCreator - 각 데이터 항목에 대한 카드 HTML 생성 함수
          * @param {string} entityName - 로딩/에러 메시지에 사용될 엔티티 이름 (예: "대회", "동호회")
          */
-        function renderData(gridId, data, cardCreator, entityName) {
+        function renderData(gridId, data, cardCreator, entityName, regionCode) {
             const gridElement = document.getElementById(gridId);
             if (!gridElement) {
                 console.error('Element with ID ' + gridId + ' not found.');
@@ -439,11 +446,11 @@
             for (const region of regions) {
                 // 대회 정보
                 const tournaments = await fetchData('SELECT_MATCH_HEAD_LIST', region);
-                renderData(tournamentGridIds[region], tournaments, createTournamentCard, regionNames[region] + ' 대회');
+                renderData(tournamentGridIds[region], tournaments, createTournamentCard, regionNames[region] + ' 배드민턴 대회', region);
 
                 // 클럽 정보
                 const clubs = await fetchData('SELECT_CLB_LIST', region);
-                renderData(clubGridIds[region], clubs, createClubCard, regionNames[region] + ' 동호회');
+                renderData(clubGridIds[region], clubs, createClubCard, regionNames[region] + ' 배드민턴 동호회', region);
             }
 
             // 모바일 메뉴 토글
@@ -481,7 +488,7 @@
                         e.preventDefault();
                         const langText = link.textContent.trim();
                         console.log('Language selected: ' + langText);
-                        alert('언어 변경 시뮬레이션: ' + langText + '. 실제 구현에서는 페이지 새로고침 또는 콘텐츠 업데이트가 필요합니다.');
+                        // alert('언어 변경 시뮬레이션: ' + langText + '. 실제 구현에서는 페이지 새로고침 또는 콘텐츠 업데이트가 필요합니다.');
                     });
                 }
             });

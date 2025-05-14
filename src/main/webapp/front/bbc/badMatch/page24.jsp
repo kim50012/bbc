@@ -66,6 +66,10 @@
     line-height: 0.5rem;
     border-radius: 0.2rem;
 }
+.drag-table td {
+	padding-right: 0;
+    padding-left: 0;
+}
 </style>
 <script>
 	$(function() {
