@@ -128,10 +128,8 @@
 			$("#userName").val(bbcUserid);
 			$("#passWord").val(bbcUserpw);
 
-
 			$("#inputID").html("");
 			$("#inputPW").html("");
-			
 			
 			usrValue = $("#userName").val();
 			passWord = $("#passWord").val();
