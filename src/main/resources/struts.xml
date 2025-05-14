@@ -22,7 +22,8 @@
 	<!-- 指定当使用SpringObjectFactory时的自动装配逻辑.合法值包括: name, type, auto, 和 constructor  (缺省为 name ) -->
 	<constant name="struts.objectFactory.spring.autoWire" value="name" />
 	<!-- 允许动态方法调用 --><!-- add:2016/12/12 struts2漏洞 先禁用此功能 -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<!-- 是否国际化信息自动加载 -->
 	<constant name="struts.i18n.reload" value="true" />
 	<!-- 是否自动加载xml配置(true,false) -->

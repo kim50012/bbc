@@ -168,12 +168,15 @@
 	</package>
 	
 	
- 	<package name="front/bbc/bbcNew" extends="portal-default" namespace="/front/bbc/bbcNew">
+ 	<package name="front/bbcNew" extends="portal-default" namespace="/front/bbcNew">
+	    <action name="getPage" class="bbcNewAction" method="getPage">
+	        <result name="getPage" type="dispatcher">%{pagePath}</result>
+	    </action>
 		<action name="*" method="{1}" class="bbcNewAction">
  		    <result name="noAuth">/front/error/noAuth.jsp</result>
  		    <result name="timeout">/front/error/timeout.jsp</result>
-		    <result name="{1}">/front/bbc/bbcNew/{1}.jsp</result>
-		</action>
+		    <result name="{1}">/front/bbcNew/{1}.jsp</result>
+		</action>		
 	</package>
 	
 </struts>

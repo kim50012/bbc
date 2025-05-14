@@ -118,7 +118,7 @@
 
 		$('#kakaoLogin').click(function(e) {
 // 			e.preventDefault();
-			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/userAddRequest.htm';
+			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm';
 		});
 		
 		var bbcUserid = getCookie("usrValue");
@@ -192,7 +192,7 @@
 // 										window.location = "${strPtourl}&shopId=68";
 // 									}
 									
-									window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://203.113.146.245:8080/front/bbc/mbr/kakaoAssign.htm';
+									window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/kakaoAssign.htm';
 								}
 								else{
 									loadingHide();

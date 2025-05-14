@@ -281,6 +281,18 @@ public class SessionFilter implements Filter {
 		else if(url.startsWith("/pms/login/proveUser.htm")){
 			return true;
 		}
+
+		else if(url.startsWith("/front/bbc/badMatch/getInfo.htm")){
+			return true;
+		}
+
+		else if(url.startsWith("/front/bbcNew/getPage.htm")){
+			return true;
+		}
+
+		else if(url.startsWith("/front/bbcNew/getData.htm")){
+			return true;
+		}
 		
 		else if(url.startsWith("/front/css")){
 			return true;

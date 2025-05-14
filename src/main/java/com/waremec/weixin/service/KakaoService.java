@@ -53,9 +53,9 @@ public class KakaoService extends CommonServiceImpl implements CommonService  {
 
     private String KAKAO_USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";
 
-    private String REDIRECT_URL = "http://203.113.146.245:8080/front/bbc/mbr/userAddRequest.htm";
+    private String REDIRECT_URL = "http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm";
 
-    private String REDIRECT_URL2 = "http://203.113.146.245:8080/front/bbc/mbr/kakaoAssign.htm";
+    private String REDIRECT_URL2 = "http://kr.bbcoin.net:8080/front/bbc/mbr/kakaoAssign.htm";
 
     private String KAKAO_API_KEY = "f8b8ac6fcf571cfe300bc86228b077ce";
 

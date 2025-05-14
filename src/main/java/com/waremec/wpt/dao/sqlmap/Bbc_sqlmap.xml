@@ -1532,4 +1532,30 @@
 	    ]]>
 	</select>
 	
+	<select id="sqlAMS_GET_INFO" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+	  EXEC [dbo].[AMS_GET_INFO]
+	     @P1 = #P1#
+	     , @P2 = #P2#
+	     , @P3 = #P3#
+	     , @P4 = #P4#
+	     , @P5 = #P5#
+	     , @P6 = #P6#
+	     , @P7 = #P7#
+	     , @P8 = #P8#
+	     , @P9 = #P9#
+	     , @P10 = #P10#
+	     , @P11 = #P11#
+	     , @P12 = #P12#
+	     , @P13 = #P13#
+	     , @P14 = #P14#
+	     , @P15 = #P15#
+	     , @P16 = #P16#
+	     , @P17 = #P17#
+	     , @P18 = #P18#
+	     , @P19 = #P19#
+	     , @P20 = #P20#
+	    ]]>
+	</select>
+	
 </sqlMap>

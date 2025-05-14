@@ -42,8 +42,11 @@
 	line-height: 1;
 	font-weight: bold;
 }
-
-
+.popHide {
+	display: none;
+	left: 100%;
+	animation: popSlideRightHide .3s linear;
+}
 .footer {
     position: fixed;
     width: 100%;
