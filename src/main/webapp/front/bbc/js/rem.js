@@ -41,9 +41,13 @@ function setRemSize() {
 	} else {
 	  windowWidth = currentWidth;
 	}
-	var _clientWidth = windowWidth / 6.4 + "px";
-//	var _clientWidth = document.documentElement.clientWidth / 6.4 + "px";
-	//console.log(_clientWidth);
-	//将得到的rem值赋值给根元素的font-size
-	document.documentElement.style.fontSize = _clientWidth;
+	
+	if (currentWidth >= 640) {
+		var _clientWidth = windowWidth / 6.4 + "px";
+		document.documentElement.style.fontSize = _clientWidth;
+	}
+	else {
+		var _clientWidth = windowWidth / 7.4 + "px";
+		document.documentElement.style.fontSize = _clientWidth;
+	}
 }

@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript" charset="utf-8">
 var clbJson = [{
-	    name: 'HS Badminton Club',
+	    name: '전체',
+	    value: ''
+	},{
+	    name: 'HSBC (신민회)',
 	    value: '1'
 	},
 	{
-	    name: 'SBC Badminton Club',
+	    name: 'SBC',
 	    value: '2'
 	},
 	{
-	    name: '793 Badminton Club',
+	    name: 'FBC',
 	    value: '3'
 	},
 	{
-	    name: '하노이 Badminton Club',
+	    name: 'HANOI HBC',
 	    value: '9'
 	},
 	{
@@ -25,9 +28,37 @@ var clbJson = [{
 	    value: '13'
 	},
 	{
-	    name: 'PBC',
+	    name: 'PBC (푸미흥)',
 	    value: '14'
 	},
+	{
+	    name: '팀카피바라',
+	    value: '16'
+	},
+	{
+	    name: 'VHB',
+	    value: '18'
+	},
+];
+var areaJson = [{
+    name: '전체',
+    value: ''
+},{
+    name: '호치민 VN',
+    value: '호치민'
+},
+{
+    name: '하노이 VN',
+    value: '하노이'
+},
+{
+    name: '북경 CN',
+    value: '북경'
+},
+{
+    name: '서울 KR',
+    value: '서울'
+},
 ];
 var lvlJson = [
 	{name: 'A조',value: 'A'},

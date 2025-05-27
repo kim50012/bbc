@@ -89,10 +89,20 @@
         
           <div class="model-gray">
             <div class="bottom-model" style="padding-top: 0;">
+				<div class="input-wrap" style="width: 50%;margin-right: 0.2rem;">
+                    <button class="select-btn" id="selectA-1" style="width:100%;" onclick="selectArea(this);"><span>지역을 선택하세요.</span></button>
+                    <input type="hidden" id="area"/>
+				</div>
+				<div class="input-wrap" style="width: 50%;margin-right: 0rem;">
+                    <button class="select-btn" id="selectA-2" style="width:100%;" onclick="selectClub(this);"><span>클럽을 선택하세요.</span></button>
+                    <input type="hidden" id="clb"/>
+				</div>
+            </div>
+            <div class="bottom-model" style="padding-top: 10px;">
 				<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
 					<input class="imgContent" type="text" name="userNm" id="userNm" placeholder="이름을 입력 후 조회하세요." style="background-color: #ffffff;">
 				</div>
-              	<button class="confirmBtn" id="confirmBtn" onclick="searchUser($('#userNm').val());">조회</button>
+              	<button class="confirmBtn" id="confirmBtn" style="width:30%" onclick="searchUser($('#userNm').val());">조회</button>
             </div>
           </div>
           
@@ -143,18 +153,51 @@
 			callback : function() {}
 		});
 	}	
-	
+
+	function selectArea(el) {
+	  var $_that = $(el).find('span');
+	  var defaultVal = $("#area").val();
+	  if (defaultVal == "") {
+		  defaultVal = "1";
+	  }
+	  radioPop({
+	    val: defaultVal,
+	    callback: function(name, value) {
+	      $_that.html(name);
+	      $("#area").val(value);
+	    },
+	    option: areaJson
+	  });
+	}
+
+	function selectClub(el) {
+	  var $_that = $(el).find('span');
+	  var defaultVal = $("#clb").val();
+	  radioPop({
+	    val: defaultVal,
+	    callback: function(name, value) {
+	      $_that.html(name);
+	      $("#clb").val(value);
+	    },
+	    option: clbJson
+	  });
+	}
 
 	function searchUser(para2) {
 	
 		var load = loading();
 		load.show()
 	
+		var para4 = $("#area").val();
+		var para5 = $("#clb").val();
+		
 		 $.ajax({
 		 	 		data:{
 		 	 			para1 : "BADMATCH_SEARCH_USER_ALL2"
 		 	 			,para2 : para2
 		 	 			,para3 : "${para3}"
+			 	 		,para4 : para4
+				 	 	,para5 : para5
 		 	 		},
 				type : "POST",
 				url : "/front/bbc/badMatch/getData.htm",
