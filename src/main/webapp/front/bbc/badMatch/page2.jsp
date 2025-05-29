@@ -101,183 +101,6 @@
           
           <div class="scroll-wrap f-col">
 
-
-
-        	<c:if test="${para3 == '5'}">
-			<!-- 배너 : S -->
-			<!-- Swiper -->
-        	<div id="tableWrap">
-              <div class="title1">
-                <div>
-                  <i class="fourDPlex icon-sanjiao"></i>
-                  <span class="bold">대회 후원</span>
-                </div>
-              </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div class="swiper-container">
-			      <div class="swiper-wrapper">
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(1);" src="/uploads/68/2020/09/03/68_shop_2020_09_03_11_20_01_68432.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(2);" src="/uploads/68/2020/09/03/68_shop_2020_09_03_11_55_46_90065.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(3);" src="/front/bbc/badMatch/img/banner/banner3.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(4);" src="/front/bbc/badMatch/img/banner/banner4.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(5);" src="/front/bbc/badMatch/img/banner/banner5.jpg" style="width: 90%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(6);" src="/front/bbc/badMatch/img/banner/banner6.jpg" style="width: 90%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(7);" src="/front/bbc/badMatch/img/banner/banner7.jpg" style="width: 90%;margin-right: 0.5rem;" alt=""/></div>
-			      </div>
-			      <!-- Add Pagination -->
-			      <div class="swiper-pagination" style="top: 2rem;"></div>
-				</div>
-			</div>
-			<!-- 배너 : E--> 
-        	</c:if>
-        	
-        	
-        	<c:if test="${para3 == '14'}">
-			<!-- 배너 : S -->
-			<!-- Swiper -->
-        	<div id="tableWrap2">
-              <div class="title1">
-                <div>
-                  <i class="fourDPlex icon-sanjiao"></i>
-                  <span class="bold">대회 후원</span>
-                </div>
-              </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div style="margin-right: 0 !important;"><img src="/front/bbc/badMatch/img/banner2/1.jpg" style="width: 90%;margin-right: 30px;" alt=""/></div>
-			</div>
-        	<div id="tableWrap">
-			  <div class="title2" style="position: relative;">
-				<span class="font24 bold" style="padding-left: 0.4rem;">대회 협찬사</span>
-                <i style="position: absolute;left: 0rem;" class="fourDPlex icon-sanjiao"></i>
-				<span class="font20 fontOrange" onclick="gotoBanner(14);">상세보기</span>
-			  </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div class="swiper-container">
-			      <div class="swiper-wrapper">
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(1);" src="/front/bbc/badMatch/img/banner2/16.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/12.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/13.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/14.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/15.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/17.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/18.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/28.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/20.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/22.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/24.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/25.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/26.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/27.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/29.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(14);" src="/front/bbc/badMatch/img/banner2/30.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			      </div>
-			      <!-- Add Pagination -->
-			      <div class="swiper-pagination" style="top: 2rem;"></div>
-				</div>
-			</div>
-			<!-- 배너 : E--> 
-        	</c:if>
-
-
-        	
-        	<c:if test="${para3 == '17'}">
-			<!-- 배너 : S -->
-			<!-- Swiper -->
-        	<div id="tableWrap2">
-              <div class="title1">
-                <div>
-                  <i class="fourDPlex icon-sanjiao"></i>
-                  <span class="bold">대회 후원</span>
-                </div>
-              </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div style="margin-right: 0 !important;"><img src="/front/bbc/badMatch/img/banner2/1.jpg" style="width: 90%;margin-right: 30px;" alt=""/></div>
-			</div>
-        	<div id="tableWrap">
-			  <div class="title2" style="position: relative;">
-				<span class="font24 bold" style="padding-left: 0.4rem;">대회 협찬사</span>
-                <i style="position: absolute;left: 0rem;" class="fourDPlex icon-sanjiao"></i>
-				<span class="font20 fontOrange" onclick="gotoBanner(17);">상세보기</span>
-			  </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div class="swiper-container">
-			      <div class="swiper-wrapper">
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/01.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/02.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/03.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/04.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/05.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/06.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/07.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/08.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/09.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/10.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/11.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/12.png" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(17);" src="/front/bbc/badMatch/img/17/13.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			      </div>
-			      <!-- Add Pagination -->
-			      <div class="swiper-pagination" style="top: 2rem;"></div>
-				</div>
-			</div>
-			<!-- 배너 : E--> 
-        	</c:if>
-
-
-
-        	
-        	<c:if test="${para3 == '18'}">
-			<!-- 배너 : S -->
-			<!-- Swiper -->
-        	<div id="tableWrap">
-			  <div class="title2" style="position: relative;">
-				<span class="font24 bold" style="padding-left: 0.4rem;">대회 협찬사</span>
-                <i style="position: absolute;left: 0rem;" class="fourDPlex icon-sanjiao"></i>
-				<span class="font20 fontOrange" onclick="gotoBanner(18);">상세보기</span>
-			  </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<div class="swiper-container">
-			      <div class="swiper-wrapper">
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-1.	jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-2.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-3.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-4.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-5.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-6.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-7.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-8.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-9.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-10.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-11.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-12.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-13.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-14.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-15.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-16.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-17.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-18.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-19.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-20.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-21.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-22.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-23.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			          <div class="swiper-slide" style="margin-right: 0 !important;"><img onclick="gotoBanner(18);" src="/front/bbc/badMatch/img/18/20221027-24.jpg" style="width: 100%;margin-right: 0.5rem;" alt=""/></div>
-			      </div>
-			      <!-- Add Pagination -->
-			      <div class="swiper-pagination" style="top: 2rem;"></div>
-				</div>
-			</div>
-			<!-- 배너 : E--> 
-        	</c:if>
-
-
-
             <div class="contentList2 pb16" id="jump1">
 			  <div class="title2" style="position: relative;">
 				<span class="font24 bold" style="padding-left: 0.4rem;color: #0080c6;">← 대회 기본 정보 자세히 보기</span>
@@ -325,19 +148,6 @@
                     	</pre>
                     </td>
                   </tr>
-                  <c:if test="${userInfo.AUTH eq 'A' || userInfo.AUTH eq 'B'}">
-                  <tr class="getInput intd">
-                    <th class="right noHang2 fontGrey Rword">전체 문자</th>
-                    <td class="left">
-						<div class="btn-wrap" style="padding:0;">
-			          	  <div class="buttons" style="padding:0.1rem;">
-			                <div class="blueBtn subBtn f-col font26" onclick="gotoManager();" style="padding: 0.15rem 0.3rem;">대회 관리자</div>
-			                <div class="orangeBtn subBtn f-col font26" onclick="$('#sendMuliMsgPop').show();" style="padding: 0.15rem 0.3rem;">메시지 발송</div>
-			              </div>
-			            </div>                    
-                    </td>
-                  </tr>
-                  </c:if>
                   <c:if test="${userInfo.AUTH eq 'A'}">
                   <tr class="getInput intd">
                     <th class="right noHang2 fontGrey Rword">조배정</th>
@@ -394,29 +204,11 @@
                 <div class="catigoryElement" id="finalGameTime" style="width: 49%;">본선 경기시간표</div>
                 <div class="catigoryElement" id="finalResult" style="width: 49%;">본선결과등록조회</div>
                 <div class="catigoryElement" id="victoryList" style="width: 49%;">입상자 명단</div>
-                <div class="catigoryElement" id="gamePointInput" style="width: 49%;">점수판-자동변환</div>
-                <div class="catigoryElement" id="gamePointInput2" style="width: 49%;">점수판-세로고정</div>
+<!--                 <div class="catigoryElement" id="gamePointInput" style="width: 49%;">점수판-자동변환</div> -->
+<!--                 <div class="catigoryElement" id="gamePointInput2" style="width: 49%;">점수판-세로고정</div> -->
               </div>
             </div>
 
-
-        	<c:if test="${para3 == '5'}">
-			<!-- 배너 : S -->
-			<!-- Swiper -->
-        	<div id="tableWrap">
-              <div class="title1">
-                <div>
-                  <i class="fourDPlex icon-sanjiao"></i>
-                  <span class="bold">전체 경기 시간표</span>
-                </div>
-              </div>
-            </div>
-			<div style="padding-bottom:0.3rem;">
-				<img src="/front/bbc/img/court_game_list.png" onclick="window.location='/front/bbc/img/court_game_list.png';" style="width:100%;">
-			</div>
-			<!-- 배너 : E--> 
-        	</c:if>
-		  
         	<div id="tableWrap">
               <div class="title1">
                 <div>

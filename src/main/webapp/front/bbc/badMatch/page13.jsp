@@ -148,7 +148,7 @@ helpHtmlTag = "※ 본 대회 입상자를 조회하는 화면입니다.<br><br>
 
 							var finalTrTag = '';
 							
-							if (data.list[i].LEVEL_UP_NM == "승급") {
+							if (data.list[i].LEVEL_UP_NM == "승급" || (data.list[i].GROUP_SEQ == "1" && (data.list[i].MCH_SQ == "10026" || data.list[i].MCH_SQ == "10027"))) {
 								finalTrTag = ' class="activeTr"';
 							}
 							

@@ -383,9 +383,14 @@
 				success : function(data) {
 
 					if (data.list.length != 0) {
-
+						
+						var tagGameType = "";
+						var tagGameTypePrev = "";
+						
 						for (var i = 0; i < data.list.length; i++) {
 
+							tagGameType = data.list[i].B_LVL+data.list[i].GAME_TYPE;
+							
 							if (i == 0) {
 								$("#mchNm").html(data.list[i].MCH_NM);
 								$("#place").html(data.list[i].PLACE);
@@ -396,17 +401,21 @@
 							if (data.list[i].END_TM != "-") {
 								gameEndSpan = '<br><span class="endSpan">종료</span>';
 							}
-							
 
 							var winFlgA = "";
 							var winFlgB = "";
 							var scoreaa = parseInt(data.list[i].SCORE_A);
 							var scorebb = parseInt(data.list[i].SCORE_B);
+							var lineTag = '';
 							if (scoreaa == 0 || scorebb == 0) {
 								winFlgA = '<span class="endSpanIng">대기</span>';
 							}
 							else {
 								winFlgA = data.list[i].SCORE_A + ':' + data.list[i].SCORE_B;
+							}
+							
+							if (tagGameType != tagGameTypePrev && i > 0) {
+								lineTag = ' style="border-top: 2px solid #9E9E9E;" ';
 							}
 							
 							var tagRef = "";
@@ -415,7 +424,7 @@
 							}
 							
 							htm = ''
-								+ '			<tr>'
+								+ '			<tr '+lineTag+'>'
 								+ '				<td class="center">'+data.list[i].B_LVL_NM+'<br>'+data.list[i].GAME_TYPE_NM+'</td>'
 								+ '				<td class="center">'+data.list[i].GAME_GROUP_NM+tagRef+'</td>'
 								+ '				<td class="center">'+data.list[i].MBR_NM_A_A+'<br>'+data.list[i].MBR_NM_B_A+'</td>'
@@ -426,33 +435,11 @@
 								+ '			</tr>'
 								;
 								$("#areaAlist").append(htm);
+								
+
+							tagGameTypePrev = data.list[i].B_LVL+data.list[i].GAME_TYPE;
 						}
 
-						/* for (var i = 0; i < data.list.length; i++) {
-							var winFlgA = "";
-							var winFlgB = "";
-							var scoreaa = parseInt(data.list[i].SCORE_A);
-							var scorebb = parseInt(data.list[i].SCORE_B);
-							if (scoreaa == 0 || scorebb == 0) {
-								winFlgA = "대기";
-								winFlgB = "대기";
-							}
-							else {
-								winFlgA = data.list[i].WIN_A+'<br>('+data.list[i].SCORE_A+')';
-								winFlgB = data.list[i].WIN_B+'<br>('+data.list[i].SCORE_B+')';
-							}
-							htm = ''
-								+ '			<tr>'
-								+ '				<td class="center">'+data.list[i].B_LVL_NM+'<br>'+data.list[i].GAME_TYPE_NM+'</td>'
-								+ '				<td class="center">'+data.list[i].GAME_GROUP_NM+'</td>'
-								+ '				<td class="center">'+data.list[i].MBR_NM_A_A+'<br>'+data.list[i].MBR_NM_B_A+'</td>'
-								+ '				<td class="center">'+winFlgA+'</td>'
-								+ '				<td class="center">'+winFlgB+'</td>'
-								+ '				<td class="center">'+data.list[i].MBR_NM_A_B+'<br>'+data.list[i].MBR_NM_B_B+'</td>'
-								+ '			</tr>'
-								;
-							$("#areaBlist").append(htm);
-						} */
 						
 					} else {
 						
