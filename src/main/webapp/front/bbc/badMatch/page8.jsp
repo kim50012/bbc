@@ -693,28 +693,28 @@ helpHtmlTag = "※ 예선 경기 결과 조회 페이지 입니다.<br><br>조�
 
     		    	if (!systemTest) {
 
-       		    	 $.ajax({
-       		    	 	 		data:{
-       		    	 	 			para1 : data.list[0].OPENIDA
-       		    	 	 			,para2 : data.list[0].OPENIDB
-       		    	 	 			,para3 : data.list[0].OPENIDC
-       		    	 	 			,para4 : data.list[0].OPENIDD
-       		    	 	 			,para5 : $("#mchNm").html() + " - 본선\n" + data.list[0].B_LVL_NM + " / " + data.list[0].GAME_TYPE_NM + " 경기결과 " +  para6 + " : " + para7
-       		    	 	 			,para6 : data.list[0].NAMEA
-       		    	 	 			,para7 : data.list[0].NAMEB
-       		    	 	 			,para8 : data.list[0].NAMEC
-       		    	 	 			,para9 : data.list[0].NAMED
-       		    	 	 			,para10 : vicName
-       		    	 	 			,para11 : "승패에 문제가 있는 경우 대회 관리자에게 문의 하세요."
-       		    	 	 			,para12 : "/front/bbc/badMatch/getPage.htm?pageName=page15&para3=${para3}"
-       		    	 	 		},
-       		    			type : "POST",
-       		    			url : "/front/bbc/badMatch/sendMsg.htm",
-       		    			success : function(data) {
-       		    			},
-       		    			error : function(xhr, status, e) {
-       		    			}
-       		    		});
+//        		    	 $.ajax({
+//        		    	 	 		data:{
+//        		    	 	 			para1 : data.list[0].OPENIDA
+//        		    	 	 			,para2 : data.list[0].OPENIDB
+//        		    	 	 			,para3 : data.list[0].OPENIDC
+//        		    	 	 			,para4 : data.list[0].OPENIDD
+//        		    	 	 			,para5 : $("#mchNm").html() + " - 본선\n" + data.list[0].B_LVL_NM + " / " + data.list[0].GAME_TYPE_NM + " 경기결과 " +  para6 + " : " + para7
+//        		    	 	 			,para6 : data.list[0].NAMEA
+//        		    	 	 			,para7 : data.list[0].NAMEB
+//        		    	 	 			,para8 : data.list[0].NAMEC
+//        		    	 	 			,para9 : data.list[0].NAMED
+//        		    	 	 			,para10 : vicName
+//        		    	 	 			,para11 : "승패에 문제가 있는 경우 대회 관리자에게 문의 하세요."
+//        		    	 	 			,para12 : "/front/bbc/badMatch/getPage.htm?pageName=page15&para3=${para3}"
+//        		    	 	 		},
+//        		    			type : "POST",
+//        		    			url : "/front/bbc/badMatch/sendMsg.htm",
+//        		    			success : function(data) {
+//        		    			},
+//        		    			error : function(xhr, status, e) {
+//        		    			}
+//        		    		});
        				
     		    	}
 

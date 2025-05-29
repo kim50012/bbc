@@ -31,6 +31,9 @@
     border-bottom: 1px solid #CCCCCC;
     z-index: 300;
 }
+.drag-table td {
+	padding: 0.24rem 0.1rem 0.24rem 0.1rem;
+}
 .table {
     padding-bottom: 0.2rem;
 }

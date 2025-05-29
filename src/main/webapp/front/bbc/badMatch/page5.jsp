@@ -31,6 +31,9 @@
     border-bottom: 1px solid #CCCCCC;
     z-index: 300;
 }
+.drag-table td {
+	padding: 0.24rem 0.1rem 0.24rem 0.1rem;
+}
 </style>
 <script>
 helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 입니다.<br><br>이름을 입력 후 조회 하면 해당 선수가 어느 종목에 어느 파트너와 출전했는지 볼 수 있습니다.";
@@ -87,7 +90,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaSlist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -108,7 +111,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaAlist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -129,7 +132,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaBlist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -150,7 +153,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaClist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -171,7 +174,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaDlist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -192,7 +195,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		                <tbody id="areaElist">
 		                <tr>
 		                  <th class="noWrapCell">종목/조</th>
-		                  <th class="noWrapCell">신청번호</th>
+		                  <th class="noWrapCell">팀</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">선수</th>
 		                  <th class="noWrapCell">소속클럽</th>
@@ -247,6 +250,9 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 					var lineTag = "";
 					var thisLineTag = "";
 					var lineStyle = "";
+					var lineTag2 = "";
+					var thisLineTag2 = "";
+					var lineStyle2 = "";
 					
 					if (data.list.length != 0) {
 
@@ -258,8 +264,9 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 						$("#areaElist").html("");
 						
 						for (var i = 0; i < data.list.length; i++) {
-							
+
 							thisLineTag = data.list[i].B_LVL+data.list[i].GAME_TYPE;
+							thisLineTag2 = data.list[i].B_LVL+data.list[i].GAME_TYPE+data.list[i].GAME_GROUP;
 							lineStyle = "";
 							
 							if (tag != data.list[i].B_LVL) {
@@ -281,7 +288,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 								htm = ''
 									+ '<tr>'
 									+ '<th class="noWrapCell">종목/조</th>'
-									+ '<th class="noWrapCell">신청번호</th>'
+									+ '<th class="noWrapCell">팀</th>'
 									+ '<th class="noWrapCell">선수</th>'
 									+ '<th class="noWrapCell">선수</th>'
 									+ '<th class="noWrapCell">소속클럽</th>'
@@ -292,15 +299,19 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 							if (lineTag != thisLineTag) {
 								lineStyle = "style='border-top: solid 2px #006ecd;box-sizing: initial;'";
 							}
+							else {
+								if (lineTag2 != thisLineTag2) {
+									lineStyle = "style='border-top: solid 2px #c0c0c0; box-sizing: initial; '";
+								}
+							}
 							
 							htm = ''
 								+ '<tr '+lineStyle+'>'
 								+ '	<td class="noWrapCell center"><div class="tab-img mb16 mb10"><img src="../image/u'+data.list[i].GAME_TYPE.toLowerCase()+'.png" style="height: 0.28rem;">'+data.list[i].GAME_TYPE_NM+'/'+data.list[i].GAME_GROUP_NM+'</div></td>'
-								+ '	<td class="center" onclick="deleteReq(\''+data.list[i].MCH_REQ+'\');">'+data.list[i].MCH_REQ+'</td>'
-								+ '	<td class="noWrapCell center" onclick="gotoPlayerPage('+data.list[i].MBR_A+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_A+'</td>'
-								+ '	<td class="noWrapCell center" onclick="gotoPlayerPage('+data.list[i].MBR_B+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_B+'</td>'
+								+ '	<td class="center" onclick="deleteReq(\''+data.list[i].MCH_REQ+'\');">'+data.list[i].NUM+'팀</td>'
+								+ '	<td class="noWrapCell center" style="max-width: 1.3rem;" onclick="gotoPlayerPage('+data.list[i].MBR_A+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_A+'</td>'
+								+ '	<td class="noWrapCell center" style="max-width: 1.3rem;" onclick="gotoPlayerPage('+data.list[i].MBR_B+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_B+'</td>'
 								+ '	<td class="noWrapCell center" style="max-width: 1.5rem;" onclick="msgBox(\''+data.list[i].CLB_NM+'\');">'+data.list[i].CLB_NM+'</td>'
-								// + '	<td class="noWrapCell center"><button class="confirmBtn" id="confirmBtn" onclick="pickUser(\''+data.list[i].MBR_SQ+'\', \''+data.list[i].MBR_NM+'\');">선택</button></td>'
 								+ '</tr>'
 							;
 							$("#area"+data.list[i].B_LVL+"list").append(htm);
@@ -308,6 +319,7 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 
 							tag = data.list[i].B_LVL;
 							lineTag = data.list[i].B_LVL+data.list[i].GAME_TYPE;
+							lineTag2 = data.list[i].B_LVL+data.list[i].GAME_TYPE+data.list[i].GAME_GROUP;
 						}
 						
 						$("#area"+tag+"cnt").html(j);

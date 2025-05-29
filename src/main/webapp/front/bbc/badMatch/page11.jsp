@@ -145,6 +145,10 @@ helpHtmlTag = "※ 본선 대진표 조회 화면 입니다.<br><br>본선은 �
 
 	function getRank() {
 
+		if ("${para3}" == "10026" || "${para3}" == "10027") {
+			return;
+		}
+		
 		var load = loading();
 		load.show()
 	

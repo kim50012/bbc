@@ -90,6 +90,12 @@
     line-height: 0.5rem;
     border-radius: 0.2rem;
 }
+.extInline {
+	overflow: hidden;
+    display: inline-block;
+    width: 0.7rem;
+    white-space: nowrap;
+}
 </style>
 </head>
 
@@ -298,7 +304,7 @@
 								+ '	<table class="drag-table alignCenterTable" cellspacing="0" cellpadding="2" border="1">'
 								+ '		<tbody id="tbodyList-gameTable-list">'
 								+ '			<tr>'
-								+ '				<th>'+data.list[i].COURT+' 코트<br>경기순서</th>'
+								+ '				<th>경기<br>순서</th>'
 								+ '				<th>시작<br>시간</th>'
 								+ '				<th>조순서<br>심판</th>'
 								+ '				<th>팀 A</th>'
@@ -349,9 +355,9 @@
 								+ '				<td class="center">'+j+'</td>'
 								+ '				<td class="center">'+data.list[i].START_TM+'</td>'
 								+ '				<td class="center">'+data.list[i].GAME_SEQ+tagRef+'</td>'
-								+ '				<td class="center">'+data.list[i].MBR_NM_A_A+'<br>'+data.list[i].MBR_NM_A_B+'</td>'
+								+ '				<td class="center"><span class="extInline">'+data.list[i].MBR_NM_A_A+'</span><br><span>'+data.list[i].MBR_NM_A_B+'</span></td>'
 								+ '				<td class="center">'+winFlgA+winFlgB+'</td>'
-								+ '				<td class="center">'+data.list[i].MBR_NM_B_A+'<br>'+data.list[i].MBR_NM_B_B+'</td>'
+								+ '				<td class="center"><span class="extInline">'+data.list[i].MBR_NM_B_A+'</span><br><span>'+data.list[i].MBR_NM_B_B+'</span></td>'
 								+ '			</tr>'
 								;
 							j++;
