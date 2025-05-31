@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>${label.排名查询}</title>
+<title>연합회 회원 목록</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -33,7 +33,7 @@
 .app-header .logo img {
 	width: 0.60rem;
 }
-<c:if test="${amsClb.CLB_SQ == 11}">
+<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 .drag-table td {
     position: relative;
     background: #ffffff;
@@ -73,11 +73,12 @@
 			<div class="scroll-wrap refresh-wrap" id="appPage2">
 				<div class="container" style="padding-top:0.1rem;">
 				
-					<c:if test="${amsClb.CLB_SQ == 11}">
+					<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 					<div class="model-gray" style="margin-top: 0.1rem;background: #fff;">
 						<div class="bottom-model" style="padding-top: 0;">
 							<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
 							<span>
+								<c:if test="${amsClb.CLB_SQ == 11}">
 								<select style="width:50%;" id="selClb">
 									<option value="">ALL</option>
 									<option value="1">BBC</option>
@@ -87,6 +88,20 @@
 									<option value="6">HBC</option>
 									<option value="8">SBBC</option>
 								</select>
+								</c:if>
+								<c:if test="${amsClb.CLB_SQ == 67}">
+								<select style="width:50%;" id="selClb">
+									<option value="">ALL</option>
+									<option value="1">HSBC</option>
+									<option value="2">SBC</option>
+									<option value="3">FBC</option>
+									<option value="10">KBC</option>
+									<option value="13">ABC</option>
+									<option value="14">PBC</option>
+									<option value="18">팀카피바라</option>
+									<option value="19">VHB</option>
+								</select>
+								</c:if>
 								<input type="text" id="txtMbrnm" style="width:50%;">
 							</span>
 							</div>              
@@ -108,7 +123,7 @@
 									<th>사진</th>
 									<th>이름</th>
 									<th>레벨</th>
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
 									</c:if>
 								</tr>
@@ -129,7 +144,7 @@
 									<th>사진</th>
 									<th>이름</th>
 									<th>레벨</th>
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
 									</c:if>
 								</tr>
@@ -150,7 +165,7 @@
 									<th>사진</th>
 									<th>이름</th>
 									<th>레벨</th>
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
 									</c:if>
 								</tr>
@@ -171,7 +186,7 @@
 									<th>사진</th>
 									<th>이름</th>
 									<th>레벨</th>
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
 									</c:if>
 								</tr>
@@ -192,7 +207,7 @@
 									<th>사진</th>
 									<th>이름</th>
 									<th>레벨</th>
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
 									</c:if>
 								</tr>
@@ -224,7 +239,7 @@
 		var para3 = "";
 		var para4 = "";
 
-		<c:if test="${amsClb.CLB_SQ == 11}">
+		<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 		para3 = $("#selClb").val();
 		para4 = $("#txtMbrnm").val();
 		</c:if>
@@ -250,8 +265,8 @@
 						+ '	<th>사진</th>'
 						+ '	<th>이름</th>'
 						+ '	<th>레벨</th>'
-						<c:if test="${amsClb.CLB_SQ == 11}">
-						+ '	<th style="width: 34%;">레벨</th>'
+						<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+						+ '	<th style="width: 34%;">클럽</th>'
 						</c:if>
 						+ '</tr>'
 						;
@@ -288,7 +303,7 @@
 									// $("#table"+data.list[i].BMT_GD).append(htm);
 								}
 								var sTag = "padding-left: 0.5rem;";
-								<c:if test="${amsClb.CLB_SQ == 11}">
+								<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 								sTag = "";
 								</c:if>
 								htm = ''
@@ -296,13 +311,13 @@
 									+ '	<td class="center">'+(j)+'</td>'
 									+ '	<td class="center"><img src="'+data.list[i].MBR_MAI_IMG_PTH+'" style="width: 1rem;'+sTag+'"/></td>'
 									+ '	<td class="center" style="text-decoration: underline;" onclick="goUserPage('+data.list[i].MBR_SQ+')">'
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									+ '<img src="../image/'+data.list[i].IMG+'.png" style="height:0.28rem;display: initial;"> '
 									</c:if>
 									+ data.list[i].CLB_NIK_NM
 									+ '</td>'
 									+ '	<td class="center">'+data.list[i].BMT_GD+'${label.组}</td>'
-									<c:if test="${amsClb.CLB_SQ == 11}">
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									+ '	<td>'+data.list[i].CLB_NM+'</td>'
 									</c:if>
 									+ '</tr>'					

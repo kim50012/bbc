@@ -158,7 +158,7 @@
 			<!-- ---------------------- C A,B,C,D Level 모드 ---------------------- -->
 			<c:if test="${amsClb.CLB_TYPE == 'C'}">
 				
-				<c:if test="${amsClb.CLB_SQ != 11}">	<!--  일반 클럽 -->
+				<c:if test="${amsClb.CLB_SQ != 11 and amsClb.CLB_SQ != 67}">	<!--  일반 클럽 -->
 				<div class="modules">
 					<div class="" style="background:#fff;">
 						<p class="title-icon title-icon1" style="line-height:0.8rem;font-weight:normal;font-size:0.24rem;" >${label.双打}${label.比赛管理}</p>
@@ -216,7 +216,7 @@
 				</div>			
 				</c:if>			
 			
-				<c:if test="${amsClb.CLB_SQ == 11}">	<!--  연합회 -->
+				<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">	<!--  연합회 -->
 				<div class="modules">
 					<div class="" style="background:#fff;">
 						<p class="title-icon title-icon1" style="line-height:0.8rem;font-weight:normal;font-size:0.24rem;" >연합회관리</p>

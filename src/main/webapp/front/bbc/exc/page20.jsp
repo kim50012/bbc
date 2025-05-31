@@ -323,7 +323,7 @@
 								+ '						<td colspan="3" style="text-align: center;'+tagTitle+'">'+data.list[i].GAME_STATUS+'</td>'
 								+ '					</tr>'
 								+ '					<tr style="height:1rem;">'
-								+ '						<td rowspan="2" style="text-align: center;'+tagBold+'">'+data.list[i].GAME_SEQ+'<br>경기</td>'
+								+ '						<td rowspan="2" style="text-align: center;'+tagBold+'">'+data.list[i].GAME_SEQ+'<br>경기<br>'+data.list[i].START_TM+'</td>'
 								+ '						<td style="text-align: center;'+tagBold+'">'+winFlgA+'</td>'
 								+ '						<td style="text-align: center;'+tagBold+currScoreTagA+'">'+scoreaa+'</td>'
 								+ '					</tr>'
