@@ -207,7 +207,6 @@
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page2&intClbsq=${amsClb.CLB_SQ}');">시험평가결과</button>
 							</c:if>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/mbr/getPage.htm?pageName=page1&intClbsq=${amsClb.CLB_SQ}');">회원조사</button>
-							
 						</div>
 					</div>
 					<div class="" style="height:2rem;background:#fff;">
@@ -246,6 +245,7 @@
 							<c:if test="${(amsClb.CLB_GD == 'A') || amsClb.CLB_GD == 'B'}">
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page2&intClbsq=${amsClb.CLB_SQ}');">시험평가결과</button>
 							</c:if>
+							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 							
 						</div>
 					</div>
