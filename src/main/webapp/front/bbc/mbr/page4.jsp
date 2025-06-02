@@ -33,6 +33,86 @@
 .app-header .logo img {
 	width: 0.60rem;
 }
+/* 클릭 가능한 썸네일 이미지 스타일 */
+.thumbnail-image:hover {
+  opacity: 0.7; /* 마우스 오버 시 약간 투명하게 */
+}
+
+/* 모달 배경 */
+.image-viewer-modal {
+  display: none; /* 평소에는 숨김 */
+  position: fixed; /* 화면에 고정 */
+  z-index: 1000; /* 다른 요소들 위에 표시 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 내용이 많을 경우 스크롤 */
+  background-color: rgba(0,0,0,0.9); /* 반투명 검은색 배경 */
+  padding-top: 60px; /* 모달 내용물의 상단 여백 */
+}
+
+/* 모달 내용물 (확대 이미지) */
+.image-viewer-modal-content {
+	display: block;
+	margin: auto;
+	width: 90vw;
+	max-width: none;
+	max-height: 90vh;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-animation-name: zoomIn;
+	-webkit-animation-duration: 0.3s;
+	animation-name: zoomIn;
+	animation-duration: 0.3s;
+}
+
+/* 확대 애니메이션 */
+@-webkit-keyframes zoomIn {
+  from {-webkit-transform: translate(-50%, -50%) scale(0)}
+  to {-webkit-transform: translate(-50%, -50%) scale(1)}
+}
+
+@keyframes zoomIn {
+  from {transform: translate(-50%, -50%) scale(0)}
+  to {transform: translate(-50%, -50%) scale(1)}
+}
+
+/* 닫기 버튼 */
+.image-viewer-close-button {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.image-viewer-close-button:hover,
+.image-viewer-close-button:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 캡션 텍스트 (선택 사항) */
+#imageViewerCaption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  /* 이미지가 중앙에 오도록 위치 조정이 필요할 수 있음 */
+  position: absolute;
+  bottom: 5%; /* 예시 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+}
 <c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 .drag-table td {
     position: relative;
@@ -223,12 +303,57 @@
 
 
 	</div>
+	<div id="imageModal" class="image-viewer-modal">
+		<span class="image-viewer-close-button">&times;</span>
+			<img class="image-viewer-modal-content" id="enlargedImg">
+		<div id="imageViewerCaption"></div>
+	</div>
 
 </body>
 <script type="text/javascript">
 
 	$(function() {
 		getData("${amsClb.TODAY}");
+		
+	    // 모달 관련 요소들을 jQuery 객체로 가져옵니다.
+	    var $modal = $("#imageModal");
+	    var $modalImg = $("#enlargedImg");
+	    var $captionText = $("#imageViewerCaption"); // 캡션 사용 시
+	
+	    // 이벤트 위임: document 전체에서 .thumbnail-image 클래스를 가진 요소의 클릭 이벤트를 감지합니다.
+	    // 이렇게 하면 AJAX로 동적으로 추가된 이미지에도 이벤트 핸들러가 적용됩니다.
+	    $(document).on("click", ".thumbnail-image", function() {
+	        var $clickedImage = $(this); // 클릭된 이미지
+	        
+	        $modal.css("display", "block"); // 모달을 보여줍니다.
+	        $modalImg.attr("src", $clickedImage.attr("src")); // 클릭된 이미지의 src를 모달 이미지의 src로 설정합니다.
+	        
+	        // 캡션 설정 (선택 사항): 이미지의 alt 속성을 사용하거나 비워둡니다.
+	        // var altText = $clickedImage.attr("alt");
+	        // if (altText) {
+	        //     $captionText.html(altText);
+	        // } else {
+	        //     $captionText.html("");
+	        // }
+	        $captionText.html(""); // 현재 코드에서는 캡션을 비우도록 되어 있습니다.
+	    });
+	
+	    // 닫기 버튼(.image-viewer-close-button) 클릭 시 모달 숨기기
+	    var $closeButton = $(".image-viewer-close-button");
+	    if ($closeButton.length) { // 닫기 버튼이 존재하는지 확인
+	        $closeButton.on("click", function() {
+	            $modal.css("display", "none");
+	        });
+	    }
+	
+	    // 모달 배경(이미지 바깥 영역) 클릭 시 모달 숨기기
+	    $modal.on("click", function(event) {
+	        // 클릭된 대상이 모달 배경 자체인지 확인합니다. (모달 내용물이 아닌)
+	        if ($(event.target).is($modal)) {
+	            $modal.css("display", "none");
+	        }
+	    });		
+		
 	});
 
 
@@ -309,7 +434,7 @@
 								htm = ''
 									+ '<tr>'
 									+ '	<td class="center">'+(j)+'</td>'
-									+ '	<td class="center"><img src="'+data.list[i].MBR_MAI_IMG_PTH+'" style="width: 1rem;'+sTag+'"/></td>'
+									+ '	<td class="center"><img class="thumbnail-image" src="'+data.list[i].MBR_MAI_IMG_PTH+'" style="width: 1rem;'+sTag+'"/></td>'
 									+ '	<td class="center" style="text-decoration: underline;" onclick="goUserPage('+data.list[i].MBR_SQ+')">'
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									+ '<img src="../image/'+data.list[i].IMG+'.png" style="height:0.28rem;display: initial;"> '
@@ -409,6 +534,6 @@
 					}
 				});
 	}     
-	
+
 </script>
 </html>
