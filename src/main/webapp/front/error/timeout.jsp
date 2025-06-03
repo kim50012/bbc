@@ -48,6 +48,7 @@
       </div>
       <div class="loginInput">
 <!--         <form onsubmit="return check(this)" action=""> -->
+			<input type="hidden" value="${strPtourl}" />
 	        <div class="input-wrap contentText">
 	          <input type="" name="" id="userName" value="" />
 	          <div id="inputID">아이디 입력</div>
