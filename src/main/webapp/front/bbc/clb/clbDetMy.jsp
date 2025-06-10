@@ -240,10 +240,8 @@
 								<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem border:solid 1px #01cfb9; color: #01cfb9;" onclick="windowlocation('clbMbrList.htm?intClbsq=${amsClb.CLB_SQ}');">${label.会员管理}</button>
 								<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem border:solid 1px #01cfb9;"" onclick="windowlocation('/front/bbc/badMatch/getPage.htm?pageName=page25');">엑셀다운로드</button>
 							</c:if>
-							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/clb/getPage.htm?pageName=page19&intClbsq=${amsClb.CLB_SQ}');">초심자시험</button>
-							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page4&intClbsq=${amsClb.CLB_SQ}');">예절지수평가</button>
 							<c:if test="${(amsClb.CLB_GD == 'A') || amsClb.CLB_GD == 'B'}">
-							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem;" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page2&intClbsq=${amsClb.CLB_SQ}');">시험평가결과</button>
+								<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem; border:solid 1px #01cfb9; color: #01cfb9;" onclick="windowlocation('/front/bbc/clb/getPage.htm?intClbsq=${amsClb.CLB_SQ}&pageName=page3');">회비관리</button>
 							</c:if>
 							<button class="btn-big btn-text btn-h70" style="margin:0 0.015rem 0.22rem" onclick="windowlocation('/front/bbc/exc/getPage.htm?pageName=page15&intClbsq=${amsClb.CLB_SQ}');">청백전대회</button>
 							
