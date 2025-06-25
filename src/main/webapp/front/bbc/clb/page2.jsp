@@ -125,7 +125,7 @@
 				        </div>						
 	
 						<div class="title2">
-							<span class="font24 bold">월별납부현황</span> <span class="font20 fontOrange" onclick="window.location='/front/bbc/clb/getPage.htm?pageName=page1&intClbsq=9';">등록수정하기</span>
+							<span class="font24 bold">월별납부현황</span> <span class="font20 fontOrange" onclick="window.location='/front/bbc/clb/getPage.htm?pageName=page1&intClbsq=${amsClb.CLB_SQ}';">등록수정하기</span>
 						</div>
 						
 						<div class="table-wrap">

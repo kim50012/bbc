@@ -182,7 +182,7 @@
 	<input type="hidden" id="thisMonth3" value="${intYear-1}" />
 	<input type="hidden" id="thisMonth4" value="${intYear+1}" />
 	<input type="hidden" id="feeStatus" value="TOTAL" />
-	<textarea id="notice"></textarea>
+	<textarea id="notice" style="display:none;"></textarea>
 </body>
 <script type="text/javascript">
 
@@ -314,7 +314,7 @@ function setFeeCancel(id, nick) {
 function setFeeAbnormalAction(id, nick, sts) {
 
 	var para1 = "MBR_FEE_SAVE_A2";
-	var para2 = "9";
+	var para2 = "${amsClb.CLB_SQ}";
 	var para3 = $("#thisMonth").val();
 	var para4 = sts;
 	var para5 = id;
@@ -423,7 +423,7 @@ $(function() {
 function getData(yyyymm) {
 
 	var para1 = "MBR_FEE_USER_LIST";
-	var para2 = "9";
+	var para2 = "${amsClb.CLB_SQ}";
 	var para3 = yyyymm;
 	var para4 = $("#feeStatus").val();
 
