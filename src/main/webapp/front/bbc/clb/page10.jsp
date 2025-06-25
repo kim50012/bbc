@@ -105,21 +105,21 @@
 		                    <td class="left">
 		                        <div class="such mr20">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="동지옹"  checked="checked"/>
-		  	                        <span class="Rdefine">동지옹</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="T793"  checked="checked"/>
+		  	                        <span class="Rdefine">T793</span>
 		                          </label>
 		                        </div>
 		                        <div class="trans">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="위펑쥔"/>
-		  	                        <span class="Rdefine">위펑쥔</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="Hiep Phuoc"/>
+		  	                        <span class="Rdefine">Hiep Phuoc</span>
 		                          </label>
 		                        </div>
 		                        <p><br></p>
 		                        <div class="such mr20">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="코트임대"/>
-		  	                        <span class="Rdefine">코트임대</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="기타 민턴장"/>
+		  	                        <span class="Rdefine">기타 민턴장</span>
 		                          </label>
 		                        </div>
 		                    </td>
