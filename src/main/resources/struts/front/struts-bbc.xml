@@ -163,6 +163,17 @@
  		    <result name="page27">/front/bbc/badMatch/page27.jsp</result>
  		    <result name="page28">/front/bbc/badMatch/page28.jsp</result>
  		    <result name="page29">/front/bbc/badMatch/page29.jsp</result>
+ 		    <result name="page30">/front/bbc/badMatch/page30.jsp</result>
+ 		    <result name="page31">/front/bbc/badMatch/page31.jsp</result>
+ 		    <result name="page32">/front/bbc/badMatch/page32.jsp</result>
+ 		    <result name="page33">/front/bbc/badMatch/page33.jsp</result>
+ 		    <result name="page34">/front/bbc/badMatch/page34.jsp</result>
+ 		    <result name="page35">/front/bbc/badMatch/page35.jsp</result>
+ 		    <result name="page36">/front/bbc/badMatch/page36.jsp</result>
+ 		    <result name="page37">/front/bbc/badMatch/page37.jsp</result>
+ 		    <result name="page38">/front/bbc/badMatch/page38.jsp</result>
+ 		    <result name="page39">/front/bbc/badMatch/page39.jsp</result>
+ 		    <result name="page40">/front/bbc/badMatch/page40.jsp</result>
 		    <result name="{1}">/front/bbc/badMatch/{1}.jsp</result>
 		</action>
 	</package>

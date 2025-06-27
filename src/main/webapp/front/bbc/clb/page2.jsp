@@ -36,6 +36,7 @@
 .centerA {
     text-align: center !important;
     background: #0080c6 !important;
+    color: #ffffff !important;
 }
 .centerB {
     text-align: center !important;
