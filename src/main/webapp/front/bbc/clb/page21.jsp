@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>회비관리</title>
+<title>회비내역 다운로드</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -111,7 +111,7 @@
 				</div>
 				
 				<div class="title2">
-					<span class="font24 bold">회비 상세 내역</span><span class="font20 fontOrange">기준 : 전월 25일 ~ 당월 24일</span>
+					<span class="font24 bold">회비 상세 내역</span><span class="font20 fontOrange">기준 : 1일 ~ 말일</span>
 				</div>
 				<div class="table" id="dailyFeeList">
 		        	<table class="drag-table alignRightTable" id="table" cellspacing="0" cellpadding="2" border="1">

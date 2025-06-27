@@ -6,6 +6,9 @@
 				[{
 					"name": "회비관리",
 					"url": "/front/bbc/clb/getPage.htm?pageName=page3"
+				},{
+					"name": "회비내역 다운로드",
+					"url": "/front/bbc/clb/getPage.htm?pageName=page21"
 				}]
 		},
 		{
