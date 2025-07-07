@@ -90,7 +90,7 @@
 				<div class="date mt10 date_schedule pb12" style="padding-top: 0.4rem;padding-bottom:0.3rem;" id="idCalendar"></div>
 				
 				<div class="title2">
-					<span class="font24 bold">월간 내역</span><span class="font20 fontOrange">기준 : 전월 25일 ~ 당월 24일</span>
+					<span class="font24 bold">월간 내역</span><span class="font20 fontOrange">기준 : 당월 1일 ~ 말일</span>
 				</div>
 				<div class="table" id="dailyFeeList">
 					<table class="drag-table noWrapTable alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="120%" border="1">

@@ -83,7 +83,7 @@
 				<div class="date mt10 date_schedule pb12" style="padding-top: 0.4rem;padding-bottom:0.3rem;" id="idCalendar"></div>
 
 				<div class="title2">
-					<span class="font24 bold">년간 내역</span><span class="font20 fontOrange">기준 : 전년 12월 25일 ~ 당년 12월 24일</span>
+					<span class="font24 bold">년간 내역</span><span class="font20 fontOrange">기준 : 1월 1일 ~ 12월 31일</span>
 				</div>
 				<div class="table" id="dailyFeeList">
 					<table class="drag-table noWrapTable alignRightTable" id="table1" cellspacing="0" cellpadding="2" width="120%" border="1">

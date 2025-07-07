@@ -94,9 +94,9 @@
 		                  <tr class="getWord">
 		                    <th class="right noHang2 fontGrey Rword">대분류</th>
 		                    <td class="left">
-		                    	송년회비용
+		                    	회식비
 								<input type="hidden" name="txtLevel1" id="txtFeeType" value="B" />
-								<input type="hidden" name="txtLevel1" id="txtLevel1" value="송년회비용" />
+								<input type="hidden" name="txtLevel1" id="txtLevel1" value="회식비" />
 		                    </td>
 		                  </tr>
 		                  
@@ -105,7 +105,13 @@
 		                    <td class="left">
 		                        <div class="such mr20">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="송년회비용"  checked="checked"/>
+		  	                        <input class="" type="radio" name="txtLevel2" value="회식비"  checked="checked"/>
+		  	                        <span class="Rdefine">회식비</span>
+		                          </label>
+		                        </div>
+		                        <div class="such mr20">
+		                        	<label class="radio">
+		  	                        <input class="" type="radio" name="txtLevel2" value="송년회비용"/>
 		  	                        <span class="Rdefine">송년회비용</span>
 		                          </label>
 		                        </div>

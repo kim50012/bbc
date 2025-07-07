@@ -235,13 +235,18 @@
 							$("#monthFee").html(data.list[i].AMT);
 						}
 						else {
+							var fontColorTag = "color: blue;";
+							if (data.list[i].AMT < 0) {
+								fontColorTag = "color: red;";
+							}
+							
 							htm = ''
 								+ '			<tr>'
 								+ '				<td class="center">'+data.list[i].FEE_SQ+'</td>'
 								+ '				<td class="center">'+data.list[i].FEE_DT+'</td>'
 								+ '				<td class="center">'+data.list[i].LEVEL1+'</td>'
 								+ '				<td class="center">'+data.list[i].LEVEL2+'</td>'
-								+ '				<td class="center" style="text-align: right !important;" colspan="2">'+data.list[i].AMT+'</td>'
+								+ '				<td class="center" style="text-align: right !important;'+fontColorTag+'" colspan="2">'+data.list[i].AMT+'</td>'
 								+ '				<td class="center" colspan="2">'+data.list[i].DSC+'</td>'
 								+ '			</tr>'
 								;

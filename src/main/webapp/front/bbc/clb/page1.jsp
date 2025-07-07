@@ -125,6 +125,26 @@
 							<i class="tab-new"></i>
 							<h4 class="tab-title">${intYear+1}-01</h4>
 						</div>
+						<div class="tab" id="tab${intYear+1}-02" onclick="getData('${intYear+1}-02')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-02</h4>
+						</div>
+						<div class="tab" id="tab${intYear+1}-03" onclick="getData('${intYear+1}-03')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-03</h4>
+						</div>
+						<div class="tab" id="tab${intYear+1}-04" onclick="getData('${intYear+1}-04')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-04</h4>
+						</div>
+						<div class="tab" id="tab${intYear+1}-05" onclick="getData('${intYear+1}-05')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-05</h4>
+						</div>
+						<div class="tab" id="tab${intYear+1}-06" onclick="getData('${intYear+1}-06')">
+							<i class="tab-new"></i>
+							<h4 class="tab-title">${intYear+1}-06</h4>
+						</div>
 						
 					</div>
 					<div class="con-wrap">

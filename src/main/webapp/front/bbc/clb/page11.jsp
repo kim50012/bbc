@@ -105,17 +105,10 @@
 		                    <td class="left">
 		                        <div class="such mr20">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="간식"  checked="checked"/>
-		  	                        <span class="Rdefine">간식</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="셔틀콕"  checked="checked"/>
+		  	                        <span class="Rdefine">셔틀콕</span>
 		                          </label>
 		                        </div>
-		                        <div class="trans">
-		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="생일"/>
-		  	                        <span class="Rdefine">생일</span>
-		                          </label>
-		                        </div>
-		                        <p><br></p>
 		                        <div class="such mr20">
 		                        	<label class="radio">
 		  	                        <input class="" type="radio" name="txtLevel2" value="협찬"/>
@@ -124,8 +117,21 @@
 		                        </div>
 		                        <div class="trans">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="송별선물"/>
-		  	                        <span class="Rdefine">송별선물</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="선물"/>
+		  	                        <span class="Rdefine">선물</span>
+		                          </label>
+		                        </div>
+		                        <p><br></p>
+		                        <div class="such mr20">
+		                        	<label class="radio">
+		  	                        <input class="" type="radio" name="txtLevel2" value="간식"/>
+		  	                        <span class="Rdefine">간식</span>
+		                          </label>
+		                        </div>
+		                        <div class="trans">
+		                        	<label class="radio">
+		  	                        <input class="" type="radio" name="txtLevel2" value="생일"/>
+		  	                        <span class="Rdefine">생일</span>
 		                          </label>
 		                        </div>
 		                        <p><br></p>
