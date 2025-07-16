@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>협찬</title>
+<title>부수입</title>
 <link rel="stylesheet" type="text/css" href="../css/font.css" />
 <link rel="stylesheet" type="text/css" href="../css/reset.css" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -94,7 +94,7 @@
 		                  <tr class="getWord">
 		                    <th class="right noHang2 fontGrey Rword">대분류</th>
 		                    <td class="left">
-		                    	협찬
+		                    	부수입
 								<input type="hidden" name="txtLevel1" id="txtFeeType" value="A" />
 								<input type="hidden" name="txtLevel1" id="txtLevel1" value="협찬" />
 		                    </td>
@@ -105,8 +105,14 @@
 		                    <td class="left">
 		                        <div class="such mr20">
 		                        	<label class="radio">
-		  	                        <input class="" type="radio" name="txtLevel2" value="협찬"  checked="checked"/>
-		  	                        <span class="Rdefine">협찬</span>
+		  	                        <input class="" type="radio" name="txtLevel2" value="회사지원"  checked="checked"/>
+		  	                        <span class="Rdefine">회사지원</span>
+		                          </label>
+		                        </div>
+		                        <div class="trans">
+		                        	<label class="radio">
+		  	                        <input class="" type="radio" name="txtLevel2" value="기타"/>
+		  	                        <span class="Rdefine">기타</span>
 		                          </label>
 		                        </div>
 		                    </td>

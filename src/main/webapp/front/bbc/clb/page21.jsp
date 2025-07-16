@@ -236,9 +236,13 @@
 						}
 						else {
 							var fontColorTag = "color: blue;";
-							if (data.list[i].AMT < 0) {
+							var formattedString = data.list[i].AMT;
+							var cleanString = formattedString.replace(/,/g, '');
+							var numb = parseInt(cleanString, 10);
+							if (numb < 0) {
 								fontColorTag = "color: red;";
 							}
+							
 							
 							htm = ''
 								+ '			<tr>'
