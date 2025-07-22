@@ -3758,21 +3758,6 @@ public class BbcAction extends WeixinBaseAction{
 	    if (!("S".equals(mapResult.get(0).get("MSG_OUT")))) {
 		return NONE;
 	    }
-	    map.clear();
-	    map.put("JOP_TYPE", "S");
-	    map.put("LOGIN_USER", loginUserId);
-	    map.put("MBR_SQ", intExcsq);
-	    map.put("MBR_SQ_F", sessionMember.getCustSysId());
-	    List<Map<String, Object>> followUserList = commonService.selectList("Bbc.getFollowUser", map);
-	    AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-	    String strExcsq = String.valueOf(intExcsq);
-	    try {
-		Thread thread = new Thread(new SendMsgThread(weixinService, weixinTemplateMessageService, appInfo, followUserList, strExcsq));
-		thread.start();
-	    } catch (Exception e) {
-		// TODO: handle exception
-		logger.error("thread0000000000:" + e.getMessage());
-	    }
 	    return NONE;
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -3815,21 +3800,6 @@ public class BbcAction extends WeixinBaseAction{
 	    renderJSON(returnMap);
 	    if (!("S".equals(mapResult.get(0).get("MSG_OUT")))) {
 		return NONE;
-	    }
-	    map.clear();
-	    map.put("JOP_TYPE", "S");
-	    map.put("LOGIN_USER", loginUserId);
-	    map.put("MBR_SQ", intExcsq);
-	    map.put("MBR_SQ_F", intMbrsq);
-	    List<Map<String, Object>> followUserList = commonService.selectList("Bbc.getFollowUser", map);
-	    AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-	    String strExcsq = String.valueOf(intExcsq);
-	    try {
-		Thread thread = new Thread(new SendMsgThread(weixinService, weixinTemplateMessageService, appInfo, followUserList, strExcsq));
-		thread.start();
-	    } catch (Exception e) {
-		// TODO: handle exception
-		logger.error("thread0000000000:" + e.getMessage());
 	    }
 	    return NONE;
 	} catch (Exception e) {

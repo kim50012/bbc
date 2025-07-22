@@ -145,6 +145,15 @@
 				              		</div>
                     			</td>
                   			</tr>
+                  			<tr>
+                  				<td>운동현황판</td>
+                  				<td>
+                    				<div class="buttons" style="padding: 0;">
+						                <div id="gotoExcState" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">PC 보기</div>
+						                <div id="gotoExcState2" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">모바일 보기</div>
+				              		</div>
+                  				</td>
+                  			</tr>
                 		</table>
               		</div>
             	</div>
@@ -578,7 +587,14 @@
 	$("#delEsc").click(function(){
 		window.location = '/front/bbc/exc/excView.htm?intExcsq=${intExcsq}';
 	});
-	
+
+	$("#gotoExcState").click(function(){
+		window.location = '/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page23&para1=EXC_MBR_LIST&para2=${amsExcList.HME_CLB_SQ}&para3=${intExcsq}';
+	});
+
+	$("#gotoExcState2").click(function(){
+		window.location = '/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${amsExcList.HME_CLB_SQ}&para3=${intExcsq}';
+	});
 	
 	
  	function fnTranslate(msg, tranType) {
