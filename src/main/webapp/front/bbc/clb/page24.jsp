@@ -92,7 +92,8 @@
         }
         #court-count {
             font-size: 28px; font-weight: bold; color: #333;
-            margin: 0 25px; min-width: 40px; text-align: center;
+/*             margin: 0 25px; */
+            min-width: 40px; text-align: center;
         }
         #refreshBtn {
             margin-left: auto; background-color: #6c757d;
@@ -202,16 +203,26 @@
         .finish-btn { background-color: #28a745; }
         .cancel-btn { background-color: #dc3545; }
         .save-btn { background-color: #007bff; }
-        .cancel-btn2 { background-color: #dc3545; }
+        .cancel-btn2 { background-color: #ffffff; color: #dc3545;}
+        .up-btn { background-color: #ffffff; color: #007bff;}
+        .down-btn { background-color: #ffffff; color: #007bff;}
 
         /* 하단 대기자 목록 */
         #waiting-list-container {
             border: 2px solid #6c757d; border-radius: 10px;
             padding: 15px; flex-shrink: 0;
         }
+        #waiting-list-container h2 {
+            margin: 0 0 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            text-align: center;
+            color: #333;
+        }
         .waiting-list-header {
             display: flex; justify-content: space-between;
-            align-items: center; margin-bottom: 15px;
+            align-items: center;
+/*             margin-bottom: 15px; */
         }
         .waiting-list-title { font-size: 20px; font-weight: bold; color: #495057; }
         .waiting-list-actions { display: flex; gap: 10px; }
@@ -297,6 +308,26 @@
             border-color: #007bff;
         }
         /* ADDED END */
+        
+		/* 이 코드를 <style> 태그 안에 추가하세요. */
+		.loader-spinner {
+		    border: 8px solid #f3f3f3; /* Light grey */
+		    border-top: 8px solid #3498db; /* Blue */
+		    border-radius: 50%;
+		    width: 60px;
+		    height: 60px;
+		    animation: spin 1s linear infinite;
+		}
+		
+		@keyframes spin {
+		    0% { transform: rotate(0deg); }
+		    100% { transform: rotate(360deg); }
+		}
+		
+		/* 초기에 로딩 오버레이는 숨겨둡니다. */
+		#loader-overlay {
+		    display: none;
+		}        
     </style>
 </head>
 <body>
@@ -329,7 +360,7 @@
 <!--             </div> -->
         </div>
         <div id="waiting-list-container">
-            <div class="waiting-list-title" style="padding-bottom:10px;">대기자</div>
+            <h2>대기자</h2>
             <div class="waiting-list-header">
                 <div class="waiting-list-actions">
                     <button id="auto-make-game-btn" class="action-btn">자동경기매칭</button>
@@ -338,6 +369,7 @@
                     <button id="add-to-queue-btn" class="action-btn save-btn">대기열 추가</button>
                 </div>
             </div>
+            <h2></h2>
             <div id="waiting-list"></div>
         </div>
     </div>
@@ -430,20 +462,16 @@
         </div>
     </div>
     <div id="message-box"></div>
+	<div id="loader-overlay" class="modal-overlay" style="z-index: 9999;">
+	    <div class="loader-spinner"></div>
+	</div>
 
     <script>
     $(document).ready(function() {
         // --- Mock API & 데이터베이스 ---
         var mockDB = {
             players: [],
-            allClubMembers: [ // // ADDED: 시뮬레이션을 위한 전체 회원 목록
-                {id: 'user101', name: '김민준', level: 'a', bbc: 901, clb: 1},
-                {id: 'user102', name: '이서연', level: 'b', bbc: 551, clb: 1},
-                {id: 'user103', name: '박도윤', level: 'c', bbc: 501, clb: 1},
-                {id: 'user104', name: '최아린', level: 'a', bbc: 651, clb: 1},
-                {id: 'user105', name: '정하준', level: 'd', bbc: 301, clb: 1},
-                {id: 'user106', name: '윤지아', level: 'c', bbc: 451, clb: 1}
-            ],
+            allClubMembers: [],
             courts: [],
             waitingQueue: [],
             nextPlayerId: 1,
@@ -600,23 +628,14 @@
                             }]
                         };
                     });
-//                     if (courts.length < mockDB.courts.length) {
-//                         courts.push(...mockDB.courts.slice(courts.length));
-//                     }
 					const newCourts = mockDB.courts.filter(mockCourt => 
 					    !courts.some(existingCourt => existingCourt.id === mockCourt.id)
 					);
-                    courts.push(...newCourts);// Sorts by id in descending order// Creates a new sorted array, leaving the original 'courts' array unchanged.
+                    courts.push(...newCourts);
                     const sortedCourts = [...courts].sort((a, b) => a.name.localeCompare(b.name));
                     mockDB.courts = [];
                     mockDB.courts = sortedCourts;
-                    return JSON.parse(JSON.stringify(sortedCourts));	
-//                     if (courts.length == 0) {
-//                         return JSON.parse(JSON.stringify(mockDB.courts));	
-//                     }
-//                     else {
-//                         return JSON.parse(JSON.stringify(courts));	
-//                     }
+                    return JSON.parse(JSON.stringify(sortedCourts));
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
 			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
@@ -637,6 +656,7 @@
 	                	mockDB.players = [];
 	                	var players = serverData.list;
 						mockDB.players.push(...players);
+						$("#totalWaitingCount").html(" ("+players.length+")");
 	                	return JSON.parse(JSON.stringify(mockDB.players));
 				    }).fail(function(jqXHR, textStatus, errorThrown) {
 				        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
@@ -800,11 +820,12 @@
 			    });
             },
             _addCourt: async function(reFresh) {
+            	if (mockDB.nextCourtId <= 0) {
+            		mockDB.nextCourtId = 1;
+            	}
                 var newCourt = { id: 'c' + mockDB.nextCourtId, name: mockDB.nextCourtId + ' 코트', teamA: [], teamB: [] };
-
                 var nextTeamQueSq = "";
                 var nextTeamCourtId = "";
-
                 if (mockDB.waitingQueue.length > 0) {
                     var nextTeam = mockDB.waitingQueue.shift();
                     nextTeamQueSq = nextTeam.queSq;
@@ -825,7 +846,7 @@
                         },
                         dataType: 'json'
                     }).then(function(serverData) {
-                        showMessage("코트가 추가 되었습니다.");
+                        showMessage("새 코트가 추가 되었습니다.");
                         if (reFresh) {
                             fetchAllDataAndRender();
                         }
@@ -836,10 +857,14 @@
                     });
                 }
                 else {
+                    showMessage("코트가 추가 되었습니다.");
+                    if (reFresh) {
+                        fetchAllDataAndRender();
+                    }
                     mockDB.courts.push(newCourt);
                     mockDB.nextCourtId++;
                     return newCourt;
-                }   
+                }
             },
             _removeCourt: async function() {
 //                 if (mockDB.courts.length <= 1) {
@@ -855,21 +880,6 @@
                 return removedCourt;
             },
             _initializeDB: function(players, courtCount) {
-//                 mockDB.players = players.map(function(player) {
-//                     return {
-//                         id: player.id,       // user 데이터의 id를 사용
-//                         name: player.name,   // user 데이터의 name을 사용
-//                         level: player.level,
-//                         bbc: player.bbc,
-//                         gameCnt: player.gameCnt,
-//                         clb: player.clb
-//                     };
-//                 });
-//                 mockDB.courts = [];
-//                 mockDB.nextCourtId = 1;
-//                 for(var i=0; i<courtCount; i++) {
-//                     mockAPI._addCourt(false);
-//                 }
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
 			        type: 'POST', // 요청 타입
@@ -917,15 +927,17 @@
             var $queue = $('#global-queue').empty();
             if (!queueData) return;
             queueData.forEach(function(team) {
-                var teamHtml = createTeamHtmlFromData(team.teamA, team.teamB);
+                var teamHtml = createTeamHtmlFromData2(team.teamA, team.teamB);
                 var waitingTeamHtml =
-                    '<div class="waiting-team game-section" data-quesq="' + team.queSq + '">' +
+                    '<div class="waiting-team game-section" style="margin: 5px;" data-quesq="' + team.queSq + '">' +
                         '<div class="section-header">' +
                             '<span class="section-title">대기 ' + team.rank + '순위</span>' +
-                            '<div class="header-team-labels">' +
-                                '<span class="team-label team-a">A팀</span><span class="vs-header">vs</span><span class="team-label team-b">B팀</span>' +
-                            '</div>' +
-                            '<button class="action-btn cancel-btn2">취소</button>' +
+//                             '<div class="header-team-labels">' +
+//                                 '<span class="team-label team-a">A팀</span><span class="vs-header">vs</span><span class="team-label team-b">B팀</span>' +
+//                             '</div>' +
+                            '<button class="action-btn up-btn" style="padding:0;"><span class="mdi mdi-arrow-up-bold-circle"></span></button>' +
+                            '<button class="action-btn down-btn" style="padding:0;"><span class="mdi mdi-arrow-down-bold-circle"></span></button>' +
+                            '<button class="action-btn cancel-btn2" style="padding:0;"><span class="mdi mdi-close-circle"></span></button>' +
                         '</div>' +
                         '<div class="team-players">' + teamHtml + '</div>' +
                     '</div>';
@@ -971,7 +983,7 @@
             var inQueueIds = (queueData || []).flatMap(function(t) { return [].concat(t.teamA || [], t.teamB || []); }).map(function(p) { return p ? p.id : null; }).filter(Boolean);
 
             playersData.forEach(function(player) {
-            	var gameCntTag = " " + player.gameCnt;
+            	var gameCntTag = " [" + player.gameCnt + "]";
                 var $tag = $(createPlayerTag(player.name, player.id, player.level, gameCntTag));
                 
                 if (inGameIds.includes(player.id)) $tag.addClass('in-game');
@@ -985,10 +997,21 @@
         }
 
         // --- 데이터 기반 HTML 생성 ---
-        function createPlayerTag(name, id, level, gameCntTag) { return '<div class="player-tag" data-player-id="' + id + '" title="' + name + '"><span class="mdi mdi-alpha-'+level.toLowerCase()+'-circle">'+gameCntTag+'</span><br>' + name + '</div>'; }
+//         function createPlayerTag(name, id, level, gameCntTag) { return '<div class="player-tag" data-player-id="' + id + '" title="' + name + '"><span class="mdi mdi-alpha-'+level.toLowerCase()+'-circle">'+gameCntTag+'</span><br>' + name + '</div>'; }
+        function createPlayerTag(name, id, level, gameCntTag) { return '<div class="player-tag" data-player-id="' + id + '" title="' + name + '">' + name + gameCntTag + '</div>'; }
         function createTeamHtmlFromData(teamA, teamB) {
             var teamAGroup = (teamA || []).map(function(p) { return p ? createPlayerTag(p.name, p.id, p.level, "") : ''; }).join('');
             var teamBGroup = (teamB || []).map(function(p) { return p ? createPlayerTag(p.name, p.id, p.level, "") : ''; }).join('');
+            return (
+                '<div class="players-group">' + teamAGroup + '</div>' +
+                '<span class="vs">VS</span>' +
+                '<div class="players-group">' + teamBGroup + '</div>'
+            );
+        }
+        function createPlayerTag2(name, id, level, gameCntTag) { return '<div class="player-tag" style="overflow: hidden;" data-player-id="' + id + '" title="' + name + '">' + name + '</div>'; }
+        function createTeamHtmlFromData2(teamA, teamB) {
+            var teamAGroup = (teamA || []).map(function(p) { return p ? createPlayerTag2(p.name, p.id, p.level, "") : ''; }).join('');
+            var teamBGroup = (teamB || []).map(function(p) { return p ? createPlayerTag2(p.name, p.id, p.level, "") : ''; }).join('');
             return (
                 '<div class="players-group">' + teamAGroup + '</div>' +
                 '<span class="vs">VS</span>' +
@@ -1038,11 +1061,25 @@
         
         // --- 이벤트 핸들러 ---
         $('#increase-court').on('click', async function() {
-        	showMessage("코트를 추가 중입니다. 시간이 오래 걸리니 기다려 주세요.");
-            if (mockDB.courts.length < 10) {
+            if (mockDB.courts.length >= 10) {
+                showMessage("최대 10개 코트만 생성 가능합니다.");
+                return;
+            }
+            
+            // 로딩 화면 표시
+            showMessage("코트를 추가 중입니다. 잠시만 기다려 주세요.");
+
+            try {
+                // 코트 추가 비동기 함수 호출
                 await mockAPI._addCourt(true);
-            } else { showMessage("최대 10개 코트만 생성 가능합니다."); }
-        });
+            } catch (e) {
+                // 에러 발생 시 메시지 표시
+                showMessage('코트 추가 중 오류가 발생했습니다: ' + e.message);
+            } finally {
+                // 작업 완료 후 항상 로딩 화면 숨김
+//                 $('#loader-overlay').hide();
+            }
+        });        
         $('#decrease-court').on('click', async function() {
             try {
                 await mockAPI._removeCourt();
@@ -1161,6 +1198,76 @@
                 await fetchAllDataAndRender();
             } catch(e) { showMessage(e.message); }
         });
+
+        $(document).on('click', '.up-btn', async function() {
+            var queSq = $(this).closest('.waiting-team').data('quesq');
+            var teamRank = $(this).closest('.waiting-team').data('teamrank');
+            console.log(queSq);
+            console.log(teamRank);
+        	if (teamRank==1) {
+                showMessage("대기열 순위를 변경할 수 없습니다.");
+                return;
+        	}
+
+            try {
+
+            	$.ajax({
+                    url: '/front/bbc/clb/getData.htm',
+                    type: 'POST',
+                    data: {
+                        para1: "GAME_QUEUE_CHANGE_RANK",
+    		            para2: "${para2}",
+    		            para3: "${para3}",
+    		            para4: "UP",
+    		            para5: teamRank
+                    },
+                    dataType: 'json'
+                }).then(function(serverData) {
+                    showMessage("대기열 순위가 변경되었습니다.");
+                    fetchAllDataAndRender();
+                    return { success: true };
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("API: Failed to fetch players:", textStatus, errorThrown);
+                    return { success: false };
+                });
+            	
+            } catch(e) { showMessage(e.message); }
+        });
+
+        $(document).on('click', '.down-btn', async function() {
+            var queSq = $(this).closest('.waiting-team').data('quesq');
+            var teamRank = $(this).closest('.waiting-team').data('teamrank');
+            console.log(queSq);
+            console.log(teamRank);
+        	if (teamRank==1) {
+                showMessage("대기열 순위를 변경할 수 없습니다.");
+                return;
+        	}
+
+            try {
+
+            	$.ajax({
+                    url: '/front/bbc/clb/getData.htm',
+                    type: 'POST',
+                    data: {
+                        para1: "GAME_QUEUE_CHANGE_RANK",
+    		            para2: "${para2}",
+    		            para3: "${para3}",
+    		            para4: "DOWN",
+    		            para5: teamRank
+                    },
+                    dataType: 'json'
+                }).then(function(serverData) {
+                    showMessage("대기열 순위가 변경되었습니다.");
+                    fetchAllDataAndRender();
+                    return { success: true };
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("API: Failed to fetch players:", textStatus, errorThrown);
+                    return { success: false };
+                });
+            	
+            } catch(e) { showMessage(e.message); }
+        });
         
         $('#fullscreen-btn').on('click', toggleFullScreen);
         $(document).on('fullscreenchange', function() { $('#fullscreen-btn').html(document.fullscreenElement ? exitFullscreenIcon : fullscreenIcon); });
@@ -1185,7 +1292,7 @@
                 } else {
                     availableMembers.forEach(function(member) {
                         const $memberItem = $('<div class="member-item"></div>')
-                            .text(member.name + ' (' + member.level.toUpperCase() + '조)')
+                            .text(member.name) // + ' (' + member.level.toUpperCase() + '조)')
                             .data('member-data', member);
                         $list.append($memberItem);
                     });
@@ -1276,11 +1383,6 @@
         
         // ADDED END
         
-        // --- 앱 시작 ---
-//         const originalString = "${pageData}";
-//         var correctedString = originalString.replace(/([a-zA-Z_]+)=/g, '"$1":');
-//      	correctedString = correctedString.replace(/:([a-zA-Z\uac00-\ud7a3].*?)(, |})/g, ':"$1"$2');
-//         var initialPlayers = JSON.parse(correctedString);
      	var initialPlayers = JSON.parse("${pageData}".replace(/([a-zA-Z_]+)=/g, '"$1":').replace(/:([a-zA-Z\uac00-\ud7a3].*?)(, |})/g, ':"$1"$2'));
         var fullscreenIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 2h-2v3h-3v2h5v-5zm-3-2V5h-2v2h-3v2h5z"/></svg>';
         var exitFullscreenIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
