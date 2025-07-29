@@ -20,6 +20,7 @@ public class SessionMember implements java.io.Serializable {
 	private String lang;
 	private String userType;
 	private Integer clubSeq;
+	private String accessToken;
 
 	public Integer getCustSysId() {
 		return custSysId;
@@ -109,10 +110,19 @@ public class SessionMember implements java.io.Serializable {
 		this.clubSeq = clubSeq;
 	}
 
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
 	@Override
 	public String toString() {
 		return "SessionMember [custSysId=" + custSysId + ", custLoginId=" + custLoginId + ", openid=" + openid + ", sysId=" + sysId + ", shopId=" + shopId
-				+ ", custImgUrl=" + custImgUrl + ", nickname=" + nickname + ", clbNickname=" + clbNickname + ", lang=" + lang + ", userType=" + userType + ", clubSeq=" + clubSeq + "]";
+				+ ", custImgUrl=" + custImgUrl + ", nickname=" + nickname + ", clbNickname=" + clbNickname 
+				+ ", lang=" + lang + ", userType=" + userType + ", clubSeq=" + clubSeq + ", accessToken=" + accessToken + "]";
 	}
 
 }

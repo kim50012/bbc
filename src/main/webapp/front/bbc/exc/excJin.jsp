@@ -427,11 +427,6 @@
 		var intExcjintp = "7";
 		var strExcjincmt = "[${label.不参加}] " + cmt;
 
-		<c:if test="${amsExcList.EXC_SQ_ING > 0}">
-			alert('${label.已经开始运动}. ${label.不能删除}!');
-			return;
-		</c:if>
-
 		var load = loading();
 		load.show()
  			

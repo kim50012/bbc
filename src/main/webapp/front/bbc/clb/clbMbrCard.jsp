@@ -103,7 +103,7 @@
 								<p class="left-part">${label.胜率}（${label.胜}/${label.败}）</p>
 								<p>${amsMbr.WIN_RATE }%（${amsMbr.WIN }${label.胜}/${amsMbr.LOSE }${label.败}）</p>
 							</div>
-							<div class="list80 flex">
+							<div class="list80 flex" style="display:none;">
 								<p class="left-part">BB Coin</p>
 								<p>${amsMbr.CLB_BBC } Coin</p>
 							</div>

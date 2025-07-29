@@ -35,6 +35,7 @@ import com.waremec.weixin.action.WeixinBaseAction;
 import com.waremec.weixin.domain.AppInfo;
 import com.waremec.weixin.domain.template.DataItem;
 import com.waremec.weixin.domain.user.SessionMember;
+import com.waremec.weixin.service.KakaoService;
 import com.waremec.weixin.thread.QRCodeEventThread;
 import com.waremec.weixin.utils.EncryptUtils;
 import com.waremec.wpt.admin.domain.AdminMyIncome;
@@ -93,6 +94,9 @@ public class BadMatchAction extends WeixinBaseAction {
 	private float intClbbbc;
 	private float intJinclbbbc;
 
+    @Resource
+    protected KakaoService kakaoService;
+    
 	public String getShopId() {
 		return shopId;
 	}
@@ -532,7 +536,6 @@ public class BadMatchAction extends WeixinBaseAction {
 	
 		return NONE;
 	}
-	
 
 	//---------------------------------------------------------------
 	// sendMsg
@@ -759,5 +762,48 @@ public class BadMatchAction extends WeixinBaseAction {
 		
 		return NONE;
 	}
+
+
+	//---------------------------------------------------------------
+	// sendMsgToKakao
+	//---------------------------------------------------------------
+	public String sendMsgToKakao(){
+
+		String ret = "FAIL";
+		
+		try{
+			
+			String accessToken = kakaoService.getRefreshAccessToken(para2);
+			
+			if (accessToken != "") {
+
+				try {
+					kakaoService.sendMsgToMe(accessToken, para3, para4);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}catch (Error e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+			ret = "SUCCESS";
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			returnMap.put("ret", ret);
+			renderJSON(returnMap);
+			
+		}catch(Exception e){
+			//e.printStackTrace();
+			logger.info("##### Exception==>" +  e.getMessage());
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			returnMap.put("ret", ret);
+			renderJSON(returnMap);
+		}
+		
+		return NONE;
+	}
+	
 	
 }

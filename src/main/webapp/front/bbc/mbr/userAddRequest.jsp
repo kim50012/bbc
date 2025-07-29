@@ -225,7 +225,12 @@
 					}
 				}
 				else {
-					window.location = "${strPtourl}&shopId=68";
+					if ("${strPtourl}".includes("null")) {
+						window.location = "/front/bbc/clb/clb.htm?shopId=68";
+					}
+					else {
+						window.location = "${strPtourl}&shopId=68";	
+					}
 				}
 			}
 		}); 

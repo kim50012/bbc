@@ -4680,27 +4680,64 @@ public class BbcAction extends WeixinBaseAction{
 	String ret;
 	Map<String, Object> returnMap = new HashMap<String, Object>();
 	try {
-	    String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
+//	    String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
+	    Map<String, Object> accessTokenMap = kakaoService.getAccessTokenNew(code, "userAddRequest");
+	    String accessToken = (String) accessTokenMap.get("access_token");
 	    Map<String, Object> userInfo = kakaoService.getUserInfo(accessToken);
-	    logger.info(userInfo);
+	    
 	    String email = userInfo.get("email").toString();
 	    String thumbnail_image = userInfo.get("thumbnail_image").toString();
+	    String phone_number = userInfo.get("phone_number").toString();
+	    String birthyear = userInfo.get("birthyear").toString();
+	    String gender = userInfo.get("gender").toString();
+	    String uuid = userInfo.get("uuid").toString();
+	    String profile_image = userInfo.get("profile_image").toString();
+	    
+	    Map<String, Object> mapHist = new HashMap<String, Object>();
+	    String token_type = (String) accessTokenMap.get("token_type");
+	    String id_token = (String) accessTokenMap.get("id_token");
+	    String expires_in = (String) accessTokenMap.get("expires_in");
+	    String refresh_token = (String) accessTokenMap.get("refresh_token");
+	    String refresh_token_expires_in = (String) accessTokenMap.get("refresh_token_expires_in");
+	    String scope = (String) accessTokenMap.get("scope");
+	    mapHist.put("MBR_ID", email);
+	    mapHist.put("TOKEN_TYPE", token_type);
+	    mapHist.put("ACCESS_TOKEN", accessToken);
+	    mapHist.put("ID_TOKEN", id_token);
+	    mapHist.put("EXPIRES_IN", expires_in);
+	    mapHist.put("REFRESH_TOKEN", refresh_token);
+	    mapHist.put("REFRESH_TOKEN_EXPIRES_IN", refresh_token_expires_in);
+	    mapHist.put("SCOPE", scope);
+	    Map<String, Object> mapResultHistory = commonService.select("Bbc.sqlAMS_MBR_TOKEN", mapHist);
+//	    logger.info("email----->" + email);
+//	    if ("kim50012@kakao.com".equals(email)) {
+//	    	logger.info("accessToken 1----->" + accessToken);
+//		    Map<String, Object> friendsInfo = kakaoService.getFriendsInfo(accessToken);
+//		    kakaoService.sendMsgToMe(accessToken, "dddd", "");
+//	    }
+	    
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("JOP_TYPE", "KAKAO");
 	    map.put("MBR_ID", email);
 	    map.put("MBR_MAI_IMG_PTH", thumbnail_image);
+	    map.put("MBR_BAK_IMG_FNM", profile_image);
+	    map.put("EML_ADR", uuid);
+	    map.put("MBL_NO", phone_number);
+	    map.put("GND_DV", gender);
+	    map.put("BTH_YMD", birthyear);
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
 	    String msgOut = (String) mapResult.get("MSG_OUT");
 	    String strLnkactid = (String) mapResult.get("LNK_ACT_ID");
+	    
 	    if (msgOut.equals("S")) {
-		SessionMember sessionMember = getSessionMember();
-		sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
-		sessionMember.setUserType("WEB");
-		session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
-		logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
-		ret = "success";
+			SessionMember sessionMember = getSessionMember();
+			sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+			sessionMember.setUserType("WEB");
+			session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
+			logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
+			ret = "success";
 	    } else {
-		ret = "addUserInfo";
+	    	ret = "addUserInfo";
 	    }
 	    request.put("strPtourl", strPtourl);
 	    request.put("thumbnail_image", thumbnail_image);
@@ -4856,10 +4893,12 @@ public class BbcAction extends WeixinBaseAction{
 	    logger.info(userInfo);
 	    String email = userInfo.get("email").toString();
 	    String thumbnail_image = userInfo.get("thumbnail_image").toString();
+	    String uuid = userInfo.get("uuid").toString();
 	    Map<String, Object> searchMap = new HashMap<String, Object>();
 	    searchMap.put("JOP_TYPE", "S");
 	    searchMap.put("LOGIN_USER", loginUserId);
 	    searchMap.put("MBR_SQ", sessionMember.getCustSysId());
+	    searchMap.put("UUID", uuid);
 	    // searchMap.put("LANG", currLanguage);
 	    Map<String, Object> amsMbr = commonService.select("Bbc.sqlAMS_MBR_SELECT", searchMap);
 	    request.put("amsMbr", amsMbr);

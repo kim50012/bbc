@@ -38,7 +38,8 @@
 					width:1.1rem; 
 				}
 				.cell-6 {
-					width:1.17rem; 
+					width:1.17rem;
+					display:none;
 				}
 				.cell-7 {
 					width:1.17rem; 
@@ -152,19 +153,19 @@
 										<li class="flex2 cell-5 cell">-</li>
 									</c:if>
 									<c:if test="${amsMbrRankList.CLB_GD == 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+										<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+										<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+										<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
 										<li class="flex2 cell-5 cell">-</li>
 									</c:if>
 								</c:if>
 								<c:if test="${amsMbrRankList.CLB_GD != 'E' && amsMbrRankList.CLB_GD != 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-									<li class="flex2 cell-5 cell">${amsMbrRankList.CLB_BBC}</li>
+									<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+									<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+									<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+									<li class="flex2 cell-6 cell">${amsMbrRankList.CLB_BBC}</li>
 								</c:if>
-								<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
+								<li class="flex2 cell-7 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
 							</ul>
 						
 						 </c:forEach>
@@ -226,22 +227,22 @@
 										<li class="flex2 cell-3 cell">-</li>
 										<li class="flex2 cell-4 cell">-</li>
 										<li class="flex2 cell-5 cell">-</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 									<c:if test="${amsMbrRankList.CLB_GD == 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+										<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+										<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 								</c:if>
 								<c:if test="${amsMbrRankList.CLB_GD != 'E' && amsMbrRankList.CLB_GD != 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-									<li class="flex2 cell-5 cell">${amsMbrRankList.CLB_BBC}</li>
+									<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+									<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+									<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+									<li class="flex2 cell-6 cell">${amsMbrRankList.CLB_BBC}</li>
 								</c:if>
-								<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
+								<li class="flex2 cell-7 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
 							</ul>
 						
 						 </c:forEach>
@@ -305,22 +306,22 @@
 										<li class="flex2 cell-3 cell">-</li>
 										<li class="flex2 cell-4 cell">-</li>
 										<li class="flex2 cell-5 cell">-</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 									<c:if test="${amsMbrRankList.CLB_GD == 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+										<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+										<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 								</c:if>
 								<c:if test="${amsMbrRankList.CLB_GD != 'E' && amsMbrRankList.CLB_GD != 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-									<li class="flex2 cell-5 cell">${amsMbrRankList.CLB_BBC}</li>
+									<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+									<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+									<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+									<li class="flex2 cell-6 cell">${amsMbrRankList.CLB_BBC}</li>
 								</c:if>
-								<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
+								<li class="flex2 cell-7 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
 							</ul>
 						
 						 </c:forEach>
@@ -385,22 +386,22 @@
 										<li class="flex2 cell-3 cell">-</li>
 										<li class="flex2 cell-4 cell">-</li>
 										<li class="flex2 cell-5 cell">-</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 									<c:if test="${amsMbrRankList.CLB_GD == 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-										<li class="flex2 cell-5 cell">-</li>
+										<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+										<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+										<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+										<li class="flex2 cell-6 cell">-</li>
 									</c:if>
 								</c:if>
 								<c:if test="${amsMbrRankList.CLB_GD != 'E' && amsMbrRankList.CLB_GD != 'F'}">
-								<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
-								<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
-								<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
-									<li class="flex2 cell-5 cell">${amsMbrRankList.CLB_BBC}</li>
+									<li class="flex2 cell-3 cell">${amsMbrRankList.GAME_CNT}</li>
+									<li class="flex2 cell-4 cell">${amsMbrRankList.WIN}/${amsMbrRankList.LOSE}</li>
+									<li class="flex2 cell-5 cell">${amsMbrRankList.WIN_RATE}%</li>
+									<li class="flex2 cell-6 cell">${amsMbrRankList.CLB_BBC}</li>
 								</c:if>
-								<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
+								<li class="flex2 cell-7 cell" onclick="window.location='/front/bbc/clb/gameTody.htm?intClbsq=${amsMbrRankList.CLB_SQ}&intMbrsq=${amsMbrRankList.MBR_SQ}&strOrderby=&datFrdt=${amsMbrRankList.LASTDAY}&datTodt=${amsMbrRankList.LASTDAY}';">${amsMbrRankList.LASTDAY_BBC_TAG}</li>
 							</ul>
 						
 						 </c:forEach>

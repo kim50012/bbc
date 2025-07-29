@@ -76,9 +76,7 @@
 				<ul class="flex">
 					<li class="flex2 cell-1 cell">${label.排序}</li>
 					<li class="flex2 cell-2 cell">${label.姓名}</li>
-					<c:if test="${amsClb.CLB_SQ != 11}">
-					<li class="flex2 cell-3 cell">BB Coin</li>
-					</c:if>
+					<li class="flex2 cell-3 cell">아이디</li>
 					<li class="flex2 cell-4 cell">${label.状态}</li>
 					<li class="flex2 cell-5 cell">${label.加入日}</li>
 					<li class="flex2 cell-6 cell">${label.确认}</li>
@@ -93,9 +91,7 @@
 					<ul class="flex list78 ul-list word">
 						<li class="flex2 cell-1 cell">${status.count}</li>
 						<li class="flex2 cell-2 cell">${atrClbJinReq.CLB_NIK_NM}</li>
-						<c:if test="${amsClb.CLB_SQ != 11}">
-						<li class="flex2 cell-3 cell">${atrClbJinReq.BBC}</li>
-						</c:if>
+						<li class="flex2 cell-3 cell">${atrClbJinReq.MBR_ID}</li>
 						<li class="flex2 cell-4 cell">${atrClbJinReq.CLB_JIN_REQ_ST_NM}</li>
 						<li class="flex2 cell-5 cell">${atrClbJinReq.REQ_DT}</li>
 						<li class="flex2 cell-6 cell" onclick="fn_ClbMbrOpen('${atrClbJinReq.CLB_JIN_REQ_SQ}', '${atrClbJinReq.JIN_REQ_MBR_SQ}');">${label.确认}</li>
@@ -129,9 +125,7 @@
 					<li class="flex2 cell-1 cell">${label.排序}</li>
 					<li class="flex2 cell-3 cell">${label.图片}</li>
 					<li class="flex2 cell-2 cell">${label.姓名}</li>
-					<c:if test="${amsClb.CLB_SQ != 11}">
-					<li class="flex2 cell-2 cell">Coin</li>
-					</c:if>
+					<li class="flex2 cell-2 cell">아이디</li>
 					<li class="flex2 cell-4 cell">${label.会员等级}</li>
 					<li class="flex2 cell-5 cell">${label.加入日}</li>
 					<li class="flex2 cell-6 cell">${label.修改}</li>
@@ -148,9 +142,7 @@
 						<li class="flex2 cell-1 cell">${status.count}</li>
 						<li class="flex2 cell-3 cell"><img src="${amsClbMbr.MBR_MAI_IMG_PTH}" style="width: 0.6rem;height: auto;padding-top: 0.05rem;"></li>
 						<li class="flex2 cell-2 cell">${amsClbMbr.CLB_NIK_NM}</li>
-						<c:if test="${amsClb.CLB_SQ != 11}">
-						<li class="flex2 cell-3 cell">${amsClbMbr.CLB_BBC}</li>
-						</c:if>
+						<li class="flex2 cell-3 cell">${amsClbMbr.MBR_ID}</li>
 						<li class="flex2 cell-4 cell">${amsClbMbr.CLB_GD_NM}</li>
 						<li class="flex2 cell-5 cell">${amsClbMbr.CLB_JIN_DT}</li>
 						<li class="flex2 cell-6 cell" onclick="window.location='/front/bbc/clb/clbMbrInfo.htm?intClbsq=${amsClbMbr.CLB_SQ}&intMbrsq=${amsClbMbr.MBR_SQ}';">${label.修改}</li>
@@ -174,9 +166,7 @@
 				<ul class="flex">
 					<li class="flex2 cell-1 cell">${label.排序}</li>
 					<li class="flex2 cell-2 cell">${label.姓名}</li>
-					<c:if test="${amsClb.CLB_SQ != 11}">
-					<li class="flex2 cell-3 cell">Coin</li>
-					</c:if>
+					<li class="flex2 cell-3 cell">아이디</li>
 					<li class="flex2 cell-4 cell">${label.会员等级}</li>
 					<li class="flex2 cell-5 cell">${label.退出日}</li>
 					<li class="flex2 cell-6 cell">Rank</li>
@@ -192,9 +182,7 @@
 					<ul class="flex list78 ul-list word">
 						<li class="flex2 cell-1 cell">${status.count}</li>
 						<li class="flex2 cell-2 cell">${amsClbMbrExi.CLB_NIK_NM}</li>
-						<c:if test="${amsClb.CLB_SQ != 11}">
-						<li class="flex2 cell-3 cell">${amsClbMbrExi.CLB_BBC}</li>
-						</c:if>
+						<li class="flex2 cell-3 cell">${amsClbMbrExi.MBR_ID}</li>
 						<li class="flex2 cell-4 cell">${amsClbMbrExi.CLB_GD_NM}</li>
 						<li class="flex2 cell-5 cell">${amsClbMbrExi.CLB_JIN_DT}</li>
 						<li class="flex2 cell-6 cell">${amsClbMbrExi.CLB_RANK}</li>

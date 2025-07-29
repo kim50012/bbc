@@ -18,7 +18,7 @@
 		<script src="../js/jquery.typeahead.js" type="text/javascript" charset="utf-8"></script>
 		
 	</head>
-	<body style="background:#fff;text-align:center;" > <!-- onload="fn_GameSave('S');"> -->
+	<body style="background:#fff;text-align:center;width:100%;" > <!-- onload="fn_GameSave('S');"> -->
 	
 	
 			<div style="text-align: center;padding-top: 0.4rem;padding-bottom: 0.2rem;">
@@ -28,7 +28,7 @@
 			</div>
 			
 	
-			<div class="competition">
+			<div class="competition" style="margin: 0 auto;">
 				<div class="party float">
 					<div class="competition-red">
 					 	<p class="fullname float">${label.姓名}</p>
@@ -115,7 +115,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition1">
+			<div class="competition1" style="margin: 0 auto;display:no<c:if test="${(loginMbrSq == '20') || loginMbrSq == '20'}">1</c:if>ne;">
 				<div class="party float">
 					<div class="competition-red">
 					 	<p class="fullname float">${label.现在}BB Coin</p>
@@ -145,7 +145,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="competition2">
+			<div class="competition2" style="margin: 0 auto;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float">${label.最终}BB Coin</p>
@@ -165,7 +165,7 @@
 					</div>
 				</div>
 			</div>	
-			<div class="competition2" style="width:100%;height:1.5rem;">
+			<div class="competition2" style="height:1.5rem;margin: 0 auto;">
 				<div class="party3" style="width:100%;height:2.18rem;">
 					<div class="competition-green" style="width:100%;height:0.69rem;border-bottom:1px solid #d2d2d2;background:#f9f9ff;">
 					 	<p class="fullname float" style="width:50%;">1 Team Name</p>

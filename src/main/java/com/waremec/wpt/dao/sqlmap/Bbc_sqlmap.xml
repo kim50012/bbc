@@ -726,7 +726,7 @@
 	     , @LNK_ACT_DV = #LNK_ACT_DV#
 	     , @LNK_ACT_ID = #LNK_ACT_ID#
 	     , @NAT_CD = #NAT_CD#
-	     , @MBL_NO = #MBL_NO#
+	     , @MBL_NO = #UUID#
 	     , @EML_ADR = #EML_ADR#
 	     , @JIN_DT = #JIN_DT#
 	     , @REG_DT = #REG_DT#
@@ -1557,5 +1557,93 @@
 	     , @P20 = #P20#
 	    ]]>
 	</select>
+	
+	<select id="sqlAMS_MBR_TOKEN" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		MERGE INTO [DBO].[AMS_MBR_TOKEN] AS TARGET
+		USING (
+		    SELECT
+		        #MBR_ID# AS MBR_ID,
+		        #TOKEN_TYPE# AS TOKEN_TYPE,
+		        #ACCESS_TOKEN# AS ACCESS_TOKEN,
+		        #ID_TOKEN# AS ID_TOKEN,
+		        #EXPIRES_IN# AS EXPIRES_IN,
+		        #REFRESH_TOKEN# AS REFRESH_TOKEN,
+		        #REFRESH_TOKEN_EXPIRES_IN# AS REFRESH_TOKEN_EXPIRES_IN,
+		        #SCOPE# AS SCOPE
+		) AS SOURCE
+		ON (TARGET.MBR_ID = SOURCE.MBR_ID)
+		WHEN MATCHED THEN
+		    UPDATE SET
+		        TARGET.TOKEN_TYPE = SOURCE.TOKEN_TYPE,
+		        TARGET.ACCESS_TOKEN = SOURCE.ACCESS_TOKEN,
+		        TARGET.ID_TOKEN = SOURCE.ID_TOKEN,
+		        TARGET.EXPIRES_IN = SOURCE.EXPIRES_IN,
+		        TARGET.REFRESH_TOKEN = ISNULL(SOURCE.REFRESH_TOKEN, TARGET.REFRESH_TOKEN),
+		        TARGET.REFRESH_TOKEN_EXPIRES_IN = ISNULL(SOURCE.REFRESH_TOKEN_EXPIRES_IN, TARGET.REFRESH_TOKEN_EXPIRES_IN),
+		        TARGET.SCOPE = SOURCE.SCOPE,
+		        TARGET.UPDATE_DATE = GETDATE()
+		WHEN NOT MATCHED BY TARGET THEN
+		    INSERT (
+		        MBR_ID,
+		        TOKEN_TYPE,
+		        ACCESS_TOKEN,
+		        ID_TOKEN,
+		        EXPIRES_IN,
+		        REFRESH_TOKEN,
+		        REFRESH_TOKEN_EXPIRES_IN,
+		        SCOPE,
+		        UPDATE_DATE
+		    )
+		    VALUES (
+		        SOURCE.MBR_ID,
+		        SOURCE.TOKEN_TYPE,
+		        SOURCE.ACCESS_TOKEN,
+		        SOURCE.ID_TOKEN,
+		        SOURCE.EXPIRES_IN,
+		        SOURCE.REFRESH_TOKEN,
+		        SOURCE.REFRESH_TOKEN_EXPIRES_IN,
+		        SOURCE.SCOPE,
+		        GETDATE()
+		    );
+	    ]]>
+	</select>
+	
+	
+	<select id="sqlAMS_KAKAO_FRIENDS" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[
+		MERGE INTO [DBO].[AMS_KAKAO_FRIENDS] AS TARGET
+		USING (
+		    SELECT
+		        #KAKAO_ID# AS KAKAO_ID,
+		        #UUID# AS UUID,
+		        #PROFILE_NICKNAME# AS PROFILE_NICKNAME,
+		        #PROFILE_THUMBNAIL_IMAGE# AS PROFILE_THUMBNAIL_IMAGE
+		) AS SOURCE
+		ON (TARGET.KAKAO_ID = SOURCE.KAKAO_ID)
+		WHEN MATCHED THEN
+		    UPDATE SET
+		        TARGET.UUID = SOURCE.UUID,
+		        TARGET.PROFILE_NICKNAME = SOURCE.PROFILE_NICKNAME,
+		        TARGET.PROFILE_THUMBNAIL_IMAGE = SOURCE.PROFILE_THUMBNAIL_IMAGE,
+		        TARGET.UPDATE_DATE = GETDATE()
+		WHEN NOT MATCHED BY TARGET THEN
+		    INSERT (
+		        KAKAO_ID,
+		        UUID,
+		        PROFILE_NICKNAME,
+		        PROFILE_THUMBNAIL_IMAGE,
+		        UPDATE_DATE
+		    )
+		    VALUES (
+		        SOURCE.KAKAO_ID,
+		        SOURCE.UUID,
+		        SOURCE.PROFILE_NICKNAME,
+		        SOURCE.PROFILE_THUMBNAIL_IMAGE,
+		        GETDATE()
+		    );
+	    ]]>
+	</select>
+	
 	
 </sqlMap>

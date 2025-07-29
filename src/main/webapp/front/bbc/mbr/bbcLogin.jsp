@@ -119,7 +119,7 @@
 
 		$('#kakaoLogin').click(function(e) {
 // 			e.preventDefault();
-			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm';
+			window.location='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm&scope=profile_nickname,profile_image,account_email,name,gender,birthyear,phone_number,friends,plusfriends,talk_message,openid';
 		});
 		
 		var bbcUserid = getCookie("usrValue");
