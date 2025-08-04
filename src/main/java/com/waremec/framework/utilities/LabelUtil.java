@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.waremec.framework.service.CommonService;
-import com.waremec.weixin.domain.user.SessionMember;
+import com.waremec.wpt.domain.SessionMember;
 
 
 public class LabelUtil {

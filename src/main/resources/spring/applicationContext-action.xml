@@ -17,8 +17,6 @@
 		在此处配置Spring托管的Struts2 Controller类
 	</description>
  
-	<bean id="uploadServlet" class="com.waremec.framework.web.servlet.UploadServlet" scope="prototype" />
-
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	    <property name="maxUploadSize" value="5242880"/> <!-- 최대 업로드 크기: 5MB -->
 	</bean>

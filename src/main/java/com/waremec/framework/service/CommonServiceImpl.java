@@ -12,12 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 import com.waremec.framework.dao.CommonDao;
-import com.waremec.wpt.admin.domain.AdminGrade;
-import com.waremec.wpt.admin.domain.AdminGroup;
-import com.waremec.wpt.admin.domain.AdminGroupCorp;
-import com.waremec.wpt.admin.domain.AdminMap;
-import com.waremec.wpt.admin.domain.AdminShop;
-import com.waremec.wpt.admin.domain.AdminUser;
 
 
 @Service("commonService")

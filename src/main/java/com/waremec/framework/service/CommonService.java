@@ -3,15 +3,6 @@ package com.waremec.framework.service;
 import java.util.List;
 import java.util.Map;
 
-import com.waremec.wpt.admin.domain.AdminGrade;
-import com.waremec.wpt.admin.domain.AdminGroup;
-import com.waremec.wpt.admin.domain.AdminGroupCorp;
-import com.waremec.wpt.admin.domain.AdminMap;
-import com.waremec.wpt.admin.domain.AdminShop;
-import com.waremec.wpt.admin.domain.AdminUser;
-
-
-
 
 /**
  * @author jong

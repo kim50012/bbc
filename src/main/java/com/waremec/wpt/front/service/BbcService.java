@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.waremec.framework.service.CommonService;
 import com.waremec.framework.service.CommonServiceImpl;
-import com.waremec.wpt.admin.domain.AdminGoods;
+import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.dao.BbcDao;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 import com.waremec.wpt.front.domain.SessionSkin;
@@ -23,7 +23,10 @@ public class BbcService extends CommonServiceImpl implements CommonService{
 		// TODO Auto-generated method stub
 		return bbcDao.getSessionSkinByShopId(shopId);
 	}
-	
+
+	public SessionMember getSessionMemberById(String openid) {
+		return bbcDao.getSessionMemberById(openid);
+	}
 	
 
 	public List<BbcAtrClbBbd> selectBbcAtrClbBbd(String sqlId, Map<String, Object> searchMap) {

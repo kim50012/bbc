@@ -126,7 +126,7 @@
           	<div class="btn-wrap" style="padding-top: 0;">
           	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;">
                 <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/clb/clbRank.htm?intClbsq=${amsClb.CLB_SQ}';">복식<br>랭킹</div>
-                <div class="orangeBtn subBtn f-col font26" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page19&intClbsq=${amsClb.CLB_SQ}&para1=${datFrdt}';">대시<br>보드</div>
+                <div class="orangeBtn subBtn f-col font26" style="display:none;" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page19&intClbsq=${amsClb.CLB_SQ}&para1=${datFrdt}';">대시<br>보드</div>
                 <div class="blueBtn subBtn f-col font26" onclick="search('');">전체<br>현황</div>
                 <div class="blueBtn subBtn f-col font26" onclick="gotoGameToday('${loginMbrSq}');">나의<br>현황</div>
                 <div class="orangeBtn subBtn f-col font26" onclick="window.location.href='/front/bbc/clb/gameReg.htm?intClbsq=${amsClb.CLB_SQ}';">결과<br>입력</div>
@@ -236,7 +236,7 @@
                   <th class="noWrapCell">일자</th>
                   <th class="noWrapCell">Coin</th>
                   <th class="noWrapCell">승리팀</th>
-                  <th class="noWrapCell">점수</th>
+                  <th class="noWrapCell" style="display:none;">점수</th>
                   <th class="noWrapCell">패배팀</th>
                   <th class="noWrapCell">Coin</th>
                   <th class="noWrapCell">등록</th>
@@ -279,14 +279,14 @@
 					<c:if test="${atrMtcList.VTC_TEM_DV == 'A'}">
 						<td class="noWrapCell center">${atrMtcList.BBC_TAG_A1}</td>
 						<td class="noWrapCell center" ${myTaga }><div style="line-height:0.26rem;"><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_A1});">${atrMtcList.MBR_NM_A1}</div><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_A2});">${atrMtcList.MBR_NM_A2}</div></div></td>
-						<td class="noWrapCell center">${atrMtcList.A_TEM_SCR}:${atrMtcList.B_TEM_SCR}</td>
+						<td class="noWrapCell center" style="display:none;">${atrMtcList.A_TEM_SCR}:${atrMtcList.B_TEM_SCR}</td>
 						<td class="noWrapCell center" ${myTagb }><div style="line-height:0.26rem;"><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_B1});">${atrMtcList.MBR_NM_B1}</div><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_B2});">${atrMtcList.MBR_NM_B2}</div></td>
 						<td class="noWrapCell center">${atrMtcList.BBC_TAG_B1}</td>
 					</c:if>
 					<c:if test="${atrMtcList.VTC_TEM_DV == 'B'}">
 						<td class="noWrapCell center">${atrMtcList.BBC_TAG_B1}</td>
 						<td class="noWrapCell center" ${myTagb }><div style="line-height:0.26rem;"><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_B1});">${atrMtcList.MBR_NM_B1}</div><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_B2});">${atrMtcList.MBR_NM_B2}</div></td>
-						<td class="noWrapCell center">${atrMtcList.B_TEM_SCR}:${atrMtcList.A_TEM_SCR}</td>
+						<td class="noWrapCell center" style="display:none;">${atrMtcList.B_TEM_SCR}:${atrMtcList.A_TEM_SCR}</td>
 						<td class="noWrapCell center" ${myTaga }><div style="line-height:0.26rem;"><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_A1});">${atrMtcList.MBR_NM_A1}</div><div class="nameLabel" style="text-decoration:underline;" onclick="gotoGameToday(${atrMtcList.MBR_SQ_A2});">${atrMtcList.MBR_NM_A2}</div></div></td>
 						<td class="noWrapCell center">${atrMtcList.BBC_TAG_A1}</td>
 					</c:if>

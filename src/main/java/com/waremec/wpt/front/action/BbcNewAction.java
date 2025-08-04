@@ -9,16 +9,16 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.waremec.framework.action.BaseAction;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.SessionUtils;
-import com.waremec.weixin.action.WeixinBaseAction;
-import com.waremec.weixin.domain.user.SessionMember;
-import com.waremec.weixin.service.KakaoService;
+import com.waremec.wpt.domain.SessionMember;
+import com.waremec.wpt.front.service.KakaoService;
 import com.waremec.wpt.front.service.BbcService;
 
 @Controller("bbcNewAction")
 @Scope(ScopeType.prototype)
-public class BbcNewAction extends WeixinBaseAction {
+public class BbcNewAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 
 	private int intClbsq;	  // [클럽회칙] 클럽시퀀스
@@ -447,7 +447,7 @@ public class BbcNewAction extends WeixinBaseAction {
 				    
 				    if (msgOut.equals("S")) {
 						sessionMember = getSessionMember();
-						sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+						sessionMember = bbcService.getSessionMemberById(strLnkactid);
 						sessionMember.setUserType("WEB");
 						session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
 						ret = "success";

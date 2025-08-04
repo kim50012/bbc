@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.waremec.wpt.admin.domain.MenuLinkType;
-
 public class MenuFilter implements Filter {
 
 	protected final transient Log logger = LogFactory.getLog(this.getClass());
@@ -25,19 +23,7 @@ public class MenuFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest servletRequest = (HttpServletRequest) request;
-		String path = servletRequest.getServletPath();
-
-		if (MenuLinkType.hasUrl(path)) {
-			int topMenuType = MenuLinkType.getTopMenuType(path);
-			servletRequest.setAttribute("topMenuType", topMenuType);
-			servletRequest.setAttribute("leftMenuLelel1", MenuLinkType.getLeftMenuLelel1(path));
-			servletRequest.setAttribute("leftMenuLelel2", MenuLinkType.getLeftMenuLelel2(path));
-
-		}
-
 		chain.doFilter(request, response);
-
 	}
 
 	@Override

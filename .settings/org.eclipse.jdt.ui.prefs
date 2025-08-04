@@ -147,4 +147,6 @@ cleanup.valueof_rather_than_instantiation=false
 cleanup_profile=_Delete unused local variables
 cleanup_settings_version=2
 eclipse.preferences.version=1
+formatter_profile=_MIDAS_PDM_STD
+formatter_settings_version=23
 org.eclipse.jdt.ui.text.custom_code_templates=

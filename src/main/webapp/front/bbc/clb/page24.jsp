@@ -363,10 +363,11 @@
             <h2>대기자</h2>
             <div class="waiting-list-header">
                 <div class="waiting-list-actions">
-                    <button id="auto-make-game-btn" class="action-btn">자동경기매칭</button>
-                    <button id="add-member-btn" class="action-btn">회원 추가</button>
-                    <button id="add-player-btn" class="action-btn">게스트 추가</button>
-                    <button id="add-to-queue-btn" class="action-btn save-btn">대기열 추가</button>
+                    <button id="auto-make-game-btn" class="action-btn" style="display:no<c:if test="${(amsClb.CLB_GD == 'A')}">1</c:if>ne;">자동경기매칭</button>
+                    <button id="add-member-btn" class="action-btn">회원추가</button>
+                    <button id="delete-member-btn" class="action-btn cancel-btn">회원삭제</button>
+                    <button id="add-player-btn" class="action-btn" style="display:no<c:if test="${(amsClb.CLB_GD == 'A')}">1</c:if>ne;">게스트추가</button>
+                    <button id="add-to-queue-btn" class="action-btn save-btn">대기열추가</button>
                 </div>
             </div>
             <h2></h2>
@@ -391,6 +392,7 @@
                 <button id="save-score-btnB" class="action-btn save-btn" style="width: 120px;height: 100px;font-size:30px">B 팀</button>
             </div>
             <div class="modal-actions">
+                <button id="change-que" class="action-btn cancel-btn" style="background-color: #495057;">대기열로 이동</button>
                 <button id="save-score-btnC" class="action-btn cancel-btn">경기 취소</button>
                 <button id="cancel-score-btn" class="action-btn cancel-btn" style="background-color: #495057;">닫기</button>
             </div>
@@ -727,14 +729,14 @@
                 }).then(function(serverData) {
                     if (emptyCourt) {
                         showMessage("경기 등록되었으니 바로 경기를 시작하세요.");
-                        var msg = "경기 등록되었으니 바로 경기를 시작하세요.\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
+                        var msg = "경기 등록되었으니 바로 경기를 시작하세요.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
                         sendMsg(team.teamA[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                         sendMsg(team.teamA[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                         sendMsg(team.teamB[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                         sendMsg(team.teamB[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                     } else {
                         showMessage("대기열에 등록되었습니다.");
-                        var msg = "대기열에 등록되었습니다.\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
+                        var msg = "대기열에 등록되었습니다.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
                         sendMsg(team.teamA[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                         sendMsg(team.teamA[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
                         sendMsg(team.teamB[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
@@ -743,6 +745,38 @@
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("API: Failed to fetch players:", textStatus, errorThrown);
+                    return { success: false };
+                });
+            },
+            deleteMember: async function(teamA_ids) {
+                var team = {
+                    teamA: teamA_ids.map(function(id) { return mockDB.players.find(function(p) { return p.id === id; }); })
+                };
+
+                var id1 = 0;
+                var id2 = 0;
+                if (team.teamA.length == 2) {
+                	id1 = team.teamA[0].id;
+                	id2 = team.teamA[1].id;
+                }
+                else {
+                	id1 = team.teamA[0].id;
+                }
+                
+                return $.ajax({
+                    url: '/front/bbc/clb/getData.htm',
+                    type: 'POST',
+                    data: {
+                        para1: "EXC_DELETE_MBR",
+                        para2: "${para2}",
+                        para3: "${para3}",
+                        para4: id1,
+                        para5: id2
+                    },
+                    dataType: 'json'
+                }).then(function(serverData) {
+                    return { success: true };
+                }).fail(function(jqXHR, textStatus, errorThrown) {
                     return { success: false };
                 });
             },
@@ -790,16 +824,68 @@
                 }).then(function(serverData) {
                     showMessage("경기가 종료되었습니다.");
                     var msg = "";
+                    var linkUrl = "";
                     if (winner == "C") {
                         msg = "경기가 취소되었습니다.\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2;
+                        linkUrl = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}";
                     }
                     else {
-                        msg = "경기가 종료되었습니다.\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2 + "\n" + winner + "팀 승리!";
+                        msg = "※ 경기가 종료되었습니다.\n\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2 + "\n\n아래 버튼을 클릭하여 이긴팀을 확인하세요~!";
+                        linkUrl = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page25&para1="+winner+"&para2=${para2}&para3=${para3}&para4="+queSq;
                     }
-                    sendMsg(id_a1, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                    sendMsg(id_a2, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                    sendMsg(id_b1, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                    sendMsg(id_b2, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
+                    sendMsg(id_a1, msg, linkUrl);
+                    sendMsg(id_a2, msg, linkUrl);
+                    sendMsg(id_b1, msg, linkUrl);
+                    sendMsg(id_b2, msg, linkUrl);
+                    return { success: true };
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("API: Failed to fetch players:", textStatus, errorThrown);
+                    return { success: false };
+                });
+            },
+            changeGameQue: async function(queSq, courtId, scoreA, scoreB, winner) {
+                var court = mockDB.courts.find(function(c) { return c.id === courtId; });
+                if (!court) throw new Error("코트를 찾을 수 없습니다.");
+                var id_a1 = court.teamA[0].id;
+                var id_a2 = court.teamA[1].id;
+                var id_b1 = court.teamB[0].id;
+                var id_b2 = court.teamB[1].id;
+
+                var nm_a1 = court.teamA[0].name;
+                var nm_a2 = court.teamA[1].name;
+                var nm_b1 = court.teamB[0].name;
+                var nm_b2 = court.teamB[1].name;
+                
+                var nextTeamQueSq = "";
+                var nextTeamCourtId = "";
+                court.teamA = [];
+                court.teamB = [];
+
+                if (mockDB.waitingQueue.length > 0) {
+                    var nextTeam = mockDB.waitingQueue.shift();
+                    nextTeamQueSq = nextTeam.queSq;
+                    court.teamA = nextTeam.teamA;
+                    court.teamB = nextTeam.teamB;
+                    mockDB.waitingQueue.forEach(function(t, i) { t.rank = i + 1; });
+                }
+                
+                return $.ajax({
+                    url: '/front/bbc/clb/getData.htm',
+                    type: 'POST',
+                    data: {
+                        para1: "GAME_QUEUE_CHANGE",
+                        para2: nextTeamQueSq,
+                        para3: courtId,
+                        para4: queSq,
+                        para5: id_a1,
+                        para6: id_a2,
+                        para7: id_b1,
+                        para8: id_b2,
+                        para9: winner,
+                    },
+                    dataType: 'json'
+                }).then(function(serverData) {
+                    showMessage("대기열로 이동되었습니다.");
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("API: Failed to fetch players:", textStatus, errorThrown);
@@ -1232,6 +1318,17 @@
             $('#teamA-score, #teamB-score').val(0);
         });
 
+        $('#change-que').on('click', async function() {
+            var courtId = $('#score-modal').data('court-id');
+            var queSq = $('#score-modal').data('que-sq');
+            try {
+                await mockAPI.changeGameQue(queSq, courtId, 0, 0, "D");
+                await fetchAllDataAndRender();
+            } catch(e) { showMessage(e.message); }
+            $('#score-modal').hide();
+            $('#teamA-score, #teamB-score').val(0);
+        });
+
         $('#cancel-score-btn').on('click', function() { $('#score-modal').hide(); });
         $('#refreshBtn').on('click', function() { location.reload(); });
         
@@ -1346,6 +1443,16 @@
             } catch (error) {
                 showMessage('회원 목록을 불러오는 데 실패했습니다: ' + error.message);
             }
+        });
+
+        $('#delete-member-btn').on('click', async function() {
+            var teamA_ids = $('#waiting-list .player-tag.selected').map(function(i, el) { return $(el).data('player-id'); }).get();
+            try {
+                await mockAPI.deleteMember(teamA_ids);
+                // 대기열 추가 후 선택 해제
+                $('#waiting-list .player-tag').removeClass('selected selected-team2');
+                await fetchAllDataAndRender();
+            } catch(e) { showMessage(e.message); }
         });
 
         // ADDED START: 자동 경기 매칭 버튼 클릭 이벤트

@@ -1,6 +1,5 @@
 package com.waremec.wpt.front.action;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,8 +21,8 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.translate.TransApi;
 import com.opensymphony.xwork2.ActionContext;
+import com.waremec.framework.action.BaseAction;
 import com.waremec.framework.common.PageData;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.ListUtil;
@@ -31,20 +30,11 @@ import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.framework.utilities.StringUtil;
 import com.waremec.framework.utilities.UploadFileUtil;
 import com.waremec.framework.utilities.UploadResult;
-import com.waremec.weixin.action.WeixinBaseAction;
-import com.waremec.weixin.domain.AppInfo;
-import com.waremec.weixin.domain.template.DataItem;
-import com.waremec.weixin.domain.user.SessionMember;
-import com.waremec.weixin.service.KakaoService;
-import com.waremec.weixin.thread.QRCodeEventThread;
-import com.waremec.weixin.utils.EncryptUtils;
-import com.waremec.wpt.admin.domain.AdminMyIncome;
-import com.waremec.wpt.admin.domain.AdminOrders;
+import com.waremec.wpt.domain.SessionMember;
+import com.waremec.wpt.front.service.KakaoService;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.BbcService;
-import com.waremec.wpt.front.thread.SendMsgBadMatchThread;
-import com.waremec.wpt.front.thread.SendMsgThread;
 
 import net.sf.json.JSONObject;
 
@@ -52,7 +42,7 @@ import com.waremec.framework.utilities.LabelUtil;
 
 @Controller("badMatchAction")
 @Scope(ScopeType.prototype)
-public class BadMatchAction extends WeixinBaseAction {
+public class BadMatchAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAUT_COLOR = "#173177";
 	private static final String RED_COLOR = "#df1414";
@@ -312,11 +302,7 @@ public class BadMatchAction extends WeixinBaseAction {
 	// getPage
 	//---------------------------------------------------------------
 	public String getPage(){
-
 		try{
-			//--------- Main Logic
-			jsSdkSttingNormal();
-
 			int loginMbrSq = 0;
 			
 			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
@@ -463,64 +449,6 @@ public class BadMatchAction extends WeixinBaseAction {
 				request.put("strLngdv", strLngdv);
 			}			
 			
-			String openId1 = para1;
-			String openId2 = para2;
-			String openId3 = para3;
-			String openId4 = para4;
-			String first = para5;
-			String keyword1A1 = para6 +", " + para7 + " vs " + para8 + ", " + para9;
-			String keyword3 = para10;
-			String remark1 = para11;
-
-			int shopid = 68;
-
-	    	AppInfo appInfo = weixinService.selectAppInfoByShopId(shopid);
-
-			if (!openId1.isEmpty()) {
-				try {
-			    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId1, first, keyword1A1, para12, keyword3, remark1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}catch (Error e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (!openId2.isEmpty()) {
-				try {
-			    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId2, first, keyword1A1, para12, keyword3, remark1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}catch (Error e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (!openId3.isEmpty()) {
-				try {
-			    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId3, first, keyword1A1, para12, keyword3, remark1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}catch (Error e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (!openId4.isEmpty()) {
-				try {
-			    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId4, first, keyword1A1, para12, keyword3, remark1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}catch (Error e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
 			ret = "SUCCESS";
 			Map<String, Object> returnMap = new HashMap<String, Object>();
 			returnMap.put("ret", ret);
@@ -549,26 +477,6 @@ public class BadMatchAction extends WeixinBaseAction {
 			String openid = para9;
 			String linkUrl = para10;
 			
-			Map<String, DataItem> data = new HashMap<String, DataItem>();
-			if (para1 != null) data.put(para1, new DataItem(para11, DEFAUT_COLOR));
-			if (para2 != null) data.put(para2, new DataItem(para12, DEFAUT_COLOR));
-			if (para3 != null) data.put(para3, new DataItem(para13, DEFAUT_COLOR));
-			if (para4 != null) data.put(para4, new DataItem(para14, DEFAUT_COLOR));
-			if (para5 != null) data.put(para5, new DataItem(para15, DEFAUT_COLOR));
-			if (para6 != null) data.put(para6, new DataItem(para16, DEFAUT_COLOR));
-			if (para7 != null) data.put(para7, new DataItem(para17, DEFAUT_COLOR));
-			
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(68);
-			try {
-				weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openid, data, linkUrl);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (Error e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    	
 		}catch(Exception e){
 			//e.printStackTrace();
 			logger.info("##### Exception==>" +  e.getMessage());
@@ -597,41 +505,6 @@ public class BadMatchAction extends WeixinBaseAction {
 				strLngdv = sessionMember.getLang();
 				request.put("strLngdv", strLngdv);
 			}			
-			
-			Map<String,Object> searchMap=new HashMap<String, Object>();
-			
-			searchMap.put("P1", "BADMATCH_SEND_MULTI_MSG_TARGET_USER");
-			searchMap.put("P2", para2);
-			searchMap.put("P3", para3);		// MSG TYPE
-			searchMap.put("P4", para4);
-			searchMap.put("P5", para5);
-			searchMap.put("P6", para6);
-			searchMap.put("P7", para7);
-			searchMap.put("P8", para8);
-			searchMap.put("P9", para9);
-			searchMap.put("P10", para10);
-			searchMap.put("P11", para11);
-			searchMap.put("P12", para12);
-			searchMap.put("P13", para13);
-			searchMap.put("P14", para14);
-			searchMap.put("P15", para15);
-			searchMap.put("P16", para16);
-			searchMap.put("P17", para17);
-			searchMap.put("P18", para18);
-			searchMap.put("P19", para19);
-			searchMap.put("P20", para20);
-			List<Map<String, Object>> userList = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
-			
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-
-			try {
-				Thread thread = new Thread(new SendMsgBadMatchThread(weixinService, weixinTemplateMessageService, appInfo, userList, para2));
-				thread.start();
-			} catch (Exception e) {
-				// TODO: handle exception
-				logger.error("thread0000000000:" + e.getMessage());
-			}
-			
 			
 		}catch(Exception e){
 			//e.printStackTrace();

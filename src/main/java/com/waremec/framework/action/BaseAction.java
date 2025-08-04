@@ -24,9 +24,7 @@ import com.waremec.framework.service.CommonService;
 import com.waremec.framework.utilities.JsonUtil;
 import com.waremec.framework.utilities.LabelUtil;
 import com.waremec.framework.utilities.SessionUtils;
-import com.waremec.weixin.domain.user.SessionMember;
-import com.waremec.wpt.admin.domain.AdminShop;
-import com.waremec.wpt.admin.domain.AdminUser;
+import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.domain.SessionSkin;
 
 
@@ -242,30 +240,6 @@ public class BaseAction extends ActionSupport implements RequestAware,
 		return null;
 	}
 	
-	protected AdminUser getBackSessionUser(){
-		AdminUser adminUser =(AdminUser) session.get(SessionUtils.BACK_USER_SESSION);
-		return adminUser;
-		
-	}
-
-	protected AdminShop getBackSessionShopInfo(){
-		AdminShop shopInfo =(AdminShop) session.get(SessionUtils.BACK_SHOPINFO_SESSION);
-		if(shopInfo != null){
-			return shopInfo;
-		}else{
-			return null;
-		}
-	}
-	
-	protected String getBackSessionUserId(){
-		AdminUser adminUser =getBackSessionUser();
-		if(adminUser != null){
-			return adminUser.getUserId();
-		}else{
-			return null;
-		}
-		
-	}
 	
 	protected SessionMember getSessionMember(){
 		 

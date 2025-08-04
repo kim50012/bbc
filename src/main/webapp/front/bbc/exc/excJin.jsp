@@ -141,6 +141,7 @@
 						                ${amsExcList.CLB_NIK_NM}
 						                <c:if test="${(amsExcList.CLB_GD == 'A') || amsClb.amsExcList == 'B' || amsExcList.REG_MBR_SQ == loginMbrSq}">
 						                	<div id="delEsc" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">${label.内容}${label.修改}</div>
+						                	<div id="excNotice" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">공지하기</div>
 						                </c:if>
 				              		</div>
                     			</td>
@@ -149,8 +150,9 @@
                   				<td>운동현황판</td>
                   				<td>
                     				<div class="buttons" style="padding: 0;">
-						                <div id="gotoExcState" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">PC 보기</div>
-						                <div id="gotoExcState2" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">모바일 보기</div>
+						                <div id="gotoExcState" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">PC보기</div>
+						                <div id="gotoExcState3" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">PC보기(큰글씨)</div>
+						                <div id="gotoExcState2" class="blueBtn subBtn f-col font26" style="padding: 0.2rem 0.1rem;margin-left: 0.4rem;">모바일보기</div>
 				              		</div>
                   				</td>
                   			</tr>
@@ -582,9 +584,65 @@
 	$("#delEsc").click(function(){
 		window.location = '/front/bbc/exc/excView.htm?intExcsq=${intExcsq}';
 	});
+	
+	$("#excNotice").click(function(){
+		$("#excNotice").hide();
 
+	    $.ajax({
+	        url: '/front/bbc/clb/getData.htm',
+	        type: 'POST', // 요청 타입
+	        data: {
+	            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
+	            para1: "EXC_MBR_LIST_2",
+	            para2: "${amsExcList.HME_CLB_SQ}"
+	        },
+	        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+        }).then(function(data) {
+			if (data.list.length != 0) {
+
+				for (var i = 0; i < data.list.length; i++) {
+					var mbrSq = data.list[i].id;
+					var msg = "※ 운동 공지 입니다.\n\n"
+						+ "동호회 : ${amsExcList.HME_CLB_NM}\n\n"
+						+ "-요일 : ${amsExcList.WEEKNAME2}\n"
+						+ "-일자 : ${amsExcList.EXC_DATE}\n"
+						+ "-시간 : ${amsExcList.EXC_FR_TIME}~${amsExcList.EXC_TO_TIME}\n\n"
+						+ "아래 버튼을 클릭하여 운동 참여 부탁드립니다."
+						;
+					var link = "http://kr.bbcoin.net:8080/front/bbc/exc/excJin.htm?intExcsq=${intExcsq}";
+					sendMsg(mbrSq, msg, link);
+				}
+			}
+        	
+    		$("#excNotice").show();
+	    }).fail(function(jqXHR, textStatus, errorThrown) {
+			$("#excNotice").show();
+	    });
+	});
+
+    function sendMsg(mbrSq, msg, link) {
+    	$.ajax({
+            url: '/front/bbc/badMatch/sendMsgToKakao.htm',
+            type: 'POST',
+            data: {
+                para2: mbrSq,
+                para3: msg,
+                para4: link,
+            },
+            dataType: 'json'
+        }).then(function(serverData) {
+            return { success: true };
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            return { success: false };
+        });
+    }
+    
 	$("#gotoExcState").click(function(){
 		window.location = '/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page23&para1=EXC_MBR_LIST&para2=${amsExcList.HME_CLB_SQ}&para3=${intExcsq}';
+	});
+    
+	$("#gotoExcState3").click(function(){
+		window.location = '/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page26&para1=EXC_MBR_LIST&para2=${amsExcList.HME_CLB_SQ}&para3=${intExcsq}';
 	});
 
 	$("#gotoExcState2").click(function(){

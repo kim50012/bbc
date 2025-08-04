@@ -24,8 +24,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.waremec.framework.utilities.IntegerUtils;
 import com.waremec.framework.utilities.LabelUtil;
 import com.waremec.framework.utilities.SessionUtils;
-import com.waremec.weixin.domain.user.SessionMember;
-import com.waremec.wpt.admin.domain.AdminUser;
+import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.MainService;
 import org.apache.struts2.ServletActionContext;
@@ -66,37 +65,6 @@ public class SessionFilter implements Filter {
 		 
 		logger.info("########################### SessionFilter ####################################");
 
-		if(path.startsWith("/admin/")){		//back office page
-			
-			AdminUser adminUser = (AdminUser) request.getSession().getAttribute(SessionUtils.BACK_USER_SESSION);
-			
-			if(adminUser == null && !isIgnoredUrl(path)){
-				if("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))){
-					response.setHeader("sessionstatus", "timeout");
-					PrintWriter writer = response.getWriter(); 
-					writer.print("{\"success\":false}");
-					writer.close();
-				}else{
-					response.sendRedirect("/admin/error/timeout.htm");
-					return;
-				}
-			}
-			
-		}
-
-		/**
-		 * /openwx/
-		 */
-		if(path.startsWith("/openwx/")){//拦截appid
-			
-			String key = "/openwx/";
-			int appidLength = 18;
-			String appid = path.toString().substring(key.length(), ( key.length() + appidLength));
-			request.setAttribute("pushAppId", appid);
-			request.getServletContext().getRequestDispatcher("/wxthirdparty/thirdpartyCallback.htm").forward(request,response);
-			return;
-		}
-		
 		if(path.startsWith("/front/")){	//手机
 
 			HttpSession session = request.getSession();

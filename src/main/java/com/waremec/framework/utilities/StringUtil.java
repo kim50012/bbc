@@ -18,9 +18,6 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringEscapeUtils;
 
-import com.waremec.weixin.domain.material.MediaUrlReturn;
-import com.waremec.weixin.utils.WeixinMediaUtils;
-
 public class StringUtil {
 
 	
@@ -522,59 +519,6 @@ public class StringUtil {
 		return formartDateTime(DateTimeUtils.parseToTimestamp(date), format);
 	}
 	
-	public static String getImgSrc(String con,String  token,String uploadBaseDir){
- 		Pattern p=Pattern.compile("<(img|IMG)(.*?)(/>|></img>|>)"); 
-		Matcher m=p.matcher(con); 
-		boolean result_img=m.find();//匹配2223 
-		if (result_img) {
-            while (result_img) {
-            	String str_img= m.group(2);//返回
-            	
-                Pattern p_src = Pattern.compile("( src| SRC)=(\"|\')(.*?)(\"|\')");
-                Matcher m_src = p_src.matcher(str_img);
-                if (m_src.find()) {
-                	if(!m_src.group(3).trim(). startsWith("http://mmbiz.")){//此处判断图片是否来自微信 ，如果不是就先下载再上传到微信
-                		String m_pic = m_src.group(3);
-                		
-                		if(m_src.group(3).trim().startsWith("http://www.hanzhimeng.com.cn")){
-                			m_pic=m_pic.replace("http://www.hanzhimeng.com.cn", "");
-                		} 
-                		if(m_src.group(3).trim().startsWith("http://www.hanzhimeng.com")){
-                			m_pic=m_pic.replace("http://www.hanzhimeng.com", "");
-                		} 
-                		
-                		/**
-                		 * 20170427 删除 XIUMI编辑器图片结尾参数 
-                		 */
-                		if(m_src.group(3).trim().endsWith("?x-oss-process=style/xm")){
-                			m_pic=m_pic.replace("?x-oss-process=style/xm", "");
-                		}
-                		
-                		String imgPath = null;
-                		if(m_pic.startsWith("http://")){
-                			imgPath = saveImage(uploadBaseDir , m_pic);
-                		} else {
-                			imgPath = uploadBaseDir + m_pic;
-                		}
-                		
-                		//上传到微信服务器
-                		MediaUrlReturn mediaUrlReturn = WeixinMediaUtils.uploadingMedia(token, imgPath);
-//                		MediaUrlReturn mediaUrlReturn = WeixinMediaUtils.uploadingMedia(token, uploadBaseDir+m_pic);
-                		//MediaUrlReturn mediaUrlReturn = WeixinMediaUtils.uploadingMedia(token, m_src.group(3));
-                		String  Conurl = mediaUrlReturn.getUrl();
-                		if(m_src.group(3).trim().endsWith("?x-oss-process=style/xm")){
-                			con= con.replaceFirst(m_pic,Conurl);
-                		} else {
-                			con= con.replaceFirst(m_src.group(3),Conurl);
-                		}
-                	} 
-
-                }
-                result_img=m.find();
-            }
-		}
-		return con;
-    }
 	
 	public static String saveImage(String BaseDir,String imgUrl) {
 		URL url = null;

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.waremec.framework.dao.CommonDao;
-import com.waremec.wpt.admin.domain.AdminGoods;
+import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 import com.waremec.wpt.front.domain.SessionSkin;
 
@@ -28,7 +28,17 @@ public class BbcDao extends CommonDao{
 		return (BbcAtrClbBbd)getSqlMapClientTemplate().queryForObject(sqlId, searchMap);
 	}
 	
-	
+
+	@SuppressWarnings("deprecation")
+	public SessionMember getSessionMemberById(String openid) {
+		try {
+			return (SessionMember)getSqlMapClientTemplate().queryForObject("Bbc.getSessionMemberById",openid);
+		} catch (Exception e) {
+			logger.error("++++++++++++++++++++++++++++++++++++++++++++++++++=");
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 
 	

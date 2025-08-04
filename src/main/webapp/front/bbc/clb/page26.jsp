@@ -38,7 +38,7 @@
         
         /* 메인 컨텐츠 영역 (대기열 + 코트) */
         #main-content {
-            display: flex;
+/*             display: flex; */
             gap: 20px;
             flex-grow: 1;
             min-height: 500px;
@@ -159,12 +159,14 @@
         .player-tag {
             background-color: #e9ecef; border: 1px solid #ced4da;
             border-radius: 5px; padding: 6px 6px;
-            text-align: center; font-size: 15px;
-            font-weight: 500; cursor: pointer;
-            max-width: 70px; 
-            overflow: hidden; 
-/*             text-overflow: ellipsis;  */
-/*             white-space: nowrap;  */
+            text-align: center; 
+            font-size: 2.5rem;
+            font-weight: 500; 
+            cursor: pointer;
+            max-width: 12rem;
+/*             overflow: hidden;  */
+/*             text-overflow: ellipsis; */
+/*             white-space: nowrap; */
             transition: all 0.2s ease;
         }
         #waiting-list .player-tag:hover {
@@ -327,10 +329,6 @@
 
     <div id="app-container">
         <div id="main-content">
-            <div id="global-queue-wrapper">
-                <h2>전체 대기열</h2>
-                <div id="global-queue"></div>
-            </div>
             <div id="courts-wrapper">
                 <div class="header">
                     <h1>코트 개수</h1>
@@ -346,6 +344,10 @@
                     </button>
                 </div>
                 <div id="court-grid"></div>
+            </div>
+            <div id="global-queue-wrapper" style="margin-top: 10px;">
+                <h2>전체 대기열</h2>
+                <div id="global-queue"></div>
             </div>
         </div>
         <div id="waiting-list-container">
@@ -458,10 +460,9 @@
 	
     <script>
     $(document).ready(function() {
-        // --- Mock API & 데이터베이스 ---
         var mockDB = {
             players: [],
-            allClubMembers: [ // // ADDED: 시뮬레이션을 위한 전체 회원 목록
+            allClubMembers: [
                 {id: 'user101', name: '김민준', level: 'a', bbc: 901, clb: 1},
                 {id: 'user102', name: '이서연', level: 'b', bbc: 551, clb: 1},
                 {id: 'user103', name: '박도윤', level: 'c', bbc: 501, clb: 1},
@@ -478,18 +479,16 @@
         var mockAPI = {
             _delay: function(ms) { return new Promise(function(resolve) { setTimeout(resolve, ms); }); },
 
-            // ADDED START: 전체 클럽 회원 목록을 가져오는 가상 API
             getAllClubMembers: async function() {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "EXC_MBR_LIST_2",
 			            para2: "${para2}",
 			            para3: "${para3}"
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                 	var players = serverData.list;
                 	mockDB.allClubMembers = [];
@@ -498,15 +497,12 @@
                     const availableMembers = mockDB.allClubMembers.filter(member => !presentPlayerIds.has(member.id));
                     return JSON.parse(JSON.stringify(availableMembers));
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 			    });
             },
-            // ADDED START: 개별 회원을 행사에 추가하는 가상 API
-            // ADDED START: Mock API to add an individual existing member to the event
             addExistingMemberToEvent: async function(member) {
                 return $.ajax({
-                    url: '/front/bbc/exc/excJinRegSaveG.htm', // 예시 API 엔드포인트
+                    url: '/front/bbc/exc/excJinRegSaveG.htm', 
                     type: 'POST',
                     data: {
 		 	 			intExcsq : "${para3}"
@@ -518,7 +514,6 @@
                     },
                     dataType: 'json'
                 }).then(function(response) {
-                    // 서버 응답 성공 시, 로컬 DB에도 즉시 반영
                     mockDB.players.push(member);
                     return { success: true };
                 }).fail(function() {
@@ -526,18 +521,16 @@
                     throw new Error(member.name + "님 추가 중 오류 발생");
                 });
             },
-            // ADDED END
             getWaitingQueue: async function() {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "GAME_QUEUE_LIST",
 			            para2: "${para2}",
 			            para3: "${para3}"
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                     const newWaitingQueue = serverData.list.map(item => {
                         return {
@@ -548,7 +541,7 @@
                                 name: item.name_a1,
                                 level: item.level_a1,
                                 bbc: item.bbc_a1,
-                                clb: item.CLB_SQ // Assuming 'QUE_SQ' is the source for 'clb'
+                                clb: item.CLB_SQ 
                             }, {
                                 id: item.id_a2,
                                 name: item.name_a2,
@@ -576,21 +569,19 @@
                     mockDB.waitingQueue = newWaitingQueue;
                     return JSON.parse(JSON.stringify(newWaitingQueue));
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 			    });
             },
             getCourts: async function() {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "GAME_QUEUE_COURT_LIST",
 			            para2: "${para2}",
 			            para3: "${para3}"
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                     const courts = serverData.list.map(item => {
                         return {
@@ -602,7 +593,7 @@
                                 name: item.name_a1,
                                 level: item.level_a1,
                                 bbc: item.bbc_a1,
-                                clb: item.QUE_SQ // Assuming 'QUE_SQ' is the source for 'clb'
+                                clb: item.QUE_SQ 
                             }, {
                                 id: item.id_a2,
                                 name: item.name_a2,
@@ -634,21 +625,19 @@
                     mockDB.courts = sortedCourts;
                     return JSON.parse(JSON.stringify(sortedCourts));
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 			    });
             },
             getPlayers: async function() {
 				    return $.ajax({
 				        url: '/front/bbc/clb/getData.htm',
-				        type: 'POST', // 요청 타입
+				        type: 'POST', 
 				        data: {
-				            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 				            para1: "EXC_MBR_LIST",
 				            para2: "${para2}",
 				            para3: "${para3}"
 				        },
-				        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+				        dataType: 'json' 
 	                }).then(function(serverData) {
 	                	mockDB.players = [];
 	                	var players = serverData.list;
@@ -656,7 +645,6 @@
 						$("#totalWaitingCount").html(" ("+players.length+")");
 	                	return JSON.parse(JSON.stringify(mockDB.players));
 				    }).fail(function(jqXHR, textStatus, errorThrown) {
-				        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 				        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 				    });
             },
@@ -666,16 +654,15 @@
                 }
 			    return $.ajax({
 			        url: '/front/bbc/exc/clbExcJinGsave.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
      					intClbsq : "${para2}"
      		 			,strClbniknm : name
      		 			,intClbbbc : gCoin
      		 			,intExcsq : "${para3}"
     		 	 		,strExcjincmt : ""
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                     return mockAPI.getPlayers();
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -909,20 +896,18 @@
             createAutoGameEvent: async function(targetGameCount, groupingStrategyValue) {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "GAME_QUEUE_AUTO_MAKE_GAME",
 			            para2: "${para2}",
 			            para3: "${para3}",
 			            para4: targetGameCount,
 			            para5: groupingStrategyValue
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                     return { success: true };
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to Create Game:", textStatus, errorThrown);
                     throw new Error("자동 경기 매칭 중 오류 발생");
 			    });
@@ -975,9 +960,6 @@
                 }
             },
             _removeCourt: async function() {
-//                 if (mockDB.courts.length <= 1) {
-//                     throw new Error("최소 1개의 코트가 필요합니다.");
-//                 }
                 const courtToRemove = mockDB.courts[mockDB.courts.length - 1];
                 const liveCourt = mockDB.courts.find(c => c.id === courtToRemove.id);
                 if (liveCourt && liveCourt.teamA && (!Array.isArray(liveCourt.teamA) || liveCourt.teamA.length > 0)) {
@@ -990,20 +972,19 @@
             _initializeDB: function(players, courtCount) {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "EXC_MBR_LIST",
 			            para2: "${para2}",
 			            para3: "${para3}"
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                 	var players = serverData.list;
 	                 mockDB.players = players.map(function(player) {
 		                 return {
-		                     id: player.id,       // user 데이터의 id를 사용
-		                     name: player.name,   // user 데이터의 name을 사용
+		                     id: player.id,       
+		                     name: player.name,   
 		                     level: player.level,
 		                     bbc: player.bbc,
 		                     gameCnt: player.gameCnt,
@@ -1018,7 +999,6 @@
                     fetchAllDataAndRender();
                     startAutoRefreshCountdown();
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 			    });
             }
@@ -1042,7 +1022,6 @@
             });
         }
         
-        // --- UI 렌더링 함수 ---
         function renderAll(data) {
             renderWaitingQueue(data.queue);
             renderCourts(data.courts);
@@ -1055,7 +1034,7 @@
             queueData.forEach(function(team) {
                 var teamHtml = createTeamHtmlFromData2(team.teamA, team.teamB);
                 var waitingTeamHtml =
-                    '<div class="waiting-team game-section" style="margin: 5px;width: 40%;" data-quesq="' + team.queSq + '" data-teamrank="' + team.rank + '">' +
+                    '<div class="waiting-team game-section" style="margin: 5px;width: 46%;" data-quesq="' + team.queSq + '" data-teamrank="' + team.rank + '">' +
                         '<div class="section-header">' +
                             '<span class="section-title">' + team.rank + '순위</span>' +
 //                             '<div class="header-team-labels">' +
@@ -1122,7 +1101,6 @@
             });
         }
 
-        // --- 데이터 기반 HTML 생성 ---
 //         function createPlayerTag(name, id, level, gameCntTag) { return '<div class="player-tag" data-player-id="' + id + '" title="' + name + '"><span class="mdi mdi-alpha-'+level.toLowerCase()+'-circle">'+gameCntTag+'</span><br>' + name + '</div>'; }
         function createPlayerTag(name, id, level, gameCntTag) { return '<div class="player-tag" data-player-id="' + id + '" title="' + name + '">' + name + gameCntTag + '</div>'; }
         function createTeamHtmlFromData(teamA, teamB) {
@@ -1134,18 +1112,17 @@
                 '<div class="players-group">' + teamBGroup + '</div>'
             );
         }
-        function createPlayerTag2(name, id, level, gameCntTag) { return '<div class="player-tag" style="overflow: hidden;height: 60px;" data-player-id="' + id + '" title="' + name + '">' + name + '</div>'; }
+        function createPlayerTag2(name, id, level, gameCntTag) { return '<div class="player-tag" style="overflow: hidden;" data-player-id="' + id + '" title="' + name + '">' + name + '</div>'; }
         function createTeamHtmlFromData2(teamA, teamB) {
             var teamAGroup = (teamA || []).map(function(p) { return p ? createPlayerTag2(p.name, p.id, p.level, "") : ''; }).join('');
             var teamBGroup = (teamB || []).map(function(p) { return p ? createPlayerTag2(p.name, p.id, p.level, "") : ''; }).join('');
             return (
                 '<div class="players-group">' + teamAGroup + '</div>' +
-//                 '<span class="vs">VS</span>' +
+                '<span class="vs">VS</span>' +
                 '<div class="players-group">' + teamBGroup + '</div>'
             );
         }
 
-        // --- 중앙 데이터 로딩 및 새로고침 ---
         async function fetchAllDataAndRender() {
             try {
                 var [queue, courts, players] = await Promise.all([
@@ -1159,7 +1136,6 @@
             }
         }
 
-        // --- 유틸리티 ---
         function showMessage(msg) { $('#message-box').text(msg).fadeIn().delay(2000).fadeOut(); console.log(msg);}
         function toggleFullScreen() {
           if (!document.fullscreenElement) {
@@ -1185,25 +1161,18 @@
             }, 1000);
         }        
         
-        // --- 이벤트 핸들러 ---
         $('#increase-court').on('click', async function() {
             if (mockDB.courts.length >= 10) {
                 showMessage("최대 10개 코트만 생성 가능합니다.");
                 return;
             }
-            
-            // 로딩 화면 표시
             showMessage("코트를 추가 중입니다. 잠시만 기다려 주세요.");
 
             try {
-                // 코트 추가 비동기 함수 호출
                 await mockAPI._addCourt(true);
             } catch (e) {
-                // 에러 발생 시 메시지 표시
                 showMessage('코트 추가 중 오류가 발생했습니다: ' + e.message);
             } finally {
-                // 작업 완료 후 항상 로딩 화면 숨김
-//                 $('#loader-overlay').hide();
             }
         });        
         $('#decrease-court').on('click', async function() {
@@ -1220,8 +1189,8 @@
                 
                 var $selectedLevel = $('#add-player-modal .option-btn.selected');
                 if ($selectedLevel.length === 0) {
-                	showMessage("레벨을 선택해주세요."); // Please select a level.
-                    return; // Stop the function
+                	showMessage("레벨을 선택해주세요."); 
+                    return; 
                 }
                 var bbCoinValue = $selectedLevel.attr('bbCoin');
                 
@@ -1253,7 +1222,6 @@
             }
             try {
                 await mockAPI.addToQueue(teamA_ids, teamB_ids);
-                // 대기열 추가 후 선택 해제
                 $('#waiting-list .player-tag').removeClass('selected selected-team2');
                 await fetchAllDataAndRender();
             } catch(e) { showMessage(e.message); }
@@ -1410,15 +1378,12 @@
         $(document).on('fullscreenchange', function() { $('#fullscreen-btn').html(document.fullscreenElement ? exitFullscreenIcon : fullscreenIcon); });
 
         $('#add-player-modal .option-btn').on('click', function() {
-            // Add 'selected' class to the clicked button and remove it from others
             $(this).addClass('selected').siblings().removeClass('selected');
         });        
         $('#auto-make-game-modal .option-btn').on('click', function() {
-            // Add 'selected' class to the clicked button and remove it from others
             $(this).addClass('selected').siblings().removeClass('selected');
         });
 
-        // ADDED START: 회원 추가 버튼 클릭 이벤트
         $('#add-member-btn').on('click', async function() {
             try {
                 const availableMembers = await mockAPI.getAllClubMembers();
@@ -1429,7 +1394,7 @@
                 } else {
                     availableMembers.forEach(function(member) {
                         const $memberItem = $('<div class="member-item"></div>')
-                            .text(member.name)   // + ' (' + member.level.toUpperCase() + '조)')
+                            .text(member.name)   
                             .data('member-data', member);
                         $list.append($memberItem);
                     });
@@ -1444,31 +1409,27 @@
             var teamA_ids = $('#waiting-list .player-tag.selected').map(function(i, el) { return $(el).data('player-id'); }).get();
             try {
                 await mockAPI.deleteMember(teamA_ids);
-                // 대기열 추가 후 선택 해제
                 $('#waiting-list .player-tag').removeClass('selected selected-team2');
                 await fetchAllDataAndRender();
             } catch(e) { showMessage(e.message); }
         });
     
-        // ADDED START: 자동 경기 매칭 버튼 클릭 이벤트
         $('#auto-make-game-btn').on('click', async function() {
             $('#auto-make-game-modal').css('display', 'flex');
         });
 
-        // ADDED START: 자동 경기 매칭 모달의 '취소' 버튼 이벤트
         $('#cancel-auto-make-game-btn').on('click', function() {
             $('#auto-make-game-modal').hide();
         });
 
-        // ADDED START: 자동 경기 매칭 모달의 '취소' 버튼 이벤트
         $('#create-auto-game-btn').on('click', async function() {
             var targetGameCount = $('#target-game-count').val().trim();
             if (!targetGameCount) { showMessage("인당 최대 경기수를 입력하세요."); return; }
             
             var $selectedLevel = $('#auto-make-game-modal .option-btn.selected');
             if ($selectedLevel.length === 0) {
-            	showMessage("자동 경기 매칭 유형을 선택 하세요."); // Please select a level.
-                return; // Stop the function
+            	showMessage("자동 경기 매칭 유형을 선택 하세요."); 
+                return; 
             }
             var groupingStrategyValue = $selectedLevel.attr('groupingStrategy');
             
@@ -1479,20 +1440,15 @@
             $('#auto-make-game-modal').hide();
             $('#target-game-count').val('');
         });
-        
 
-        
-        // ADDED START: 회원 추가 모달 내 회원 선택 이벤트
         $(document).on('click', '#member-selection-list .member-item', function() {
             $(this).toggleClass('selected');
         });
 
-        // ADDED START: 회원 추가 모달의 '취소' 버튼 이벤트
         $('#cancel-add-member-btn').on('click', function() {
             $('#add-member-modal').hide();
         });
 
-        // ADDED START: 회원 추가 모달의 '추가하기' 버튼 이벤트
         $('#save-members-btn').on('click', async function() {
             const selectedMembers = [];
             $('#member-selection-list .member-item.selected').each(function() {
@@ -1504,13 +1460,12 @@
                     await mockAPI.addExistingMemberToEvent(member);
                 }                
                 showMessage(selectedMembers.length + '명의 회원이 대기자 목록에 추가되었습니다.');
-                await fetchAllDataAndRender(); // UI 새로고침
+                await fetchAllDataAndRender(); 
             }
 
             $('#add-member-modal').hide();
         });
 
-        // ADDED START: 회원 추가 모달의 '추가하기' 버튼 이벤트
         $('#create-auto-game-btn').on('click', async function() {
             const selectedMembers = [];
             $('#member-selection-list .member-item.selected').each(function() {
@@ -1522,13 +1477,11 @@
                     await mockAPI.addExistingMemberToEvent(member);
                 }                
                 showMessage(selectedMembers.length + '명의 회원이 대기자 목록에 추가되었습니다.');
-                await fetchAllDataAndRender(); // UI 새로고침
+                await fetchAllDataAndRender(); 
             }
 
             $('#add-member-modal').hide();
         });
-        
-        // ADDED END
         
         // --- 앱 시작 ---
      	var initialPlayers = JSON.parse("${pageData}".replace(/([a-zA-Z_]+)=/g, '"$1":').replace(/:([a-zA-Z\uac00-\ud7a3].*?)(, |})/g, ':"$1"$2'));

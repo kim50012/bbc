@@ -8,16 +8,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import com.waremec.wpt.admin.domain.AdminGrade;
-import com.waremec.wpt.admin.domain.AdminGroup;
-import com.waremec.wpt.admin.domain.AdminGroupCorp;
-import com.waremec.wpt.admin.domain.AdminMap;
-import com.waremec.wpt.admin.domain.AdminShop;
-import com.waremec.wpt.admin.domain.AdminUser;
-
-
-
-
 
 @Repository("commonDao")
 @SuppressWarnings("unchecked")

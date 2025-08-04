@@ -4,6 +4,7 @@
 
 	<typeAlias alias="sessionSkin" 	type="com.waremec.wpt.front.domain.SessionSkin"/>
 	<typeAlias alias="bbcAtrClbBbd" 	type="com.waremec.wpt.front.domain.BbcAtrClbBbd"/>
+ 	<typeAlias alias="sessionMember" 	type="com.waremec.wpt.domain.SessionMember"/>
 
 	<resultMap id="rltBbcAtrClbBbd" class="bbcAtrClbBbd">
 	    <result property="CLB_BBD_SQ"  		column = "CLB_BBD_SQ"		javaType="java.lang.Integer"      jdbcType="INTEGER"/>
@@ -1645,5 +1646,11 @@
 	    ]]>
 	</select>
 	
+	<select id="getSessionMemberById" parameterClass="string" resultClass="sessionMember">
+		<![CDATA[
+	    	EXEC [dbo].[GET_SESSION_MEMBER_SELECT]
+				  	@OPENID 			 = #value#
+	   	]]> 
+    </select>
 	
 </sqlMap>

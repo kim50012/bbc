@@ -11,27 +11,22 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.baidu.translate.TransApi;
+import com.waremec.framework.action.BaseAction;
 import com.waremec.framework.common.ScopeType;
 import com.waremec.framework.utilities.LabelUtil;
 import com.waremec.framework.utilities.ListUtil;
 import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.framework.utilities.UploadFileUtil;
 import com.waremec.framework.utilities.UploadResult;
-import com.waremec.weixin.action.WeixinBaseAction;
-import com.waremec.weixin.domain.AppInfo;
-import com.waremec.weixin.domain.template.DataItem;
-import com.waremec.weixin.domain.user.SessionMember;
-import com.waremec.weixin.service.KakaoService;
-import com.waremec.weixin.utils.EncryptUtils;
+import com.waremec.wpt.domain.SessionMember;
+import com.waremec.wpt.front.service.KakaoService;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.BbcService;
-import com.waremec.wpt.front.thread.SendMsgThread;
 
 @Controller("bbcAction")
 @Scope(ScopeType.prototype)
-public class BbcAction extends WeixinBaseAction{
+public class BbcAction extends BaseAction{
     private static final long serialVersionUID = 1L;
     private String shopId;
     private String pageId;
@@ -551,25 +546,6 @@ public class BbcAction extends WeixinBaseAction{
 	    String openId = (String) mapResult.get("OPENID");
 	    if (msgOut.equals("S")) {
 		ret = "success";
-	    }
-	    try {
-		String first = "经历(小组A,B,C,D,E) : " + strBmtgd;
-		String keyword1 = strClbniknm;
-		String strClbsq = String.valueOf(intClbsq);
-		String keyword2 = "/front/bbc/clb/clbMbrList.htm?intClbsq=" + strClbsq;
-		String remark = strJingrttxt;
-		AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-		try {
-		    weixinTemplateMessageService.sendNewUserMsg(appInfo, openId, first, keyword1, keyword2, remark);
-		} catch (Exception e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		} catch (Error e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
-	    } catch (Exception e) {
-		logger.info("##### Exception==>" + e.getMessage());
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -1711,61 +1687,6 @@ public class BbcAction extends WeixinBaseAction{
 	    map.put("B_TEAM_NM", strAwynm);
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlATR_MTC_INSERT", map);
 	    renderJSON(mapResult);
-	    /*
-	    	try{
-	    		String openId1 = String.valueOf(mapResult.get("OPENID1"));
-	    		String openId2 = String.valueOf(mapResult.get("OPENID2"));
-	    		String openId3 = String.valueOf(mapResult.get("OPENID3"));
-	    		String openId4 = String.valueOf(mapResult.get("OPENID4"));
-	    		String strMtcsq = String.valueOf(mapResult.get("RST_SQ_OUT"));
-	    		String strClbsq = String.valueOf(mapResult.get("CLB_SQ"));
-	    		String bbc1 = String.valueOf(mapResult.get("BBC_A11"));
-	    		String bbc2 = String.valueOf(mapResult.get("BBC_A21"));
-	    		String bbc3 = String.valueOf(mapResult.get("BBC_B11"));
-	    		String bbc4 = String.valueOf(mapResult.get("BBC_B21"));
-	    		String remark1 = String.valueOf(mapResult.get("TOTAL_BBC_A1"));
-	    		String remark2 = String.valueOf(mapResult.get("TOTAL_BBC_A2"));
-	    		String remark3 = String.valueOf(mapResult.get("TOTAL_BBC_B1"));
-	    		String remark4 = String.valueOf(mapResult.get("TOTAL_BBC_B2"));
-	    		
-	    		String first = strMbrnma1 + "," + strMbrnma2 + " vs " + strMbrnmb1 + "," + strMbrnmb2;
-	    		String keyword1A1 = intAtemscr + "("+bbc1+") : " + intBtemscr+"("+bbc3+")";
-	    		String keyword1A2 = intAtemscr + "("+bbc2+") : " + intBtemscr+"("+bbc3+")";
-	    		String keyword1B1 = intAtemscr + "("+bbc1+") : " + intBtemscr+"("+bbc3+")";
-	    		String keyword1B2 = intAtemscr + "("+bbc1+") : " + intBtemscr+"("+bbc4+")";
-	    		String keyword2 = "/front/bbc/clb/gameResult.htm?intMtcsq="+strMtcsq+"&intClbsq="+strClbsq;
-	    		String keyword3 = "";
-	    		
-	    		if (intAtemscr > intBtemscr) {
-	    			keyword3 = strMbrnma1 + "," + strMbrnma2 + " Victory!!";
-	    		}
-	    		else {
-	    			keyword3 = strMbrnmb1 + "," + strMbrnmb2 + " Victory!!";
-	    		}
-	    						
-	    		if (!openId1.isEmpty()) {
-	    			logger.info("##### sendResultGameMsg==>"+openId1);
-	    	    	AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-	    
-	    			try {
-	    		    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId1, first, keyword1A1, keyword2, keyword3, remark1);
-	    		    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId2, first, keyword1A2, keyword2, keyword3, remark2);
-	    		    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId3, first, keyword1B1, keyword2, keyword3, remark3);
-	    		    	weixinTemplateMessageService.sendResultGameMsg(appInfo,openId4, first, keyword1B2, keyword2, keyword3, remark4);
-	    			} catch (Exception e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			}catch (Error e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			}
-	    			
-	    		}
-	    	}catch(Exception e){
-	    		//e.printStackTrace();
-	    		logger.info("##### Exception==>" +  e.getMessage());
-	    	}
-	        	*/
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    Map<String, Object> mapResult = new HashMap<String, Object>();
@@ -1805,39 +1726,6 @@ public class BbcAction extends WeixinBaseAction{
 	    map.put("MTC_SQ", intMtcsq);		// [경기선수] 경기시퀀스
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlATR_MTC_SINGLES_INSERT", map);
 	    renderJSON(mapResult);
-	    try {
-		String openId1 = String.valueOf(mapResult.get("OPENID1"));
-		String openId2 = String.valueOf(mapResult.get("OPENID2"));
-		String strMtcsq = String.valueOf(mapResult.get("RST_SQ_OUT"));
-		String strClbsq = String.valueOf(mapResult.get("CLB_SQ"));
-		String first = strMbrnma1 + " vs " + strMbrnmb1;
-		String keyword1 = intAtemscr + " : " + intBtemscr;
-		// String keyword2 = "/front/bbc/clb/gameResult.htm?intMtcsq="+strMtcsq+"&intClbsq="+strClbsq;
-		String keyword3 = "";
-		if (intAtemscr > intBtemscr) {
-		    keyword3 = strMbrnma1 + " Victory!!";
-		} else {
-		    keyword3 = strMbrnmb1 + " Victory!!";
-		}
-		String remark = "加油~！";
-		if (!openId1.isEmpty()) {
-		    logger.info("##### sendResultGameMsg==>" + openId1);
-		    AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-		    try {
-			weixinTemplateMessageService.sendResultGameMsg(appInfo, openId1, first, keyword1, "", keyword3, remark);
-			weixinTemplateMessageService.sendResultGameMsg(appInfo, openId2, first, keyword1, "", keyword3, remark);
-		    } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    } catch (Error e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    }
-		}
-	    } catch (Exception e) {
-		// e.printStackTrace();
-		logger.info("##### Exception==>" + e.getMessage());
-	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    Map<String, Object> mapResult = new HashMap<String, Object>();
@@ -3840,34 +3728,6 @@ public class BbcAction extends WeixinBaseAction{
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    returnMap.put("mapResult", mapResult);
 	    renderJSON(returnMap);
-	    try {
-		for (int i = 0; i < mapResult.size(); i++) {
-		    String openid = mapResult.get(i).get("OPENID").toString();
-		    if (!openid.isEmpty()) {
-			String strDt = String.valueOf(mapResult.get(i).get("DT"));
-			String strNick = String.valueOf(mapResult.get(i).get("CLB_NIK_NM"));
-			String first = "운동 참석 공지에 댓글이 달렸습니다.";
-			String keyword1 = first;
-			String keyword2 = strDt;
-			String keyword3 = strNick;
-			String linkUrl = "/front/bbc/exc/excJin.htm?intExcsq=" + intExcsq;
-			String remark = "댓글 보러 가기 ☜";
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-			try {
-			    weixinTemplateMessageService.sendNewReviewMsg(appInfo, openid, first, keyword1, keyword2, keyword3, linkUrl, remark);
-			} catch (Exception e) {
-			    // TODO Auto-generated catch block
-			    e.printStackTrace();
-			} catch (Error e) {
-			    // TODO Auto-generated catch block
-			    e.printStackTrace();
-			}
-		    }
-		}
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
 	    return NONE;
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -3910,48 +3770,6 @@ public class BbcAction extends WeixinBaseAction{
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    returnMap.put("mapResult", mapResult);
 	    renderJSON(returnMap);
-	    map.clear();
-	    map.put("JOP_TYPE", "C");
-	    map.put("LOGIN_USER", loginUserId);
-	    map.put("MBR_SQ", intExcsq);
-	    map.put("MBR_SQ_F", sessionMember.getCustSysId());
-	    List<Map<String, Object>> followUserList = commonService.selectList("Bbc.getFollowUser", map);
-	    try {
-		for (int i = 0; i < followUserList.size(); i++) {
-		    String openid = followUserList.get(i).get("OPENID").toString();
-		    String templateId = "HDxMfVksdC7R87KnyZ2YEtnNsb0HzCLHnn8Xbz2Ajps";	// 用车申请通知
-		    String first = followUserList.get(i).get("FIRSTDATA").toString();
-		    String keyword1 = followUserList.get(i).get("KEYWORD1").toString();
-		    String keyword2 = followUserList.get(i).get("KEYWORD2").toString();
-		    String keyword3 = followUserList.get(i).get("KEYWORD3").toString();
-		    String keyword4 = followUserList.get(i).get("KEYWORD4").toString();
-		    String keyword5 = followUserList.get(i).get("KEYWORD5").toString();
-		    String remark = followUserList.get(i).get("REMARK").toString();
-		    String remark2 = followUserList.get(i).get("REMARK2").toString();
-		    Map<String, DataItem> data = new HashMap<String, DataItem>();
-		    data.put("first", new DataItem(keyword1 + "님이 " + first, DEFAUT_COLOR));
-		    data.put("keyword1", new DataItem(keyword1, DEFAUT_COLOR));
-		    data.put("keyword2", new DataItem(keyword2, DEFAUT_COLOR));
-		    data.put("keyword3", new DataItem(keyword3, DEFAUT_COLOR));
-		    data.put("keyword4", new DataItem(keyword4, DEFAUT_COLOR));
-		    data.put("keyword5", new DataItem(keyword5, DEFAUT_COLOR));
-		    data.put("remark", new DataItem(remark + " \n" + remark2, DEFAUT_COLOR));
-		    String linkUrl = "/front/bbc/exc/excJinCar.htm?intExcsq=" + intExcsq;
-		    AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-		    try {
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openid, data, linkUrl);
-		    } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    } catch (Error e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    }
-		}
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
 	    return NONE;
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -4259,75 +4077,6 @@ public class BbcAction extends WeixinBaseAction{
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    returnMap.put("mapResult", mapResult);
 	    renderJSON(returnMap);
-	    if (strJobtype.equals("I")) {
-		try {
-		    Map<String, Object> searchMap = new HashMap<String, Object>();
-		    searchMap.put("JOP_TYPE", "S");
-		    searchMap.put("LOGIN_USER", loginUserId);
-		    searchMap.put("EXC_SQ", intExcsq);
-		    searchMap.put("REG_MBR_SQ", sessionMember.getCustSysId());
-		    searchMap.put("EXC_ATD_TP", strLngdv);
-		    searchMap.put("EXC_TP", "1001");
-		    Map<String, Object> amsExcList = commonService.select("Bbc.sqlATR_MSG_SELECT", searchMap);
-		    String openId = String.valueOf(amsExcList.get("OPENID"));
-		    if (!openId.isEmpty()) {
-			String strDt = String.valueOf(amsExcList.get("EXC_DATE"));
-			String strTpnm = String.valueOf(amsExcList.get("EXC_TP_NM"));
-			String strNick = String.valueOf(amsExcList.get("NICKNAME"));
-			String first = "신규 콕 신청 통지";
-			String keyword2 = strDt + " [" + strTpnm + "]";
-			String linkUrl = "/front/bbc/exc/msgJin.htm?intClbsq=" + intClbsq + "&intExcsq=" + intExcsq;
-			String remark = strNick + "님 [" + intExcjindly + "통 신청]";
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(sessionMember.getShopId());
-			weixinTemplateMessageService.sendOrderNotPayMsg(appInfo, openId, first, "", keyword2, linkUrl, remark);
-		    }
-		} catch (Exception e) {
-		    // e.printStackTrace();
-		    logger.info("##### Exception==>" + e.getMessage());
-		}
-	    }
-	    if (strJobtype.equals("U") && intExcjintp == 3 && "1001".equals(mapResult.get(0).get("EXC_TP"))) {
-		try {
-		    Map<String, Object> searchMap = new HashMap<String, Object>();
-		    searchMap.put("JOP_TYPE", "A");
-		    searchMap.put("LOGIN_USER", loginUserId);
-		    searchMap.put("EXC_SQ", intMsgsq);
-		    searchMap.put("REG_MBR_SQ", intMbrsq);
-		    Map<String, Object> amsExcList = commonService.select("Bbc.sqlATR_MSG_SELECT", searchMap);
-		    String openId = String.valueOf(amsExcList.get("OPENID1"));
-		    String openId2 = String.valueOf(amsExcList.get("OPENID2"));
-		    String templateId = "roTAZQ0IBQmXwIUE2IebSH3haqCj6uhHiSLg_3DBUwA";	// 成为会员通知
-		    String first = "구매하신 콕 배송이 완료 되었습니다.";
-		    String keyword1 = String.valueOf(amsExcList.get("DT"));
-		    String keyword2 = String.valueOf(amsExcList.get("EXC_JIN_DLY")) + " 통";
-		    String keyword3 = String.valueOf(amsExcList.get("DT"));
-		    String keyword4 = String.valueOf(amsExcList.get("CLB_NIK_NM"));
-		    String keyword5 = "담당자 : " + String.valueOf(amsExcList.get("NIK"));
-		    String remark = "배송에 문제가 있는 경우 담당자(" + String.valueOf(amsExcList.get("NIK")) + ")에게 연락 부탁드립니다.";
-		    Map<String, DataItem> data = new HashMap<String, DataItem>();
-		    data.put("first", new DataItem(first, RED_COLOR));
-		    data.put("keyword1", new DataItem(keyword1, DEFAUT_COLOR));
-		    data.put("keyword2", new DataItem(keyword2, BLUE_COLOR));
-		    data.put("keyword3", new DataItem(keyword3, BLUE_COLOR));
-		    data.put("keyword4", new DataItem(keyword4, DEFAUT_COLOR));
-		    data.put("keyword5", new DataItem(keyword5, DEFAUT_COLOR));
-		    data.put("remark", new DataItem(remark, BLUE_COLOR));
-		    AppInfo appInfo = weixinService.selectAppInfoByShopId(68);
-		    try {
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openId, data, "");
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openId2, data, "");
-		    } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    } catch (Error e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    }
-		} catch (Exception e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
-	    }
 	    return NONE;
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -4731,7 +4480,7 @@ public class BbcAction extends WeixinBaseAction{
 	    
 	    if (msgOut.equals("S")) {
 			SessionMember sessionMember = getSessionMember();
-			sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+			sessionMember = bbcService.getSessionMemberById(strLnkactid);
 			sessionMember.setUserType("WEB");
 			session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
 			logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
@@ -4769,61 +4518,13 @@ public class BbcAction extends WeixinBaseAction{
 	    map.put("MBR_SQ", intMbrsq);
 	    map.put("REQ_SQ", intNtesq);
 	    if (strMbrpw != null) {
-		String strMbrpw_sha = EncryptUtils.sha256(strMbrpw);
-		map.put("PASS", strMbrpw_sha);
+		map.put("PASS", strMbrpw);
 	    }
 	    map.put("PASS_ORG", strMbrpw);
 	    List<Map<String, Object>> mapResult = commonService.selectList("Bbc.sqlUSER_ADD_INSERT", map);
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    returnMap.put("mapResult", mapResult);
 	    renderJSON(returnMap);
-	    try {
-		if ("I".equals(strJobtype)) {
-		    String openid = "orfEm0_ytIhHG9DajyYhD500MCtk";
-		    if (openid != null) {
-			String templateId = "a1UF7jXxDgSuBtoAK4Kxthpqf8zkIeYyBPjwAHqCnvg";
-			String first = strMbrnm + "님께서 웹 아이디 사용 신청을 하였습니다." + "\n";
-			String keyword1 = strMbrid;
-			String keyword2 = strMbrpw + " (비밀번호)";
-			String keyword3 = strClbniknm;
-			String remark = strMmo;
-			Map<String, DataItem> data = new HashMap<String, DataItem>();
-			data.put("first", new DataItem(first, DEFAUT_COLOR));
-			data.put("keyword1", new DataItem(keyword1, DEFAUT_COLOR));
-			data.put("keyword2", new DataItem(keyword2, DEFAUT_COLOR));
-			data.put("keyword3", new DataItem(keyword3, DEFAUT_COLOR));
-			data.put("remark", new DataItem(remark, DEFAUT_COLOR));
-			String linkUrl = "https://mp.weixin.qq.com/s/O9mXMQ5Z_fYxHpc1jvGbWA";
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(68);
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openid, data, linkUrl);
-		    }
-		}
-		if ("U".equals(strJobtype)) {
-		    String openid = strLnkactid;
-		    if (openid != null) {
-			String templateId = "3I7uRXgeCnjTTd67eaqHCEoWoZ0ATSUVfn0k9-fNfDE";	// 用车申请通知
-			String first = "신청한 웹 아이디 승인이 되었습니다." + "\n";
-			String keyword1 = strMbrid;
-			String keyword2 = strMbrnm;
-			String keyword3 = strMbrpw + " (비밀번호)";
-			String keyword4 = datRegdt;
-			String remark = "아래 URL 을 복사하시고 위챗이 아닌 일반 인터넷 어플에서 접속하세요." + "\n" + "\n" + "http://39.104.55.19/front/bbc/mbr/bbcLogin.htm";
-			Map<String, DataItem> data = new HashMap<String, DataItem>();
-			data.put("first", new DataItem(first, DEFAUT_COLOR));
-			data.put("keyword1", new DataItem(keyword1, DEFAUT_COLOR));
-			data.put("keyword2", new DataItem(keyword2, DEFAUT_COLOR));
-			data.put("keyword3", new DataItem(keyword3, DEFAUT_COLOR));
-			data.put("keyword4", new DataItem(keyword4, DEFAUT_COLOR));
-			data.put("remark", new DataItem(remark, DEFAUT_COLOR));
-			String linkUrl = "https://mp.weixin.qq.com/s/O9mXMQ5Z_fYxHpc1jvGbWA";
-			AppInfo appInfo = weixinService.selectAppInfoByShopId(68);
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openid, data, linkUrl);
-		    }
-		}
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
@@ -4839,14 +4540,13 @@ public class BbcAction extends WeixinBaseAction{
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("JOP_TYPE", "C");
 	    map.put("MBR_ID", strMbrid);
-	    // strMbrpw = EncryptUtils.sha256(strMbrpw);
 	    map.put("MBR_PW", strMbrpw);		// [경기] 운동 시퀀스
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
 	    String msgOut = (String) mapResult.get("MSG_OUT");
 	    String strLnkactid = (String) mapResult.get("LNK_ACT_ID");
 	    if (msgOut.equals("S")) {
 		SessionMember sessionMember = getSessionMember();
-		sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+		sessionMember = bbcService.getSessionMemberById(strLnkactid);
 		sessionMember.setUserType("WEB");
 		session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
 		logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
@@ -4854,7 +4554,7 @@ public class BbcAction extends WeixinBaseAction{
 	    }
 	    if (msgOut.equals("KAKAO_NOT_ASSGIN")) {
 		SessionMember sessionMember = getSessionMember();
-		sessionMember = weixinUserService.getSessionMemberById(strLnkactid);
+		sessionMember = bbcService.getSessionMemberById(strLnkactid);
 		sessionMember.setUserType("WEB");
 		session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
 		logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
@@ -4970,7 +4670,6 @@ public class BbcAction extends WeixinBaseAction{
 	    map.put("LOGIN_USER", loginUserId);
 	    map.put("MBR_SQ", intMbrsq);
 	    map.put("MBR_ID", strMbrid);
-	    strMbrpw = EncryptUtils.sha256(strMbrpw);
 	    map.put("MBR_PW", strMbrpw);
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
 	    String msgOut = (String) mapResult.get("MSG_OUT");
@@ -5205,7 +4904,6 @@ public class BbcAction extends WeixinBaseAction{
 	    map.put("LOGIN_USER", loginUserId);
 	    map.put("MBR_SQ", intMbrsq);
 	    map.put("MBR_ID", strMbrid);
-	    strMbrpw = EncryptUtils.sha256(strMbrpw);
 	    map.put("MBR_PW", strMbrpw);
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
 	    String msgOut = (String) mapResult.get("MSG_OUT");
@@ -5284,7 +4982,6 @@ public class BbcAction extends WeixinBaseAction{
     }
 
     public String translate(){
-	TransApi api = new TransApi("20200326000406091", "d9anDSPWm9Rkm65hFSaI");
 	String ret = "";
 	SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
 	if (sessionMember == null) {
@@ -5301,12 +4998,7 @@ public class BbcAction extends WeixinBaseAction{
 	    }
 	}
 	try {
-	    if ("org".equals(para4)) {
-		ret = api.getTransResult(para1, para2, para3);
-	    } else {
-		ret = api.getTransResult(para1, para3, para2);
-	    }
-	    renderJSON(ret);
+	    renderJSON(para1);
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    ret = "fail";
@@ -5369,52 +5061,6 @@ public class BbcAction extends WeixinBaseAction{
 	    request.put("strLngdv", strLngdv);
 	}
 	try {
-	    Map<String, Object> searchMap = new HashMap<String, Object>();
-	    searchMap.put("P1", "SEND_FEE");
-	    searchMap.put("P2", 9);
-	    searchMap.put("P3", para3);
-	    searchMap.put("P4", para4);
-	    searchMap.put("P5", para5);
-	    searchMap.put("P6", para6);
-	    searchMap.put("P7", para7);
-	    searchMap.put("P8", para8);
-	    searchMap.put("P9", para9);
-	    List<Map<String, Object>> followUserList = commonService.selectList("Bbc.sqlAMS_COMMON_PROCEDURE", searchMap);
-	    try {
-		for (int i = 0; i < followUserList.size(); i++) {
-		    String templateId = "J78mI9jBFhnt09V9exTz-bls9tJgEN7LDmmP9Tyw7Fs";	// 成为会员通知
-		    String openid = followUserList.get(i).get("OPENID").toString();
-		    String first = "※ 북경 배드민턴 클럽 회비 납부 공지 ※";
-		    String keyword1 = followUserList.get(i).get("CLB_NIK_NM").toString();
-		    String keyword2 = followUserList.get(i).get("MOBILE").toString();
-		    String keyword3 = followUserList.get(i).get("MBR_SQ").toString();
-		    String keyword4 = followUserList.get(i).get("MMO").toString();
-		    String keyword5 = followUserList.get(i).get("DT").toString();
-		    String remark = "\n" + "이 메시지를 클릭하시면 QR 코드로 연결됩니다." + "\n" + "QR 코드를 스캔하시고 친구 추가 후 재무님께 회비 납부 부탁드립니다~";
-		    Map<String, DataItem> data = new HashMap<String, DataItem>();
-		    data.put("first", new DataItem(first, RED_COLOR));
-		    data.put("keyword1", new DataItem(keyword1, BLUE_COLOR));
-		    data.put("keyword2", new DataItem(keyword2, DEFAUT_COLOR));
-		    data.put("keyword3", new DataItem(keyword3, DEFAUT_COLOR));
-		    data.put("keyword4", new DataItem(keyword4, DEFAUT_COLOR));
-		    data.put("keyword5", new DataItem(keyword5, DEFAUT_COLOR));
-		    data.put("remark", new DataItem(remark, BLUE_COLOR));
-		    String linkUrl = "http://bbc.manhuaking.cn/images/FEEQR.jpg";
-		    AppInfo appInfo = weixinService.selectAppInfoByShopId(68);
-		    try {
-			weixinTemplateMessageService.senMsgByMap(appInfo, templateId, openid, data, linkUrl);
-		    } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    } catch (Error e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		    }
-		}
-	    } catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	    }
 	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    returnMap.put("ret", "SUCCESS");
 	    renderJSON(returnMap);
