@@ -549,9 +549,16 @@ public class KakaoService extends CommonServiceImpl implements CommonService  {
 
     
 
-    public void sendMsgToMe(String accessToken, String msg, String linkUrl){
+    public void sendMsgToMe(String accessToken, String msg, String linkUrl, String btnNm){
 
+	String button_title = btnNm;
+	
         try {
+            
+            if ("".equals(button_title) || button_title.isEmpty()) {
+        	button_title = "상세 내용 확인";
+            }
+            
             URL url = new URL(KAKAO_SEND_MSG_TO_ME_URL);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -569,7 +576,7 @@ public class KakaoService extends CommonServiceImpl implements CommonService  {
             templateObject.addProperty("object_type", "text");
             templateObject.addProperty("text", msg); // 변수 사용
             templateObject.add("link", linkObject); // 위에서 만든 linkMap을 값으로 추가
-            templateObject.addProperty("button_title", "상세 내용 확인");
+            templateObject.addProperty("button_title", button_title);
             
             String templateObjectJson = templateObject.toString();
             System.out.println(templateObjectJson);

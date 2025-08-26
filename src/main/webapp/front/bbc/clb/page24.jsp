@@ -633,7 +633,12 @@
 					const newCourts = mockDB.courts.filter(mockCourt => 
 					    !courts.some(existingCourt => existingCourt.id === mockCourt.id)
 					);
-                    courts.push(...newCourts);
+                    const initializedNewCourts = newCourts.map(court => ({
+                        ...court, // 스프레드 연산자로 기존 객체의 모든 속성을 그대로 가져옵니다.
+                        teamA: [], // teamA를 빈 배열로 초기화합니다.
+                        teamB: []  // teamB를 빈 배열로 초기화합니다.
+                    }));
+                    courts.push(...initializedNewCourts);
                     const sortedCourts = [...courts].sort((a, b) => a.name.localeCompare(b.name));
                     mockDB.courts = [];
                     mockDB.courts = sortedCourts;
@@ -727,20 +732,21 @@
                     },
                     dataType: 'json'
                 }).then(function(serverData) {
+                    var urlLink = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}";
                     if (emptyCourt) {
                         showMessage("경기 등록되었으니 바로 경기를 시작하세요.");
                         var msg = "경기 등록되었으니 바로 경기를 시작하세요.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
-                        sendMsg(team.teamA[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamA[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamB[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamB[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
+                        sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
                     } else {
                         showMessage("대기열에 등록되었습니다.");
                         var msg = "대기열에 등록되었습니다.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
-                        sendMsg(team.teamA[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamA[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamB[0].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
-                        sendMsg(team.teamB[1].id, msg, "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}");
+                        sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
+                        sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
                     }
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -825,18 +831,21 @@
                     showMessage("경기가 종료되었습니다.");
                     var msg = "";
                     var linkUrl = "";
+                    var btnNm = "";
                     if (winner == "C") {
                         msg = "경기가 취소되었습니다.\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2;
                         linkUrl = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page24&para1=EXC_MBR_LIST&para2=${para2}&para3=${para3}";
+                        btnNm = "다시하기";
                     }
                     else {
                         msg = "※ 경기가 종료되었습니다.\n\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2 + "\n\n아래 버튼을 클릭하여 이긴팀을 확인하세요~!";
                         linkUrl = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page25&para1="+winner+"&para2=${para2}&para3=${para3}&para4="+queSq;
+                        btnNm = "결과보기";
                     }
-                    sendMsg(id_a1, msg, linkUrl);
-                    sendMsg(id_a2, msg, linkUrl);
-                    sendMsg(id_b1, msg, linkUrl);
-                    sendMsg(id_b2, msg, linkUrl);
+                    sendMsg(id_a1, msg, linkUrl, btnNm);
+                    sendMsg(id_a2, msg, linkUrl, btnNm);
+                    sendMsg(id_b1, msg, linkUrl, btnNm);
+                    sendMsg(id_b2, msg, linkUrl, btnNm);
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("API: Failed to fetch players:", textStatus, errorThrown);
@@ -1030,7 +1039,7 @@
         };
 
 
-        function sendMsg(mbrSq, msg, link) {
+        function sendMsg(mbrSq, msg, link, btnNm) {
         	$.ajax({
                 url: '/front/bbc/badMatch/sendMsgToKakao.htm',
                 type: 'POST',
@@ -1038,6 +1047,7 @@
                     para2: mbrSq,
                     para3: msg,
                     para4: link,
+                    para5: btnNm
                 },
                 dataType: 'json'
             }).then(function(serverData) {
