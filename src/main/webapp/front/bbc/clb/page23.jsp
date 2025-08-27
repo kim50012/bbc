@@ -583,34 +583,36 @@
             getCourts: async function() {
 			    return $.ajax({
 			        url: '/front/bbc/clb/getData.htm',
-			        type: 'POST', // 요청 타입
+			        type: 'POST', 
 			        data: {
-			            // 데이터를 객체 형태로 전달하면 jQuery가 알아서 처리해줍니다.
 			            para1: "GAME_QUEUE_COURT_LIST",
 			            para2: "${para2}",
 			            para3: "${para3}"
 			        },
-			        dataType: 'json' // 서버로부터 JSON 형식의 응답을 기대함을 명시합니다.
+			        dataType: 'json' 
                 }).then(function(serverData) {
                     const courts = serverData.list.map(item => {
+                        // Check if teamA and teamB player IDs are valid (not null/empty)
+                        const isTeamAValid = item.id_a1 && item.id_a1 !== '' && item.id_a2 && item.id_a2 !== '';
+                        const isTeamBValid = item.id_b1 && item.id_b1 !== '' && item.id_b2 && item.id_b2 !== '';
                         return {
                             id: item.id,
                             name: item.name,
                             queSq: item.queSq,
-                            teamA: [{
+                            teamA: isTeamAValid ? [{
                                 id: item.id_a1,
                                 name: item.name_a1,
                                 level: item.level_a1,
                                 bbc: item.bbc_a1,
-                                clb: item.QUE_SQ // Assuming 'QUE_SQ' is the source for 'clb'
+                                clb: item.QUE_SQ 
                             }, {
                                 id: item.id_a2,
                                 name: item.name_a2,
                                 level: item.level_a2,
                                 bbc: item.bbc_a2,
                                 clb: item.QUE_SQ
-                            }],
-                            teamB: [{
+                            }] : [],
+                            teamB: isTeamBValid ? [{
                                 id: item.id_b1,
                                 name: item.name_b1,
                                 level: item.level_b1,
@@ -622,24 +624,14 @@
                                 level: item.level_b2,
                                 bbc: item.bbc_b2,
                                 clb: item.QUE_SQ
-                            }]
+                            }] : []
                         };
                     });
-					const newCourts = mockDB.courts.filter(mockCourt => 
-					    !courts.some(existingCourt => existingCourt.id === mockCourt.id)
-					);
-                    const initializedNewCourts = newCourts.map(court => ({
-                        ...court, // 스프레드 연산자로 기존 객체의 모든 속성을 그대로 가져옵니다.
-                        teamA: [], // teamA를 빈 배열로 초기화합니다.
-                        teamB: []  // teamB를 빈 배열로 초기화합니다.
-                    }));
-                    courts.push(...initializedNewCourts);
                     const sortedCourts = [...courts].sort((a, b) => a.name.localeCompare(b.name));
                     mockDB.courts = [];
                     mockDB.courts = sortedCourts;
                     return JSON.parse(JSON.stringify(sortedCourts));
 			    }).fail(function(jqXHR, textStatus, errorThrown) {
-			        // 오류 발생 시 콘솔에 상세 정보를 출력합니다.
 			        console.error("API: Failed to fetch players:", textStatus, errorThrown);
 			    });
             },
@@ -731,17 +723,17 @@
                     if (emptyCourt) {
                         showMessage("경기 등록되었으니 바로 경기를 시작하세요.");
                         var msg = "경기 등록되었으니 바로 경기를 시작하세요.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
-                        sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
                     } else {
                         showMessage("대기열에 등록되었습니다.");
                         var msg = "대기열에 등록되었습니다.\n\n" + team.teamA[0].name + ", " + team.teamA[1].name + " vs " + team.teamB[0].name + ", " + team.teamB[1].name
-                        sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
-                        sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamA[0].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamA[1].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamB[0].id, msg, urlLink, "상세보기");
+//                         sendMsg(team.teamB[1].id, msg, urlLink, "상세보기");
                     }
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -836,11 +828,11 @@
                         msg = "※ 경기가 종료되었습니다.\n\n" + nm_a1 + ", " + nm_a2 + " vs " + nm_b1 + ", " + nm_b2 + "\n\n아래 버튼을 클릭하여 이긴팀을 확인하세요~!";
                         linkUrl = "http://kr.bbcoin.net:8080/front/bbc/clb/getPage.htm?intClbsq=59&pageName=page25&para1="+winner+"&para2=${para2}&para3=${para3}&para4="+queSq;
                         btnNm = "결과보기";
+                        sendMsg(id_a1, msg, linkUrl, btnNm);
+                        sendMsg(id_a2, msg, linkUrl, btnNm);
+                        sendMsg(id_b1, msg, linkUrl, btnNm);
+                        sendMsg(id_b2, msg, linkUrl, btnNm);
                     }
-                    sendMsg(id_a1, msg, linkUrl, btnNm);
-                    sendMsg(id_a2, msg, linkUrl, btnNm);
-                    sendMsg(id_b1, msg, linkUrl, btnNm);
-                    sendMsg(id_b2, msg, linkUrl, btnNm);
                     return { success: true };
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     console.error("API: Failed to fetch players:", textStatus, errorThrown);
@@ -946,19 +938,17 @@
                 if (mockDB.waitingQueue.length > 0) {
                     var nextTeam = mockDB.waitingQueue.shift();
                     nextTeamQueSq = nextTeam.queSq;
-                    newCourt.teamA = nextTeam.teamA;
-                    newCourt.teamB = nextTeam.teamB;
                     mockDB.waitingQueue.forEach(function(t, i) { t.rank = i + 1; });
 
-                    mockDB.courts.push(newCourt);
                     mockDB.nextCourtId++;
 
                     $.ajax({
                         url: '/front/bbc/clb/getData.htm',
                         type: 'POST',
                         data: {
-                            para1: "GAME_QUEUE_START_GAME",
-                            para3: newCourt.id,
+                            para1: "GAME_QUEUE_ADD_COURT",
+                            para2: "WITH_QUE",
+                            para3: "${para3}",
                             para4: nextTeamQueSq,
                         },
                         dataType: 'json'
@@ -967,34 +957,52 @@
                         if (reFresh) {
                             fetchAllDataAndRender();
                         }
-                        return newCourt;
+                        return { success: true };
                     }).fail(function(jqXHR, textStatus, errorThrown) {
-                        console.error("API: Failed to fetch players:", textStatus, errorThrown);
+                        console.error("API: Failed to fetch courts:", textStatus, errorThrown);
                         return { success: false };
                     });
                 }
                 else {
-                    showMessage("코트가 추가 되었습니다.");
-                    if (reFresh) {
-                        fetchAllDataAndRender();
-                    }
-                    mockDB.courts.push(newCourt);
-                    mockDB.nextCourtId++;
-                    return newCourt;
+
+                    $.ajax({
+                        url: '/front/bbc/clb/getData.htm',
+                        type: 'POST',
+                        data: {
+                            para1: "GAME_QUEUE_ADD_COURT",
+                            para2: "NEW",
+                            para3: "${para3}",
+                            para4: nextTeamQueSq,
+                        },
+                        dataType: 'json'
+                    }).then(function(serverData) {
+                        showMessage("새 코트가 추가 되었습니다.");
+                        if (reFresh) {
+                            fetchAllDataAndRender();
+                        }                        
+                        return { success: true };
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        console.error("API: Failed to fetch courts:", textStatus, errorThrown);
+                        return { success: false };
+                    });
                 }
             },
             _removeCourt: async function() {
-//                 if (mockDB.courts.length <= 1) {
-//                     throw new Error("최소 1개의 코트가 필요합니다.");
-//                 }
-                const courtToRemove = mockDB.courts[mockDB.courts.length - 1];
-                const liveCourt = mockDB.courts.find(c => c.id === courtToRemove.id);
-                if (liveCourt && liveCourt.teamA && (!Array.isArray(liveCourt.teamA) || liveCourt.teamA.length > 0)) {
-                    throw new Error("코트 " + courtToRemove.name + "에는 팀이 배정되어 삭제할 수 없습니다.");
-                }
-                const removedCourt = mockDB.courts.pop();
-                mockDB.nextCourtId = mockDB.nextCourtId - 1;
-                return removedCourt;
+                $.ajax({
+                    url: '/front/bbc/clb/getData.htm',
+                    type: 'POST',
+                    data: {
+                        para1: "GAME_QUEUE_DELETE_COURT",
+                        para3: "${para3}",
+                    },
+                    dataType: 'json'
+                }).then(function(serverData) {
+                    fetchAllDataAndRender();
+                    return { success: true };
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("API: Failed to delete courts:", textStatus, errorThrown);
+                    return { success: false };
+                });
             },
             _initializeDB: function(players, courtCount) {
 			    return $.ajax({
