@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import com.waremec.wpt.front.domain.SessionSkin;
-
 public class UploadFileUtil {
 
 	public static final String ROOT = "/uploads";
@@ -41,13 +39,7 @@ public class UploadFileUtil {
 		if(UPLOAD_LOGO.equals(uploadType)){
 			path = ROOT + "/" + UPLOAD_LOGO + generateFilePath();
 		}else if(UPLOAD_WEIXIN.equals(uploadType)){
-			SessionSkin sessionSkin = (SessionSkin) request.getSession().getAttribute(SessionUtils.SESSION_SKIN);
-			if(sessionSkin != null){
-				path = ROOT + "/" + UPLOAD_WEIXIN+ "/" + sessionSkin.getShopId() + generateFilePath();
-			}else{
-				path = ROOT + "/" + UPLOAD_WEIXIN + generateFilePath();
-			}
-			
+			path = ROOT + "/" + UPLOAD_WEIXIN + generateFilePath();
 		}else if(UPLOAD_MATERIAL.equals(uploadType)){
 			path = ROOT + "/" + UPLOAD_MATERIAL + generateFilePath();
 		}else if(UPLOAD_QRCODE.equals(uploadType)){

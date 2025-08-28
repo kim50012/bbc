@@ -8,15 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.waremec.framework.dao.CommonDao;
 import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
-import com.waremec.wpt.front.domain.SessionSkin;
 
 @Repository
 public class BbcDao extends CommonDao{
-	
-	public SessionSkin getSessionSkinByShopId(Integer shopId) {
-		// TODO Auto-generated method stub
-		return (SessionSkin)getSqlMapClientTemplate().queryForObject("Bbc.getSessionSkinByShopIdBbc",shopId);
-	}
 
 	public List<BbcAtrClbBbd> selectBbcAtrClbBbd(String sqlId, Map<String, Object> searchMap) {
 		// TODO Auto-generated method stub

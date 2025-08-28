@@ -2,8 +2,6 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 <sqlMap namespace="Main">
 
-	<typeAlias alias="sessionSkin" 	type="com.waremec.wpt.front.domain.SessionSkin"/>
-
 	<parameterMap id="getTemplateMainProductTemp04Params" class="java.util.Map"> 
 	    <parameter property="SHOP_ID"  	javaType="java.lang.String"      jdbcType="INTEGER" mode="IN"/>
 	    <parameter property="IS_REAL" 	javaType="java.lang.String"      jdbcType="TINYINT" mode="IN"/>
@@ -161,44 +159,6 @@
 	  FROM [dbo].[PAGE_SHOP]
 	 WHERE [SHOP_ID]=#SHOP_ID:INT#
 	</select>	
-	
-	<select id="getSessionSkinByShopId" parameterClass="java.lang.Integer" resultClass="sessionSkin">
-	     <![CDATA[
-		 	EXEC [SHOP_SESSIONSKIN_SELECT] 
-		 	@SHOP_ID	= #value#
-		]]>
-<!--     <![CDATA[ -->
-<!-- 	SELECT  /* Main.getSessionSkinByShopId */   -->
-<!-- 		  T1.[SHOP_ID]					AS shopId -->
-<!-- 	      ,T1.[SKIN_TYPE_SHOP]			AS skinTypeShop -->
-<!-- 	      ,T1.[SKIN_TYPE_WEB]			AS skinTypeWeb -->
-<!-- 	      ,T1.[PAGE_ID_SHOP_MAIN]		AS pageIdShopMain -->
-<!-- 	      ,T1.[PAGE_ID_SHOP_LIST]		AS pageIdShopList -->
-<!-- 	      ,T1.[PAGE_ID_SHOP_DETAIL]	AS pageIdShopDetail -->
-<!-- 	      ,T1.[PAGE_ID_SHOP_HOME]		AS pageIdShopHome -->
-<!-- 		  ,( -->
-<!-- 			SELECT  B.FULL_URL -->
-<!-- 			FROM	SHOP AS A -->
-<!-- 					INNER JOIN SHOP_FILE_MST B -->
-<!-- 							ON A.IMG_LOGO_PIC = B.[FILE_ID] -->
-<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
-<!-- 		    ) 						AS shopLogoImgUrl -->
-<!-- 		  ,( -->
-<!-- 			SELECT  A.SHOP_NM -->
-<!-- 			FROM	SHOP AS A -->
-<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
-<!-- 		    ) 						AS shopName	 -->
-<!-- 		  ,( -->
-<!-- 			SELECT  B.FULL_URL -->
-<!-- 			FROM	SHOP AS A -->
-<!-- 					INNER JOIN SHOP_FILE_MST B -->
-<!-- 							ON A.IMG_2D_BARCODE = B.[FILE_ID] -->
-<!-- 			WHERE A.SHOP_ID = T1.SHOP_ID -->
-<!-- 		    ) 						AS shopQRImgUrl -->
-<!-- 	  FROM [dbo].[PAGE_SHOP] T1 -->
-<!-- 	 WHERE T1.[SHOP_ID]=#SHOP_ID:INT#	  -->
-<!--     ]]> -->
-	</select>
 	
 	<procedure id="getNavigationList"  parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
 	     <![CDATA[

@@ -19,10 +19,9 @@ import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.framework.utilities.UploadFileUtil;
 import com.waremec.framework.utilities.UploadResult;
 import com.waremec.wpt.domain.SessionMember;
-import com.waremec.wpt.front.service.KakaoService;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
-import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.BbcService;
+import com.waremec.wpt.front.service.KakaoService;
 
 @Controller("bbcAction")
 @Scope(ScopeType.prototype)
@@ -3828,8 +3827,8 @@ public class BbcAction extends BaseAction{
     // ---------------------------------------------------------------
     public String itd(){
 	try {
-	    SessionSkin sessionSkin = (SessionSkin) session.get(SessionUtils.SESSION_SKIN);
-	    shopId = sessionSkin.getShopId().toString();
+	    // SessionSkin sessionSkin = (SessionSkin) session.get(SessionUtils.SESSION_SKIN);
+	    shopId = "59";
 	    pageUnit = 30;
 	    Map<String, Object> magazineMap = new HashMap<String, Object>();
 	    magazineMap.put("SHOP_ID", shopId);
@@ -4429,11 +4428,10 @@ public class BbcAction extends BaseAction{
 	String ret;
 	Map<String, Object> returnMap = new HashMap<String, Object>();
 	try {
-//	    String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
+	    // String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
 	    Map<String, Object> accessTokenMap = kakaoService.getAccessTokenNew(code, "userAddRequest");
 	    String accessToken = (String) accessTokenMap.get("access_token");
 	    Map<String, Object> userInfo = kakaoService.getUserInfo(accessToken);
-	    
 	    String email = userInfo.get("email").toString();
 	    String thumbnail_image = userInfo.get("thumbnail_image").toString();
 	    String phone_number = userInfo.get("phone_number").toString();
@@ -4441,7 +4439,6 @@ public class BbcAction extends BaseAction{
 	    String gender = userInfo.get("gender").toString();
 	    String uuid = userInfo.get("uuid").toString();
 	    String profile_image = userInfo.get("profile_image").toString();
-	    
 	    Map<String, Object> mapHist = new HashMap<String, Object>();
 	    String token_type = (String) accessTokenMap.get("token_type");
 	    String id_token = (String) accessTokenMap.get("id_token");
@@ -4458,13 +4455,12 @@ public class BbcAction extends BaseAction{
 	    mapHist.put("REFRESH_TOKEN_EXPIRES_IN", refresh_token_expires_in);
 	    mapHist.put("SCOPE", scope);
 	    Map<String, Object> mapResultHistory = commonService.select("Bbc.sqlAMS_MBR_TOKEN", mapHist);
-//	    logger.info("email----->" + email);
-//	    if ("kim50012@kakao.com".equals(email)) {
-//	    	logger.info("accessToken 1----->" + accessToken);
-//		    Map<String, Object> friendsInfo = kakaoService.getFriendsInfo(accessToken);
-//		    kakaoService.sendMsgToMe(accessToken, "dddd", "");
-//	    }
-	    
+	    // logger.info("email----->" + email);
+	    // if ("kim50012@kakao.com".equals(email)) {
+	    // logger.info("accessToken 1----->" + accessToken);
+	    // Map<String, Object> friendsInfo = kakaoService.getFriendsInfo(accessToken);
+	    // kakaoService.sendMsgToMe(accessToken, "dddd", "");
+	    // }
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("JOP_TYPE", "KAKAO");
 	    map.put("MBR_ID", email);
@@ -4477,16 +4473,15 @@ public class BbcAction extends BaseAction{
 	    Map<String, Object> mapResult = commonService.select("Bbc.sqlAMS_MBR_INSERT", map);
 	    String msgOut = (String) mapResult.get("MSG_OUT");
 	    String strLnkactid = (String) mapResult.get("LNK_ACT_ID");
-	    
 	    if (msgOut.equals("S")) {
-			SessionMember sessionMember = getSessionMember();
-			sessionMember = bbcService.getSessionMemberById(strLnkactid);
-			sessionMember.setUserType("WEB");
-			session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
-			logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
-			ret = "success";
+		SessionMember sessionMember = getSessionMember();
+		sessionMember = bbcService.getSessionMemberById(strLnkactid);
+		sessionMember.setUserType("WEB");
+		session.put(SessionUtils.SESSION_MEMEBER, sessionMember);
+		logger.info("BBC0001: new sessionMember.. openid=" + strLnkactid);
+		ret = "success";
 	    } else {
-	    	ret = "addUserInfo";
+		ret = "addUserInfo";
 	    }
 	    request.put("strPtourl", strPtourl);
 	    request.put("thumbnail_image", thumbnail_image);

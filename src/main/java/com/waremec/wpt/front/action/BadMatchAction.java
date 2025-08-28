@@ -1,682 +1,640 @@
 package com.waremec.wpt.front.action;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.waremec.framework.action.BaseAction;
-import com.waremec.framework.common.PageData;
 import com.waremec.framework.common.ScopeType;
-import com.waremec.framework.utilities.ListUtil;
 import com.waremec.framework.utilities.SessionUtils;
-import com.waremec.framework.utilities.StringUtil;
-import com.waremec.framework.utilities.UploadFileUtil;
-import com.waremec.framework.utilities.UploadResult;
 import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.service.KakaoService;
-import com.waremec.wpt.front.domain.BbcAtrClbBbd;
-import com.waremec.wpt.front.domain.SessionSkin;
-import com.waremec.wpt.front.service.BbcService;
-
-import net.sf.json.JSONObject;
-
-import com.waremec.framework.utilities.LabelUtil;
 
 @Controller("badMatchAction")
 @Scope(ScopeType.prototype)
-public class BadMatchAction extends BaseAction {
-	private static final long serialVersionUID = 1L;
-	private static final String DEFAUT_COLOR = "#173177";
-	private static final String RED_COLOR = "#df1414";
-	private static final String BLUE_COLOR = "#2714df";
-	
-	private String shopId;
-	private String strJobtype;
-	private String strLngdv;
-	private String pageName;
-	
-	private String para1;
-	private String para2;
-	private String para3;
-	private String para4;
-	private String para5;
-	private String para6;
-	private String para7;
-	private String para8;
-	private String para9;
-	private String para10;
-	private String para11;
-	private String para12;
-	private String para13;
-	private String para14;
-	private String para15;
-	private String para16;
-	private String para17;
-	private String para18;
-	private String para19;
-	private String para20;
-
-	private int intClbsq;
-	private int intMbrsq;
-	private String strClbniknm;
-	private String strClbgd;
-	private int intBthDtTp;
-	private String strAtttp;
-	private String strBmtgd;
-	private float intClbbbc;
-	private float intJinclbbbc;
-
+public class BadMatchAction extends BaseAction{
+    private static final long serialVersionUID = 1L;
+    private static final String DEFAUT_COLOR = "#173177";
+    private static final String RED_COLOR = "#df1414";
+    private static final String BLUE_COLOR = "#2714df";
+    private String shopId;
+    private String strJobtype;
+    private String strLngdv;
+    private String pageName;
+    private String para1;
+    private String para2;
+    private String para3;
+    private String para4;
+    private String para5;
+    private String para6;
+    private String para7;
+    private String para8;
+    private String para9;
+    private String para10;
+    private String para11;
+    private String para12;
+    private String para13;
+    private String para14;
+    private String para15;
+    private String para16;
+    private String para17;
+    private String para18;
+    private String para19;
+    private String para20;
+    private int intClbsq;
+    private int intMbrsq;
+    private String strClbniknm;
+    private String strClbgd;
+    private int intBthDtTp;
+    private String strAtttp;
+    private String strBmtgd;
+    private float intClbbbc;
+    private float intJinclbbbc;
     @Resource
     protected KakaoService kakaoService;
-    
-	public String getShopId() {
-		return shopId;
-	}
-	public void setShopId(String shopId) {
-		this.shopId = shopId;
-	}
-	public String getStrJobtype() {
-		return strJobtype;
-	}
-	public void setStrJobtype(String strJobtype) {
-		this.strJobtype = strJobtype;
-	}
-	public String getStrLngdv() {
-		return strLngdv;
-	}
-	public void setStrLngdv(String strLngdv) {
-		this.strLngdv = strLngdv;
-	}
-	public String getPageName() {
-		return pageName;
-	}
-	public void setPageName(String pageName) {
-		this.pageName = pageName;
-	}
-	public String getPara1() {
-		return para1;
-	}
-	public void setPara1(String para1) {
-		this.para1 = para1;
-	}
-	public String getPara2() {
-		return para2;
-	}
-	public void setPara2(String para2) {
-		this.para2 = para2;
-	}
-	public String getPara3() {
-		return para3;
-	}
-	public void setPara3(String para3) {
-		this.para3 = para3;
-	}
-	public String getPara4() {
-		return para4;
-	}
-	public void setPara4(String para4) {
-		this.para4 = para4;
-	}
-	public String getPara5() {
-		return para5;
-	}
-	public void setPara5(String para5) {
-		this.para5 = para5;
-	}
-	public String getPara6() {
-		return para6;
-	}
-	public void setPara6(String para6) {
-		this.para6 = para6;
-	}
-	public String getPara7() {
-		return para7;
-	}
-	public void setPara7(String para7) {
-		this.para7 = para7;
-	}
-	public String getPara8() {
-		return para8;
-	}
-	public void setPara8(String para8) {
-		this.para8 = para8;
-	}
-	public String getPara9() {
-		return para9;
-	}
-	public void setPara9(String para9) {
-		this.para9 = para9;
-	}
-	public String getPara10() {
-		return para10;
-	}
-	public void setPara10(String para10) {
-		this.para10 = para10;
-	}
-	public String getPara11() {
-		return para11;
-	}
-	public void setPara11(String para11) {
-		this.para11 = para11;
-	}
-	public String getPara12() {
-		return para12;
-	}
-	public void setPara12(String para12) {
-		this.para12 = para12;
-	}
-	public String getPara13() {
-		return para13;
-	}
-	public void setPara13(String para13) {
-		this.para13 = para13;
-	}
-	public String getPara14() {
-		return para14;
-	}
-	public void setPara14(String para14) {
-		this.para14 = para14;
-	}
-	public String getPara15() {
-		return para15;
-	}
-	public void setPara15(String para15) {
-		this.para15 = para15;
-	}
-	public String getPara16() {
-		return para16;
-	}
-	public void setPara16(String para16) {
-		this.para16 = para16;
-	}
-	public String getPara17() {
-		return para17;
-	}
-	public void setPara17(String para17) {
-		this.para17 = para17;
-	}
-	public String getPara18() {
-		return para18;
-	}
-	public void setPara18(String para18) {
-		this.para18 = para18;
-	}
-	public String getPara19() {
-		return para19;
-	}
-	public void setPara19(String para19) {
-		this.para19 = para19;
-	}
-	public String getPara20() {
-		return para20;
-	}
-	public void setPara20(String para20) {
-		this.para20 = para20;
-	}
-	public int getIntClbsq() {
-		return intClbsq;
-	}
-	public void setIntClbsq(int intClbsq) {
-		this.intClbsq = intClbsq;
-	}
-	public int getIntMbrsq() {
-		return intMbrsq;
-	}
-	public void setIntMbrsq(int intMbrsq) {
-		this.intMbrsq = intMbrsq;
-	}
-	public String getStrClbniknm() {
-		return strClbniknm;
-	}
-	public void setStrClbniknm(String strClbniknm) {
-		this.strClbniknm = strClbniknm;
-	}
-	public String getStrClbgd() {
-		return strClbgd;
-	}
-	public void setStrClbgd(String strClbgd) {
-		this.strClbgd = strClbgd;
-	}
-	public int getIntBthDtTp() {
-		return intBthDtTp;
-	}
-	public void setIntBthDtTp(int intBthDtTp) {
-		this.intBthDtTp = intBthDtTp;
-	}
-	public String getStrAtttp() {
-		return strAtttp;
-	}
-	public void setStrAtttp(String strAtttp) {
-		this.strAtttp = strAtttp;
-	}
-	public String getStrBmtgd() {
-		return strBmtgd;
-	}
-	public void setStrBmtgd(String strBmtgd) {
-		this.strBmtgd = strBmtgd;
-	}
-	public float getIntClbbbc() {
-		return intClbbbc;
-	}
-	public void setIntClbbbc(float intClbbbc) {
-		this.intClbbbc = intClbbbc;
-	}
-	public float getIntJinclbbbc() {
-		return intJinclbbbc;
-	}
-	public void setIntJinclbbbc(float intJinclbbbc) {
-		this.intJinclbbbc = intJinclbbbc;
-	}
 
-	
-	
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	//---------------------------------------------------------------
-	
-	
+    public String getShopId(){
+	return shopId;
+    }
 
-	//---------------------------------------------------------------
-	// getPage
-	//---------------------------------------------------------------
-	public String getPage(){
-		try{
-			int loginMbrSq = 0;
-			
-			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-			if (sessionMember == null) {
-				if ("page2".equals(pageName)) {
-					loginMbrSq = 0;
-					strLngdv = "ko-KR";
-					request.put("strLngdv", strLngdv);
-				}
-				else {				
-					String goUrl = getFullUrl();
-					goUrl = URLEncoder.encode(goUrl, "utf-8");
-					request.put("goUrl", goUrl);
-					return "timeout";
-				}
-			}
-			else {
-				loginMbrSq = sessionMember.getCustSysId();
-				strLngdv = sessionMember.getLang();
-				request.put("strLngdv", strLngdv);
-			}
+    public void setShopId(String shopId){
+	this.shopId = shopId;
+    }
 
-			Map<String,Object> searchMap=new HashMap<String, Object>();
-			
-			searchMap.put("P1", "BADMATCH_SELECT_USER");
-			searchMap.put("P2", loginMbrSq);
-			searchMap.put("P3", para3);
-			Map<String, Object> userInfo = commonService.select("Bbc.sqlAMS_BADMATCH_PROCEDURE",searchMap);
-			request.put("userInfo", userInfo);
-			
-			request.put("loginMbrSq", loginMbrSq);
-			request.put("para1", para1);
-			request.put("para2", para2);
-			request.put("para3", para3);
-			request.put("para4", para4);
-			request.put("para5", para5);
-			request.put("para6", para6);
-			request.put("para7", para7);
-			request.put("para8", para8);
-			request.put("para9", para9);
-			request.put("para10", para10);
-			request.put("para11", para11);
-			request.put("para12", para12);
-			request.put("para13", para13);
-			request.put("para14", para14);
-			request.put("para15", para15);
-			request.put("para16", para16);
-			request.put("para17", para17);
-			request.put("para18", para18);
-			request.put("para19", para19);
-			request.put("para20", para20);
-			
+    public String getStrJobtype(){
+	return strJobtype;
+    }
+
+    public void setStrJobtype(String strJobtype){
+	this.strJobtype = strJobtype;
+    }
+
+    public String getStrLngdv(){
+	return strLngdv;
+    }
+
+    public void setStrLngdv(String strLngdv){
+	this.strLngdv = strLngdv;
+    }
+
+    public String getPageName(){
+	return pageName;
+    }
+
+    public void setPageName(String pageName){
+	this.pageName = pageName;
+    }
+
+    public String getPara1(){
+	return para1;
+    }
+
+    public void setPara1(String para1){
+	this.para1 = para1;
+    }
+
+    public String getPara2(){
+	return para2;
+    }
+
+    public void setPara2(String para2){
+	this.para2 = para2;
+    }
+
+    public String getPara3(){
+	return para3;
+    }
+
+    public void setPara3(String para3){
+	this.para3 = para3;
+    }
+
+    public String getPara4(){
+	return para4;
+    }
+
+    public void setPara4(String para4){
+	this.para4 = para4;
+    }
+
+    public String getPara5(){
+	return para5;
+    }
+
+    public void setPara5(String para5){
+	this.para5 = para5;
+    }
+
+    public String getPara6(){
+	return para6;
+    }
+
+    public void setPara6(String para6){
+	this.para6 = para6;
+    }
+
+    public String getPara7(){
+	return para7;
+    }
+
+    public void setPara7(String para7){
+	this.para7 = para7;
+    }
+
+    public String getPara8(){
+	return para8;
+    }
+
+    public void setPara8(String para8){
+	this.para8 = para8;
+    }
+
+    public String getPara9(){
+	return para9;
+    }
+
+    public void setPara9(String para9){
+	this.para9 = para9;
+    }
+
+    public String getPara10(){
+	return para10;
+    }
+
+    public void setPara10(String para10){
+	this.para10 = para10;
+    }
+
+    public String getPara11(){
+	return para11;
+    }
+
+    public void setPara11(String para11){
+	this.para11 = para11;
+    }
+
+    public String getPara12(){
+	return para12;
+    }
+
+    public void setPara12(String para12){
+	this.para12 = para12;
+    }
+
+    public String getPara13(){
+	return para13;
+    }
+
+    public void setPara13(String para13){
+	this.para13 = para13;
+    }
+
+    public String getPara14(){
+	return para14;
+    }
+
+    public void setPara14(String para14){
+	this.para14 = para14;
+    }
+
+    public String getPara15(){
+	return para15;
+    }
+
+    public void setPara15(String para15){
+	this.para15 = para15;
+    }
+
+    public String getPara16(){
+	return para16;
+    }
+
+    public void setPara16(String para16){
+	this.para16 = para16;
+    }
+
+    public String getPara17(){
+	return para17;
+    }
+
+    public void setPara17(String para17){
+	this.para17 = para17;
+    }
+
+    public String getPara18(){
+	return para18;
+    }
+
+    public void setPara18(String para18){
+	this.para18 = para18;
+    }
+
+    public String getPara19(){
+	return para19;
+    }
+
+    public void setPara19(String para19){
+	this.para19 = para19;
+    }
+
+    public String getPara20(){
+	return para20;
+    }
+
+    public void setPara20(String para20){
+	this.para20 = para20;
+    }
+
+    public int getIntClbsq(){
+	return intClbsq;
+    }
+
+    public void setIntClbsq(int intClbsq){
+	this.intClbsq = intClbsq;
+    }
+
+    public int getIntMbrsq(){
+	return intMbrsq;
+    }
+
+    public void setIntMbrsq(int intMbrsq){
+	this.intMbrsq = intMbrsq;
+    }
+
+    public String getStrClbniknm(){
+	return strClbniknm;
+    }
+
+    public void setStrClbniknm(String strClbniknm){
+	this.strClbniknm = strClbniknm;
+    }
+
+    public String getStrClbgd(){
+	return strClbgd;
+    }
+
+    public void setStrClbgd(String strClbgd){
+	this.strClbgd = strClbgd;
+    }
+
+    public int getIntBthDtTp(){
+	return intBthDtTp;
+    }
+
+    public void setIntBthDtTp(int intBthDtTp){
+	this.intBthDtTp = intBthDtTp;
+    }
+
+    public String getStrAtttp(){
+	return strAtttp;
+    }
+
+    public void setStrAtttp(String strAtttp){
+	this.strAtttp = strAtttp;
+    }
+
+    public String getStrBmtgd(){
+	return strBmtgd;
+    }
+
+    public void setStrBmtgd(String strBmtgd){
+	this.strBmtgd = strBmtgd;
+    }
+
+    public float getIntClbbbc(){
+	return intClbbbc;
+    }
+
+    public void setIntClbbbc(float intClbbbc){
+	this.intClbbbc = intClbbbc;
+    }
+
+    public float getIntJinclbbbc(){
+	return intJinclbbbc;
+    }
+
+    public void setIntJinclbbbc(float intJinclbbbc){
+	this.intJinclbbbc = intJinclbbbc;
+    }
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
+
+    // ---------------------------------------------------------------
+    // getPage
+    // ---------------------------------------------------------------
+    public String getPage(){
+	try {
+	    int loginMbrSq = 0;
+	    SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	    if (sessionMember == null) {
+		if ("page2".equals(pageName)) {
+		    loginMbrSq = 0;
+		    strLngdv = "ko-KR";
+		    request.put("strLngdv", strLngdv);
+		} else {
+		    String goUrl = getFullUrl();
+		    goUrl = URLEncoder.encode(goUrl, "utf-8");
+		    request.put("goUrl", goUrl);
+		    return "timeout";
 		}
-		catch(Exception e){
-			// Error Page
-			String errorMessageBbc = e.getMessage() ;
-			request.put("errorMessageBbc", errorMessageBbc);
-			return "noAuth";
-		}
-		
-		return pageName;
+	    } else {
+		loginMbrSq = sessionMember.getCustSysId();
+		strLngdv = sessionMember.getLang();
+		request.put("strLngdv", strLngdv);
+	    }
+	    Map<String, Object> searchMap = new HashMap<String, Object>();
+	    searchMap.put("P1", "BADMATCH_SELECT_USER");
+	    searchMap.put("P2", loginMbrSq);
+	    searchMap.put("P3", para3);
+	    Map<String, Object> userInfo = commonService.select("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
+	    request.put("userInfo", userInfo);
+	    request.put("loginMbrSq", loginMbrSq);
+	    request.put("para1", para1);
+	    request.put("para2", para2);
+	    request.put("para3", para3);
+	    request.put("para4", para4);
+	    request.put("para5", para5);
+	    request.put("para6", para6);
+	    request.put("para7", para7);
+	    request.put("para8", para8);
+	    request.put("para9", para9);
+	    request.put("para10", para10);
+	    request.put("para11", para11);
+	    request.put("para12", para12);
+	    request.put("para13", para13);
+	    request.put("para14", para14);
+	    request.put("para15", para15);
+	    request.put("para16", para16);
+	    request.put("para17", para17);
+	    request.put("para18", para18);
+	    request.put("para19", para19);
+	    request.put("para20", para20);
+	} catch (Exception e) {
+	    // Error Page
+	    String errorMessageBbc = e.getMessage();
+	    request.put("errorMessageBbc", errorMessageBbc);
+	    return "noAuth";
 	}
-	
-	//---------------------------------------------------------------
-	// getData
-	//---------------------------------------------------------------
-	public String getData(){
+	return pageName;
+    }
 
-		String ret = "fail";
-		
-		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-		if (sessionMember == null) {
-//			ret="fail";
-//			request.put("strLngdv", "zh-CN");
-//			return NONE;
-			strLngdv = "ko-KR";
-			request.put("strLngdv", strLngdv);
-		}
-		else {
-			strLngdv = sessionMember.getLang();
-			request.put("strLngdv", strLngdv);
-		}
+    // ---------------------------------------------------------------
+    // getData
+    // ---------------------------------------------------------------
+    public String getData(){
+	String ret = "fail";
+	SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	if (sessionMember == null) {
+	    // ret="fail";
+	    // request.put("strLngdv", "zh-CN");
+	    // return NONE;
+	    strLngdv = "ko-KR";
+	    request.put("strLngdv", strLngdv);
+	} else {
+	    strLngdv = sessionMember.getLang();
+	    request.put("strLngdv", strLngdv);
+	}
+	try {
+	    Map<String, Object> searchMap = new HashMap<String, Object>();
+	    searchMap.put("P1", para1);
+	    searchMap.put("P2", para2);
+	    searchMap.put("P3", para3);
+	    searchMap.put("P4", para4);
+	    searchMap.put("P5", para5);
+	    searchMap.put("P6", para6);
+	    searchMap.put("P7", para7);
+	    searchMap.put("P8", para8);
+	    searchMap.put("P9", para9);
+	    searchMap.put("P10", para10);
+	    searchMap.put("P11", para11);
+	    searchMap.put("P12", para12);
+	    searchMap.put("P13", para13);
+	    searchMap.put("P14", para14);
+	    searchMap.put("P15", para15);
+	    searchMap.put("P16", para16);
+	    searchMap.put("P17", para17);
+	    searchMap.put("P18", para18);
+	    searchMap.put("P19", para19);
+	    searchMap.put("P20", para20);
+	    List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
+	    renderJSON(pageData);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    ret = "fail";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	}
+	return NONE;
+    }
 
-		try{
-
-			Map<String,Object> searchMap=new HashMap<String, Object>();
-			
-			searchMap.put("P1", para1);
-			searchMap.put("P2", para2);
-			searchMap.put("P3", para3);
-			searchMap.put("P4", para4);
-			searchMap.put("P5", para5);
-			searchMap.put("P6", para6);
-			searchMap.put("P7", para7);
-			searchMap.put("P8", para8);
-			searchMap.put("P9", para9);
-			searchMap.put("P10", para10);
-			searchMap.put("P11", para11);
-			searchMap.put("P12", para12);
-			searchMap.put("P13", para13);
-			searchMap.put("P14", para14);
-			searchMap.put("P15", para15);
-			searchMap.put("P16", para16);
-			searchMap.put("P17", para17);
-			searchMap.put("P18", para18);
-			searchMap.put("P19", para19);
-			searchMap.put("P20", para20);
-			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
-			renderJSON(pageData);
-			
-	    	
-		}catch(Exception e){
-			e.printStackTrace();
-			ret="fail";
-
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-		}		
-		
+    // ---------------------------------------------------------------
+    // sendMsg
+    // ---------------------------------------------------------------
+    public String sendMsg(){
+	String ret = "FAIL";
+	try {
+	    SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	    if (sessionMember == null) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("ret", ret);
+		renderJSON(returnMap);
 		return NONE;
+	    } else {
+		strLngdv = sessionMember.getLang();
+		request.put("strLngdv", strLngdv);
+	    }
+	    ret = "SUCCESS";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	} catch (Exception e) {
+	    // e.printStackTrace();
+	    logger.info("##### Exception==>" + e.getMessage());
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
 	}
+	return NONE;
+    }
 
-
-	//---------------------------------------------------------------
-	// sendMsg
-	//---------------------------------------------------------------
-	public String sendMsg(){
-
-		String ret = "FAIL";
-		
-		try{
-			
-
-			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-			if (sessionMember == null) {
-				Map<String, Object> returnMap = new HashMap<String, Object>();
-				returnMap.put("ret", ret);
-				renderJSON(returnMap);
-				return NONE;
-			}
-			else {
-				strLngdv = sessionMember.getLang();
-				request.put("strLngdv", strLngdv);
-			}			
-			
-			ret = "SUCCESS";
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-			
-		}catch(Exception e){
-			//e.printStackTrace();
-			logger.info("##### Exception==>" +  e.getMessage());
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-		}
-	
-		return NONE;
+    // ---------------------------------------------------------------
+    // sendMsg
+    // ---------------------------------------------------------------
+    public String sendMsgByMap(){
+	try {
+	    String templateId = para8;
+	    String openid = para9;
+	    String linkUrl = para10;
+	} catch (Exception e) {
+	    // e.printStackTrace();
+	    logger.info("##### Exception==>" + e.getMessage());
 	}
+	return NONE;
+    }
 
-	//---------------------------------------------------------------
-	// sendMsg
-	//---------------------------------------------------------------
-	public String sendMsgByMap(){
-	
-	
-		try{
-			
-			String templateId = para8;
-			String openid = para9;
-			String linkUrl = para10;
-			
-		}catch(Exception e){
-			//e.printStackTrace();
-			logger.info("##### Exception==>" +  e.getMessage());
-		}
-	
+    // ---------------------------------------------------------------
+    // sendMsg
+    // ---------------------------------------------------------------
+    public String sendMultiMsg(){
+	try {
+	    SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	    if (sessionMember == null) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("ret", "FAIL");
+		renderJSON(returnMap);
 		return NONE;
+	    } else {
+		strLngdv = sessionMember.getLang();
+		request.put("strLngdv", strLngdv);
+	    }
+	} catch (Exception e) {
+	    // e.printStackTrace();
+	    logger.info("##### Exception==>" + e.getMessage());
 	}
-	
+	return NONE;
+    }
 
-	//---------------------------------------------------------------
-	// sendMsg
-	//---------------------------------------------------------------
-	public String sendMultiMsg(){
-	
-	
-		try{
-
-			SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-			if (sessionMember == null) {
-				Map<String, Object> returnMap = new HashMap<String, Object>();
-				returnMap.put("ret", "FAIL");
-				renderJSON(returnMap);
-				return NONE;
-			}
-			else {
-				strLngdv = sessionMember.getLang();
-				request.put("strLngdv", strLngdv);
-			}			
-			
-		}catch(Exception e){
-			//e.printStackTrace();
-			logger.info("##### Exception==>" +  e.getMessage());
-		}
-	
-		return NONE;
+    // ---------------------------------------------------------------
+    // userInsert
+    // ---------------------------------------------------------------
+    public String userInsert(){
+	String ret = "fail";
+	SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	if (sessionMember == null) {
+	    // ret="fail";
+	    // request.put("strLngdv", "zh-CN");
+	    // return NONE;
+	    strLngdv = "ko-KR";
+	    request.put("strLngdv", strLngdv);
+	} else {
+	    strLngdv = sessionMember.getLang();
+	    request.put("strLngdv", strLngdv);
 	}
-	
-
-
-	//---------------------------------------------------------------
-	// userInsert
-	//---------------------------------------------------------------
-	public String userInsert(){
-
-		String ret = "fail";
-		
-		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-		if (sessionMember == null) {
-//			ret="fail";
-//			request.put("strLngdv", "zh-CN");
-//			return NONE;
-			strLngdv = "ko-KR";
-			request.put("strLngdv", strLngdv);
-		}
-		else {
-			strLngdv = sessionMember.getLang();
-			request.put("strLngdv", strLngdv);
-		}
-
-		try{
-
-			Map<String,Object> searchMap=new HashMap<String, Object>();
-			
-			searchMap.put("P1", para1);
-			searchMap.put("P2", para2);
-			searchMap.put("P3", para3);
-			searchMap.put("P4", para4);
-			searchMap.put("P5", para5);
-			searchMap.put("P6", para6);
-			searchMap.put("P7", para7);
-			searchMap.put("P8", para8);
-			searchMap.put("P9", para9);
-			searchMap.put("P10", para10);
-			searchMap.put("P11", para11);
-			searchMap.put("P12", para12);
-			searchMap.put("P13", para13);
-			searchMap.put("P14", para14);
-			searchMap.put("P15", para15);
-			searchMap.put("P16", para16);
-			searchMap.put("P17", para17);
-			searchMap.put("P18", para18);
-			searchMap.put("P19", para19);
-			searchMap.put("P20", para20);
-			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
-			renderJSON(pageData);
-			
-	    	
-		}catch(Exception e){
-			e.printStackTrace();
-			ret="fail";
-
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-		}		
-		
-		return NONE;
-	}	
-	
-	//---------------------------------------------------------------
-	// getData
-	//---------------------------------------------------------------
-	public String getInfo(){
-
-		String ret = "fail";
-		
-		SessionMember sessionMember  = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
-		if (sessionMember == null) {
-//			ret="fail";
-//			request.put("strLngdv", "zh-CN");
-//			return NONE;
-			strLngdv = "ko-KR";
-			request.put("strLngdv", strLngdv);
-		}
-		else {
-			strLngdv = sessionMember.getLang();
-			request.put("strLngdv", strLngdv);
-		}
-
-		try{
-
-			Map<String,Object> searchMap=new HashMap<String, Object>();
-			
-			searchMap.put("P1", para1);
-			searchMap.put("P2", para2);
-			searchMap.put("P3", para3);
-			searchMap.put("P4", para4);
-			searchMap.put("P5", para5);
-			searchMap.put("P6", para6);
-			searchMap.put("P7", para7);
-			searchMap.put("P8", para8);
-			searchMap.put("P9", para9);
-			searchMap.put("P10", para10);
-			searchMap.put("P11", para11);
-			searchMap.put("P12", para12);
-			searchMap.put("P13", para13);
-			searchMap.put("P14", para14);
-			searchMap.put("P15", para15);
-			searchMap.put("P16", para16);
-			searchMap.put("P17", para17);
-			searchMap.put("P18", para18);
-			searchMap.put("P19", para19);
-			searchMap.put("P20", para20);
-			List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_GET_INFO", searchMap);
-			renderJSON(pageData);
-			
-	    	
-		}catch(Exception e){
-			e.printStackTrace();
-			ret="fail";
-
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-		}		
-		
-		return NONE;
+	try {
+	    Map<String, Object> searchMap = new HashMap<String, Object>();
+	    searchMap.put("P1", para1);
+	    searchMap.put("P2", para2);
+	    searchMap.put("P3", para3);
+	    searchMap.put("P4", para4);
+	    searchMap.put("P5", para5);
+	    searchMap.put("P6", para6);
+	    searchMap.put("P7", para7);
+	    searchMap.put("P8", para8);
+	    searchMap.put("P9", para9);
+	    searchMap.put("P10", para10);
+	    searchMap.put("P11", para11);
+	    searchMap.put("P12", para12);
+	    searchMap.put("P13", para13);
+	    searchMap.put("P14", para14);
+	    searchMap.put("P15", para15);
+	    searchMap.put("P16", para16);
+	    searchMap.put("P17", para17);
+	    searchMap.put("P18", para18);
+	    searchMap.put("P19", para19);
+	    searchMap.put("P20", para20);
+	    List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
+	    renderJSON(pageData);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    ret = "fail";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
 	}
+	return NONE;
+    }
 
-
-	//---------------------------------------------------------------
-	// sendMsgToKakao
-	//---------------------------------------------------------------
-	public String sendMsgToKakao(){
-
-		String ret = "FAIL";
-		
-		try{
-			
-			String accessToken = kakaoService.getRefreshAccessToken(para2);
-			
-			if (accessToken != "") {
-
-				try {
-					kakaoService.sendMsgToMe(accessToken, para3, para4, para5);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}catch (Error e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
-			
-			ret = "SUCCESS";
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-			
-		}catch(Exception e){
-			//e.printStackTrace();
-			logger.info("##### Exception==>" +  e.getMessage());
-			Map<String, Object> returnMap = new HashMap<String, Object>();
-			returnMap.put("ret", ret);
-			renderJSON(returnMap);
-		}
-		
-		return NONE;
+    // ---------------------------------------------------------------
+    // getData
+    // ---------------------------------------------------------------
+    public String getInfo(){
+	String ret = "fail";
+	SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	if (sessionMember == null) {
+	    // ret="fail";
+	    // request.put("strLngdv", "zh-CN");
+	    // return NONE;
+	    strLngdv = "ko-KR";
+	    request.put("strLngdv", strLngdv);
+	} else {
+	    strLngdv = sessionMember.getLang();
+	    request.put("strLngdv", strLngdv);
 	}
-	
-	
+	try {
+	    Map<String, Object> searchMap = new HashMap<String, Object>();
+	    searchMap.put("P1", para1);
+	    searchMap.put("P2", para2);
+	    searchMap.put("P3", para3);
+	    searchMap.put("P4", para4);
+	    searchMap.put("P5", para5);
+	    searchMap.put("P6", para6);
+	    searchMap.put("P7", para7);
+	    searchMap.put("P8", para8);
+	    searchMap.put("P9", para9);
+	    searchMap.put("P10", para10);
+	    searchMap.put("P11", para11);
+	    searchMap.put("P12", para12);
+	    searchMap.put("P13", para13);
+	    searchMap.put("P14", para14);
+	    searchMap.put("P15", para15);
+	    searchMap.put("P16", para16);
+	    searchMap.put("P17", para17);
+	    searchMap.put("P18", para18);
+	    searchMap.put("P19", para19);
+	    searchMap.put("P20", para20);
+	    List<Map<String, Object>> pageData = commonService.selectList("Bbc.sqlAMS_GET_INFO", searchMap);
+	    renderJSON(pageData);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    ret = "fail";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	}
+	return NONE;
+    }
+
+    // ---------------------------------------------------------------
+    // sendMsgToKakao
+    // ---------------------------------------------------------------
+    public String sendMsgToKakao(){
+	String ret = "FAIL";
+	try {
+	    String accessToken = kakaoService.getRefreshAccessToken(para2);
+	    if (accessToken != "") {
+		try {
+		    kakaoService.sendMsgToMe(accessToken, para3, para4, para5);
+		} catch (Exception e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		} catch (Error e) {
+		    // TODO Auto-generated catch block
+		    e.printStackTrace();
+		}
+	    }
+	    ret = "SUCCESS";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	} catch (Exception e) {
+	    // e.printStackTrace();
+	    logger.info("##### Exception==>" + e.getMessage());
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	}
+	return NONE;
+    }
 }

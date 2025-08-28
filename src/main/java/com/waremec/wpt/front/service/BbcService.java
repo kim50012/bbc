@@ -12,17 +12,11 @@ import com.waremec.framework.service.CommonServiceImpl;
 import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.dao.BbcDao;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
-import com.waremec.wpt.front.domain.SessionSkin;
 
 @Service
 public class BbcService extends CommonServiceImpl implements CommonService{
 	@Resource
 	private BbcDao bbcDao;
-
-	public SessionSkin getSessionSkinByShopId(Integer shopId) {
-		// TODO Auto-generated method stub
-		return bbcDao.getSessionSkinByShopId(shopId);
-	}
 
 	public SessionMember getSessionMemberById(String openid) {
 		return bbcDao.getSessionMemberById(openid);
@@ -38,8 +32,6 @@ public class BbcService extends CommonServiceImpl implements CommonService{
 		}
 	}
 	
-	
-
 	public BbcAtrClbBbd selectBbcAtrClbBbdOne(String sqlId, Map<String, Object> searchMap) {
 		try {
 			return bbcDao.selectBbcAtrClbBbdOne(sqlId, searchMap);

@@ -25,7 +25,6 @@ import com.waremec.framework.utilities.JsonUtil;
 import com.waremec.framework.utilities.LabelUtil;
 import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.wpt.domain.SessionMember;
-import com.waremec.wpt.front.domain.SessionSkin;
 
 
 public class BaseAction extends ActionSupport implements RequestAware,
@@ -268,27 +267,6 @@ public class BaseAction extends ActionSupport implements RequestAware,
 		return sessionMember;
 	}
 	
-	protected SessionSkin getSessionSkin(){
-		 
-		SessionSkin  frontSkin = null;
-		try {
-			frontSkin = (SessionSkin)session.get(SessionUtils.SESSION_SKIN);
-		} catch (Exception e) {
-			// TODO: handle exception
-			frontSkin = new SessionSkin();
-			frontSkin.setSkinTypeShop(3);
-		}
-		return frontSkin;
-	}
-	
-	protected Integer getFrontSessionShopId(){
-		SessionSkin skin = (SessionSkin) session.get(SessionUtils.SESSION_SKIN);
-		if(skin != null){
-		  return skin.getShopId();
-		}
-		return null;
-	}
-
 	public int getPageCurr() {
 		return pageCurr;
 	}

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.util.LocalizedTextUtil;
-import com.waremec.wpt.domain.EnumerateDomain;
 
 public class CultureUtils {
 	public static final String CULTURE_COOKIE_NAME = "CK_CurrentLanguage";

@@ -91,36 +91,10 @@
 	<!-- 共同部分 -->
 	<include file="struts/struts-common.xml" />
 
-	<!-- Admin -->
-	<include file="struts/admin/struts-common.xml" />
-	<include file="struts/admin/struts-master.xml" />
-	<include file="struts/admin/struts-admin.xml" />
-	<include file="struts/admin/struts-shopManage.xml" />
-	<include file="struts/admin/struts-shopLack.xml" />
-	<include file="struts/admin/struts-dhhk.xml" />
-	
 	<!-- Front -->
 	<include file="struts/front/struts-common.xml" />
-	<include file="struts/front/struts-marketing.xml" />
-	<include file="struts/front/struts-event.xml" />
-	<include file="struts/front/struts-nongshim.xml" />
 
-	<include file="struts/weixin/struts-weixin.xml" />
-	<include file="struts/payment/struts-payment.xml" />
-
-<!-- 	<include file="struts/hsad/struts-hsad.xml"></include> -->
-	
-	<!--  wxi-->
-	<include file="struts/wxi/struts-wxi.xml" />
-	
-	<!--  hzm-->
-	<include file="struts/hzm/struts-hzmPortal.xml" />
-	<include file="struts/hzm/struts-hzmShopManage.xml" />
-	
 	<!-- BBC System -->
 	<include file="struts/front/struts-bbc.xml" />
 	
-	<!-- Shop System -->
-	<include file="struts/front/struts-shop.xml" />
-
 </struts>

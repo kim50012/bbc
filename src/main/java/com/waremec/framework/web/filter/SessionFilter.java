@@ -25,7 +25,6 @@ import com.waremec.framework.utilities.IntegerUtils;
 import com.waremec.framework.utilities.LabelUtil;
 import com.waremec.framework.utilities.SessionUtils;
 import com.waremec.wpt.domain.SessionMember;
-import com.waremec.wpt.front.domain.SessionSkin;
 import com.waremec.wpt.front.service.MainService;
 import org.apache.struts2.ServletActionContext;
 
@@ -69,9 +68,6 @@ public class SessionFilter implements Filter {
 
 			HttpSession session = request.getSession();
 
-			setSessionSkin(request, 68);
-			SessionSkin sessionSkin = (SessionSkin) session.getAttribute(SessionUtils.SESSION_SKIN);
-
 			if(true){
 				SessionMember sessionMember = (SessionMember) 	session.getAttribute(SessionUtils.SESSION_MEMEBER);
 				if(sessionMember == null){
@@ -94,63 +90,30 @@ public class SessionFilter implements Filter {
 			if(!isIgnoredUrl(path)){
 				Integer shopId = IntegerUtils.valueOf(request.getParameter("shopId"));
 				if(shopId != null){
-					if(sessionSkin == null){
-						setSessionSkin(request, shopId);
-					}else{
-						Integer oldShopId = sessionSkin.getShopId();
-						if(oldShopId.intValue() != shopId.intValue()){
-							setSessionSkin(request, shopId);
-							
-							SessionMember sessionMember = (SessionMember) session.getAttribute(SessionUtils.SESSION_MEMEBER);
-							if(sessionMember != null){
-								session.removeAttribute(SessionUtils.SESSION_MEMEBER);
-							}
+					Integer oldShopId = shopId;
+					if(oldShopId.intValue() != shopId.intValue()){
+						SessionMember sessionMember = (SessionMember) session.getAttribute(SessionUtils.SESSION_MEMEBER);
+						if(sessionMember != null){
+							session.removeAttribute(SessionUtils.SESSION_MEMEBER);
 						}
 					}
 				}else{
-					
-					if(sessionSkin == null){
-						
-						if(path.startsWith("/front/bbc/badMatch/getPage.htm?pageName=page2")){	//手机
+
+					SessionMember sessionMember = (SessionMember) session.getAttribute(SessionUtils.SESSION_MEMEBER);
+					if(sessionMember == null){
+
+						if(!path.startsWith("/front/bbc/badMatch/getData.htm")){	//手机
+							String goUrl = request.getRequestURL()+"?"+ request.getQueryString();
+							String strPtourl = goUrl;
+							goUrl = URLEncoder.encode(goUrl, "utf-8");
+							request.getSession().setAttribute("goUrl", goUrl);
+							request.getSession().setAttribute("strPtourl", strPtourl);
+							request.getRequestDispatcher("/fronterror/timeout.htm").forward(request, response);
 							return;
 						}
-						else {
-							logger.error("!!!!!!!!!!!!!!!!!!!!!! session filter error 2222");
-							
-							if("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))){
-								response.setHeader("sessionstatus", "timeout");
-								PrintWriter writer = response.getWriter(); 
-								writer.print("{\"success\":false}");
-								writer.close();
-							}else{
-								String goUrl = request.getRequestURL()+"?"+ request.getQueryString();
-								String strPtourl = goUrl;
-								goUrl = URLEncoder.encode(goUrl, "utf-8");
-								request.getSession().setAttribute("goUrl", goUrl);
-								request.getSession().setAttribute("strPtourl", strPtourl);
-								request.getRequestDispatcher("/fronterror/timeout.htm").forward(request, response);
-								return;
-							}
-						}
 						
-					} 
-					else {
-
-						SessionMember sessionMember = (SessionMember) session.getAttribute(SessionUtils.SESSION_MEMEBER);
-						if(sessionMember == null){
-
-							if(!path.startsWith("/front/bbc/badMatch/getData.htm")){	//手机
-								String goUrl = request.getRequestURL()+"?"+ request.getQueryString();
-								String strPtourl = goUrl;
-								goUrl = URLEncoder.encode(goUrl, "utf-8");
-								request.getSession().setAttribute("goUrl", goUrl);
-								request.getSession().setAttribute("strPtourl", strPtourl);
-								request.getRequestDispatcher("/fronterror/timeout.htm").forward(request, response);
-								return;
-							}
-							
-						}
 					}
+					
 				}
 			}
 
@@ -273,13 +236,5 @@ public class SessionFilter implements Filter {
 		}
 	 
 		return false;
-	}
-	
-	private void setSessionSkin(HttpServletRequest request, Integer shopId){
-		WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
-		MainService mainService = wac.getBean(MainService.class);
-		
-		SessionSkin sessionSkin = mainService.getSessionSkinByShopId(shopId);
-		request.getSession().setAttribute(SessionUtils.SESSION_SKIN, sessionSkin);
 	}
 }
