@@ -75,6 +75,10 @@
 				{
 					"name": "년간리포트",
 					"url": "/front/bbc/clb/getPage.htm?pageName=page16"
+				},
+				{
+					"name": "년간비용분석",
+					"url": "/front/bbc/clb/getPage.htm?pageName=page28"
 				}]
 		}]
 }

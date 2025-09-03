@@ -233,7 +233,7 @@
                                             <td class="center">${status.count}</td>
                                             <td class="center">${amsClbMbrExi.CLB_NIK_NM}</td>
                                             <td class="center">${amsClbMbrExi.MBR_ID}</td>
-                                            <td class="center">${amsClbMbrExi.CLB_GD_NM}</td>
+                                            <td class="center" onclick="window.location='/front/bbc/clb/clbMbrInfo.htm?intClbsq=${amsClbMbrExi.CLB_SQ}&intMbrsq=${amsClbMbrExi.MBR_SQ}';">${amsClbMbrExi.CLB_GD_NM}</td>
                                             <td class="center">${amsClbMbrExi.CLB_JIN_DT}</td>
                                             <td class="center">${amsClbMbrExi.CLB_RANK}</td>
                                         </tr>
