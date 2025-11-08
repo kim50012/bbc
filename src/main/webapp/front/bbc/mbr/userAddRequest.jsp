@@ -80,7 +80,7 @@
 
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen py-12">
+<body class="flex items-center justify-center min-h-screen py-12" id="bodySignUp" style="display: none;">
     <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl w-full max-w-lg">
         <div class="text-center mb-6">
             <a href="index.html" class="inline-flex items-center text-2xl font-bold text-indigo-600 mb-2">
@@ -232,6 +232,9 @@
 						window.location = "${strPtourl}&shopId=68";	
 					}
 				}
+			}
+			else {
+				document.getElementById("bodySignUp").style.display = "block";
 			}
 		}); 
 	

@@ -98,5 +98,10 @@ public interface CommonService {
 	
 	int selectListTotCnt(String sqlId, Map<String, Object> searchMap);
 
+	// ------------------- Oracle  관련 ---------------------//
+	List<Map<String, Object>> selectListOracle(Map<String, Object> searchMap);
+	List<Map<String, Object>> selectListOracle(String sqlId, Map<String, Object> searchMap);
+	// ------------------- Oracle  관련 ---------------------//
+
 	 
 }

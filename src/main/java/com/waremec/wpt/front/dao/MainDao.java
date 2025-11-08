@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.waremec.framework.dao.CommonDao;
 
-@Repository
+//@Repository
 public class MainDao extends CommonDao{
 	
 }

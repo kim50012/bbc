@@ -180,6 +180,13 @@
 							<p class="right-btn"></p>
 						</div>
 						</c:if>
+						<c:if test="${amsMbr.MBR_SQ == 20}">
+						<div class="list90 bottom-dashed flex">
+							<p class="float"><img src="../img/perinfo.png"></p>
+							<p class="flex1" onclick="window.location='/front/bbc/exc/getPage.htm?pageName=page21&intClbsq=59&shopId=68';">직원목록</p>
+							<p class="right-btn"></p>
+						</div>
+						</c:if>
 
 					</div>
 			</div>

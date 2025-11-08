@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<!--
+		iBatis 설정 (settings)은 대부분 DB에 비종속적이므로
+		기존 설정을 그대로 유지합니다.
+	-->
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="1024"
+		maxSessions="32" maxTransactions="16" useStatementNamespaces="true"
+		defaultStatementTimeout="500000" />
+	 
+	<!-- 
+	=========================================================
+	Oracle용 Type Handler 설정
+	=========================================================
+	-->
+	
+	<!-- 
+		1. Oracle CLOB 핸들러:
+		   기존 jTDS(MSSQL) 드라이버의 ClobImpl 대신 
+		   Spring 프레임워크가 제공하는 표준 Clob 핸들러를 사용합니다.
+	-->
+	<typeHandler jdbcType="CLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler"/>
+	
+	<!-- 
+		2. 기존 MSSQL CLOB 핸들러 (주석 처리)
+		   net.sourceforge.jtds.jdbc.ClobImpl는 Oracle에서 사용할 수 없습니다.
+	<typeHandler javaType="net.sourceforge.jtds.jdbc.ClobImpl" callback="com.waremec.framework.dao.handler.ClobTypeHandler"/>   
+	-->
+		
+	<!-- 
+		3. Boolean <-> Y/N 핸들러:
+		   이 핸들러는 Java 타입과 문자열(Y/N) 간의 변환이므로 
+		   Oracle에서도 동일하게 사용 가능할 것으로 예상됩니다.
+	-->
+	<typeHandler javaType="boolean" callback="com.waremec.framework.dao.handler.YNBooleanTypeHandler"/>
+		
+	<!-- 
+	=========================================================
+	Oracle 전용 SQL Map 파일 로드 (경로 수정 필수)
+	=========================================================
+	
+	[중요]
+	아래 파일들은 MSSQL(T-SQL)이 아닌, 
+	Oracle(PL/SQL) 문법으로 새로 작성된 파일이어야 합니다.
+	
+	파일명 규칙(예: -oracle.xml)을 정하고, 
+	그 파일들을 생성하여 실제 경로에 맞게 resource 속성을 수정해야 합니다.
+	-->
+	
+	<sqlMap resource="com/waremec/wpt/dao/sqlmap/oracle_sqlmap.xml" />
+	
+</sqlMapConfig>

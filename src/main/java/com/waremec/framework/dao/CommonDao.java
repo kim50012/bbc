@@ -9,7 +9,7 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("commonDao")
+//@Repository("commonDao")
 @SuppressWarnings("unchecked")
 public class CommonDao extends SqlMapClientDaoSupport {
 
@@ -19,6 +19,21 @@ public class CommonDao extends SqlMapClientDaoSupport {
 	public final static String TOTAL_COUNT = "totalCount";
 	public final static String SUCCESS = "S";
 
+	// ------------- Oracle  관련 -----------------
+	public List<Map<String, Object>> selectListOracle(Map<String, Object> searchMap) {
+		return selectListOracle((String) searchMap.get(SQL_ID), searchMap);
+	}
+	 
+	@SuppressWarnings("deprecation")
+	public List<Map<String, Object>> selectListOracle(String sqlId, Map<String, Object> searchMap) {
+		return (List<Map<String, Object>>)getSqlMapClientTemplate().queryForList(sqlId, searchMap);
+	}
+
+	@SuppressWarnings("deprecation")
+	public List<Map<String, Object>> selectListOracle(String sqlId, String queryStr) {
+		return (List<Map<String, Object>>)getSqlMapClientTemplate().queryForList(sqlId, queryStr);
+	}
+	// ------------- Oracle  관련 -----------------
 
 	public void insert(Map<String, Object> map) {
 		insert((String) map.get(SQL_ID), map);

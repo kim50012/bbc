@@ -281,6 +281,8 @@ public class KakaoService extends CommonServiceImpl implements CommonService  {
             bw.write(sb.toString());
             bw.flush();
 
+            System.out.println("sb.toString() : " + sb.toString());
+            
             //    결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);

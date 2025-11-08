@@ -9,7 +9,7 @@ import com.waremec.framework.dao.CommonDao;
 import com.waremec.wpt.domain.SessionMember;
 import com.waremec.wpt.front.domain.BbcAtrClbBbd;
 
-@Repository
+//@Repository
 public class BbcDao extends CommonDao{
 
 	public List<BbcAtrClbBbd> selectBbcAtrClbBbd(String sqlId, Map<String, Object> searchMap) {

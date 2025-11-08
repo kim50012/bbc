@@ -19,9 +19,37 @@ public class CommonServiceImpl implements CommonService {
 
 	protected final transient Log logger = LogFactory.getLog(CommonServiceImpl.class);
 	
-	@Resource
+//	@Resource
+	@Resource(name = "mssqlCommonDao")
 	protected CommonDao commonDao;
+	
+	@Resource(name = "oracleCommonDao")
+	protected CommonDao oracleCommonDao;
 
+
+	// ------------- Oracle  관련 -----------------
+
+	@Override
+	public List<Map<String, Object>> selectListOracle(Map<String, Object> searchMap) {
+		try {
+			return oracleCommonDao.selectListOracle(searchMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Map<String, Object>>();
+		}
+	}
+
+	@Override
+	public List<Map<String, Object>> selectListOracle(String sqlId, Map<String, Object> searchMap) {
+		try {
+			return oracleCommonDao.selectListOracle(sqlId, searchMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Map<String, Object>>();
+		}
+	}
+	// ------------- Oracle  관련 -----------------
+	
 	@Override
 	public void insert(Map<String, Object> map) {
 		try {

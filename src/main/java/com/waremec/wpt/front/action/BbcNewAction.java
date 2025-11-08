@@ -401,12 +401,23 @@ public class BbcNewAction extends BaseAction{
 		String ret;
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		try {
-		    String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
-		    logger.info(code);
+		    
+
+		    Map<String, Object> accessTokenMap = kakaoService.getAccessTokenNew(code, "userAddRequest");
+
+		    String accessToken = (String) accessTokenMap.get("access_token");
 		    Map<String, Object> userInfo = kakaoService.getUserInfo(accessToken);
-		    logger.info(userInfo);
 		    String email = userInfo.get("email").toString();
 		    String thumbnail_image = userInfo.get("thumbnail_image").toString();
+		    
+		    
+//		    String accessToken = kakaoService.getAccessToken(code, "userAddRequest");
+//		    Map<String, Object> accessTokenMap = kakaoService.getAccessTokenNew(code, "userAddRequest");
+//		    logger.info(code);
+//		    Map<String, Object> userInfo = kakaoService.getUserInfo(accessToken);
+//		    logger.info(userInfo);
+//		    String email = userInfo.get("email").toString();
+//		    String thumbnail_image = userInfo.get("thumbnail_image").toString();
 		    Map<String, Object> map = new HashMap<String, Object>();
 		    map.put("JOP_TYPE", "KAKAO");
 		    map.put("MBR_ID", email);

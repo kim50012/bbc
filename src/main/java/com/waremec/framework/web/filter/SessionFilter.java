@@ -136,7 +136,7 @@ public class SessionFilter implements Filter {
 				}
 			}
 		}
-		 chain.doFilter(req, res);
+		chain.doFilter(req, res);
 	}
 
 	@Override

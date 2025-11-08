@@ -111,6 +111,12 @@
 		                        </div>
 		                        <div class="trans">
 		                        	<label class="radio">
+		  	                        <input class="" type="radio" name="txtLevel2" value="레슨비"/>
+		  	                        <span class="Rdefine">레슨비</span>
+		                          </label>
+		                        </div>
+		                        <div class="trans">
+		                        	<label class="radio">
 		  	                        <input class="" type="radio" name="txtLevel2" value="기타"/>
 		  	                        <span class="Rdefine">기타</span>
 		                          </label>

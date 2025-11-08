@@ -8,41 +8,168 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
 	default-autowire="byName" default-lazy-init="true">
 	<description>
-		iBatis dao 配置
+		iBatis 다중 DB (MSSQL &amp; Oracle) DAO 설정
 	</description>
 	
-	<!-- 开发用，用于拦截执行的SQL并打印 -->
-	<bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">
-		<constructor-arg>
-			<ref local="dataSourceTarget" />
-		</constructor-arg>
-	</bean>
-
-	<!--数据源定义,使用应用服务器 <bean id="dataSourceTarget" class="ins.framework.jndi.JndiObjectFindFactoryBean"> 
-		<property name="jndiName"> <value>DataSource</value> </property> </bean> -->
-
-	<!-- 为开发方便，数据源定义使用Apache DBCP 连接池 -->
-	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
+	<!-- 
+	=========================================================
+	1. MSSQL 설정 (기존 설정 리팩토링)
+	=========================================================
+	-->
+	
+	<!-- 1-1. MSSQL 데이터 소스 (DBCP) -->
+	<bean id="mssqlDataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<!-- 
+			중요: 프로퍼티 파일(예: jdbc.properties)의 키 이름을 변경해야 합니다.
+			${jdbc.driverClassName} -> ${mssql.jdbc.driverClassName}
+		-->
+		<property name="driverClassName" value="${mssql.jdbc.driverClassName}" />
+		<property name="url" value="${mssql.jdbc.url}" />
+		<property name="username" value="${mssql.jdbc.username}" />
+		<property name="password" value="${mssql.jdbc.password}" />
 		<property name="maxActive" value="${jdbc.maxActive}" />
 	</bean>
+
+	<!-- 1-2. MSSQL P6Spy 래퍼 (SQL 로깅용) -->
+	<bean id="mssqlDataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg>
+			<ref local="mssqlDataSourceTarget" />
+		</constructor-arg>
+	</bean>
 	
-	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	<!-- 1-3. MSSQL iBatis SqlMapClient -->
+	<bean id="mssqlSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="configLocation">
 			<value>classpath:/ibatis/sqlmap-config.xml</value>
 		</property>
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="mssqlDataSource" />
 		<property name="useTransactionAwareDataSource" value="true"></property>
+		<!-- 
+			참고: MSSQL의 LOB 핸들러는 ClobTypeHandler(커스텀 핸들러)를 사용하므로
+			별도의 Spring LobHandler Bean이 필요하지 않았습니다.
+		-->
 	</bean>
 
-	<!--事务的配置 -->
-	<bean id="transactionManager"
+	<!-- 1-4. MSSQL 트랜잭션 관리자 -->
+	<!-- 
+		[수정]
+		AOP 설정(txAdvice)이 'transactionManager'라는 이름의 Bean을 참조하므로,
+		'mssqlTransactionManager'가 기본 트랜잭션 관리자 역할을 할 수 있도록
+		'name="transactionManager"' 속성을 alias(별명)로 추가합니다.
+	-->
+	<bean id="mssqlTransactionManager" name="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="mssqlDataSource" />
 	</bean>
+
+	<!-- 
+	=========================================================
+	2. Oracle 설정 (신규 추가)
+	=========================================================
+	-->
+	
+	<!-- 2-1. Oracle 데이터 소스 (DBCP) -->
+	<bean id="oracleDataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<!-- 
+			중요: 프로퍼티 파일에 Oracle 접속 정보를 새로 추가해야 합니다.
+			(예: ${oracle.jdbc.driverClassName})
+		-->
+		<property name="driverClassName" value="${oracle.jdbc.driverClassName}" />
+		<property name="url" value="${oracle.jdbc.url}" />
+		<property name="username" value="${oracle.jdbc.username}" />
+		<property name="password" value="${oracle.jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+	</bean>
+
+	<!-- 2-2. Oracle P6Spy 래퍼 (SQL 로깅용) -->
+	<bean id="oracleDataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg>
+			<ref local="oracleDataSourceTarget" />
+		</constructor-arg>
+	</bean>
+	
+	<!-- 2-3. Oracle iBatis SqlMapClient -->
+	<bean id="oracleSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<!-- 
+				중요: Oracle 전용 iBatis 설정 파일이 필요합니다. 
+				이 파일은 Oracle용 SQL이 담긴 별도의 SQL Map 파일들을 로드해야 합니다.
+			-->
+			<value>classpath:/ibatis/sqlmap-config-oracle.xml</value>
+		</property>
+		<property name="dataSource" ref="oracleDataSource" />
+		<property name="useTransactionAwareDataSource" value="true"></property>
+		
+		<!-- 
+			[수정] LOB 핸들러 주입
+			'sqlmap-config-oracle.xml'에서 ClobStringTypeHandler를 사용하므로
+			반드시 'lobHandler'를 지정해야 합니다. (Bean은 하단 4번에 정의)
+		-->
+		<property name="lobHandler" ref="defaultLobHandler" />
+		
+	</bean>
+
+	<!-- 2-4. Oracle 트랜잭션 관리자 -->
+	<bean id="oracleTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="oracleDataSource" />
+	</bean>
+
+	<!-- 
+	=========================================================
+	3. DAO 설정 (수정됨)
+	=========================================================
+	-->
+
+	<!-- 3-1. MSSQL 공통 DAO Bean -->
+	<bean id="mssqlCommonDao" class="com.waremec.framework.dao.CommonDao">
+		<property name="sqlMapClient" ref="mssqlSqlMapClient"/>
+	</bean>
+	
+	<!-- 3-2. Oracle 공통 DAO Bean -->
+	<bean id="oracleCommonDao" class="com.waremec.framework.dao.CommonDao">
+		<property name="sqlMapClient" ref="oracleSqlMapClient"/>
+	</bean>
+
+	<!-- 
+	=========================================================
+	[추가] BbcDao 및 기타 DAO 설정
+	=========================================================
+
+	[중요]
+	BbcDao.java 파일에서 @Repository 어노테이션을 제거(주석 처리)했으므로,
+	Spring이 'bbcDao' Bean을 찾을 수 있도록 XML에 수동으로 등록해야 합니다.
+	
+	(com.waremec.wpt.front.dao.BbcDao 클래스 경로는 에러로그를 참고했습니다.)
+	-->
+	<bean id="bbcDao" class="com.waremec.wpt.front.dao.BbcDao">
+		<property name="sqlMapClient" ref="mssqlSqlMapClient"/>
+	</bean>
+	<bean id="mainDao" class="com.waremec.wpt.front.dao.MainDao">
+		<property name="sqlMapClient" ref="mssqlSqlMapClient"/>
+	</bean>
+
+
+	<!-- 
+	=========================================================
+	4. LOB 핸들러 정의 (신규 추가)
+	=========================================================
+	
+	[중요]
+	'sqlmap-config-oracle.xml'에서 Spring의 ClobStringTypeHandler를 사용하므로,
+	'oracleSqlMapClient' Bean에 주입할 LOB 핸들러를 정의합니다.
+	-->
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+
+
+	<!-- 
+	참고: 
+	이 구성은 두 DB에 대한 *별개의* 트랜잭션을 관리합니다.
+	만약 하나의 서비스 메소드에서 두 DB를 동시에 업데이트하고 하나의 트랜잭션(2PC)으로 묶어야 한다면,
+	JTA (Java Transaction API)와 XA DataSource 설정을 이용한 분산 트랜잭션 구성이 필요하며,
+	이는 현재 구성보다 훨씬 복잡합니다.
+	-->
 
 </beans>

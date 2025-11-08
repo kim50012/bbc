@@ -130,7 +130,7 @@
                 <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">홈</a>
                 <a href="#tournament-info" class="text-gray-600 hover:text-indigo-600 transition duration-300">대회 정보</a>
                 <a href="#club-directory" class="text-gray-600 hover:text-indigo-600 transition duration-300">동호회 둘러보기</a>
-                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbcNew/getPage.htm?pageName=sign"
+                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm&scope=profile_nickname,profile_image,account_email,name,gender,birthyear,phone_number,friends,plusfriends,talk_message,openid"
                    class="bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 rounded-lg transition duration-300 flex items-center font-semibold">
                     <i class="fas fa-comment mr-2"></i> 카카오 로그인
                 </a>
@@ -164,7 +164,7 @@
             <a href="index.html" class="block px-6 py-2 text-gray-600 hover:bg-indigo-50">홈</a>
             <a href="#tournament-info" class="block px-6 py-2 text-gray-600 hover:bg-indigo-50">대회 정보</a>
             <a href="#club-directory" class="block px-6 py-2 text-gray-600 hover:bg-indigo-50">동호회 둘러보기</a>
-            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbcNew/getPage.htm?pageName=sign"
+            <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f8b8ac6fcf571cfe300bc86228b077ce&redirect_uri=http://kr.bbcoin.net:8080/front/bbc/mbr/userAddRequest.htm&scope=profile_nickname,profile_image,account_email,name,gender,birthyear,phone_number,friends,plusfriends,talk_message,openid"
                class="block px-6 py-2 text-yellow-700 font-semibold hover:bg-yellow-50">
                 <i class="fas fa-comment mr-2"></i>카카오 로그인
             </a>

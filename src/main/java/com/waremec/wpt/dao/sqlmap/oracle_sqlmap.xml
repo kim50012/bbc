@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="oracleSqlMap">
+
+	 <select id="sqlGetEMPList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap" remapResults="true">
+	  <![CDATA[
+	    SELECT
+	            T1.EMP_NO
+	          , T1.NAME
+	          , T1.ENG_NAME
+	          , T1.BIRT
+	          , CASE
+	                WHEN T1.SEX_CD = 1 THEN 'MALE'
+	                ELSE 'FEMALE'
+	            END
+	                AS SEX_NM
+	          , T1.NATION_CD
+	          , T1.ENTR_DT
+	          , TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(T1.ENTR_DT, 'YYYYMMDD')) / 12) || 'Y ' || TRUNC(MOD(MONTHS_BETWEEN(SYSDATE, TO_DATE(T1.ENTR_DT, 'YYYYMMDD')) / 12, 1) * 12) || 'M ' || TRUNC(MOD(MOD(MONTHS_BETWEEN(SYSDATE, TO_DATE(T1.ENTR_DT, 'YYYYMMDD')) / 12, 1) * 12, 1) * (365 / 12)) || 'D' AS PERIOD_OF_WORK
+	          , T3.DEPT_NM
+	          , T3.PROC_NM
+	          , T3.KOSTL
+	          , T1.CURR_TEL_NO
+	          , T1.COMP_EMAIL_ADDR
+	    FROM
+	            ZHRTPER001@SAP T1, ZTRFC_MIDAS_050@SAP T2, ZHRT0004@SAP T3
+	    WHERE
+	            T1.MANDT = '100'
+	            AND T1.MANDT = T2.MANDT(+)
+	            AND T1.EMP_NO = T2.PERSN(+)
+	            AND T1.BUKRS = T3.BUKRS
+	            AND T1.DEPT_CD = T3.COM_DEPT_CD
+	            AND T1.NATION_CD = 'KR'
+	            AND T1.RE_PRED = '00000000'
+	    ORDER BY
+	            T1.NAME
+	  ]]>
+	 </select>
+	
+</sqlMap>

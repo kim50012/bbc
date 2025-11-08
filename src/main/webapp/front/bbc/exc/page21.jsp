@@ -1,0 +1,477 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.waremec.framework.utilities.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="label" value="<%=LabelUtil.getLabelBbcMap(application)%>" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>직원목록</title>
+<link rel="stylesheet" type="text/css" href="../css/font.css" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../css/button.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
+<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/header.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+<style>
+.app {
+	padding-top: 0;
+}
+
+.app-header {
+	position: relative;
+}
+
+.app-header .logo img {
+	width: 0.60rem;
+}
+.drag-table td img{
+    display: inline;
+    padding-right: 7px;
+    height: 12px;
+}
+.drag-table th {
+	padding: 5px 5px 5px 5px;
+}
+</style>
+<script>
+	$(function() {
+		var htm = '<header class="app-header" style="position: relative;"><div class="logo"><image src="${amsClb.CLB_MAI_IMG_PTH}"></image></div><div class="font24 bold">${amsClb.CLB_NM}</div></header>'
+		$("#appPage2").prepend(htm)
+		$(".app-header")
+				.click(
+						function() {
+							window.location.href = '/front/bbc/clb/clbDetMy.htm?intClbsq=${intClbsq }';
+						});
+	});
+</script>
+<style>
+.subBtn {
+	padding: 0.2rem 0.1rem;
+}
+.table {
+    -webkit-overflow-scrolling:touch
+}
+</style>
+</head>
+
+<body>
+	<div class="app">
+
+		<div class="content" >
+			<div class="scroll-wrap" id="appPage2">
+				<div class="container" style="padding:0 0.2rem;">
+				
+					<div class="title2">
+						<span class="font24 bold"><a href="/front/bbc/exc/getPage.htm?pageName=page7&intClbsq=59">목록 <span class="mdi mdi-refresh-circle"></span></a></span> <span
+							class="font20 fontOrange">기준：${amsClb.TODAY}</span>
+					</div>
+
+
+					<div class="content" id="chartArea1">
+						<div class="chart" id="chart"></div>
+					</div>
+					
+					<div class="content" id="chartArea2" style="padding-top:20px;">
+						<div class="chart2" id="chart2"></div>
+					</div>
+
+					<div class="table-wrap">
+						<div class="table" id="tableDiv" style="overflow: scroll;height: 87Vh;">
+							<table class="drag-table noWrapTable" id="table1" cellspacing="0" cellpadding="2" border="1" style="height:300px;">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+<script type="text/javascript">
+	$(function() {
+		getData();
+		appWidth();	
+	});
+	
+	function appWidth() {
+		var windowWidth;
+		var currentWidth = $(window).width();
+
+		if (currentWidth > 1024) {
+		  windowWidth = 1024;
+		} else {
+		  windowWidth = currentWidth;
+		}	
+		$(".app").css("width", windowWidth);
+	}
+
+	function getData() {
+
+		var load = loading();
+		load.show();
+
+		$.ajax({
+					data : {
+					},
+					type : "POST",
+					url : "/front/bbc/badMatch/getOracleData.htm",
+					success : function(data) {
+
+				        var arrYyyymm = [];
+						var arrBarRateTT = [];
+						var arrLineRateMM = [];
+						var arrLineRateMW = [];
+
+						var arrBarCoinTT = [];
+						var arrLineCoinMM = [];
+						var arrLineCoinMW = [];
+						
+						if (data.list.length != 0) {
+
+							$("#table1").html('');
+							htm = '';
+							$("#table1").append(htm);
+
+							var j = 0;
+							var prvMonth = "";
+							for (var i = 0; i < data.list.length; i++) {
+
+								if (data.list[i].YYYYMM != "Total" && "${para3}" == data.list[i].MBR_SQ) {
+									arrYyyymm.push(data.list[i].YYYYMM);
+
+									arrBarRateTT.push(data.list[i].WIN_RATE);
+									arrLineRateMM.push(data.list[i].MMW_WIN_RATE);
+									arrLineRateMW.push(data.list[i].MW_WIN_RATE);
+
+									arrBarCoinTT.push(data.list[i].BBC);
+									arrLineCoinMM.push(data.list[i].MMW_BBC);
+									arrLineCoinMW.push(data.list[i].MW_BBC);
+									
+								}
+								
+								var htm = '';
+								if (prvMonth != data.list[i].YYYYMM) {
+									j = 0;
+
+									if ("" == "${para3}" || i == 0) {
+										htm = ''
+											+ '<tr>'
+											+ '	<th>사원번호</th>'
+											+ '	<th>이름</th>'
+											+ '	<th>영문</th>'
+											+ '	<th>출생년월</th>'
+											+ '	<th>성별</th>'
+											+ '	<th>국가</th>'
+											+ '	<th>입사일</th>'
+											+ '	<th>근속</th>'
+											+ '	<th>부서</th>'
+											+ '	<th>역할</th>'
+											+ '	<th>KOSTL</th>'
+											+ '	<th>휴대폰</th>'
+											+ '	<th>이메일</th>'
+											+ '</tr>'
+											;
+											$("#table1").append(htm);	
+									}
+								}
+								
+								j++;
+								var k = j;
+								
+								htm = ''
+								+ '<tr>'
+								+ '	<td class="center">'+data.list[i].EMP_NO+'</td>'
+								+ '	<td class="center">'+data.list[i].NAME+'</td>'
+								+ '	<td class="center">'+data.list[i].ENG_NAME+'</td>'
+								+ '	<td class="center">'+data.list[i].BIRT+'</td>'
+								+ '	<td class="center">'+data.list[i].SEX_NM+'</td>'
+								+ '	<td class="center">'+data.list[i].NATION_CD+'</td>'
+								+ '	<td class="center">'+data.list[i].ENTR_DT+'</td>'
+								+ '	<td class="center">'+data.list[i].PERIOD_OF_WORK+'</td>'
+								+ '	<td class="center">'+data.list[i].DEPT_NM+'</td>'
+								+ '	<td class="center">'+data.list[i].PROC_NM+'</td>'
+								+ '	<td class="center">'+data.list[i].KOSTL+'</td>'
+								+ '	<td class="center">'+data.list[i].CURR_TEL_NO+'</td>'
+								+ '	<td class="center">'+data.list[i].COMP_EMAIL_ADDR+'</td>'
+								+ '</tr>'					
+								;
+
+								console.log(data.list[i].MBR_SQ);
+								
+								if ("" == "${para3}") {
+									$("#table1").append(htm);
+								}
+								else if ("" != "${para3}" && data.list[i].MBR_SQ == "${para3}") {
+									$("#table1").append(htm);
+								}
+								
+								prvMonth = data.list[i].YYYYMM;
+							}
+						} else {
+
+						}
+						
+						if ("" != "${para3}") {
+							$("#chartArea1").show();
+							$("#chartArea2").show();
+							tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW);	
+						}
+						else {
+							$("#chartArea1").hide();
+							$("#chartArea2").hide();
+						}
+						
+						load.hide();
+
+					},
+					error : function(xhr, status, e) {
+						load.hide()
+						alert("Error : " + status);
+					}
+				});
+	}
+	
+	
+
+	function sendResult() {
+
+		messageBox({
+			title : '확인',
+			message : '저장하시겠습니까?',
+			type : 'confirm',
+			callback : function() {
+				saveData();
+			}
+		})
+	}
+
+
+	function saveData() {
+
+		var para1 = "FEE_SAVE";
+		var para2 = "${para2}";
+		var para3 = "9";
+		var para4 = $("#txtFeeDt").val();
+		
+		var load = loading();
+		load.show()
+
+		$.ajax({
+					data : {
+						para1 : para1,
+						para2 : para2,
+						para3 : para3,
+						para4 : para4,
+						para5 : para5,
+						para6 : para6,
+						para7 : para7,
+						para8 : para8,
+						para9 : para9
+					},
+					type : "POST",
+				    contentType : "application/x-www-form-urlencoded;charset=utf-8",
+					url : "/front/bbc/clb/getData.htm",
+					success : function(data) {
+
+						window.location.href="/front/bbc/clb/getPage.htm?pageName=page3&intClbsq=${intClbsq }";	
+						load.hide()
+
+					},
+					error : function(xhr, status, e) {
+						load.hide()
+						alert("Error : " + status);
+					}
+				});
+	}
+	
+	function accumulateArray(arr) {
+	    let accumulatedValue = 0;
+	    return arr.map(value => accumulatedValue += roundNumber(value, 0));
+	}
+	
+	function roundNumber(value, decimals) {
+	    const factor = Math.pow(10, decimals);
+	    return Math.round(value * factor) / factor;
+	}
+	
+	function tagscheck(arrYyyymm, arrBarRateTT, arrLineRateMM, arrLineRateMW, arrBarCoinTT, arrLineCoinMM, arrLineCoinMW) {
+
+		var yyyyMmRev = arrYyyymm.reverse();
+		
+        var data = {
+			name: ['종합','복식','혼합복식'],
+			yyyymm: yyyyMmRev,
+			bar1: arrBarRateTT.reverse(),
+			line1: arrLineRateMM.reverse(),
+			line2: arrLineRateMW.reverse(),
+        }
+
+        var data2 = {
+			name: ['종합','복식','혼합복식'],
+			yyyymm: yyyyMmRev,
+			bar1: accumulateArray(arrBarCoinTT.reverse()),
+			line1: accumulateArray(arrLineCoinMM.reverse()),
+			line2: accumulateArray(arrLineCoinMW.reverse()),
+        }
+
+		drew("승율", "chart", data);
+		drew("Coin", "chart2", data2);
+		
+	}
+	
+    function drew(sTitle, chartID, data) {
+        var cw = $("#"+chartID)[0].clientWidth;
+        var cHeight = $(window).height();
+        var fsizeWeight = 0.013;
+        var cHeightWeight = 0.3;
+        
+        if (cw < 640) {
+        	cHeightWeight = 0.4;
+        }
+        
+        var fsize = cHeight * fsizeWeight;
+        $("#"+chartID).css('height', cHeight * cHeightWeight + 'px')
+        var myChart = echarts.init(document.getElementById(chartID));
+        var option = {
+				title: {
+					text: sTitle,
+					top:30,
+					textStyle:{
+						color:'#555555',
+						fontStyle:'normal',
+						fontWeight:'bold',
+						fontSize:fsize
+					}
+          		},
+				legend: {
+					top:0,
+					data: data.name,
+					itemWidth: 20,
+					itemHeight: 12,
+					itemGap: 10,
+					x: "center",
+					y: "top",
+            		textStyle:{
+						color:'#555555',
+						fontStyle:'normal',
+						fontWeight:'bold',
+						fontSize:fsize
+            		}
+      			},
+          		grid:{
+					x:35,
+					y:60,
+					x2:20,
+					y2:30,
+					borderWidth:1
+          		},
+				xAxis: {
+					axisLine:{
+						lineStyle: {
+							color: "#ededed",
+							width: 2
+              			},
+        			},
+            		axisLabel :{
+						show:true,
+						textStyle: { color: '#959595' }
+            		},
+            		data: data.yyyymm,
+          		},
+          		yAxis: {
+            		axisLine:false,
+		            axisLabel :{
+						show:true,
+						textStyle: { color: '#555555' }
+		            },
+            		splitNumber: 1,
+          		},
+          		animationDurationUpdate: 1200,
+          		series: [
+          			{
+						name: '종합',
+						type: 'bar',
+	            		itemStyle: {
+	              			normal: {
+	                			label: {  
+	                  				show: true,  
+									color: "#ccc",
+									fontWeight:'bold',
+									position: "insideBottom"
+	                			},
+	                			color: new echarts.graphic.LinearGradient(
+	                  				0, 1, 0, 0,
+	                  				[
+										{offset: 0, color: '#0080c6'},
+										{offset: 1, color: '#004d87'}
+	                  				]
+	                			)
+	              			}
+	            		},
+	            		z: 10,
+	            		data: data.bar1
+          			},
+          			{
+						name: '복식',
+						type:'line',
+						symbol:'circle',
+						itemStyle: {
+							normal: {
+								label: {  
+									show: true,  
+									color: "#e42e43",
+									fontWeight:'bold',
+									position: "top"
+	                    		},
+	                			color: "#e42e43",
+								lineStyle: {
+									color: "#e42e43"
+								}
+	              			}
+	            		},
+	            		z: 100,
+	            		data: data.line1
+	          		},
+	          		{
+						name: '혼합복식',
+						type:'line',
+						symbol:'circle',
+						itemStyle: {
+							normal: {
+								label: {  
+									show: true,  
+									color: "#ec8921",
+									fontWeight:'bold',
+									position: "bottom"
+								},
+			                	color: "#ec8921",
+								lineStyle: {
+									color: "#ec8921"
+								}
+			              	}
+            			},
+			            z: 100,
+			            data: data.line2
+					}
+				]
+        };
+        myChart.setOption(option);
+		$("#scrolltop").click(function(){
+			$(".scroll-wrap").animate({scrollTop:"0px"},800)
+		})
+	}
+</script>
+</html>
