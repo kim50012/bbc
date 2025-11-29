@@ -103,15 +103,47 @@
 
             <div class="contentList2 pb16" id="jump1">
 			  <div class="title2" style="position: relative;">
-				<span class="font24 bold" style="padding-left: 0.4rem;color: #0080c6;">← 대회 기본 정보 자세히 보기</span>
-                <i class="fourDPlex icon-jia" id="tableUpSub2" style="position: absolute;left: 0rem;"></i>
+				<span class="font24 bold" style="padding-left: 0.4rem;color: #0080c6;">대회 정보</span>
+                <i class="fourDPlex icon-jian" id="tableUpSub2" style="position: absolute;left: 0rem;"></i>
                 <c:if test="${userInfo.AUTH eq 'A'}">
 				<span class="font20 fontOrange" id="modifyMatchHead">대회내용 수정</span>
                 </c:if>
 			  </div>              
               
+              <div class="category" style="margin-top: -0.16rem;">
+                <c:if test="${userInfo.AUTH eq 'A' || userInfo.AUTH eq 'B' || userInfo.AUTH eq 'C'}">
+                <div class="catigoryElement" onclick="gotoManager();"style="width: 49%;background: #0080c6;color: #ffffff;">대회관리자</div>
+                <div class="catigoryElement" onclick="$('#sendMuliMsgPop').show();" style="width: 49%;background: #0080c6;color: #ffffff;">메시지 발송</div>
+                </c:if>
+                <div class="catigoryElement" id="myInfo" style="width: 49%;">나의 현황</div>
+                <div class="catigoryElement" id="entryDtl" style="width: 49%;">참가자 조회</div>
+                <div class="catigoryElement" id="matchStatus" style="width: 49%;">대회 진행 현황</div>
+                <div class="catigoryElement" id="courtGameList" style="width: 49%;">코트별 경기시간표</div>
+                <div class="catigoryElement" id="gamePlan" style="width: 49%;border: 1px solid #4CAF50;">예선 대진표</div>
+                <div class="catigoryElement" id="tonTable" style="width: 49%;border: 1px solid #2196F3;">본선 대진표</div>
+                <div class="catigoryElement" id="gameTable" style="width: 49%;border: 1px solid #4CAF50;">예선 경기시간표</div>
+                <div class="catigoryElement" id="finalGameTime" style="width: 49%;border: 1px solid #2196F3;">본선 경기시간표</div>
+                <div class="catigoryElement" id="gameResult" style="width: 49%;border: 1px solid #4CAF50;">예선 결과 ★</div>
+                <div class="catigoryElement" id="finalResult" style="width: 49%;border: 1px solid #2196F3;">본선 결과 ★</div>
+                <div class="catigoryElement" id="tonEntryList" style="width: 49%;border: 1px solid #FF5722;">본선 진출자 확정</div>
+                <div class="catigoryElement" id="victoryList" style="width: 49%;border: 1px solid #FF5722;">입상자 명단</div>
+<!--                 <div class="catigoryElement" id="gamePointInput" style="width: 49%;">점수판-자동변환</div> -->
+<!--                 <div class="catigoryElement" id="gamePointInput2" style="width: 49%;">점수판-세로고정</div> -->
+              </div>
+              
+            </div>
+
+
+		    <div class="contentList2 pb16">
+              <div class="title1" id="titleLvl2" style="display:none1;">
+                <div>
+                  <i class="fourDPlex icon-sanjiao"></i>
+                  <span>대회 정보</span>
+                </div>
+              </div>
+              
               <div class="table" style="padding-bottom: 0;">
-                <table class="table-col2 open" id="tableHead" cellspacing="0" cellpadding="2" width="100%" border="1" style="display:none;">
+                <table class="table-col2 open" id="tableHead" cellspacing="0" cellpadding="2" width="100%" border="1" style="display:none1;">
 
                   <colgroup>
                   	<col width="20%"/>
@@ -176,37 +208,8 @@
                   </c:if>
                 </table>
               </div>
-            </div>
-
-
-		    <div class="contentList2 pb16">
-              <div class="title1" id="titleLvl2" style="display:none;">
-                <div>
-                  <i class="fourDPlex icon-sanjiao"></i>
-                  <span>대회 기타 정보</span>
-                </div>
-              </div>
               
-              <div class="category" style="margin-top: -0.16rem;">
-                <c:if test="${userInfo.AUTH eq 'A' || userInfo.AUTH eq 'B' || userInfo.AUTH eq 'C'}">
-                <div class="catigoryElement" onclick="gotoManager();"style="width: 49%;background: #0080c6;color: #ffffff;">대회관리자</div>
-                <div class="catigoryElement" onclick="$('#sendMuliMsgPop').show();" style="width: 49%;background: #0080c6;color: #ffffff;">메시지 발송</div>
-                </c:if>
-                <div class="catigoryElement" id="myInfo" style="width: 49%;">나의 현황</div>
-                <div class="catigoryElement" id="entryDtl" style="width: 49%;">참가자 조회</div>
-                <div class="catigoryElement" id="matchStatus" style="width: 49%;">대회 진행 현황</div>
-                <div class="catigoryElement" id="courtGameList" style="width: 49%;">코트별 경기시간표</div>
-                <div class="catigoryElement" id="gamePlan" style="width: 49%;">예선 대진표</div>
-                <div class="catigoryElement" id="gameTable" style="width: 49%;">예선 경기시간표</div>
-                <div class="catigoryElement" id="gameResult" style="width: 49%;">예선 순위및결과</div>
-                <div class="catigoryElement" id="tonEntryList" style="width: 49%;">본선 진출자 조회</div>
-                <div class="catigoryElement" id="tonTable" style="width: 49%;">본선 대진표</div>
-                <div class="catigoryElement" id="finalGameTime" style="width: 49%;">본선 경기시간표</div>
-                <div class="catigoryElement" id="finalResult" style="width: 49%;">본선결과등록조회</div>
-                <div class="catigoryElement" id="victoryList" style="width: 49%;">입상자 명단</div>
-<!--                 <div class="catigoryElement" id="gamePointInput" style="width: 49%;">점수판-자동변환</div> -->
-<!--                 <div class="catigoryElement" id="gamePointInput2" style="width: 49%;">점수판-세로고정</div> -->
-              </div>
+              
             </div>
 
         	<div id="tableWrap">
@@ -452,7 +455,7 @@
 <script src="../js/dist/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	
-	var slideFlag2 = false;
+	var slideFlag2 = true;
 	wechatShareMsg = "${userInfo.MCH_NM}";
 	
 	$(function() {

@@ -118,7 +118,9 @@
                 <tr>
                   <th class="noWrapCell">클럽</th>
                   <th class="noWrapCell">이릅</th>
+                  <th class="noWrapCell">성별</th>
                   <th class="noWrapCell">급수</th>
+                  <th class="noWrapCell">나이</th>
                 </tr>
                 
 				<!-- START Data Loop -->
@@ -211,7 +213,9 @@
 						+ '<th class="noWrapCell">도시</th>'
 						+ '<th class="noWrapCell">클럽</th>'
 						+ '<th class="noWrapCell">이릅</th>'
+						+ '<th class="noWrapCell">성별</th>'
 						+ '<th class="noWrapCell">급수</th>'
+						+ '<th class="noWrapCell">나이</th>'
 						+ '</tr>';
 
 					$("#userResultTbody").append(htm);
@@ -225,8 +229,10 @@
 								+ '<tr>'  
 								+ '	<td class="noWrapCell center">'+data.list[i].CITY+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].CLB_NM+'</td>'
-								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'('+data.list[i].SEX+')</a></td>'
+								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'</a></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].SEX+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].LVL_NM+'</td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].THIS_YEAR_AGE+'</td>'
 								+ '</tr>'
 							;
 							$("#userResultTbody").append(htm);

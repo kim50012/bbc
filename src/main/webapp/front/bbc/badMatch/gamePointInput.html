@@ -1,213 +1,279 @@
 <!DOCTYPE html>
-<html>
-<html>
+<html lang="ko">
 <head>
-<meta name="description" content="">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=no" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>배드민턴 점수판</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<title>점수판 가로세로 자동변환</title>
-<link rel="stylesheet" type="text/css" href="../css/reset.css" />
-<link rel="stylesheet" type="text/css" href="../css/common.css" />
-<link rel="stylesheet" type="text/css" href="../css/button.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
-<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
-<style type="text/css">
-	.app {
-		padding-top: 0rem;
-		width: 100%;
-	}
-	.app > .content {
-    	padding-bottom: 0rem;
-	}
-	.container {
-		height: 100%;
-	}
-	.left-model, .right-model {
-		height: 100%;
-	}
-	.title2 {
-		height: 10%;
-		padding: 0rem;
-		display: initial;
-	}
-	.model-wrap {
-		height: 3.3rem;
-    	padding-top: 0.2rem;
-	}
-	.font336 {
-		font-size: 3.36rem;
-	}
-	.font26 {
-		line-height: 0;
-    	font-size: 0.18rem;
-	}
-	.btn-wrap {
-    	padding-bottom: 0.1rem;
-    	padding-top: 0.1rem;
-	}
-	.subBtn {
-    	padding: 0.16rem 0.1rem;
-    }
-	body {
-		width: 100%;
-	}
-</style>
-</head>
-<body onkeydown="inputKey(event)">
-	<div class="app news14_app" id="appPointInput">
-		<div class="content">
-			<div style="height:100%;">
-				<div class="container">
-					<div class="model-wrap">
-						<div class="left-model">
-							<span class="mdi mdi-minus-box" style="font-size: 0.5rem;position: absolute;left: 0.36rem;top: 0.2rem;" onclick="addPointA(-1);"></span>
-							<p class="font336 bold fontBlack" id="pointA" onclick="addPointA(1);">0</p>
-						</div>
-			          	<div class="btn-wrap" style="padding-top: 0.7rem;">
-			          	  <div class="buttons" style="padding-top: 0;padding-bottom: 0;padding-left: 0.12rem;padding-right: 0.12rem;display: initial;">
-			                <div class="blueBtn subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;" onclick="changeCt();"><img src="/front/bbc/img/btnMobileC.jpg" style="width: 0.4rem;"></div>
-			                <div class="orangeBtn subBtn f-col font26" style="margin-bottom:0.1rem;padding:0rem;margin-top: 0.7rem;" onclick="init();"><img src="/front/bbc/img/btnMobileD.jpg" style="width: 0.4rem;"></div>
-			              </div>
-			            </div>
-						<div class="left-model">
-							<span class="mdi mdi-minus-box" style="font-size: 0.5rem;position: absolute;right: 0.36rem;top: 0.2rem;" onclick="addPointB(-1);"></span>
-							<p class="font336 bold fontBlack" id="pointB" onclick="addPointB(1);">0</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-<script type="text/javascript">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	$(function() {
-		getData();
-	});
-	
+    <style>
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            overflow: hidden; /* 스크롤 완전 방지 */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
-	function getData() {
+        /* 점수 숫자 크기 설정 (요청사항 2: 더 크게) 
+           하단 버튼 영역이 사라졌으므로 공간을 최대로 활용합니다.
+        */
+        .score-display {
+            line-height: 1;
+            font-weight: bold;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+            cursor: pointer;
+            font-size: 35vh; /* 세로 모드: 25vh -> 35vh 로 확대 */
+        }
 
-		var para1 = "AMS_GAME_SELECT_ONE";
-		var para2 = "${amsClb.CLB_SQ}";
-		var para3 = "${intMtcsetcnt}";
-
-		var load = loading();
-		load.show()
-
-		$.ajax({
-			data : {
-				para1 : para1,
-				para2 : para2,
-				para3 : para3
-			},
-			type : "POST",
-			url : "/front/bbc/clb/getData.htm",
-			success : function(data) {
-
-				if (data.list.length != 0) {
-					
-				} else {
-
-				}
-				load.hide()
-
-			},
-			error : function(xhr, status, e) {
-				load.hide()
-				alert("Error : " + status);
-			}
-		});
-	}
-
-	function inputKey(key) {
-	    if (key.keyCode == 37) {
-	    	addPointA(-1);
-	    }
-	    if (key.keyCode == 38) {
-	    	addPointA(1);
-	    }
-	    if (key.keyCode == 39) {
-	    	addPointB(1);
-	    }
-	    if (key.keyCode == 40) {
-	    	addPointB(-1);
-	    }
-	}	
-
-	$(window).bind('orientationchange resize', function(event){
-		window.location.reload();
-	});
-
-	$("#pointA").html(Number(getCookie("inputScoreA")));
-	$("#pointB").html(Number(getCookie("inputScoreB")));
-
-	function gotoPg(a) {
-		window.location.href="gamePointInput2.html";
-	}
-	
-	function init() {
-		$("#pointA").html(0);
-		$("#pointB").html(0);
-		setCookie("A", 0);
-		setCookie("B", 0);
-	}
-	function addPointA(a){
-		var point = $("#pointA").html();
-		var rlt = Number(point)+Number(a);
-		if (rlt < 0) {
-			rlt = 0;
-		}
-		$("#pointA").html(rlt);
-		setCookie("A", rlt);
-	}
-	function addPointB(a){
-		var point = $("#pointB").html();
-		var rlt = Number(point)+Number(a);
-		if (rlt < 0) {
-			rlt = 0;
-		}
-		$("#pointB").html(rlt);
-		setCookie("B", rlt);
-	}
-	function changeCt() {
-		var pointA = $("#pointA").html();
-		var pointB = $("#pointB").html();
-		$("#pointA").html(pointB);
-		$("#pointB").html(pointA);
-		setCookie("A", pointB);
-		setCookie("B", pointA);
-	}
-	function setCookie(a, b) {
-		var date = new Date();
-		date.setDate(date.getDate() + 1);
-		
-		var willCookie = "";
-		willCookie += "inputScore"+a+"="+b+";";
-		willCookie += "expires=" + date.toUTCString();
-		document.cookie = willCookie;	
-	}
-	function gameEnd() {
-		window.location.href='/front/bbc/clb/gameReg.htm?intClbsq=9&intAtemscr='+$("#pointA").html()+"&intBtemscr="+$("#pointB").html();
-	}
-	function getCookie(name) {
-
-        // 변수를 선언한다.
-        var cookies = document.cookie.split(";");
-
-        // 쿠키를 추출한다.
-        for(var i in cookies) {
-            if(cookies[i].search(name) != -1) {
-            	return decodeURIComponent(cookies[i].replace(name + "=", ""));
+        /* 시스템 가로 모드 */
+        @media (orientation: landscape) {
+            .score-display {
+                font-size: 80vh; /* 가로 모드: 45vh -> 60vh 로 확대 */
             }
         }
-        return 0;
-    }
-	
-</script>	
+
+        /* 강제 회전 모드 */
+        body.force-rotate .score-display {
+            font-size: 60vw; /* 높이(너비) 기준 60% */
+        }
+
+        /* PC 등 큰 화면 */
+        @media (min-width: 768px) and (min-height: 600px) {
+            .score-display {
+                font-size: 26rem; 
+            }
+        }
+        
+        .score-display:active {
+            transform: scale(0.95);
+        }
+
+        .btn-action {
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+        .btn-action:active {
+            transform: scale(0.90);
+        }
+        
+        .team-name {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* 강제 화면 회전 스타일 */
+        body.force-rotate #app-container {
+            transform: rotate(90deg);
+            transform-origin: top left;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100vh;
+            height: 100vw;
+            flex-direction: row !important; 
+        }
+        
+        body.force-rotate .team-container {
+            padding: 0.5rem !important;
+            border-bottom-width: 0 !important;
+            border-right-width: 4px !important;
+        }
+        body.force-rotate .top-bar {
+            top: 0.5rem !important;
+        }
+        body.force-rotate .score-area {
+            padding-top: 0 !important; /* 점수 영역 상단 여백 제거 (중앙 정렬 위함) */
+        }
+        body.force-rotate #btn-swap,
+        body.force-rotate #btn-reset,
+        body.force-rotate .btn-minus-top {
+             padding: 0.5rem;
+             height: 2.5rem;
+             width: 2.5rem;
+             font-size: 1rem;
+        }
+
+        /* 회전 토글 버튼 */
+        #btn-rotate-toggle {
+            position: fixed;
+            z-index: 9999;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        body.force-rotate #btn-rotate-toggle {
+            bottom: 10px;
+        }
+
+    </style>
+</head>
+<body class="h-[100dvh] overflow-hidden bg-gray-900">
+
+    <button id="btn-rotate-toggle" class="btn-action">
+        <i class="fas fa-sync-alt"></i> 화면 회전
+    </button>
+
+    <main id="app-container" class="w-full h-full flex flex-col md:flex-row landscape:flex-row transition-all duration-300">
+        
+        <!-- A팀 영역 -->
+        <div id="team-a-container" class="team-container flex-1 flex flex-col justify-center items-center bg-red-700 relative border-b-4 md:border-b-0 md:border-r-4 landscape:border-b-0 landscape:border-r-4 border-gray-900 transition-colors duration-300 p-4 landscape:p-2">
+            
+            <!-- 상단 바: [이름] [마이너스] [설정] -->
+            <div class="top-bar absolute top-6 landscape:top-2 left-6 right-6 flex items-center gap-2 z-10">
+                <!-- 이름 (가장 넓게 차지) -->
+                <input type="text" value="HOME" class="team-name bg-transparent border-none text-white text-3xl landscape:text-2xl md:text-5xl font-bold flex-grow focus:outline-none focus:bg-black/20 rounded px-2 placeholder-white/70 drop-shadow-md min-w-0" id="name-a">
+                
+                <!-- 요청사항 1: 마이너스 버튼 상단 이동 -->
+                <button class="btn-minus bg-black/20 hover:bg-black/40 text-white/80 hover:text-white rounded-lg w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl backdrop-blur-sm btn-action border border-white/10" data-target="score-a" title="점수 -1">
+                    <i class="fas fa-minus"></i>
+                </button>
+
+                <!-- 코트 변경 버튼 -->
+                <button id="btn-swap" class="bg-black/30 hover:bg-black/50 text-white w-10 h-10 md:w-12 md:h-12 rounded-lg backdrop-blur-md btn-action flex items-center justify-center border border-white/20 shadow-lg" title="코트 변경">
+                    <i class="fas fa-exchange-alt text-lg md:text-xl"></i>
+                </button>
+            </div>
+
+            <!-- 메인 점수 -->
+            <!-- 하단 마이너스 버튼 영역 삭제 및 여백 최적화 -->
+            <div class="score-area flex flex-col items-center justify-center h-full w-full pt-10 landscape:pt-0">
+                <div id="score-a" class="score-display no-select hover:text-gray-100" title="터치하여 점수 +1">0</div>
+            </div>
+        </div>
+
+        <!-- B팀 영역 -->
+        <div id="team-b-container" class="team-container flex-1 flex flex-col justify-center items-center bg-blue-700 relative transition-colors duration-300 p-4 landscape:p-2">
+            
+            <!-- 상단 바 -->
+            <div class="top-bar absolute top-6 landscape:top-2 left-6 right-6 flex items-center gap-2 z-10">
+                <!-- 
+                  요청사항 3: Away 팀 정렬 오류 수정
+                  기존: order-1, text-right 등이 섞여있어 혼란
+                  수정: order 삭제, text-left로 통일하여 A팀과 동일한 구조 유지
+                -->
+                <input type="text" value="AWAY" class="team-name bg-transparent border-none text-white text-3xl landscape:text-2xl md:text-5xl font-bold flex-grow focus:outline-none focus:bg-black/20 rounded px-2 placeholder-white/70 text-left drop-shadow-md min-w-0" id="name-b">
+                
+                <!-- 요청사항 1: 마이너스 버튼 상단 이동 -->
+                <button class="btn-minus bg-black/20 hover:bg-black/40 text-white/80 hover:text-white rounded-lg w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl backdrop-blur-sm btn-action border border-white/10" data-target="score-b" title="점수 -1">
+                    <i class="fas fa-minus"></i>
+                </button>
+
+                <!-- 리셋 버튼 -->
+                <button id="btn-reset" class="bg-black/30 hover:bg-black/50 text-red-200 w-10 h-10 md:w-12 md:h-12 rounded-lg backdrop-blur-md btn-action flex items-center justify-center border border-white/20 shadow-lg" title="점수 리셋">
+                    <i class="fas fa-redo text-lg md:text-xl"></i>
+                </button>
+            </div>
+
+            <!-- 메인 점수 -->
+            <div class="score-area flex flex-col items-center justify-center h-full w-full pt-10 landscape:pt-0">
+                <div id="score-b" class="score-display no-select hover:text-gray-100" title="터치하여 점수 +1">0</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            
+            // 화면 회전 토글
+            $('#btn-rotate-toggle').click(function() {
+                $('body').toggleClass('force-rotate');
+                if($('body').hasClass('force-rotate')) {
+                    $(this).html('<i class="fas fa-undo"></i> 회전 복귀');
+                } else {
+                    $(this).html('<i class="fas fa-sync-alt"></i> 화면 회전');
+                }
+            });
+
+            // 1. 점수 증가
+            $('.score-display').on('click', function() {
+                let targetId = $(this).attr('id');
+                updateScore(targetId, 1);
+            });
+
+            // 2. 점수 감소
+            $('.btn-minus').on('click', function() {
+                let targetId = $(this).data('target');
+                updateScore(targetId, -1);
+            });
+
+            function updateScore(elementId, delta) {
+                let $el = $('#' + elementId);
+                let currentScore = parseInt($el.text());
+                let newScore = currentScore + delta;
+                if (newScore < 0) newScore = 0;
+                
+                $el.text(newScore);
+                
+                $el.css('transform', 'scale(1.15)');
+                setTimeout(() => {
+                    $el.css('transform', 'scale(1)');
+                }, 100);
+            }
+
+            // 3. 코트 변경
+            $('#btn-swap').click(function() {
+                $('#app-container').css('opacity', '0');
+                setTimeout(function() {
+                    let scoreA = $('#score-a').text();
+                    let scoreB = $('#score-b').text();
+                    let nameA = $('#name-a').val();
+                    let nameB = $('#name-b').val();
+                    
+                    let containerA = $('#team-a-container');
+                    let containerB = $('#team-b-container');
+                    
+                    $('#score-a').text(scoreB);
+                    $('#score-b').text(scoreA);
+                    
+                    $('#name-a').val(nameB);
+                    $('#name-b').val(nameA);
+                    
+                    if (containerA.hasClass('bg-red-700')) {
+                        containerA.removeClass('bg-red-700').addClass('bg-blue-700');
+                        containerB.removeClass('bg-blue-700').addClass('bg-red-700');
+                    } else {
+                        containerA.removeClass('bg-blue-700').addClass('bg-red-700');
+                        containerB.removeClass('bg-red-700').addClass('bg-blue-700');
+                    }
+                    $('#app-container').css('opacity', '1');
+                }, 200);
+            });
+
+            // 4. 리셋
+            $('#btn-reset').click(function() {
+                if(confirm('새 게임을 시작하시겠습니까?')) {
+                    location.reload(); 
+                }
+            });
+        });
+    </script>
+</body>
 </html>
