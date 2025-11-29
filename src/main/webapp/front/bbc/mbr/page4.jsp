@@ -155,12 +155,12 @@
 				
 					<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 					<div class="model-gray" style="margin-top: 0.1rem;background: #fff;">
-						<div class="bottom-model" style="padding-top: 0;">
-							<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
+						<div class="bottom-model" style="padding: 0;">
+							<div class="input-wrap" style="width: 80%;margin-right: 0.2rem;">
 							<span>
 								<c:if test="${amsClb.CLB_SQ == 11}">
-								<select style="width:50%;" id="selClb">
-									<option value="">ALL</option>
+								<select style="width:35%;" id="selClb">
+									<option value="">-</option>
 									<option value="1">BBC</option>
 									<option value="2">WJBC</option>
 									<option value="3">BSC</option>
@@ -168,21 +168,47 @@
 									<option value="6">HBC</option>
 									<option value="8">SBBC</option>
 								</select>
+								<select style="width:17%;" id="selGrade">
+									<option value="">-</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+								<select style="width:17%;" id="selGender">
+									<option value="">-</option>
+									<option value="MALE">남</option>
+									<option value="FEMA">여</option>
+								</select>
 								</c:if>
 								<c:if test="${amsClb.CLB_SQ == 67}">
-								<select style="width:50%;" id="selClb">
-									<option value="">ALL</option>
+								<select style="width:35%;" id="selClb">
+									<option value="">-</option>
 									<option value="1">HSBC</option>
 									<option value="2">SBC</option>
 									<option value="3">FBC</option>
 									<option value="10">KBC</option>
 									<option value="13">ABC</option>
 									<option value="14">PBC</option>
-									<option value="18">팀카피바라</option>
-									<option value="19">VHB</option>
+									<option value="16">팀카피바라</option>
+									<option value="18">VHB</option>
+								</select>
+								<select style="width:17%;" id="selGrade">
+									<option value="">-</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+								<select style="width:17%;" id="selGender">
+									<option value="">-</option>
+									<option value="MALE">남</option>
+									<option value="FEMA">여</option>
 								</select>
 								</c:if>
-								<input type="text" id="txtMbrnm" style="width:50%;">
+								<input type="text" id="txtMbrnm" style="width:31%;">
 							</span>
 							</div>              
 							<button class="confirmBtn" id="confirmBtn" onclick="getData('${amsClb.TODAY}');">조회</button>
@@ -202,6 +228,9 @@
 									<th>No</th>
 									<th>사진</th>
 									<th>이름</th>
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									<th>성별</th>
+									</c:if>
 									<th>레벨</th>
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
@@ -223,6 +252,9 @@
 									<th>No</th>
 									<th>사진</th>
 									<th>이름</th>
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									<th>성별</th>
+									</c:if>
 									<th>레벨</th>
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
@@ -244,6 +276,9 @@
 									<th>No</th>
 									<th>사진</th>
 									<th>이름</th>
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									<th>성별</th>
+									</c:if>
 									<th>레벨</th>
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
@@ -265,6 +300,9 @@
 									<th>No</th>
 									<th>사진</th>
 									<th>이름</th>
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									<th>성별</th>
+									</c:if>
 									<th>레벨</th>
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
@@ -286,6 +324,9 @@
 									<th>No</th>
 									<th>사진</th>
 									<th>이름</th>
+									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									<th>성별</th>
+									</c:if>
 									<th>레벨</th>
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 									<th style="width: 34%;">클럽</th>
@@ -363,10 +404,14 @@
 		var para2 = "${amsClb.CLB_SQ}";
 		var para3 = "";
 		var para4 = "";
+		var para5 = "";
+		var para6 = "";
 
 		<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 		para3 = $("#selClb").val();
 		para4 = $("#txtMbrnm").val();
+		para5 = $("#selGender").val();
+		para6 = $("#selGrade").val();
 		</c:if>
 
 		var load = loading();
@@ -378,7 +423,9 @@
 						para1 : para1,
 						para2 : para2,
 						para3 : para3,
-						para4 : para4
+						para4 : para4,
+						para5 : para5,
+						para6 : para6
 					},
 					type : "POST",
 					url : "/front/bbc/clb/getData.htm",
@@ -389,7 +436,10 @@
 						+ '	<th>No</th>'
 						+ '	<th>사진</th>'
 						+ '	<th>이름</th>'
-						+ '	<th>레벨</th>'
+						<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+						+ '	<th style="width: 10%;">성별</th>'
+						</c:if>
+						+ '	<th style="width: 10%;">레벨</th>'
 						<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
 						+ '	<th style="width: 34%;">클럽</th>'
 						</c:if>
@@ -422,6 +472,7 @@
 									+ '	<th>No</th>'
 									+ '	<th>사진</th>'
 									+ '	<th>이름</th>'
+									+ '	<th>성별</th>'
 									+ '	<th>레벨</th>'
 									+ '</tr>'
 									;
@@ -435,15 +486,15 @@
 									+ '<tr>'
 									+ '	<td class="center">'+(j)+'</td>'
 									+ '	<td class="center"><img class="thumbnail-image" src="'+data.list[i].MBR_MAI_IMG_PTH+'" style="width: 1rem;'+sTag+'"/></td>'
-									+ '	<td class="center" style="text-decoration: underline;" onclick="goUserPage('+data.list[i].MBR_SQ+')">'
+									+ '	<td class="center" style="text-decoration: underline;" onclick="goUserPage('+data.list[i].MBR_SQ+')">'+ data.list[i].CLB_NIK_NM+ '</td>'
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
+									+ '	<td class="center">'
 									+ '<img src="../image/'+data.list[i].IMG+'.png" style="height:0.28rem;display: initial;"> '
+									+ ' </td>'
 									</c:if>
-									+ data.list[i].CLB_NIK_NM
-									+ '</td>'
 									+ '	<td class="center">'+data.list[i].BMT_GD+'${label.组}</td>'
 									<c:if test="${amsClb.CLB_SQ == 11 or amsClb.CLB_SQ == 67}">
-									+ '	<td>'+data.list[i].CLB_NM+'</td>'
+									+ '	<td class="center">'+data.list[i].CLB_NM+'</td>'
 									</c:if>
 									+ '</tr>'					
 									;
