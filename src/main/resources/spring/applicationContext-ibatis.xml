@@ -117,6 +117,54 @@
 		<property name="dataSource" ref="oracleDataSource" />
 	</bean>
 
+
+
+	<!-- 
+	=========================================================
+	3. MSSQL 설정 (기존 설정 리팩토링)
+	=========================================================
+	-->
+	
+	<!-- 3-1. MSSQL 데이터 소스 (DBCP) -->
+	<bean id="hsmssqlDataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${hsmssql.jdbc.driverClassName}" />
+		<property name="url" value="${hsmssql.jdbc.url}" />
+		<property name="username" value="${hsmssql.jdbc.username}" />
+		<property name="password" value="${hsmssql.jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+	</bean>
+
+	<!-- 1-2. hsmssql P6Spy 래퍼 (SQL 로깅용) -->
+	<bean id="hsmssqlDataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg>
+			<ref local="hsmssqlDataSourceTarget" />
+		</constructor-arg>
+	</bean>
+	
+	<!-- 1-3. hsmssql iBatis SqlMapClient -->
+	<bean id="hsMsSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:/ibatis/sqlmap-config-hsmssql.xml</value>
+		</property>
+		<property name="dataSource" ref="hsmssqlDataSource" />
+		<property name="useTransactionAwareDataSource" value="true"></property>
+	</bean>
+
+	<!-- 1-4. MSSQL 트랜잭션 관리자 -->
+	<!-- 
+		[수정]
+		AOP 설정(txAdvice)이 'transactionManager'라는 이름의 Bean을 참조하므로,
+		'mssqlTransactionManager'가 기본 트랜잭션 관리자 역할을 할 수 있도록
+		'name="transactionManager"' 속성을 alias(별명)로 추가합니다.
+	-->
+	<bean id="hsmssqlTransactionManager" name="hstransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="hsmssqlDataSource" />
+	</bean>
+
+
+
 	<!-- 
 	=========================================================
 	3. DAO 설정 (수정됨)
@@ -131,6 +179,11 @@
 	<!-- 3-2. Oracle 공통 DAO Bean -->
 	<bean id="oracleCommonDao" class="com.waremec.framework.dao.CommonDao">
 		<property name="sqlMapClient" ref="oracleSqlMapClient"/>
+	</bean>
+	
+	<!-- 3-3. Oracle 공통 DAO Bean -->
+	<bean id="mssqlHsCommonDao" class="com.waremec.framework.dao.CommonDao">
+		<property name="sqlMapClient" ref="hsMsSqlMapClient"/>
 	</bean>
 
 	<!-- 

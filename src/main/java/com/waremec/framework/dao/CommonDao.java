@@ -35,6 +35,22 @@ public class CommonDao extends SqlMapClientDaoSupport {
 	}
 	// ------------- Oracle  관련 -----------------
 
+	// ------------- HS MSSQL  관련 -----------------
+	public List<Map<String, Object>> selectListHsMsSql(Map<String, Object> searchMap) {
+		return selectListHsMsSql((String) searchMap.get(SQL_ID), searchMap);
+	}
+	 
+	@SuppressWarnings("deprecation")
+	public List<Map<String, Object>> selectListHsMsSql(String sqlId, Map<String, Object> searchMap) {
+		return (List<Map<String, Object>>)getSqlMapClientTemplate().queryForList(sqlId, searchMap);
+	}
+
+	@SuppressWarnings("deprecation")
+	public List<Map<String, Object>> selectListHsMsSql(String sqlId, String queryStr) {
+		return (List<Map<String, Object>>)getSqlMapClientTemplate().queryForList(sqlId, queryStr);
+	}
+	// ------------- HS MSSQL  관련 -----------------
+
 	public void insert(Map<String, Object> map) {
 		insert((String) map.get(SQL_ID), map);
 	}

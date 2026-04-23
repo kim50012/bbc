@@ -664,4 +664,31 @@ public class BadMatchAction extends BaseAction{
 	return NONE;
     }    
     
+
+    public String setHsMsSqlData(){
+	String ret = "fail";
+	SessionMember sessionMember = (SessionMember) session.get(SessionUtils.SESSION_MEMEBER);
+	if (sessionMember == null) {
+	    strLngdv = "ko-KR";
+	    request.put("strLngdv", strLngdv);
+	} else {
+	    strLngdv = sessionMember.getLang();
+	    request.put("strLngdv", strLngdv);
+	}
+	try {
+	    Map<String, Object> searchMap = new HashMap<String, Object>();
+	    searchMap.put("USRID", para1);
+	    List<Map<String, Object>> pageData = commonService.selectListHsMsSql("hsMsSqlMap.sqlSP_ABNORMAL_MAKE_DATA", searchMap);
+	    renderJSON(pageData);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    ret = "fail";
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    returnMap.put("ret", ret);
+	    renderJSON(returnMap);
+	}
+	return NONE;
+    }    
+    
+    
 }

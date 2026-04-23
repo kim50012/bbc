@@ -1,0 +1,89 @@
+GO
+/****** Object:  StoredProcedure [dbo].[ACD_COM_CD_INSERT]    Script Date: 2026-04-11 오후 3:24:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*
+▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨
+
+[FUNCTION]
+
+[MODIFY]
+
+[WHERE-USED LIST]
+
+[DEFINE]
+
+▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨▨
+*/
+CREATE PROCEDURE [dbo].[SP_ABNORMAL_MAKE_DATA]
+
+    -------------------------------------------------------------------------------
+    -- ONLY USE PROCEDURE PARAMETER
+    -------------------------------------------------------------------------------
+    @USRID  VARCHAR(40) = NULL  -- [공통코드마스터] 공통코드구분
+
+AS
+--*/
+
+
+/*
+--====================================================
+-- DEBUG
+--====================================================
+
+
+
+DECLARE
+
+    -------------------------------------------------------------------------------
+    -- ONLY USE PROCEDURE PARAMETER
+    -------------------------------------------------------------------------------
+    @USRID  VARCHAR(40) = NULL  -- [공통코드마스터] 공통코드구분
+
+SET @USRID  = 'I'
+
+--====================================================
+--*/
+
+-- 1. DEVDT 실시간 동적 생성 (UTC 기준 현재 시간의 Unix Timestamp 환산)
+DECLARE @DEVDT INT = DATEDIFF(SECOND, '1970-01-01', GETUTCDATE());
+
+-- 2. 단말기 및 로그 식별 정보 (테스트 시 DEVLGIDX 값을 기존에 없는 값으로 변경해보세요)
+DECLARE @DEVUID INT = 547234586;
+DECLARE @PKTDEVID INT = 547234586;
+DECLARE @DEVLGIDX BIGINT = 977221;
+-- DECLARE @USRID VARCHAR(128) = '121069001';
+
+
+SELECT
+		@DEVLGIDX = MIN(DEVLGIDX) - 1
+FROM	T_LG202604
+WHERE	PKTDEVID = @PKTDEVID
+
+
+-- 3. HINT 동적 생성 로직
+DECLARE @GENERATED_HINT VARCHAR(50) = 
+    RIGHT('0000000000' + CAST(@DEVDT AS VARCHAR(10)), 10) +
+    RIGHT('0000000000' + CAST(@DEVUID AS VARCHAR(10)), 10) +
+    RIGHT('0000000000' + CAST(@DEVLGIDX AS VARCHAR(10)), 10);
+
+-- 4. 무조건 INSERT 수행 (업데이트 없음)
+-- 주의: 테이블에 UNIQUE 제약 조건이 있으므로 중복 데이터 유입 시 2627 에러가 발생합니다.
+-- 어플리케이션 단에서 예외 처리가 필요합니다.
+INSERT INTO [dbo].[T_LG202604] (
+    [SRVDT], [DEVDT], [DEVUID], [PKTDEVID], [DEVLGIDX], 
+    [USRID], [USRGRUID], [EVT], [CRDSL], [TNAKEY], 
+    [IS_DST], [TMZN_HALF], [TMZN_HOUR], [TMZN_NEGTV], 
+    [USRUDTBYDEV], [HINT]
+) VALUES (
+    SYSDATETIME(), @DEVDT, @DEVUID, @PKTDEVID, @DEVLGIDX, 
+    @USRID, 49716, 4102, 0, 0, 
+    0, 0, 7, 0, 
+    'N', @GENERATED_HINT
+);
+
+
+RETURN

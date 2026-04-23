@@ -22,10 +22,12 @@ public class CommonServiceImpl implements CommonService {
 //	@Resource
 	@Resource(name = "mssqlCommonDao")
 	protected CommonDao commonDao;
-	
+
 	@Resource(name = "oracleCommonDao")
 	protected CommonDao oracleCommonDao;
-
+	
+	@Resource(name = "mssqlHsCommonDao")
+	protected CommonDao mssqlHscommonDao;
 
 	// ------------- Oracle  관련 -----------------
 
@@ -49,6 +51,28 @@ public class CommonServiceImpl implements CommonService {
 		}
 	}
 	// ------------- Oracle  관련 -----------------
+	
+	// ------------- HS MSSQL  관련 -----------------
+	@Override
+	public List<Map<String, Object>> selectListHsMsSql(Map<String, Object> searchMap) {
+		try {
+			return mssqlHscommonDao.selectListHsMsSql(searchMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Map<String, Object>>();
+		}
+	}
+
+	@Override
+	public List<Map<String, Object>> selectListHsMsSql(String sqlId, Map<String, Object> searchMap) {
+		try {
+			return mssqlHscommonDao.selectListHsMsSql(sqlId, searchMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Map<String, Object>>();
+		}
+	}
+	// ------------- HS MSSQL  관련 -----------------
 	
 	@Override
 	public void insert(Map<String, Object> map) {

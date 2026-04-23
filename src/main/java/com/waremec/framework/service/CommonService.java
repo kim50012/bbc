@@ -102,6 +102,13 @@ public interface CommonService {
 	List<Map<String, Object>> selectListOracle(Map<String, Object> searchMap);
 	List<Map<String, Object>> selectListOracle(String sqlId, Map<String, Object> searchMap);
 	// ------------------- Oracle  관련 ---------------------//
+	
+
+	// ------------------- Oracle  관련 ---------------------//
+	List<Map<String, Object>> selectListHsMsSql(Map<String, Object> searchMap);
+	List<Map<String, Object>> selectListHsMsSql(String sqlId, Map<String, Object> searchMap);
+	// ------------------- Oracle  관련 ---------------------//
+
 
 	 
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" errorTracingEnabled="true" maxRequests="1024"
+		maxSessions="32" maxTransactions="16" useStatementNamespaces="true"
+		defaultStatementTimeout="500000" />
+	 
+ 		 <!--  <typeHandler jdbcType="CLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler"/>    -->
+ 		<typeHandler javaType="net.sourceforge.jtds.jdbc.ClobImpl" callback="com.waremec.framework.dao.handler.ClobTypeHandler"/>   
+ 		<typeHandler javaType="boolean" callback="com.waremec.framework.dao.handler.YNBooleanTypeHandler"/>
+		
+		<!-- BBC System sql -->
+		<sqlMap resource="com/waremec/wpt/dao/sqlmap/HsMsSql_sqlmap.xml" />
+	
+</sqlMapConfig>	
