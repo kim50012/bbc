@@ -39,6 +39,14 @@ var clbJson = [{
 	    name: 'VHB',
 	    value: '18'
 	},
+	{
+	    name: '호치민턴',
+	    value: '24'
+	},
+	{
+	    name: '호콕이',
+	    value: '25'
+	},
 ];
 var areaJson = [{
     name: '전체',

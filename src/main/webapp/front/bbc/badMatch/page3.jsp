@@ -86,7 +86,7 @@
   	                        <span class="Rdefine">여복</span>
                           </label>
                         </div>
-                        <c:if test="${para4 ne 'E'}">
+                        <c:if test="${para4 ne '1E'}">
 						<div class="trans">
                         	<label class="radio">
   	                        <input class="" type="radio" name="gameType" value="MW">

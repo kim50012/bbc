@@ -69,6 +69,14 @@
     	font-size: 0.24rem;
     	line-height: 0.3rem;
     }
+    
+    .drag-table td {
+        font-size: 0.3rem;
+    }
+    
+    .drag-table th {
+        font-size: 0.3rem;
+    }
 </style>
 </head>
 
@@ -143,7 +151,7 @@
               </div>
               
               <div class="table" style="padding-bottom: 0;">
-                <table class="table-col2 open" id="tableHead" cellspacing="0" cellpadding="2" width="100%" border="1" style="display:none1;">
+                <table class="table-col2" id="tableHead" cellspacing="0" cellpadding="2" width="100%" border="1" style="display:none;">
 
                   <colgroup>
                   	<col width="20%"/>
@@ -356,7 +364,7 @@
 	                  	<div class="tab-img mb16 mb10">
 	                  		<img src="../image/uww.png" style="height:0.28rem;"/><span style="padding-left:0.1rem;">여복 참가 : <span id="entryCntEww">0</span>팀</span>
 	                  	</div>
-	                  	<div class="tab-img mb16 mb10" style="display:none;">
+	                  	<div class="tab-img mb16 mb10" style="display:none1;">
 	                  		<img src="../image/umw.png" style="height:0.28rem;"/><span style="padding-left:0.1rem;">혼복 참가 : <span id="entryCntEmw">0</span>팀</span>
 	                  	</div>
 	                  </td>
