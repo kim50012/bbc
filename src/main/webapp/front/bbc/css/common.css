@@ -451,7 +451,7 @@ textarea::-webkit-input-placeholder {
   padding-top: 0.88rem;
 }
 .openList {
-  display: none;
+  display: none1;
 }
 .icon-listClose {
   color: #959595;

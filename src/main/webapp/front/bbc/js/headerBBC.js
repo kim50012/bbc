@@ -53,8 +53,9 @@ function menuPop() {
       for(var i = 0; i < data.menuLv1.length; i++) {
         var menuLi = document.createElement("li");
         // 标题
-        var titleHtm = '<div class="title1" onclick="showMenuList(this)"><span class="fontBlack bold f-row">'+data.menuLv1[i].name+'</span>'
-        titleHtm += '<i class="fourDPlex icon-listOpen listOpen"></i>'
+//        var titleHtm = '<div class="title1" onclick="showMenuList(this)"><span class="fontBlack bold f-row">'+data.menuLv1[i].name+'</span>'
+		var titleHtm = '<div class="title1 openTitle" onclick="showMenuList(this)"><span class="fontBlack bold f-row">' + data.menuLv1[i].name + '</span>'
+        titleHtm += '<i class="fourDPlex listOpen icon-listClose"></i>'
         var menuList = document.createElement("div");
         menuList.className = 'openList';
         for(var j = 0; j < data.menuLv1[i].menuLv2.length; j++) {
@@ -100,7 +101,7 @@ function menuPop() {
   } else {
     $("#menuPage").removeClass('popHide')
     $("#menuPage").addClass('popShow')
-    $("#menuContent").find('.openList').hide()
+//    $("#menuContent").find('.openList').hide()
     $("#menuContent").find('.listOpen').addClass('icon-listOpen')
     $("#menuContent").find('.listOpen').removeClass('icon-listClose')
     $("#menuContent").find('li').eq(index).find('.listOpen').addClass('icon-listClose')
