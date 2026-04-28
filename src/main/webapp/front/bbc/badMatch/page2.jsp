@@ -75,8 +75,29 @@
     }
     
     .drag-table th {
-        font-size: 0.3rem;
+        font-size: 0.33rem;
+        padding: 0.24rem 0.3rem;
     }
+    
+	#entryCntSmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntSww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntSmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntAmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntAww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntAmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntBmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntBww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntBmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntCmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntCww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntCmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntDmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntDww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntDmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntEmm {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntEww {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+	#entryCntEmw {font-size: 0.33rem;padding-left: 0.1rem;padding-right: 0.1rem;}
+    
 </style>
 </head>
 
@@ -230,8 +251,8 @@
               <div class="table">
 	              <table class="drag-table" id="entryListTable" cellspacing="0" cellpadding="2" width="100%" border="1">
 	                <colgroup>
-	                	<col width="20%" />
-	                	<col width="60%" />
+	                	<col width="30%" />
+	                	<col width="50%" />
 	                	<col width="20%" />
 	                </colgroup>
 	                <!-- ---------- 자강조 ---------- -->
@@ -357,7 +378,7 @@
 	                <!-- ---------- EEEEE ---------- -->
 	                <tr>
 	                  <th style="border-bottom: 1px solid #CCCCCC;"><div class="blue-solid fontBlue">초심자</div></th>
-	                  <td>
+	                  <td>	
 	                  	<div class="tab-img mb16 mb10">
 	                  		<img src="../image/umm.png" style="height:0.28rem;"/><span style="padding-left:0.1rem;">남복 참가 : <span id="entryCntEmm">0</span>팀</span>
 	                  	</div>

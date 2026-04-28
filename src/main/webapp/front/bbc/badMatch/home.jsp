@@ -187,11 +187,8 @@
 	              <div onclick="tab(this, 3)"><p>전체</p></div>
 	              <div onclick="tab(this, 1)"><p>진행중</p></div>
 	              <div onclick="tab(this, 2)"><p>종료</p></div>
-	            </div>
-	            
-	            <div class="scroll-wrap f-col pb22" id="tab1" style="padding-bottom: 4rem;">
-	              <ul class="list-group" id="list-group1">
-	              </ul>
+	              <div onclick="tab(this, 4)"><p>선수조회</p></div>
+	              <div onclick="tab(this, 5)"><p>가입오류</p></div>
 	            </div>
 	            
 	            <div class="scroll-wrap f-col pb22" id="tab2" style="padding-bottom: 4rem;">
@@ -199,9 +196,64 @@
 	              </ul>
 	            </div>
 	            
+	            <div class="scroll-wrap f-col pb22" id="tab1" style="padding-bottom: 4rem;">
+	              <ul class="list-group" id="list-group1">
+	              </ul>
+	            </div>
+	            
 	            <div class="scroll-wrap f-col pb22" id="tab3" style="padding-bottom: 4rem;">
 	              <ul class="list-group" id="list-group3">
 	              </ul>
+	            </div>
+	            
+	            <div class="scroll-wrap f-col pb22" id="tab4" style="padding-bottom: 4rem;overflow-y: hidden;">
+		      		<div class="title2">
+		              <span class="font24 bold">선수 목록</span><span class="font20 fontOrange">총 : <span class="font20 fontOrange" id="userTotalCnt4">0</span>명</span>
+		          	</div>
+		            <div class="scroll-wrap" style="overflow-x: auto;">
+		         		<table class="drag-table alignRightTable" id="userResult" cellspacing="0" cellpadding="2" border="1">
+		                <tbody id="userResultTbody4">
+		                <tr>
+		                  <th class="noWrapCell">클럽</th>
+		                  <th class="noWrapCell">이릅</th>
+		                  <th class="noWrapCell">성별</th>
+		                  <th class="noWrapCell">급수</th>
+		                  <th class="noWrapCell">나이</th>
+		                </tr>
+		                
+						<!-- START Data Loop -->
+						
+		         		</tbody>
+		         		</table>
+		         		<br>
+		         		<br>
+		         		<br>
+		        	</div>
+	            </div>
+	            
+	            <div class="scroll-wrap f-col pb22" id="tab5" style="padding-bottom: 4rem;overflow-y: hidden;">
+		      		<div class="title2">
+		              <span class="font24 bold">선수 목록</span><span class="font20 fontOrange">총 : <span class="font20 fontOrange" id="userTotalCnt5">0</span>명</span>
+		          	</div>
+		            <div class="scroll-wrap" style="overflow-x: auto;">
+		         		<table class="drag-table alignRightTable" id="userResult" cellspacing="0" cellpadding="2" border="1">
+		                <tbody id="userResultTbody5">
+		                <tr>
+		                  <th class="noWrapCell">클럽</th>
+		                  <th class="noWrapCell">이릅</th>
+		                  <th class="noWrapCell">성별</th>
+		                  <th class="noWrapCell">급수</th>
+		                  <th class="noWrapCell">나이</th>
+		                </tr>
+		                
+						<!-- START Data Loop -->
+						
+		         		</tbody>
+		         		</table>
+		         		<br>
+		         		<br>
+		         		<br>
+		        	</div>
 	            </div>
 	            
 	          </div>
@@ -245,18 +297,38 @@
         $("#tab1").show();
         $("#tab2").hide();
   	  	$("#tab3").hide();
+  	  	$("#tab4").hide();
+  	  	$("#tab5").hide();
 		getData('0', 1);
     } else if(index == 2) {
         $("#tab1").hide();
         $("#tab2").show();
   	  	$("#tab3").hide();
+  	  	$("#tab4").hide();
+  	  	$("#tab5").hide();
 		getData('1', 2);
   	  getData(1);
     } else if(index == 3) {
         $("#tab1").hide();
         $("#tab2").hide();
   	  	$("#tab3").show();
+  	  	$("#tab4").hide();
+  	  	$("#tab5").hide();
 		getData('2', 3);
+    } else if(index == 4) {
+        $("#tab1").hide();
+        $("#tab2").hide();
+  	  	$("#tab3").hide();
+  	  	$("#tab4").show();
+  	  	$("#tab5").hide();
+  	  	getData2('BADMATCH_SEARCH_USER_ALL2', 4);
+    } else if(index == 5) {
+        $("#tab1").hide();
+        $("#tab2").hide();
+  	  	$("#tab3").hide();
+  	  	$("#tab4").hide();
+  	  	$("#tab5").show();
+  	  	getData2('BADMATCH_SEARCH_USER_ERROR', 5);
     }
   }
   $(function() {
@@ -385,6 +457,97 @@
 						alert("Error : " + status);
 					}
 				});
+	}
+	
+
+	function getData2(para1, idx) {
+
+		var load = loading();
+		load.show()
+	
+		 $.ajax({
+		 	 		data:{
+		 	 			para1 : para1
+		 	 			,para2 : ""
+		 	 			,para3 : "${para3}"
+			 	 		,para4 : "호치민"
+				 	 	,para5 : ""
+		 	 		},
+				type : "POST",
+				url : "/front/bbc/badMatch/getData.htm",
+				success : function(data) {
+					var htm = '';
+					var cnt = 0;
+					var userCnt = 0;
+					var clbNm = "";
+					$("#userResultTbody"+idx).html("");
+
+					htm = ''
+						+ '<tr>'
+						+ '<th class="noWrapCell">Seq</th>'
+						+ '<th class="noWrapCell">이메일</th>'
+						+ '<th class="noWrapCell">클럽</th>'
+						+ '<th class="noWrapCell">이릅</th>'
+						+ '<th class="noWrapCell">영문명</th>'
+						+ '<th class="noWrapCell">성별</th>'
+						+ '<th class="noWrapCell">급수</th>'
+						+ '<th class="noWrapCell">나이</th>'
+						+ '<th class="noWrapCell">가입일/수정일</th>'
+						+ '</tr>';
+
+					$("#userResultTbody"+idx).append(htm);
+					
+					if (data.list.length != 0) {
+
+						for (var i = 0; i < data.list.length; i++) {
+							
+							cnt++;
+							if (clbNm != data.list[i].CLB_NM) {
+								userCnt = 0;
+							}
+							userCnt++;
+							htm = ''
+								+ '<tr>'  
+								+ '	<td class="noWrapCell center">'+userCnt+'</td>'
+								+ '	<td class="noWrapCell center" style="white-space: initial;">'+data.list[i].LNK_ACT_ID+'</td>'
+								+ '	<td class="noWrapCell center"><a onclick="goUserPage2('+data.list[i].MBR_SQ+');">'+data.list[i].CLB_NM+'</a></td>'
+								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'</a></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].WX_NICK+'</td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].SEX+'</td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].LVL_NM+'</td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].THIS_YEAR_AGE+'</td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].REG_DT+'<br>'+data.list[i].LST_MOD_DT+'</td>'
+								+ '</tr>'
+							;
+								clbNm = data.list[i].CLB_NM;
+							$("#userResultTbody"+idx).append(htm);
+
+						}
+						
+						$("#userTotalCnt"+idx).html(cnt);
+					} else {
+						
+						htm = '';
+						$("#userResultTbody"+idx).append(htm);
+					}
+					load.hide();					
+					
+				},
+				error : function(xhr, status, e) {
+					load.hide()
+					alert("Error : " + status);
+				}
+			});
+	}
+
+	function goUserPage(a) {
+		window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page24&para3=&para5="+a;
+	}
+
+	function goUserPage2(a) {
+		<c:if test="${userInfo.AUTH == 'A'}">
+			window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page28&intMbrsq="+a;	
+		</c:if>
 	}
 	
 </script>

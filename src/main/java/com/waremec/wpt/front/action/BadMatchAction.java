@@ -355,7 +355,15 @@ public class BadMatchAction extends BaseAction{
 	    }
 	    Map<String, Object> searchMap = new HashMap<String, Object>();
 	    searchMap.put("P1", "BADMATCH_SELECT_USER");
-	    searchMap.put("P2", loginMbrSq);
+	    if ("page28".equals(pageName)) {
+		if (intMbrsq == 0) {
+		    intMbrsq = loginMbrSq;
+		}
+		searchMap.put("P2", intMbrsq);
+	    }
+	    else {
+		searchMap.put("P2", loginMbrSq);
+	    }
 	    searchMap.put("P3", para3);
 	    Map<String, Object> userInfo = commonService.select("Bbc.sqlAMS_BADMATCH_PROCEDURE", searchMap);
 	    request.put("userInfo", userInfo);

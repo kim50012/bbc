@@ -210,9 +210,10 @@
 
 					htm = ''
 						+ '<tr>'
-						+ '<th class="noWrapCell">도시</th>'
+						+ '<th class="noWrapCell">지역</th>'
 						+ '<th class="noWrapCell">클럽</th>'
 						+ '<th class="noWrapCell">이릅</th>'
+						+ '<th class="noWrapCell">영문명</th>'
 						+ '<th class="noWrapCell">성별</th>'
 						+ '<th class="noWrapCell">급수</th>'
 						+ '<th class="noWrapCell">나이</th>'
@@ -228,8 +229,9 @@
 							htm = ''
 								+ '<tr>'  
 								+ '	<td class="noWrapCell center">'+data.list[i].CITY+'</td>'
-								+ '	<td class="noWrapCell center">'+data.list[i].CLB_NM+'</td>'
+								+ '	<td class="noWrapCell center"><a onclick="goUserPage2('+data.list[i].MBR_SQ+');">'+data.list[i].CLB_NM+'</a></td>'
 								+ '	<td class="noWrapCell center"><a onclick="goUserPage('+data.list[i].MBR_SQ+');">'+data.list[i].MBR_NM+'</a></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].WX_NICK+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].SEX+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].LVL_NM+'</td>'
 								+ '	<td class="noWrapCell center">'+data.list[i].THIS_YEAR_AGE+'</td>'
@@ -257,6 +259,12 @@
 
 	function goUserPage(a) {
 		window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page24&para3=&para5="+a;
+	}
+
+	function goUserPage2(a) {
+		<c:if test="${userInfo.AUTH == 'A'}">
+			window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page28&intMbrsq="+a;	
+		</c:if>
 	}
 	
 </script>

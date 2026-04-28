@@ -87,7 +87,7 @@
                 <i class="fas fa-shuttlecock mr-2"></i>
                 <span>배드민턴 그라운드</span>
             </a>
-            <h2 class="text-xl text-gray-600">회원 가입</h2>
+            <h2 class="text-xl text-gray-600">회원 정보 수정</h2>
         </div>
 
         <form id="signup-form" action="#" method="POST">
@@ -206,7 +206,7 @@
 
             <div class="mb-4">
                 <label for="dsc" class="block text-sm font-medium text-gray-700 mb-1">추가 요청 사항</label>
-                <input type="text" id="dsc" name="dsc" required
+                <input type="text" id="dsc" name="dsc"
                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition duration-200"
                        placeholder="관리자에게 문의할 내용 입력해주세요.">
             </div>
@@ -435,6 +435,7 @@
 					 	 	,para9 : data.birthyear
 					 	 	,para10 : data.region
 					 	 	,para11 : data.skill
+					 	 	,para12 : "${loginMbrSq}"
 			 	 		},
 					type : "POST",
 					url : "/front/bbc/badMatch/userInsert.htm",
