@@ -71,10 +71,12 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
           
           <div class="model-gray">
             <div class="bottom-model" style="padding-top: 0;">
-				<div class="input-wrap" style="width: 70%;margin-right: 0.2rem;">
+				<div class="input-wrap" style="width: 1.8rem;margin-right: 0.2rem;">
 					<input class="imgContent" type="text" name="userNm" id="userNm" placeholder="이름을 입력 후 조회하세요." style="background-color: #ffffff;">
 				</div>
-              	<button class="confirmBtn" id="confirmBtn" onclick="getData('2', '${para3}', $('#userNm').val());">조회</button>
+              	<button class="confirmBtn" id="confirmBtn" onclick="getData('2', '${para3}', $('#userNm').val());" style="margin-right:0.2rem;width: 1.3rem;">조회</button>
+              	<button class="confirmBtn" id="confirmBtn" onclick="getData2('2', '${para3}', $('#userNm').val());" style="margin-right:0.2rem;width: 1.3rem;">클럽별</button>
+              	<button class="confirmBtn" id="confirmBtn" onclick="joinMatch();" style="background: #ec8921;width: 1.5rem;">참가신청</button>
             </div>
           </div>
           
@@ -206,12 +208,18 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 		       	</div>
           	</div>
           
-            <div class="tab-con-wrap" style="min-height: 0;">
-              <div class="btn-area">
-                <button class="fourD-blue-btn" onclick="joinMatch()">대회 참가 신청</button>
-              </div>
-            </div>
-            
+          	<!--- areaF ------------>
+          	<div id="areaF" style="display:none;">
+          	</div>
+          
+          
+	          <div class="tab-con-wrap" style="min-height: 0;display:none;">
+	            <div class="btn-area">
+	              <button class="fourD-blue-btn" onclick="joinMatch()">대회 참가 신청</button>
+	            </div>
+	          </div>
+	          
+          
           </div>
 
         </div>
@@ -226,12 +234,20 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 	$(function() {
 		getData("2", "${para3}", null);
 	});
-	
+
 	function getData(para2, para3, para4) {
 
 		var load = loading();
 		load.show()
 	
+		$("#areaS").hide();
+		$("#areaA").hide();
+		$("#areaB").hide();
+		$("#areaC").hide();
+		$("#areaD").hide();
+		$("#areaE").hide();
+		$("#areaF").hide();
+		
 		 $.ajax({
 		 	 		data:{
 		 	 			para1 : "BADMATCH_USER_LIST"
@@ -297,12 +313,16 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 							}
 							
 							if (lineTag != thisLineTag) {
-								lineStyle = "style='border-top: solid 2px #006ecd;box-sizing: initial;'";
+								lineStyle = "style='border-top: solid 2px #4CAF50;box-sizing: initial;'";
 							}
 							else {
 								if (lineTag2 != thisLineTag2) {
 									lineStyle = "style='border-top: solid 2px #c0c0c0; box-sizing: initial; '";
 								}
+							}
+							
+							if (j == 0) {
+								lineStyle = "style='border-top: solid 2px #006ecd;box-sizing: initial;'";
 							}
 							
 							htm = ''
@@ -337,6 +357,130 @@ helpHtmlTag = "※ 이번 대회 참가자를 조회 해볼수 있는 페이지 
 			});
 	}
 
+
+	function getData2(para2, para3, para4) {
+
+		var load = loading();
+		load.show()
+	
+
+		$("#areaS").hide();
+		$("#areaA").hide();
+		$("#areaB").hide();
+		$("#areaC").hide();
+		$("#areaD").hide();
+		$("#areaE").hide();
+		$("#areaF").hide();
+		
+		 $.ajax({
+		 	 		data:{
+		 	 			para1 : "BADMATCH_USER_LIST_BY_CLB"
+		 	 			,para2 : para3
+		 	 			,para3 : para4
+		 	 		},
+				type : "POST",
+				url : "/front/bbc/badMatch/getData.htm",
+				success : function(data) {
+					
+					console.log(data);
+					
+					var htm = '';
+					var j = 0;
+					var tag = "";
+					var lineTag = "";
+					var thisLineTag = "";
+					var lineStyle = "";
+					var lineTag2 = "";
+					var thisLineTag2 = "";
+					var lineStyle2 = "";
+					
+					if (data.list.length != 0) {
+
+						$("#areaF").html("");
+						$("#areaF").show();
+						
+						for (var i = 0; i < data.list.length; i++) {
+
+							thisLineTag = data.list[i].B_LVL+data.list[i].GAME_TYPE;
+							thisLineTag2 = data.list[i].B_LVL+data.list[i].GAME_TYPE+data.list[i].GAME_GROUP;
+							lineStyle = "";
+							
+							if (tag != data.list[i].CLB) {
+								
+								if (i == 0) {
+									$("#mchNm").html(data.list[i].MCH_NM);
+									$("#place").html(data.list[i].PLACE);
+									$("#mchDt").html(data.list[i].MCH_DT);
+									wechatShareMsg = data.list[0].MCH_NM;
+								} else {
+									$("#areaF"+tag+"cnt").html(j);
+								}
+								
+								j = 0;
+
+								htm = ''
+									+ '<div class="title2">'
+									+ '	<span class="font24 bold">'+data.list[i].CLB_NM+'</span><span class="font20 fontOrange">총 <span class="font20 fontOrange"id="areaF'+data.list[i].CLB+'cnt">0</span>팀</span>'
+									+ '</div>'
+									+ '        <div class="table">'
+									+ '	   <table class="drag-table alignRightTable" id="userResult" cellspacing="0" cellpadding="2" border="1">'
+									+ '        <tbody id="areaF'+data.list[i].CLB+'list">'
+									+ '        <tr>'
+									+ '          <th class="noWrapCell">No</th>'
+									+ '          <th class="noWrapCell">급수</th>'
+									+ '          <th class="noWrapCell">종목</th>'
+									+ '          <th class="noWrapCell">조</th>'
+									+ '          <th class="noWrapCell">선수</th>'
+									+ '          <th class="noWrapCell">선수</th>'
+									+ '        </tr>'
+									+ '        </tbody>'
+									+ '    </table>'
+									+ '</div>'
+								
+								$("#areaF").append(htm);
+							}
+							
+							if (lineTag != thisLineTag) {
+								lineStyle = "style='border-top: solid 2px #4CAF50;box-sizing: initial;'";
+							}
+							
+							if (j == 0) {
+								lineStyle = "style='border-top: solid 2px #006ecd;box-sizing: initial;'";
+							}
+							
+							htm = ''
+								+ '<tr '+lineStyle+'>'
+								+ '	<td class="noWrapCell center">'+(j+1)+'</div></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].B_LVL+'조</div></td>'
+								+ '	<td class="noWrapCell center"><div class="tab-img mb16 mb10"><img src="../image/u'+data.list[i].GAME_TYPE.toLowerCase()+'.png" style="height: 0.28rem;">'+data.list[i].GAME_TYPE_NM+'</div></td>'
+								+ '	<td class="noWrapCell center">'+data.list[i].GAME_GROUP_NM+'</td>'
+								+ '	<td class="noWrapCell center" style="max-width: 1.3rem;" onclick="gotoPlayerPage('+data.list[i].MBR_A+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_A+'</td>'
+								+ '	<td class="noWrapCell center" style="max-width: 1.3rem;" onclick="gotoPlayerPage('+data.list[i].MBR_B+');" style="text-decoration: underline;color: #006ecd;">'+data.list[i].MBR_NM_B+'</td>'
+								+ '</tr>'
+							;
+							$("#areaF"+data.list[i].CLB+"list").append(htm);
+							j++;
+
+							tag = data.list[i].CLB;
+							lineTag = data.list[i].B_LVL+data.list[i].GAME_TYPE;
+						}
+						
+						$("#areaF"+tag+"cnt").html(j);
+						
+					} else {
+						
+					}
+					load.hide();					
+					
+				},
+				error : function(xhr, status, e) {
+					load.hide()
+					alert("Error : " + status);
+				}
+			});
+	}
+
+	
 	function joinMatch() {
 		window.location.href="/front/bbc/badMatch/getPage.htm?pageName=page2&para3=${para3}";
 	}

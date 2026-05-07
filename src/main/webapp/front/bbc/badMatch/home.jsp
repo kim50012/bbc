@@ -288,7 +288,7 @@
 	</div>
 
 </body>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="../js/libs.baidu.com_jquery_2.0.0_jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
   function tab(el, index) {
     $(".active").removeClass('active');

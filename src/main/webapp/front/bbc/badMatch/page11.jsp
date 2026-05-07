@@ -58,11 +58,16 @@
 .drag-table tr:first-of-type td:nth-of-type(2n) {
     border-left: 2px solid #ff9800;
 }
-.drag-table tr:nth-of-type(3n) td:nth-of-type(2n) {
-    border-left: 2px solid #4caf50;
-}
 .drag-table tr:first-of-type td:nth-of-type(3n) {
     border-left: 2px solid #006ecd;
+/*     e33143 */
+}
+.drag-table tr:nth-of-type(3n) td:nth-of-type(3n) {
+    border-left: 2px solid #006ecd;
+/*     e33143 */
+}
+.drag-table tr:nth-of-type(5n) td:nth-of-type(3n) {
+    border-left: 2px solid #ff9800;
 /*     e33143 */
 }
 
@@ -72,7 +77,13 @@
 .drag-table tr:first-of-type td:nth-of-type(2n) {
     border-left: 2px solid #ff9800;
 }
-.drag-table tr:nth-of-type(3n) td:nth-of-type(2n) {
+.drag-table tr:nth-of-type(3n):not(:last-child) td:nth-of-type(2n) {
+    border-left: 2px solid #ff9800;
+}
+.drag-table tr:nth-of-type(5n) td:nth-of-type(2n) {
+    border-left: 2px solid #ff9800;
+}
+.drag-table tr:nth-of-type(7n) td:nth-of-type(2n) {
     border-left: 2px solid #ff9800;
 }
 .drag-table tr:first-of-type td:nth-of-type(3n) {
@@ -280,7 +291,7 @@ helpHtmlTag = "※ 본선 대진표 조회 화면 입니다.<br><br>본선은 �
 									+ '			<td id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-final-8-2">-</td>'
 									+ '		</tr>'
 									+ '		<tr>'
-									+ '			<td id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-final-8-3">-</td><td rowspan="2" id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-sts04-2">-</td>'
+									+ '			<td id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-final-8-3">-</td><td rowspan="2" style="border-bottom: 2px solid orange;" id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-sts04-2">-</td>'
 									+ '		</tr>'
 									+ '		<tr>'
 									+ '			<td id="'+data.list[i].B_LVL+'-'+data.list[i].GAME_TYPE+'-final-8-4">-</td>'
